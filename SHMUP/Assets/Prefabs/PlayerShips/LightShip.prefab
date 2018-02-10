@@ -52,9 +52,11 @@ GameObject:
   m_Component:
   - component: {fileID: 4736372136486886}
   - component: {fileID: 54696375056947380}
-  - component: {fileID: 64348175501712320}
+  - component: {fileID: 135198264667177716}
   - component: {fileID: 114382349696035670}
   - component: {fileID: 114402576851970688}
+  - component: {fileID: 114829159605967494}
+  - component: {fileID: 114432292516717840}
   m_Layer: 0
   m_Name: LightShip
   m_TagString: Player
@@ -167,7 +169,7 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1640338574637798}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -285,20 +287,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 112
   m_CollisionDetection: 0
---- !u!64 &64348175501712320
-MeshCollider:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1640338574637798}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Convex: 1
-  m_InflateMesh: 0
-  m_SkinWidth: 0.01
-  m_Mesh: {fileID: 0}
 --- !u!114 &114382349696035670
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -310,7 +298,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8fcdc9be63c734540af6cebbd4c08e52, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 5
+  speed: 15
   tilt: 1
   boundary:
     xMin: -12
@@ -330,13 +318,53 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fireRate: 1
-  currentWLevel: 1
+  currentWLevel: 0
   primaryWeapon: 1
   mgShot: {fileID: 1167522747763894, guid: 5c12e8316c35a4941b9e39b6acad3bf6, type: 2}
   scatterShot: {fileID: 0}
-  flakShot: {fileID: 0}
-  canonShot: {fileID: 0}
+  flakShot: {fileID: 1868279469445102, guid: 110231c2007bd794fa6bf07cc93ca979, type: 2}
+  canonShot: {fileID: 1461313860375486, guid: dab0861301d04e142a79946d2cec5c73, type: 2}
   shotSpawns:
   - {fileID: 4625525227818766}
   - {fileID: 4083734504496512}
   - {fileID: 4640960317028806}
+--- !u!114 &114432292516717840
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1640338574637798}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 64eaa14f51edf384e9c281762f299ea0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damageAmmount: 10
+--- !u!114 &114829159605967494
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1640338574637798}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 37bfd0cbe8a4bbd41be8cb905e0859b7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentHealth: 0
+  minHealth: 1
+  maxHealth: 75
+  currentShields: 0
+  maxShields: 0
+--- !u!135 &135198264667177716
+SphereCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1640338574637798}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 1.15
+  m_Center: {x: 0, y: 0, z: 0}

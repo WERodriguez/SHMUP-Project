@@ -20,9 +20,7 @@ public class HealthSystem : MonoBehaviour
     void Start ()
     {
         currentHealth = maxHealth;
-        currentShields = 0;
-	}
-	
+    }	
 
     //Takes damage from another script and subtracts from the player health and shields.
     public void Damage(float damageAmmount)
