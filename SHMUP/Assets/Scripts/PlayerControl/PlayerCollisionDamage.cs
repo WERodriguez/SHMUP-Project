@@ -6,8 +6,14 @@ public class PlayerCollisionDamage : MonoBehaviour
 {
 
     private HealthSystem health;
+    private bool whoAmI;
 
     public float damageAmmount;
+
+    private void Start()
+    {
+        whoAmI = gameObject.GetComponent<PlayerController>().whichPlayer;
+    }
 
     //Just checks if a collider overlaps with a trigger. The thing that is in you. Overlap.
     private void OnTriggerEnter(Collider other)
@@ -17,13 +23,14 @@ public class PlayerCollisionDamage : MonoBehaviour
             return;
         }
 
+        health = other.GetComponent<HealthSystem>();
+
         if (health == null)
         {
             return;
         }
 
-        health = other.GetComponent<HealthSystem>();
-        health.Damage(damageAmmount);
+        health.Damage(damageAmmount, whoAmI);
     }
 
 }

@@ -13,6 +13,9 @@ public class AttackExplosion : MonoBehaviour
     public float damageAmmount;
     public int explosionDuration;
 
+    //What player the bullet belongs to.
+    public bool whoDoIBelongTo;
+
     void Start()
     {
         //Destroys the explosion after a duration.
@@ -29,7 +32,12 @@ public class AttackExplosion : MonoBehaviour
 
         //Grabs a refference to the other object's health system
         health = other.GetComponent<HealthSystem>();
+        if (health == null)
+        {
+            return;
+        }
+
         //Tells that health system to deal X damage.
-        health.Damage(damageAmmount);
+        health.Damage(damageAmmount, whoDoIBelongTo);
     }
 }

@@ -8,6 +8,9 @@ public class AttackScript : MonoBehaviour
 
     public float damageAmmount;
 
+    //What player the bullet belongs to.
+    public bool whoDoIBelongTo;
+
     //Just checks if a collider overlaps with a trigger. The thing that is in you. Overlap.
     private void OnTriggerEnter(Collider other)
     {
@@ -23,7 +26,7 @@ public class AttackScript : MonoBehaviour
             return;
         }
 
-        health.Damage(damageAmmount);
+        health.Damage(damageAmmount, whoDoIBelongTo);
 
         Destroy(gameObject);
     }

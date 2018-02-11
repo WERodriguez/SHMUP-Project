@@ -8,6 +8,9 @@ public class AttackPenetrate : MonoBehaviour {
 
     public float damageAmmount;
 
+    //What player the bullet belongs to.
+    public bool whoDoIBelongTo;
+
     //Just checks if a collider overlaps with a trigger. The thing that is in you. Overlap.
     private void OnTriggerEnter(Collider other)
     {
@@ -17,6 +20,12 @@ public class AttackPenetrate : MonoBehaviour {
         }
 
         health = other.GetComponent<HealthSystem>();
-        health.Damage(damageAmmount);
+
+        if (health == null)
+        {
+            return;
+        }
+
+        health.Damage(damageAmmount, whoDoIBelongTo);
     }
 }

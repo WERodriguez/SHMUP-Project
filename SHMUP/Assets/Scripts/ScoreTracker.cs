@@ -7,26 +7,27 @@ public class ScoreTracker : MonoBehaviour
 {
     //Can't figure out how to make the game keep track of player scores separately.
 
-    //public Text scoreText_P1;
-    //public Text scoreText_P2;
+    public Text scoreText_P1;
+    public Text scoreText_P2;
     public Text levelScoreText;
 
-    //private int score_P1;
-    //private int score_P2;
+    private int score_P1;
+    private int score_P2;
     private int totalScore;
     //False = P1. True = P2
     private bool player;
 
     private void Start()
     {
-        //score_P1 = 0;
-       //score_P2 = 0;
+        score_P1 = 0;
+        score_P2 = 0;
         totalScore = 0;
     }
 
-    public void AddScore(int newScoreValue)
+    public void AddScore(int newScoreValue, bool whatPlayer)
     {
-        /*
+        player = whatPlayer;
+        
         //Updates P1 Score
         //Adds P1 score to total score
         if (!player)
@@ -41,14 +42,13 @@ public class ScoreTracker : MonoBehaviour
             score_P2 += newScoreValue;
             totalScore += newScoreValue;
         }
-        */
-        totalScore += newScoreValue;
+
         UpdateScore();
     }
 
-    public void UpdateScore()
+    private void UpdateScore()
     {
-        /*
+        
         //Updates P1 Score
         if (!player)
         {
@@ -59,7 +59,7 @@ public class ScoreTracker : MonoBehaviour
         {
             scoreText_P2.text = "" + score_P2;
         }
-        //Updates Level Score*/
+        //Updates Level Score
         levelScoreText.text = "" + totalScore;
     }
 }

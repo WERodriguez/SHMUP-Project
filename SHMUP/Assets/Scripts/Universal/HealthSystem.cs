@@ -31,7 +31,7 @@ public class HealthSystem : MonoBehaviour
     }
 
     //Takes damage from another script and subtracts from the player health and shields.
-    public void Damage(float damageAmmount)
+    public void Damage(float damageAmmount, bool whatPlayer)
     {
         excessShieldDamage = currentShields - damageAmmount;
 
@@ -57,9 +57,8 @@ public class HealthSystem : MonoBehaviour
         {
             if (addScore != null)
             {
-                addScore.AddPoints();
+                addScore.AddPoints(whatPlayer);
                 Destroy(gameObject);
-
             }
             else
             {

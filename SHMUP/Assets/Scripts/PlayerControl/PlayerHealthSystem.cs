@@ -27,9 +27,6 @@ public class PlayerHealthSystem : MonoBehaviour
     //Stores any left over damage to deal to players through shields.
     private float excessShieldDamage;
 
-    private PlayerController player;
-
-
     void Start()
     {
         currentHealth = maxHealth;
@@ -80,5 +77,16 @@ public class PlayerHealthSystem : MonoBehaviour
             return;
         }
         currentHealth += healAmmount;
+        health.text = "HP: " + currentHealth;
+    }
+
+    public void ShieldHealing(float shieldHealAmmount)
+    {
+        if (currentHealth > maxHealth)
+        {
+            return;
+        }
+        currentShields += shieldHealAmmount;
+        shields.text = "SP: " + currentShields;
     }
 }

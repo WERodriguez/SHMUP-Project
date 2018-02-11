@@ -18,8 +18,8 @@ public class Points : MonoBehaviour {
         scoreTracker = gameController.GetComponent<ScoreTracker>();
     }
 
-    public void AddPoints()
+    public void AddPoints(bool whatPlayer)
     {
-        scoreTracker.AddScore(points);
+        scoreTracker.AddScore(points, whatPlayer);
     }
 }
