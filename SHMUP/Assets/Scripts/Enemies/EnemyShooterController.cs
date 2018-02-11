@@ -7,14 +7,13 @@ public class EnemyShooterController : MonoBehaviour
     //Fire control variables.
     //fireRate controls the... Well Fire Rate
     public float fireRate;
-    //Keeps track of when the weapon can fire again.
-    private float nextFire;
-
     //Shot to fire
     public GameObject shot;
-    
     //Where the ship shoots from. Can be a list of them.
     public Transform shotSpawn;
+
+    //Keeps track of when the weapon can fire again.
+    private float nextFire;
 
     //Runs every frame
     private void Update()

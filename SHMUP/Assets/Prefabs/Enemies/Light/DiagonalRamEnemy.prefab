@@ -41,6 +41,7 @@ GameObject:
   - component: {fileID: 114578971834192176}
   - component: {fileID: 114150254396779086}
   - component: {fileID: 114882576483032812}
+  - component: {fileID: 114252397086535218}
   m_Layer: 0
   m_Name: DiagonalRamEnemy
   m_TagString: Enemy
@@ -153,13 +154,25 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damageAmmount: 10
+--- !u!114 &114252397086535218
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1763165158681910}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e1d06b2a0b376744b2220b18aa86d42, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  points: 10
 --- !u!114 &114578971834192176
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1763165158681910}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 37bfd0cbe8a4bbd41be8cb905e0859b7, type: 3}
   m_Name: 

@@ -1,9 +1,11 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
-public class HealthSystem : MonoBehaviour
+public class PlayerHealthSystem : MonoBehaviour
 {
+
     //Player health
     public float currentHealth;
     public float minHealth;
@@ -13,21 +15,28 @@ public class HealthSystem : MonoBehaviour
     public float currentShields;
     public float maxShields;
 
+    //UI Tracking
+    /*public Text health_P1;
+    public Text shields_P1;
+    public Text health_P2;
+    public Text shields_P2;*/
+
+    public Text health;
+    public Text shields;
+
     //Stores any left over damage to deal to players through shields.
     private float excessShieldDamage;
 
-    private Points addScore;
-    
-    void Start ()
+    private PlayerController player;
+
+
+    void Start()
     {
         currentHealth = maxHealth;
         //Tries to grab a points script if the object has any.
-        addScore = gameObject.GetComponent<Points>();
 
-        if (addScore == null)
-        {
-            return;
-        }  
+        health.text = "HP: " + currentHealth;
+        shields.text = "SP: " + currentShields;
     }
 
     //Takes damage from another script and subtracts from the player health and shields.
@@ -45,26 +54,31 @@ public class HealthSystem : MonoBehaviour
             {
                 currentShields = 0;
             }
+            shields.text = "SP: " + currentShields;
         }
         //if excess shield damage is less than 0 it is substracted from health.
         if (excessShieldDamage < 0)
         {
             excessShieldDamage *= -1;
             currentHealth -= excessShieldDamage;
+
+            health.text = "HP: " + currentHealth;
         }
 
         if (currentHealth < minHealth)
         {
-            if (addScore != null)
-            {
-                addScore.AddPoints();
-                Destroy(gameObject);
-
-            }
-            else
-            {
-                Destroy(gameObject);
-            }
+            currentHealth = 0;
+            health.text = "HP: " + currentHealth;
+            Destroy(gameObject);
         }
+    }
+
+    public void Healing(float healAmmount)
+    {
+        if (currentHealth > maxHealth)
+        {
+            return;
+        }
+        currentHealth += healAmmount;
     }
 }

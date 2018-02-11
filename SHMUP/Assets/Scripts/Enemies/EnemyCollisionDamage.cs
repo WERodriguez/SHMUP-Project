@@ -5,7 +5,7 @@ using UnityEngine;
 public class EnemyCollisionDamage : MonoBehaviour
 {
 
-    private HealthSystem health;
+    private PlayerHealthSystem health;
 
     public float damageAmmount;
 
@@ -17,7 +17,7 @@ public class EnemyCollisionDamage : MonoBehaviour
             return;
         }
 
-        health = other.GetComponent<HealthSystem>();
+        health = other.GetComponent<PlayerHealthSystem>();
         if (health == null)
         {
             return;

@@ -17,6 +17,12 @@ public class AttackScript : MonoBehaviour
         }
 
         health = other.GetComponent<HealthSystem>();
+
+        if (health == null)
+        {
+            return;
+        }
+
         health.Damage(damageAmmount);
 
         Destroy(gameObject);

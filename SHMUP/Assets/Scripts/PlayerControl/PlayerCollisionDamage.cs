@@ -17,6 +17,11 @@ public class PlayerCollisionDamage : MonoBehaviour
             return;
         }
 
+        if (health == null)
+        {
+            return;
+        }
+
         health = other.GetComponent<HealthSystem>();
         health.Damage(damageAmmount);
     }

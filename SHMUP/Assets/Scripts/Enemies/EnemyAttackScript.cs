@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class EnemyAttackScript : MonoBehaviour
 {
-    private HealthSystem health;
+    private PlayerHealthSystem health;
 
     public float damageAmmount;
 
@@ -16,7 +16,13 @@ public class EnemyAttackScript : MonoBehaviour
             return;
         }
 
-        health = other.GetComponent<HealthSystem>();
+        health = other.GetComponent<PlayerHealthSystem>();
+
+        if (health == null)
+        {
+            return;
+        }
+
         health.Damage(damageAmmount);
 
         Destroy(gameObject);
