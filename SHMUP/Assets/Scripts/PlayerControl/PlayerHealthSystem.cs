@@ -15,14 +15,18 @@ public class PlayerHealthSystem : MonoBehaviour
     public float currentShields;
     public float maxShields;
 
-    //UI Tracking
-    /*public Text health_P1;
-    public Text shields_P1;
-    public Text health_P2;
-    public Text shields_P2;*/
+    //Player Lives
+    public int currentLives;
+    private int maxLives = 5;
+    public Transform respawnLocation;
+    public Transform playerHidingSpot;
+    private float respawnTimer;
 
+
+    //UI Tracking
     public Text health;
     public Text shields;
+    public Text lives;
 
     //Stores any left over damage to deal to players through shields.
     private float excessShieldDamage;
@@ -30,10 +34,28 @@ public class PlayerHealthSystem : MonoBehaviour
     void Start()
     {
         currentHealth = maxHealth;
+        currentLives = 3;
         //Tries to grab a points script if the object has any.
 
         health.text = "HP: " + currentHealth;
         shields.text = "SP: " + currentShields;
+        lives.text = "Lives: " + currentLives;
+    }
+
+    private void Update()
+    {
+        if(gameObject.GetComponent<PlayerController>().isDead == true)
+        {
+            respawnTimer += Time.deltaTime;
+            if (respawnTimer > 3)
+            {
+                //Respawns player at location.
+                transform.position = respawnLocation.position;
+                gameObject.GetComponent<PlayerController>().isDead = false;
+                currentHealth = maxHealth;
+                respawnTimer = 0;
+            }
+        }
     }
 
     //Takes damage from another script and subtracts from the player health and shields.
@@ -66,7 +88,8 @@ public class PlayerHealthSystem : MonoBehaviour
         {
             currentHealth = 0;
             health.text = "HP: " + currentHealth;
-            Destroy(gameObject);
+            //Destroy(gameObject);
+            Respawn();
         }
     }
 
@@ -88,5 +111,23 @@ public class PlayerHealthSystem : MonoBehaviour
         }
         currentShields += shieldHealAmmount;
         shields.text = "SP: " + currentShields;
+    }
+
+    private void Respawn()
+    {
+        currentLives -= 1;
+
+        if(currentLives < 0)
+        {
+            currentLives = 0;
+            lives.text = "Lives: " + currentLives;
+            transform.position = playerHidingSpot.position;
+            gameObject.GetComponent<PlayerController>().isDead = true;
+            return;
+        }
+
+        lives.text = "Lives: " + currentLives;
+        transform.position = playerHidingSpot.position;
+        gameObject.GetComponent<PlayerController>().isDead = true;
     }
 }

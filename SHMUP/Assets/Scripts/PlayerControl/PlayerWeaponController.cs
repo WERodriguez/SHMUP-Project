@@ -30,6 +30,7 @@ public class PlayerWeaponController : MonoBehaviour
 
     //False = Player 1. True = Player 2
     private bool whichPlayer;
+    private GameObject bullet;
 
     void Start()
     {
@@ -40,40 +41,40 @@ public class PlayerWeaponController : MonoBehaviour
     // Use this for initialization
     public void Fire()
     {
-        //Puts the bullet into a container to modify.
-        GameObject bullet = mgShot as GameObject;
-        //Takes said container and tells it to let the bullet know what player it belongs to.
-        bullet.GetComponent<AttackScript>().whoDoIBelongTo = whichPlayer;
-
         if (primaryWeaponSelector == 1)
         {
-            //Spawns 1 Bullet from primary hard point.
-            if (currentWLevel == 0 && Time.time > nextFire)
-            {
-                nextFire = Time.time + fireRate;
-                Instantiate(bullet, shotSpawns[0].position, shotSpawns[0].rotation);
-            }
-            //Spawns 1 Bullet from all hard points
-            else if (currentWLevel == 1 && Time.time > nextFire)
-            {
-                nextFire = Time.time + fireRate;
-                foreach (var shotSpawn in shotSpawns)
-                {
-                    Instantiate(mgShot, shotSpawn.position, shotSpawn.rotation);
-                }
-            }
+            MachineGun();
         }
            
     }
 
     private void MachineGun()
     {
+        WhatPlayer();
 
+        //Spawns 1 Bullet from primary hard point.
+        if (currentWLevel == 0 && Time.time > nextFire)
+        {
+            nextFire = Time.time + fireRate;
+            Instantiate(bullet, shotSpawns[0].position, shotSpawns[0].rotation);
+        }
+        //Spawns 1 Bullet from all hard points
+        else if (currentWLevel == 1 && Time.time > nextFire)
+        {
+            nextFire = Time.time + fireRate;
+            foreach (var shotSpawn in shotSpawns)
+            {
+                Instantiate(mgShot, shotSpawn.position, shotSpawn.rotation);
+            }
+        }
     }
 
-    //Figures out what player it is?
+    //Figures out what player it belongs to?
     private void WhatPlayer()
     {
-
+        //Puts the bullet into a container to modify.
+        bullet = mgShot as GameObject;
+        //Takes said container and tells it to let the bullet know what player it belongs to.
+        bullet.GetComponent<AttackScript>().whoDoIBelongTo = whichPlayer;
     }
 }
