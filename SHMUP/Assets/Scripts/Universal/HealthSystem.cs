@@ -17,12 +17,15 @@ public class HealthSystem : MonoBehaviour
     private float excessShieldDamage;
 
     private Points addScore;
+    private LootDropRoller callLoot;
+    private float doesLootDrop;
     
     void Start ()
     {
         currentHealth = maxHealth;
         //Tries to grab a points script if the object has any.
         addScore = gameObject.GetComponent<Points>();
+        callLoot = gameObject.GetComponent<LootDropRoller>();
 
         if (addScore == null)
         {
@@ -55,13 +58,25 @@ public class HealthSystem : MonoBehaviour
 
         if (currentHealth < minHealth)
         {
+            doesLootDrop = Random.Range(0.0f, 100.0f);
+
             if (addScore != null)
             {
                 addScore.AddPoints(whatPlayer);
+                if (doesLootDrop >= 50.0f)
+                {
+                    callLoot.LootRoll(Random.Range(0.0f, 100.0f));
+                }
                 Destroy(gameObject);
             }
+            //This is for testing with the target dummy.
+            //Because all enemies have got  points to give except that guy.
             else
             {
+                if(doesLootDrop >= 50.0f)
+                {
+                    callLoot.LootRoll(Random.Range(0.0f, 100.0f));
+                }
                 Destroy(gameObject);
             }
         }

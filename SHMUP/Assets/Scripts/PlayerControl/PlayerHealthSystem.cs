@@ -21,6 +21,7 @@ public class PlayerHealthSystem : MonoBehaviour
     public Transform respawnLocation;
     public Transform playerHidingSpot;
     private float respawnTimer;
+    private bool canRespawn;
 
 
     //UI Tracking
@@ -44,7 +45,7 @@ public class PlayerHealthSystem : MonoBehaviour
 
     private void Update()
     {
-        if(gameObject.GetComponent<PlayerController>().isDead == true)
+        if(gameObject.GetComponent<PlayerController>().isDead == true && canRespawn == true)
         {
             respawnTimer += Time.deltaTime;
             if (respawnTimer > 3)
@@ -95,22 +96,38 @@ public class PlayerHealthSystem : MonoBehaviour
 
     public void Healing(float healAmmount)
     {
+        currentHealth += healAmmount;
+
         if (currentHealth > maxHealth)
         {
-            return;
+            currentHealth = maxHealth;
         }
-        currentHealth += healAmmount;
+
         health.text = "HP: " + currentHealth;
     }
 
     public void ShieldHealing(float shieldHealAmmount)
     {
-        if (currentHealth > maxHealth)
+        currentShields += shieldHealAmmount;
+
+        if (currentShields > maxShields)
+        {
+            currentShields = maxShields;
+        }
+
+        shields.text = "SP: " + currentShields;
+    }
+
+    public void ExtraLife()
+    {
+        currentShields += 1;
+
+        if (currentLives > maxLives)
         {
             return;
         }
-        currentShields += shieldHealAmmount;
-        shields.text = "SP: " + currentShields;
+
+        lives.text = "Lives: " + currentLives;
     }
 
     private void Respawn()
@@ -119,15 +136,15 @@ public class PlayerHealthSystem : MonoBehaviour
 
         if(currentLives < 0)
         {
-            currentLives = 0;
-            lives.text = "Lives: " + currentLives;
             transform.position = playerHidingSpot.position;
             gameObject.GetComponent<PlayerController>().isDead = true;
+            canRespawn = false;
             return;
         }
 
         lives.text = "Lives: " + currentLives;
         transform.position = playerHidingSpot.position;
         gameObject.GetComponent<PlayerController>().isDead = true;
+        canRespawn = true;
     }
 }

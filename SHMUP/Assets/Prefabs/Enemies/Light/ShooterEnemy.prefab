@@ -43,6 +43,7 @@ GameObject:
   - component: {fileID: 114269699132853038}
   - component: {fileID: 114766311974818028}
   - component: {fileID: 114146209208565004}
+  - component: {fileID: 114674560279663014}
   m_Layer: 0
   m_Name: ShooterEnemy
   m_TagString: Enemy
@@ -210,6 +211,23 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 5
+--- !u!114 &114674560279663014
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1417214390615192}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eddb89b5b6504b649b7b543bde6e4943, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  loot:
+  - {fileID: 1232319095237692, guid: 91122ca2154549b4683656f7ead5d96a, type: 2}
+  - {fileID: 1495949067345648, guid: c01bfe1f9707d064fb9ca01cf3ededeb, type: 2}
+  - {fileID: 1869739280697806, guid: 55610c021b1df9d458ac850441f49684, type: 2}
+  - {fileID: 0}
+  - {fileID: 0}
 --- !u!114 &114766311974818028
 MonoBehaviour:
   m_ObjectHideFlags: 1

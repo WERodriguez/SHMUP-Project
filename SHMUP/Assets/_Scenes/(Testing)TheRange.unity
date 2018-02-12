@@ -254,7 +254,7 @@ Prefab:
         type: 2}
       propertyPath: lives
       value: 
-      objectReference: {fileID: 414981117}
+      objectReference: {fileID: 1775985111}
     - target: {fileID: 114276984081307924, guid: c2c59f4b4eadd2d419d5382d609e7665,
         type: 2}
       propertyPath: respawnLocation
@@ -633,6 +633,28 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 13
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &563329537 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1315690089397914, guid: 991b2dd21716f7e4496bcecdd74cd6e3,
+    type: 2}
+  m_PrefabInternal: {fileID: 357772252}
+--- !u!114 &563329538
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 563329537}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eddb89b5b6504b649b7b543bde6e4943, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  loot:
+  - {fileID: 1232319095237692, guid: 91122ca2154549b4683656f7ead5d96a, type: 2}
+  - {fileID: 1495949067345648, guid: c01bfe1f9707d064fb9ca01cf3ededeb, type: 2}
+  - {fileID: 1843875800352026, guid: b484444507f5eda43a4100f03b51242a, type: 2}
+  - {fileID: 0}
+  - {fileID: 0}
 --- !u!1 &732679381
 GameObject:
   m_ObjectHideFlags: 0
