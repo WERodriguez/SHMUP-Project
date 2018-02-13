@@ -47,7 +47,7 @@ public class Points : MonoBehaviour {
 
             health = other.GetComponent<PlayerHealthSystem>();
 
-            if (health == null)
+            if (gameObject.CompareTag("PowerUp") || health == null)
             {
                 return;
             }

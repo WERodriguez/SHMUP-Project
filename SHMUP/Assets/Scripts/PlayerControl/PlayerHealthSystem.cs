@@ -120,7 +120,7 @@ public class PlayerHealthSystem : MonoBehaviour
 
     public void ExtraLife()
     {
-        currentShields += 1;
+        currentLives += 1;
 
         if (currentLives > maxLives)
         {

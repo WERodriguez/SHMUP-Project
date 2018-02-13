@@ -140,6 +140,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damageAmmount: 20
+  whoDoIBelongTo: 0
 --- !u!114 &114368491851270276
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -151,7 +152,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 32528e37a8705d1419524fc8ce5b2adf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 5
+  speed: 30
 --- !u!136 &136908346576679258
 CapsuleCollider:
   m_ObjectHideFlags: 1

@@ -303,8 +303,12 @@ MonoBehaviour:
   maxHealth: 100
   currentShields: 0
   maxShields: 75
+  currentLives: 0
+  respawnLocation: {fileID: 0}
+  playerHidingSpot: {fileID: 0}
   health: {fileID: 0}
   shields: {fileID: 0}
+  lives: {fileID: 0}
 --- !u!114 &114382349696035670
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -318,12 +322,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 15
   tilt: 1
-  boundary:
-    xMin: -12
-    xMax: 12
-    zMin: -6
-    zMax: 12
   whichPlayer: 0
+  isDead: 0
 --- !u!114 &114402576851970688
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -336,13 +336,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fireRate: 0.25
-  baseWLevel: 0
-  currentWLevel: 0
-  primaryWeapon: 1
-  mgShot: {fileID: 1167522747763894, guid: 5c12e8316c35a4941b9e39b6acad3bf6, type: 2}
-  scatterShot: {fileID: 0}
-  flakShot: {fileID: 1868279469445102, guid: 110231c2007bd794fa6bf07cc93ca979, type: 2}
-  canonShot: {fileID: 1461313860375486, guid: dab0861301d04e142a79946d2cec5c73, type: 2}
+  baseWLevel: 1
+  currentWLevel: 5
+  primaryWeaponSelector: 0
+  currentWeapon:
+  - {fileID: 1167522747763894, guid: 5c12e8316c35a4941b9e39b6acad3bf6, type: 2}
+  - {fileID: 1167522747763894, guid: 5c12e8316c35a4941b9e39b6acad3bf6, type: 2}
+  - {fileID: 1868279469445102, guid: 110231c2007bd794fa6bf07cc93ca979, type: 2}
+  - {fileID: 1461313860375486, guid: dab0861301d04e142a79946d2cec5c73, type: 2}
   shotSpawns:
   - {fileID: 4625525227818766}
   - {fileID: 4083734504496512}
