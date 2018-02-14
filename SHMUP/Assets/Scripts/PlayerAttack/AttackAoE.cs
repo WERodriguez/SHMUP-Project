@@ -6,14 +6,17 @@ public class AttackAoE : MonoBehaviour
 {
 
     private HealthSystem health;
+
     //This is where the boom goes to learn who its daddy is.
     private GameObject explodo;
-
     //Refference to explosion prefab
     public GameObject explosion;
 
     //What player the bullet belongs to.
     public bool whoDoIBelongTo;
+    public float damageAmmount;
+
+
     private bool whichPlayer;
 
     private void Start()
@@ -60,6 +63,7 @@ public class AttackAoE : MonoBehaviour
             return;
         }
 
+        health.Damage(damageAmmount, whoDoIBelongTo);
         Instantiate(explodo, gameObject.transform.position, gameObject.transform.rotation);
         Destroy(gameObject);
     }

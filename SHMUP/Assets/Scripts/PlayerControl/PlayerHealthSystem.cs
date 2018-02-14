@@ -23,6 +23,8 @@ public class PlayerHealthSystem : MonoBehaviour
     private float respawnTimer;
     private bool canRespawn;
 
+    private PlayerWeaponController playerWeaponController;
+
 
     //UI Tracking
     public Text health;
@@ -34,6 +36,7 @@ public class PlayerHealthSystem : MonoBehaviour
 
     void Start()
     {
+        playerWeaponController = gameObject.GetComponent<PlayerWeaponController>();
         currentHealth = maxHealth;
         currentLives = 3;
         //Tries to grab a points script if the object has any.
@@ -138,6 +141,7 @@ public class PlayerHealthSystem : MonoBehaviour
         {
             transform.position = playerHidingSpot.position;
             gameObject.GetComponent<PlayerController>().isDead = true;
+            playerWeaponController.LessGun();
             canRespawn = false;
             return;
         }
@@ -145,6 +149,7 @@ public class PlayerHealthSystem : MonoBehaviour
         lives.text = "Lives: " + currentLives;
         transform.position = playerHidingSpot.position;
         gameObject.GetComponent<PlayerController>().isDead = true;
+        playerWeaponController.LessGun();
         canRespawn = true;
     }
 }
