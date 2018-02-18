@@ -22,7 +22,7 @@ public class AttackExplosion : MonoBehaviour
         Destroy(gameObject, explosionDuration);
     }
 
-    private void OnTriggerStay(Collider other)
+    private void OnTriggerEnter(Collider other)
     {
         //Does nothing to boundary or player tags.
         if (other.CompareTag("Boundary") || other.CompareTag("Player"))

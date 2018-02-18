@@ -139,9 +139,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0e1a0862a7699c741918530f10bb480d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  explosion: {fileID: 1097933020748734, guid: ea665b4e9f7285840867b49335a26e04, type: 2}
+  explosion: {fileID: 1426605527655848, guid: 0a0f074ef581ed24f98abb59e9c093da, type: 2}
   whoDoIBelongTo: 1
+  hasFuse: 1
   damageAmmount: 5
+  fuseTime: 0.5
 --- !u!114 &114654211799364792
 MonoBehaviour:
   m_ObjectHideFlags: 1

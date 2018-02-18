@@ -14,8 +14,12 @@ public class AttackAoE : MonoBehaviour
 
     //What player the bullet belongs to.
     public bool whoDoIBelongTo;
-    public float damageAmmount;
+    public bool hasFuse;
 
+    public float damageAmmount;
+    public float fuseTime;
+
+    
 
     private bool whichPlayer;
 
@@ -26,32 +30,24 @@ public class AttackAoE : MonoBehaviour
         //Creates a modified instance of its assigned explosion prefab.
         explodo = explosion as GameObject;
         //Marks said instance as belonging to the player that shot this.
-        explodo.GetComponent<AttackExplosion>().whoDoIBelongTo = whichPlayer;
+        explodo.GetComponent<AttackExplosion>().whoDoIBelongTo = whichPlayer;        
     }
 
-    //Use this to actually detect a collision. A bump.
-    /*private void OnCollisionEnter(Collision collision)
+    private void Update()
     {
-        Debug.Log("I dun collided!");
+        fuseTime -= Time.deltaTime;
 
-        if (collision.gameObject.CompareTag("Boundary") || collision.gameObject.CompareTag("Player"))
+        if (hasFuse == true && fuseTime < 0)
         {
-            return;
+            Debug.Log("I am supposed to explode");
+            Instantiate(explodo, gameObject.transform.position, gameObject.transform.rotation);
+            Destroy(gameObject);
         }
-
-        //Pulls a contact point from where the bullet hit another collider.
-        ContactPoint contact = collision.contacts[0];
-        //Assigns contact point to a vector3
-        Vector3 pos = contact.point;
-
-        //Calls for the explosion at point of impact.
-        Instantiate(explosion, pos, gameObject.transform.rotation);
-        Destroy(gameObject);
-    }*/
+    }
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Boundary") || other.CompareTag("Player"))
+        if (other.CompareTag("Boundary") || other.CompareTag("Player") || other.CompareTag("PlayerBullet"))
         {
             return;
         }

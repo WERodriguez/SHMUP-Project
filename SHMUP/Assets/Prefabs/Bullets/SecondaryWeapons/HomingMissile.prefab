@@ -351,7 +351,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   explosion: {fileID: 1097933020748734, guid: ea665b4e9f7285840867b49335a26e04, type: 2}
   whoDoIBelongTo: 1
+  hasFuse: 0
   damageAmmount: 3
+  fuseTime: 3
 --- !u!114 &114947775924866958
 MonoBehaviour:
   m_ObjectHideFlags: 1
