@@ -254,11 +254,6 @@ Prefab:
       propertyPath: lives
       value: 
       objectReference: {fileID: 1775985111}
-    - target: {fileID: 114491855440919870, guid: 12661b55d4eb80446afc1b8c5cfe772b,
-        type: 2}
-      propertyPath: baseWLevel
-      value: 2
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 12661b55d4eb80446afc1b8c5cfe772b, type: 2}
   m_IsPrefabParent: 0
@@ -1371,7 +1366,7 @@ MonoBehaviour:
   - {fileID: 1369515705846832, guid: 372707eb24a15a94dacd66de6f8dced5, type: 2}
   - {fileID: 1417214390615192, guid: 785c99927a9c8b14cab82152bf3598c5, type: 2}
   spawnValues: {x: 12, y: 0, z: 40}
-  lightEnemyCount: 10
+  lightEnemyCount: 100
   mediumEnemyCount: 0
   heavyEnemyCount: 0
   waveCount: 0
