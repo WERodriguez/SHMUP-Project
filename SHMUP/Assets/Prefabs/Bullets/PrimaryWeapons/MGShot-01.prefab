@@ -42,7 +42,7 @@ GameObject:
   - component: {fileID: 114259986528833648}
   m_Layer: 0
   m_Name: MGShot-01
-  m_TagString: Player
+  m_TagString: PlayerBullet
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -139,7 +139,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a14fac211773d2f44a041627919d8f19, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damageAmmount: 5
+  damageAmmount: 1
   whoDoIBelongTo: 0
 --- !u!114 &114824916452801826
 MonoBehaviour:
