@@ -59,7 +59,7 @@ GameObject:
   - component: {fileID: 114947775924866958}
   m_Layer: 0
   m_Name: HomingMissile
-  m_TagString: Player
+  m_TagString: PlayerBullet
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -350,7 +350,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   explosion: {fileID: 1097933020748734, guid: ea665b4e9f7285840867b49335a26e04, type: 2}
-  whoDoIBelongTo: 0
+  whoDoIBelongTo: 1
   damageAmmount: 3
 --- !u!114 &114947775924866958
 MonoBehaviour:

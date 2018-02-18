@@ -24,7 +24,7 @@ GameObject:
   - component: {fileID: 114643001719146784}
   m_Layer: 0
   m_Name: FlakExplosion
-  m_TagString: Player
+  m_TagString: PlayerBullet
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -140,6 +140,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damageAmmount: 0.5
   explosionDuration: 1
+  whoDoIBelongTo: 1
 --- !u!135 &135129823952468938
 SphereCollider:
   m_ObjectHideFlags: 1
