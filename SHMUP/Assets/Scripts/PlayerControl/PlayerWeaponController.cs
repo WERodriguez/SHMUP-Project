@@ -14,6 +14,9 @@ public class PlayerWeaponController : MonoBehaviour
     private float nextFire;
     private float nextSecondaryFire;
 
+    //Experimenting with chainfire.
+    public int nextGun;
+
     //Weapon default level at start of scene.
     public int baseWLevel;
     public int baseSecondaryLevel;
@@ -55,17 +58,14 @@ public class PlayerWeaponController : MonoBehaviour
     {
         if (primaryWeaponSelector == 0)
         {
-            fireRate = 0.25f;
             MachineGun();
         }
         else if (primaryWeaponSelector == 1)
         {
-            fireRate = 1.0f;
             FlakCannon();
         }
         else if (primaryWeaponSelector == 2)
         {
-            fireRate = 1.0f;
             Cannon();
         }
 
@@ -73,7 +73,6 @@ public class PlayerWeaponController : MonoBehaviour
         {
             if (secondaryWeaponSelector == 0)
             {
-                secondaryFireRate = 2;
                 HomingMissile();
             }
         }
@@ -88,6 +87,7 @@ public class PlayerWeaponController : MonoBehaviour
         //Spawns 1 Bullet from primary hard point.
         if (currentWLevel == 1 && Time.time > nextFire)
         {
+            fireRate = 0.25f;
             nextFire = Time.time + fireRate;
             Instantiate(bullet, shotSpawns[0].position, shotSpawns[0].rotation);
         }
@@ -125,11 +125,13 @@ public class PlayerWeaponController : MonoBehaviour
         //Spawns 1 Bullet from primary hard point.
         if (currentWLevel == 1 && Time.time > nextFire)
         {
+            fireRate = 1.0f;
             nextFire = Time.time + fireRate;
             Instantiate(bullet, shotSpawns[0].position, shotSpawns[0].rotation);
         }
         else if (currentWLevel == 2 && Time.time > nextFire)
         {
+            fireRate = 1.0f;
             nextFire = Time.time + fireRate;
             foreach (var shotSpawn in shotSpawns)
             {
@@ -164,35 +166,29 @@ public class PlayerWeaponController : MonoBehaviour
         //Spawns 1 Bullet from primary hard point.
         if (currentWLevel == 1 && Time.time > nextFire)
         {
+            fireRate = 1.0f;
             nextFire = Time.time + fireRate;
             Instantiate(bullet, shotSpawns[0].position, shotSpawns[0].rotation);
         }
         else if (currentWLevel == 2 && Time.time > nextFire)
         {
-            nextFire = Time.time + fireRate;
-            foreach (var shotSpawn in shotSpawns)
-            {
-                Instantiate(bullet, shotSpawn.position, shotSpawn.rotation);
-            }
+            fireRate = 0.75f;
+            ChainFire();
         }
         else if (currentWLevel == 3 && Time.time > nextFire)
         {
-            fireRate = 0.75f;
-            nextFire = Time.time + fireRate;
-            foreach (var shotSpawn in shotSpawns)
-            {
-                Instantiate(bullet, shotSpawn.position, shotSpawn.rotation);
-            }
+            fireRate = 0.5f;
+            ChainFire();
         }
         else if (currentWLevel == 4 && Time.time > nextFire)
         {
-            fireRate = 0.75f;
-            FanFire(2, 3, 10);
+            fireRate = 0.35f;
+            ChainFire();
         }
         else if (currentWLevel == 5 && Time.time > nextFire)
         {
-            fireRate = 0.5f;
-            FanFire(3, 5, 1);
+            fireRate = 0.25f;
+            ChainFire();            
         }
     }
     
@@ -203,6 +199,7 @@ public class PlayerWeaponController : MonoBehaviour
 
         if (currentSecondaryLevel == 1 && Time.time > nextSecondaryFire)
         {
+            secondaryFireRate = 2;
             nextSecondaryFire = Time.time + secondaryFireRate;
             foreach (var secondarySpawn in secondarySpawns)
             {
@@ -238,7 +235,21 @@ public class PlayerWeaponController : MonoBehaviour
         }
     }
 
+
+
     //Where fancy shooting patterns go.
+    //Fires one gun after another.
+    private void ChainFire()
+    {
+        if (nextGun >= shotSpawns.Length)
+        {
+            nextGun = 0;
+        }
+        nextFire = Time.time + fireRate;
+        Instantiate(bullet, shotSpawns[nextGun].position, shotSpawns[nextGun].rotation);
+        nextGun++;
+    }
+
     //Number of shots. Default Angle for spread. Default increment for those bullets that need to start more sideways.
     private void FanFire(int numberOfShots, float spreadAngleDefault, float spreadAngleIncrementDefault)
     {
@@ -399,7 +410,7 @@ public class PlayerWeaponController : MonoBehaviour
             shotCounter = 0;
             spreadAngleIncrement = spreadAngleDefault;
 
-            nextFire = Time.time + fireRate;
+            nextSecondaryFire = Time.time + secondaryFireRate;
             foreach (var secondarySpawn in secondarySpawns)
             {
                 //While shots fired is less than total number of shots requested.
@@ -423,7 +434,7 @@ public class PlayerWeaponController : MonoBehaviour
         {
             shotCounter = 0;
             spreadAngleDefault = 3;
-            nextFire = Time.time + fireRate;
+            nextSecondaryFire = Time.time + secondaryFireRate;
             foreach (var secondarySpawn in secondarySpawns)
             {
                 if (secondarySpawn == secondarySpawns[0])
@@ -462,7 +473,7 @@ public class PlayerWeaponController : MonoBehaviour
         {
             shotCounter = 0;
 
-            nextFire = Time.time + fireRate;
+            nextSecondaryFire = Time.time + secondaryFireRate;
             foreach (var shotSpawn in shotSpawns)
             {
                 if (shotSpawn == shotSpawns[1])
@@ -532,7 +543,7 @@ public class PlayerWeaponController : MonoBehaviour
         secondaryBullet = secondaryWeapons[secondaryWeaponSelector] as GameObject;
 
 
-        if (primaryWeaponSelector == 0)
+        if (primaryWeaponSelector == 0 || primaryWeaponSelector == 2)
         {
             //Takes said container and tells it to let the bullet know what player it belongs to.
             bullet.GetComponent<AttackScript>().whoDoIBelongTo = whichPlayer;
@@ -541,11 +552,6 @@ public class PlayerWeaponController : MonoBehaviour
         {
             //Takes said container and tells it to let the bullet know what player it belongs to.
             bullet.GetComponent<AttackAoE>().whoDoIBelongTo = whichPlayer;
-        }
-        else if (primaryWeaponSelector == 2)
-        {
-            //Takes said container and tells it to let the bullet know what player it belongs to.
-            bullet.GetComponent<AttackPenetrate>().whoDoIBelongTo = whichPlayer;
         }
 
         if(currentSecondaryLevel > 0)
