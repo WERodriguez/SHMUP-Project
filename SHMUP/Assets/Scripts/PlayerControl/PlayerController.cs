@@ -49,6 +49,12 @@ public class PlayerController : MonoBehaviour
                 //Calls the PlayerWeaponController script to use its fire function.
                 weaponController.Fire();
             }
+
+            //Makes sure chain fire weapons revert to the main gun when they start firing again.
+            if (Input.GetButtonUp("Fire_P1"))
+            {
+                weaponController.nextGun = 0;
+            }
         }
         else if (whichPlayer)
         {
@@ -56,6 +62,11 @@ public class PlayerController : MonoBehaviour
             {
                 //Calls the PlayerWeaponController script to use its fire function.
                 weaponController.Fire();
+            }
+
+            if(Input.GetButtonUp("Fire_P2"))
+            {
+                weaponController.nextGun = 0;
             }
         }
 
