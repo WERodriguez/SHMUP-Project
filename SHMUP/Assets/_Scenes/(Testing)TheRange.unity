@@ -2167,28 +2167,29 @@ Prefab:
       propertyPath: m_RootOrder
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 4120555594590342, guid: 175d9d8d97dcbe840b7b91c399228bc1, type: 2}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 180
-      objectReference: {fileID: 0}
-    - target: {fileID: 114995231018938178, guid: 175d9d8d97dcbe840b7b91c399228bc1,
+    - target: {fileID: 114774613819170152, guid: 175d9d8d97dcbe840b7b91c399228bc1,
         type: 2}
-      propertyPath: maxHealth
+      propertyPath: speed
       value: 10
       objectReference: {fileID: 0}
-    - target: {fileID: 114707886358732452, guid: 175d9d8d97dcbe840b7b91c399228bc1,
+    - target: {fileID: 114809012211308700, guid: 175d9d8d97dcbe840b7b91c399228bc1,
         type: 2}
-      propertyPath: maxHealth
+      propertyPath: speed
       value: 10
       objectReference: {fileID: 0}
-    - target: {fileID: 114524297260341232, guid: 175d9d8d97dcbe840b7b91c399228bc1,
+    - target: {fileID: 114239371065705540, guid: 175d9d8d97dcbe840b7b91c399228bc1,
         type: 2}
-      propertyPath: maxHealth
+      propertyPath: speed
       value: 10
       objectReference: {fileID: 0}
-    - target: {fileID: 114045498239360754, guid: 175d9d8d97dcbe840b7b91c399228bc1,
+    - target: {fileID: 114894307486359998, guid: 175d9d8d97dcbe840b7b91c399228bc1,
         type: 2}
-      propertyPath: maxHealth
+      propertyPath: speed
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 114861972689242742, guid: 175d9d8d97dcbe840b7b91c399228bc1,
+        type: 2}
+      propertyPath: speed
       value: 10
       objectReference: {fileID: 0}
     m_RemovedComponents: []

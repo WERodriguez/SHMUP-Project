@@ -54,9 +54,9 @@ GameObject:
   m_Component:
   - component: {fileID: 4642890837532454}
   - component: {fileID: 114401446353070036}
+  - component: {fileID: 114699406493986544}
   - component: {fileID: 54686234034167110}
   - component: {fileID: 136259333130020704}
-  - component: {fileID: 114699406493986544}
   m_Layer: 0
   m_Name: EnemyMissile
   m_TagString: EnemyBullet
@@ -351,7 +351,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   target: {fileID: 0}
   range: 20
-  speed: 10
+  speed: 15
   rotateSpeed: 3
   playerTag: Player
 --- !u!114 &114699406493986544

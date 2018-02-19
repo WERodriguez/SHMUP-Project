@@ -22,7 +22,6 @@ public class EnemyAoE : MonoBehaviour
 
         if (hasFuse == true && fuseTime < 0)
         {
-            Debug.Log("I am supposed to explode");
             Instantiate(explosion, gameObject.transform.position, gameObject.transform.rotation);
             Destroy(gameObject);
         }
