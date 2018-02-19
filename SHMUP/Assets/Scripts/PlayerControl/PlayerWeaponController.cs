@@ -131,31 +131,23 @@ public class PlayerWeaponController : MonoBehaviour
         }
         else if (currentWLevel == 2 && Time.time > nextFire)
         {
-            fireRate = 1.0f;
-            nextFire = Time.time + fireRate;
-            foreach (var shotSpawn in shotSpawns)
-            {
-                Instantiate(bullet, shotSpawn.position, shotSpawn.rotation);
-            }
+            fireRate = 0.75f;
+            ChainFire();
         }
         else if (currentWLevel == 3 && Time.time > nextFire)
         {
-            fireRate = 0.75f;
-            nextFire = Time.time + fireRate;
-            foreach (var shotSpawn in shotSpawns)
-            {
-                Instantiate(bullet, shotSpawn.position, shotSpawn.rotation);
-            }
+            fireRate = 0.5f;
+            ChainFire();
         }
         else if (currentWLevel == 4 && Time.time > nextFire)
         {
-            fireRate = 0.75f;
-            FanFire(2, 3.0f, 10.0f);
+            fireRate = 1.0f;
+            FanFire(3, 20.0f, 20.0f);
         }
         else if (currentWLevel == 5 && Time.time > nextFire)
         {
-            fireRate = 0.5f;
-            FanFire(3, 5, 1);
+            fireRate = 1.0f;
+            FanFire(5, 20.0f, 45.0f);
         }
     }
 
@@ -285,7 +277,6 @@ public class PlayerWeaponController : MonoBehaviour
         else if (numberOfShots == 3)
         {
             shotCounter = 0;
-            spreadAngleDefault = 3;
             nextFire = Time.time + fireRate;
             foreach (var shotSpawn in shotSpawns)
             {

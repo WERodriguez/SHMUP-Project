@@ -6,7 +6,6 @@ public class HealthSystem : MonoBehaviour
 {
     //Player health
     public float currentHealth;
-    public float minHealth;
     public float maxHealth;
 
     //Player shields.
@@ -56,7 +55,7 @@ public class HealthSystem : MonoBehaviour
             currentHealth -= excessShieldDamage;
         }
 
-        if (currentHealth < minHealth)
+        if (currentHealth <= 0)
         {
             doesLootDrop = Random.Range(0.0f, 100.0f);
 
