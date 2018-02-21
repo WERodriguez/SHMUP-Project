@@ -12,6 +12,8 @@ public class HealthSystem : MonoBehaviour
     public float currentShields;
     public float maxShields;
 
+    public float lootDropChance;
+
     //Stores any left over damage to deal to players through shields.
     private float excessShieldDamage;
 
@@ -72,7 +74,7 @@ public class HealthSystem : MonoBehaviour
             //Because all enemies have got  points to give except that guy.
             else
             {
-                if(doesLootDrop >= 50.0f)
+                if(doesLootDrop <= lootDropChance)
                 {
                     callLoot.LootRoll(Random.Range(0.0f, 100.0f));
                 }
