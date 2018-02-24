@@ -6,6 +6,13 @@ using UnityEngine.SceneManagement;
 
 public class UIController : MonoBehaviour
 {
+    public static bool onePlayer;
+    public static int characterType;
+    public static int shipType;
+    public static int primaryType;
+    public static int secondaryType;
+    public static int specialType;
+
     public Animator mainMenuPivot;
     public Animator SingleSelectionPivot;
 
@@ -60,6 +67,13 @@ public class UIController : MonoBehaviour
 
     private void Start()
     {
+        onePlayer = true;
+        characterType = 0;
+        shipType = 0;
+        primaryType = 0;
+        secondaryType = 0;
+        specialType = 0;
+
         mainMenu.SetActive(true);
         singlePlayer.SetActive(true);
         doublePlayer.SetActive(true);
@@ -113,6 +127,7 @@ public class UIController : MonoBehaviour
     //single player button
     public void SPBonClick()
     {
+        onePlayer = true;
         singleMenu.SetActive(true);
         characterButton.SetActive(true);
         shipButton.SetActive(true);
@@ -131,6 +146,7 @@ public class UIController : MonoBehaviour
     //back button
     public void BBonClick()
     {
+        onePlayer = false;
         singleMenu.SetActive(true);
         characterButton.SetActive(true);
         shipButton.SetActive(true);
@@ -302,6 +318,116 @@ public class UIController : MonoBehaviour
         BBonClick();
         mainMenuPivot.SetBool("SingleClick", false);
         SingleSelectionPivot.SetBool("BackClick", false);
+    }
+
+    //start taking in data and pass it to another scene
+
+    //choose character 1
+    public void C1onClick()
+    {
+        characterType = 1;
+    }
+    //choose character 2
+    public void C2onClick()
+    {
+        characterType = 2;
+    }
+    //choose character 3
+    public void C3onClick()
+    {
+        characterType = 3;
+    }
+    //choose character 4
+    public void C4onClick()
+    {
+        characterType = 4;
+    }
+
+    //choose ship 1
+    public void S1onClick()
+    {
+        shipType = 1;
+    }
+    //choose ship 1
+    public void S2onClick()
+    {
+        shipType = 2;
+    }
+    //choose ship 3
+    public void S3onClick()
+    {
+        shipType = 3;
+    }
+    //choose ship 4
+    public void S4onClick()
+    {
+        shipType = 4;
+    }
+    //choose ship 5
+    public void S5onClick()
+    {
+        shipType = 5;
+    }
+    //choose ship 6
+    public void S6onClick()
+    {
+        shipType = 6;
+    }
+
+    //choose primary 1
+    public void PW1onClick()
+    {
+        primaryType = 1;
+    }
+    //choose primary 2
+    public void PW2onClick()
+    {
+        primaryType = 2;
+    }
+    //choose primary 3
+    public void PW3onClick()
+    {
+        primaryType = 3;
+    }
+
+    //choose secondary 1
+    public void SW1onClick()
+    {
+        secondaryType = 1;
+    }
+    //choose secondary 2
+    public void SW2onClick()
+    {
+        secondaryType = 2;
+    }
+    //choose secondary 3
+    public void SW3onClick()
+    {
+        secondaryType = 3;
+    }
+
+    //choose Special 1
+    public void SP1onClick()
+    {
+        specialType = 1;
+    }
+    //choose Special 2
+    public void SP2onClick()
+    {
+        specialType = 2;
+    }
+    //choose Special 3
+    public void SP3onClick()
+    {
+        specialType = 3;
+    }
+
+    private void Update()
+    {
+        if(characterType > 0 && shipType > 0 && primaryType > 0 && secondaryType > 0 && specialType > 0)
+        {
+            startButton.SetActive(true);
+        }
     }
 
     public void StartButton()
