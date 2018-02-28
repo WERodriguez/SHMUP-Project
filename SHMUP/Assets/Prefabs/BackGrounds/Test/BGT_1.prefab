@@ -5465,7 +5465,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1846158702287986}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -10, z: 75}
+  m_LocalPosition: {x: 0, y: -13, z: -9}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4121335095604614}
@@ -14212,10 +14212,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   scrollSpeed: -10
-  tileSize: 160
   nextTile: {fileID: 1871783281251578, guid: cee867515fbf42b4a9e217d6cae79541, type: 2}
   endPosition: {x: 0, y: 0, z: -85}
-  spawnNextTilePosition: {x: 0, y: 0, z: -17}
+  spawnNextTilePosition: {x: 0, y: 0, z: -9}
   nextTileSpawn: {fileID: 4174230759618020}
 --- !u!114 &114213131068572078
 MonoBehaviour:

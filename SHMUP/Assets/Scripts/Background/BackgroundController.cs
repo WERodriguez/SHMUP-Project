@@ -5,12 +5,11 @@ using UnityEngine;
 public class BackgroundController : MonoBehaviour
 {
     public float scrollSpeed;
-    public float tileSize;
 
     public GameObject nextTile;
 
-    public Vector3 endPosition = new Vector3(0, 0, -85);
-    public Vector3 spawnNextTilePosition = new Vector3(0, 0, -17);
+    public Vector3 endPosition;
+    public Vector3 spawnNextTilePosition;
     private Vector3 startPosition;
     public Transform nextTileSpawn;
 
