@@ -5,6 +5,7 @@ using UnityEngine;
 public class EnemyFireAllGuns : MonoBehaviour
 {
     public float nextFire;
+    public float fireDelay;
     public float fireRate;
 
     public GameObject shot;
@@ -13,7 +14,7 @@ public class EnemyFireAllGuns : MonoBehaviour
 	// Use this for initialization
 	void Start ()
     {
-		
+        nextFire = Time.time + fireDelay;
 	}
 	
 	// Update is called once per frame

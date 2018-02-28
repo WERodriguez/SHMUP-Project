@@ -15,6 +15,7 @@ public class EnemyTurret : MonoBehaviour
     public float nextFire;
     //How often the turret is called to fire.
     public float nextVolley;
+    public float initialDelay;
     //Bullet spawn points.
     public Transform[] shotSpawns;
     //Enemy shot.
@@ -33,7 +34,7 @@ public class EnemyTurret : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody>();
-
+        nextVolley = Time.time + initialDelay;
         //Name of function. How long before the function is called. How often it will be called.
         InvokeRepeating("UpdateTarget", 0f, 1.0f);
     }
@@ -118,21 +119,6 @@ public class EnemyTurret : MonoBehaviour
 
         yield return new WaitForSeconds(1.0f);
         yield return null;
-
-        /*if (Time.time > nextFire)
-        {
-            nextFire = Time.deltaTime + fireRate;
-            Instantiate(shot, shotSpawns[nextGun].position, shotSpawns[nextGun].rotation);
-            nextGun++;
-            if (Time.deltaTime > nextFire + nextFire)
-            {
-                nextFire = Time.deltaTime + fireRate;
-                Instantiate(shot, shotSpawns[nextGun].position, shotSpawns[nextGun].rotation);
-                nextGun++;
-            }
-        }
-
-        nextGun = 0;*/
     }
 
     private void OnDrawGizmosSelected()

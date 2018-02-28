@@ -20,6 +20,13 @@ public class HealthSystem : MonoBehaviour
     private Points addScore;
     private LootDropRoller callLoot;
     private float doesLootDrop;
+
+    //Checks if boss.
+    public bool isBoss;
+    //Checks if boss part.
+    public bool isBossPart;
+    //For boss/bosspart death
+    public GameObject scrap;
     
     void Start ()
     {
@@ -31,7 +38,7 @@ public class HealthSystem : MonoBehaviour
         if (addScore == null)
         {
             return;
-        }  
+        } 
     }
 
     //Takes damage from another script and subtracts from the player health and shields.
@@ -57,14 +64,43 @@ public class HealthSystem : MonoBehaviour
             currentHealth -= excessShieldDamage;
         }
 
-        if (currentHealth <= 0)
+
+        if (currentHealth <= 0 && isBoss)
+        {
+            doesLootDrop = Random.Range(0.0f, 100.0f);
+            if (addScore != null)
+            {
+                addScore.AddPoints(whatPlayer);
+                if (doesLootDrop <= lootDropChance)
+                {
+                    callLoot.LootRoll(Random.Range(0.0f, 100.0f));
+                }
+            }
+            Instantiate(scrap, gameObject.transform.position, gameObject.transform.rotation);
+            Destroy(gameObject);
+        }
+        else if (currentHealth <= 0 && isBossPart)
+        {
+            doesLootDrop = Random.Range(0.0f, 100.0f);
+            if (addScore != null)
+            {
+                addScore.AddPoints(whatPlayer);
+                if (doesLootDrop <= lootDropChance)
+                {
+                    callLoot.LootRoll(Random.Range(0.0f, 100.0f));
+                }
+            }
+            Instantiate(scrap, gameObject.transform.position, gameObject.transform.rotation);
+            Destroy(gameObject);
+        }
+        else if (currentHealth <= 0)
         {
             doesLootDrop = Random.Range(0.0f, 100.0f);
 
             if (addScore != null)
             {
                 addScore.AddPoints(whatPlayer);
-                if (doesLootDrop >= 50.0f)
+                if (doesLootDrop <= lootDropChance)
                 {
                     callLoot.LootRoll(Random.Range(0.0f, 100.0f));
                 }

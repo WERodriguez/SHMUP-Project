@@ -125,29 +125,29 @@ public class PlayerWeaponController : MonoBehaviour
         //Spawns 1 Bullet from primary hard point.
         if (currentWLevel == 1 && Time.time > nextFire)
         {
-            fireRate = 1.0f;
+            fireRate = 2.0f;
             nextFire = Time.time + fireRate;
             Instantiate(bullet, shotSpawns[0].position, shotSpawns[0].rotation);
         }
         else if (currentWLevel == 2 && Time.time > nextFire)
         {
-            fireRate = 0.75f;
+            fireRate = 1.75f;
             ChainFire();
         }
         else if (currentWLevel == 3 && Time.time > nextFire)
         {
-            fireRate = 0.5f;
+            fireRate = 1.5f;
             ChainFire();
         }
         else if (currentWLevel == 4 && Time.time > nextFire)
         {
-            fireRate = 1.0f;
+            fireRate = 2f;
             FanFire(3, 20.0f, 20.0f);
         }
         else if (currentWLevel == 5 && Time.time > nextFire)
         {
-            fireRate = 1.0f;
-            FanFire(5, 20.0f, 45.0f);
+            fireRate = 1.5f;
+            FanFire(3, 20.0f, 20.0f);
         }
     }
 
@@ -158,13 +158,13 @@ public class PlayerWeaponController : MonoBehaviour
         //Spawns 1 Bullet from primary hard point.
         if (currentWLevel == 1 && Time.time > nextFire)
         {
-            fireRate = 1.0f;
+            fireRate = 0.75f;
             nextFire = Time.time + fireRate;
             Instantiate(bullet, shotSpawns[0].position, shotSpawns[0].rotation);
         }
         else if (currentWLevel == 2 && Time.time > nextFire)
         {
-            fireRate = 0.75f;
+            fireRate = 0.65f;
             ChainFire();
         }
         else if (currentWLevel == 3 && Time.time > nextFire)

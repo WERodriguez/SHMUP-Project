@@ -57,6 +57,7 @@ public class PlayerHealthSystem : MonoBehaviour
                 transform.position = respawnLocation.position;
                 gameObject.GetComponent<PlayerController>().isDead = false;
                 currentHealth = maxHealth;
+                health.text = "HP: " + currentHealth;
                 respawnTimer = 0;
             }
         }
