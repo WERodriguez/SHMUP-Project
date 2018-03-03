@@ -62,12 +62,17 @@ public class SpawnPlayer : MonoBehaviour
         }
         if (UIController.shipType == 3)
         {
-            currentShip = ship1.gameObject;
+            currentShip = ship3.gameObject;
             Invoke("Spawn", 1f);
         }
         if (UIController.shipType == 4)
         {
-            currentShip = ship2.gameObject;
+            currentShip = ship4.gameObject;
+            Invoke("Spawn", 1f);
+        }
+        if (UIController.shipType == 5)
+        {
+            currentShip = ship5.gameObject;
             Invoke("Spawn", 1f);
         }
     }
