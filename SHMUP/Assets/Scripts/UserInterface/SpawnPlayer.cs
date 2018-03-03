@@ -49,6 +49,7 @@ public class SpawnPlayer : MonoBehaviour
             shipList[counter].SetActive(false);
         }*/
 
+        //ship spawning
         if (UIController.shipType == 1)
         {
             currentShip = ship1.gameObject;
@@ -59,10 +60,21 @@ public class SpawnPlayer : MonoBehaviour
             currentShip = ship2.gameObject;
             Invoke("Spawn", 1f);
         }
+        if (UIController.shipType == 3)
+        {
+            currentShip = ship1.gameObject;
+            Invoke("Spawn", 1f);
+        }
+        if (UIController.shipType == 4)
+        {
+            currentShip = ship2.gameObject;
+            Invoke("Spawn", 1f);
+        }
     }
 
     private void Spawn()
     {
-        Instantiate(currentShip, player1Spawn.transform.position, Quaternion.identity);
+        Instantiate(currentShip, new Vector3(-12, 0, 0), Quaternion.identity);
+        currentShip.SetActive(true);
     }
 }

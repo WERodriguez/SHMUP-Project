@@ -28,13 +28,13 @@ public class UIController : MonoBehaviour
     public GameObject secondaryButton;
     public GameObject specialButton;
 
-    public GameObject backButton;
+    public GameObject returnButton;
     public GameObject startButton;
-    public GameObject upButton1;
-    public GameObject upButton2;
-    public GameObject upButton3;
-    public GameObject upButton4;
-    public GameObject upButton5;
+    public GameObject backButton1;
+    public GameObject backButton2;
+    public GameObject backButton3;
+    public GameObject backButton4;
+    public GameObject backButton5;
 
     public GameObject characterPanel;
     public GameObject character1;
@@ -86,13 +86,13 @@ public class UIController : MonoBehaviour
         secondaryButton.SetActive(false);
         specialButton.SetActive(false);
 
-        backButton.SetActive(false);
+        returnButton.SetActive(false);
         startButton.SetActive(false);
-        upButton1.SetActive(false);
-        upButton2.SetActive(false);
-        upButton3.SetActive(false);
-        upButton4.SetActive(false);
-        upButton5.SetActive(false);
+        backButton1.SetActive(false);
+        backButton2.SetActive(false);
+        backButton3.SetActive(false);
+        backButton4.SetActive(false);
+        backButton5.SetActive(false);
 
         characterPanel.SetActive(false);
         character1.SetActive(false);
@@ -135,16 +135,16 @@ public class UIController : MonoBehaviour
         secondaryButton.SetActive(true);
         specialButton.SetActive(true);
 
-        backButton.SetActive(true);
-        upButton1.SetActive(true);
-        upButton2.SetActive(true);
-        upButton3.SetActive(true);
-        upButton4.SetActive(true);
-        upButton5.SetActive(true);
+        returnButton.SetActive(true);
+        backButton1.SetActive(true);
+        backButton2.SetActive(true);
+        backButton3.SetActive(true);
+        backButton4.SetActive(true);
+        backButton5.SetActive(true);
     }
 
-    //back button
-    public void BBonClick()
+    //return button
+    public void RBonClick()
     {
         onePlayer = false;
         singleMenu.SetActive(true);
@@ -154,12 +154,12 @@ public class UIController : MonoBehaviour
         secondaryButton.SetActive(true);
         specialButton.SetActive(true);
 
-        backButton.SetActive(true);
-        upButton1.SetActive(false);
-        upButton2.SetActive(true);
-        upButton3.SetActive(true);
-        upButton4.SetActive(true);
-        upButton5.SetActive(true);
+        returnButton.SetActive(true);
+        backButton1.SetActive(false);
+        backButton2.SetActive(true);
+        backButton3.SetActive(true);
+        backButton4.SetActive(true);
+        backButton5.SetActive(true);
 
         characterPanel.SetActive(false);
         character1.SetActive(false);
@@ -191,8 +191,8 @@ public class UIController : MonoBehaviour
         special3.SetActive(false);
     }
 
-    //up button
-    public void UBonClick()
+    //back button
+    public void BBonClick()
     {
         characterButton.SetActive(true);
         shipButton.SetActive(true);
@@ -313,7 +313,7 @@ public class UIController : MonoBehaviour
     }
 
     //BB camera switch
-    public void BBCameraSwitch()
+    public void RBCameraSwitch()
     {
         BBonClick();
         mainMenuPivot.SetBool("SingleClick", false);

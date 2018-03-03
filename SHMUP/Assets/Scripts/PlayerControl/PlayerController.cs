@@ -26,14 +26,6 @@ public class PlayerController : MonoBehaviour
 
     private Rigidbody rb;
 
-    //Figuring out Doubletap
-    //Counts how many times the player tapped their fire key.
-    public int p1Total = 0;
-    //How long players have until tap counter resets.
-    public float p1Delay = 0;
-    public int p2Total = 0;
-    public float p2Delay = 0;
-
 	// Use this for initialization
 	void Start ()
     {
@@ -50,50 +42,12 @@ public class PlayerController : MonoBehaviour
             
         }
 
-        //Player 1 Fire Control.
         if(!whichPlayer)
         {
             if (Input.GetButton("Fire_P1"))
             {
                 //Calls the PlayerWeaponController script to use its fire function.
                 weaponController.Fire();
-
-                //Super goes here
-            }
-
-            //Increments the number of taps a player has done.
-            if(Input.GetButtonDown("Fire_P1"))
-            {
-                p1Total++;
-            }
-
-            //If player has tapped the fire button once it starts to track time between taps.
-            //If it's less than half a second keep tracking time. Otherwise reset it.
-            if ((p1Total == 1) && (p1Delay < .5))
-            {
-                p1Delay += Time.deltaTime;
-            }
-
-            //Resets tap and time counter if player has taken longer than half a second.
-            if ((p1Total == 1) && (p1Delay > .5))
-            {
-                p1Delay = 0;
-                p1Total = 0;
-            }
-
-            if ((p1Total == 2) && (p1Delay < .5))
-            {
-                //CallSuper Here
-                Debug.Log("I'MA FIRIN MUH LAZOOOOOOOR");
-                weaponController.SuperWeapon();
-                p1Delay = 0;
-                p1Total = 0;
-            }
-
-            if ((p1Total == 2) && (p1Delay > .5))
-            {
-                p1Delay = 0;
-                p1Total = 0;
             }
 
             //Makes sure chain fire weapons revert to the main gun when they start firing again.
@@ -101,9 +55,7 @@ public class PlayerController : MonoBehaviour
             {
                 weaponController.nextGun = 0;
             }
-
         }
-        //Player 2 Fire Control
         else if (whichPlayer)
         {
             if (Input.GetButton("Fire_P2"))
@@ -112,42 +64,7 @@ public class PlayerController : MonoBehaviour
                 weaponController.Fire();
             }
 
-            //Checks if player has tapped the button once.
-            if (Input.GetButtonDown("Fire_P2"))
-            {
-                p2Total++;
-            }
-
-            //If player has tapped the fire button once it starts to track time between taps.
-            //If it's less than half a second keep tracking time. Otherwise reset it.
-            if ((p2Total == 1) && (p2Delay < .5))
-            {
-                p2Delay += Time.deltaTime;
-            }
-
-            //Resets tap and time counter if player has taken longer than half a second.
-            if ((p2Total == 1) && (p2Delay > .5))
-            {
-                p2Delay = 0;
-                p2Total = 0;
-            }
-
-            if ((p2Total == 2) && (p2Delay < .5))
-            {
-                //CallSuper Here
-                Debug.Log("I'MA FIRIN MUH LAZOOOOOOOR TOOOOO");
-                weaponController.SuperWeapon();
-                p2Delay = 0;
-                p2Total = 0;
-            }
-
-            if ((p2Total == 2) && (p1Delay > .5))
-            {
-                p2Delay = 0;
-                p2Total = 0;
-            }
-
-            if (Input.GetButtonUp("Fire_P2"))
+            if(Input.GetButtonUp("Fire_P2"))
             {
                 weaponController.nextGun = 0;
             }
