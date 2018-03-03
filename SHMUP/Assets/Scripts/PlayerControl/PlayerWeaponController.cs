@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerWeaponController : MonoBehaviour
 {
@@ -24,26 +25,35 @@ public class PlayerWeaponController : MonoBehaviour
     public int currentWLevel;
     public int currentSecondaryLevel;
     //Currently equipped primary weapon.
-    //MG = 0. ScatterShot = 1. Flak = 2. Canon = 3.
+    //MG = 0. Flak = 1. Canon = 3.
     //I was having a hard time with the string array and this just works. >.>
     public int primaryWeaponSelector;
     public int secondaryWeaponSelector;
+    public int superWeaponSelector;
 
     //Shot to fire
     public GameObject[] primaryWeapons;
     public GameObject[] secondaryWeapons;
+    public GameObject[] superWeapons;
 
     //Where the ship shoots from. Can be a list of them.
     public Transform[] shotSpawns;
     public Transform[] secondarySpawns;
 
     private int shotCounter;
+    //How many times you can fire your super weapon.
+    public int superAmmo;
+    //How much superAmmo players can hold.
+    public int superAmmoCap;
+    public Text superAmmoCounter;
 
     //False = Player 1. True = Player 2
     private bool whichPlayer;
     //Current weapon modified with the whichPlayer bool.
     private GameObject bullet;
     private GameObject secondaryBullet;
+    private GameObject superBullet;
+
 
     void Start()
     {
@@ -51,6 +61,9 @@ public class PlayerWeaponController : MonoBehaviour
         whichPlayer = GetComponent<PlayerController>().whichPlayer;
         currentWLevel = baseWLevel;
         currentSecondaryLevel = baseSecondaryLevel;
+
+        superAmmo = 3;
+        superAmmoCounter.text = "Super Ammo: " + superAmmo;
     }
 
     // Use this for initialization
@@ -77,6 +90,16 @@ public class PlayerWeaponController : MonoBehaviour
             }
         }
 
+    }
+
+    public void SuperWeapon()
+    {
+        if (superWeaponSelector == 0 && superAmmo > 0)
+        {
+            MegaBomb();
+            superAmmo--;
+            superAmmoCounter.text = "Super Ammo: " + superAmmo;
+        }
     }
 
     //Primary Weapons Go Here
@@ -227,7 +250,12 @@ public class PlayerWeaponController : MonoBehaviour
         }
     }
 
-
+    //Super Weapons Go Here
+    private void MegaBomb()
+    {
+        WhatPlayer();
+        Instantiate(superBullet, shotSpawns[0].position, shotSpawns[0].rotation);
+    }
 
     //Where fancy shooting patterns go.
     //Fires one gun after another.
@@ -532,8 +560,9 @@ public class PlayerWeaponController : MonoBehaviour
         //Puts the bullet into a container to modify.
         bullet = primaryWeapons[primaryWeaponSelector] as GameObject;
         secondaryBullet = secondaryWeapons[secondaryWeaponSelector] as GameObject;
+        superBullet = superWeapons[superWeaponSelector] as GameObject;
 
-
+        //PrimaryWeapons
         if (primaryWeaponSelector == 0 || primaryWeaponSelector == 2)
         {
             //Takes said container and tells it to let the bullet know what player it belongs to.
@@ -545,12 +574,16 @@ public class PlayerWeaponController : MonoBehaviour
             bullet.GetComponent<AttackAoE>().whoDoIBelongTo = whichPlayer;
         }
 
-        if(currentSecondaryLevel > 0)
+        //SecondaryWeapons
+        if (secondaryWeaponSelector == 0)
         {
-            if (secondaryWeaponSelector == 0)
-            {
-                secondaryBullet.GetComponent<AttackAoE>().whoDoIBelongTo = whichPlayer;
-            }
+            secondaryBullet.GetComponent<AttackAoE>().whoDoIBelongTo = whichPlayer;
+        }
+
+        //SuperWeapons
+        if (superWeaponSelector == 0)
+        {
+            superBullet.GetComponent<SuperBombLauncher>().whoDoIBelongTo = whichPlayer;
         }
     }
 
@@ -571,6 +604,17 @@ public class PlayerWeaponController : MonoBehaviour
             currentSecondaryLevel = 5;
         }
     }
+
+    public void MoreSuperAmmo()
+    {
+        superAmmo += 1;
+        if (superAmmo > superAmmoCap)
+        {
+            superAmmo = superAmmoCap;
+        }
+        superAmmoCounter.text = "Super Ammo: " + superAmmo;
+    }
+
 
 
     //For When you respawn
