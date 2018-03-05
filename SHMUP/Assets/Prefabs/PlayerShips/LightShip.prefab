@@ -333,6 +333,10 @@ MonoBehaviour:
   tilt: 1
   whichPlayer: 0
   isDead: 0
+  p1Total: 0
+  p1Delay: 0
+  p2Total: 0
+  p2Delay: 0
 --- !u!114 &114402576851970688
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -353,12 +357,15 @@ MonoBehaviour:
   currentSecondaryLevel: 0
   primaryWeaponSelector: 0
   secondaryWeaponSelector: 0
+  superWeaponSelector: 0
   primaryWeapons:
   - {fileID: 1167522747763894, guid: 5c12e8316c35a4941b9e39b6acad3bf6, type: 2}
   - {fileID: 1868279469445102, guid: 110231c2007bd794fa6bf07cc93ca979, type: 2}
   - {fileID: 1461313860375486, guid: dab0861301d04e142a79946d2cec5c73, type: 2}
   secondaryWeapons:
   - {fileID: 1851002434471204, guid: 33c958973d9f93e4fbe981109854ff9b, type: 2}
+  superWeapons:
+  - {fileID: 1564108121295334, guid: 87140d67c9584be4f98cf7364c98b0f5, type: 2}
   shotSpawns:
   - {fileID: 4625525227818766}
   - {fileID: 4189636047679158}
@@ -366,6 +373,9 @@ MonoBehaviour:
   secondarySpawns:
   - {fileID: 4083734504496512}
   - {fileID: 4640960317028806}
+  superAmmo: 0
+  superAmmoCap: 0
+  superAmmoCounter: {fileID: 0}
 --- !u!114 &114432292516717840
 MonoBehaviour:
   m_ObjectHideFlags: 1
