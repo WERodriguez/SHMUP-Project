@@ -64,15 +64,15 @@ public class GameOver : MonoBehaviour
 
     private void ResetPlayer1Value()
     {
-        PlayerHealthSystem.P1currentLives = PlayerHealthSystem.maxLives;
-        PlayerHealthSystem.P1currentHealth = PlayerHealthSystem.maxHealth;
-        PlayerHealthSystem.P1currentShields = PlayerHealthSystem.maxShields;
+        PlayerHealthSystem.P1currentLives = PlayerHealthSystem.P1maxLives;
+        PlayerHealthSystem.P1currentHealth = PlayerHealthSystem.P1maxHealth;
+        PlayerHealthSystem.P1currentShields = PlayerHealthSystem.P1maxShields;
     }
     private void ResetPlayer2Value()
     {
-        PlayerHealthSystem.P2currentLives = PlayerHealthSystem.maxLives;
-        PlayerHealthSystem.P2currentHealth = PlayerHealthSystem.maxHealth;
-        PlayerHealthSystem.P2currentShields = PlayerHealthSystem.maxShields;
+        PlayerHealthSystem.P2currentLives = PlayerHealthSystem.P2maxLives;
+        PlayerHealthSystem.P2currentHealth = PlayerHealthSystem.P2maxHealth;
+        PlayerHealthSystem.P2currentShields = PlayerHealthSystem.P2maxShields;
     }
 
     public void HangarButton()

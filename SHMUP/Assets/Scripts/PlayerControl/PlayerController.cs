@@ -19,7 +19,8 @@ public class PlayerController : MonoBehaviour
     //False = Player 1. True = Player 2
     public bool whichPlayer;
     //Checks if player is dead.
-    public bool isDead;
+    public bool P1isDead;
+    public bool P2isDead;
 
     //PlayerWeaponController specifically refferences that class. weaponController is how we call it here.
     private PlayerWeaponController weaponController;
@@ -45,7 +46,7 @@ public class PlayerController : MonoBehaviour
 	// Update is called once per frame
 	void Update ()
     {
-        if(isDead)
+        if(P1isDead || P2isDead)
         {
             return;
             
@@ -158,9 +159,15 @@ public class PlayerController : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (isDead)
+        if (P1isDead)
         {
-            MovePlayer();
+            MovePlayer1();
+            return;
+        }
+
+        if (P2isDead)
+        {
+            MovePlayer2();
             return;
         }
 
@@ -170,7 +177,7 @@ public class PlayerController : MonoBehaviour
             moveHorizontal = Input.GetAxis("Horizontal_P1");
             moveVertical = Input.GetAxis("Vertical_P1");
 
-            MovePlayer();
+            MovePlayer1();
         }
         //Player 2 Movement Controls
         else if (whichPlayer)
@@ -178,7 +185,7 @@ public class PlayerController : MonoBehaviour
             moveHorizontal = Input.GetAxis("Horizontal_P2");
             moveVertical = Input.GetAxis("Vertical_P2");
 
-            MovePlayer();
+            MovePlayer2();
         }
 
         //Clamps the player position to the boundary settings. Keeps them from going past those points.
@@ -194,13 +201,24 @@ public class PlayerController : MonoBehaviour
     }
 
     //Moves the player.
-    void MovePlayer()
+    void MovePlayer1()
     {
         Vector3 movement = new Vector3(moveHorizontal, 0.0f, moveVertical);
         rb.velocity = movement * speed;
 
         //Stops the player from moving when they're dead.
-        if(isDead)
+        if(P1isDead)
+        {
+            rb.velocity = new Vector3(0, 0, 0);
+        }
+    }
+    void MovePlayer2()
+    {
+        Vector3 movement = new Vector3(moveHorizontal, 0.0f, moveVertical);
+        rb.velocity = movement * speed;
+
+        //Stops the player from moving when they're dead.
+        if (P2isDead)
         {
             rb.velocity = new Vector3(0, 0, 0);
         }

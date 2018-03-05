@@ -483,35 +483,35 @@ public class UIController : MonoBehaviour
     public void Player1Ship1()
     {
         P1shipType = 1;
-        LightShipData();
+        P1LightShipData();
         Player1Data();
     }
     //player 1 choose ship 2
     public void Player1Ship2()
     {
         P1shipType = 2;
-        MediumShipData();
+        P1MediumShipData();
         Player1Data();
     }
     //player 1 choose ship 3
     public void Player1Ship3()
     {
         P1shipType = 3;
-        HeavyShipData();
+        P1HeavyShipData();
         Player1Data();
     }
     //player 1 choose ship 4
     public void Player1Ship4()
     {
         P1shipType = 4;
-        LamboShooterData();
+        P1LamboShooterData();
         Player1Data();
     }
     //player 1 choose ship 5
     public void Player1Ship5()
     {
         P1shipType = 5;
-        TruckShooterData();
+        P1TruckShooterData();
         Player1Data();
     }
     //player 1 choose ship 6
@@ -593,35 +593,35 @@ public class UIController : MonoBehaviour
     public void Player2Ship1()
     {
         P2shipType = 1;
-        LightShipData();
+        P2LightShipData();
         Player2Data();
     }
     //player 2 choose ship 2
     public void Player2Ship2()
     {
         P2shipType = 2;
-        MediumShipData();
+        P2MediumShipData();
         Player2Data();
     }
     //player 2 choose ship 3
     public void Player2Ship3()
     {
         P2shipType = 3;
-        HeavyShipData();
+        P2HeavyShipData();
         Player2Data();
     }
     //player 2 choose ship 4
     public void Player2Ship4()
     {
         P2shipType = 4;
-        LamboShooterData();
+        P2LamboShooterData();
         Player2Data();
     }
     //player 2 choose ship 5
     public void Player2Ship5()
     {
         P2shipType = 5;
-        TruckShooterData();
+        P2TruckShooterData();
         Player2Data();
     }
     //player 2 choose ship 6
@@ -785,59 +785,93 @@ public class UIController : MonoBehaviour
     }
 
     //shorten passing data
-
-    //light ship
-    private void LightShipData()
+    //player 1 light ship
+    private void P1LightShipData()
     {
-        PlayerHealthSystem.maxHealth = 100;
-        PlayerHealthSystem.maxShields = 75;
-        PlayerHealthSystem.maxLives = 2;
+        PlayerHealthSystem.P1maxHealth = 100;
+        PlayerHealthSystem.P1maxShields = 75;
+        PlayerHealthSystem.P1maxLives = 2;
+    }
+    //player 2 light ship
+    private void P2LightShipData()
+    {
+        PlayerHealthSystem.P2maxHealth = 100;
+        PlayerHealthSystem.P2maxShields = 75;
+        PlayerHealthSystem.P2maxLives = 2;
     }
 
-    //medium ship
-    private void MediumShipData()
+    //player 1 medium ship
+    private void P1MediumShipData()
     {
-        PlayerHealthSystem.maxHealth = 125;
-        PlayerHealthSystem.maxShields = 100;
-        PlayerHealthSystem.maxLives = 2;
+        PlayerHealthSystem.P1maxHealth = 125;
+        PlayerHealthSystem.P1maxShields = 100;
+        PlayerHealthSystem.P1maxLives = 2;
+    }
+    //player 2 medium ship
+    private void P2MediumShipData()
+    {
+        PlayerHealthSystem.P2maxHealth = 125;
+        PlayerHealthSystem.P2maxShields = 100;
+        PlayerHealthSystem.P2maxLives = 2;
     }
 
-    //heavy ship
-    private void HeavyShipData()
+    //plaer 1 heavy ship
+    private void P1HeavyShipData()
     {
-        PlayerHealthSystem.maxHealth = 150;
-        PlayerHealthSystem.maxShields = 125;
-        PlayerHealthSystem.maxLives = 2;
+        PlayerHealthSystem.P1maxHealth = 150;
+        PlayerHealthSystem.P1maxShields = 125;
+        PlayerHealthSystem.P1maxLives = 2;
+    }
+    //plaer 2 heavy ship
+    private void P2HeavyShipData()
+    {
+        PlayerHealthSystem.P2maxHealth = 150;
+        PlayerHealthSystem.P2maxShields = 125;
+        PlayerHealthSystem.P2maxLives = 2;
     }
 
-    //lambo ship
-    private void LamboShooterData()
+    //player 1 lambo shooter
+    private void P1LamboShooterData()
     {
-        PlayerHealthSystem.maxHealth = 75;
-        PlayerHealthSystem.maxShields = 150;
-        PlayerHealthSystem.maxLives = 2;
+        PlayerHealthSystem.P1maxHealth = 75;
+        PlayerHealthSystem.P1maxShields = 150;
+        PlayerHealthSystem.P1maxLives = 2;
+    }
+    //player 2 lambo shooter
+    private void P2LamboShooterData()
+    {
+        PlayerHealthSystem.P2maxHealth = 75;
+        PlayerHealthSystem.P2maxShields = 150;
+        PlayerHealthSystem.P2maxLives = 2;
     }
 
-    //truck ship
-    private void TruckShooterData()
+    //player 1 truck shooter
+    private void P1TruckShooterData()
     {
-        PlayerHealthSystem.maxHealth = 200;
-        PlayerHealthSystem.maxShields = 200;
-        PlayerHealthSystem.maxLives = 2;
+        PlayerHealthSystem.P1maxHealth = 200;
+        PlayerHealthSystem.P1maxShields = 200;
+        PlayerHealthSystem.P1maxLives = 2;
+    }
+    //player 2 truck shooter
+    private void P2TruckShooterData()
+    {
+        PlayerHealthSystem.P2maxHealth = 200;
+        PlayerHealthSystem.P2maxShields = 200;
+        PlayerHealthSystem.P2maxLives = 2;
     }
 
     //player 1 passing data
     private void Player1Data()
     {
-        PlayerHealthSystem.P1currentHealth = PlayerHealthSystem.maxHealth;
-        PlayerHealthSystem.P1currentShields = PlayerHealthSystem.maxShields;
-        PlayerHealthSystem.P1currentLives = PlayerHealthSystem.maxLives;
+        PlayerHealthSystem.P1currentHealth = PlayerHealthSystem.P1maxHealth;
+        PlayerHealthSystem.P1currentShields = PlayerHealthSystem.P1maxShields;
+        PlayerHealthSystem.P1currentLives = PlayerHealthSystem.P1maxLives;
     }
     //player 2 passing data
     private void Player2Data()
     {
-        PlayerHealthSystem.P2currentHealth = PlayerHealthSystem.maxHealth;
-        PlayerHealthSystem.P2currentShields = PlayerHealthSystem.maxShields;
-        PlayerHealthSystem.P2currentLives = PlayerHealthSystem.maxLives;
+        PlayerHealthSystem.P2currentHealth = PlayerHealthSystem.P2maxHealth;
+        PlayerHealthSystem.P2currentShields = PlayerHealthSystem.P2maxShields;
+        PlayerHealthSystem.P2currentLives = PlayerHealthSystem.P2maxLives;
     }
 }
