@@ -64,11 +64,9 @@ public class GameOver : MonoBehaviour
 
     private void ResetValue()
     {
-        /*
         PlayerHealthSystem.currentLives = PlayerHealthSystem.maxLives;
         PlayerHealthSystem.currentHealth = PlayerHealthSystem.maxHealth;
         PlayerHealthSystem.currentShields = PlayerHealthSystem.maxShields;
-        */
     }
 
     public void HangarButton()
@@ -79,8 +77,8 @@ public class GameOver : MonoBehaviour
 
     public void RestartButton()
     {
-        canvasAnimation.SetBool("EnableCanvasAnimation", true);
         ResetValue();
+        canvasAnimation.SetBool("EnableCanvasAnimation", true);
         SceneManager.LoadScene("(Testing)TheRange");
     }
 }

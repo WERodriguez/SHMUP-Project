@@ -483,27 +483,31 @@ public class UIController : MonoBehaviour
     public void Player1Ship1()
     {
         P1shipType = 1;
-        HeavyShipData();
+        LightShipData();
     }
     //player 1 choose ship 2
     public void Player1Ship2()
     {
         P1shipType = 2;
+        MediumShipData();
     }
     //player 1 choose ship 3
     public void Player1Ship3()
     {
         P1shipType = 3;
+        HeavyShipData();
     }
     //player 1 choose ship 4
     public void Player1Ship4()
     {
         P1shipType = 4;
+        LamboShooterData();
     }
     //player 1 choose ship 5
     public void Player1Ship5()
     {
         P1shipType = 5;
+        TruckShooterData();
     }
     //player 1 choose ship 6
     public void Player1Ship6()
@@ -584,27 +588,31 @@ public class UIController : MonoBehaviour
     public void Player2Ship1()
     {
         P2shipType = 1;
-        HeavyShipData();
+        LightShipData();
     }
     //player 2 choose ship 2
     public void Player2Ship2()
     {
         P2shipType = 2;
+        MediumShipData();
     }
     //player 2 choose ship 3
     public void Player2Ship3()
     {
         P2shipType = 3;
+        HeavyShipData();
     }
     //player 2 choose ship 4
     public void Player2Ship4()
     {
         P2shipType = 4;
+        LamboShooterData();
     }
     //player 2 choose ship 5
     public void Player2Ship5()
     {
         P2shipType = 5;
+        TruckShooterData();
     }
     //player 2 choose ship 6
     public void Player2Ship6()
@@ -767,11 +775,61 @@ public class UIController : MonoBehaviour
     }
 
     //shorten passing data
-    private void HeavyShipData()
+
+    //light ship
+    private void LightShipData()
     {
         PlayerHealthSystem.maxHealth = 100;
         PlayerHealthSystem.maxShields = 75;
-        PlayerHealthSystem.maxLives = 1;
+        PlayerHealthSystem.maxLives = 2;
+
+        PlayerHealthSystem.currentHealth = PlayerHealthSystem.maxHealth;
+        PlayerHealthSystem.currentShields = PlayerHealthSystem.maxShields;
+        PlayerHealthSystem.currentLives = PlayerHealthSystem.maxLives;
+    }
+
+    //medium ship
+    private void MediumShipData()
+    {
+        PlayerHealthSystem.maxHealth = 125;
+        PlayerHealthSystem.maxShields = 100;
+        PlayerHealthSystem.maxLives = 2;
+
+        PlayerHealthSystem.currentHealth = PlayerHealthSystem.maxHealth;
+        PlayerHealthSystem.currentShields = PlayerHealthSystem.maxShields;
+        PlayerHealthSystem.currentLives = PlayerHealthSystem.maxLives;
+    }
+
+    //heavy ship
+    private void HeavyShipData()
+    {
+        PlayerHealthSystem.maxHealth = 150;
+        PlayerHealthSystem.maxShields = 125;
+        PlayerHealthSystem.maxLives = 2;
+
+        PlayerHealthSystem.currentHealth = PlayerHealthSystem.maxHealth;
+        PlayerHealthSystem.currentShields = PlayerHealthSystem.maxShields;
+        PlayerHealthSystem.currentLives = PlayerHealthSystem.maxLives;
+    }
+
+    //lambo ship
+    private void LamboShooterData()
+    {
+        PlayerHealthSystem.maxHealth = 75;
+        PlayerHealthSystem.maxShields = 150;
+        PlayerHealthSystem.maxLives = 2;
+
+        PlayerHealthSystem.currentHealth = PlayerHealthSystem.maxHealth;
+        PlayerHealthSystem.currentShields = PlayerHealthSystem.maxShields;
+        PlayerHealthSystem.currentLives = PlayerHealthSystem.maxLives;
+    }
+
+    //truck ship
+    private void TruckShooterData()
+    {
+        PlayerHealthSystem.maxHealth = 200;
+        PlayerHealthSystem.maxShields = 200;
+        PlayerHealthSystem.maxLives = 2;
 
         PlayerHealthSystem.currentHealth = PlayerHealthSystem.maxHealth;
         PlayerHealthSystem.currentShields = PlayerHealthSystem.maxShields;

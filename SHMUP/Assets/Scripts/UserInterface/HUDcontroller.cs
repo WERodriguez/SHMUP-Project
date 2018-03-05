@@ -104,11 +104,9 @@ public class HUDcontroller : MonoBehaviour
 
     private void ResetValue()
     {
-        /*
         PlayerHealthSystem.currentLives = PlayerHealthSystem.maxLives;
         PlayerHealthSystem.currentHealth = PlayerHealthSystem.maxHealth;
         PlayerHealthSystem.currentShields = PlayerHealthSystem.maxShields;
-        */
     }
 
     public void ResumeButton()
@@ -119,15 +117,15 @@ public class HUDcontroller : MonoBehaviour
 
     public void RestartButton()
     {
-        DeactivatePauseMenu();
         ResetValue();
+        DeactivatePauseMenu();
         SceneManager.LoadScene("(Testing)TheRange");
     }
 
     public void MainMenuButton()
     {
-        DeactivatePauseMenu();
         ResetValue();
+        DeactivatePauseMenu();
         SceneManager.LoadScene("Start");
     }
 
