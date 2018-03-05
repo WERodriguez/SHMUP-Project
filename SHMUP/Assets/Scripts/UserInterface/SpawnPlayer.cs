@@ -13,31 +13,56 @@ public class SpawnPlayer : MonoBehaviour
     public GameObject[] secondaryList;
     public GameObject[] specialList;*/
     
-    public GameObject character1;
-    public GameObject character2;
-    public GameObject character3;
-    public GameObject character4;
+    public GameObject P1character1;
+    public GameObject P1character2;
+    public GameObject P1character3;
+    public GameObject P1character4;
     
-    public GameObject ship1;
-    public GameObject ship2;
-    public GameObject ship3;
-    public GameObject ship4;
-    public GameObject ship5;
-    public GameObject ship6;
+    public GameObject P1ship1;
+    public GameObject P1ship2;
+    public GameObject P1ship3;
+    public GameObject P1ship4;
+    public GameObject P1ship5;
+    public GameObject P1ship6;
     
-    public GameObject primary1;
-    public GameObject primary2;
-    public GameObject primary3;
+    public GameObject P1primary1;
+    public GameObject P1primary2;
+    public GameObject P1primary3;
     
-    public GameObject secondary1;
-    public GameObject secondary2;
-    public GameObject secondary3;
+    public GameObject P1secondary1;
+    public GameObject P1secondary2;
+    public GameObject P1secondary3;
     
-    public GameObject special1;
-    public GameObject special2;
-    public GameObject special3;
+    public GameObject P1special1;
+    public GameObject P1special2;
+    public GameObject P1special3;
 
-    private GameObject currentShip;
+    public GameObject P2character1;
+    public GameObject P2character2;
+    public GameObject P2character3;
+    public GameObject P2character4;
+    
+    public GameObject P2ship1;
+    public GameObject P2ship2;
+    public GameObject P2ship3;
+    public GameObject P2ship4;
+    public GameObject P2ship5;
+    public GameObject P2ship6;
+    
+    public GameObject P2primary1;
+    public GameObject P2primary2;
+    public GameObject P2primary3;
+    
+    public GameObject P2secondary1;
+    public GameObject P2secondary2;
+    public GameObject P2secondary3;
+    
+    public GameObject P2special1;
+    public GameObject P2special2;
+    public GameObject P2special3;
+
+    private GameObject player1CurrentShip;
+    private GameObject player2CurrentShip;
 
     private void Start()
     {
@@ -50,36 +75,84 @@ public class SpawnPlayer : MonoBehaviour
         }*/
 
         //ship spawning
-        if (UIController.shipType == 1)
+        if(UIController.onePlayer)
         {
-            currentShip = ship1.gameObject;
-            Invoke("Spawn", 1f);
+            CheckPlayer1Ship();
+            Invoke("SpawnPlayer1", 0f);
         }
-        if (UIController.shipType == 2)
+        if (!UIController.onePlayer)
         {
-            currentShip = ship2.gameObject;
-            Invoke("Spawn", 1f);
-        }
-        if (UIController.shipType == 3)
-        {
-            currentShip = ship3.gameObject;
-            Invoke("Spawn", 1f);
-        }
-        if (UIController.shipType == 4)
-        {
-            currentShip = ship4.gameObject;
-            Invoke("Spawn", 1f);
-        }
-        if (UIController.shipType == 5)
-        {
-            currentShip = ship5.gameObject;
-            Invoke("Spawn", 1f);
+            CheckPlayer1Ship();
+            Invoke("SpawnPlayer1", 0f);
+            CheckPlayer2Ship();
+            Invoke("SpawnPlayer2", 0f);
         }
     }
 
-    private void Spawn()
+    private void CheckPlayer1Ship()
     {
-        Instantiate(currentShip, new Vector3(-12, 0, 0), Quaternion.identity);
-        currentShip.SetActive(true);
+        if (UIController.P1shipType == 1)
+        {
+            player1CurrentShip = P1ship1.gameObject;
+        }
+        if (UIController.P1shipType == 2)
+        {
+            player1CurrentShip = P1ship2.gameObject;
+        }
+        if (UIController.P1shipType == 3)
+        {
+            player1CurrentShip = P1ship3.gameObject;
+        }
+        if (UIController.P1shipType == 4)
+        {
+            player1CurrentShip = P1ship4.gameObject;
+        }
+        if (UIController.P1shipType == 5)
+        {
+            player1CurrentShip = P1ship5.gameObject;
+        }
+        if (UIController.P1shipType == 6)
+        {
+            player1CurrentShip = P1ship5.gameObject;
+        }
+    }
+
+    private void CheckPlayer2Ship()
+    {
+        if (UIController.P2shipType == 1)
+        {
+            player2CurrentShip = P2ship1.gameObject;
+        }
+        if (UIController.P2shipType == 2)
+        {
+            player2CurrentShip = P2ship2.gameObject;
+        }
+        if (UIController.P2shipType == 3)
+        {
+            player2CurrentShip = P2ship3.gameObject;
+        }
+        if (UIController.P2shipType == 4)
+        {
+            player2CurrentShip = P2ship4.gameObject;
+        }
+        if (UIController.P2shipType == 5)
+        {
+            player2CurrentShip = P2ship5.gameObject;
+        }
+        if (UIController.P2shipType == 6)
+        {
+            player2CurrentShip = P2ship5.gameObject;
+        }
+    }
+
+    private void SpawnPlayer1()
+    {
+        Instantiate(player1CurrentShip, new Vector3(-12, 0, 0), Quaternion.identity);
+        player1CurrentShip.SetActive(true);
+    }
+    private void SpawnPlayer2()
+    {
+        Instantiate(player2CurrentShip, new Vector3(-12, 0, 0), Quaternion.identity);
+        player2CurrentShip.SetActive(true);
     }
 }
