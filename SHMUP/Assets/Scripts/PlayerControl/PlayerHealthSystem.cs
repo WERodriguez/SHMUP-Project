@@ -7,17 +7,17 @@ public class PlayerHealthSystem : MonoBehaviour
 {
 
     //Player health
-    public float currentHealth;
+    public static float currentHealth;
     public float minHealth;
-    public float maxHealth;
+    public static float maxHealth;
 
     //Player shields.
-    public float currentShields;
-    public float maxShields;
+    public static float currentShields;
+    public static float maxShields;
 
     //Player Lives
-    public int currentLives;
-    public int maxLives = 3;
+    public static int currentLives;
+    public static int maxLives;
     public Transform respawnLocation;
     public Transform playerHidingSpot;
     private float respawnTimer;
@@ -37,8 +37,10 @@ public class PlayerHealthSystem : MonoBehaviour
     void Start()
     {
         playerWeaponController = gameObject.GetComponent<PlayerWeaponController>();
+
         currentHealth = maxHealth;
-        currentLives = 3;
+        currentLives = maxLives;
+        currentShields = maxShields;
         //Tries to grab a points script if the object has any.
 
         health.text = "HP: " + currentHealth;

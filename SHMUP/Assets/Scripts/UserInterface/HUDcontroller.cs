@@ -35,7 +35,7 @@ public class HUDcontroller : MonoBehaviour
             ActivateScoreScreen();
         }
 
-        if (Input.GetKeyDown(KeyCode.O))
+        if (Input.GetKeyDown(KeyCode.O) || (PlayerHealthSystem.currentHealth <= 0 && PlayerHealthSystem.currentShields <= 0 && PlayerHealthSystem.currentLives <= 0))
         {
             SceneManager.LoadScene("GameOver");
         }

@@ -483,6 +483,7 @@ public class UIController : MonoBehaviour
     public void Player1Ship1()
     {
         P1shipType = 1;
+        HeavyShipData();
     }
     //player 1 choose ship 2
     public void Player1Ship2()
@@ -583,6 +584,7 @@ public class UIController : MonoBehaviour
     public void Player2Ship1()
     {
         P2shipType = 1;
+        HeavyShipData();
     }
     //player 2 choose ship 2
     public void Player2Ship2()
@@ -762,5 +764,17 @@ public class UIController : MonoBehaviour
         P2backButton3.SetActive(false);
         P2backButton4.SetActive(false);
         P2backButton5.SetActive(false);
+    }
+
+    //shorten passing data
+    private void HeavyShipData()
+    {
+        PlayerHealthSystem.maxHealth = 100;
+        PlayerHealthSystem.maxShields = 75;
+        PlayerHealthSystem.maxLives = 1;
+
+        PlayerHealthSystem.currentHealth = PlayerHealthSystem.maxHealth;
+        PlayerHealthSystem.currentShields = PlayerHealthSystem.maxShields;
+        PlayerHealthSystem.currentLives = PlayerHealthSystem.maxLives;
     }
 }
