@@ -62,11 +62,17 @@ public class GameOver : MonoBehaviour
         }
     }*/
 
-    private void ResetValue()
+    private void ResetPlayer1Value()
     {
-        PlayerHealthSystem.currentLives = PlayerHealthSystem.maxLives;
-        PlayerHealthSystem.currentHealth = PlayerHealthSystem.maxHealth;
-        PlayerHealthSystem.currentShields = PlayerHealthSystem.maxShields;
+        PlayerHealthSystem.P1currentLives = PlayerHealthSystem.maxLives;
+        PlayerHealthSystem.P1currentHealth = PlayerHealthSystem.maxHealth;
+        PlayerHealthSystem.P1currentShields = PlayerHealthSystem.maxShields;
+    }
+    private void ResetPlayer2Value()
+    {
+        PlayerHealthSystem.P2currentLives = PlayerHealthSystem.maxLives;
+        PlayerHealthSystem.P2currentHealth = PlayerHealthSystem.maxHealth;
+        PlayerHealthSystem.P2currentShields = PlayerHealthSystem.maxShields;
     }
 
     public void HangarButton()
@@ -77,7 +83,16 @@ public class GameOver : MonoBehaviour
 
     public void RestartButton()
     {
-        ResetValue();
+        if(UIController.onePlayer)
+        {
+            ResetPlayer1Value();
+        }
+        else
+        {
+            ResetPlayer1Value();
+            ResetPlayer2Value();
+        }
+
         canvasAnimation.SetBool("EnableCanvasAnimation", true);
         SceneManager.LoadScene("(Testing)TheRange");
     }

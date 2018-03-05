@@ -484,30 +484,35 @@ public class UIController : MonoBehaviour
     {
         P1shipType = 1;
         LightShipData();
+        Player1Data();
     }
     //player 1 choose ship 2
     public void Player1Ship2()
     {
         P1shipType = 2;
         MediumShipData();
+        Player1Data();
     }
     //player 1 choose ship 3
     public void Player1Ship3()
     {
         P1shipType = 3;
         HeavyShipData();
+        Player1Data();
     }
     //player 1 choose ship 4
     public void Player1Ship4()
     {
         P1shipType = 4;
         LamboShooterData();
+        Player1Data();
     }
     //player 1 choose ship 5
     public void Player1Ship5()
     {
         P1shipType = 5;
         TruckShooterData();
+        Player1Data();
     }
     //player 1 choose ship 6
     public void Player1Ship6()
@@ -589,30 +594,35 @@ public class UIController : MonoBehaviour
     {
         P2shipType = 1;
         LightShipData();
+        Player2Data();
     }
     //player 2 choose ship 2
     public void Player2Ship2()
     {
         P2shipType = 2;
         MediumShipData();
+        Player2Data();
     }
     //player 2 choose ship 3
     public void Player2Ship3()
     {
         P2shipType = 3;
         HeavyShipData();
+        Player2Data();
     }
     //player 2 choose ship 4
     public void Player2Ship4()
     {
         P2shipType = 4;
         LamboShooterData();
+        Player2Data();
     }
     //player 2 choose ship 5
     public void Player2Ship5()
     {
         P2shipType = 5;
         TruckShooterData();
+        Player2Data();
     }
     //player 2 choose ship 6
     public void Player2Ship6()
@@ -782,10 +792,6 @@ public class UIController : MonoBehaviour
         PlayerHealthSystem.maxHealth = 100;
         PlayerHealthSystem.maxShields = 75;
         PlayerHealthSystem.maxLives = 2;
-
-        PlayerHealthSystem.currentHealth = PlayerHealthSystem.maxHealth;
-        PlayerHealthSystem.currentShields = PlayerHealthSystem.maxShields;
-        PlayerHealthSystem.currentLives = PlayerHealthSystem.maxLives;
     }
 
     //medium ship
@@ -794,10 +800,6 @@ public class UIController : MonoBehaviour
         PlayerHealthSystem.maxHealth = 125;
         PlayerHealthSystem.maxShields = 100;
         PlayerHealthSystem.maxLives = 2;
-
-        PlayerHealthSystem.currentHealth = PlayerHealthSystem.maxHealth;
-        PlayerHealthSystem.currentShields = PlayerHealthSystem.maxShields;
-        PlayerHealthSystem.currentLives = PlayerHealthSystem.maxLives;
     }
 
     //heavy ship
@@ -806,10 +808,6 @@ public class UIController : MonoBehaviour
         PlayerHealthSystem.maxHealth = 150;
         PlayerHealthSystem.maxShields = 125;
         PlayerHealthSystem.maxLives = 2;
-
-        PlayerHealthSystem.currentHealth = PlayerHealthSystem.maxHealth;
-        PlayerHealthSystem.currentShields = PlayerHealthSystem.maxShields;
-        PlayerHealthSystem.currentLives = PlayerHealthSystem.maxLives;
     }
 
     //lambo ship
@@ -818,10 +816,6 @@ public class UIController : MonoBehaviour
         PlayerHealthSystem.maxHealth = 75;
         PlayerHealthSystem.maxShields = 150;
         PlayerHealthSystem.maxLives = 2;
-
-        PlayerHealthSystem.currentHealth = PlayerHealthSystem.maxHealth;
-        PlayerHealthSystem.currentShields = PlayerHealthSystem.maxShields;
-        PlayerHealthSystem.currentLives = PlayerHealthSystem.maxLives;
     }
 
     //truck ship
@@ -830,9 +824,20 @@ public class UIController : MonoBehaviour
         PlayerHealthSystem.maxHealth = 200;
         PlayerHealthSystem.maxShields = 200;
         PlayerHealthSystem.maxLives = 2;
+    }
 
-        PlayerHealthSystem.currentHealth = PlayerHealthSystem.maxHealth;
-        PlayerHealthSystem.currentShields = PlayerHealthSystem.maxShields;
-        PlayerHealthSystem.currentLives = PlayerHealthSystem.maxLives;
+    //player 1 passing data
+    private void Player1Data()
+    {
+        PlayerHealthSystem.P1currentHealth = PlayerHealthSystem.maxHealth;
+        PlayerHealthSystem.P1currentShields = PlayerHealthSystem.maxShields;
+        PlayerHealthSystem.P1currentLives = PlayerHealthSystem.maxLives;
+    }
+    //player 2 passing data
+    private void Player2Data()
+    {
+        PlayerHealthSystem.P2currentHealth = PlayerHealthSystem.maxHealth;
+        PlayerHealthSystem.P2currentShields = PlayerHealthSystem.maxShields;
+        PlayerHealthSystem.P2currentLives = PlayerHealthSystem.maxLives;
     }
 }

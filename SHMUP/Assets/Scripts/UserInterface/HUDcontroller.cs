@@ -35,9 +35,25 @@ public class HUDcontroller : MonoBehaviour
             ActivateScoreScreen();
         }
 
-        if (Input.GetKeyDown(KeyCode.O) || (PlayerHealthSystem.currentHealth <= 0 && PlayerHealthSystem.currentShields <= 0 && PlayerHealthSystem.currentLives <= 0))
+        if (Input.GetKeyDown(KeyCode.O))
         {
             SceneManager.LoadScene("GameOver");
+        }
+
+        if(UIController.onePlayer)
+        {
+            if(PlayerHealthSystem.P1currentHealth <= 0 && PlayerHealthSystem.P1currentShields <= 0 && PlayerHealthSystem.P1currentLives <= 0)
+            {
+                SceneManager.LoadScene("GameOver");
+            }
+        }
+        else
+        {
+            if((PlayerHealthSystem.P1currentHealth <= 0 && PlayerHealthSystem.P1currentShields <= 0 && PlayerHealthSystem.P1currentLives <= 0)
+                && (PlayerHealthSystem.P2currentHealth <= 0 && PlayerHealthSystem.P2currentShields <= 0 && PlayerHealthSystem.P2currentLives <= 0))
+            {
+                SceneManager.LoadScene("GameOver");
+            }
         }
     }
 
@@ -102,11 +118,17 @@ public class HUDcontroller : MonoBehaviour
         }
     }
 
-    private void ResetValue()
+    private void ResetPlayer1Value()
     {
-        PlayerHealthSystem.currentLives = PlayerHealthSystem.maxLives;
-        PlayerHealthSystem.currentHealth = PlayerHealthSystem.maxHealth;
-        PlayerHealthSystem.currentShields = PlayerHealthSystem.maxShields;
+        PlayerHealthSystem.P1currentLives = PlayerHealthSystem.maxLives;
+        PlayerHealthSystem.P1currentHealth = PlayerHealthSystem.maxHealth;
+        PlayerHealthSystem.P1currentShields = PlayerHealthSystem.maxShields;
+    }
+    private void ResetPlayer2Value()
+    {
+        PlayerHealthSystem.P2currentLives = PlayerHealthSystem.maxLives;
+        PlayerHealthSystem.P2currentHealth = PlayerHealthSystem.maxHealth;
+        PlayerHealthSystem.P2currentShields = PlayerHealthSystem.maxShields;
     }
 
     public void ResumeButton()
@@ -117,14 +139,32 @@ public class HUDcontroller : MonoBehaviour
 
     public void RestartButton()
     {
-        ResetValue();
+        if (UIController.onePlayer)
+        {
+            ResetPlayer1Value();
+        }
+        else
+        {
+            ResetPlayer1Value();
+            ResetPlayer2Value();
+        }
+
         DeactivatePauseMenu();
         SceneManager.LoadScene("(Testing)TheRange");
     }
 
     public void MainMenuButton()
     {
-        ResetValue();
+        if (UIController.onePlayer)
+        {
+            ResetPlayer1Value();
+        }
+        else
+        {
+            ResetPlayer1Value();
+            ResetPlayer2Value();
+        }
+
         DeactivatePauseMenu();
         SceneManager.LoadScene("Start");
     }

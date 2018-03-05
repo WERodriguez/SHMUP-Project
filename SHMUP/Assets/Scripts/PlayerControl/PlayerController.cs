@@ -29,9 +29,10 @@ public class PlayerController : MonoBehaviour
     //Figuring out Doubletap
     //Counts how many times the player tapped their fire key.
     public int p1Total = 0;
+    public int p2Total = 0;
+
     //How long players have until tap counter resets.
     public float p1Delay = 0;
-    public int p2Total = 0;
     public float p2Delay = 0;
 
 	// Use this for initialization
