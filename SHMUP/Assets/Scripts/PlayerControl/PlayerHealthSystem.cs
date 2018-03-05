@@ -17,7 +17,7 @@ public class PlayerHealthSystem : MonoBehaviour
 
     //Player Lives
     public int currentLives;
-    public int maxLives = 3;
+    private int maxLives = 5;
     public Transform respawnLocation;
     public Transform playerHidingSpot;
     private float respawnTimer;
