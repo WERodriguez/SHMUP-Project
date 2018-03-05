@@ -20,6 +20,7 @@ public class HUDcontroller : MonoBehaviour
     private void Start()
     {
         DeactivatePauseMenu();
+        DeactivateScoreScreen();
     }
 
     private void Update()
@@ -29,7 +30,7 @@ public class HUDcontroller : MonoBehaviour
             ActivatePauseMenu();
         }
 
-        if (Input.GetKeyDown(KeyCode.S))
+        if (Input.GetKeyDown(KeyCode.I))
         {
             ActivateScoreScreen();
         }
@@ -72,7 +73,24 @@ public class HUDcontroller : MonoBehaviour
         scoreScreen.SetActive(true);
         continueButton.SetActive(true);
 
-        if(UIController.onePlayer)
+        CheckNumberOfPlayer();
+    }
+
+    private void DeactivateScoreScreen()
+    {
+        Time.timeScale = 1f;
+
+        HUD.SetActive(true);
+
+        scoreScreen.SetActive(false);
+        continueButton.SetActive(false);
+
+        CheckNumberOfPlayer();
+    }
+
+    private void CheckNumberOfPlayer()
+    {
+        if (UIController.onePlayer)
         {
             onePlayerScoreScreen.SetActive(true);
             twoPlayersScoreScreen.SetActive(false);
@@ -115,7 +133,7 @@ public class HUDcontroller : MonoBehaviour
 
     public void ContinueButton()
     {
-        Time.timeScale = 1f;
+        Time.timeScale = 0f;
         SceneManager.LoadScene("Hangar");
     }
 }

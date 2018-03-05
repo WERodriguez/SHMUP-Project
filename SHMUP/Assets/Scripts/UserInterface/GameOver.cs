@@ -11,6 +11,11 @@ public class GameOver : MonoBehaviour
     public GameObject onePlayerScreen;
     public GameObject twoPlayersScreen;
 
+    public Animator canvasAnimation;
+
+    private float lastingTime;
+    private int duration;
+
     private void Start()
     {
         hangarButton.SetActive(true);
@@ -26,7 +31,36 @@ public class GameOver : MonoBehaviour
             onePlayerScreen.SetActive(false);
             twoPlayersScreen.SetActive(true);
         }
+
+        duration = 9;
+        lastingTime = duration;
+
+        Invoke("NextAnimation", 1f);
     }
+
+    private void Update()
+    {
+        lastingTime = lastingTime - 1 * Time.deltaTime;
+
+        if(lastingTime <= 0)
+        {
+            canvasAnimation.SetBool("EnableCanvasAnimation", true);
+        }
+    }
+    /*
+    private void NextAnimation()
+    {
+        lastingTime--;
+
+        if(lastingTime > 0)
+        {
+            Invoke("NextAnimation", 1f);
+        }
+        else
+        {
+            canvasAnimation.SetBool("EnableCanvasAnimation", true);
+        }
+    }*/
 
     private void ResetValue()
     {
@@ -39,11 +73,13 @@ public class GameOver : MonoBehaviour
 
     public void HangarButton()
     {
+        canvasAnimation.SetBool("EnableCanvasAnimation", true);
         SceneManager.LoadScene("Hangar");
     }
 
     public void RestartButton()
     {
+        canvasAnimation.SetBool("EnableCanvasAnimation", true);
         ResetValue();
         SceneManager.LoadScene("(Testing)TheRange");
     }
