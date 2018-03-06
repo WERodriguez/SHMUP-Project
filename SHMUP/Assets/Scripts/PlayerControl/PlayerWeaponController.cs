@@ -35,6 +35,8 @@ public class PlayerWeaponController : MonoBehaviour
     public GameObject[] primaryWeapons;
     public GameObject[] secondaryWeapons;
     public GameObject[] superWeapons;
+    //If weapon fires different shots put them here.
+    public GameObject[] plasmaAcceleratorCannon;
 
     //Where the ship shoots from. Can be a list of them.
     public Transform[] shotSpawns;
@@ -189,8 +191,8 @@ public class PlayerWeaponController : MonoBehaviour
         {
             fireRate = 1.0f;
             nextFire = Time.time + fireRate;
-            Instantiate(bullet, new Vector3(shotSpawns[0].position.x + 0.5f, shotSpawns[0].position.y, shotSpawns[0].position.z), shotSpawns[0].rotation);
-            Instantiate(bullet, new Vector3(shotSpawns[0].position.x + -0.5f, shotSpawns[0].position.y, shotSpawns[0].position.z), shotSpawns[0].rotation);
+            Instantiate(bullet, new Vector3(shotSpawns[0].position.x + 0.3f, shotSpawns[0].position.y, shotSpawns[0].position.z), shotSpawns[0].rotation);
+            Instantiate(bullet, new Vector3(shotSpawns[0].position.x + -0.3f, shotSpawns[0].position.y, shotSpawns[0].position.z), shotSpawns[0].rotation);
         }
         else if (currentWLevel == 3 && Time.time > nextFire)
         {
@@ -202,8 +204,8 @@ public class PlayerWeaponController : MonoBehaviour
         {
             fireRate = 1.0f;
             nextFire = Time.time + fireRate;
-            Instantiate(bullet, new Vector3(shotSpawns[0].position.x + 1.5f, shotSpawns[0].position.y, shotSpawns[0].position.z), shotSpawns[0].rotation);
-            Instantiate(bullet, new Vector3(shotSpawns[0].position.x + -1.5f, shotSpawns[0].position.y, shotSpawns[0].position.z), shotSpawns[0].rotation);
+            Instantiate(bullet, new Vector3(shotSpawns[0].position.x + 0.75f, shotSpawns[0].position.y, shotSpawns[0].position.z), shotSpawns[0].rotation);
+            Instantiate(bullet, new Vector3(shotSpawns[0].position.x + -0.75f, shotSpawns[0].position.y, shotSpawns[0].position.z), shotSpawns[0].rotation);
         }
         else if (currentWLevel == 5 && Time.time > nextFire)
         {
@@ -562,7 +564,7 @@ public class PlayerWeaponController : MonoBehaviour
         superBullet = superWeapons[superWeaponSelector] as GameObject;
 
         //PrimaryWeapons
-        if (primaryWeaponSelector == 0 || primaryWeaponSelector == 2)
+        if (primaryWeaponSelector == 0)
         {
             //Takes said container and tells it to let the bullet know what player it belongs to.
             bullet.GetComponent<AttackScript>().whoDoIBelongTo = whichPlayer;
@@ -574,8 +576,26 @@ public class PlayerWeaponController : MonoBehaviour
         }
         else if (primaryWeaponSelector == 2)
         {
-            //Takes said container and tells it to let the bullet know what player it belongs to.
-            bullet.GetComponent<AttackPenetrate>().whoDoIBelongTo = whichPlayer;
+            if (currentWLevel <= 2)
+            {
+                //Uses the standard PAC shot contained within the primaryWeapons array.
+                //Takes said container and tells it to let the bullet know what player it belongs to.
+                bullet.GetComponent<AttackPenetrate>().whoDoIBelongTo = whichPlayer;
+            }
+            else if (currentWLevel >= 3 && currentWLevel < 5)
+            {
+                //Uses the second tier of PAC shot contained in the plasmaAcceleratorCannon array.
+                bullet = plasmaAcceleratorCannon[0] as GameObject;
+                //Takes said container and tells it to let the bullet know what player it belongs to.
+                bullet.GetComponent<AttackPenetrate>().whoDoIBelongTo = whichPlayer;
+            }
+            else if (currentWLevel == 5)
+            {
+                //Uses the third tier of PAC shot contained in the plasmaAcceleratorCannon array.
+                bullet = plasmaAcceleratorCannon[1] as GameObject;
+                //Takes said container and tells it to let the bullet know what player it belongs to.
+                bullet.GetComponent<AttackPenetrate>().whoDoIBelongTo = whichPlayer;
+            }
         }
 
         //SecondaryWeapons

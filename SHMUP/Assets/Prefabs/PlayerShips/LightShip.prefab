@@ -307,17 +307,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a18ba2f3fd6b36f4781a4f8fd20af682, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentHealth: 0
+  whichPlayer: 0
   minHealth: 1
-  maxHealth: 100
-  currentShields: 0
-  maxShields: 75
-  currentLives: 0
   respawnLocation: {fileID: 0}
   playerHidingSpot: {fileID: 0}
-  health: {fileID: 0}
-  shields: {fileID: 0}
-  lives: {fileID: 0}
+  P1health: {fileID: 0}
+  P1shields: {fileID: 0}
+  P1lives: {fileID: 0}
+  P2health: {fileID: 0}
+  P2shields: {fileID: 0}
+  P2lives: {fileID: 0}
 --- !u!114 &114382349696035670
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -332,10 +331,11 @@ MonoBehaviour:
   speed: 15
   tilt: 1
   whichPlayer: 0
-  isDead: 0
+  P1isDead: 0
+  P2isDead: 0
   p1Total: 0
-  p1Delay: 0
   p2Total: 0
+  p1Delay: 0
   p2Delay: 0
 --- !u!114 &114402576851970688
 MonoBehaviour:
@@ -366,6 +366,9 @@ MonoBehaviour:
   - {fileID: 1851002434471204, guid: 33c958973d9f93e4fbe981109854ff9b, type: 2}
   superWeapons:
   - {fileID: 1564108121295334, guid: 87140d67c9584be4f98cf7364c98b0f5, type: 2}
+  plasmaAcceleratorCannon:
+  - {fileID: 1163893146107756, guid: 40981a2d84aa88c488fb66dce24e36dc, type: 2}
+  - {fileID: 1646744777095314, guid: 68967f279842f56468ada8ccd40d84ef, type: 2}
   shotSpawns:
   - {fileID: 4625525227818766}
   - {fileID: 4189636047679158}
