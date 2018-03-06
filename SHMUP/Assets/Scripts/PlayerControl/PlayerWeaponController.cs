@@ -110,7 +110,7 @@ public class PlayerWeaponController : MonoBehaviour
         //Spawns 1 Bullet from primary hard point.
         if (currentWLevel == 1 && Time.time > nextFire)
         {
-            fireRate = 0.25f;
+            fireRate = 0.10f;
             nextFire = Time.time + fireRate;
             Instantiate(bullet, shotSpawns[0].position, shotSpawns[0].rotation);
         }
@@ -118,21 +118,22 @@ public class PlayerWeaponController : MonoBehaviour
         else if (currentWLevel == 2 && Time.time > nextFire)
         {
             nextFire = Time.time + fireRate;
+            Instantiate(bullet, new Vector3(shotSpawns[0].position.x + 0.5f, shotSpawns[0].position.y, shotSpawns[0].position.z), shotSpawns[0].rotation);
+            Instantiate(bullet, new Vector3(shotSpawns[0].position.x + -0.5f, shotSpawns[0].position.y, shotSpawns[0].position.z), shotSpawns[0].rotation);
+        }
+        else if (currentWLevel == 3 && Time.time > nextFire)
+        {
+            nextFire = Time.time + fireRate;
             foreach (var shotSpawn in shotSpawns)
             {
                 Instantiate(bullet, shotSpawn.position, shotSpawn.rotation);
             }
         }
-        else if (currentWLevel == 3 && Time.time > nextFire)
+        else if (currentWLevel == 4 && Time.time > nextFire)
         {
             //How to use FanFire()
             //int numberOfShots, float spreadAngleDefault, float spreadAngleIncrementDefault
-            FanFire(2, 3.0f, 0.0f);
-            //Tracks how many shots the loop has fired.
-        }
-        else if (currentWLevel == 4 && Time.time > nextFire)
-        {
-            FanFire(3, 3.0f, 9.0f);
+            FanFire(4, 2.0f, 0.0f);
         }
         else if (currentWLevel == 5 && Time.time > nextFire)
         {
@@ -148,29 +149,28 @@ public class PlayerWeaponController : MonoBehaviour
         //Spawns 1 Bullet from primary hard point.
         if (currentWLevel == 1 && Time.time > nextFire)
         {
-            fireRate = 2.0f;
+            fireRate = 1.5f;
             nextFire = Time.time + fireRate;
             Instantiate(bullet, shotSpawns[0].position, shotSpawns[0].rotation);
         }
         else if (currentWLevel == 2 && Time.time > nextFire)
         {
-            fireRate = 1.75f;
+            fireRate = 1.25f;
             ChainFire();
         }
         else if (currentWLevel == 3 && Time.time > nextFire)
         {
-            fireRate = 1.5f;
+            fireRate = 1.0f;
             ChainFire();
         }
         else if (currentWLevel == 4 && Time.time > nextFire)
         {
-            fireRate = 2f;
+            fireRate = 1f;
             FanFire(3, 20.0f, 20.0f);
         }
         else if (currentWLevel == 5 && Time.time > nextFire)
         {
-            fireRate = 1.5f;
-            FanFire(3, 20.0f, 20.0f);
+            FanFire(7, 20.0f, 20.0f);
         }
     }
 
@@ -276,84 +276,75 @@ public class PlayerWeaponController : MonoBehaviour
         //Contains the incremented shot angle.
         float spreadAngleIncrement;
 
-        if (numberOfShots == 2)
+        if (numberOfShots % 2 == 0)
         {
-            //Tracks how many shots the loop has fired.
+            //Tracks the number of shots fired by the loop.
             shotCounter = 0;
-            spreadAngleIncrement = spreadAngleDefault;
-
+            //Still keeps track of when the gun can shoot next.
             nextFire = Time.time + fireRate;
-            foreach (var shotSpawn in shotSpawns)
+            //Increments the angle at which bullets are turned each time the loop is called.
+            spreadAngleIncrement = spreadAngleDefault + spreadAngleDefault;
+
+            //While total number of shots is less than the shots requested.
+            while (shotCounter < numberOfShots)
             {
-                //While shots fired is less than total number of shots requested.
-                while (shotCounter < numberOfShots)
+                if (shotCounter >= 2)
                 {
-                    //Spawns bullets at shotSpawn but with a Y rotation of 3.
-                    Instantiate(bullet, shotSpawn.position, Quaternion.Euler(0, spreadAngleIncrement, 0));
+                    //Spawns bullets with the designated rotation.
+                    Instantiate(bullet, shotSpawns[0].position, Quaternion.Euler(0, spreadAngleIncrement, 0));
                     shotCounter++;
-                    //Flips that bullet around for the next shot.
+                    //Flips the bullet around for the next shot.
                     spreadAngleIncrement *= -1;
                 }
-                //Resets the shotCounter so it can spawn bullets at the rest of the spawners.
-                if (shotCounter >= numberOfShots)
+                else if (shotCounter <= 1)
                 {
-                    shotCounter = 0;
-                    spreadAngleIncrement = spreadAngleDefault;
+                    Instantiate(bullet, shotSpawns[0].position, Quaternion.Euler(0, spreadAngleDefault, 0));
+                    shotCounter++;
+                    spreadAngleDefault *= -1;
                 }
             }
+            //Resets the shot counter so the next volley of shots can go out.
+            if (shotCounter == numberOfShots)
+            {
+                shotCounter = 0;
+            }
+
         }
-        else if (numberOfShots == 3)
+        else
         {
             shotCounter = 0;
             nextFire = Time.time + fireRate;
-            foreach (var shotSpawn in shotSpawns)
+
+            Instantiate(bullet, shotSpawns[0].position, shotSpawns[0].rotation);
+            spreadAngleIncrement = spreadAngleDefault + spreadAngleDefault;
+
+
+            while (shotCounter < numberOfShots - 1)
             {
-                if (shotSpawn == shotSpawns[1])
+                if (shotCounter >= 2)
                 {
-                    //Increments default angle.
-                    spreadAngleIncrement = spreadAngleIncrementDefault;
-
-                    while (shotCounter < numberOfShots)
-                    {
-                        spreadAngleIncrement += spreadAngleDefault;
-
-                        Instantiate(bullet, shotSpawn.position, Quaternion.Euler(0, -spreadAngleIncrement, 0));
-                        shotCounter++;
-                    }
-                }
-                else if (shotSpawn == shotSpawns[2])
-                {
-                    //Increments default angle.
-                    spreadAngleIncrement = spreadAngleIncrementDefault;
-
-                    while (shotCounter < numberOfShots)
-                    {
-                        spreadAngleIncrement += spreadAngleDefault;
-
-                        Instantiate(bullet, shotSpawn.position, Quaternion.Euler(0, +spreadAngleIncrement, 0));
-                        shotCounter++;
-                    }
-                }
-                else if (shotSpawn == shotSpawns[0])
-                {
-                    Instantiate(bullet, shotSpawn.position, shotSpawn.rotation);
-
-                    while (shotCounter < numberOfShots - 1)
-                    {
-                        Instantiate(bullet, shotSpawn.position, Quaternion.Euler(0, spreadAngleDefault, 0));
-                        shotCounter++;
-                        spreadAngleDefault *= -1;
-                    }
+                    Instantiate(bullet, shotSpawns[0].position, Quaternion.Euler(0, spreadAngleIncrement, 0));
                     shotCounter++;
+                    spreadAngleIncrement *= -1;
                 }
-
-                if (shotCounter == numberOfShots)
+                else if (shotCounter <= 1)
                 {
-                    shotCounter = 0;
+                    Instantiate(bullet, shotSpawns[0].position, Quaternion.Euler(0, spreadAngleDefault, 0));
+                    shotCounter++;
+                    spreadAngleDefault *= -1;
                 }
             }
+            shotCounter++;
+
+            if (shotCounter == numberOfShots)
+            {
+                shotCounter = 0;
+            }
+
         }
-        else if (numberOfShots >= 4)
+        //Old Fan fire code for refference if needed later. 
+        //Don't delete this.
+        /*else if (numberOfShots >= 4)
         {
             shotCounter = 0;
 
@@ -415,7 +406,7 @@ public class PlayerWeaponController : MonoBehaviour
                     shotCounter = 0;
                 }
             }
-        }
+        }*/
     }
 
     private void SecondaryFanFire(int numberOfShots, float spreadAngleDefault, float spreadAngleIncrementDefault)
