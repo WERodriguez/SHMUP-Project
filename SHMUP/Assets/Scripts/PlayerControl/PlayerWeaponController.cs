@@ -132,12 +132,12 @@ public class PlayerWeaponController : MonoBehaviour
         else if (currentWLevel == 4 && Time.time > nextFire)
         {
             //How to use FanFire()
-            //int numberOfShots, float spreadAngleDefault, float spreadAngleIncrementDefault
-            FanFire(4, 2.0f, 0.0f);
+            //int numberOfShots, float spreadAngleIncrementDefault
+            FanFire(4, 2.0f);
         }
         else if (currentWLevel == 5 && Time.time > nextFire)
         {
-            FanFire(5, 3.0f, 9.0f);
+            FanFire(5, 3.0f);
         }
 
     }
@@ -166,11 +166,11 @@ public class PlayerWeaponController : MonoBehaviour
         else if (currentWLevel == 4 && Time.time > nextFire)
         {
             fireRate = 1f;
-            FanFire(3, 20.0f, 20.0f);
+            FanFire(3, 20.0f);
         }
         else if (currentWLevel == 5 && Time.time > nextFire)
         {
-            FanFire(7, 20.0f, 20.0f);
+            FanFire(7, 20.0f);
         }
     }
 
@@ -181,29 +181,35 @@ public class PlayerWeaponController : MonoBehaviour
         //Spawns 1 Bullet from primary hard point.
         if (currentWLevel == 1 && Time.time > nextFire)
         {
-            fireRate = 0.75f;
+            fireRate = 1.0f;
             nextFire = Time.time + fireRate;
             Instantiate(bullet, shotSpawns[0].position, shotSpawns[0].rotation);
         }
         else if (currentWLevel == 2 && Time.time > nextFire)
         {
-            fireRate = 0.65f;
-            ChainFire();
+            fireRate = 1.0f;
+            nextFire = Time.time + fireRate;
+            Instantiate(bullet, new Vector3(shotSpawns[0].position.x + 0.5f, shotSpawns[0].position.y, shotSpawns[0].position.z), shotSpawns[0].rotation);
+            Instantiate(bullet, new Vector3(shotSpawns[0].position.x + -0.5f, shotSpawns[0].position.y, shotSpawns[0].position.z), shotSpawns[0].rotation);
         }
         else if (currentWLevel == 3 && Time.time > nextFire)
         {
-            fireRate = 0.5f;
-            ChainFire();
+            fireRate = 1.0f;
+            nextFire = Time.time + fireRate;
+            Instantiate(bullet, shotSpawns[0].position, shotSpawns[0].rotation);
         }
         else if (currentWLevel == 4 && Time.time > nextFire)
         {
-            fireRate = 0.35f;
-            ChainFire();
+            fireRate = 1.0f;
+            nextFire = Time.time + fireRate;
+            Instantiate(bullet, new Vector3(shotSpawns[0].position.x + 1.5f, shotSpawns[0].position.y, shotSpawns[0].position.z), shotSpawns[0].rotation);
+            Instantiate(bullet, new Vector3(shotSpawns[0].position.x + -1.5f, shotSpawns[0].position.y, shotSpawns[0].position.z), shotSpawns[0].rotation);
         }
         else if (currentWLevel == 5 && Time.time > nextFire)
         {
-            fireRate = 0.25f;
-            ChainFire();            
+            fireRate = 1.0f;
+            nextFire = Time.time + fireRate;
+            Instantiate(bullet, shotSpawns[0].position, shotSpawns[0].rotation);
         }
     }
     
@@ -271,76 +277,78 @@ public class PlayerWeaponController : MonoBehaviour
     }
 
     //Number of shots. Default Angle for spread. Default increment for those bullets that need to start more sideways.
-    private void FanFire(int numberOfShots, float spreadAngleDefault, float spreadAngleIncrementDefault)
+    private void FanFire(int numberOfShots, float spreadAngleIncrementDefault)
     {
         //Contains the incremented shot angle.
         float spreadAngleIncrement;
 
+        //Checks if there is an even number of shots.
         if (numberOfShots % 2 == 0)
         {
-            //Tracks the number of shots fired by the loop.
+             //Tracks the number of shots fired by the loop.
             shotCounter = 0;
             //Still keeps track of when the gun can shoot next.
             nextFire = Time.time + fireRate;
-            //Increments the angle at which bullets are turned each time the loop is called.
-            spreadAngleIncrement = spreadAngleDefault + spreadAngleDefault;
-
-            //While total number of shots is less than the shots requested.
+            //Sets the increment at which bullets will be turned.
+            spreadAngleIncrement = spreadAngleIncrementDefault;
+            
             while (shotCounter < numberOfShots)
             {
-                if (shotCounter >= 2)
-                {
-                    //Spawns bullets with the designated rotation.
-                    Instantiate(bullet, shotSpawns[0].position, Quaternion.Euler(0, spreadAngleIncrement, 0));
-                    shotCounter++;
-                    //Flips the bullet around for the next shot.
-                    spreadAngleIncrement *= -1;
-                }
-                else if (shotCounter <= 1)
-                {
-                    Instantiate(bullet, shotSpawns[0].position, Quaternion.Euler(0, spreadAngleDefault, 0));
-                    shotCounter++;
-                    spreadAngleDefault *= -1;
-                }
+                //Instantiates a bullet at the desired position at the desired Y rotation.
+                Instantiate(bullet, shotSpawns[0].position, Quaternion.Euler(0, spreadAngleIncrement, 0));
+                //Flips the rotation for the next bullet.
+                spreadAngleIncrement *= -1;
+                //Increments the shot counter.
+                shotCounter++;
+                //Instantiates flipped bullet.
+                Instantiate(bullet, shotSpawns[0].position, Quaternion.Euler(0, spreadAngleIncrement, 0));
+                //Increments shot counter. Should be incremented by two now.
+                shotCounter++;
+                //IMPORTANT: Flips the rotation again! Otherwise it's adding a negative by a positive for the next bit and cancels itself out.
+                spreadAngleIncrement *= -1;
+                //Increeases the Y rotation to apply for the next set of rounds to spawn.
+                spreadAngleIncrement = spreadAngleIncrement + spreadAngleIncrementDefault;
             }
+
             //Resets the shot counter so the next volley of shots can go out.
             if (shotCounter == numberOfShots)
             {
                 shotCounter = 0;
             }
-
         }
+        //Uses this if there is an odd number of shots.
         else
         {
             shotCounter = 0;
             nextFire = Time.time + fireRate;
 
+            //Spawns the central bullet
             Instantiate(bullet, shotSpawns[0].position, shotSpawns[0].rotation);
-            spreadAngleIncrement = spreadAngleDefault + spreadAngleDefault;
-
+            spreadAngleIncrement = spreadAngleIncrementDefault;
 
             while (shotCounter < numberOfShots - 1)
             {
-                if (shotCounter >= 2)
-                {
-                    Instantiate(bullet, shotSpawns[0].position, Quaternion.Euler(0, spreadAngleIncrement, 0));
-                    shotCounter++;
-                    spreadAngleIncrement *= -1;
-                }
-                else if (shotCounter <= 1)
-                {
-                    Instantiate(bullet, shotSpawns[0].position, Quaternion.Euler(0, spreadAngleDefault, 0));
-                    shotCounter++;
-                    spreadAngleDefault *= -1;
-                }
+                //Instantiates a bullet at the desired position at the desired Y rotation.
+                Instantiate(bullet, shotSpawns[0].position, Quaternion.Euler(0, spreadAngleIncrement, 0));
+                //Flips the rotation for the next bullet.
+                spreadAngleIncrement *= -1;
+                //Increments the shot counter.
+                shotCounter++;
+                //Instantiates flipped bullet.
+                Instantiate(bullet, shotSpawns[0].position, Quaternion.Euler(0, spreadAngleIncrement, 0));
+                //Increments shot counter. Should be incremented by two now.
+                shotCounter++;
+                //IMPORTANT: Flips the rotation again! Otherwise it's adding a negative by a positive for the next bit and cancels itself out.
+                spreadAngleIncrement *= -1;
+                //Increeases the Y rotation to apply for the next set of rounds to spawn.
+                spreadAngleIncrement = spreadAngleIncrement + spreadAngleIncrementDefault;
             }
-            shotCounter++;
 
+            //Resets the shot counter so the next volley of shots can go out.
             if (shotCounter == numberOfShots)
             {
                 shotCounter = 0;
             }
-
         }
         //Old Fan fire code for refference if needed later. 
         //Don't delete this.
@@ -563,6 +571,11 @@ public class PlayerWeaponController : MonoBehaviour
         {
             //Takes said container and tells it to let the bullet know what player it belongs to.
             bullet.GetComponent<AttackAoE>().whoDoIBelongTo = whichPlayer;
+        }
+        else if (primaryWeaponSelector == 2)
+        {
+            //Takes said container and tells it to let the bullet know what player it belongs to.
+            bullet.GetComponent<AttackPenetrate>().whoDoIBelongTo = whichPlayer;
         }
 
         //SecondaryWeapons
