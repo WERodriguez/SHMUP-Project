@@ -17,10 +17,14 @@ public class HUDcontroller : MonoBehaviour
     public GameObject twoPlayersScoreScreen;
     public GameObject continueButton;
 
+    public static bool winLevel;
+
     private void Start()
     {
         DeactivatePauseMenu();
         DeactivateScoreScreen();
+
+        winLevel = false;
     }
 
     private void Update()
@@ -54,6 +58,11 @@ public class HUDcontroller : MonoBehaviour
             {
                 SceneManager.LoadScene("GameOver");
             }
+        }
+
+        if(winLevel)
+        {
+            ActivateScoreScreen();
         }
     }
 
@@ -91,7 +100,6 @@ public class HUDcontroller : MonoBehaviour
 
         CheckNumberOfPlayer();
     }
-
     private void DeactivateScoreScreen()
     {
         Time.timeScale = 1f;

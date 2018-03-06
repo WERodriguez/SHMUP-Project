@@ -27,10 +27,11 @@ public class HealthSystem : MonoBehaviour
     public bool isBossPart;
     //For boss/bosspart death
     public GameObject scrap;
-    
+
     void Start ()
     {
         currentHealth = maxHealth;
+
         //Tries to grab a points script if the object has any.
         addScore = gameObject.GetComponent<Points>();
         callLoot = gameObject.GetComponent<LootDropRoller>();
@@ -78,6 +79,9 @@ public class HealthSystem : MonoBehaviour
             }
             Instantiate(scrap, gameObject.transform.position, gameObject.transform.rotation);
             Destroy(gameObject);
+
+            HUDcontroller.winLevel = true;
+
         }
         else if (currentHealth <= 0 && isBossPart)
         {

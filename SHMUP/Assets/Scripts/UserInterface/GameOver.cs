@@ -13,9 +13,6 @@ public class GameOver : MonoBehaviour
 
     public Animator canvasAnimation;
 
-    private float lastingTime;
-    private int duration;
-
     private void Start()
     {
         hangarButton.SetActive(true);
@@ -32,21 +29,9 @@ public class GameOver : MonoBehaviour
             twoPlayersScreen.SetActive(true);
         }
 
-        duration = 9;
-        lastingTime = duration;
-
-        Invoke("NextAnimation", 1f);
+        canvasAnimation.SetBool("EnableCanvasAnimation", false);
     }
 
-    private void Update()
-    {
-        lastingTime = lastingTime - 1 * Time.deltaTime;
-
-        if(lastingTime <= 0)
-        {
-            canvasAnimation.SetBool("EnableCanvasAnimation", true);
-        }
-    }
     /*
     private void NextAnimation()
     {

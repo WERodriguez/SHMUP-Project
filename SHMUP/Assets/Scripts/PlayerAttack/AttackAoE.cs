@@ -39,7 +39,7 @@ public class AttackAoE : MonoBehaviour
 
         if (hasFuse == true && fuseTime < 0)
         {
-            Debug.Log("I am supposed to explode");
+            //Debug.Log("I am supposed to explode");
             Instantiate(explodo, gameObject.transform.position, gameObject.transform.rotation);
             Destroy(gameObject);
         }

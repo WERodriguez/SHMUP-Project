@@ -305,7 +305,6 @@ public class UIController : MonoBehaviour
 
         ActivatePlayer1BackButton();
     }
-
     //activate P2 character select
     public void ActivatePlayer2CharacterSelect()
     {
@@ -341,7 +340,6 @@ public class UIController : MonoBehaviour
 
         ActivatePlayer1BackButton();
     }
-
     //activate player 2 ship select
     public void ActivatePlayer2ShipSelect()
     {
@@ -376,7 +374,6 @@ public class UIController : MonoBehaviour
 
         ActivatePlayer1BackButton();
     }
-
     //activate player 2 primary weapon select
     public void ActivatePlayer2PrimarySelect()
     {
@@ -408,7 +405,6 @@ public class UIController : MonoBehaviour
 
         ActivatePlayer1BackButton();
     }
-
     //activate player 2 secondary weapon select
     public void ActivatePlayer2SecondarySelect()
     {
@@ -440,7 +436,6 @@ public class UIController : MonoBehaviour
 
         ActivatePlayer1BackButton();
     }
-
     //activate player 2 special weapon select
     public void ActivatePlayer2SpecialSelect()
     {
@@ -693,7 +688,6 @@ public class UIController : MonoBehaviour
     {
         returnButton.SetActive(true);
     }
-
     //deactivate return button
     private void DeactivateReturnButton()
     {
@@ -710,18 +704,6 @@ public class UIController : MonoBehaviour
         P1secondaryButton.SetActive(true);
         P1specialButton.SetActive(true);
     }
-
-    //activate 2 players button
-    private void ActivatePlayer2Menu()
-    {
-        P2Menu.SetActive(true);
-        P2characterButton.SetActive(true);
-        P2shipButton.SetActive(true);
-        P2primaryButton.SetActive(true);
-        P2secondaryButton.SetActive(true);
-        P2specialButton.SetActive(true);
-    }
-
     //deactivate single player button
     private void DeactivatePlayer1Menu()
     {
@@ -733,6 +715,16 @@ public class UIController : MonoBehaviour
         P1specialButton.SetActive(false);
     }
 
+    //activate 2 players button
+    private void ActivatePlayer2Menu()
+    {
+        P2Menu.SetActive(true);
+        P2characterButton.SetActive(true);
+        P2shipButton.SetActive(true);
+        P2primaryButton.SetActive(true);
+        P2secondaryButton.SetActive(true);
+        P2specialButton.SetActive(true);
+    }
     //deactivate 2 players button
     private void DeactivatePlayer2Menu()
     {
@@ -753,17 +745,6 @@ public class UIController : MonoBehaviour
         P1backButton4.SetActive(true);
         P1backButton5.SetActive(true);
     }
-
-    //activate player 2 back button
-    private void ActivatePlayer2BackButton()
-    {
-        P2backButton1.SetActive(true);
-        P2backButton2.SetActive(true);
-        P2backButton3.SetActive(true);
-        P2backButton4.SetActive(true);
-        P2backButton5.SetActive(true);
-    }
-
     //deactivate player 1 back button
     private void DeactivatePlayer1BackButton()
     {
@@ -774,6 +755,15 @@ public class UIController : MonoBehaviour
         P1backButton5.SetActive(false);
     }
 
+    //activate player 2 back button
+    private void ActivatePlayer2BackButton()
+    {
+        P2backButton1.SetActive(true);
+        P2backButton2.SetActive(true);
+        P2backButton3.SetActive(true);
+        P2backButton4.SetActive(true);
+        P2backButton5.SetActive(true);
+    }
     //deactivate player 2 back button
     private void DeactivatePlayer2BackButton()
     {

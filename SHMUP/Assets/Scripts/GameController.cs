@@ -17,13 +17,12 @@ public class GameController : MonoBehaviour
     public Transform[] leftSpawns;
     public Transform[] rightSpawns;
     public Transform bossSpawn;
-
-
-
+    
     public Vector3 spawnValues;
 
     //Number of enemies
     public int spawnCount;
+
     //Which spawn to use
     public int whichSpawn1;
     public int whichSpawn2;
@@ -35,10 +34,6 @@ public class GameController : MonoBehaviour
     public float spawnWait;
     public float startWait;
     public float waveWait;
-
-    private bool gameWin;
-    private bool gameOver;
-    private bool restart;
 
     private void Start()
     {
@@ -62,6 +57,8 @@ public class GameController : MonoBehaviour
     IEnumerator Level1()
     {
         yield return new WaitForSeconds(startWait);
+
+        CallBoss();
 
         Instantiate(lightEnemies[0], mainSpawns[6].position, mainSpawns[0].rotation);
         yield return new WaitForSeconds(0.2f);
@@ -328,6 +325,11 @@ public class GameController : MonoBehaviour
 
         yield return new WaitForSeconds(10);
 
+        Instantiate(bosses[0], bossSpawn.position, bossSpawn.rotation);
+    }
+
+    private void CallBoss()
+    {
         Instantiate(bosses[0], bossSpawn.position, bossSpawn.rotation);
     }
 }
