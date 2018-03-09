@@ -15,11 +15,33 @@ public class AttackExplosion : MonoBehaviour
 
     //What player the bullet belongs to.
     public bool whoDoIBelongTo;
+    private bool whichPlayer;
+
+    public bool hasShrapnel;
+
+    public int shrapnelCount;
+    public GameObject shrapnel;
+    private GameObject bullet;
 
     void Start()
     {
         //Destroys the explosion after a duration.
         Destroy(gameObject, explosionDuration);
+
+        if(hasShrapnel)
+        {
+            whichPlayer = whoDoIBelongTo;
+
+            bullet = shrapnel as GameObject;
+            bullet.GetComponent<AttackScript>().whoDoIBelongTo = whichPlayer;
+
+            for (int i = 0; i < shrapnelCount; i++)
+            {
+                Instantiate(shrapnel, gameObject.transform.position, Quaternion.Euler(0, Random.Range(0, 360), 0));
+            }
+        }
+        
+
     }
 
     private void OnTriggerEnter(Collider other)

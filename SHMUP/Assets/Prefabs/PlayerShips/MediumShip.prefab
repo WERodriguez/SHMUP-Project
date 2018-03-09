@@ -171,7 +171,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1052038501730340}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 6, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4024914318980460}
@@ -350,11 +350,11 @@ MonoBehaviour:
   secondaryFireRate: 0
   nextGun: 0
   baseWLevel: 1
-  baseSecondaryLevel: 0
+  baseSecondaryLevel: 3
   currentWLevel: 3
   currentSecondaryLevel: 0
   primaryWeaponSelector: 2
-  secondaryWeaponSelector: 0
+  secondaryWeaponSelector: 1
   superWeaponSelector: 0
   primaryWeapons:
   - {fileID: 1167522747763894, guid: 5c12e8316c35a4941b9e39b6acad3bf6, type: 2}
@@ -362,6 +362,8 @@ MonoBehaviour:
   - {fileID: 1461313860375486, guid: dab0861301d04e142a79946d2cec5c73, type: 2}
   secondaryWeapons:
   - {fileID: 1851002434471204, guid: 33c958973d9f93e4fbe981109854ff9b, type: 2}
+  - {fileID: 1167522747763894, guid: 5c12e8316c35a4941b9e39b6acad3bf6, type: 2}
+  - {fileID: 1451992259130200, guid: ba2c3a1d28e5390499c0360bf302811d, type: 2}
   superWeapons:
   - {fileID: 1564108121295334, guid: 87140d67c9584be4f98cf7364c98b0f5, type: 2}
   plasmaAcceleratorCannon:

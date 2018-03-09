@@ -38,6 +38,8 @@ public class PlayerWeaponController : MonoBehaviour
     //If weapon fires different shots put them here.
     public GameObject[] plasmaAcceleratorCannon;
 
+    private GameObject childSuperWeapon;
+
     //Where the ship shoots from. Can be a list of them.
     public Transform[] shotSpawns;
     public Transform[] secondarySpawns;
@@ -90,6 +92,14 @@ public class PlayerWeaponController : MonoBehaviour
             {
                 HomingMissile();
             }
+            else if (secondaryWeaponSelector == 1)
+            {
+                SweeperPods();
+            }
+            else if (secondaryWeaponSelector == 2)
+            {
+                PlasmaGun();
+            }
         }
 
     }
@@ -99,6 +109,12 @@ public class PlayerWeaponController : MonoBehaviour
         if (superWeaponSelector == 0 && superAmmo > 0)
         {
             MegaBomb();
+            superAmmo--;
+            superAmmoCounter.text = "Super Ammo: " + superAmmo;
+        }
+        else if (superWeaponSelector == 1 && superAmmo > 0)
+        {
+            BeamCannon();
             superAmmo--;
             superAmmoCounter.text = "Super Ammo: " + superAmmo;
         }
@@ -258,11 +274,102 @@ public class PlayerWeaponController : MonoBehaviour
         }
     }
 
+    private void SweeperPods()
+    {
+        WhatPlayer();
+
+        if (currentSecondaryLevel == 1 && Time.time > nextSecondaryFire)
+        {
+            secondaryFireRate = 0.10f;
+            nextSecondaryFire = Time.time + secondaryFireRate;
+            foreach (var secondarySpawn in secondarySpawns)
+            {
+                Instantiate(secondaryBullet, secondarySpawn.position, secondarySpawn.rotation);
+            }
+        }
+        else if (currentSecondaryLevel == 2 && Time.time > nextSecondaryFire)
+        {
+            secondaryFireRate = 0.10f;
+            nextSecondaryFire = Time.time + secondaryFireRate;
+            //How many bullets. Initial angle to be fired at. How much to increase the angle by.
+            SecondaryFanFire(2, 30, 5);
+        }
+        else if (currentSecondaryLevel == 3 && Time.time > nextSecondaryFire)
+        {
+            secondaryFireRate = 0.10f;
+            nextSecondaryFire = Time.time + secondaryFireRate;
+            SecondaryFanFire(3, 30, 5);
+        }
+        else if (currentSecondaryLevel == 4 && Time.time > nextSecondaryFire)
+        {
+            secondaryFireRate = 0.10f;
+            nextSecondaryFire = Time.time + secondaryFireRate;
+            SecondaryFanFire(4, 30, 5);
+        }
+        else if (currentSecondaryLevel == 5 && Time.time > nextSecondaryFire)
+        {
+            secondaryFireRate = 0.10f;
+            nextSecondaryFire = Time.time + secondaryFireRate;
+            SecondaryFanFire(5, 30, 5);
+        }
+    }
+
+    private void PlasmaGun()
+    {
+        WhatPlayer();
+
+        if (currentSecondaryLevel == 1 && Time.time > nextSecondaryFire)
+        {
+            secondaryFireRate = 1.5f;
+            nextSecondaryFire = Time.time + secondaryFireRate;
+            foreach (var secondarySpawn in secondarySpawns)
+            {
+                Instantiate(secondaryBullet, secondarySpawn.position, secondarySpawn.rotation);
+            }
+        }
+        else if (currentSecondaryLevel == 2 && Time.time > nextSecondaryFire)
+        {
+            secondaryFireRate = 1.25f;
+            nextSecondaryFire = Time.time + secondaryFireRate;
+            foreach (var secondarySpawn in secondarySpawns)
+            {
+                Instantiate(secondaryBullet, secondarySpawn.position, secondarySpawn.rotation);
+            }
+        }
+        else if (currentSecondaryLevel == 3 && Time.time > nextSecondaryFire)
+        {
+            nextSecondaryFire = Time.time + secondaryFireRate;
+            secondaryFireRate = 1.25f;
+            SecondaryFanFire(2, 10, 15);
+        }
+        else if (currentSecondaryLevel == 4 && Time.time > nextSecondaryFire)
+        {
+            nextSecondaryFire = Time.time + secondaryFireRate;
+            secondaryFireRate = 1.0f;
+            SecondaryFanFire(2, 10, 15);
+        }
+        else if (currentSecondaryLevel == 5 && Time.time > nextSecondaryFire)
+        {
+            nextSecondaryFire = Time.time + secondaryFireRate;
+            secondaryFireRate = 1.0f;
+            SecondaryFanFire(3, 10, 15);
+        }
+    }
+
     //Super Weapons Go Here
     private void MegaBomb()
     {
         WhatPlayer();
         Instantiate(superBullet, shotSpawns[0].position, shotSpawns[0].rotation);
+    }
+
+    private void BeamCannon()
+    {
+        childSuperWeapon = Instantiate(superWeapons[1], shotSpawns[0].transform.position, Quaternion.identity) as GameObject;
+        childSuperWeapon.transform.parent = gameObject.transform;
+
+        //childSuperWeapon.transform.parent = GameObject.Find("PrimarySpawn-F").transform; ;
+        //Instantiate(superWeapons[1], shotSpawns[0], shotSpawns[0]);
     }
 
     //Where fancy shooting patterns go.
@@ -352,204 +459,46 @@ public class PlayerWeaponController : MonoBehaviour
                 shotCounter = 0;
             }
         }
-        //Old Fan fire code for refference if needed later. 
-        //Don't delete this.
-        /*else if (numberOfShots >= 4)
-        {
-            shotCounter = 0;
-
-            nextFire = Time.time + fireRate;
-            foreach (var shotSpawn in shotSpawns)
-            {
-                if (shotSpawn == shotSpawns[1])
-                {
-                    //Increments default angle.
-                    spreadAngleIncrement = spreadAngleIncrementDefault;
-
-                    while (shotCounter < numberOfShots)
-                    {
-                        spreadAngleIncrement += spreadAngleDefault;
-
-                        Instantiate(bullet, shotSpawn.position, Quaternion.Euler(0, -spreadAngleIncrement, 0));
-                        shotCounter++;
-                    }
-                }
-                else if (shotSpawn == shotSpawns[2])
-                {
-                    //Increments default angle.
-                    spreadAngleIncrement = spreadAngleIncrementDefault;
-
-                    while (shotCounter < numberOfShots)
-                    {
-                        spreadAngleIncrement += spreadAngleDefault;
-
-                        Instantiate(bullet, shotSpawn.position, Quaternion.Euler(0, +spreadAngleIncrement, 0));
-                        shotCounter++;
-                    }
-                }
-                else if (shotSpawn == shotSpawns[0])
-                {
-                    Instantiate(bullet, shotSpawn.position, shotSpawn.rotation);
-                    spreadAngleIncrement = spreadAngleDefault + spreadAngleDefault;
-
-
-                    while (shotCounter < numberOfShots - 1)
-                    {
-                        if (shotCounter >= 2)
-                        {
-                            Instantiate(bullet, shotSpawn.position, Quaternion.Euler(0, spreadAngleIncrement, 0));
-                            shotCounter++;
-                            spreadAngleIncrement *= -1;
-                        }
-                        else if (shotCounter <= 1)
-                        {
-                            Instantiate(bullet, shotSpawn.position, Quaternion.Euler(0, spreadAngleDefault, 0));
-                            shotCounter++;
-                            spreadAngleDefault *= -1;
-                        }
-                    }
-                    shotCounter++;
-                }
-
-                if (shotCounter == numberOfShots)
-                {
-                    shotCounter = 0;
-                }
-            }
-        }*/
     }
 
+    //Number of shots. Default spread angle. Default increment for shots.
     private void SecondaryFanFire(int numberOfShots, float spreadAngleDefault, float spreadAngleIncrementDefault)
     {
         //Contains the incremented shot angle.
-        float spreadAngleIncrement;
+        float spreadAngleIncrementL;
+        float spreadAngleIncrementR;
 
-        if (numberOfShots == 2)
+        spreadAngleIncrementL = spreadAngleDefault;
+        spreadAngleIncrementR = spreadAngleDefault;
+
+        foreach (var secondarySpawn in secondarySpawns)
         {
-            //Tracks how many shots the loop has fired.
+            //Tracks how many shots have been fired.
             shotCounter = 0;
-            spreadAngleIncrement = spreadAngleDefault;
+            //Sets the initial angle at which shots will be fired.
 
-            nextSecondaryFire = Time.time + secondaryFireRate;
-            foreach (var secondarySpawn in secondarySpawns)
+            if(secondarySpawn == secondarySpawns[0])
             {
-                //While shots fired is less than total number of shots requested.
                 while (shotCounter < numberOfShots)
                 {
-                    //Spawns bullets at shotSpawn but with a Y rotation of 3.
-                    Instantiate(secondaryBullet, secondarySpawn.position, Quaternion.Euler(0, spreadAngleIncrement, 0));
-                    shotCounter++;
-                    //Flips that bullet around for the next shot.
-                    spreadAngleIncrement *= -1;
-                }
-                //Resets the shotCounter so it can spawn bullets at the rest of the spawners.
-                if (shotCounter >= numberOfShots)
-                {
-                    shotCounter = 0;
-                    spreadAngleIncrement = spreadAngleDefault;
-                }
-            }
-        }
-        else if (numberOfShots == 3)
-        {
-            shotCounter = 0;
-            spreadAngleDefault = 3;
-            nextSecondaryFire = Time.time + secondaryFireRate;
-            foreach (var secondarySpawn in secondarySpawns)
-            {
-                if (secondarySpawn == secondarySpawns[0])
-                {
-                    //Increments default angle.
-                    spreadAngleIncrement = spreadAngleIncrementDefault;
-
-                    while (shotCounter < numberOfShots)
-                    {
-                        spreadAngleIncrement += spreadAngleDefault;
-
-                        Instantiate(secondaryBullet, secondarySpawn.position, Quaternion.Euler(0, -spreadAngleIncrement, 0));
-                        shotCounter++;
-                    }
-                }
-                else if (secondarySpawn == secondarySpawns[1])
-                {
-                    //Increments default angle.
-                    spreadAngleIncrement = spreadAngleIncrementDefault;
-
-                    while (shotCounter < numberOfShots)
-                    {
-                        spreadAngleIncrement += spreadAngleDefault;
-
-                        Instantiate(secondaryBullet, secondarySpawn.position, Quaternion.Euler(0, +spreadAngleIncrement, 0));
-                        shotCounter++;
-                    }
-                }
-                if (shotCounter == numberOfShots)
-                {
-                    shotCounter = 0;
-                }
-            }
-        }
-        else if (numberOfShots >= 4)
-        {
-            shotCounter = 0;
-
-            nextSecondaryFire = Time.time + secondaryFireRate;
-            foreach (var shotSpawn in shotSpawns)
-            {
-                if (shotSpawn == shotSpawns[1])
-                {
-                    //Increments default angle.
-                    spreadAngleIncrement = spreadAngleIncrementDefault;
-
-                    while (shotCounter < numberOfShots)
-                    {
-                        spreadAngleIncrement += spreadAngleDefault;
-
-                        Instantiate(bullet, shotSpawn.position, Quaternion.Euler(0, -spreadAngleIncrement, 0));
-                        shotCounter++;
-                    }
-                }
-                else if (shotSpawn == shotSpawns[2])
-                {
-                    //Increments default angle.
-                    spreadAngleIncrement = spreadAngleIncrementDefault;
-
-                    while (shotCounter < numberOfShots)
-                    {
-                        spreadAngleIncrement += spreadAngleDefault;
-
-                        Instantiate(bullet, shotSpawn.position, Quaternion.Euler(0, +spreadAngleIncrement, 0));
-                        shotCounter++;
-                    }
-                }
-                else if (shotSpawn == shotSpawns[0])
-                {
-                    Instantiate(bullet, shotSpawn.position, shotSpawn.rotation);
-                    spreadAngleIncrement = spreadAngleDefault + spreadAngleDefault;
-
-
-                    while (shotCounter < numberOfShots - 1)
-                    {
-                        if (shotCounter >= 2)
-                        {
-                            Instantiate(bullet, shotSpawn.position, Quaternion.Euler(0, spreadAngleIncrement, 0));
-                            shotCounter++;
-                            spreadAngleIncrement *= -1;
-                        }
-                        else if (shotCounter <= 1)
-                        {
-                            Instantiate(bullet, shotSpawn.position, Quaternion.Euler(0, spreadAngleDefault, 0));
-                            shotCounter++;
-                            spreadAngleDefault *= -1;
-                        }
-                    }
+                    Instantiate(secondaryBullet, secondarySpawn.position, Quaternion.Euler(0, -spreadAngleIncrementL, 0));
+                    spreadAngleIncrementL = spreadAngleIncrementL + spreadAngleIncrementDefault;
                     shotCounter++;
                 }
-
-                if (shotCounter == numberOfShots)
+            }
+            else if(secondarySpawn == secondarySpawns[1])
+            {
+                while (shotCounter < numberOfShots)
                 {
-                    shotCounter = 0;
+                    Instantiate(secondaryBullet, secondarySpawn.position, Quaternion.Euler(0, +spreadAngleIncrementR, 0));
+                    spreadAngleIncrementR = spreadAngleIncrementR + spreadAngleIncrementDefault;
+                    shotCounter++;
                 }
+            }
+
+            if (shotCounter == numberOfShots)
+            {
+                shotCounter = 0;
             }
         }
     }
@@ -600,6 +549,14 @@ public class PlayerWeaponController : MonoBehaviour
 
         //SecondaryWeapons
         if (secondaryWeaponSelector == 0)
+        {
+            secondaryBullet.GetComponent<AttackAoE>().whoDoIBelongTo = whichPlayer;
+        }
+        else if (secondaryWeaponSelector == 1)
+        {
+            secondaryBullet.GetComponent<AttackScript>().whoDoIBelongTo = whichPlayer;
+        }
+        else if (secondaryWeaponSelector == 2)
         {
             secondaryBullet.GetComponent<AttackAoE>().whoDoIBelongTo = whichPlayer;
         }
