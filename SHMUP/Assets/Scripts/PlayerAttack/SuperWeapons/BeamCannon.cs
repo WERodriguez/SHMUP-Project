@@ -2,15 +2,137 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BeamCannon : MonoBehaviour {
+public class BeamCannon : MonoBehaviour
+{
+    //Grabs the health system from an enemy target.
+    private HealthSystem health;
 
-	// Use this for initialization
-	void Start () {
-		
+    public bool whoDoIBelongTo;
+    //How Much Damage the beam does.
+    public float damageAmmount;
+    //How long between damage tics.
+    public float damageTicRate;
+    //How long it takes for the beam to charge before it fires.
+    public float chargeTime;
+    //How long the beam will last once active.
+    public float beamDuration;
+    //How long it takes for the beam to fizzle once its duration is over.
+    public float beamFizzle;
+    //Whether or not the beam still deals damage.
+    private bool dealDamage;
+
+    //Place Holder Particle effect.
+    private GameObject beamCharge;
+    //Place Holder Actual Beam.
+    private GameObject beam;
+
+    //Holds components in child objects.
+    public Component[] childRenderers;
+    private CapsuleCollider beamCollider;
+    public float fadePerSecond;
+    public bool canIFadeYet;
+
+
+    // Use this for initialization
+    void Start ()
+    {
+        dealDamage = false;
+        canIFadeYet = false;
+        beamCollider = GetComponent<CapsuleCollider>();
+        beamCollider.enabled = !beamCollider.enabled;
+        StartCoroutine(BeamFire());
 	}
 	
 	// Update is called once per frame
-	void Update () {
-		
-	}
+	void Update ()
+    {
+        //Checks if the beam can fade or if it's done fading.
+        if(canIFadeYet)
+        {
+            //StartCoroutine(FadeOut());
+            childRenderers = GetComponentsInChildren<Renderer>();
+
+            //Goes through all the children and fades them out.
+            foreach (Renderer childObjectColor in childRenderers)
+            {
+                //Keeping this around just for notes. This is how you change material colors
+                //childObjectToFade.material.color = Color.red;
+                Debug.Log("Am supposed to be invisible now!");
+                childObjectColor.material.color = new Color(childObjectColor.material.color.r, childObjectColor.material.color.g, childObjectColor.material.color.b,
+                    childObjectColor.material.color.a - (fadePerSecond * Time.deltaTime));
+            }
+        }
+    }
+
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("Boundary") || other.CompareTag("Player"))
+        {
+            return;
+        }
+
+        health = other.GetComponent<HealthSystem>();
+
+        if (health == null)
+        {
+            return;
+        }
+        dealDamage = true;
+        StartCoroutine(BeamDamage());
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.CompareTag("Boundary") || other.CompareTag("Player"))
+        {
+            return;
+        }
+
+        health = other.GetComponent<HealthSystem>();
+
+        if (health == null)
+        {
+            return;
+        }
+
+        dealDamage = false;
+        StopCoroutine(BeamDamage());
+    }
+
+    IEnumerator BeamFire()
+    {
+        //Activates place holder charge effect.
+        transform.GetChild(1).gameObject.SetActive(true);
+        yield return new WaitForSeconds(chargeTime);
+        //Deactivates place holder charge effect.
+        //transform.GetChild(1).gameObject.SetActive(false);
+        //Activates the beam.
+        beamCollider.enabled = !beamCollider.enabled;
+        transform.GetChild(0).gameObject.SetActive(true);
+        yield return new WaitForSeconds(beamDuration);
+
+        //Tells the beam it can start fading.
+        canIFadeYet = true;
+
+        yield return new WaitForSeconds(beamFizzle);
+        //Tells the beam it can stop fading.
+        canIFadeYet = false;
+        //Disables the beam's graphics.
+        transform.GetChild(0).gameObject.SetActive(false);
+        transform.GetChild(1).gameObject.SetActive(false);
+        //Disables the beam's collider.
+        //Yeah this is a really weird way they decided to set it up but this is how it works.
+        beamCollider.enabled = !beamCollider.enabled;
+        //Destroy's the game object because it no longer needs to exist!
+        Destroy(gameObject);
+    }
+    IEnumerator BeamDamage()
+    {
+        while(dealDamage)
+        {
+            health.Damage(damageAmmount, whoDoIBelongTo);
+            yield return new WaitForSeconds(damageTicRate);
+        }
+    }
 }

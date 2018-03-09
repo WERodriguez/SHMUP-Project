@@ -47,6 +47,7 @@ public class PlayerWeaponController : MonoBehaviour
     private int shotCounter;
     //How many times you can fire your super weapon.
     public int superAmmo;
+    public int superAmmoDefault;
     //How much superAmmo players can hold.
     public int superAmmoCap;
     public Text superAmmoCounter;
@@ -66,7 +67,7 @@ public class PlayerWeaponController : MonoBehaviour
         currentWLevel = baseWLevel;
         currentSecondaryLevel = baseSecondaryLevel;
 
-        superAmmo = 3;
+        superAmmo = superAmmoDefault;
         superAmmoCounter.text = "Super Ammo: " + superAmmo;
     }
 
