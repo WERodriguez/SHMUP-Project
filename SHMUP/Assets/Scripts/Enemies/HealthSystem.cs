@@ -110,16 +110,6 @@ public class HealthSystem : MonoBehaviour
                 }
                 Destroy(gameObject);
             }
-            //This is for testing with the target dummy.
-            //Because all enemies have got  points to give except that guy.
-            else
-            {
-                if(doesLootDrop <= lootDropChance)
-                {
-                    callLoot.LootRoll(Random.Range(0.0f, 100.0f));
-                }
-                Destroy(gameObject);
-            }
         }
     }
 }

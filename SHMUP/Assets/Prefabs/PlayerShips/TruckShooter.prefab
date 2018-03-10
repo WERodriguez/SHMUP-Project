@@ -332,7 +332,7 @@ MonoBehaviour:
   secondaryFireRate: 0
   nextGun: 0
   baseWLevel: 1
-  baseSecondaryLevel: 3
+  baseSecondaryLevel: 0
   currentWLevel: 1
   currentSecondaryLevel: 0
   primaryWeaponSelector: 1
@@ -349,6 +349,7 @@ MonoBehaviour:
   superWeapons:
   - {fileID: 1564108121295334, guid: 87140d67c9584be4f98cf7364c98b0f5, type: 2}
   - {fileID: 1066091804464038, guid: f42352369b3358449af329e1cb44815e, type: 2}
+  - {fileID: 1096722398989258, guid: e97746e108c22bc459b8864be869f904, type: 2}
   plasmaAcceleratorCannon:
   - {fileID: 1163893146107756, guid: 40981a2d84aa88c488fb66dce24e36dc, type: 2}
   - {fileID: 1646744777095314, guid: 68967f279842f56468ada8ccd40d84ef, type: 2}

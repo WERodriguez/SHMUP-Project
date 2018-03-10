@@ -119,6 +119,12 @@ public class PlayerWeaponController : MonoBehaviour
             superAmmo--;
             superAmmoCounter.text = "Super Ammo: " + superAmmo;
         }
+        else if (superWeaponSelector == 2 && superAmmo > 0)
+        {
+            MegaShield();
+            superAmmo--;
+            superAmmoCounter.text = "Super Ammo: " + superAmmo;
+        }
     }
 
     //Primary Weapons Go Here
@@ -366,12 +372,18 @@ public class PlayerWeaponController : MonoBehaviour
 
     private void BeamCannon()
     {
-        childSuperWeapon = Instantiate(superWeapons[1], shotSpawns[0].transform.position, Quaternion.identity) as GameObject;
+        WhatPlayer();
+        childSuperWeapon = Instantiate(superBullet, shotSpawns[0].transform.position, shotSpawns[0].transform.rotation) as GameObject;
         childSuperWeapon.transform.parent = gameObject.transform;
-
-        //childSuperWeapon.transform.parent = GameObject.Find("PrimarySpawn-F").transform; ;
-        //Instantiate(superWeapons[1], shotSpawns[0], shotSpawns[0]);
     }
+
+    private void MegaShield()
+    {
+        WhatPlayer();
+        childSuperWeapon = Instantiate(superBullet, gameObject.transform.position, gameObject.transform.rotation) as GameObject;
+        childSuperWeapon.transform.parent = gameObject.transform;
+    }
+
 
     //Where fancy shooting patterns go.
     //Fires one gun after another.
@@ -567,6 +579,14 @@ public class PlayerWeaponController : MonoBehaviour
         {
             superBullet.GetComponent<SuperBombLauncher>().whoDoIBelongTo = whichPlayer;
         }
+        if (superWeaponSelector == 1)
+        {
+            superBullet.GetComponent<BeamCannon>().whoDoIBelongTo = whichPlayer;
+        }
+        if (superWeaponSelector == 2)
+        {
+            superBullet.GetComponent<MegaShield>().whoDoIBelongTo = whichPlayer;
+        }
     }
 
     public void MorePrimaryGun()
@@ -596,8 +616,6 @@ public class PlayerWeaponController : MonoBehaviour
         }
         superAmmoCounter.text = "Super Ammo: " + superAmmo;
     }
-
-
 
     //For When you respawn
     public void LessGun()

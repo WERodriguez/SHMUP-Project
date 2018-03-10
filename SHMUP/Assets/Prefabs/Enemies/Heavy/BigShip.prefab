@@ -206,6 +206,7 @@ GameObject:
   - component: {fileID: 114663601940922774}
   - component: {fileID: 114996500701354326}
   - component: {fileID: 114498728034074496}
+  - component: {fileID: 114076226434574530}
   - component: {fileID: 65549734158166066}
   - component: {fileID: 65128127037423092}
   m_Layer: 0
@@ -1825,6 +1826,18 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 6.94, y: 3.82, z: 4.66}
   m_Center: {x: 0, y: 0, z: -6.01}
+--- !u!114 &114076226434574530
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1282186330355920}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e1d06b2a0b376744b2220b18aa86d42, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  points: 500
 --- !u!114 &114357369683829424
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1942,3 +1955,6 @@ MonoBehaviour:
   currentShields: 0
   maxShields: 0
   lootDropChance: 50
+  isBoss: 0
+  isBossPart: 0
+  scrap: {fileID: 0}
