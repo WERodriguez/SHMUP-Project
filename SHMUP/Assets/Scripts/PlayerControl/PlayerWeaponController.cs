@@ -21,15 +21,22 @@ public class PlayerWeaponController : MonoBehaviour
     //Weapon default level at start of scene.
     public int baseWLevel;
     public int baseSecondaryLevel;
+
     //Weapon current level
-    public int currentWLevel;
-    public int currentSecondaryLevel;
+    private int P1currentWLevel;
+    private int P1currentSecondaryLevel;
+    private int P2currentWLevel;
+    private int P2currentSecondaryLevel;
+
     //Currently equipped primary weapon.
     //MG = 0. Flak = 1. Canon = 3.
     //I was having a hard time with the string array and this just works. >.>
     private int P1primaryWeaponSelector;
     private int P1secondaryWeaponSelector;
     private int P1superWeaponSelector;
+    private int P2primaryWeaponSelector;
+    private int P2secondaryWeaponSelector;
+    private int P2superWeaponSelector;
 
     //Shot to fire
     public GameObject[] primaryWeapons;
@@ -46,88 +53,155 @@ public class PlayerWeaponController : MonoBehaviour
 
     private int shotCounter;
     //How many times you can fire your super weapon.
-    public int superAmmo;
+    private int P1superAmmo;
+    private int P2superAmmo;
     public int superAmmoDefault;
+
     //How much superAmmo players can hold.
     public int superAmmoCap;
-    public Text superAmmoCounter;
+    public Text P1superAmmoCounter;
+    public Text P2superAmmoCounter;
 
     //False = Player 1. True = Player 2
-    private bool whichPlayer;
+    public bool whichPlayer;
+
     //Current weapon modified with the whichPlayer bool.
-    private GameObject bullet;
-    private GameObject secondaryBullet;
-    private GameObject superBullet;
+    private GameObject P1bullet;
+    private GameObject P1secondaryBullet;
+    private GameObject P1superBullet;
+    private GameObject P2bullet;
+    private GameObject P2secondaryBullet;
+    private GameObject P2superBullet;
 
 
     void Start()
     {
-        //Pulls which player it is from the parent object.
-        whichPlayer = GetComponent<PlayerController>().whichPlayer;
-        currentWLevel = baseWLevel;
-        currentSecondaryLevel = baseSecondaryLevel;
-
-        superAmmo = superAmmoDefault;
-        superAmmoCounter.text = "Super Ammo: " + superAmmo;
-
-        P1primaryWeaponSelector = UIController.P1primaryType - 1;
-        P1secondaryWeaponSelector = UIController.P1secondaryType - 1;
-        P1superWeaponSelector = UIController.P1specialType - 1;
+        LessGun();
+        if (UIController.onePlayer)
+        {
+            SettingUpPlayer1Weapon();
+        }
+        else
+        {
+            SettingUpPlayer1Weapon();
+            SettingUpPlayer2Weapon();
+        }
     }
 
     // Use this for initialization
     public void Fire()
     {
-        if (P1primaryWeaponSelector == 0)
+        //player 1
+        if (!whichPlayer)
         {
-            MachineGun();
-        }
-        else if (P1primaryWeaponSelector == 1)
-        {
-            FlakCannon();
-        }
-        else if (P1primaryWeaponSelector == 2)
-        {
-            Cannon();
-        }
+            if (P1primaryWeaponSelector == 0)
+            {
+                MachineGun();
+            }
+            else if (P1primaryWeaponSelector == 1)
+            {
+                FlakCannon();
+            }
+            else if (P1primaryWeaponSelector == 2)
+            {
+                Cannon();
+            }
 
-        if(currentSecondaryLevel > 0)
-        {
-            if (P1secondaryWeaponSelector == 0)
+            if (P1currentSecondaryLevel > 0)
             {
-                HomingMissile();
-            }
-            else if (P1secondaryWeaponSelector == 1)
-            {
-                SweeperPods();
-            }
-            else if (P1secondaryWeaponSelector == 2)
-            {
-                PlasmaGun();
+                if (P1secondaryWeaponSelector == 0)
+                {
+                    HomingMissile();
+                }
+                else if (P1secondaryWeaponSelector == 1)
+                {
+                    SweeperPods();
+                }
+                else if (P1secondaryWeaponSelector == 2)
+                {
+                    PlasmaGun();
+                }
             }
         }
+        //player 2
+        if (whichPlayer)
+        {
+            if (P2primaryWeaponSelector == 0)
+            {
+                MachineGun();
+            }
+            else if (P2primaryWeaponSelector == 1)
+            {
+                FlakCannon();
+            }
+            else if (P2primaryWeaponSelector == 2)
+            {
+                Cannon();
+            }
 
+            if (P2currentSecondaryLevel > 0)
+            {
+                if (P2secondaryWeaponSelector == 0)
+                {
+                    HomingMissile();
+                }
+                else if (P2secondaryWeaponSelector == 1)
+                {
+                    SweeperPods();
+                }
+                else if (P2secondaryWeaponSelector == 2)
+                {
+                    PlasmaGun();
+                }
+            }
+        }
     }
 
     public void SuperWeapon()
     {
-        if (P1superWeaponSelector == 0 && superAmmo > 0)
+        //player 1
+        if (!whichPlayer)
         {
-            MegaBomb();
-            superAmmo--;
-            superAmmoCounter.text = "Super Ammo: " + superAmmo;
+            if (P1superWeaponSelector == 0 && P1superAmmo > 0)
+            {
+                MegaBomb();
+                P1superAmmo--;
+                P1superAmmoCounter.text = "Super Ammo: " + P1superAmmo;
+            }
+            else if (P1superWeaponSelector == 1 && P1superAmmo > 0)
+            {
+                BeamCannon();
+                P1superAmmo--;
+                P1superAmmoCounter.text = "Super Ammo: " + P1superAmmo;
+            }
+            else if (P1superWeaponSelector == 2 && P1superAmmo > 0)
+            {
+                MegaShield();
+                P1superAmmo--;
+                P1superAmmoCounter.text = "Super Ammo: " + P1superAmmo;
+            }
         }
-        else if (P1superWeaponSelector == 1 && superAmmo > 0)
+        //player 2
+        if (whichPlayer)
         {
-            BeamCannon();
-            superAmmo--;
-            superAmmoCounter.text = "Super Ammo: " + superAmmo;
-        }
-        else if (P1superWeaponSelector == 2 && superAmmo > 0)
-        {
-            MegaShield();
-            superAmmo--;
-            superAmmoCounter.text = "Super Ammo: " + superAmmo;
+            if (P2superWeaponSelector == 0 && P2superAmmo > 0)
+            {
+                MegaBomb();
+                P2superAmmo--;
+                P2superAmmoCounter.text = "Super Ammo: " + P2superAmmo;
+            }
+            else if (P2superWeaponSelector == 1 && P2superAmmo > 0)
+            {
+                BeamCannon();
+                P2superAmmo--;
+                P2superAmmoCounter.text = "Super Ammo: " + P2superAmmo;
+            }
+            else if (P2superWeaponSelector == 2 && P2superAmmo > 0)
+            {
+                MegaShield();
+                P2superAmmo--;
+                P2superAmmoCounter.text = "Super Ammo: " + P2superAmmo;
+            }
         }
     }
 
@@ -136,70 +210,143 @@ public class PlayerWeaponController : MonoBehaviour
     {
         WhatPlayer();
 
-        //Spawns 1 Bullet from primary hard point.
-        if (currentWLevel == 1 && Time.time > nextFire)
+        //player 1
+        if (!whichPlayer)
         {
-            fireRate = 0.10f;
-            nextFire = Time.time + fireRate;
-            Instantiate(bullet, shotSpawns[0].position, shotSpawns[0].rotation);
-        }
-        //Spawns 1 Bullet from all hard points
-        else if (currentWLevel == 2 && Time.time > nextFire)
-        {
-            nextFire = Time.time + fireRate;
-            Instantiate(bullet, new Vector3(shotSpawns[0].position.x + 0.5f, shotSpawns[0].position.y, shotSpawns[0].position.z), shotSpawns[0].rotation);
-            Instantiate(bullet, new Vector3(shotSpawns[0].position.x + -0.5f, shotSpawns[0].position.y, shotSpawns[0].position.z), shotSpawns[0].rotation);
-        }
-        else if (currentWLevel == 3 && Time.time > nextFire)
-        {
-            nextFire = Time.time + fireRate;
-            foreach (var shotSpawn in shotSpawns)
+            //Spawns 1 Bullet from primary hard point.
+            if (P1currentWLevel == 1 && Time.time > nextFire)
             {
-                Instantiate(bullet, shotSpawn.position, shotSpawn.rotation);
+                fireRate = 0.10f;
+                nextFire = Time.time + fireRate;
+                Instantiate(P1bullet, shotSpawns[0].position, shotSpawns[0].rotation);
+            }
+            //Spawns 1 Bullet from all hard points
+            else if (P1currentWLevel == 2 && Time.time > nextFire)
+            {
+                nextFire = Time.time + fireRate;
+                Instantiate(P1bullet, new Vector3(shotSpawns[0].position.x + 0.5f, shotSpawns[0].position.y, shotSpawns[0].position.z), shotSpawns[0].rotation);
+                Instantiate(P1bullet, new Vector3(shotSpawns[0].position.x + -0.5f, shotSpawns[0].position.y, shotSpawns[0].position.z), shotSpawns[0].rotation);
+            }
+            else if (P1currentWLevel == 3 && Time.time > nextFire)
+            {
+                nextFire = Time.time + fireRate;
+                foreach (var shotSpawn in shotSpawns)
+                {
+                    Instantiate(P1bullet, shotSpawn.position, shotSpawn.rotation);
+                }
+            }
+            else if (P1currentWLevel == 4 && Time.time > nextFire)
+            {
+                //How to use FanFire()
+                //int numberOfShots, float spreadAngleIncrementDefault
+                P1FanFire(4, 2.0f);
+            }
+            else if (P1currentWLevel == 5 && Time.time > nextFire)
+            {
+                P1FanFire(5, 3.0f);
             }
         }
-        else if (currentWLevel == 4 && Time.time > nextFire)
+        //player 2
+        if (whichPlayer)
         {
-            //How to use FanFire()
-            //int numberOfShots, float spreadAngleIncrementDefault
-            FanFire(4, 2.0f);
+            //Spawns 1 Bullet from primary hard point.
+            if (P2currentWLevel == 1 && Time.time > nextFire)
+            {
+                fireRate = 0.10f;
+                nextFire = Time.time + fireRate;
+                Instantiate(P2bullet, shotSpawns[0].position, shotSpawns[0].rotation);
+            }
+            //Spawns 1 Bullet from all hard points
+            else if (P2currentWLevel == 2 && Time.time > nextFire)
+            {
+                nextFire = Time.time + fireRate;
+                Instantiate(P2bullet, new Vector3(shotSpawns[0].position.x + 0.5f, shotSpawns[0].position.y, shotSpawns[0].position.z), shotSpawns[0].rotation);
+                Instantiate(P2bullet, new Vector3(shotSpawns[0].position.x + -0.5f, shotSpawns[0].position.y, shotSpawns[0].position.z), shotSpawns[0].rotation);
+            }
+            else if (P2currentWLevel == 3 && Time.time > nextFire)
+            {
+                nextFire = Time.time + fireRate;
+                foreach (var shotSpawn in shotSpawns)
+                {
+                    Instantiate(P2bullet, shotSpawn.position, shotSpawn.rotation);
+                }
+            }
+            else if (P2currentWLevel == 4 && Time.time > nextFire)
+            {
+                //How to use FanFire()
+                //int numberOfShots, float spreadAngleIncrementDefault
+                P2FanFire(4, 2.0f);
+            }
+            else if (P2currentWLevel == 5 && Time.time > nextFire)
+            {
+                P2FanFire(5, 3.0f);
+            }
         }
-        else if (currentWLevel == 5 && Time.time > nextFire)
-        {
-            FanFire(5, 3.0f);
-        }
-
     }
     
     private void FlakCannon()
     {
         WhatPlayer();
 
-        //Spawns 1 Bullet from primary hard point.
-        if (currentWLevel == 1 && Time.time > nextFire)
+        //player 1
+        if (!whichPlayer)
         {
-            fireRate = 1.5f;
-            nextFire = Time.time + fireRate;
-            Instantiate(bullet, shotSpawns[0].position, shotSpawns[0].rotation);
+            //Spawns 1 Bullet from primary hard point.
+            if (P1currentWLevel == 1 && Time.time > nextFire)
+            {
+                fireRate = 1.5f;
+                nextFire = Time.time + fireRate;
+                Instantiate(P1bullet, shotSpawns[0].position, shotSpawns[0].rotation);
+            }
+            else if (P1currentWLevel == 2 && Time.time > nextFire)
+            {
+                fireRate = 1.25f;
+                P1ChainFire();
+            }
+            else if (P1currentWLevel == 3 && Time.time > nextFire)
+            {
+                fireRate = 1.0f;
+                P1ChainFire();
+            }
+            else if (P1currentWLevel == 4 && Time.time > nextFire)
+            {
+                fireRate = 1f;
+                P1FanFire(3, 20.0f);
+            }
+            else if (P1currentWLevel == 5 && Time.time > nextFire)
+            {
+                P1FanFire(7, 20.0f);
+            }
         }
-        else if (currentWLevel == 2 && Time.time > nextFire)
+        //player 2
+        if (whichPlayer)
         {
-            fireRate = 1.25f;
-            ChainFire();
-        }
-        else if (currentWLevel == 3 && Time.time > nextFire)
-        {
-            fireRate = 1.0f;
-            ChainFire();
-        }
-        else if (currentWLevel == 4 && Time.time > nextFire)
-        {
-            fireRate = 1f;
-            FanFire(3, 20.0f);
-        }
-        else if (currentWLevel == 5 && Time.time > nextFire)
-        {
-            FanFire(7, 20.0f);
+            //Spawns 1 Bullet from primary hard point.
+            if (P2currentWLevel == 1 && Time.time > nextFire)
+            {
+                fireRate = 1.5f;
+                nextFire = Time.time + fireRate;
+                Instantiate(P2bullet, shotSpawns[0].position, shotSpawns[0].rotation);
+            }
+            else if (P2currentWLevel == 2 && Time.time > nextFire)
+            {
+                fireRate = 1.25f;
+                P2ChainFire();
+            }
+            else if (P2currentWLevel == 3 && Time.time > nextFire)
+            {
+                fireRate = 1.0f;
+                P2ChainFire();
+            }
+            else if (P2currentWLevel == 4 && Time.time > nextFire)
+            {
+                fireRate = 1f;
+                P2FanFire(3, 20.0f);
+            }
+            else if (P2currentWLevel == 5 && Time.time > nextFire)
+            {
+                P2FanFire(7, 20.0f);
+            }
         }
     }
 
@@ -207,38 +354,79 @@ public class PlayerWeaponController : MonoBehaviour
     {
         WhatPlayer();
 
-        //Spawns 1 Bullet from primary hard point.
-        if (currentWLevel == 1 && Time.time > nextFire)
+        //player 1
+        if (!whichPlayer)
         {
-            fireRate = 1.0f;
-            nextFire = Time.time + fireRate;
-            Instantiate(bullet, shotSpawns[0].position, shotSpawns[0].rotation);
+            //Spawns 1 Bullet from primary hard point.
+            if (P1currentWLevel == 1 && Time.time > nextFire)
+            {
+                fireRate = 1.0f;
+                nextFire = Time.time + fireRate;
+                Instantiate(P1bullet, shotSpawns[0].position, shotSpawns[0].rotation);
+            }
+            else if (P1currentWLevel == 2 && Time.time > nextFire)
+            {
+                fireRate = 1.0f;
+                nextFire = Time.time + fireRate;
+                Instantiate(P1bullet, new Vector3(shotSpawns[0].position.x + 0.3f, shotSpawns[0].position.y, shotSpawns[0].position.z), shotSpawns[0].rotation);
+                Instantiate(P1bullet, new Vector3(shotSpawns[0].position.x + -0.3f, shotSpawns[0].position.y, shotSpawns[0].position.z), shotSpawns[0].rotation);
+            }
+            else if (P1currentWLevel == 3 && Time.time > nextFire)
+            {
+                fireRate = 1.0f;
+                nextFire = Time.time + fireRate;
+                Instantiate(P1bullet, shotSpawns[0].position, shotSpawns[0].rotation);
+            }
+            else if (P1currentWLevel == 4 && Time.time > nextFire)
+            {
+                fireRate = 1.0f;
+                nextFire = Time.time + fireRate;
+                Instantiate(P1bullet, new Vector3(shotSpawns[0].position.x + 0.75f, shotSpawns[0].position.y, shotSpawns[0].position.z), shotSpawns[0].rotation);
+                Instantiate(P1bullet, new Vector3(shotSpawns[0].position.x + -0.75f, shotSpawns[0].position.y, shotSpawns[0].position.z), shotSpawns[0].rotation);
+            }
+            else if (P1currentWLevel == 5 && Time.time > nextFire)
+            {
+                fireRate = 1.0f;
+                nextFire = Time.time + fireRate;
+                Instantiate(P1bullet, shotSpawns[0].position, shotSpawns[0].rotation);
+            }
         }
-        else if (currentWLevel == 2 && Time.time > nextFire)
+        //player 2
+        if (whichPlayer)
         {
-            fireRate = 1.0f;
-            nextFire = Time.time + fireRate;
-            Instantiate(bullet, new Vector3(shotSpawns[0].position.x + 0.3f, shotSpawns[0].position.y, shotSpawns[0].position.z), shotSpawns[0].rotation);
-            Instantiate(bullet, new Vector3(shotSpawns[0].position.x + -0.3f, shotSpawns[0].position.y, shotSpawns[0].position.z), shotSpawns[0].rotation);
-        }
-        else if (currentWLevel == 3 && Time.time > nextFire)
-        {
-            fireRate = 1.0f;
-            nextFire = Time.time + fireRate;
-            Instantiate(bullet, shotSpawns[0].position, shotSpawns[0].rotation);
-        }
-        else if (currentWLevel == 4 && Time.time > nextFire)
-        {
-            fireRate = 1.0f;
-            nextFire = Time.time + fireRate;
-            Instantiate(bullet, new Vector3(shotSpawns[0].position.x + 0.75f, shotSpawns[0].position.y, shotSpawns[0].position.z), shotSpawns[0].rotation);
-            Instantiate(bullet, new Vector3(shotSpawns[0].position.x + -0.75f, shotSpawns[0].position.y, shotSpawns[0].position.z), shotSpawns[0].rotation);
-        }
-        else if (currentWLevel == 5 && Time.time > nextFire)
-        {
-            fireRate = 1.0f;
-            nextFire = Time.time + fireRate;
-            Instantiate(bullet, shotSpawns[0].position, shotSpawns[0].rotation);
+            //Spawns 1 Bullet from primary hard point.
+            if (P2currentWLevel == 1 && Time.time > nextFire)
+            {
+                fireRate = 1.0f;
+                nextFire = Time.time + fireRate;
+                Instantiate(P2bullet, shotSpawns[0].position, shotSpawns[0].rotation);
+            }
+            else if (P2currentWLevel == 2 && Time.time > nextFire)
+            {
+                fireRate = 1.0f;
+                nextFire = Time.time + fireRate;
+                Instantiate(P2bullet, new Vector3(shotSpawns[0].position.x + 0.3f, shotSpawns[0].position.y, shotSpawns[0].position.z), shotSpawns[0].rotation);
+                Instantiate(P2bullet, new Vector3(shotSpawns[0].position.x + -0.3f, shotSpawns[0].position.y, shotSpawns[0].position.z), shotSpawns[0].rotation);
+            }
+            else if (P2currentWLevel == 3 && Time.time > nextFire)
+            {
+                fireRate = 1.0f;
+                nextFire = Time.time + fireRate;
+                Instantiate(P2bullet, shotSpawns[0].position, shotSpawns[0].rotation);
+            }
+            else if (P2currentWLevel == 4 && Time.time > nextFire)
+            {
+                fireRate = 1.0f;
+                nextFire = Time.time + fireRate;
+                Instantiate(P2bullet, new Vector3(shotSpawns[0].position.x + 0.75f, shotSpawns[0].position.y, shotSpawns[0].position.z), shotSpawns[0].rotation);
+                Instantiate(P2bullet, new Vector3(shotSpawns[0].position.x + -0.75f, shotSpawns[0].position.y, shotSpawns[0].position.z), shotSpawns[0].rotation);
+            }
+            else if (P2currentWLevel == 5 && Time.time > nextFire)
+            {
+                fireRate = 1.0f;
+                nextFire = Time.time + fireRate;
+                Instantiate(P2bullet, shotSpawns[0].position, shotSpawns[0].rotation);
+            }
         }
     }
     
@@ -247,41 +435,85 @@ public class PlayerWeaponController : MonoBehaviour
     {
         WhatPlayer();
 
-        if (currentSecondaryLevel == 1 && Time.time > nextSecondaryFire)
+        //player 1
+        if (!whichPlayer)
         {
-            secondaryFireRate = 2;
-            nextSecondaryFire = Time.time + secondaryFireRate;
-            foreach (var secondarySpawn in secondarySpawns)
+            if (P1currentSecondaryLevel == 1 && Time.time > nextSecondaryFire)
             {
-                Instantiate(secondaryBullet, secondarySpawn.position, secondarySpawn.rotation);
+                secondaryFireRate = 2;
+                nextSecondaryFire = Time.time + secondaryFireRate;
+                foreach (var secondarySpawn in secondarySpawns)
+                {
+                    Instantiate(P1secondaryBullet, secondarySpawn.position, secondarySpawn.rotation);
+                }
+            }
+            else if (P1currentSecondaryLevel == 2 && Time.time > nextSecondaryFire)
+            {
+                secondaryFireRate = 1.75f;
+                nextSecondaryFire = Time.time + secondaryFireRate;
+                foreach (var secondarySpawn in secondarySpawns)
+                {
+                    Instantiate(P1secondaryBullet, secondarySpawn.position, secondarySpawn.rotation);
+                }
+            }
+            else if (P1currentSecondaryLevel == 3 && Time.time > nextSecondaryFire)
+            {
+                nextSecondaryFire = Time.time + secondaryFireRate;
+                secondaryFireRate = 1.75f;
+                P1SecondaryFanFire(2, 3, 4);
+            }
+            else if (P1currentSecondaryLevel == 4 && Time.time > nextSecondaryFire)
+            {
+                nextSecondaryFire = Time.time + secondaryFireRate;
+                secondaryFireRate = 1.5f;
+                P1SecondaryFanFire(2, 3, 4);
+            }
+            else if (P1currentSecondaryLevel == 5 && Time.time > nextSecondaryFire)
+            {
+                nextSecondaryFire = Time.time + secondaryFireRate;
+                secondaryFireRate = 1.5f;
+                P1SecondaryFanFire(3, 3, 5);
             }
         }
-        else if (currentSecondaryLevel == 2 && Time.time > nextSecondaryFire)
+        //player 2
+        if (whichPlayer)
         {
-            secondaryFireRate = 1.75f;
-            nextSecondaryFire = Time.time + secondaryFireRate;
-            foreach (var secondarySpawn in secondarySpawns)
+            if (P2currentSecondaryLevel == 1 && Time.time > nextSecondaryFire)
             {
-                Instantiate(secondaryBullet, secondarySpawn.position, secondarySpawn.rotation);
+                secondaryFireRate = 2;
+                nextSecondaryFire = Time.time + secondaryFireRate;
+                foreach (var secondarySpawn in secondarySpawns)
+                {
+                    Instantiate(P2secondaryBullet, secondarySpawn.position, secondarySpawn.rotation);
+                }
             }
-        }
-        else if (currentSecondaryLevel == 3 && Time.time > nextSecondaryFire)
-        {
-            nextSecondaryFire = Time.time + secondaryFireRate;
-            secondaryFireRate = 1.75f;
-            SecondaryFanFire(2, 3, 4);
-        }
-        else if (currentSecondaryLevel == 4 && Time.time > nextSecondaryFire)
-        {
-            nextSecondaryFire = Time.time + secondaryFireRate;
-            secondaryFireRate = 1.5f;
-            SecondaryFanFire(2, 3, 4);
-        }
-        else if (currentSecondaryLevel == 5 && Time.time > nextSecondaryFire)
-        {
-            nextSecondaryFire = Time.time + secondaryFireRate;
-            secondaryFireRate = 1.5f;
-            SecondaryFanFire(3, 3, 5);
+            else if (P2currentSecondaryLevel == 2 && Time.time > nextSecondaryFire)
+            {
+                secondaryFireRate = 1.75f;
+                nextSecondaryFire = Time.time + secondaryFireRate;
+                foreach (var secondarySpawn in secondarySpawns)
+                {
+                    Instantiate(P2secondaryBullet, secondarySpawn.position, secondarySpawn.rotation);
+                }
+            }
+            else if (P2currentSecondaryLevel == 3 && Time.time > nextSecondaryFire)
+            {
+                nextSecondaryFire = Time.time + secondaryFireRate;
+                secondaryFireRate = 1.75f;
+                P2SecondaryFanFire(2, 3, 4);
+            }
+            else if (P2currentSecondaryLevel == 4 && Time.time > nextSecondaryFire)
+            {
+                nextSecondaryFire = Time.time + secondaryFireRate;
+                secondaryFireRate = 1.5f;
+                P2SecondaryFanFire(2, 3, 4);
+            }
+            else if (P2currentSecondaryLevel == 5 && Time.time > nextSecondaryFire)
+            {
+                nextSecondaryFire = Time.time + secondaryFireRate;
+                secondaryFireRate = 1.5f;
+                P2SecondaryFanFire(3, 3, 5);
+            }
         }
     }
 
@@ -289,39 +521,81 @@ public class PlayerWeaponController : MonoBehaviour
     {
         WhatPlayer();
 
-        if (currentSecondaryLevel == 1 && Time.time > nextSecondaryFire)
+        //player 1
+        if (!whichPlayer)
         {
-            secondaryFireRate = 0.10f;
-            nextSecondaryFire = Time.time + secondaryFireRate;
-            foreach (var secondarySpawn in secondarySpawns)
+            if (P1currentSecondaryLevel == 1 && Time.time > nextSecondaryFire)
             {
-                Instantiate(secondaryBullet, secondarySpawn.position, secondarySpawn.rotation);
+                secondaryFireRate = 0.10f;
+                nextSecondaryFire = Time.time + secondaryFireRate;
+                foreach (var secondarySpawn in secondarySpawns)
+                {
+                    Instantiate(P1secondaryBullet, secondarySpawn.position, secondarySpawn.rotation);
+                }
+            }
+            else if (P1currentSecondaryLevel == 2 && Time.time > nextSecondaryFire)
+            {
+                secondaryFireRate = 0.10f;
+                nextSecondaryFire = Time.time + secondaryFireRate;
+                //How many bullets. Initial angle to be fired at. How much to increase the angle by.
+                P1SecondaryFanFire(2, 30, 5);
+            }
+            else if (P1currentSecondaryLevel == 3 && Time.time > nextSecondaryFire)
+            {
+                secondaryFireRate = 0.10f;
+                nextSecondaryFire = Time.time + secondaryFireRate;
+                P1SecondaryFanFire(3, 30, 5);
+            }
+            else if (P1currentSecondaryLevel == 4 && Time.time > nextSecondaryFire)
+            {
+                secondaryFireRate = 0.10f;
+                nextSecondaryFire = Time.time + secondaryFireRate;
+                P1SecondaryFanFire(4, 30, 5);
+            }
+            else if (P1currentSecondaryLevel == 5 && Time.time > nextSecondaryFire)
+            {
+                secondaryFireRate = 0.10f;
+                nextSecondaryFire = Time.time + secondaryFireRate;
+                P1SecondaryFanFire(5, 30, 5);
             }
         }
-        else if (currentSecondaryLevel == 2 && Time.time > nextSecondaryFire)
+        //player 2
+        if (whichPlayer)
         {
-            secondaryFireRate = 0.10f;
-            nextSecondaryFire = Time.time + secondaryFireRate;
-            //How many bullets. Initial angle to be fired at. How much to increase the angle by.
-            SecondaryFanFire(2, 30, 5);
-        }
-        else if (currentSecondaryLevel == 3 && Time.time > nextSecondaryFire)
-        {
-            secondaryFireRate = 0.10f;
-            nextSecondaryFire = Time.time + secondaryFireRate;
-            SecondaryFanFire(3, 30, 5);
-        }
-        else if (currentSecondaryLevel == 4 && Time.time > nextSecondaryFire)
-        {
-            secondaryFireRate = 0.10f;
-            nextSecondaryFire = Time.time + secondaryFireRate;
-            SecondaryFanFire(4, 30, 5);
-        }
-        else if (currentSecondaryLevel == 5 && Time.time > nextSecondaryFire)
-        {
-            secondaryFireRate = 0.10f;
-            nextSecondaryFire = Time.time + secondaryFireRate;
-            SecondaryFanFire(5, 30, 5);
+            if (P2currentSecondaryLevel == 1 && Time.time > nextSecondaryFire)
+            {
+                secondaryFireRate = 0.10f;
+                nextSecondaryFire = Time.time + secondaryFireRate;
+                foreach (var secondarySpawn in secondarySpawns)
+                {
+                    Instantiate(P2secondaryBullet, secondarySpawn.position, secondarySpawn.rotation);
+                }
+            }
+            else if (P2currentSecondaryLevel == 2 && Time.time > nextSecondaryFire)
+            {
+                secondaryFireRate = 0.10f;
+                nextSecondaryFire = Time.time + secondaryFireRate;
+                //How many bullets. Initial angle to be fired at. How much to increase the angle by.
+                P2SecondaryFanFire(2, 30, 5);
+            }
+            else if (P2currentSecondaryLevel == 3 && Time.time > nextSecondaryFire)
+            {
+                secondaryFireRate = 0.10f;
+                nextSecondaryFire = Time.time + secondaryFireRate;
+                P2SecondaryFanFire(3, 30, 5);
+            }
+            else if (P2currentSecondaryLevel == 4 && Time.time > nextSecondaryFire)
+            {
+                secondaryFireRate = 0.10f;
+                nextSecondaryFire = Time.time + secondaryFireRate;
+                P2SecondaryFanFire(4, 30, 5);
+            }
+            else if (P2currentSecondaryLevel == 5 && Time.time > nextSecondaryFire)
+            {
+                secondaryFireRate = 0.10f;
+                nextSecondaryFire = Time.time + secondaryFireRate;
+                P2SecondaryFanFire(5, 30, 5);
+            }
         }
     }
 
@@ -329,41 +603,85 @@ public class PlayerWeaponController : MonoBehaviour
     {
         WhatPlayer();
 
-        if (currentSecondaryLevel == 1 && Time.time > nextSecondaryFire)
+        //player 1
+        if (!whichPlayer)
         {
-            secondaryFireRate = 1.5f;
-            nextSecondaryFire = Time.time + secondaryFireRate;
-            foreach (var secondarySpawn in secondarySpawns)
+            if (P1currentSecondaryLevel == 1 && Time.time > nextSecondaryFire)
             {
-                Instantiate(secondaryBullet, secondarySpawn.position, secondarySpawn.rotation);
+                secondaryFireRate = 1.5f;
+                nextSecondaryFire = Time.time + secondaryFireRate;
+                foreach (var secondarySpawn in secondarySpawns)
+                {
+                    Instantiate(P1secondaryBullet, secondarySpawn.position, secondarySpawn.rotation);
+                }
+            }
+            else if (P1currentSecondaryLevel == 2 && Time.time > nextSecondaryFire)
+            {
+                secondaryFireRate = 1.25f;
+                nextSecondaryFire = Time.time + secondaryFireRate;
+                foreach (var secondarySpawn in secondarySpawns)
+                {
+                    Instantiate(P1secondaryBullet, secondarySpawn.position, secondarySpawn.rotation);
+                }
+            }
+            else if (P1currentSecondaryLevel == 3 && Time.time > nextSecondaryFire)
+            {
+                nextSecondaryFire = Time.time + secondaryFireRate;
+                secondaryFireRate = 1.25f;
+                P1SecondaryFanFire(2, 10, 15);
+            }
+            else if (P1currentSecondaryLevel == 4 && Time.time > nextSecondaryFire)
+            {
+                nextSecondaryFire = Time.time + secondaryFireRate;
+                secondaryFireRate = 1.0f;
+                P1SecondaryFanFire(2, 10, 15);
+            }
+            else if (P1currentSecondaryLevel == 5 && Time.time > nextSecondaryFire)
+            {
+                nextSecondaryFire = Time.time + secondaryFireRate;
+                secondaryFireRate = 1.0f;
+                P1SecondaryFanFire(3, 10, 15);
             }
         }
-        else if (currentSecondaryLevel == 2 && Time.time > nextSecondaryFire)
+        //player 2
+        if (whichPlayer)
         {
-            secondaryFireRate = 1.25f;
-            nextSecondaryFire = Time.time + secondaryFireRate;
-            foreach (var secondarySpawn in secondarySpawns)
+            if (P2currentSecondaryLevel == 1 && Time.time > nextSecondaryFire)
             {
-                Instantiate(secondaryBullet, secondarySpawn.position, secondarySpawn.rotation);
+                secondaryFireRate = 1.5f;
+                nextSecondaryFire = Time.time + secondaryFireRate;
+                foreach (var secondarySpawn in secondarySpawns)
+                {
+                    Instantiate(P2secondaryBullet, secondarySpawn.position, secondarySpawn.rotation);
+                }
             }
-        }
-        else if (currentSecondaryLevel == 3 && Time.time > nextSecondaryFire)
-        {
-            nextSecondaryFire = Time.time + secondaryFireRate;
-            secondaryFireRate = 1.25f;
-            SecondaryFanFire(2, 10, 15);
-        }
-        else if (currentSecondaryLevel == 4 && Time.time > nextSecondaryFire)
-        {
-            nextSecondaryFire = Time.time + secondaryFireRate;
-            secondaryFireRate = 1.0f;
-            SecondaryFanFire(2, 10, 15);
-        }
-        else if (currentSecondaryLevel == 5 && Time.time > nextSecondaryFire)
-        {
-            nextSecondaryFire = Time.time + secondaryFireRate;
-            secondaryFireRate = 1.0f;
-            SecondaryFanFire(3, 10, 15);
+            else if (P2currentSecondaryLevel == 2 && Time.time > nextSecondaryFire)
+            {
+                secondaryFireRate = 1.25f;
+                nextSecondaryFire = Time.time + secondaryFireRate;
+                foreach (var secondarySpawn in secondarySpawns)
+                {
+                    Instantiate(P2secondaryBullet, secondarySpawn.position, secondarySpawn.rotation);
+                }
+            }
+            else if (P2currentSecondaryLevel == 3 && Time.time > nextSecondaryFire)
+            {
+                nextSecondaryFire = Time.time + secondaryFireRate;
+                secondaryFireRate = 1.25f;
+                P2SecondaryFanFire(2, 10, 15);
+            }
+            else if (P2currentSecondaryLevel == 4 && Time.time > nextSecondaryFire)
+            {
+                nextSecondaryFire = Time.time + secondaryFireRate;
+                secondaryFireRate = 1.0f;
+                P2SecondaryFanFire(2, 10, 15);
+            }
+            else if (P2currentSecondaryLevel == 5 && Time.time > nextSecondaryFire)
+            {
+                nextSecondaryFire = Time.time + secondaryFireRate;
+                secondaryFireRate = 1.0f;
+                P2SecondaryFanFire(3, 10, 15);
+            }
         }
     }
 
@@ -371,39 +689,85 @@ public class PlayerWeaponController : MonoBehaviour
     private void MegaBomb()
     {
         WhatPlayer();
-        Instantiate(superBullet, shotSpawns[0].position, shotSpawns[0].rotation);
+
+        //player 1
+        if (!whichPlayer)
+        {
+            Instantiate(P1superBullet, shotSpawns[0].position, shotSpawns[0].rotation);
+        }
+        //player 2
+        if (whichPlayer)
+        {
+            Instantiate(P2superBullet, shotSpawns[0].position, shotSpawns[0].rotation);
+        }
     }
 
     private void BeamCannon()
     {
         WhatPlayer();
-        childSuperWeapon = Instantiate(superBullet, shotSpawns[0].transform.position, shotSpawns[0].transform.rotation) as GameObject;
-        childSuperWeapon.transform.parent = gameObject.transform;
+
+        //player 1
+        if (!whichPlayer)
+        {
+            childSuperWeapon = Instantiate(P1superBullet, shotSpawns[0].transform.position, shotSpawns[0].transform.rotation) as GameObject;
+            childSuperWeapon.transform.parent = gameObject.transform;
+        }
+        //player 2
+        if (whichPlayer)
+        {
+            childSuperWeapon = Instantiate(P2superBullet, shotSpawns[0].transform.position, shotSpawns[0].transform.rotation) as GameObject;
+            childSuperWeapon.transform.parent = gameObject.transform;
+        }
     }
 
     private void MegaShield()
     {
         WhatPlayer();
-        childSuperWeapon = Instantiate(superBullet, gameObject.transform.position, gameObject.transform.rotation) as GameObject;
-        childSuperWeapon.transform.parent = gameObject.transform;
+
+
+        //player 1
+        if (!whichPlayer)
+        {
+            childSuperWeapon = Instantiate(P1superBullet, gameObject.transform.position, gameObject.transform.rotation) as GameObject;
+            childSuperWeapon.transform.parent = gameObject.transform;
+        }
+        //player 2
+        if (whichPlayer)
+        {
+            childSuperWeapon = Instantiate(P2superBullet, gameObject.transform.position, gameObject.transform.rotation) as GameObject;
+            childSuperWeapon.transform.parent = gameObject.transform;
+        }
     }
 
 
     //Where fancy shooting patterns go.
     //Fires one gun after another.
-    private void ChainFire()
+    //player 1
+    private void P1ChainFire()
     {
         if (nextGun >= shotSpawns.Length)
         {
             nextGun = 0;
         }
         nextFire = Time.time + fireRate;
-        Instantiate(bullet, shotSpawns[nextGun].position, shotSpawns[nextGun].rotation);
+        Instantiate(P1bullet, shotSpawns[nextGun].position, shotSpawns[nextGun].rotation);
+        nextGun++;
+    }
+    //player 2
+    private void P2ChainFire()
+    {
+        if (nextGun >= shotSpawns.Length)
+        {
+            nextGun = 0;
+        }
+        nextFire = Time.time + fireRate;
+        Instantiate(P2bullet, shotSpawns[nextGun].position, shotSpawns[nextGun].rotation);
         nextGun++;
     }
 
     //Number of shots. Default Angle for spread. Default increment for those bullets that need to start more sideways.
-    private void FanFire(int numberOfShots, float spreadAngleIncrementDefault)
+    //player 1
+    private void P1FanFire(int numberOfShots, float spreadAngleIncrementDefault)
     {
         //Contains the incremented shot angle.
         float spreadAngleIncrement;
@@ -421,13 +785,13 @@ public class PlayerWeaponController : MonoBehaviour
             while (shotCounter < numberOfShots)
             {
                 //Instantiates a bullet at the desired position at the desired Y rotation.
-                Instantiate(bullet, shotSpawns[0].position, Quaternion.Euler(0, spreadAngleIncrement, 0));
+                Instantiate(P1bullet, shotSpawns[0].position, Quaternion.Euler(0, spreadAngleIncrement, 0));
                 //Flips the rotation for the next bullet.
                 spreadAngleIncrement *= -1;
                 //Increments the shot counter.
                 shotCounter++;
                 //Instantiates flipped bullet.
-                Instantiate(bullet, shotSpawns[0].position, Quaternion.Euler(0, spreadAngleIncrement, 0));
+                Instantiate(P1bullet, shotSpawns[0].position, Quaternion.Euler(0, spreadAngleIncrement, 0));
                 //Increments shot counter. Should be incremented by two now.
                 shotCounter++;
                 //IMPORTANT: Flips the rotation again! Otherwise it's adding a negative by a positive for the next bit and cancels itself out.
@@ -449,19 +813,94 @@ public class PlayerWeaponController : MonoBehaviour
             nextFire = Time.time + fireRate;
 
             //Spawns the central bullet
-            Instantiate(bullet, shotSpawns[0].position, shotSpawns[0].rotation);
+            Instantiate(P1bullet, shotSpawns[0].position, shotSpawns[0].rotation);
             spreadAngleIncrement = spreadAngleIncrementDefault;
 
             while (shotCounter < numberOfShots - 1)
             {
                 //Instantiates a bullet at the desired position at the desired Y rotation.
-                Instantiate(bullet, shotSpawns[0].position, Quaternion.Euler(0, spreadAngleIncrement, 0));
+                Instantiate(P1bullet, shotSpawns[0].position, Quaternion.Euler(0, spreadAngleIncrement, 0));
                 //Flips the rotation for the next bullet.
                 spreadAngleIncrement *= -1;
                 //Increments the shot counter.
                 shotCounter++;
                 //Instantiates flipped bullet.
-                Instantiate(bullet, shotSpawns[0].position, Quaternion.Euler(0, spreadAngleIncrement, 0));
+                Instantiate(P1bullet, shotSpawns[0].position, Quaternion.Euler(0, spreadAngleIncrement, 0));
+                //Increments shot counter. Should be incremented by two now.
+                shotCounter++;
+                //IMPORTANT: Flips the rotation again! Otherwise it's adding a negative by a positive for the next bit and cancels itself out.
+                spreadAngleIncrement *= -1;
+                //Increeases the Y rotation to apply for the next set of rounds to spawn.
+                spreadAngleIncrement = spreadAngleIncrement + spreadAngleIncrementDefault;
+            }
+
+            //Resets the shot counter so the next volley of shots can go out.
+            if (shotCounter == numberOfShots)
+            {
+                shotCounter = 0;
+            }
+        }
+    }
+    //player 2
+    private void P2FanFire(int numberOfShots, float spreadAngleIncrementDefault)
+    {
+        //Contains the incremented shot angle.
+        float spreadAngleIncrement;
+
+        //Checks if there is an even number of shots.
+        if (numberOfShots % 2 == 0)
+        {
+            //Tracks the number of shots fired by the loop.
+            shotCounter = 0;
+            //Still keeps track of when the gun can shoot next.
+            nextFire = Time.time + fireRate;
+            //Sets the increment at which bullets will be turned.
+            spreadAngleIncrement = spreadAngleIncrementDefault;
+
+            while (shotCounter < numberOfShots)
+            {
+                //Instantiates a bullet at the desired position at the desired Y rotation.
+                Instantiate(P2bullet, shotSpawns[0].position, Quaternion.Euler(0, spreadAngleIncrement, 0));
+                //Flips the rotation for the next bullet.
+                spreadAngleIncrement *= -1;
+                //Increments the shot counter.
+                shotCounter++;
+                //Instantiates flipped bullet.
+                Instantiate(P2bullet, shotSpawns[0].position, Quaternion.Euler(0, spreadAngleIncrement, 0));
+                //Increments shot counter. Should be incremented by two now.
+                shotCounter++;
+                //IMPORTANT: Flips the rotation again! Otherwise it's adding a negative by a positive for the next bit and cancels itself out.
+                spreadAngleIncrement *= -1;
+                //Increeases the Y rotation to apply for the next set of rounds to spawn.
+                spreadAngleIncrement = spreadAngleIncrement + spreadAngleIncrementDefault;
+            }
+
+            //Resets the shot counter so the next volley of shots can go out.
+            if (shotCounter == numberOfShots)
+            {
+                shotCounter = 0;
+            }
+        }
+        //Uses this if there is an odd number of shots.
+        else
+        {
+            shotCounter = 0;
+            nextFire = Time.time + fireRate;
+
+            //Spawns the central bullet
+            Instantiate(P2bullet, shotSpawns[0].position, shotSpawns[0].rotation);
+            spreadAngleIncrement = spreadAngleIncrementDefault;
+
+            while (shotCounter < numberOfShots - 1)
+            {
+                //Instantiates a bullet at the desired position at the desired Y rotation.
+                Instantiate(P2bullet, shotSpawns[0].position, Quaternion.Euler(0, spreadAngleIncrement, 0));
+                //Flips the rotation for the next bullet.
+                spreadAngleIncrement *= -1;
+                //Increments the shot counter.
+                shotCounter++;
+                //Instantiates flipped bullet.
+                Instantiate(P2bullet, shotSpawns[0].position, Quaternion.Euler(0, spreadAngleIncrement, 0));
                 //Increments shot counter. Should be incremented by two now.
                 shotCounter++;
                 //IMPORTANT: Flips the rotation again! Otherwise it's adding a negative by a positive for the next bit and cancels itself out.
@@ -479,7 +918,8 @@ public class PlayerWeaponController : MonoBehaviour
     }
 
     //Number of shots. Default spread angle. Default increment for shots.
-    private void SecondaryFanFire(int numberOfShots, float spreadAngleDefault, float spreadAngleIncrementDefault)
+    //player 1
+    private void P1SecondaryFanFire(int numberOfShots, float spreadAngleDefault, float spreadAngleIncrementDefault)
     {
         //Contains the incremented shot angle.
         float spreadAngleIncrementL;
@@ -498,7 +938,7 @@ public class PlayerWeaponController : MonoBehaviour
             {
                 while (shotCounter < numberOfShots)
                 {
-                    Instantiate(secondaryBullet, secondarySpawn.position, Quaternion.Euler(0, -spreadAngleIncrementL, 0));
+                    Instantiate(P1secondaryBullet, secondarySpawn.position, Quaternion.Euler(0, -spreadAngleIncrementL, 0));
                     spreadAngleIncrementL = spreadAngleIncrementL + spreadAngleIncrementDefault;
                     shotCounter++;
                 }
@@ -507,7 +947,48 @@ public class PlayerWeaponController : MonoBehaviour
             {
                 while (shotCounter < numberOfShots)
                 {
-                    Instantiate(secondaryBullet, secondarySpawn.position, Quaternion.Euler(0, +spreadAngleIncrementR, 0));
+                    Instantiate(P1secondaryBullet, secondarySpawn.position, Quaternion.Euler(0, +spreadAngleIncrementR, 0));
+                    spreadAngleIncrementR = spreadAngleIncrementR + spreadAngleIncrementDefault;
+                    shotCounter++;
+                }
+            }
+
+            if (shotCounter == numberOfShots)
+            {
+                shotCounter = 0;
+            }
+        }
+    }
+    //player 2
+    private void P2SecondaryFanFire(int numberOfShots, float spreadAngleDefault, float spreadAngleIncrementDefault)
+    {
+        //Contains the incremented shot angle.
+        float spreadAngleIncrementL;
+        float spreadAngleIncrementR;
+
+        spreadAngleIncrementL = spreadAngleDefault;
+        spreadAngleIncrementR = spreadAngleDefault;
+
+        foreach (var secondarySpawn in secondarySpawns)
+        {
+            //Tracks how many shots have been fired.
+            shotCounter = 0;
+            //Sets the initial angle at which shots will be fired.
+
+            if (secondarySpawn == secondarySpawns[0])
+            {
+                while (shotCounter < numberOfShots)
+                {
+                    Instantiate(P2secondaryBullet, secondarySpawn.position, Quaternion.Euler(0, -spreadAngleIncrementL, 0));
+                    spreadAngleIncrementL = spreadAngleIncrementL + spreadAngleIncrementDefault;
+                    shotCounter++;
+                }
+            }
+            else if (secondarySpawn == secondarySpawns[1])
+            {
+                while (shotCounter < numberOfShots)
+                {
+                    Instantiate(P2secondaryBullet, secondarySpawn.position, Quaternion.Euler(0, +spreadAngleIncrementR, 0));
                     spreadAngleIncrementR = spreadAngleIncrementR + spreadAngleIncrementDefault;
                     shotCounter++;
                 }
@@ -524,107 +1005,251 @@ public class PlayerWeaponController : MonoBehaviour
     //Figures out what player it belongs to?
     private void WhatPlayer()
     {
-        //Puts the bullet into a container to modify.
-        bullet = primaryWeapons[P1primaryWeaponSelector] as GameObject;
-        secondaryBullet = secondaryWeapons[P1secondaryWeaponSelector] as GameObject;
-        superBullet = superWeapons[P1superWeaponSelector] as GameObject;
+        //player 1
+        if (!whichPlayer)
+        {
+            //Puts the bullet into a container to modify.
+            P1bullet = primaryWeapons[P1primaryWeaponSelector] as GameObject;
+            P1secondaryBullet = secondaryWeapons[P1secondaryWeaponSelector] as GameObject;
+            P1superBullet = superWeapons[P1superWeaponSelector] as GameObject;
 
-        //PrimaryWeapons
-        if (P1primaryWeaponSelector == 0)
-        {
-            //Takes said container and tells it to let the bullet know what player it belongs to.
-            bullet.GetComponent<AttackScript>().whoDoIBelongTo = whichPlayer;
-        }
-        else if (P1primaryWeaponSelector == 1)
-        {
-            //Takes said container and tells it to let the bullet know what player it belongs to.
-            bullet.GetComponent<AttackAoE>().whoDoIBelongTo = whichPlayer;
-        }
-        else if (P1primaryWeaponSelector == 2)
-        {
-            if (currentWLevel <= 2)
+            //PrimaryWeapons
+            if (P1primaryWeaponSelector == 0)
             {
-                //Uses the standard PAC shot contained within the primaryWeapons array.
                 //Takes said container and tells it to let the bullet know what player it belongs to.
-                bullet.GetComponent<AttackPenetrate>().whoDoIBelongTo = whichPlayer;
+                P1bullet.GetComponent<AttackScript>().whoDoIBelongTo = false;
             }
-            else if (currentWLevel >= 3 && currentWLevel < 5)
+            else if (P1primaryWeaponSelector == 1)
             {
-                //Uses the second tier of PAC shot contained in the plasmaAcceleratorCannon array.
-                bullet = plasmaAcceleratorCannon[0] as GameObject;
                 //Takes said container and tells it to let the bullet know what player it belongs to.
-                bullet.GetComponent<AttackPenetrate>().whoDoIBelongTo = whichPlayer;
+                P1bullet.GetComponent<AttackAoE>().whoDoIBelongTo = false;
             }
-            else if (currentWLevel == 5)
+            else if (P1primaryWeaponSelector == 2)
             {
-                //Uses the third tier of PAC shot contained in the plasmaAcceleratorCannon array.
-                bullet = plasmaAcceleratorCannon[1] as GameObject;
-                //Takes said container and tells it to let the bullet know what player it belongs to.
-                bullet.GetComponent<AttackPenetrate>().whoDoIBelongTo = whichPlayer;
+                if (P1currentWLevel <= 2)
+                {
+                    //Uses the standard PAC shot contained within the primaryWeapons array.
+                    //Takes said container and tells it to let the bullet know what player it belongs to.
+                    P1bullet.GetComponent<AttackPenetrate>().whoDoIBelongTo = false;
+                }
+                else if (P1currentWLevel >= 3 && P1currentWLevel < 5)
+                {
+                    //Uses the second tier of PAC shot contained in the plasmaAcceleratorCannon array.
+                    P1bullet = plasmaAcceleratorCannon[0] as GameObject;
+                    //Takes said container and tells it to let the bullet know what player it belongs to.
+                    P1bullet.GetComponent<AttackPenetrate>().whoDoIBelongTo = false;
+                }
+                else if (P1currentWLevel == 5)
+                {
+                    //Uses the third tier of PAC shot contained in the plasmaAcceleratorCannon array.
+                    P1bullet = plasmaAcceleratorCannon[1] as GameObject;
+                    //Takes said container and tells it to let the bullet know what player it belongs to.
+                    P1bullet.GetComponent<AttackPenetrate>().whoDoIBelongTo = false;
+                }
             }
-        }
 
-        //SecondaryWeapons
-        if (P1secondaryWeaponSelector == 0)
-        {
-            secondaryBullet.GetComponent<AttackAoE>().whoDoIBelongTo = whichPlayer;
-        }
-        else if (P1secondaryWeaponSelector == 1)
-        {
-            secondaryBullet.GetComponent<AttackScript>().whoDoIBelongTo = whichPlayer;
-        }
-        else if (P1secondaryWeaponSelector == 2)
-        {
-            secondaryBullet.GetComponent<AttackAoE>().whoDoIBelongTo = whichPlayer;
-        }
+            //SecondaryWeapons
+            if (P1secondaryWeaponSelector == 0)
+            {
+                P1secondaryBullet.GetComponent<AttackAoE>().whoDoIBelongTo = false;
+            }
+            else if (P1secondaryWeaponSelector == 1)
+            {
+                P1secondaryBullet.GetComponent<AttackScript>().whoDoIBelongTo = false;
+            }
+            else if (P1secondaryWeaponSelector == 2)
+            {
+                P1secondaryBullet.GetComponent<AttackAoE>().whoDoIBelongTo = false;
+            }
 
-        //SuperWeapons
-        if (P1superWeaponSelector == 0)
-        {
-            superBullet.GetComponent<SuperBombLauncher>().whoDoIBelongTo = whichPlayer;
+            //SuperWeapons
+            if (P1superWeaponSelector == 0)
+            {
+                P1superBullet.GetComponent<SuperBombLauncher>().whoDoIBelongTo = false;
+            }
+            if (P1superWeaponSelector == 1)
+            {
+                P1superBullet.GetComponent<BeamCannon>().whoDoIBelongTo = false;
+            }
+            if (P1superWeaponSelector == 2)
+            {
+                P1superBullet.GetComponent<MegaShield>().whoDoIBelongTo = false;
+            }
         }
-        if (P1superWeaponSelector == 1)
+        //player2
+        if (whichPlayer)
         {
-            superBullet.GetComponent<BeamCannon>().whoDoIBelongTo = whichPlayer;
-        }
-        if (P1superWeaponSelector == 2)
-        {
-            superBullet.GetComponent<MegaShield>().whoDoIBelongTo = whichPlayer;
+            //Puts the bullet into a container to modify.
+            P2bullet = primaryWeapons[P2primaryWeaponSelector] as GameObject;
+            P2secondaryBullet = secondaryWeapons[P2secondaryWeaponSelector] as GameObject;
+            P2superBullet = superWeapons[P2superWeaponSelector] as GameObject;
+
+            //PrimaryWeapons
+            if (P2primaryWeaponSelector == 0)
+            {
+                //Takes said container and tells it to let the bullet know what player it belongs to.
+                P2bullet.GetComponent<AttackScript>().whoDoIBelongTo = true;
+            }
+            else if (P2primaryWeaponSelector == 1)
+            {
+                //Takes said container and tells it to let the bullet know what player it belongs to.
+                P2bullet.GetComponent<AttackAoE>().whoDoIBelongTo = true;
+            }
+            else if (P2primaryWeaponSelector == 2)
+            {
+                if (P2currentWLevel <= 2)
+                {
+                    //Uses the standard PAC shot contained within the primaryWeapons array.
+                    //Takes said container and tells it to let the bullet know what player it belongs to.
+                    P2bullet.GetComponent<AttackPenetrate>().whoDoIBelongTo = true;
+                }
+                else if (P2currentWLevel >= 3 && P1currentWLevel < 5)
+                {
+                    //Uses the second tier of PAC shot contained in the plasmaAcceleratorCannon array.
+                    P2bullet = plasmaAcceleratorCannon[0] as GameObject;
+                    //Takes said container and tells it to let the bullet know what player it belongs to.
+                    P2bullet.GetComponent<AttackPenetrate>().whoDoIBelongTo = true;
+                }
+                else if (P2currentWLevel == 5)
+                {
+                    //Uses the third tier of PAC shot contained in the plasmaAcceleratorCannon array.
+                    P2bullet = plasmaAcceleratorCannon[1] as GameObject;
+                    //Takes said container and tells it to let the bullet know what player it belongs to.
+                    P2bullet.GetComponent<AttackPenetrate>().whoDoIBelongTo = true;
+                }
+            }
+
+            //SecondaryWeapons
+            if (P2secondaryWeaponSelector == 0)
+            {
+                P2secondaryBullet.GetComponent<AttackAoE>().whoDoIBelongTo = true;
+            }
+            else if (P2secondaryWeaponSelector == 1)
+            {
+                P2secondaryBullet.GetComponent<AttackScript>().whoDoIBelongTo = true;
+            }
+            else if (P2secondaryWeaponSelector == 2)
+            {
+                P2secondaryBullet.GetComponent<AttackAoE>().whoDoIBelongTo = true;
+            }
+
+            //SuperWeapons
+            if (P2superWeaponSelector == 0)
+            {
+                P2superBullet.GetComponent<SuperBombLauncher>().whoDoIBelongTo = true;
+            }
+            if (P2superWeaponSelector == 1)
+            {
+                P2superBullet.GetComponent<BeamCannon>().whoDoIBelongTo = true;
+            }
+            if (P2superWeaponSelector == 2)
+            {
+                P2superBullet.GetComponent<MegaShield>().whoDoIBelongTo = true;
+            }
         }
     }
 
     public void MorePrimaryGun()
     {
-        if (currentWLevel >= 5)
+        //player 1
+        if (!whichPlayer)
         {
-            currentWLevel = 5;
+            if (P1currentWLevel >= 5)
+            {
+                P1currentWLevel = 5;
+            }
+
+            P1currentWLevel += 1;
         }
-        currentWLevel += 1;            
+
+        //player 2
+        if (whichPlayer)
+        {
+            if (P2currentWLevel >= 5)
+            {
+                P2currentWLevel = 5;
+            }
+
+            P2currentWLevel += 1;
+        }
     }
 
     public void MoreSecondaryGun()
     {
-        if (currentSecondaryLevel >= 5)
+        //player 1
+        if (!whichPlayer)
         {
-            currentSecondaryLevel = 5;
+            if (P1currentSecondaryLevel >= 5)
+            {
+                P1currentSecondaryLevel = 5;
+            }
+
+            P1currentSecondaryLevel += 1;
         }
-        currentSecondaryLevel += 1;
+        //player 2
+        if (whichPlayer)
+        {
+            if (P2currentSecondaryLevel >= 5)
+            {
+                P2currentSecondaryLevel = 5;
+            }
+
+            P2currentSecondaryLevel += 1;
+        }
     }
 
     public void MoreSuperAmmo()
     {
-        if (superAmmo >= superAmmoCap)
+        //player 1
+        if (!whichPlayer)
         {
-            superAmmo = superAmmoCap;
+            if (P1superAmmo >= superAmmoCap)
+            {
+                P1superAmmo = superAmmoCap;
+            }
+
+            P1superAmmo += 1;
+            P1superAmmoCounter.text = "Super Ammo: " + P1superAmmo;
         }
-        superAmmo += 1;        
-        superAmmoCounter.text = "Super Ammo: " + superAmmo;
+        //player 2
+        if (whichPlayer)
+        {
+            if (P2superAmmo >= superAmmoCap)
+            {
+                P2superAmmo = superAmmoCap;
+            }
+
+            P2superAmmo += 1;
+            P2superAmmoCounter.text = "Super Ammo: " + P2superAmmo;
+        }
     }
 
     //For When you respawn
     public void LessGun()
     {
-        currentWLevel = baseWLevel;
-        currentSecondaryLevel = baseSecondaryLevel;
+        P1currentWLevel = baseWLevel;
+        P1currentSecondaryLevel = baseSecondaryLevel;
+
+        P2currentWLevel = baseWLevel;
+        P2currentSecondaryLevel = baseSecondaryLevel;
+    }
+
+    public void SettingUpPlayer1Weapon()
+    {
+        P1superAmmo = superAmmoDefault;
+        P1superAmmoCounter.text = "Super Ammo: " + P1superAmmo;
+
+        P1primaryWeaponSelector = UIController.P1primaryType - 1;
+        P1secondaryWeaponSelector = UIController.P1secondaryType - 1;
+        P1superWeaponSelector = UIController.P1specialType - 1;
+    }
+    public void SettingUpPlayer2Weapon()
+    {
+        P2superAmmo = superAmmoDefault;
+        P2superAmmoCounter.text = "Super Ammo: " + P2superAmmo;
+
+        P2primaryWeaponSelector = UIController.P2primaryType - 1;
+        P2secondaryWeaponSelector = UIController.P2secondaryType - 1;
+        P2superWeaponSelector = UIController.P2specialType - 1;
     }
 }

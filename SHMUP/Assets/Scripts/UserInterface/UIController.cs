@@ -177,7 +177,7 @@ public class UIController : MonoBehaviour
     //button clicked
     public void StartButton()
     {
-        SceneManager.LoadScene("(Testing)TheRange");
+        SceneManager.LoadScene("Level1");
     }
 
     public void QuitButton()
