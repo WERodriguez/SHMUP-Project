@@ -1157,6 +1157,7 @@ public class PlayerWeaponController : MonoBehaviour
             if (P1currentWLevel >= 5)
             {
                 P1currentWLevel = 5;
+                return;
             }
 
             P1currentWLevel += 1;
@@ -1168,6 +1169,7 @@ public class PlayerWeaponController : MonoBehaviour
             if (P2currentWLevel >= 5)
             {
                 P2currentWLevel = 5;
+                return;
             }
 
             P2currentWLevel += 1;
@@ -1182,6 +1184,7 @@ public class PlayerWeaponController : MonoBehaviour
             if (P1currentSecondaryLevel >= 5)
             {
                 P1currentSecondaryLevel = 5;
+                return;
             }
 
             P1currentSecondaryLevel += 1;
@@ -1192,6 +1195,7 @@ public class PlayerWeaponController : MonoBehaviour
             if (P2currentSecondaryLevel >= 5)
             {
                 P2currentSecondaryLevel = 5;
+                return;
             }
 
             P2currentSecondaryLevel += 1;
@@ -1206,6 +1210,7 @@ public class PlayerWeaponController : MonoBehaviour
             if (P1superAmmo >= superAmmoCap)
             {
                 P1superAmmo = superAmmoCap;
+                return;
             }
 
             P1superAmmo += 1;
@@ -1217,6 +1222,7 @@ public class PlayerWeaponController : MonoBehaviour
             if (P2superAmmo >= superAmmoCap)
             {
                 P2superAmmo = superAmmoCap;
+                return;
             }
 
             P2superAmmo += 1;
