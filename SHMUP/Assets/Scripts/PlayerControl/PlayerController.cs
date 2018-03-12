@@ -137,7 +137,7 @@ public class PlayerController : MonoBehaviour
             if ((p2Total == 2) && (p2Delay < .5))
             {
                 //CallSuper Here
-                Debug.Log("I'MA FIRIN MUH LAZOOOOOOOR TOOOOO");
+                //Debug.Log("I'MA FIRIN MUH LAZOOOOOOOR TOOOOO");
                 weaponController.SuperWeapon();
                 p2Delay = 0;
                 p2Total = 0;

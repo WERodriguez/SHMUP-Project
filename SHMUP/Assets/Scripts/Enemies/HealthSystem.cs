@@ -28,6 +28,8 @@ public class HealthSystem : MonoBehaviour
     //For boss/bosspart death
     public GameObject scrap;
 
+    public bool scoreScreen;
+
     void Start ()
     {
         currentHealth = maxHealth;
@@ -81,19 +83,21 @@ public class HealthSystem : MonoBehaviour
             Destroy(gameObject);
 
             HUDcontroller.winLevel = true;
-
         }
         else if (currentHealth <= 0 && isBossPart)
         {
             doesLootDrop = Random.Range(0.0f, 100.0f);
+
             if (addScore != null)
             {
                 addScore.AddPoints(whatPlayer);
+                    
                 if (doesLootDrop <= lootDropChance)
                 {
                     callLoot.LootRoll(Random.Range(0.0f, 100.0f));
                 }
             }
+
             Instantiate(scrap, gameObject.transform.position, gameObject.transform.rotation);
             Destroy(gameObject);
         }
@@ -104,10 +108,12 @@ public class HealthSystem : MonoBehaviour
             if (addScore != null)
             {
                 addScore.AddPoints(whatPlayer);
+
                 if (doesLootDrop <= lootDropChance)
                 {
                     callLoot.LootRoll(Random.Range(0.0f, 100.0f));
                 }
+
                 Destroy(gameObject);
             }
         }

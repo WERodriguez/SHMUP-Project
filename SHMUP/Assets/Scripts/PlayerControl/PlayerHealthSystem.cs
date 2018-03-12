@@ -89,7 +89,6 @@ public class PlayerHealthSystem : MonoBehaviour
                 respawnTimer = 0;
             }
         }
-
         if (gameObject.GetComponent<PlayerController>().P2isDead == true && P2canRespawn == true)
         {
             respawnTimer += Time.deltaTime;

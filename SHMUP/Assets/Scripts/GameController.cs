@@ -58,7 +58,7 @@ public class GameController : MonoBehaviour
     {
         yield return new WaitForSeconds(startWait);
 
-        //CallBoss();
+        CallBoss();
 
         Instantiate(lightEnemies[0], mainSpawns[6].position, mainSpawns[0].rotation);
         yield return new WaitForSeconds(0.2f);

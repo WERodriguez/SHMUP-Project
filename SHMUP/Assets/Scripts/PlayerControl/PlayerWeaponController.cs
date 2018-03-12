@@ -27,9 +27,9 @@ public class PlayerWeaponController : MonoBehaviour
     //Currently equipped primary weapon.
     //MG = 0. Flak = 1. Canon = 3.
     //I was having a hard time with the string array and this just works. >.>
-    public int primaryWeaponSelector;
-    public int secondaryWeaponSelector;
-    public int superWeaponSelector;
+    private int P1primaryWeaponSelector;
+    private int P1secondaryWeaponSelector;
+    private int P1superWeaponSelector;
 
     //Shot to fire
     public GameObject[] primaryWeapons;
@@ -69,35 +69,39 @@ public class PlayerWeaponController : MonoBehaviour
 
         superAmmo = superAmmoDefault;
         superAmmoCounter.text = "Super Ammo: " + superAmmo;
+
+        P1primaryWeaponSelector = UIController.P1primaryType - 1;
+        P1secondaryWeaponSelector = UIController.P1secondaryType - 1;
+        P1superWeaponSelector = UIController.P1specialType - 1;
     }
 
     // Use this for initialization
     public void Fire()
     {
-        if (primaryWeaponSelector == 0)
+        if (P1primaryWeaponSelector == 0)
         {
             MachineGun();
         }
-        else if (primaryWeaponSelector == 1)
+        else if (P1primaryWeaponSelector == 1)
         {
             FlakCannon();
         }
-        else if (primaryWeaponSelector == 2)
+        else if (P1primaryWeaponSelector == 2)
         {
             Cannon();
         }
 
         if(currentSecondaryLevel > 0)
         {
-            if (secondaryWeaponSelector == 0)
+            if (P1secondaryWeaponSelector == 0)
             {
                 HomingMissile();
             }
-            else if (secondaryWeaponSelector == 1)
+            else if (P1secondaryWeaponSelector == 1)
             {
                 SweeperPods();
             }
-            else if (secondaryWeaponSelector == 2)
+            else if (P1secondaryWeaponSelector == 2)
             {
                 PlasmaGun();
             }
@@ -107,19 +111,19 @@ public class PlayerWeaponController : MonoBehaviour
 
     public void SuperWeapon()
     {
-        if (superWeaponSelector == 0 && superAmmo > 0)
+        if (P1superWeaponSelector == 0 && superAmmo > 0)
         {
             MegaBomb();
             superAmmo--;
             superAmmoCounter.text = "Super Ammo: " + superAmmo;
         }
-        else if (superWeaponSelector == 1 && superAmmo > 0)
+        else if (P1superWeaponSelector == 1 && superAmmo > 0)
         {
             BeamCannon();
             superAmmo--;
             superAmmoCounter.text = "Super Ammo: " + superAmmo;
         }
-        else if (superWeaponSelector == 2 && superAmmo > 0)
+        else if (P1superWeaponSelector == 2 && superAmmo > 0)
         {
             MegaShield();
             superAmmo--;
@@ -521,22 +525,22 @@ public class PlayerWeaponController : MonoBehaviour
     private void WhatPlayer()
     {
         //Puts the bullet into a container to modify.
-        bullet = primaryWeapons[primaryWeaponSelector] as GameObject;
-        secondaryBullet = secondaryWeapons[secondaryWeaponSelector] as GameObject;
-        superBullet = superWeapons[superWeaponSelector] as GameObject;
+        bullet = primaryWeapons[P1primaryWeaponSelector] as GameObject;
+        secondaryBullet = secondaryWeapons[P1secondaryWeaponSelector] as GameObject;
+        superBullet = superWeapons[P1superWeaponSelector] as GameObject;
 
         //PrimaryWeapons
-        if (primaryWeaponSelector == 0)
+        if (P1primaryWeaponSelector == 0)
         {
             //Takes said container and tells it to let the bullet know what player it belongs to.
             bullet.GetComponent<AttackScript>().whoDoIBelongTo = whichPlayer;
         }
-        else if (primaryWeaponSelector == 1)
+        else if (P1primaryWeaponSelector == 1)
         {
             //Takes said container and tells it to let the bullet know what player it belongs to.
             bullet.GetComponent<AttackAoE>().whoDoIBelongTo = whichPlayer;
         }
-        else if (primaryWeaponSelector == 2)
+        else if (P1primaryWeaponSelector == 2)
         {
             if (currentWLevel <= 2)
             {
@@ -561,29 +565,29 @@ public class PlayerWeaponController : MonoBehaviour
         }
 
         //SecondaryWeapons
-        if (secondaryWeaponSelector == 0)
+        if (P1secondaryWeaponSelector == 0)
         {
             secondaryBullet.GetComponent<AttackAoE>().whoDoIBelongTo = whichPlayer;
         }
-        else if (secondaryWeaponSelector == 1)
+        else if (P1secondaryWeaponSelector == 1)
         {
             secondaryBullet.GetComponent<AttackScript>().whoDoIBelongTo = whichPlayer;
         }
-        else if (secondaryWeaponSelector == 2)
+        else if (P1secondaryWeaponSelector == 2)
         {
             secondaryBullet.GetComponent<AttackAoE>().whoDoIBelongTo = whichPlayer;
         }
 
         //SuperWeapons
-        if (superWeaponSelector == 0)
+        if (P1superWeaponSelector == 0)
         {
             superBullet.GetComponent<SuperBombLauncher>().whoDoIBelongTo = whichPlayer;
         }
-        if (superWeaponSelector == 1)
+        if (P1superWeaponSelector == 1)
         {
             superBullet.GetComponent<BeamCannon>().whoDoIBelongTo = whichPlayer;
         }
-        if (superWeaponSelector == 2)
+        if (P1superWeaponSelector == 2)
         {
             superBullet.GetComponent<MegaShield>().whoDoIBelongTo = whichPlayer;
         }
