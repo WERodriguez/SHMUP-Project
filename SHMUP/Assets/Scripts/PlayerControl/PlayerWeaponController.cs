@@ -591,29 +591,29 @@ public class PlayerWeaponController : MonoBehaviour
 
     public void MorePrimaryGun()
     {
-            currentWLevel += 1;
-            if(currentWLevel > 5)
-            {
-                currentWLevel = 5;
-            }
+        if (currentWLevel >= 5)
+        {
+            currentWLevel = 5;
+        }
+        currentWLevel += 1;            
     }
 
     public void MoreSecondaryGun()
     {
-        currentSecondaryLevel += 1;
-        if (currentSecondaryLevel > 5)
+        if (currentSecondaryLevel >= 5)
         {
             currentSecondaryLevel = 5;
         }
+        currentSecondaryLevel += 1;
     }
 
     public void MoreSuperAmmo()
     {
-        superAmmo += 1;
-        if (superAmmo > superAmmoCap)
+        if (superAmmo >= superAmmoCap)
         {
             superAmmo = superAmmoCap;
         }
+        superAmmo += 1;        
         superAmmoCounter.text = "Super Ammo: " + superAmmo;
     }
 
