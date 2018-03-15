@@ -185,7 +185,11 @@ public class SelectionMenuController : MonoBehaviour
 
     private void Start()
     {
-        if(MainMenuController.onePlayer)
+        PlayerWeaponController.baseWLevel = 1;
+        PlayerWeaponController.baseSecondaryLevel = 0;
+        PlayerWeaponController.superAmmoDefault = 3;
+
+        if (MainMenuController.onePlayer)
         {
             ActivateSingleSelection();
         }
@@ -1588,14 +1592,14 @@ public class SelectionMenuController : MonoBehaviour
         PlayerHealthSystem.P2maxLives = 2;
     }
 
-    //player 1 passing data
+    //player 1 ship data
     private void Player1Data()
     {
         PlayerHealthSystem.P1currentHealth = PlayerHealthSystem.P1maxHealth;
         PlayerHealthSystem.P1currentShields = PlayerHealthSystem.P1maxShields;
         PlayerHealthSystem.P1currentLives = PlayerHealthSystem.P1maxLives;
     }
-    //player 2 passing data
+    //player 2 ship data
     private void Player2Data()
     {
         PlayerHealthSystem.P2currentHealth = PlayerHealthSystem.P2maxHealth;
@@ -1603,9 +1607,34 @@ public class SelectionMenuController : MonoBehaviour
         PlayerHealthSystem.P2currentLives = PlayerHealthSystem.P2maxLives;
     }
 
+    //player 1 Weapon data
+    private void Player1WeaponData()
+    {
+        PlayerWeaponController.P1savedWeaponLevel = PlayerWeaponController.baseWLevel;
+        PlayerWeaponController.P1savedSecondaryLevel = PlayerWeaponController.baseSecondaryLevel;
+        PlayerWeaponController.P1savedSuperAmmo = PlayerWeaponController.superAmmoDefault;
+    }
+    //player 2 ship data
+    private void Player2WeaponData()
+    {
+        PlayerWeaponController.P2savedWeaponLevel = PlayerWeaponController.baseWLevel;
+        PlayerWeaponController.P2savedSecondaryLevel = PlayerWeaponController.baseSecondaryLevel;
+        PlayerWeaponController.P2savedSuperAmmo = PlayerWeaponController.superAmmoDefault;
+    }
+
     //on click button
     public void StartButton()
     {
+        if(MainMenuController.onePlayer)
+        {
+            Player1WeaponData();
+        }
+        if(!MainMenuController.onePlayer)
+        {
+            Player1WeaponData();
+            Player2WeaponData();
+        }
+
         SceneManager.LoadScene("Level1");
     }
 
@@ -1840,5 +1869,4 @@ public class SelectionMenuController : MonoBehaviour
         P2specialButtonShader.SetActive(true);
         P2special = true;
     }
-
 }
