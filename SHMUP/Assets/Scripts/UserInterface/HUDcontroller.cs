@@ -5,24 +5,22 @@ using UnityEngine.SceneManagement;
 
 public class HUDcontroller : MonoBehaviour
 {
-    public GameObject HUD;
+    public GameObject P1HUD;
+    public GameObject P2HUD;
+    public GameObject pauseText;
 
     public GameObject pauseMenu;
     public GameObject resumeButton;
     public GameObject restartButton;
     public GameObject mainMenuButton;
-
-    public GameObject scoreScreen;
-    public GameObject onePlayerScoreScreen;
-    public GameObject twoPlayersScoreScreen;
-    public GameObject continueButton;
+    public GameObject player2Button;
 
     public static bool winLevel;
 
     private void Start()
     {
+        DeactivateHUD();
         DeactivatePauseMenu();
-        DeactivateScoreScreen();
 
         winLevel = false;
     }
@@ -34,21 +32,11 @@ public class HUDcontroller : MonoBehaviour
             ActivatePauseMenu();
         }
 
-        if (Input.GetKeyDown(KeyCode.I))
-        {
-            ActivateScoreScreen();
-        }
-
-        if (Input.GetKeyDown(KeyCode.O))
-        {
-            SceneManager.LoadScene("GameOver");
-        }
-
-        if(UIController.onePlayer)
+        if(MainMenuController.onePlayer)
         {
             if(PlayerHealthSystem.P1currentHealth <= 0 && PlayerHealthSystem.P1currentShields <= 0 && PlayerHealthSystem.P1currentLives <= 0)
             {
-                SceneManager.LoadScene("GameOver");
+                StartCoroutine(GameOverTimer());
             }
         }
         else
@@ -56,74 +44,71 @@ public class HUDcontroller : MonoBehaviour
             if((PlayerHealthSystem.P1currentHealth <= 0 && PlayerHealthSystem.P1currentShields <= 0 && PlayerHealthSystem.P1currentLives <= 0)
                 && (PlayerHealthSystem.P2currentHealth <= 0 && PlayerHealthSystem.P2currentShields <= 0 && PlayerHealthSystem.P2currentLives <= 0))
             {
-                SceneManager.LoadScene("GameOver");
+                StartCoroutine(GameOverTimer());
             }
         }
 
         if(winLevel)
         {
-            ActivateScoreScreen();
+            StartCoroutine(ScoreScreenTimer());
         }
+    }
+
+    IEnumerator GameOverTimer()
+    {
+        yield return new WaitForSeconds(3f);
+        SceneManager.LoadScene("GameOver");
+    }
+    IEnumerator ScoreScreenTimer()
+    {
+        yield return new WaitForSeconds(3f);
+        SceneManager.LoadScene("ScoreScreen");
     }
 
     private void ActivatePauseMenu()
     {
         Time.timeScale = 0f;
 
-        HUD.SetActive(false);
+        DeactivateHUD();
 
         pauseMenu.SetActive(true);
         resumeButton.SetActive(true);
         restartButton.SetActive(true);
         mainMenuButton.SetActive(true);
+        player2Button.SetActive(true);
     }
     private void DeactivatePauseMenu()
     {
         Time.timeScale = 1f;
 
-        HUD.SetActive(true);
+        ActivateHUD();
 
         pauseMenu.SetActive(false);
         resumeButton.SetActive(false);
         restartButton.SetActive(false);
         mainMenuButton.SetActive(false);
+        player2Button.SetActive(false);
     }
 
-    private void ActivateScoreScreen()
+    private void ActivateHUD()
     {
-        Time.timeScale = 0f;
-
-        HUD.SetActive(false);
-
-        scoreScreen.SetActive(true);
-        continueButton.SetActive(true);
-
-        CheckNumberOfPlayer();
-    }
-    private void DeactivateScoreScreen()
-    {
-        Time.timeScale = 1f;
-
-        HUD.SetActive(true);
-
-        scoreScreen.SetActive(false);
-        continueButton.SetActive(false);
-
-        CheckNumberOfPlayer();
-    }
-
-    private void CheckNumberOfPlayer()
-    {
-        if (UIController.onePlayer)
+        if(MainMenuController.onePlayer)
         {
-            onePlayerScoreScreen.SetActive(true);
-            twoPlayersScoreScreen.SetActive(false);
+            P1HUD.SetActive(true);
         }
         else
         {
-            onePlayerScoreScreen.SetActive(false);
-            twoPlayersScoreScreen.SetActive(true);
+            P1HUD.SetActive(true);
+            P2HUD.SetActive(true);
         }
+
+        pauseText.SetActive(true);
+    }
+    private void DeactivateHUD()
+    {
+        P1HUD.SetActive(false);
+        P2HUD.SetActive(false);
+        pauseText.SetActive(false);
     }
 
     private void ResetPlayer1Value()
@@ -142,12 +127,13 @@ public class HUDcontroller : MonoBehaviour
     public void ResumeButton()
     {
         DeactivatePauseMenu();
+        ActivateHUD();
         Time.timeScale = 1f;
     }
 
     public void RestartButton()
     {
-        if (UIController.onePlayer)
+        if (MainMenuController.onePlayer)
         {
             ResetPlayer1Value();
         }
@@ -158,12 +144,13 @@ public class HUDcontroller : MonoBehaviour
         }
 
         DeactivatePauseMenu();
-        SceneManager.LoadScene("(Testing)TheRange");
+        ActivateHUD();
+        SceneManager.LoadScene("Level1");
     }
 
     public void MainMenuButton()
     {
-        if (UIController.onePlayer)
+        if (MainMenuController.onePlayer)
         {
             ResetPlayer1Value();
         }
@@ -174,12 +161,18 @@ public class HUDcontroller : MonoBehaviour
         }
 
         DeactivatePauseMenu();
-        SceneManager.LoadScene("Start");
+        DeactivateHUD();
+        SceneManager.LoadScene("MainMenu");
     }
 
-    public void ContinueButton()
+    public void Player2Button()
     {
-        Time.timeScale = 0f;
-        SceneManager.LoadScene("Hangar");
+        MainMenuController.onePlayer = false;
+
+        ResetPlayer1Value();
+        ResetPlayer2Value();
+        DeactivatePauseMenu();
+
+        SceneManager.LoadScene("SelectionMenu");
     }
 }

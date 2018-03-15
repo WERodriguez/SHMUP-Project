@@ -54,7 +54,7 @@ public class PlayerHealthSystem : MonoBehaviour
     {
         playerWeaponController = gameObject.GetComponent<PlayerWeaponController>();
 
-        if(UIController.onePlayer)
+        if(MainMenuController.onePlayer)
         {
             SettingUpPlayer1();
 

@@ -53,8 +53,8 @@ public class PlayerWeaponController : MonoBehaviour
 
     private int shotCounter;
     //How many times you can fire your super weapon.
-    private int P1superAmmo;
-    private int P2superAmmo;
+    public static int P1superAmmo;
+    public static int P2superAmmo;
     public int superAmmoDefault;
 
     //How much superAmmo players can hold.
@@ -77,7 +77,7 @@ public class PlayerWeaponController : MonoBehaviour
     void Start()
     {
         LessGun();
-        if (UIController.onePlayer)
+        if (MainMenuController.onePlayer)
         {
             SettingUpPlayer1Weapon();
         }
@@ -1245,17 +1245,17 @@ public class PlayerWeaponController : MonoBehaviour
         P1superAmmo = superAmmoDefault;
         P1superAmmoCounter.text = "Super Ammo: " + P1superAmmo;
 
-        P1primaryWeaponSelector = UIController.P1primaryType - 1;
-        P1secondaryWeaponSelector = UIController.P1secondaryType - 1;
-        P1superWeaponSelector = UIController.P1specialType - 1;
+        P1primaryWeaponSelector = SelectionMenuController.P1primaryType - 1;
+        P1secondaryWeaponSelector = SelectionMenuController.P1secondaryType - 1;
+        P1superWeaponSelector = SelectionMenuController.P1specialType - 1;
     }
     public void SettingUpPlayer2Weapon()
     {
         P2superAmmo = superAmmoDefault;
         P2superAmmoCounter.text = "Super Ammo: " + P2superAmmo;
 
-        P2primaryWeaponSelector = UIController.P2primaryType - 1;
-        P2secondaryWeaponSelector = UIController.P2secondaryType - 1;
-        P2superWeaponSelector = UIController.P2specialType - 1;
+        P2primaryWeaponSelector = SelectionMenuController.P2primaryType - 1;
+        P2secondaryWeaponSelector = SelectionMenuController.P2secondaryType - 1;
+        P2superWeaponSelector = SelectionMenuController.P2specialType - 1;
     }
 }
