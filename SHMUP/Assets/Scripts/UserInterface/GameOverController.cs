@@ -143,9 +143,19 @@ public class GameOverController : MonoBehaviour
         PlayerWeaponController.P2savedSuperAmmo = PlayerWeaponController.superAmmoDefault;
     }
 
-    public void HangarButton()
+    public void MainMenuButton()
     {
-        SceneManager.LoadScene("StoreScreen");
+        if (MainMenuController.onePlayer)
+        {
+            ResetPlayer1Value();
+        }
+        else
+        {
+            ResetPlayer1Value();
+            ResetPlayer2Value();
+        }
+
+        SceneManager.LoadScene("MainMenu");
     }
 
     public void RestartButton()
