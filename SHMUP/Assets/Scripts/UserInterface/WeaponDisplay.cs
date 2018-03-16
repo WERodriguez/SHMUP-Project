@@ -22,105 +22,84 @@ public class WeaponDisplay : MonoBehaviour
         //Player 1 Fire Control.
         if (!whichPlayer)
         {
-            if (HangarMenuController.)
+            if (HangarMenuController.P1gunTest)
             {
-                //Calls the PlayerWeaponController script to use its fire function.
-                weaponController.Fire();
+                if(HangarMenuController.P1finalPrimary)
+                {
+                    PlayerWeaponController.P1currentWLevel = 5;
+                }
+                if (HangarMenuController.P1finalSecondary)
+                {
+                    PlayerWeaponController.P2currentSecondaryLevel = 5;
+                }
+
+                StartCoroutine(GunTest());
+
             }
 
             //Increments the number of taps a player has done.
-            if (HangarMenuController.)
+            if (HangarMenuController.P1majestic)
             {
-                weaponController.SuperWeapon();
+                StartCoroutine(SpecialTest());
             }
         }
         //Player 2 Fire Control
         else if (whichPlayer)
         {
-            if (HangarMenuController.)
+            if (HangarMenuController.P2gunTest)
             {
-                //Calls the PlayerWeaponController script to use its fire function.
-                weaponController.Fire();
+                if (HangarMenuController.P2finalPrimary)
+                {
+                    PlayerWeaponController.P2currentWLevel = 5;
+                }
+                if (HangarMenuController.P2finalSecondary)
+                {
+                    PlayerWeaponController.P2currentSecondaryLevel = 5;
+                }
+
+                StartCoroutine(GunTest());
             }
 
             //Checks if player has tapped the button once.
-            if (HangarMenuController.)
+            if (HangarMenuController.P1majestic)
             {
-                weaponController.SuperWeapon();
-            }
-
-            if (Input.GetButtonUp("Fire_P2"))
-            {
-                weaponController.nextGun = 0;
+                StartCoroutine(SpecialTest());
             }
         }
-
     }
 
-    private void FixedUpdate()
+    IEnumerator GunTest()
     {
-        if (P1isDead)
-        {
-            MovePlayer1();
-            return;
-        }
+        yield return new WaitForSeconds(1f);
 
-        if (P2isDead)
-        {
-            MovePlayer2();
-            return;
-        }
+        weaponController.Fire();
 
-        //Player 1 Movement Controls
-        if (!whichPlayer)
-        {
-            moveHorizontal = Input.GetAxis("Horizontal_P1");
-            moveVertical = Input.GetAxis("Vertical_P1");
+        yield return new WaitForSeconds(6f);
 
-            MovePlayer1();
-        }
-        //Player 2 Movement Controls
-        else if (whichPlayer)
-        {
-            moveHorizontal = Input.GetAxis("Horizontal_P2");
-            moveVertical = Input.GetAxis("Vertical_P2");
+        PlayerWeaponController.P1currentWLevel = HangarMenuController.P1primaryLevelSaved;
+        PlayerWeaponController.P2currentWLevel = HangarMenuController.P2primaryLevelSaved;
 
-            MovePlayer2();
-        }
+        PlayerWeaponController.P1currentSecondaryLevel = HangarMenuController.P1secondaryLevelSaved;
+        PlayerWeaponController.P2currentSecondaryLevel = HangarMenuController.P2secondaryLevelSaved;
 
-        //Clamps the player position to the boundary settings. Keeps them from going past those points.
-        //Also remember it's parenthesis not curly brackets you derp.
-        rb.position = new Vector3
-            (
-                Mathf.Clamp(rb.position.x, xMin, xMax),
-                Mathf.Clamp(rb.position.y, yMin, yMax),
-                Mathf.Clamp(rb.position.z, zMin, zMax)
-            );
+        HangarMenuController.P1gunTest = false;
+        HangarMenuController.P1finalPrimary = false;
+        HangarMenuController.P1finalSecondary = false;
 
-        rb.rotation = Quaternion.Euler(0.0f, 0.0f, rb.velocity.x * -tilt);
+        HangarMenuController.P2gunTest = false;
+        HangarMenuController.P2finalPrimary = false;
+        HangarMenuController.P2finalSecondary = false;
     }
 
-    //Moves the player.
-    void MovePlayer1()
+    IEnumerator SpecialTest()
     {
-        Vector3 movement = new Vector3(moveHorizontal, 0.0f, moveVertical);
-        rb.velocity = movement * speed;
+        yield return new WaitForSeconds(1f);
 
-        //Stops the player from moving when they're dead.
-        if (P1isDead)
-        {
-            rb.velocity = new Vector3(0, 0, 0);
-        }
-    }
-    void MovePlayer2()
-    {
-        Vector3 movement = new Vector3(moveHorizontal, 0.0f, moveVertical);
-        rb.velocity = movement * speed;
+        weaponController.SuperWeapon();
 
-        //Stops the player from moving when they're dead.
-        if (P2isDead)
-        {
-            rb.velocity = new Vector3(0, 0, 0);
-        }
+        yield return new WaitForSeconds(6f);
+
+        HangarMenuController.P1majestic = false;
+        HangarMenuController.P2majestic = false;
     }
 }
