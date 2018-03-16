@@ -6,8 +6,6 @@ using UnityEngine.SceneManagement;
 
 public class ScoreScreenController : MonoBehaviour
 {
-    public static bool nextLevel;
-
     private int currentTotalScore;
 
     private int currentScore_P1;
@@ -63,8 +61,6 @@ public class ScoreScreenController : MonoBehaviour
         screen.SetActive(false);
         P1screen.SetActive(false);
         P2screen.SetActive(false);
-
-        nextLevel = false;
     }
 
     private void Start()
@@ -217,10 +213,16 @@ public class ScoreScreenController : MonoBehaviour
 
     public void NexButton()
     {
-        nextLevel = true;
+        if (MainMenuController.onePlayer)
+        {
+            SetPlayer1Value();
+        }
+        else
+        {
+            SetPlayer1Value();
+            SetPlayer2Value();
+        }
 
-        SetPlayer1Value();
-        SetPlayer2Value();
         ResetPlayerScore();
 
         SceneManager.LoadScene("Level1");
