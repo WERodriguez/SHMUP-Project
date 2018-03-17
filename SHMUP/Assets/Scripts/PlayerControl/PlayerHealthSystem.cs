@@ -7,25 +7,34 @@ public class PlayerHealthSystem : MonoBehaviour
 {
 
     //Player health
-    public static float P1currentHealth;
-    public static float P2currentHealth;
     public static float P1maxHealth;
+    public static float P1currentHealth;
+    public static float P1savedHealth;
+
     public static float P2maxHealth;
+    public static float P2currentHealth;
+    public static float P2savedHealth;
 
     public bool whichPlayer;
     public float minHealth;
 
     //Player shields.
-    public static float P1currentShields;
-    public static float P2currentShields;
     public static float P1maxShields;
+    public static float P1currentShields;
+    public static float P1savedShields;
+
     public static float P2maxShields;
+    public static float P2currentShields;
+    public static float P2savedShields;
 
     //Player Lives
-    public static int P1currentLives;
-    public static int P2currentLives;
     public static int P1maxLives;
+    public static int P1currentLives;
+    public static int P1savedLives;
+
     public static int P2maxLives;
+    public static int P2currentLives;
+    public static int P2savedLives;
 
     public Transform respawnLocation;
     public Transform playerHidingSpot;
@@ -56,20 +65,12 @@ public class PlayerHealthSystem : MonoBehaviour
 
         if(MainMenuController.onePlayer)
         {
-            SettingUpPlayer1();
-
-            P1currentShields = P1maxShields;
-            P1currentLives = P1maxLives;
+            Player1Status();
         }
         else
         {
-            SettingUpPlayer1();
-            SettingUpPlayer2();
-
-            P1currentShields = P1maxShields;
-            P1currentLives = P1maxLives;
-            P2currentShields = P2maxShields;
-            P2currentLives = P2maxLives;
+            Player1Status();
+            Player2Status();
         }
     }
 
@@ -310,6 +311,19 @@ public class PlayerHealthSystem : MonoBehaviour
         }
     }
 
+    private void Player1Status()
+    {
+        P1currentHealth = P1savedHealth;
+        P1currentShields = P1savedShields;
+        P1currentLives = P1savedLives;
+    }
+    private void Player2Status()
+    {
+        P2currentHealth = P2savedHealth;
+        P2currentShields = P2savedShields;
+        P2currentLives = P2savedLives;
+    }
+
     private void SettingUpPlayer1()
     {
         P1currentHealth = P1maxHealth;
@@ -319,7 +333,6 @@ public class PlayerHealthSystem : MonoBehaviour
         P1shields.text = "SP: " + P1currentShields;
         P1lives.text = "Lives: " + P1currentLives;
     }
-
     private void SettingUpPlayer2()
     {
         P2currentHealth = P2maxHealth;

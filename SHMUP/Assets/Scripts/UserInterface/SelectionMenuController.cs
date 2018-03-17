@@ -185,7 +185,11 @@ public class SelectionMenuController : MonoBehaviour
 
     private void Start()
     {
-        if(MainMenuController.onePlayer)
+        PlayerWeaponController.baseWLevel = 1;
+        PlayerWeaponController.baseSecondaryLevel = 0;
+        PlayerWeaponController.superAmmoDefault = 3;
+
+        if (MainMenuController.onePlayer)
         {
             ActivateSingleSelection();
         }
@@ -1588,24 +1592,49 @@ public class SelectionMenuController : MonoBehaviour
         PlayerHealthSystem.P2maxLives = 2;
     }
 
-    //player 1 passing data
+    //player 1 ship data
     private void Player1Data()
     {
-        PlayerHealthSystem.P1currentHealth = PlayerHealthSystem.P1maxHealth;
-        PlayerHealthSystem.P1currentShields = PlayerHealthSystem.P1maxShields;
-        PlayerHealthSystem.P1currentLives = PlayerHealthSystem.P1maxLives;
+        PlayerHealthSystem.P1savedHealth = PlayerHealthSystem.P1maxHealth;
+        PlayerHealthSystem.P1savedShields = PlayerHealthSystem.P1maxShields;
+        PlayerHealthSystem.P1savedLives = PlayerHealthSystem.P1maxLives;
     }
-    //player 2 passing data
+    //player 2 ship data
     private void Player2Data()
     {
-        PlayerHealthSystem.P2currentHealth = PlayerHealthSystem.P2maxHealth;
-        PlayerHealthSystem.P2currentShields = PlayerHealthSystem.P2maxShields;
-        PlayerHealthSystem.P2currentLives = PlayerHealthSystem.P2maxLives;
+        PlayerHealthSystem.P2savedHealth = PlayerHealthSystem.P2maxHealth;
+        PlayerHealthSystem.P2savedShields = PlayerHealthSystem.P2maxShields;
+        PlayerHealthSystem.P2savedLives = PlayerHealthSystem.P2maxLives;
+    }
+
+    //player 1 Weapon data
+    private void Player1WeaponData()
+    {
+        PlayerWeaponController.P1savedWeaponLevel = PlayerWeaponController.baseWLevel;
+        PlayerWeaponController.P1savedSecondaryLevel = PlayerWeaponController.baseSecondaryLevel;
+        PlayerWeaponController.P1savedSuperAmmo = PlayerWeaponController.superAmmoDefault;
+    }
+    //player 2 ship data
+    private void Player2WeaponData()
+    {
+        PlayerWeaponController.P2savedWeaponLevel = PlayerWeaponController.baseWLevel;
+        PlayerWeaponController.P2savedSecondaryLevel = PlayerWeaponController.baseSecondaryLevel;
+        PlayerWeaponController.P2savedSuperAmmo = PlayerWeaponController.superAmmoDefault;
     }
 
     //on click button
     public void StartButton()
     {
+        if(MainMenuController.onePlayer)
+        {
+            Player1WeaponData();
+        }
+        if(!MainMenuController.onePlayer)
+        {
+            Player1WeaponData();
+            Player2WeaponData();
+        }
+
         SceneManager.LoadScene("Level1");
     }
 
@@ -1632,11 +1661,12 @@ public class SelectionMenuController : MonoBehaviour
         ActivateSingleToggle();
         SetToggleData();
 
-        characterButton.SetActive(true);
         shipButton.SetActive(false);
         primaryButton.SetActive(false);
         secondaryButton.SetActive(false);
         specialButton.SetActive(false);
+
+        characterButton.SetActive(true);
         characterButtonShader.SetActive(true);
         character = true;
     }
@@ -1646,11 +1676,17 @@ public class SelectionMenuController : MonoBehaviour
         ActivateP1Toggle();
         SetToggleData();
 
-        P1characterButton.SetActive(true);
         P1shipButton.SetActive(false);
         P1primaryButton.SetActive(false);
         P1secondaryButton.SetActive(false);
         P1specialButton.SetActive(false);
+        P2characterButton.SetActive(false);
+        P2shipButton.SetActive(false);
+        P2primaryButton.SetActive(false);
+        P2secondaryButton.SetActive(false);
+        P2specialButton.SetActive(false);
+
+        P1characterButton.SetActive(true);
         P1characterButtonShader.SetActive(true);
         P1character = true;
     }
@@ -1660,11 +1696,17 @@ public class SelectionMenuController : MonoBehaviour
         ActivateP2Toggle();
         SetToggleData();
 
-        P2characterButton.SetActive(true);
+        P1characterButton.SetActive(false);
+        P1shipButton.SetActive(false);
+        P1primaryButton.SetActive(false);
+        P1secondaryButton.SetActive(false);
+        P1specialButton.SetActive(false);
         P2shipButton.SetActive(false);
         P2primaryButton.SetActive(false);
         P2secondaryButton.SetActive(false);
         P2specialButton.SetActive(false);
+
+        P2characterButton.SetActive(true);
         P2characterButtonShader.SetActive(true);
         P2character = true;
     }
@@ -1676,10 +1718,11 @@ public class SelectionMenuController : MonoBehaviour
         SetToggleData();
 
         characterButton.SetActive(false);
-        shipButton.SetActive(true);
         primaryButton.SetActive(false);
         secondaryButton.SetActive(false);
         specialButton.SetActive(false);
+
+        shipButton.SetActive(true);
         shipButtonShader.SetActive(true);
         ship = true;
     }
@@ -1690,10 +1733,16 @@ public class SelectionMenuController : MonoBehaviour
         SetToggleData();
 
         P1characterButton.SetActive(false);
-        P1shipButton.SetActive(true);
         P1primaryButton.SetActive(false);
         P1secondaryButton.SetActive(false);
         P1specialButton.SetActive(false);
+        P2characterButton.SetActive(false);
+        P2shipButton.SetActive(false);
+        P2primaryButton.SetActive(false);
+        P2secondaryButton.SetActive(false);
+        P2specialButton.SetActive(false);
+
+        P1shipButton.SetActive(true);
         P1shipButtonShader.SetActive(true);
         P1ship = true;
     }
@@ -1703,11 +1752,17 @@ public class SelectionMenuController : MonoBehaviour
         ActivateP2Toggle();
         SetToggleData();
 
+        P1characterButton.SetActive(false);
+        P1shipButton.SetActive(false);
+        P1primaryButton.SetActive(false);
+        P1secondaryButton.SetActive(false);
+        P1specialButton.SetActive(false);
         P2characterButton.SetActive(false);
-        P2shipButton.SetActive(true);
         P2primaryButton.SetActive(false);
         P2secondaryButton.SetActive(false);
         P2specialButton.SetActive(false);
+
+        P2shipButton.SetActive(true);
         P2shipButtonShader.SetActive(true);
         P2ship = true;
     }
@@ -1720,9 +1775,10 @@ public class SelectionMenuController : MonoBehaviour
 
         characterButton.SetActive(false);
         shipButton.SetActive(false);
-        primaryButton.SetActive(true);
         secondaryButton.SetActive(false);
         specialButton.SetActive(false);
+
+        primaryButton.SetActive(true);
         primaryButtonShader.SetActive(true);
         primary = true;
     }
@@ -1734,9 +1790,15 @@ public class SelectionMenuController : MonoBehaviour
 
         P1characterButton.SetActive(false);
         P1shipButton.SetActive(false);
-        P1primaryButton.SetActive(true);
         P1secondaryButton.SetActive(false);
         P1specialButton.SetActive(false);
+        P2characterButton.SetActive(false);
+        P2shipButton.SetActive(false);
+        P2primaryButton.SetActive(false);
+        P2secondaryButton.SetActive(false);
+        P2specialButton.SetActive(false);
+
+        P1primaryButton.SetActive(true);
         P1primaryButtonShader.SetActive(true);
         P1primary = true;
     }
@@ -1746,11 +1808,17 @@ public class SelectionMenuController : MonoBehaviour
         ActivateP2Toggle();
         SetToggleData();
 
+        P1characterButton.SetActive(false);
+        P1shipButton.SetActive(false);
+        P1primaryButton.SetActive(false);
+        P1secondaryButton.SetActive(false);
+        P1specialButton.SetActive(false);
         P2characterButton.SetActive(false);
         P2shipButton.SetActive(false);
-        P2primaryButton.SetActive(true);
         P2secondaryButton.SetActive(false);
         P2specialButton.SetActive(false);
+
+        P2primaryButton.SetActive(true);
         P2primaryButtonShader.SetActive(true);
         P2primary = true;
     }
@@ -1764,8 +1832,9 @@ public class SelectionMenuController : MonoBehaviour
         characterButton.SetActive(false);
         shipButton.SetActive(false);
         primaryButton.SetActive(false);
-        secondaryButton.SetActive(true);
         specialButton.SetActive(false);
+
+        secondaryButton.SetActive(true);
         secondaryButtonShader.SetActive(true);
         secondary = true;
     }
@@ -1778,8 +1847,14 @@ public class SelectionMenuController : MonoBehaviour
         P1characterButton.SetActive(false);
         P1shipButton.SetActive(false);
         P1primaryButton.SetActive(false);
-        P1secondaryButton.SetActive(true);
         P1specialButton.SetActive(false);
+        P2characterButton.SetActive(false);
+        P2shipButton.SetActive(false);
+        P2primaryButton.SetActive(false);
+        P2secondaryButton.SetActive(false);
+        P2specialButton.SetActive(false);
+
+        P1secondaryButton.SetActive(true);
         P1secondaryButtonShader.SetActive(true);
         P1secondary = true;
     }
@@ -1789,11 +1864,17 @@ public class SelectionMenuController : MonoBehaviour
         ActivateP2Toggle();
         SetToggleData();
 
+        P1characterButton.SetActive(false);
+        P1shipButton.SetActive(false);
+        P1primaryButton.SetActive(false);
+        P1secondaryButton.SetActive(false);
+        P1specialButton.SetActive(false);
         P2characterButton.SetActive(false);
         P2shipButton.SetActive(false);
         P2primaryButton.SetActive(false);
-        P2secondaryButton.SetActive(true);
         P2specialButton.SetActive(false);
+
+        P2secondaryButton.SetActive(true);
         P2secondaryButtonShader.SetActive(true);
         P2secondary = true;
     }
@@ -1822,6 +1903,12 @@ public class SelectionMenuController : MonoBehaviour
         P1shipButton.SetActive(false);
         P1primaryButton.SetActive(false);
         P1secondaryButton.SetActive(false);
+        P2characterButton.SetActive(false);
+        P2shipButton.SetActive(false);
+        P2primaryButton.SetActive(false);
+        P2secondaryButton.SetActive(false);
+        P2specialButton.SetActive(false);
+
         P1specialButton.SetActive(true);
         P1specialButtonShader.SetActive(true);
         P1special = true;
@@ -1832,13 +1919,18 @@ public class SelectionMenuController : MonoBehaviour
         ActivateP2Toggle();
         SetToggleData();
 
+        P1characterButton.SetActive(false);
+        P1shipButton.SetActive(false);
+        P1primaryButton.SetActive(false);
+        P1secondaryButton.SetActive(false);
+        P1specialButton.SetActive(false);
         P2characterButton.SetActive(false);
         P2shipButton.SetActive(false);
         P2primaryButton.SetActive(false);
         P2secondaryButton.SetActive(false);
+
         P2specialButton.SetActive(true);
         P2specialButtonShader.SetActive(true);
         P2special = true;
     }
-
 }

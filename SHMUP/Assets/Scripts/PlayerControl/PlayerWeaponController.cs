@@ -19,14 +19,19 @@ public class PlayerWeaponController : MonoBehaviour
     public int nextGun;
 
     //Weapon default level at start of scene.
-    public int baseWLevel;
-    public int baseSecondaryLevel;
+    public static int baseWLevel;
+    public static int baseSecondaryLevel;
 
     //Weapon current level
-    private int P1currentWLevel;
-    private int P1currentSecondaryLevel;
-    private int P2currentWLevel;
-    private int P2currentSecondaryLevel;
+    public static int P1currentWLevel;
+    public static int P1currentSecondaryLevel;
+    public static int P1savedWeaponLevel;
+    public static int P1savedSecondaryLevel;
+
+    public static int P2currentWLevel;
+    public static int P2currentSecondaryLevel;
+    public static int P2savedWeaponLevel;
+    public static int P2savedSecondaryLevel;
 
     //Currently equipped primary weapon.
     //MG = 0. Flak = 1. Canon = 3.
@@ -34,6 +39,7 @@ public class PlayerWeaponController : MonoBehaviour
     private int P1primaryWeaponSelector;
     private int P1secondaryWeaponSelector;
     private int P1superWeaponSelector;
+
     private int P2primaryWeaponSelector;
     private int P2secondaryWeaponSelector;
     private int P2superWeaponSelector;
@@ -54,8 +60,14 @@ public class PlayerWeaponController : MonoBehaviour
     private int shotCounter;
     //How many times you can fire your super weapon.
     public static int P1superAmmo;
+    public static int P1currentSuperAmmo;
+    public static int P1savedSuperAmmo;
+
     public static int P2superAmmo;
-    public int superAmmoDefault;
+    public static int P2currentSuperAmmo;
+    public static int P2savedSuperAmmo;
+
+    public static int superAmmoDefault;
 
     //How much superAmmo players can hold.
     public int superAmmoCap;
@@ -76,15 +88,22 @@ public class PlayerWeaponController : MonoBehaviour
 
     void Start()
     {
-        LessGun();
+        baseWLevel = 1;
+        baseSecondaryLevel = 0;
+        superAmmoDefault = 3;
+
         if (MainMenuController.onePlayer)
         {
             SettingUpPlayer1Weapon();
+            Player1WeaponData();
         }
         else
         {
             SettingUpPlayer1Weapon();
+            Player1WeaponData();
+
             SettingUpPlayer2Weapon();
+            Player2WeaponData();
         }
     }
 
@@ -1233,29 +1252,45 @@ public class PlayerWeaponController : MonoBehaviour
     //For When you respawn
     public void LessGun()
     {
-        P1currentWLevel = baseWLevel;
-        P1currentSecondaryLevel = baseSecondaryLevel;
-
-        P2currentWLevel = baseWLevel;
-        P2currentSecondaryLevel = baseSecondaryLevel;
+        if (!whichPlayer)
+        {
+            P1currentWLevel = baseWLevel;
+            P1currentSecondaryLevel = baseSecondaryLevel;
+        }
+        if (whichPlayer)
+        {
+            P2currentWLevel = baseWLevel;
+            P2currentSecondaryLevel = baseSecondaryLevel;
+        }
     }
 
-    public void SettingUpPlayer1Weapon()
+    private void SettingUpPlayer1Weapon()
     {
-        P1superAmmo = superAmmoDefault;
         P1superAmmoCounter.text = "Super Ammo: " + P1superAmmo;
 
         P1primaryWeaponSelector = SelectionMenuController.P1primaryType - 1;
         P1secondaryWeaponSelector = SelectionMenuController.P1secondaryType - 1;
         P1superWeaponSelector = SelectionMenuController.P1specialType - 1;
     }
-    public void SettingUpPlayer2Weapon()
+    private void SettingUpPlayer2Weapon()
     {
-        P2superAmmo = superAmmoDefault;
         P2superAmmoCounter.text = "Super Ammo: " + P2superAmmo;
 
         P2primaryWeaponSelector = SelectionMenuController.P2primaryType - 1;
         P2secondaryWeaponSelector = SelectionMenuController.P2secondaryType - 1;
         P2superWeaponSelector = SelectionMenuController.P2specialType - 1;
+    }
+
+    private void Player1WeaponData()
+    {
+        P1currentWLevel = P1savedWeaponLevel;
+        P1currentSecondaryLevel = P1savedSecondaryLevel;
+        P1superAmmo = P1savedSuperAmmo;
+    }
+    private void Player2WeaponData()
+    {
+        P2currentWLevel = P2savedWeaponLevel;
+        P2currentSecondaryLevel = P2savedSecondaryLevel;
+        P2superAmmo = P2savedSuperAmmo;
     }
 }

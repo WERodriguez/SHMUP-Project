@@ -127,17 +127,35 @@ public class GameOverController : MonoBehaviour
         PlayerHealthSystem.P1currentLives = PlayerHealthSystem.P1maxLives;
         PlayerHealthSystem.P1currentHealth = PlayerHealthSystem.P1maxHealth;
         PlayerHealthSystem.P1currentShields = PlayerHealthSystem.P1maxShields;
+
+        PlayerWeaponController.P1savedWeaponLevel = PlayerWeaponController.baseWLevel;
+        PlayerWeaponController.P1savedSecondaryLevel = PlayerWeaponController.baseSecondaryLevel;
+        PlayerWeaponController.P1savedSuperAmmo = PlayerWeaponController.superAmmoDefault;
     }
     private void ResetPlayer2Value()
     {
         PlayerHealthSystem.P2currentLives = PlayerHealthSystem.P2maxLives;
         PlayerHealthSystem.P2currentHealth = PlayerHealthSystem.P2maxHealth;
         PlayerHealthSystem.P2currentShields = PlayerHealthSystem.P2maxShields;
+
+        PlayerWeaponController.P2savedWeaponLevel = PlayerWeaponController.baseWLevel;
+        PlayerWeaponController.P2savedSecondaryLevel = PlayerWeaponController.baseSecondaryLevel;
+        PlayerWeaponController.P2savedSuperAmmo = PlayerWeaponController.superAmmoDefault;
     }
 
-    public void HangarButton()
+    public void MainMenuButton()
     {
-        SceneManager.LoadScene("StoreScreen");
+        if (MainMenuController.onePlayer)
+        {
+            ResetPlayer1Value();
+        }
+        else
+        {
+            ResetPlayer1Value();
+            ResetPlayer2Value();
+        }
+
+        SceneManager.LoadScene("MainMenu");
     }
 
     public void RestartButton()

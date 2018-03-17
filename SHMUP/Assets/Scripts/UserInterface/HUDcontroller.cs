@@ -116,18 +116,27 @@ public class HUDcontroller : MonoBehaviour
         PlayerHealthSystem.P1currentLives = PlayerHealthSystem.P1maxLives;
         PlayerHealthSystem.P1currentHealth = PlayerHealthSystem.P1maxHealth;
         PlayerHealthSystem.P1currentShields = PlayerHealthSystem.P1maxShields;
+
+        PlayerWeaponController.P1savedWeaponLevel = PlayerWeaponController.baseWLevel;
+        PlayerWeaponController.P1savedSecondaryLevel = PlayerWeaponController.baseSecondaryLevel;
+        PlayerWeaponController.P1savedSuperAmmo = PlayerWeaponController.superAmmoDefault;
     }
     private void ResetPlayer2Value()
     {
         PlayerHealthSystem.P2currentLives = PlayerHealthSystem.P2maxLives;
         PlayerHealthSystem.P2currentHealth = PlayerHealthSystem.P2maxHealth;
         PlayerHealthSystem.P2currentShields = PlayerHealthSystem.P2maxShields;
+
+        PlayerWeaponController.P2savedWeaponLevel = PlayerWeaponController.baseWLevel;
+        PlayerWeaponController.P2savedSecondaryLevel = PlayerWeaponController.baseSecondaryLevel;
+        PlayerWeaponController.P2savedSuperAmmo = PlayerWeaponController.superAmmoDefault;
     }
 
     public void ResumeButton()
     {
         DeactivatePauseMenu();
         ActivateHUD();
+
         Time.timeScale = 1f;
     }
 
@@ -145,6 +154,7 @@ public class HUDcontroller : MonoBehaviour
 
         DeactivatePauseMenu();
         ActivateHUD();
+
         SceneManager.LoadScene("Level1");
     }
 
@@ -162,6 +172,7 @@ public class HUDcontroller : MonoBehaviour
 
         DeactivatePauseMenu();
         DeactivateHUD();
+
         SceneManager.LoadScene("MainMenu");
     }
 
@@ -169,9 +180,18 @@ public class HUDcontroller : MonoBehaviour
     {
         MainMenuController.onePlayer = false;
 
-        ResetPlayer1Value();
-        ResetPlayer2Value();
+        if (MainMenuController.onePlayer)
+        {
+            ResetPlayer1Value();
+        }
+        else
+        {
+            ResetPlayer1Value();
+            ResetPlayer2Value();
+        }
+
         DeactivatePauseMenu();
+        DeactivateHUD();
 
         SceneManager.LoadScene("SelectionMenu");
     }

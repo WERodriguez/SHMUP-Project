@@ -6,6 +6,22 @@ using UnityEngine.SceneManagement;
 
 public class ScoreScreenController : MonoBehaviour
 {
+    private int currentTotalScore;
+
+    private int currentScore_P1;
+    private int currentP1credit;
+    private float currentP1Health;
+    private float currentP1Shields;
+    private int currentP1Lives;
+    private int currentP1SuperAmmo;
+
+    private int currentScore_P2;
+    private int currentP2credit;
+    private float currentP2Health;
+    private float currentP2Shields;
+    private int currentP2Lives;
+    private int currentP2SuperAmmo;
+
     public Text matchScore;
     public Text personalScore;
     public Text credit;
@@ -29,22 +45,6 @@ public class ScoreScreenController : MonoBehaviour
     public Text P2shield;
     public Text P2live;
     public Text P2superAmmo;
-
-    private int currentTotalScore;
-
-    private int currentScore_P1;
-    private int currentP1credit;
-    private float currentP1Health;
-    private float currentP1Shields;
-    private int currentP1Lives;
-    private int currentP1SuperAmmo;
-
-    private int currentScore_P2;
-    private int currentP2credit;
-    private float currentP2Health;
-    private float currentP2Shields;
-    private int currentP2Lives;
-    private int currentP2SuperAmmo;
 
     public GameObject hangarButton;
     public GameObject nextButton;
@@ -81,7 +81,7 @@ public class ScoreScreenController : MonoBehaviour
 
     private void Update()
     {
-        SetPlayerData();
+        SetPlayerScore();
 
         if (MainMenuController.onePlayer)
         {
@@ -147,7 +147,7 @@ public class ScoreScreenController : MonoBehaviour
         P2superAmmo.text = "" + currentP2SuperAmmo;
     }
 
-    private void SetPlayerData()
+    private void SetPlayerScore()
     {
         if (ScoreTracker.score_P1 < 0 || ScoreTracker.score_P2 < 0 || ScoreTracker.totalScore < 0 || ScoreTracker.P1credit < 0 || ScoreTracker.P2credit < 0)
         {
@@ -176,12 +176,32 @@ public class ScoreScreenController : MonoBehaviour
         currentP2Lives = PlayerHealthSystem.P2currentLives;
         currentP2SuperAmmo = PlayerWeaponController.P2superAmmo;
     }
-
     private void ResetPlayerScore()
     {
         ScoreTracker.score_P1 = 0;
         ScoreTracker.score_P2 = 0;
         ScoreTracker.totalScore = 0;
+    }
+
+    private void SetPlayer1Value()
+    {
+        PlayerHealthSystem.P1savedLives = PlayerHealthSystem.P1currentLives;
+        PlayerHealthSystem.P1savedHealth = PlayerHealthSystem.P1currentHealth;
+        PlayerHealthSystem.P1savedShields = PlayerHealthSystem.P1currentShields;
+
+        PlayerWeaponController.P1savedWeaponLevel = PlayerWeaponController.P1currentWLevel;
+        PlayerWeaponController.P1savedSecondaryLevel = PlayerWeaponController.P1currentSecondaryLevel;
+        PlayerWeaponController.P1savedSuperAmmo = PlayerWeaponController.P1currentSuperAmmo;
+    }
+    private void SetPlayer2Value()
+    {
+        PlayerHealthSystem.P2savedLives = PlayerHealthSystem.P2currentLives;
+        PlayerHealthSystem.P2savedHealth = PlayerHealthSystem.P2currentHealth;
+        PlayerHealthSystem.P2savedShields = PlayerHealthSystem.P2currentShields;
+
+        PlayerWeaponController.P2savedWeaponLevel = PlayerWeaponController.P2currentWLevel;
+        PlayerWeaponController.P2savedSecondaryLevel = PlayerWeaponController.P2currentSecondaryLevel;
+        PlayerWeaponController.P2savedSuperAmmo = PlayerWeaponController.P2currentSuperAmmo;
     }
 
     public void HangarButton()
@@ -193,6 +213,16 @@ public class ScoreScreenController : MonoBehaviour
 
     public void NexButton()
     {
+        if (MainMenuController.onePlayer)
+        {
+            SetPlayer1Value();
+        }
+        else
+        {
+            SetPlayer1Value();
+            SetPlayer2Value();
+        }
+
         ResetPlayerScore();
 
         SceneManager.LoadScene("Level1");
