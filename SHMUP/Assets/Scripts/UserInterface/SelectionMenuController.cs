@@ -612,6 +612,8 @@ public class SelectionMenuController : MonoBehaviour
             }
             if (ship == true)
             {
+                P1toggleData = 5;
+
                 DeactivateSingleShipSelect();
                 ship5.SetActive(true);
             }
@@ -646,6 +648,8 @@ public class SelectionMenuController : MonoBehaviour
             }
             if (P1ship == true)
             {
+                P1toggleData = 5;
+
                 DeactivateP1ShipSelect();
                 P1ship5.SetActive(true);
             }
@@ -682,6 +686,8 @@ public class SelectionMenuController : MonoBehaviour
             }
             if (P2ship == true)
             {
+                P2toggleData = 5;
+
                 DeactivateP2ShipSelect();
                 P2ship5.SetActive(true);
             }
@@ -710,7 +716,7 @@ public class SelectionMenuController : MonoBehaviour
         
         if (Input.GetKeyDown(KeyCode.Q))
         {
-            if (P1toggleData <= 1)
+            if (P1toggleData == 1)
             {
                 P1toggleData = 1;
 
@@ -762,7 +768,7 @@ public class SelectionMenuController : MonoBehaviour
                     P1specialType = 1;
                 }
             }
-            if (P2toggleData <= 1)
+            if (P2toggleData == 1)
             {
                 if (P2character == true)
                 {
@@ -1422,6 +1428,7 @@ public class SelectionMenuController : MonoBehaviour
         P2secondaryType = 0;
         P2specialType = 0;
     }
+
     private void ResetBool()
     {
         character = false;
@@ -1439,8 +1446,7 @@ public class SelectionMenuController : MonoBehaviour
         P2primary = false;
         P2secondary = false;
         P2special = false;
-}
-
+    }
 
     //passing data
     //player 1 light ship

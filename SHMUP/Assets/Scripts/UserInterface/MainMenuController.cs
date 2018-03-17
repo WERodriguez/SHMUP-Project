@@ -9,6 +9,8 @@ public class MainMenuController : MonoBehaviour
     public static bool onePlayer;
 
     public GameObject title;
+    public GameObject backGround;
+    public GameObject buttonList;
     public GameObject singleButton;
     public GameObject doubleButton;
     public GameObject quitButton;
@@ -22,20 +24,20 @@ public class MainMenuController : MonoBehaviour
 
     IEnumerator Timer()
     {
-        yield return new WaitForSeconds(11.5f);
-        title.SetActive(false);
-        yield return new WaitForSeconds(.75f);
+        yield return new WaitForSeconds(4f);
         ActivateMainMenu();
     }
 
     private void ActivateMainMenu()
     {
+        buttonList.SetActive(true);
         singleButton.SetActive(true);
         doubleButton.SetActive(true);
         quitButton.SetActive(true);
     }
     private void DeactivateMainMenu()
     {
+        buttonList.SetActive(false);
         singleButton.SetActive(false);
         doubleButton.SetActive(false);
         quitButton.SetActive(false);
