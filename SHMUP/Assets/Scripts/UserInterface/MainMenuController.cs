@@ -24,7 +24,7 @@ public class MainMenuController : MonoBehaviour
 
     IEnumerator Timer()
     {
-        yield return new WaitForSeconds(4f);
+        yield return new WaitForSeconds(.5f);
         ActivateMainMenu();
     }
 
