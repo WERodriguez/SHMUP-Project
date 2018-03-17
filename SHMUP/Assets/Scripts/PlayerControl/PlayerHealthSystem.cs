@@ -66,11 +66,22 @@ public class PlayerHealthSystem : MonoBehaviour
         if(MainMenuController.onePlayer)
         {
             Player1Status();
+
+            P1health.text = "HP: " + P1currentHealth;
+            P1shields.text = "SP: " + P1currentShields;
+            P1lives.text = "Lives: " + P1currentLives;
         }
         else
         {
             Player1Status();
             Player2Status();
+
+            P2health.text = "HP: " + P2currentHealth;
+            P2shields.text = "SP: " + P2currentShields;
+            P2lives.text = "Lives: " + P2currentLives;
+            P2health.text = "HP: " + P2currentHealth;
+            P2shields.text = "SP: " + P2currentShields;
+            P2lives.text = "Lives: " + P2currentLives;
         }
     }
 

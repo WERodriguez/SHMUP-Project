@@ -213,6 +213,8 @@ public class ScoreScreenController : MonoBehaviour
 
     public void NexButton()
     {
+        ResetPlayerScore();
+
         if (MainMenuController.onePlayer)
         {
             SetPlayer1Value();

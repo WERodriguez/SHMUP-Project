@@ -91,25 +91,35 @@ public class HangarMenuController : MonoBehaviour
             ActivateP1Menu();
             ActivateP2Menu();
         }
-    }
 
-    private void Update()
-    {
-        if(MainMenuController.onePlayer)
+        if (MainMenuController.onePlayer)
         {
             player1Credit.text = "Player 1 has: " + ScoreTracker.P1credit;
         }
-        if(!MainMenuController.onePlayer)
+        if (!MainMenuController.onePlayer)
         {
             player1Credit.text = "Player 1 has: " + ScoreTracker.P1credit;
             player2Credit.text = "Player 2 has: " + ScoreTracker.P2credit;
         }
+    }
 
+    private void Update()
+    {
         if (Input.GetKeyDown(KeyCode.Y))
         {
             DisableWarning();
             ActivateP1Menu();
             ActivateP2Menu();
+        }
+
+        if (MainMenuController.onePlayer)
+        {
+            player1Credit.text = "Player 1 has: " + ScoreTracker.P1credit;
+        }
+        if (!MainMenuController.onePlayer)
+        {
+            player1Credit.text = "Player 1 has: " + ScoreTracker.P1credit;
+            player2Credit.text = "Player 2 has: " + ScoreTracker.P2credit;
         }
     }
 
@@ -222,12 +232,6 @@ public class HangarMenuController : MonoBehaviour
 
         P1warningCredit.SetActive(true);
         disableText.SetActive(true);
-
-        if (Input.GetKeyDown(KeyCode.Y))
-        {
-            DisableWarning();
-            ActivateP1Menu();
-        }
     }
     private void P1AlreadyUpgrade()
     {
@@ -235,12 +239,6 @@ public class HangarMenuController : MonoBehaviour
 
         P1warningUpgrade.SetActive(true);
         disableText.SetActive(true);
-
-        if (Input.GetKeyDown(KeyCode.Y))
-        {
-            DisableWarning();
-            ActivateP1Menu();
-        }
     }
 
     private void P2NotEnoughCredit()
@@ -256,6 +254,27 @@ public class HangarMenuController : MonoBehaviour
 
         P2warningUpgrade.SetActive(true);
         disableText.SetActive(true);
+    }
+
+    private void ResetPlayer1Value()
+    {
+        PlayerHealthSystem.P1currentLives = PlayerHealthSystem.P1maxLives;
+        PlayerHealthSystem.P1currentHealth = PlayerHealthSystem.P1maxHealth;
+        PlayerHealthSystem.P1currentShields = PlayerHealthSystem.P1maxShields;
+
+        PlayerWeaponController.P1savedWeaponLevel = PlayerWeaponController.baseWLevel;
+        PlayerWeaponController.P1savedSecondaryLevel = PlayerWeaponController.baseSecondaryLevel;
+        PlayerWeaponController.P1savedSuperAmmo = PlayerWeaponController.superAmmoDefault;
+    }
+    private void ResetPlayer2Value()
+    {
+        PlayerHealthSystem.P2currentLives = PlayerHealthSystem.P2maxLives;
+        PlayerHealthSystem.P2currentHealth = PlayerHealthSystem.P2maxHealth;
+        PlayerHealthSystem.P2currentShields = PlayerHealthSystem.P2maxShields;
+
+        PlayerWeaponController.P2savedWeaponLevel = PlayerWeaponController.baseWLevel;
+        PlayerWeaponController.P2savedSecondaryLevel = PlayerWeaponController.baseSecondaryLevel;
+        PlayerWeaponController.P2savedSuperAmmo = PlayerWeaponController.superAmmoDefault;
     }
 
     private void SetPlayer1Value()
@@ -281,6 +300,9 @@ public class HangarMenuController : MonoBehaviour
 
     public void SelectionButton()
     {
+        ResetPlayer1Value();
+        ResetPlayer2Value();
+
         SceneManager.LoadScene("SelectionMenu");
     }
 
@@ -385,6 +407,8 @@ public class HangarMenuController : MonoBehaviour
     {
         if(PlayerWeaponController.P1currentWLevel >= 5)
         {
+            PlayerWeaponController.P1currentWLevel = 5;
+
             player1Credit.text = "Your primary weapon is at max level";
         }
         
@@ -414,6 +438,8 @@ public class HangarMenuController : MonoBehaviour
     {
         if (PlayerWeaponController.P1currentSecondaryLevel >= 5)
         {
+            PlayerWeaponController.P1currentSecondaryLevel = 5;
+
             player1Credit.text = "Your secondary weapon is at max level";
         }
 
@@ -564,6 +590,8 @@ public class HangarMenuController : MonoBehaviour
     {
         if (PlayerWeaponController.P2currentWLevel >= 5)
         {
+            PlayerWeaponController.P2currentWLevel = 5;
+
             player2Credit.text = "Your primary weapon is at max level";
         }
 
@@ -593,6 +621,8 @@ public class HangarMenuController : MonoBehaviour
     {
         if (PlayerWeaponController.P2currentSecondaryLevel >= 5)
         {
+            PlayerWeaponController.P2currentSecondaryLevel = 5;
+
             player2Credit.text = "Your secondary weapon is at max level";
         }
 
