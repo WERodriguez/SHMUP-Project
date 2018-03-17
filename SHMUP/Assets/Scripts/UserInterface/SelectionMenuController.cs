@@ -146,6 +146,23 @@ public class SelectionMenuController : MonoBehaviour
 
     public GameObject selectionText;
 
+    public Animator singleCharacter;
+    public Animator singleShip;
+    public Animator singlePrimary;
+    public Animator singleSecondary;
+    public Animator singleSpecial;
+    public Animator singleReturn;
+    public Animator doubleCharacter1;
+    public Animator doubleShip1;
+    public Animator doublePrimary1;
+    public Animator doubleSecondary1;
+    public Animator doubleSpecial1;
+    public Animator doubleCharacter2;
+    public Animator doubleShip2;
+    public Animator doublePrimary2;
+    public Animator doubleSecondary2;
+    public Animator doubleSpecial2;
+
     private void Awake()
     {
         DeactivateSingleSelection();
@@ -195,11 +212,13 @@ public class SelectionMenuController : MonoBehaviour
         if (MainMenuController.onePlayer)
         {
             ActivateSingleSelection();
+            ActivateSingleInitialAnimation();
         }
         else
         {
             ActivatePlayer1Selection();
             ActivatePlayer2Selection();
+            ActivateDoubleInitialAnimation();
         }
     }
 
@@ -1116,6 +1135,30 @@ public class SelectionMenuController : MonoBehaviour
     }
 
     //turning object on or off
+    private void ActivateSingleInitialAnimation()
+    {
+        singleCharacter.SetBool("InitialAnimation" , true);
+        singleShip.SetBool("InitialAnimation", true);
+        singlePrimary.SetBool("InitialAnimation", true);
+        singleSecondary.SetBool("InitialAnimation", true);
+        singleSpecial.SetBool("InitialAnimation", true);
+        singleReturn.SetBool("InitialAnimation", true);
+    }
+    private void ActivateDoubleInitialAnimation()
+    {
+        doubleCharacter1.SetBool("InitialAnimation", true);
+        doubleShip1.SetBool("InitialAnimation", true);
+        doublePrimary1.SetBool("InitialAnimation", true);
+        doubleSecondary1.SetBool("InitialAnimation", true);
+        doubleSpecial1.SetBool("InitialAnimation", true);
+
+        doubleCharacter2.SetBool("InitialAnimation", true);
+        doubleShip2.SetBool("InitialAnimation", true);
+        doublePrimary2.SetBool("InitialAnimation", true);
+        doubleSecondary2.SetBool("InitialAnimation", true);
+        doubleSpecial2.SetBool("InitialAnimation", true);
+    }
+
     private void ActivateSingleSelection()
     {
         SingleMenu.SetActive(true);
@@ -1135,6 +1178,7 @@ public class SelectionMenuController : MonoBehaviour
         primaryButton.SetActive(false);
         secondaryButton.SetActive(false);
         specialButton.SetActive(false);
+        singleStartButton.SetActive(false);
     }
 
     private void ActivatePlayer1Selection()
@@ -1175,6 +1219,7 @@ public class SelectionMenuController : MonoBehaviour
         P2primaryButton.SetActive(false);
         P2secondaryButton.SetActive(false);
         P2specialButton.SetActive(false);
+        doubleStartButton.SetActive(false);
     }
 
     private void ActivateSelectionText()

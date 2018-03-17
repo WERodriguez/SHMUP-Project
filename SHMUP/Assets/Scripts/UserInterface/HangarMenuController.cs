@@ -249,12 +249,6 @@ public class HangarMenuController : MonoBehaviour
 
         P2warningCredit.SetActive(true);
         disableText.SetActive(true);
-
-        if (Input.GetKeyDown(KeyCode.Y))
-        {
-            DisableWarning();
-            ActivateP2Menu();
-        }
     }
     private void P2AlreadyUpgrade()
     {
@@ -262,12 +256,6 @@ public class HangarMenuController : MonoBehaviour
 
         P2warningUpgrade.SetActive(true);
         disableText.SetActive(true);
-
-        if (Input.GetKeyDown(KeyCode.Y))
-        {
-            DisableWarning();
-            ActivateP2Menu();
-        }
     }
 
     private void SetPlayer1Value()

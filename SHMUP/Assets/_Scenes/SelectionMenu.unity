@@ -1669,7 +1669,7 @@ RectTransform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 205790494}
-  m_LocalRotation: {x: 0, y: -0.052335896, z: 0, w: 0.9986295}
+  m_LocalRotation: {x: 0, y: -0.05129019, z: 0, w: 0.9986838}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -1677,7 +1677,7 @@ RectTransform:
   - {fileID: 258264527}
   m_Father: {fileID: 806331635}
   m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: -5.88, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
   m_AnchoredPosition: {x: 90, y: -60}
@@ -2529,7 +2529,7 @@ RectTransform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 363884355}
-  m_LocalRotation: {x: 0, y: -0.026176924, z: 0, w: 0.99965733}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -2537,7 +2537,7 @@ RectTransform:
   - {fileID: 1721859541}
   m_Father: {fileID: 649148742}
   m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: -3, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: -531, y: 250}
@@ -3299,7 +3299,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 2029975613}
-        m_MethodName: LeftToggleButton
+        m_MethodName: P2RightToggleButton
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -7350,7 +7350,7 @@ RectTransform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 908624600}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: 0, y: -0.052335896, z: 0, w: 0.9986295}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -7358,7 +7358,7 @@ RectTransform:
   - {fileID: 107906820}
   m_Father: {fileID: 806331635}
   m_RootOrder: 2
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: -6, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
   m_AnchoredPosition: {x: -551, y: 546}
@@ -7555,7 +7555,7 @@ RectTransform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 930916616}
-  m_LocalRotation: {x: 0, y: 0.0010472151, z: 0, w: 0.9999995}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -7563,7 +7563,7 @@ RectTransform:
   - {fileID: 118076738}
   m_Father: {fileID: 649148742}
   m_RootOrder: 4
-  m_LocalEulerAnglesHint: {x: 0, y: 0.12, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: -531, y: -126}
@@ -8376,7 +8376,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 2029975613}
-        m_MethodName: RightToggleButton
+        m_MethodName: P1RightToggleButton
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -8486,9 +8486,9 @@ RectTransform:
   m_Father: {fileID: 649148742}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: -6, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -531, y: 0}
+  m_AnchorMin: {x: 0, y: 0.5}
+  m_AnchorMax: {x: 0, y: 0.5}
+  m_AnchoredPosition: {x: 90, y: 0}
   m_SizeDelta: {x: 180, y: 120}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!95 &1024782687
@@ -10432,7 +10432,7 @@ RectTransform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1299253383}
-  m_LocalRotation: {x: 0, y: -0.052335896, z: 0, w: 0.9986295}
+  m_LocalRotation: {x: 0, y: -0.049111255, z: 0, w: 0.99879336}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -10440,7 +10440,7 @@ RectTransform:
   - {fileID: 2147168279}
   m_Father: {fileID: 806331635}
   m_RootOrder: 3
-  m_LocalEulerAnglesHint: {x: 0, y: 0.27, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: -5.63, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
   m_AnchoredPosition: {x: 90, y: -300}
@@ -10701,7 +10701,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 2029975613}
-        m_MethodName: RightToggleButton
+        m_MethodName: P1RightToggleButton
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -11024,7 +11024,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 2029975613}
-        m_MethodName: LeftToggleButton
+        m_MethodName: P1LeftToggleButton
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -11287,7 +11287,7 @@ RectTransform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1413803259}
-  m_LocalRotation: {x: 0, y: 0.0007854346, z: 0, w: 0.99999976}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -11295,7 +11295,7 @@ RectTransform:
   - {fileID: 907569293}
   m_Father: {fileID: 806331635}
   m_RootOrder: 4
-  m_LocalEulerAnglesHint: {x: 0, y: 0.09, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
   m_AnchoredPosition: {x: -546, y: 293}
@@ -12587,7 +12587,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 2029975613}
-        m_MethodName: RightToggleButton
+        m_MethodName: P2LeftToggleButton
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -14333,7 +14333,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: -6, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -531, y: 125}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 180, y: 120}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!95 &1807110318
@@ -15357,7 +15357,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 2029975613}
-        m_MethodName: LeftToggleButton
+        m_MethodName: P1LeftToggleButton
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -16571,6 +16571,22 @@ MonoBehaviour:
   P2toggleLeft: {fileID: 1593898706}
   P2toggleRight: {fileID: 461925450}
   selectionText: {fileID: 345567937}
+  singleCharacter: {fileID: 363884357}
+  singleShip: {fileID: 1807110318}
+  singlePrimary: {fileID: 1024782687}
+  singleSecondary: {fileID: 930916618}
+  singleSpecial: {fileID: 748276136}
+  singleReturn: {fileID: 353912933}
+  doubleCharacter1: {fileID: 205790495}
+  doubleShip1: {fileID: 908624601}
+  doublePrimary1: {fileID: 1299253384}
+  doubleSecondary1: {fileID: 1413803260}
+  doubleSpecial1: {fileID: 2015298686}
+  doubleCharacter2: {fileID: 1986667216}
+  doubleShip2: {fileID: 1820988034}
+  doublePrimary2: {fileID: 1790448266}
+  doubleSecondary2: {fileID: 728506382}
+  doubleSpecial2: {fileID: 576859015}
 --- !u!1 &2030438262
 GameObject:
   m_ObjectHideFlags: 0
