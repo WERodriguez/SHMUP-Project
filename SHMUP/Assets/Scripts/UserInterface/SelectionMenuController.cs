@@ -18,7 +18,7 @@ public class SelectionMenuController : MonoBehaviour
     public static int P2secondaryType;
     public static int P2specialType;
 
-    private int toggleData;
+    private int P1toggleData;
     private bool character;
     private bool ship;
     private bool primary;
@@ -29,6 +29,8 @@ public class SelectionMenuController : MonoBehaviour
     private bool P1primary;
     private bool P1secondary;
     private bool P1special;
+
+    private int P2toggleData;
     private bool P2character;
     private bool P2ship;
     private bool P2primary;
@@ -178,7 +180,8 @@ public class SelectionMenuController : MonoBehaviour
 
         ResetBool();
         ResetInt();
-        ResetToggleData();
+        ResetP1ToggleData();
+        ResetP2ToggleData();
 
         DeactivateSelectionText();
     }
@@ -224,16 +227,10 @@ public class SelectionMenuController : MonoBehaviour
                 doubleStartButton.SetActive(false);
             }
         }
-        
-        if(toggleData > 5)
-        {
-            toggleData = 5;
-            return;
-        }
 
-        if (toggleData <= 0)
+        if (P1toggleData <= 1)
         {
-            toggleData = 1;
+            P1toggleData = 1;
 
             if (character == true)
             {
@@ -286,86 +283,10 @@ public class SelectionMenuController : MonoBehaviour
                 DeactivateP1SpecialSelect();
                 P1special1.SetActive(true);
             }
-
-            if (P2character == true)
-            {
-                DeactivateP2CharacterSelect();
-                P2character1.SetActive(true);
-            }
-            if (P2ship == true)
-            {
-                DeactivateP2ShipSelect();
-                P2ship1.SetActive(true);
-            }
-            if (P2primary == true)
-            {
-                DeactivateP2PrimarySelect();
-                P2primary1.SetActive(true);
-            }
-            if (P2secondary == true)
-            {
-                DeactivateP2SecondarySelect();
-                P2secondary1.SetActive(true);
-            }
-            if (P2special == true)
-            {
-                DeactivateP2SpecialSelect();
-                P2special1.SetActive(true);
-            }
         }
-        if (toggleData == 1)
+        if (P2toggleData <= 1)
         {
-            if (character == true)
-            {
-                DeactivateSingleCharacterSelect();
-                character1.SetActive(true);
-            }
-            if (ship == true)
-            {
-                DeactivateSingleShipSelect();
-                ship1.SetActive(true);
-            }
-            if (primary == true)
-            {
-                DeactivateSinglePrimarySelect();
-                primary1.SetActive(true);
-            }
-            if (secondary == true)
-            {
-                DeactivateSingleSecondarySelect();
-                secondary1.SetActive(true);
-            }
-            if (special == true)
-            {
-                DeactivateSingleSpecialSelect();
-                special1.SetActive(true);
-            }
-
-            if (P1character == true)
-            {
-                DeactivateP1CharacterSelect();
-                P1character1.SetActive(true);
-            }
-            if (P1ship == true)
-            {
-                DeactivateP1ShipSelect();
-                P1ship1.SetActive(true);
-            }
-            if (P1primary == true)
-            {
-                DeactivateP1PrimarySelect();
-                P1primary1.SetActive(true);
-            }
-            if (P1secondary == true)
-            {
-                DeactivateP1SecondarySelect();
-                P1secondary1.SetActive(true);
-            }
-            if (P1special == true)
-            {
-                DeactivateP1SpecialSelect();
-                P1special1.SetActive(true);
-            }
+            P2toggleData = 1;
 
             if (P2character == true)
             {
@@ -393,7 +314,8 @@ public class SelectionMenuController : MonoBehaviour
                 P2special1.SetActive(true);
             }
         }
-        if (toggleData == 2)
+
+        if (P1toggleData == 2)
         {
             if (character == true)
             {
@@ -446,7 +368,9 @@ public class SelectionMenuController : MonoBehaviour
                 DeactivateP1SpecialSelect();
                 P1special2.SetActive(true);
             }
-
+        }
+        if (P2toggleData == 2)
+        {
             if (P2character == true)
             {
                 DeactivateP2CharacterSelect();
@@ -473,7 +397,8 @@ public class SelectionMenuController : MonoBehaviour
                 P2special2.SetActive(true);
             }
         }
-        if (toggleData == 3)
+
+        if (P1toggleData == 3)
         {
             if (character == true)
             {
@@ -526,7 +451,9 @@ public class SelectionMenuController : MonoBehaviour
                 DeactivateP1SpecialSelect();
                 P1special3.SetActive(true);
             }
-
+        }
+        if (P2toggleData == 3)
+        {
             if (P2character == true)
             {
                 DeactivateP2CharacterSelect();
@@ -553,7 +480,8 @@ public class SelectionMenuController : MonoBehaviour
                 P2special3.SetActive(true);
             }
         }
-        if (toggleData == 4)
+
+        if (P1toggleData == 4)
         {
             if (character == true)
             {
@@ -567,21 +495,21 @@ public class SelectionMenuController : MonoBehaviour
             }
             if (primary == true)
             {
-                toggleData = 3;
+                P1toggleData = 3;
 
                 DeactivateSinglePrimarySelect();
                 primary3.SetActive(true);
             }
             if (secondary == true)
             {
-                toggleData = 3;
+                P1toggleData = 3;
 
                 DeactivateSingleSecondarySelect();
                 secondary3.SetActive(true);
             }
             if (special == true)
             {
-                toggleData = 3;
+                P1toggleData = 3;
 
                 DeactivateSingleSpecialSelect();
                 special3.SetActive(true);
@@ -599,26 +527,28 @@ public class SelectionMenuController : MonoBehaviour
             }
             if (P1primary == true)
             {
-                toggleData = 3;
+                P1toggleData = 3;
 
                 DeactivateP1PrimarySelect();
                 P1primary3.SetActive(true);
             }
             if (P1secondary == true)
             {
-                toggleData = 3;
+                P1toggleData = 3;
 
                 DeactivateP1SecondarySelect();
                 P1secondary3.SetActive(true);
             }
             if (P1special == true)
             {
-                toggleData = 3;
+                P1toggleData = 3;
 
                 DeactivateP1SpecialSelect();
                 P1special3.SetActive(true);
             }
-
+        }
+        if (P2toggleData == 4)
+        {
             if (P2character == true)
             {
                 DeactivateP2CharacterSelect();
@@ -631,31 +561,32 @@ public class SelectionMenuController : MonoBehaviour
             }
             if (P2primary == true)
             {
-                toggleData = 3;
+                P2toggleData = 3;
 
                 DeactivateP2PrimarySelect();
                 P2primary3.SetActive(true);
             }
             if (P2secondary == true)
             {
-                toggleData = 3;
+                P2toggleData = 3;
 
                 DeactivateP2SecondarySelect();
                 P2secondary3.SetActive(true);
             }
             if (P2special == true)
             {
-                toggleData = 3;
+                P2toggleData = 3;
 
                 DeactivateP2SpecialSelect();
                 P2special3.SetActive(true);
             }
         }
-        if (toggleData == 5)
+
+        if (P1toggleData >= 5)
         {
             if (character == true)
             {
-                toggleData = 4;
+                P1toggleData = 4;
 
                 DeactivateSingleShipSelect();
                 character4.SetActive(true);
@@ -667,21 +598,21 @@ public class SelectionMenuController : MonoBehaviour
             }
             if (primary == true)
             {
-                toggleData = 3;
+                P1toggleData = 3;
 
                 DeactivateSinglePrimarySelect();
                 primary3.SetActive(true);
             }
             if (secondary == true)
             {
-                toggleData = 3;
+                P1toggleData = 3;
 
                 DeactivateSingleSecondarySelect();
                 secondary3.SetActive(true);
             }
             if (special == true)
             {
-                toggleData = 3;
+                P1toggleData = 3;
 
                 DeactivateSingleSpecialSelect();
                 special3.SetActive(true);
@@ -689,7 +620,7 @@ public class SelectionMenuController : MonoBehaviour
 
             if (P1character == true)
             {
-                toggleData = 4;
+                P1toggleData = 4;
 
                 DeactivateP1CharacterSelect();
                 P1character4.SetActive(true);
@@ -701,29 +632,31 @@ public class SelectionMenuController : MonoBehaviour
             }
             if (P1primary == true)
             {
-                toggleData = 3;
+                P1toggleData = 3;
 
                 DeactivateP1PrimarySelect();
                 P1primary3.SetActive(true);
             }
             if (P1secondary == true)
             {
-                toggleData = 3;
+                P1toggleData = 3;
 
                 DeactivateP1SecondarySelect();
                 P1secondary3.SetActive(true);
             }
             if (P1special == true)
             {
-                toggleData = 3;
+                P1toggleData = 3;
 
                 DeactivateP1SpecialSelect();
                 P1special3.SetActive(true);
             }
-
+        }
+        if (P2toggleData >= 5)
+        {
             if (P2character == true)
             {
-                toggleData = 4;
+                P2toggleData = 4;
 
                 DeactivateP2CharacterSelect();
                 P2character4.SetActive(true);
@@ -735,21 +668,21 @@ public class SelectionMenuController : MonoBehaviour
             }
             if (P2primary == true)
             {
-                toggleData = 3;
+                P2toggleData = 3;
 
                 DeactivateP2PrimarySelect();
                 P2primary3.SetActive(true);
             }
             if (P2secondary == true)
             {
-                toggleData = 3;
+                P2toggleData = 3;
 
                 DeactivateP2SecondarySelect();
                 P2secondary3.SetActive(true);
             }
             if (P2special == true)
             {
-                toggleData = 3;
+                P2toggleData = 3;
 
                 DeactivateP2SpecialSelect();
                 P2special3.SetActive(true);
@@ -758,9 +691,9 @@ public class SelectionMenuController : MonoBehaviour
         
         if (Input.GetKeyDown(KeyCode.Q))
         {
-            if (toggleData <= 0)
+            if (P1toggleData <= 1)
             {
-                toggleData = 1;
+                P1toggleData = 1;
 
                 if (character == true)
                 {
@@ -809,81 +742,9 @@ public class SelectionMenuController : MonoBehaviour
                 {
                     P1specialType = 1;
                 }
-
-                if (P2character == true)
-                {
-                    P2characterType = 1;
-                }
-                if (P2ship == true)
-                {
-                    P2shipType = 1;
-
-                    P2LightShipData();
-                    Player2Data();
-                }
-                if (P2primary == true)
-                {
-                    P2primaryType = 1;
-                }
-                if (P2secondary == true)
-                {
-                    P2secondaryType = 1;
-                }
-                if (P2special == true)
-                {
-                    P2specialType = 1;
-                }
             }
-            if (toggleData == 1)
+            if (P2toggleData <= 1)
             {
-                if (character == true)
-                {
-                    P1characterType = 1;
-                }
-                if (ship == true)
-                {
-                    P1shipType = 1;
-
-                    P1LightShipData();
-                    Player1Data();
-                }
-                if (primary == true)
-                {
-                    P1primaryType = 1;
-                }
-                if (secondary == true)
-                {
-                    P1secondaryType = 1;
-                }
-                if (special == true)
-                {
-                    P1specialType = 1;
-                }
-
-                if (P1character == true)
-                {
-                    P1characterType = 1;
-                }
-                if (P1ship == true)
-                {
-                    P1shipType = 1;
-
-                    P1LightShipData();
-                    Player1Data();
-                }
-                if (P1primary == true)
-                {
-                    P1primaryType = 1;
-                }
-                if (P1secondary == true)
-                {
-                    P1secondaryType = 1;
-                }
-                if (P1special == true)
-                {
-                    P1specialType = 1;
-                }
-
                 if (P2character == true)
                 {
                     P2characterType = 1;
@@ -908,7 +769,8 @@ public class SelectionMenuController : MonoBehaviour
                     P2specialType = 1;
                 }
             }
-            if (toggleData == 2)
+
+            if (P1toggleData == 2)
             {
                 if (character == true)
                 {
@@ -957,7 +819,9 @@ public class SelectionMenuController : MonoBehaviour
                 {
                     P1specialType = 2;
                 }
-
+            }
+            if (P2toggleData == 2)
+            {
                 if (P2character == true)
                 {
                     P2characterType = 2;
@@ -982,7 +846,8 @@ public class SelectionMenuController : MonoBehaviour
                     P2specialType = 2;
                 }
             }
-            if (toggleData == 3)
+
+            if (P1toggleData == 3)
             {
                 if (character == true)
                 {
@@ -991,7 +856,7 @@ public class SelectionMenuController : MonoBehaviour
                 if (ship == true)
                 {
                     P1shipType = 3;
-                    
+
                     P1HeavyShipData();
                     Player1Data();
                 }
@@ -1031,7 +896,9 @@ public class SelectionMenuController : MonoBehaviour
                 {
                     P1specialType = 3;
                 }
-
+            }
+            if (P2toggleData == 3)
+            {
                 if (P2character == true)
                 {
                     P2characterType = 3;
@@ -1056,7 +923,8 @@ public class SelectionMenuController : MonoBehaviour
                     P2specialType = 3;
                 }
             }
-            if (toggleData == 4)
+
+            if (P1toggleData == 4)
             {
                 if (character == true)
                 {
@@ -1065,7 +933,7 @@ public class SelectionMenuController : MonoBehaviour
                 if (ship == true)
                 {
                     P1shipType = 4;
-                    
+
                     P1LamboShooterData();
                     Player1Data();
                 }
@@ -1105,7 +973,9 @@ public class SelectionMenuController : MonoBehaviour
                 {
                     P1specialType = 3;
                 }
-
+            }
+            if (P2toggleData == 4)
+            {
                 if (P2character == true)
                 {
                     P2characterType = 4;
@@ -1130,7 +1000,8 @@ public class SelectionMenuController : MonoBehaviour
                     P2specialType = 3;
                 }
             }
-            if (toggleData == 5)
+
+            if (P1toggleData == 5)
             {
                 if (character == true)
                 {
@@ -1179,7 +1050,9 @@ public class SelectionMenuController : MonoBehaviour
                 {
                     P1specialType = 3;
                 }
-
+            }
+            if (P2toggleData == 5)
+            {
                 if (P2character == true)
                 {
                     P2characterType = 4;
@@ -1193,7 +1066,6 @@ public class SelectionMenuController : MonoBehaviour
                 }
                 if (P2primary == true)
                 {
-                    toggleData = 3;
                     P2primaryType = 3;
                 }
                 if (P2secondary == true)
@@ -1473,13 +1345,22 @@ public class SelectionMenuController : MonoBehaviour
     }
 
     //set data
-    private void SetToggleData()
+    private void SetP1ToggleData()
     {
-        toggleData = 1;
+        P1toggleData = 1;
     }
-    private void ResetToggleData()
+    private void ResetP1ToggleData()
     {
-        toggleData = 0;
+        P1toggleData = 0;
+    }
+
+    private void SetP2ToggleData()
+    {
+        P2toggleData = 1;
+    }
+    private void ResetP2ToggleData()
+    {
+        P2toggleData = 0;
     }
 
     private void ResetInt()
@@ -1642,24 +1523,34 @@ public class SelectionMenuController : MonoBehaviour
     {
         ResetBool();
         ResetInt();
-        ResetToggleData();
+        ResetP1ToggleData();
+        ResetP2ToggleData();
         SceneManager.LoadScene("MainMenu");
     }
 
-    public void LeftToggleButton()
+    public void P1LeftToggleButton()
     {
-        toggleData++;
+        P1toggleData++;
     }
-    public void RightToggleButton()
+    public void P1RightToggleButton()
     {
-        toggleData--;
+        P1toggleData--;
+    }
+
+    public void P2LeftToggleButton()
+    {
+        P2toggleData++;
+    }
+    public void P2RightToggleButton()
+    {
+        P2toggleData--;
     }
 
     public void SinglePlayerCharacterButton()
     {
         ActivateSelectionText();
         ActivateSingleToggle();
-        SetToggleData();
+        SetP1ToggleData();
 
         shipButton.SetActive(false);
         primaryButton.SetActive(false);
@@ -1674,17 +1565,12 @@ public class SelectionMenuController : MonoBehaviour
     {
         ActivateSelectionText();
         ActivateP1Toggle();
-        SetToggleData();
+        SetP1ToggleData();
 
         P1shipButton.SetActive(false);
         P1primaryButton.SetActive(false);
         P1secondaryButton.SetActive(false);
         P1specialButton.SetActive(false);
-        P2characterButton.SetActive(false);
-        P2shipButton.SetActive(false);
-        P2primaryButton.SetActive(false);
-        P2secondaryButton.SetActive(false);
-        P2specialButton.SetActive(false);
 
         P1characterButton.SetActive(true);
         P1characterButtonShader.SetActive(true);
@@ -1694,13 +1580,8 @@ public class SelectionMenuController : MonoBehaviour
     {
         ActivateSelectionText();
         ActivateP2Toggle();
-        SetToggleData();
-
-        P1characterButton.SetActive(false);
-        P1shipButton.SetActive(false);
-        P1primaryButton.SetActive(false);
-        P1secondaryButton.SetActive(false);
-        P1specialButton.SetActive(false);
+        SetP2ToggleData();
+        
         P2shipButton.SetActive(false);
         P2primaryButton.SetActive(false);
         P2secondaryButton.SetActive(false);
@@ -1715,7 +1596,7 @@ public class SelectionMenuController : MonoBehaviour
     {
         ActivateSelectionText();
         ActivateSingleToggle();
-        SetToggleData();
+        SetP1ToggleData();
 
         characterButton.SetActive(false);
         primaryButton.SetActive(false);
@@ -1730,17 +1611,12 @@ public class SelectionMenuController : MonoBehaviour
     {
         ActivateSelectionText();
         ActivateP1Toggle();
-        SetToggleData();
+        SetP1ToggleData();
 
         P1characterButton.SetActive(false);
         P1primaryButton.SetActive(false);
         P1secondaryButton.SetActive(false);
         P1specialButton.SetActive(false);
-        P2characterButton.SetActive(false);
-        P2shipButton.SetActive(false);
-        P2primaryButton.SetActive(false);
-        P2secondaryButton.SetActive(false);
-        P2specialButton.SetActive(false);
 
         P1shipButton.SetActive(true);
         P1shipButtonShader.SetActive(true);
@@ -1750,13 +1626,8 @@ public class SelectionMenuController : MonoBehaviour
     {
         ActivateSelectionText();
         ActivateP2Toggle();
-        SetToggleData();
-
-        P1characterButton.SetActive(false);
-        P1shipButton.SetActive(false);
-        P1primaryButton.SetActive(false);
-        P1secondaryButton.SetActive(false);
-        P1specialButton.SetActive(false);
+        SetP2ToggleData();
+        
         P2characterButton.SetActive(false);
         P2primaryButton.SetActive(false);
         P2secondaryButton.SetActive(false);
@@ -1771,7 +1642,7 @@ public class SelectionMenuController : MonoBehaviour
     {
         ActivateSelectionText();
         ActivateSingleToggle();
-        SetToggleData();
+        SetP1ToggleData();
 
         characterButton.SetActive(false);
         shipButton.SetActive(false);
@@ -1786,17 +1657,12 @@ public class SelectionMenuController : MonoBehaviour
     {
         ActivateSelectionText();
         ActivateP1Toggle();
-        SetToggleData();
+        SetP1ToggleData();
 
         P1characterButton.SetActive(false);
         P1shipButton.SetActive(false);
         P1secondaryButton.SetActive(false);
         P1specialButton.SetActive(false);
-        P2characterButton.SetActive(false);
-        P2shipButton.SetActive(false);
-        P2primaryButton.SetActive(false);
-        P2secondaryButton.SetActive(false);
-        P2specialButton.SetActive(false);
 
         P1primaryButton.SetActive(true);
         P1primaryButtonShader.SetActive(true);
@@ -1806,13 +1672,8 @@ public class SelectionMenuController : MonoBehaviour
     {
         ActivateSelectionText();
         ActivateP2Toggle();
-        SetToggleData();
-
-        P1characterButton.SetActive(false);
-        P1shipButton.SetActive(false);
-        P1primaryButton.SetActive(false);
-        P1secondaryButton.SetActive(false);
-        P1specialButton.SetActive(false);
+        SetP2ToggleData();
+        
         P2characterButton.SetActive(false);
         P2shipButton.SetActive(false);
         P2secondaryButton.SetActive(false);
@@ -1827,7 +1688,7 @@ public class SelectionMenuController : MonoBehaviour
     {
         ActivateSelectionText();
         ActivateSingleToggle();
-        SetToggleData();
+        SetP1ToggleData();
 
         characterButton.SetActive(false);
         shipButton.SetActive(false);
@@ -1842,17 +1703,12 @@ public class SelectionMenuController : MonoBehaviour
     {
         ActivateSelectionText();
         ActivateP1Toggle();
-        SetToggleData();
+        SetP1ToggleData();
 
         P1characterButton.SetActive(false);
         P1shipButton.SetActive(false);
         P1primaryButton.SetActive(false);
         P1specialButton.SetActive(false);
-        P2characterButton.SetActive(false);
-        P2shipButton.SetActive(false);
-        P2primaryButton.SetActive(false);
-        P2secondaryButton.SetActive(false);
-        P2specialButton.SetActive(false);
 
         P1secondaryButton.SetActive(true);
         P1secondaryButtonShader.SetActive(true);
@@ -1862,13 +1718,8 @@ public class SelectionMenuController : MonoBehaviour
     {
         ActivateSelectionText();
         ActivateP2Toggle();
-        SetToggleData();
+        SetP2ToggleData();
 
-        P1characterButton.SetActive(false);
-        P1shipButton.SetActive(false);
-        P1primaryButton.SetActive(false);
-        P1secondaryButton.SetActive(false);
-        P1specialButton.SetActive(false);
         P2characterButton.SetActive(false);
         P2shipButton.SetActive(false);
         P2primaryButton.SetActive(false);
@@ -1883,7 +1734,7 @@ public class SelectionMenuController : MonoBehaviour
     {
         ActivateSelectionText();
         ActivateSingleToggle();
-        SetToggleData();
+        SetP1ToggleData();
 
         characterButton.SetActive(false);
         shipButton.SetActive(false);
@@ -1897,17 +1748,12 @@ public class SelectionMenuController : MonoBehaviour
     {
         ActivateSelectionText();
         ActivateP1Toggle();
-        SetToggleData();
+        SetP1ToggleData();
 
         P1characterButton.SetActive(false);
         P1shipButton.SetActive(false);
         P1primaryButton.SetActive(false);
         P1secondaryButton.SetActive(false);
-        P2characterButton.SetActive(false);
-        P2shipButton.SetActive(false);
-        P2primaryButton.SetActive(false);
-        P2secondaryButton.SetActive(false);
-        P2specialButton.SetActive(false);
 
         P1specialButton.SetActive(true);
         P1specialButtonShader.SetActive(true);
@@ -1917,13 +1763,8 @@ public class SelectionMenuController : MonoBehaviour
     {
         ActivateSelectionText();
         ActivateP2Toggle();
-        SetToggleData();
-
-        P1characterButton.SetActive(false);
-        P1shipButton.SetActive(false);
-        P1primaryButton.SetActive(false);
-        P1secondaryButton.SetActive(false);
-        P1specialButton.SetActive(false);
+        SetP2ToggleData();
+        
         P2characterButton.SetActive(false);
         P2shipButton.SetActive(false);
         P2primaryButton.SetActive(false);
