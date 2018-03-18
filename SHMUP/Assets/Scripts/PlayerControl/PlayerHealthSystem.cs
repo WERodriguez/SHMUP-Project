@@ -5,7 +5,6 @@ using UnityEngine.UI;
 
 public class PlayerHealthSystem : MonoBehaviour
 {
-
     //Player health
     public static float P1maxHealth;
     public static float P1currentHealth;
@@ -47,6 +46,12 @@ public class PlayerHealthSystem : MonoBehaviour
 
 
     //UI Tracking
+    public Image P1HealthBar;
+    public Image P1ShieldBar;
+    
+    public Image P2HealthBar;
+    public Image P2ShieldBar;
+    
     public Text P1health;
     public Text P1shields;
     public Text P1lives;
@@ -63,25 +68,18 @@ public class PlayerHealthSystem : MonoBehaviour
     {
         playerWeaponController = gameObject.GetComponent<PlayerWeaponController>();
 
-        if(MainMenuController.onePlayer)
+        if (MainMenuController.onePlayer)
         {
             Player1Status();
-
-            P1health.text = "HP: " + P1currentHealth;
-            P1shields.text = "SP: " + P1currentShields;
-            P1lives.text = "Lives: " + P1currentLives;
+            SettingUpPlayer1();
         }
         else
         {
             Player1Status();
             Player2Status();
 
-            P2health.text = "HP: " + P2currentHealth;
-            P2shields.text = "SP: " + P2currentShields;
-            P2lives.text = "Lives: " + P2currentLives;
-            P2health.text = "HP: " + P2currentHealth;
-            P2shields.text = "SP: " + P2currentShields;
-            P2lives.text = "Lives: " + P2currentLives;
+            SettingUpPlayer1();
+            SettingUpPlayer2();
         }
     }
 
@@ -135,7 +133,9 @@ public class PlayerHealthSystem : MonoBehaviour
                 {
                     P1currentShields = 0;
                 }
+
                 P1shields.text = "SP: " + P1currentShields;
+                P1ShieldBar.fillAmount = P1currentShields / P1maxShields;
             }
             //if excess shield damage is less than 0 it is substracted from health.
             if (P1excessShieldDamage < 0)
@@ -144,12 +144,15 @@ public class PlayerHealthSystem : MonoBehaviour
                 P1currentHealth -= P1excessShieldDamage;
 
                 P1health.text = "HP: " + P1currentHealth;
+                P1HealthBar.fillAmount = P1currentHealth / P1maxHealth;
             }
 
             if (P1currentHealth < minHealth)
             {
                 P1currentHealth = 0;
                 P1health.text = "HP: " + P1currentHealth;
+                P1HealthBar.fillAmount = P1currentHealth / P1maxHealth;
+                P1HealthBar.fillAmount = P1currentHealth / P1maxHealth;
                 //Destroy(gameObject);
                 P1Respawn();
             }
@@ -171,6 +174,7 @@ public class PlayerHealthSystem : MonoBehaviour
                     P2currentShields = 0;
                 }
                 P2shields.text = "SP: " + P2currentShields;
+                P2ShieldBar.fillAmount = P2currentShields / P2maxShields;
             }
             //if excess shield damage is less than 0 it is substracted from health.
             if (P2excessShieldDamage < 0)
@@ -179,12 +183,14 @@ public class PlayerHealthSystem : MonoBehaviour
                 P2currentHealth -= P2excessShieldDamage;
 
                 P2health.text = "HP: " + P2currentHealth;
+                P2HealthBar.fillAmount = P2currentHealth / P2maxHealth;
             }
 
             if (P2currentHealth < minHealth)
             {
                 P2currentHealth = 0;
                 P2health.text = "HP: " + P2currentHealth;
+                P2HealthBar.fillAmount = P2currentHealth / P2maxHealth;
                 //Destroy(gameObject);
                 P2Respawn();
             }
@@ -204,6 +210,7 @@ public class PlayerHealthSystem : MonoBehaviour
             }
 
             P1health.text = "HP: " + P1currentHealth;
+            P1HealthBar.fillAmount = P1currentHealth / P1maxHealth;
         }
 
         //player 2
@@ -217,6 +224,7 @@ public class PlayerHealthSystem : MonoBehaviour
             }
 
             P2health.text = "HP: " + P2currentHealth;
+            P2HealthBar.fillAmount = P2currentHealth / P2maxHealth;
         }
     }
 
@@ -233,6 +241,7 @@ public class PlayerHealthSystem : MonoBehaviour
             }
 
             P1shields.text = "SP: " + P1currentShields;
+            P1ShieldBar.fillAmount = P1currentShields / P1maxShields;
         }
 
         //player 2
@@ -246,6 +255,7 @@ public class PlayerHealthSystem : MonoBehaviour
             }
 
             P2shields.text = "SP: " + P2currentShields;
+            P2ShieldBar.fillAmount = P2currentShields / P2maxShields;
         }
     }
 
@@ -327,12 +337,26 @@ public class PlayerHealthSystem : MonoBehaviour
         P1currentHealth = P1savedHealth;
         P1currentShields = P1savedShields;
         P1currentLives = P1savedLives;
+
+        P1health.text = "HP: " + P1currentHealth;
+        P1shields.text = "SP: " + P1currentShields;
+        P1lives.text = "Lives: " + P1currentLives;
+
+        P1HealthBar.fillAmount = P1currentHealth / P1maxHealth;
+        P1ShieldBar.fillAmount = P1currentShields / P1maxShields;
     }
     private void Player2Status()
     {
         P2currentHealth = P2savedHealth;
         P2currentShields = P2savedShields;
         P2currentLives = P2savedLives;
+
+        P2health.text = "HP: " + P2currentHealth;
+        P2shields.text = "SP: " + P2currentShields;
+        P2lives.text = "Lives: " + P2currentLives;
+
+        P2HealthBar.fillAmount = P2currentHealth / P2maxHealth;
+        P2ShieldBar.fillAmount = P2currentShields / P2maxShields;
     }
 
     private void SettingUpPlayer1()
