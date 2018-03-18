@@ -108,8 +108,8 @@ public class BeamCannon : MonoBehaviour
         //Activates place holder charge effect.
         transform.GetChild(1).gameObject.SetActive(true);
         yield return new WaitForSeconds(chargeTime);
-        //Deactivates place holder charge effect.
-        //transform.GetChild(1).gameObject.SetActive(false);
+        //Deactivates charge effect.
+        transform.GetChild(1).gameObject.SetActive(false);
         //Activates the beam.
         beamCollider.enabled = !beamCollider.enabled;
         transform.GetChild(0).gameObject.SetActive(true);
