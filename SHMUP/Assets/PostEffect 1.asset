@@ -9,14 +9,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8a3bdb2cd68f901469e7cc149151eb49, type: 3}
-  m_Name: PostEffect
+  m_Name: PostEffect 1
   m_EditorClassIdentifier: 
   debugViews:
     m_Enabled: 1
     m_Settings:
       mode: 0
       depth:
-        scale: 0.195
+        scale: 1
       motionVectors:
         sourceOpacity: 1
         motionImageOpacity: 0
@@ -27,7 +27,7 @@ MonoBehaviour:
   fog:
     m_Enabled: 1
     m_Settings:
-      excludeSkybox: 1
+      excludeSkybox: 0
   antialiasing:
     m_Enabled: 1
     m_Settings:
@@ -72,16 +72,16 @@ MonoBehaviour:
     m_Enabled: 1
     m_Settings:
       focusDistance: 0.1
-      aperture: 28
+      aperture: 29
       focalLength: 23
       useCameraFov: 1
       kernelSize: 3
   motionBlur:
-    m_Enabled: 1
+    m_Enabled: 0
     m_Settings:
-      shutterAngle: 139
-      sampleCount: 9
-      frameBlending: 0.171
+      shutterAngle: 0
+      sampleCount: 16
+      frameBlending: 0.064
   eyeAdaptation:
     m_Enabled: 1
     m_Settings:
@@ -101,9 +101,9 @@ MonoBehaviour:
     m_Settings:
       bloom:
         intensity: 0.024
-        threshold: 0.99
-        softKnee: 0.51
-        radius: 6
+        threshold: 1.1
+        softKnee: 0.395
+        radius: 7
         antiFlicker: 0
       lensDirt:
         texture: {fileID: 0}
@@ -121,15 +121,15 @@ MonoBehaviour:
         neutralWhiteClip: 10
       basic:
         postExposure: 0
-        temperature: -74
-        tint: 12.5
-        hueShift: 3
+        temperature: 100
+        tint: 50
+        hueShift: 5
         saturation: 0.983
         contrast: 1.109
       channelMixer:
-        red: {x: 1, y: 0, z: 0}
+        red: {x: 0.54, y: 0.44, z: 0.44}
         green: {x: 0, y: 1, z: 0}
-        blue: {x: 0, y: 0, z: 1}
+        blue: {x: -0.1, y: 0, z: -2}
         currentEditingChannel: 0
       colorWheels:
         mode: 1
@@ -284,7 +284,7 @@ MonoBehaviour:
     m_Enabled: 0
     m_Settings:
       spectralTexture: {fileID: 0}
-      intensity: 0.262
+      intensity: 0.1
   grain:
     m_Enabled: 1
     m_Settings:
@@ -296,14 +296,14 @@ MonoBehaviour:
     m_Enabled: 1
     m_Settings:
       mode: 0
-      color: {r: 0.03860294, g: 0.15228193, b: 0.30882353, a: 1}
+      color: {r: 0, g: 0.22591278, b: 0.5955882, a: 1}
       center: {x: 0.5, y: 0.5}
-      intensity: 0.28
-      smoothness: 1
-      roundness: 0
+      intensity: 0.522
+      smoothness: 0.901
+      roundness: 0.208
       mask: {fileID: 0}
       opacity: 1
-      rounded: 1
+      rounded: 0
   dithering:
     m_Enabled: 0
   monitors:
