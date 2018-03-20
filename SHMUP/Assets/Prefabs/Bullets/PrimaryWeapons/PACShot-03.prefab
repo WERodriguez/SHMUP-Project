@@ -70,7 +70,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1646744777095314}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -5.26, y: 0, z: 11.195824}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4144669279721812}
@@ -206,6 +206,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damageAmmount: 15
+  impactSparks: {fileID: 1745067665915236, guid: 4430ffee161627e49aef157c4d7119b1,
+    type: 2}
   whoDoIBelongTo: 0
 --- !u!114 &114756650304632780
 MonoBehaviour:

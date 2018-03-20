@@ -2,11 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class AttackPenetrate : MonoBehaviour {
+public class AttackPenetrate : MonoBehaviour
+{
 
     private HealthSystem health;
 
     public float damageAmmount;
+    public GameObject impactSparks;
 
     //What player the bullet belongs to.
     public bool whoDoIBelongTo;
@@ -27,5 +29,6 @@ public class AttackPenetrate : MonoBehaviour {
         }
 
         health.Damage(damageAmmount, whoDoIBelongTo);
+        Instantiate(impactSparks, gameObject.transform.position, gameObject.transform.rotation);
     }
 }

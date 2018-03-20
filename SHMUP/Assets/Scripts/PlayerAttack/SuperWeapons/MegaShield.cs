@@ -43,10 +43,10 @@ public class MegaShield : MonoBehaviour
     void Update()
     {
         //Checks if the beam can fade or if it's done fading.
-        if (canIFadeYet)
+        /*if (canIFadeYet)
         {
             //StartCoroutine(FadeOut());
-            childRenderers = GetComponentsInChildren<Renderer>();
+            childRenderers = GetComponentsInChildren<ParticleSystem>();
 
             //Goes through all the children and fades them out.
             foreach (Renderer childObjectColor in childRenderers)
@@ -56,7 +56,7 @@ public class MegaShield : MonoBehaviour
                 childObjectColor.material.color = new Color(childObjectColor.material.color.r, childObjectColor.material.color.g, childObjectColor.material.color.b,
                 childObjectColor.material.color.a - (fadePerSecond * Time.deltaTime));
             }
-        }
+        }*/
     }
 
 

@@ -10,6 +10,8 @@ public class SuperBombLauncher : MonoBehaviour
     private GameObject explodo;
     //Refference to explosion prefab
     public GameObject explosion;
+    public GameObject particles;
+
 
     //What player the bullet belongs to.
     public bool whoDoIBelongTo;
@@ -38,8 +40,8 @@ public class SuperBombLauncher : MonoBehaviour
 
         if (hasFuse == true && fuseTime < 0)
         {
-            Debug.Log("I am supposed to explode");
             Instantiate(explodo, gameObject.transform.position, gameObject.transform.rotation);
+            Instantiate(particles, gameObject.transform.position, gameObject.transform.rotation);
             Destroy(gameObject);
         }
     }
@@ -60,6 +62,7 @@ public class SuperBombLauncher : MonoBehaviour
 
         health.Damage(damageAmmount, whoDoIBelongTo);
         Instantiate(explodo, gameObject.transform.position, gameObject.transform.rotation);
+        Instantiate(particles, gameObject.transform.position, gameObject.transform.rotation);
         Destroy(gameObject);
     }
 }

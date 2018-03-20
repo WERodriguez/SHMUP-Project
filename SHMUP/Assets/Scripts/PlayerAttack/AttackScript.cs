@@ -7,6 +7,7 @@ public class AttackScript : MonoBehaviour
     private HealthSystem health;
 
     public float damageAmmount;
+    public GameObject impactSparks;
 
     //What player the bullet belongs to.
     public bool whoDoIBelongTo;
@@ -27,7 +28,7 @@ public class AttackScript : MonoBehaviour
         }
 
         health.Damage(damageAmmount, whoDoIBelongTo);
-
+        Instantiate(impactSparks, gameObject.transform.position, gameObject.transform.rotation);
         Destroy(gameObject);
     }
 }

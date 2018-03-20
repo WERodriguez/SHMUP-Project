@@ -7,6 +7,7 @@ public class EnemyAttackScript : MonoBehaviour
     private PlayerHealthSystem health;
 
     public float damageAmmount;
+    public GameObject impactSparks;
 
     //Just checks if a collider overlaps with a trigger. The thing that is in you. Overlap.
     private void OnTriggerEnter(Collider other)
@@ -24,7 +25,7 @@ public class EnemyAttackScript : MonoBehaviour
         }
 
         health.Damage(damageAmmount);
-
+        Instantiate(impactSparks, gameObject.transform.position, gameObject.transform.rotation);
         Destroy(gameObject);
     }
 }
