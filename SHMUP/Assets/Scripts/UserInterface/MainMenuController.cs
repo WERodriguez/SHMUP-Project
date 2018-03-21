@@ -8,28 +8,33 @@ public class MainMenuController : MonoBehaviour
 {
     public static bool onePlayer;
 
-    public GameObject title;
+    public GameObject warning;
+
+    public GameObject mainMenuCanvas;
     public GameObject backGround;
     public GameObject buttonList;
     public GameObject singleButton;
     public GameObject doubleButton;
     public GameObject quitButton;
-
     private void Start()
     {
         DeactivateMainMenu();
-        title.SetActive(true);
         StartCoroutine(Timer());
     }
-
     IEnumerator Timer()
     {
-        yield return new WaitForSeconds(.5f);
+        warning.SetActive(true);
+
+        yield return new WaitForSeconds(6.0f);
+
+        warning.SetActive(false);
+
         ActivateMainMenu();
     }
 
     private void ActivateMainMenu()
     {
+        mainMenuCanvas.SetActive(true);
         buttonList.SetActive(true);
         singleButton.SetActive(true);
         doubleButton.SetActive(true);
@@ -37,6 +42,7 @@ public class MainMenuController : MonoBehaviour
     }
     private void DeactivateMainMenu()
     {
+        mainMenuCanvas.SetActive(false);
         buttonList.SetActive(false);
         singleButton.SetActive(false);
         doubleButton.SetActive(false);

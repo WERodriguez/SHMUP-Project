@@ -71,15 +71,11 @@ public class PlayerHealthSystem : MonoBehaviour
         if (MainMenuController.onePlayer)
         {
             Player1Status();
-            SettingUpPlayer1();
         }
         else
         {
             Player1Status();
             Player2Status();
-
-            SettingUpPlayer1();
-            SettingUpPlayer2();
         }
     }
 
@@ -94,12 +90,14 @@ public class PlayerHealthSystem : MonoBehaviour
                 transform.position = respawnLocation.position;
                 gameObject.GetComponent<PlayerController>().P1isDead = false;
 
+                P1currentLives--;
+
                 SettingUpPlayer1();
 
                 respawnTimer = 0;
             }
         }
-        if (gameObject.GetComponent<PlayerController>().P2isDead == true && P2canRespawn == true)
+        else if (gameObject.GetComponent<PlayerController>().P2isDead == true && P2canRespawn == true)
         {
             respawnTimer += Time.deltaTime;
             if (respawnTimer > 3)
@@ -108,10 +106,16 @@ public class PlayerHealthSystem : MonoBehaviour
                 transform.position = respawnLocation.position;
                 gameObject.GetComponent<PlayerController>().P2isDead = false;
 
+                P2currentLives--;
+
                 SettingUpPlayer2();
 
                 respawnTimer = 0;
             }
+        }
+        else
+        {
+            return;
         }
     }
 
@@ -268,6 +272,7 @@ public class PlayerHealthSystem : MonoBehaviour
 
             if (P1currentLives > P1maxLives)
             {
+                P1currentLives = P1maxLives;
                 return;
             }
         }
@@ -281,6 +286,7 @@ public class PlayerHealthSystem : MonoBehaviour
 
             if (P2currentLives > P2maxLives)
             {
+                P2currentLives = P2maxLives;
                 return;
             }
 
@@ -297,11 +303,10 @@ public class PlayerHealthSystem : MonoBehaviour
             gameObject.GetComponent<PlayerController>().P1isDead = true;
             playerWeaponController.LessGun();
             P1canRespawn = false;
-            return;
+            return; ;
         }
         if(P1currentLives > 0)
         {
-            P1currentLives--;
             P1lives.text = "Lives: " + P1currentLives;
             transform.position = playerHidingSpot.position;
             gameObject.GetComponent<PlayerController>().P1isDead = true;
@@ -323,7 +328,6 @@ public class PlayerHealthSystem : MonoBehaviour
         }
         if (P2currentLives > 0)
         {
-            P2currentLives--;
             P2lives.text = "Lives: " + P2currentLives;
             transform.position = playerHidingSpot.position;
             gameObject.GetComponent<PlayerController>().P2isDead = true;
@@ -367,6 +371,9 @@ public class PlayerHealthSystem : MonoBehaviour
         P1health.text = "HP: " + P1currentHealth;
         P1shields.text = "SP: " + P1currentShields;
         P1lives.text = "Lives: " + P1currentLives;
+
+        P1HealthBar.fillAmount = P1currentHealth / P1maxHealth;
+        P1ShieldBar.fillAmount = P1currentShields / P1maxShields;
     }
     private void SettingUpPlayer2()
     {
@@ -376,5 +383,8 @@ public class PlayerHealthSystem : MonoBehaviour
         P2health.text = "HP: " + P2currentHealth;
         P2shields.text = "SP: " + P2currentShields;
         P2lives.text = "Lives: " + P2currentLives;
+
+        P2HealthBar.fillAmount = P2currentHealth / P2maxHealth;
+        P2ShieldBar.fillAmount = P2currentShields / P2maxShields;
     }
 }
