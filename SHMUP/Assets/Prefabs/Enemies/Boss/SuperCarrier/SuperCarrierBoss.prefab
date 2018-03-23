@@ -3592,6 +3592,7 @@ MonoBehaviour:
   isBoss: 0
   isBossPart: 0
   scrap: {fileID: 0}
+  scoreScreen: 0
 --- !u!114 &114062482010190496
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3686,6 +3687,7 @@ MonoBehaviour:
   isBoss: 0
   isBossPart: 0
   scrap: {fileID: 0}
+  scoreScreen: 0
 --- !u!114 &114261936651184038
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3705,6 +3707,7 @@ MonoBehaviour:
   isBoss: 0
   isBossPart: 0
   scrap: {fileID: 0}
+  scoreScreen: 0
 --- !u!114 &114267010641174236
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3724,6 +3727,7 @@ MonoBehaviour:
   isBoss: 0
   isBossPart: 1
   scrap: {fileID: 1737076073364992, guid: 8aeee3e73d1548b4ca2161cf6c897e86, type: 2}
+  scoreScreen: 0
 --- !u!114 &114328839536899194
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3825,6 +3829,7 @@ MonoBehaviour:
   isBoss: 0
   isBossPart: 1
   scrap: {fileID: 1320757564216458, guid: 79ec2d2fee660974bba88747bd4662cb, type: 2}
+  scoreScreen: 0
 --- !u!114 &114509911713750944
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3955,6 +3960,7 @@ MonoBehaviour:
   isBoss: 0
   isBossPart: 0
   scrap: {fileID: 0}
+  scoreScreen: 0
 --- !u!114 &114728671970379418
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3979,7 +3985,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 5
-  bossPosition: 20
+  bossPosition: 30
   hangarSpawn: {fileID: 4521832746454506}
   enemyships:
   - {fileID: 1369515705846832, guid: 372707eb24a15a94dacd66de6f8dced5, type: 2}
@@ -4006,6 +4012,7 @@ MonoBehaviour:
   isBoss: 0
   isBossPart: 0
   scrap: {fileID: 0}
+  scoreScreen: 0
 --- !u!114 &114799460707709702
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -4042,6 +4049,7 @@ MonoBehaviour:
   isBoss: 1
   isBossPart: 0
   scrap: {fileID: 1138192319124262, guid: 4bce727b8bcfd1e4ab08f333d1ad2e4f, type: 2}
+  scoreScreen: 0
 --- !u!114 &114814919693208794
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -4167,6 +4175,7 @@ MonoBehaviour:
   isBoss: 0
   isBossPart: 0
   scrap: {fileID: 0}
+  scoreScreen: 0
 --- !u!114 &114956617875327536
 MonoBehaviour:
   m_ObjectHideFlags: 1
