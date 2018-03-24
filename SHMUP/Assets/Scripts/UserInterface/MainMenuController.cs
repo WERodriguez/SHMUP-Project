@@ -122,19 +122,19 @@ public class MainMenuController : MonoBehaviour
         quitGlow.fillAmount = 0;
     }
 
-    private void SingleButton()
+    public void SingleButton()
     {
         onePlayer = true;
         SceneManager.LoadScene("SelectionMenu");
     }
 
-    private void DoubleButton()
+    public void DoubleButton()
     {
         onePlayer = false;
         SceneManager.LoadScene("SelectionMenu");
     }
 
-    private void QuitButton()
+    public void QuitButton()
     {
         Application.Quit();
     }

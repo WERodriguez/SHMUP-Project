@@ -255,7 +255,7 @@ public class ScoreScreenController : MonoBehaviour
         PlayerWeaponController.P2savedSuperAmmo = PlayerWeaponController.P2currentSuperAmmo;
     }
 
-    private void NexButton()
+    public void NexButton()
     {
         ResetPlayerScore();
 
@@ -274,7 +274,7 @@ public class ScoreScreenController : MonoBehaviour
         SceneManager.LoadScene("Level1");
     }
 
-    private void HangarButton()
+    public void HangarButton()
     {
         ResetPlayerScore();
 

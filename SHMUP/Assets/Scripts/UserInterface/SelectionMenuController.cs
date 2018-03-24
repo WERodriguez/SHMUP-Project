@@ -563,130 +563,130 @@ public class SelectionMenuController : MonoBehaviour
                     {
                         if (P1toggleData == 1)
                         {
-                            if (P1character == true)
+                            if (character == true)
                             {
                                 P1characterType = 1;
                             }
-                            if (P1ship == true)
+                            if (ship == true)
                             {
                                 P1shipType = 1;
 
                                 P1LightShipData();
                                 Player1Data();
                             }
-                            if (P1primary == true)
+                            if (primary == true)
                             {
                                 P1primaryType = 1;
                             }
-                            if (P1secondary == true)
+                            if (secondary == true)
                             {
                                 P1secondaryType = 1;
                             }
-                            if (P1special == true)
+                            if (special == true)
                             {
                                 P1specialType = 1;
                             }
                         }
                         if (P1toggleData == 2)
                         {
-                            if (P1character == true)
+                            if (character == true)
                             {
                                 P1characterType = 2;
                             }
-                            if (P1ship == true)
+                            if (ship == true)
                             {
                                 P1shipType = 2;
 
                                 P1MediumShipData();
                                 Player1Data();
                             }
-                            if (P1primary == true)
+                            if (primary == true)
                             {
                                 P1primaryType = 2;
                             }
-                            if (P1secondary == true)
+                            if (secondary == true)
                             {
                                 P1secondaryType = 2;
                             }
-                            if (P1special == true)
+                            if (special == true)
                             {
                                 P1specialType = 2;
                             }
                         }
                         if (P1toggleData == 3)
                         {
-                            if (P1character == true)
+                            if (character == true)
                             {
                                 P1characterType = 3;
                             }
-                            if (P1ship == true)
+                            if (ship == true)
                             {
                                 P1shipType = 3;
 
                                 P1HeavyShipData();
                                 Player1Data();
                             }
-                            if (P1primary == true)
+                            if (primary == true)
                             {
                                 P1primaryType = 3;
                             }
-                            if (P1secondary == true)
+                            if (secondary == true)
                             {
                                 P1secondaryType = 3;
                             }
-                            if (P1special == true)
+                            if (special == true)
                             {
                                 P1specialType = 3;
                             }
                         }
                         if (P1toggleData == 4)
                         {
-                            if (P1character == true)
+                            if (character == true)
                             {
                                 P1characterType = 4;
                             }
-                            if (P1ship == true)
+                            if (ship == true)
                             {
                                 P1shipType = 4;
 
                                 P1LamboShooterData();
                                 Player1Data();
                             }
-                            if (P1primary == true)
+                            if (primary == true)
                             {
                                 P1primaryType = 3;
                             }
-                            if (P1secondary == true)
+                            if (secondary == true)
                             {
                                 P1secondaryType = 3;
                             }
-                            if (P1special == true)
+                            if (special == true)
                             {
                                 P1specialType = 3;
                             }
                         }
                         if (P1toggleData == 5)
                         {
-                            if (P1character == true)
+                            if (character == true)
                             {
                                 P1characterType = 4;
                             }
-                            if (P1ship == true)
+                            if (ship == true)
                             {
                                 P1shipType = 5;
 
                                 P1TruckShooterData();
                                 Player1Data();
                             }
-                            if (P1primary == true)
+                            if (primary == true)
                             {
                                 P1primaryType = 3;
                             }
-                            if (P1secondary == true)
+                            if (secondary == true)
                             {
                                 P1secondaryType = 3;
                             }
-                            if (P1special == true)
+                            if (special == true)
                             {
                                 P1specialType = 3;
                             }
@@ -2059,21 +2059,21 @@ public class SelectionMenuController : MonoBehaviour
     }
 
     //on click button
-    private void SingleStartButton()
+    public void SingleStartButton()
     {
         StartCoroutine(ActivateSingleStartButton());
     }
-    private void DoubleStartButton()
+    public void DoubleStartButton()
     {
         StartCoroutine(ActivateDoubleStartButton());
     }
 
-    private void SkipButton()
+    public void SkipButton()
     {
         SceneManager.LoadScene("Level1");
     }
 
-    private void ReturnButton()
+    public void ReturnButton()
     {
         ResetBool();
         ResetInt();
@@ -2101,7 +2101,7 @@ public class SelectionMenuController : MonoBehaviour
         P2toggleData--;
     }
 
-    private void SinglePlayerCharacterButton()
+    public void SinglePlayerCharacterButton()
     {
         choosing = true;
         
@@ -2117,7 +2117,7 @@ public class SelectionMenuController : MonoBehaviour
         characterButtonShader.SetActive(true);
         character = true;
     }
-    private void Player1CharacterButton()
+    public void Player1CharacterButton()
     {
         P1choosing = true;
         
@@ -2133,7 +2133,7 @@ public class SelectionMenuController : MonoBehaviour
         P1characterButtonShader.SetActive(true);
         P1character = true;
     }
-    private void Player2CharacterButton()
+    public void Player2CharacterButton()
     {
         P2choosing = true;
         
@@ -2150,7 +2150,7 @@ public class SelectionMenuController : MonoBehaviour
         P2character = true;
     }
 
-    private void SinglePlayerShipButton()
+    public void SinglePlayerShipButton()
     {
         choosing = true;
         
@@ -2166,7 +2166,7 @@ public class SelectionMenuController : MonoBehaviour
         shipButtonShader.SetActive(true);
         ship = true;
     }
-    private void Player1ShipButton()
+    public void Player1ShipButton()
     {
         P1choosing = true;
         
@@ -2182,7 +2182,7 @@ public class SelectionMenuController : MonoBehaviour
         P1shipButtonShader.SetActive(true);
         P1ship = true;
     }
-    private void Player2ShipButton()
+    public void Player2ShipButton()
     {
         P2choosing = true;
         
@@ -2199,7 +2199,7 @@ public class SelectionMenuController : MonoBehaviour
         P2ship = true;
     }
 
-    private void SinglePlayerPrimaryButton()
+    public void SinglePlayerPrimaryButton()
     {
         choosing = true;
         
@@ -2215,7 +2215,7 @@ public class SelectionMenuController : MonoBehaviour
         primaryButtonShader.SetActive(true);
         primary = true;
     }
-    private void Player1PrimaryButton()
+    public void Player1PrimaryButton()
     {
         P1choosing = true;
 
@@ -2231,7 +2231,7 @@ public class SelectionMenuController : MonoBehaviour
         P1primaryButtonShader.SetActive(true);
         P1primary = true;
     }
-    private void Player2PrimaryButton()
+    public void Player2PrimaryButton()
     {
         P2choosing = true;
         
@@ -2248,7 +2248,7 @@ public class SelectionMenuController : MonoBehaviour
         P2primary = true;
     }
 
-    private void SinglePlayerSecondaryButton()
+    public void SinglePlayerSecondaryButton()
     {
         choosing = true;
         
@@ -2264,7 +2264,7 @@ public class SelectionMenuController : MonoBehaviour
         secondaryButtonShader.SetActive(true);
         secondary = true;
     }
-    private void Player1SecondaryButton()
+    public void Player1SecondaryButton()
     {
         P1choosing = true;
         
@@ -2280,7 +2280,7 @@ public class SelectionMenuController : MonoBehaviour
         P1secondaryButtonShader.SetActive(true);
         P1secondary = true;
     }
-    private void Player2SecondaryButton()
+    public void Player2SecondaryButton()
     {
         P2choosing = true;
         
@@ -2297,7 +2297,7 @@ public class SelectionMenuController : MonoBehaviour
         P2secondary = true;
     }
 
-    private void SinglePlayerSpecialButton()
+    public void SinglePlayerSpecialButton()
     {
         choosing = true;
         
@@ -2312,7 +2312,7 @@ public class SelectionMenuController : MonoBehaviour
         specialButtonShader.SetActive(true);
         special = true;
     }
-    private void Player1SpecialButton()
+    public void Player1SpecialButton()
     {
         P1choosing = true;
         
@@ -2328,7 +2328,7 @@ public class SelectionMenuController : MonoBehaviour
         P1specialButtonShader.SetActive(true);
         P1special = true;
     }
-    private void Player2SpecialButton()
+    public void Player2SpecialButton()
     {
         P2choosing = true;
         

@@ -211,7 +211,7 @@ public class HUDcontroller : MonoBehaviour
         PlayerWeaponController.P2savedSuperAmmo = PlayerWeaponController.superAmmoDefault;
     }
 
-    private void ResumeButton()
+    public void ResumeButton()
     {
         DeactivatePauseMenu();
         ActivateHUD();
@@ -219,7 +219,7 @@ public class HUDcontroller : MonoBehaviour
         Time.timeScale = 1f;
     }
 
-    private void RestartButton()
+    public void RestartButton()
     {
         if (MainMenuController.onePlayer)
         {
@@ -237,7 +237,7 @@ public class HUDcontroller : MonoBehaviour
         SceneManager.LoadScene("Level1");
     }
 
-    private void MainMenuButton()
+    public void MainMenuButton()
     {
         if (MainMenuController.onePlayer)
         {
@@ -255,7 +255,7 @@ public class HUDcontroller : MonoBehaviour
         SceneManager.LoadScene("MainMenu");
     }
 
-    private void Player2Button()
+    public void Player2Button()
     {
         MainMenuController.onePlayer = false;
 

@@ -193,7 +193,7 @@ public class GameOverController : MonoBehaviour
         PlayerWeaponController.P2savedSuperAmmo = PlayerWeaponController.superAmmoDefault;
     }
 
-    private void RestartButton()
+    public void RestartButton()
     {
         if (MainMenuController.onePlayer)
         {
@@ -210,7 +210,7 @@ public class GameOverController : MonoBehaviour
         SceneManager.LoadScene("Level1");
     }
 
-    private void MainMenuButton()
+    public void MainMenuButton()
     {
         if (MainMenuController.onePlayer)
         {
