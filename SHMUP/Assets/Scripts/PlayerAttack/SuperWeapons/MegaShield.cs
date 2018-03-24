@@ -22,43 +22,23 @@ public class MegaShield : MonoBehaviour
     //Place Holder shield graphics.
     private GameObject shield;
 
-    //Holds components in child objects.
-    public Component[] childRenderers;
+    //HandlesAudio
+    public AudioClip[] shieldSounds;
+    public AudioSource shieldAudioSource;
 
-    //How much to fade per second.
-    public float fadePerSecond;
-    //Should the thing start to fade.
-    public bool canIFadeYet;
-
-
-    // Use this for initialization
     void Start()
     {
+        shieldAudioSource = GetComponent<AudioSource>();
+        shieldSounds = new AudioClip[]
+        {
+            (AudioClip)Resources.Load("Sounds/SuperShieldActiveV3"),
+            (AudioClip)Resources.Load("Sounds/SuperShieldDeactivate"),
+            (AudioClip)Resources.Load("Sounds/SuperShieldImpact")
+        };
+
         dealDamage = false;
-        canIFadeYet = false;
         StartCoroutine(ShieldActive());
     }
-
-    // Update is called once per frame
-    void Update()
-    {
-        //Checks if the beam can fade or if it's done fading.
-        /*if (canIFadeYet)
-        {
-            //StartCoroutine(FadeOut());
-            childRenderers = GetComponentsInChildren<ParticleSystem>();
-
-            //Goes through all the children and fades them out.
-            foreach (Renderer childObjectColor in childRenderers)
-            {
-                //Keeping this around just for notes. This is how you change material colors
-                //childObjectToFade.material.color = Color.red;
-                childObjectColor.material.color = new Color(childObjectColor.material.color.r, childObjectColor.material.color.g, childObjectColor.material.color.b,
-                childObjectColor.material.color.a - (fadePerSecond * Time.deltaTime));
-            }
-        }*/
-    }
-
 
     private void OnTriggerEnter(Collider other)
     {
@@ -71,11 +51,13 @@ public class MegaShield : MonoBehaviour
 
         if (other.CompareTag("EnemyBullet") && health == null)
         {
+            shieldAudioSource.PlayOneShot(shieldSounds[2]);
             Destroy(other.gameObject);
             return;
         }
         else if (other.CompareTag("EnemyBullet") && health != null)
         {
+            shieldAudioSource.PlayOneShot(shieldSounds[2]);
             health.Damage(1000, whoDoIBelongTo);
             return;
         }
@@ -85,6 +67,7 @@ public class MegaShield : MonoBehaviour
             return;
         }
 
+        shieldAudioSource.PlayOneShot(shieldSounds[2]);
         dealDamage = true;
         StartCoroutine(ShieldDamage());
     }
@@ -120,14 +103,12 @@ public class MegaShield : MonoBehaviour
 
     IEnumerator ShieldActive()
     {
+        shieldAudioSource.PlayOneShot(shieldSounds[0]);
         yield return new WaitForSeconds(shieldDuration);
-
-        //Tells the beam it can start fading.
-        canIFadeYet = true;
+        shieldAudioSource.PlayOneShot(shieldSounds[1]);
 
         yield return new WaitForSeconds(shieldFizzle);
-        //Tells the beam it can stop fading.
-        canIFadeYet = false;
+
         yield return new WaitForSeconds(0.01f);
         Destroy(gameObject);
     }

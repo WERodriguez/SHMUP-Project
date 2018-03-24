@@ -32,10 +32,21 @@ public class BeamCannon : MonoBehaviour
     public float fadePerSecond;
     public bool canIFadeYet;
 
+    //HandlesAudio
+    public AudioClip[] beamSounds;
+    public AudioSource beamAudioSource;
 
     // Use this for initialization
     void Start ()
     {
+        beamAudioSource = GetComponent<AudioSource>();
+
+        beamSounds = new AudioClip[]
+        {
+            (AudioClip)Resources.Load("Sounds/BeamCannonFiringV2"),
+            (AudioClip)Resources.Load("Sounds/BeamCannonPowerDown"),
+        };
+
         dealDamage = false;
         canIFadeYet = false;
         beamCollider = GetComponent<CapsuleCollider>();
@@ -111,12 +122,16 @@ public class BeamCannon : MonoBehaviour
         //Deactivates charge effect.
         transform.GetChild(1).gameObject.SetActive(false);
         //Activates the beam.
+
+        beamAudioSource.PlayOneShot(beamSounds[0]);
+
         beamCollider.enabled = !beamCollider.enabled;
         transform.GetChild(0).gameObject.SetActive(true);
         yield return new WaitForSeconds(beamDuration);
 
         //Tells the beam it can start fading.
         canIFadeYet = true;
+        beamAudioSource.PlayOneShot(beamSounds[1]);
 
         yield return new WaitForSeconds(beamFizzle);
         //Tells the beam it can stop fading.

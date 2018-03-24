@@ -87,12 +87,36 @@ public class PlayerWeaponController : MonoBehaviour
     private GameObject P2secondaryBullet;
     private GameObject P2superBullet;
 
-    //Weapon Firing Sounds
+    //Contains Weapon Firing Sounds
+    //WeaponSoundList: 0 = MG, 1 = Flak, 2 = PAC, 3 = Missile Launcher, 4 = Plasma Gun, 5 = MegaBomb, 6 = Beam Charge, 7 = SuperShield.
     public AudioClip[] weaponSounds;
-
+    //Holds an array of all audio sources.
+    //Need multiple audio sources so no one sound cuts off another.
+    public AudioSource[] audioSources;
+    //Plays audio for the different weapons.
+    public AudioSource primaryWeaponSound;
+    public AudioSource secondaryWeaponSound;
+    public AudioSource superWeaponSound;
 
     void Start()
     {
+        audioSources = GetComponents<AudioSource>();
+        weaponSounds = new AudioClip[]
+        {
+            (AudioClip)Resources.Load("Sounds/Machinegun"),
+            (AudioClip)Resources.Load("Sounds/FlakCannonFiring"),
+            (AudioClip)Resources.Load("Sounds/PACFiring"),
+            (AudioClip)Resources.Load("Sounds/MissileLauncherFiringV2"),
+            (AudioClip)Resources.Load("Sounds/PlasmaGunFiring"),
+            (AudioClip)Resources.Load("Sounds/MegaBombDeploy"),
+            (AudioClip)Resources.Load("Sounds/BeamCannonChargeUp"),
+            (AudioClip)Resources.Load("Sounds/SuperShieldActivate")
+         };
+
+        primaryWeaponSound = audioSources[0];
+        secondaryWeaponSound = audioSources[1];
+        superWeaponSound = audioSources[2];
+
         baseWLevel = 1;
         baseSecondaryLevel = 0;
         superAmmoDefault = 3;
@@ -230,18 +254,22 @@ public class PlayerWeaponController : MonoBehaviour
             {
                 fireRate = 0.10f;
                 nextFire = Time.time + fireRate;
+                //Plays the sound all the way through regardless of how quickly it's called.
+                primaryWeaponSound.PlayOneShot(weaponSounds[0]);
                 Instantiate(P1bullet, shotSpawns[0].position, shotSpawns[0].rotation);
             }
             //Spawns 1 Bullet from all hard points
             else if (P1currentWLevel == 2 && Time.time > nextFire)
             {
                 nextFire = Time.time + fireRate;
+                primaryWeaponSound.PlayOneShot(weaponSounds[0]);
                 Instantiate(P1bullet, new Vector3(shotSpawns[0].position.x + 0.5f, shotSpawns[0].position.y, shotSpawns[0].position.z), shotSpawns[0].rotation);
                 Instantiate(P1bullet, new Vector3(shotSpawns[0].position.x + -0.5f, shotSpawns[0].position.y, shotSpawns[0].position.z), shotSpawns[0].rotation);
             }
             else if (P1currentWLevel == 3 && Time.time > nextFire)
             {
                 nextFire = Time.time + fireRate;
+                primaryWeaponSound.PlayOneShot(weaponSounds[0]);
                 foreach (var shotSpawn in shotSpawns)
                 {
                     Instantiate(P1bullet, shotSpawn.position, shotSpawn.rotation);
@@ -249,12 +277,14 @@ public class PlayerWeaponController : MonoBehaviour
             }
             else if (P1currentWLevel == 4 && Time.time > nextFire)
             {
+                primaryWeaponSound.PlayOneShot(weaponSounds[0]);
                 //How to use FanFire()
                 //int numberOfShots, float spreadAngleIncrementDefault
                 P1FanFire(4, 2.0f);
             }
             else if (P1currentWLevel == 5 && Time.time > nextFire)
             {
+                primaryWeaponSound.PlayOneShot(weaponSounds[0]);
                 P1FanFire(5, 3.0f);
             }
         }
@@ -266,18 +296,21 @@ public class PlayerWeaponController : MonoBehaviour
             {
                 fireRate = 0.10f;
                 nextFire = Time.time + fireRate;
+                primaryWeaponSound.PlayOneShot(weaponSounds[0]);
                 Instantiate(P2bullet, shotSpawns[0].position, shotSpawns[0].rotation);
             }
             //Spawns 1 Bullet from all hard points
             else if (P2currentWLevel == 2 && Time.time > nextFire)
             {
                 nextFire = Time.time + fireRate;
+                primaryWeaponSound.PlayOneShot(weaponSounds[0]);
                 Instantiate(P2bullet, new Vector3(shotSpawns[0].position.x + 0.5f, shotSpawns[0].position.y, shotSpawns[0].position.z), shotSpawns[0].rotation);
                 Instantiate(P2bullet, new Vector3(shotSpawns[0].position.x + -0.5f, shotSpawns[0].position.y, shotSpawns[0].position.z), shotSpawns[0].rotation);
             }
             else if (P2currentWLevel == 3 && Time.time > nextFire)
             {
                 nextFire = Time.time + fireRate;
+                primaryWeaponSound.PlayOneShot(weaponSounds[0]);
                 foreach (var shotSpawn in shotSpawns)
                 {
                     Instantiate(P2bullet, shotSpawn.position, shotSpawn.rotation);
@@ -285,12 +318,14 @@ public class PlayerWeaponController : MonoBehaviour
             }
             else if (P2currentWLevel == 4 && Time.time > nextFire)
             {
+                primaryWeaponSound.PlayOneShot(weaponSounds[0]);
                 //How to use FanFire()
                 //int numberOfShots, float spreadAngleIncrementDefault
                 P2FanFire(4, 2.0f);
             }
             else if (P2currentWLevel == 5 && Time.time > nextFire)
             {
+                primaryWeaponSound.PlayOneShot(weaponSounds[0]);
                 P2FanFire(5, 3.0f);
             }
         }
@@ -307,26 +342,32 @@ public class PlayerWeaponController : MonoBehaviour
             if (P1currentWLevel == 1 && Time.time > nextFire)
             {
                 fireRate = 1.5f;
+                primaryWeaponSound.PlayOneShot(weaponSounds[1]);
                 nextFire = Time.time + fireRate;
                 Instantiate(P1bullet, shotSpawns[0].position, shotSpawns[0].rotation);
             }
             else if (P1currentWLevel == 2 && Time.time > nextFire)
             {
                 fireRate = 1.25f;
+                primaryWeaponSound.PlayOneShot(weaponSounds[1]);
                 P1ChainFire();
             }
             else if (P1currentWLevel == 3 && Time.time > nextFire)
             {
                 fireRate = 1.0f;
+                primaryWeaponSound.PlayOneShot(weaponSounds[1]);
                 P1ChainFire();
             }
             else if (P1currentWLevel == 4 && Time.time > nextFire)
             {
                 fireRate = 1f;
+                primaryWeaponSound.PlayOneShot(weaponSounds[1]);
                 P1FanFire(3, 20.0f);
             }
             else if (P1currentWLevel == 5 && Time.time > nextFire)
             {
+                fireRate = 1f;
+                primaryWeaponSound.PlayOneShot(weaponSounds[1]);
                 P1FanFire(7, 20.0f);
             }
         }
@@ -337,26 +378,32 @@ public class PlayerWeaponController : MonoBehaviour
             if (P2currentWLevel == 1 && Time.time > nextFire)
             {
                 fireRate = 1.5f;
+                primaryWeaponSound.PlayOneShot(weaponSounds[1]);
                 nextFire = Time.time + fireRate;
                 Instantiate(P2bullet, shotSpawns[0].position, shotSpawns[0].rotation);
             }
             else if (P2currentWLevel == 2 && Time.time > nextFire)
             {
                 fireRate = 1.25f;
+                primaryWeaponSound.PlayOneShot(weaponSounds[1]);
                 P2ChainFire();
             }
             else if (P2currentWLevel == 3 && Time.time > nextFire)
             {
                 fireRate = 1.0f;
+                primaryWeaponSound.PlayOneShot(weaponSounds[1]);
                 P2ChainFire();
             }
             else if (P2currentWLevel == 4 && Time.time > nextFire)
             {
                 fireRate = 1f;
+                primaryWeaponSound.PlayOneShot(weaponSounds[1]);
                 P2FanFire(3, 20.0f);
             }
             else if (P2currentWLevel == 5 && Time.time > nextFire)
             {
+                fireRate = 1f;
+                primaryWeaponSound.PlayOneShot(weaponSounds[1]);
                 P2FanFire(7, 20.0f);
             }
         }
@@ -374,12 +421,14 @@ public class PlayerWeaponController : MonoBehaviour
             {
                 fireRate = 1.0f;
                 nextFire = Time.time + fireRate;
+                primaryWeaponSound.PlayOneShot(weaponSounds[2]);
                 Instantiate(P1bullet, shotSpawns[0].position, shotSpawns[0].rotation);
             }
             else if (P1currentWLevel == 2 && Time.time > nextFire)
             {
                 fireRate = 1.0f;
                 nextFire = Time.time + fireRate;
+                primaryWeaponSound.PlayOneShot(weaponSounds[2]);
                 Instantiate(P1bullet, new Vector3(shotSpawns[0].position.x + 0.3f, shotSpawns[0].position.y, shotSpawns[0].position.z), shotSpawns[0].rotation);
                 Instantiate(P1bullet, new Vector3(shotSpawns[0].position.x + -0.3f, shotSpawns[0].position.y, shotSpawns[0].position.z), shotSpawns[0].rotation);
             }
@@ -387,12 +436,14 @@ public class PlayerWeaponController : MonoBehaviour
             {
                 fireRate = 1.0f;
                 nextFire = Time.time + fireRate;
+                primaryWeaponSound.PlayOneShot(weaponSounds[2]);
                 Instantiate(P1bullet, shotSpawns[0].position, shotSpawns[0].rotation);
             }
             else if (P1currentWLevel == 4 && Time.time > nextFire)
             {
                 fireRate = 1.0f;
                 nextFire = Time.time + fireRate;
+                primaryWeaponSound.PlayOneShot(weaponSounds[2]);
                 Instantiate(P1bullet, new Vector3(shotSpawns[0].position.x + 0.75f, shotSpawns[0].position.y, shotSpawns[0].position.z), shotSpawns[0].rotation);
                 Instantiate(P1bullet, new Vector3(shotSpawns[0].position.x + -0.75f, shotSpawns[0].position.y, shotSpawns[0].position.z), shotSpawns[0].rotation);
             }
@@ -400,6 +451,7 @@ public class PlayerWeaponController : MonoBehaviour
             {
                 fireRate = 1.0f;
                 nextFire = Time.time + fireRate;
+                primaryWeaponSound.PlayOneShot(weaponSounds[2]);
                 Instantiate(P1bullet, shotSpawns[0].position, shotSpawns[0].rotation);
             }
         }
@@ -411,12 +463,14 @@ public class PlayerWeaponController : MonoBehaviour
             {
                 fireRate = 1.0f;
                 nextFire = Time.time + fireRate;
+                primaryWeaponSound.PlayOneShot(weaponSounds[2]);
                 Instantiate(P2bullet, shotSpawns[0].position, shotSpawns[0].rotation);
             }
             else if (P2currentWLevel == 2 && Time.time > nextFire)
             {
                 fireRate = 1.0f;
                 nextFire = Time.time + fireRate;
+                primaryWeaponSound.PlayOneShot(weaponSounds[2]);
                 Instantiate(P2bullet, new Vector3(shotSpawns[0].position.x + 0.3f, shotSpawns[0].position.y, shotSpawns[0].position.z), shotSpawns[0].rotation);
                 Instantiate(P2bullet, new Vector3(shotSpawns[0].position.x + -0.3f, shotSpawns[0].position.y, shotSpawns[0].position.z), shotSpawns[0].rotation);
             }
@@ -424,12 +478,14 @@ public class PlayerWeaponController : MonoBehaviour
             {
                 fireRate = 1.0f;
                 nextFire = Time.time + fireRate;
+                primaryWeaponSound.PlayOneShot(weaponSounds[2]);
                 Instantiate(P2bullet, shotSpawns[0].position, shotSpawns[0].rotation);
             }
             else if (P2currentWLevel == 4 && Time.time > nextFire)
             {
                 fireRate = 1.0f;
                 nextFire = Time.time + fireRate;
+                primaryWeaponSound.PlayOneShot(weaponSounds[2]);
                 Instantiate(P2bullet, new Vector3(shotSpawns[0].position.x + 0.75f, shotSpawns[0].position.y, shotSpawns[0].position.z), shotSpawns[0].rotation);
                 Instantiate(P2bullet, new Vector3(shotSpawns[0].position.x + -0.75f, shotSpawns[0].position.y, shotSpawns[0].position.z), shotSpawns[0].rotation);
             }
@@ -437,6 +493,7 @@ public class PlayerWeaponController : MonoBehaviour
             {
                 fireRate = 1.0f;
                 nextFire = Time.time + fireRate;
+                primaryWeaponSound.PlayOneShot(weaponSounds[2]);
                 Instantiate(P2bullet, shotSpawns[0].position, shotSpawns[0].rotation);
             }
         }
@@ -454,6 +511,7 @@ public class PlayerWeaponController : MonoBehaviour
             {
                 secondaryFireRate = 2;
                 nextSecondaryFire = Time.time + secondaryFireRate;
+                secondaryWeaponSound.PlayOneShot(weaponSounds[3]);
                 foreach (var secondarySpawn in secondarySpawns)
                 {
                     Instantiate(P1secondaryBullet, secondarySpawn.position, secondarySpawn.rotation);
@@ -463,6 +521,7 @@ public class PlayerWeaponController : MonoBehaviour
             {
                 secondaryFireRate = 1.75f;
                 nextSecondaryFire = Time.time + secondaryFireRate;
+                secondaryWeaponSound.PlayOneShot(weaponSounds[3]);
                 foreach (var secondarySpawn in secondarySpawns)
                 {
                     Instantiate(P1secondaryBullet, secondarySpawn.position, secondarySpawn.rotation);
@@ -471,18 +530,21 @@ public class PlayerWeaponController : MonoBehaviour
             else if (P1currentSecondaryLevel == 3 && Time.time > nextSecondaryFire)
             {
                 nextSecondaryFire = Time.time + secondaryFireRate;
+                secondaryWeaponSound.PlayOneShot(weaponSounds[3]);
                 secondaryFireRate = 1.75f;
                 P1SecondaryFanFire(2, 3, 4);
             }
             else if (P1currentSecondaryLevel == 4 && Time.time > nextSecondaryFire)
             {
                 nextSecondaryFire = Time.time + secondaryFireRate;
+                secondaryWeaponSound.PlayOneShot(weaponSounds[3]);
                 secondaryFireRate = 1.5f;
                 P1SecondaryFanFire(2, 3, 4);
             }
             else if (P1currentSecondaryLevel == 5 && Time.time > nextSecondaryFire)
             {
                 nextSecondaryFire = Time.time + secondaryFireRate;
+                secondaryWeaponSound.PlayOneShot(weaponSounds[3]);
                 secondaryFireRate = 1.5f;
                 P1SecondaryFanFire(3, 3, 5);
             }
@@ -494,6 +556,7 @@ public class PlayerWeaponController : MonoBehaviour
             {
                 secondaryFireRate = 2;
                 nextSecondaryFire = Time.time + secondaryFireRate;
+                secondaryWeaponSound.PlayOneShot(weaponSounds[3]);
                 foreach (var secondarySpawn in secondarySpawns)
                 {
                     Instantiate(P2secondaryBullet, secondarySpawn.position, secondarySpawn.rotation);
@@ -503,6 +566,7 @@ public class PlayerWeaponController : MonoBehaviour
             {
                 secondaryFireRate = 1.75f;
                 nextSecondaryFire = Time.time + secondaryFireRate;
+                secondaryWeaponSound.PlayOneShot(weaponSounds[3]);
                 foreach (var secondarySpawn in secondarySpawns)
                 {
                     Instantiate(P2secondaryBullet, secondarySpawn.position, secondarySpawn.rotation);
@@ -511,18 +575,21 @@ public class PlayerWeaponController : MonoBehaviour
             else if (P2currentSecondaryLevel == 3 && Time.time > nextSecondaryFire)
             {
                 nextSecondaryFire = Time.time + secondaryFireRate;
+                secondaryWeaponSound.PlayOneShot(weaponSounds[3]);
                 secondaryFireRate = 1.75f;
                 P2SecondaryFanFire(2, 3, 4);
             }
             else if (P2currentSecondaryLevel == 4 && Time.time > nextSecondaryFire)
             {
                 nextSecondaryFire = Time.time + secondaryFireRate;
+                secondaryWeaponSound.PlayOneShot(weaponSounds[3]);
                 secondaryFireRate = 1.5f;
                 P2SecondaryFanFire(2, 3, 4);
             }
             else if (P2currentSecondaryLevel == 5 && Time.time > nextSecondaryFire)
             {
                 nextSecondaryFire = Time.time + secondaryFireRate;
+                secondaryWeaponSound.PlayOneShot(weaponSounds[3]);
                 secondaryFireRate = 1.5f;
                 P2SecondaryFanFire(3, 3, 5);
             }
@@ -540,6 +607,7 @@ public class PlayerWeaponController : MonoBehaviour
             {
                 secondaryFireRate = 0.10f;
                 nextSecondaryFire = Time.time + secondaryFireRate;
+                secondaryWeaponSound.PlayOneShot(weaponSounds[0]);
                 foreach (var secondarySpawn in secondarySpawns)
                 {
                     Instantiate(P1secondaryBullet, secondarySpawn.position, secondarySpawn.rotation);
@@ -549,6 +617,7 @@ public class PlayerWeaponController : MonoBehaviour
             {
                 secondaryFireRate = 0.10f;
                 nextSecondaryFire = Time.time + secondaryFireRate;
+                secondaryWeaponSound.PlayOneShot(weaponSounds[0]);
                 //How many bullets. Initial angle to be fired at. How much to increase the angle by.
                 P1SecondaryFanFire(2, 30, 5);
             }
@@ -556,18 +625,21 @@ public class PlayerWeaponController : MonoBehaviour
             {
                 secondaryFireRate = 0.10f;
                 nextSecondaryFire = Time.time + secondaryFireRate;
+                secondaryWeaponSound.PlayOneShot(weaponSounds[0]);
                 P1SecondaryFanFire(3, 30, 5);
             }
             else if (P1currentSecondaryLevel == 4 && Time.time > nextSecondaryFire)
             {
                 secondaryFireRate = 0.10f;
                 nextSecondaryFire = Time.time + secondaryFireRate;
+                secondaryWeaponSound.PlayOneShot(weaponSounds[0]);
                 P1SecondaryFanFire(4, 30, 5);
             }
             else if (P1currentSecondaryLevel == 5 && Time.time > nextSecondaryFire)
             {
                 secondaryFireRate = 0.10f;
                 nextSecondaryFire = Time.time + secondaryFireRate;
+                secondaryWeaponSound.PlayOneShot(weaponSounds[0]);
                 P1SecondaryFanFire(5, 30, 5);
             }
         }
@@ -578,6 +650,7 @@ public class PlayerWeaponController : MonoBehaviour
             {
                 secondaryFireRate = 0.10f;
                 nextSecondaryFire = Time.time + secondaryFireRate;
+                secondaryWeaponSound.PlayOneShot(weaponSounds[0]);
                 foreach (var secondarySpawn in secondarySpawns)
                 {
                     Instantiate(P2secondaryBullet, secondarySpawn.position, secondarySpawn.rotation);
@@ -587,6 +660,7 @@ public class PlayerWeaponController : MonoBehaviour
             {
                 secondaryFireRate = 0.10f;
                 nextSecondaryFire = Time.time + secondaryFireRate;
+                secondaryWeaponSound.PlayOneShot(weaponSounds[0]);
                 //How many bullets. Initial angle to be fired at. How much to increase the angle by.
                 P2SecondaryFanFire(2, 30, 5);
             }
@@ -594,18 +668,21 @@ public class PlayerWeaponController : MonoBehaviour
             {
                 secondaryFireRate = 0.10f;
                 nextSecondaryFire = Time.time + secondaryFireRate;
+                secondaryWeaponSound.PlayOneShot(weaponSounds[0]);
                 P2SecondaryFanFire(3, 30, 5);
             }
             else if (P2currentSecondaryLevel == 4 && Time.time > nextSecondaryFire)
             {
                 secondaryFireRate = 0.10f;
                 nextSecondaryFire = Time.time + secondaryFireRate;
+                secondaryWeaponSound.PlayOneShot(weaponSounds[0]);
                 P2SecondaryFanFire(4, 30, 5);
             }
             else if (P2currentSecondaryLevel == 5 && Time.time > nextSecondaryFire)
             {
                 secondaryFireRate = 0.10f;
                 nextSecondaryFire = Time.time + secondaryFireRate;
+                secondaryWeaponSound.PlayOneShot(weaponSounds[0]);
                 P2SecondaryFanFire(5, 30, 5);
             }
         }
@@ -622,6 +699,7 @@ public class PlayerWeaponController : MonoBehaviour
             {
                 secondaryFireRate = 1.5f;
                 nextSecondaryFire = Time.time + secondaryFireRate;
+                secondaryWeaponSound.PlayOneShot(weaponSounds[4]);
                 foreach (var secondarySpawn in secondarySpawns)
                 {
                     Instantiate(P1secondaryBullet, secondarySpawn.position, secondarySpawn.rotation);
@@ -631,6 +709,7 @@ public class PlayerWeaponController : MonoBehaviour
             {
                 secondaryFireRate = 1.25f;
                 nextSecondaryFire = Time.time + secondaryFireRate;
+                secondaryWeaponSound.PlayOneShot(weaponSounds[4]);
                 foreach (var secondarySpawn in secondarySpawns)
                 {
                     Instantiate(P1secondaryBullet, secondarySpawn.position, secondarySpawn.rotation);
@@ -640,18 +719,21 @@ public class PlayerWeaponController : MonoBehaviour
             {
                 nextSecondaryFire = Time.time + secondaryFireRate;
                 secondaryFireRate = 1.25f;
+                secondaryWeaponSound.PlayOneShot(weaponSounds[4]);
                 P1SecondaryFanFire(2, 10, 15);
             }
             else if (P1currentSecondaryLevel == 4 && Time.time > nextSecondaryFire)
             {
                 nextSecondaryFire = Time.time + secondaryFireRate;
                 secondaryFireRate = 1.0f;
+                secondaryWeaponSound.PlayOneShot(weaponSounds[4]);
                 P1SecondaryFanFire(2, 10, 15);
             }
             else if (P1currentSecondaryLevel == 5 && Time.time > nextSecondaryFire)
             {
                 nextSecondaryFire = Time.time + secondaryFireRate;
                 secondaryFireRate = 1.0f;
+                secondaryWeaponSound.PlayOneShot(weaponSounds[4]);
                 P1SecondaryFanFire(3, 10, 15);
             }
         }
@@ -662,6 +744,7 @@ public class PlayerWeaponController : MonoBehaviour
             {
                 secondaryFireRate = 1.5f;
                 nextSecondaryFire = Time.time + secondaryFireRate;
+                secondaryWeaponSound.PlayOneShot(weaponSounds[4]);
                 foreach (var secondarySpawn in secondarySpawns)
                 {
                     Instantiate(P2secondaryBullet, secondarySpawn.position, secondarySpawn.rotation);
@@ -671,6 +754,7 @@ public class PlayerWeaponController : MonoBehaviour
             {
                 secondaryFireRate = 1.25f;
                 nextSecondaryFire = Time.time + secondaryFireRate;
+                secondaryWeaponSound.PlayOneShot(weaponSounds[4]);
                 foreach (var secondarySpawn in secondarySpawns)
                 {
                     Instantiate(P2secondaryBullet, secondarySpawn.position, secondarySpawn.rotation);
@@ -680,18 +764,21 @@ public class PlayerWeaponController : MonoBehaviour
             {
                 nextSecondaryFire = Time.time + secondaryFireRate;
                 secondaryFireRate = 1.25f;
+                secondaryWeaponSound.PlayOneShot(weaponSounds[4]);
                 P2SecondaryFanFire(2, 10, 15);
             }
             else if (P2currentSecondaryLevel == 4 && Time.time > nextSecondaryFire)
             {
                 nextSecondaryFire = Time.time + secondaryFireRate;
                 secondaryFireRate = 1.0f;
+                secondaryWeaponSound.PlayOneShot(weaponSounds[4]);
                 P2SecondaryFanFire(2, 10, 15);
             }
             else if (P2currentSecondaryLevel == 5 && Time.time > nextSecondaryFire)
             {
                 nextSecondaryFire = Time.time + secondaryFireRate;
                 secondaryFireRate = 1.0f;
+                secondaryWeaponSound.PlayOneShot(weaponSounds[4]);
                 P2SecondaryFanFire(3, 10, 15);
             }
         }
@@ -709,6 +796,7 @@ public class PlayerWeaponController : MonoBehaviour
             {
                 superFireRate = 1.0f;
                 nextSuperFire = Time.time + superFireRate;
+                superWeaponSound.PlayOneShot(weaponSounds[5]);
                 P1superAmmo--;
                 P1superAmmoCounter.text = "Super Ammo: " + P1superAmmo;
                 Instantiate(P1superBullet, shotSpawns[0].position, shotSpawns[0].rotation);
@@ -721,6 +809,7 @@ public class PlayerWeaponController : MonoBehaviour
             {
                 superFireRate = 1.0f;
                 nextSuperFire = Time.time + superFireRate;
+                superWeaponSound.PlayOneShot(weaponSounds[5]);
                 P2superAmmo--;
                 P2superAmmoCounter.text = "Super Ammo: " + P2superAmmo;
                 Instantiate(P2superBullet, shotSpawns[0].position, shotSpawns[0].rotation);
@@ -739,6 +828,7 @@ public class PlayerWeaponController : MonoBehaviour
             {
                 superFireRate = 8.0f;
                 nextSuperFire = Time.time + superFireRate;
+                superWeaponSound.PlayOneShot(weaponSounds[6]);
                 P1superAmmo--;
                 P1superAmmoCounter.text = "Super Ammo: " + P1superAmmo;
                 childSuperWeapon = Instantiate(P1superBullet, shotSpawns[0].transform.position, shotSpawns[0].transform.rotation) as GameObject;
@@ -752,6 +842,7 @@ public class PlayerWeaponController : MonoBehaviour
             {
                 superFireRate = 8.0f;
                 nextSuperFire = Time.time + superFireRate;
+                superWeaponSound.PlayOneShot(weaponSounds[6]);
                 P2superAmmo--;
                 P2superAmmoCounter.text = "Super Ammo: " + P2superAmmo;
                 childSuperWeapon = Instantiate(P2superBullet, shotSpawns[0].transform.position, shotSpawns[0].transform.rotation) as GameObject;
@@ -772,6 +863,7 @@ public class PlayerWeaponController : MonoBehaviour
             {
                 superFireRate = 7.0f;
                 nextSuperFire = Time.time + superFireRate;
+                superWeaponSound.PlayOneShot(weaponSounds[7]);
                 P1superAmmo--;
                 P1superAmmoCounter.text = "Super Ammo: " + P1superAmmo;
                 childSuperWeapon = Instantiate(P1superBullet, gameObject.transform.position, gameObject.transform.rotation) as GameObject;
@@ -785,6 +877,7 @@ public class PlayerWeaponController : MonoBehaviour
             {
                 superFireRate = 7.0f;
                 nextSuperFire = Time.time + superFireRate;
+                superWeaponSound.PlayOneShot(weaponSounds[7]);
                 P2superAmmo--;
                 P2superAmmoCounter.text = "Super Ammo: " + P2superAmmo;
                 childSuperWeapon = Instantiate(P2superBullet, gameObject.transform.position, gameObject.transform.rotation) as GameObject;
