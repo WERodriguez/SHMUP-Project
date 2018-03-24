@@ -16,6 +16,9 @@ public class SelectionMenuController : MonoBehaviour
     private bool P1choosing;
     private bool P2choosing;
 
+    private bool gamePlay;
+    private bool breakInstruction;
+
     public Image singleReturnButtonGlow;
     public Image singleStartButtonGlow;
     public Image doubleReturnButtonGlow;
@@ -182,8 +185,6 @@ public class SelectionMenuController : MonoBehaviour
     public GameObject P2toggleLeft;
     public GameObject P2toggleRight;
 
-    public GameObject selectionText;
-
     public GameObject guideLine;
 
     public Animator singleCharacter;
@@ -240,8 +241,6 @@ public class SelectionMenuController : MonoBehaviour
         ResetP1ToggleData();
         ResetP2ToggleData();
 
-        DeactivateSelectionText();
-
         ResetGlow();
         ResetP1Glow();
         ResetP2Glow();
@@ -250,14 +249,15 @@ public class SelectionMenuController : MonoBehaviour
         ResetP1ToggleGlow();
         ResetP2ToggleGlow();
 
-        ResetGlowData();
-
         maxSingleGlowTracker = 6;
         maxP2GLowTracker = 5;
 
         choosing = false;
         P1choosing = false;
         P2choosing = false;
+
+        gamePlay = false;
+        breakInstruction = false;
     }
 
     private void Start()
@@ -283,902 +283,508 @@ public class SelectionMenuController : MonoBehaviour
 
     private void Update()
     {
-        if (MainMenuController.onePlayer)
+        if (!gamePlay)
         {
-            if (P1characterType > 0 && P1shipType > 0 && P1primaryType > 0 && P1secondaryType > 0 && P1specialType > 0)
+            if (MainMenuController.onePlayer)
             {
-                maxSingleGlowTracker = 7;
+                if (P1characterType > 0 && P1shipType > 0 && P1primaryType > 0 && P1secondaryType > 0 && P1specialType > 0)
+                {
+                    maxSingleGlowTracker = 7;
 
-                singleStartButton.SetActive(true);
-            }
-            else
-            {
-                singleStartButton.SetActive(false);
-            }
+                    singleStartButton.SetActive(true);
+                }
+                else
+                {
+                    singleStartButton.SetActive(false);
+                }
 
-            if (P1toggleData <= 1)
-            {
-                ResetToggleGlow();
-                toggleLeftGlow.fillAmount = 1;
+                if (P1toggleData <= 1)
+                {
+                    ResetToggleGlow();
+                    toggleLeftGlow.fillAmount = 1;
 
-                P1toggleData = 1;
-                
-                if (character == true)
-                {
-                    DeactivateSingleCharacterSelect();
-                    character1.SetActive(true);
-                }
-                if (ship == true)
-                {
-                    DeactivateSingleShipSelect();
-                    ship1.SetActive(true);
-                }
-                if (primary == true)
-                {
-                    DeactivateSinglePrimarySelect();
-                    primary1.SetActive(true);
-                }
-                if (secondary == true)
-                {
-                    DeactivateSingleSecondarySelect();
-                    secondary1.SetActive(true);
-                }
-                if (special == true)
-                {
-                    DeactivateSingleSpecialSelect();
-                    special1.SetActive(true);
-                }
-            }
-            if (P1toggleData == 2)
-            {
-                if (character == true)
-                {
-                    DeactivateSingleCharacterSelect();
-                    character2.SetActive(true);
-                }
-                if (ship == true)
-                {
-                    DeactivateSingleShipSelect();
-                    ship2.SetActive(true);
-                }
-                if (primary == true)
-                {
-                    DeactivateSinglePrimarySelect();
-                    primary2.SetActive(true);
-                }
-                if (secondary == true)
-                {
-                    DeactivateSingleSecondarySelect();
-                    secondary2.SetActive(true);
-                }
-                if (special == true)
-                {
-                    DeactivateSingleSpecialSelect();
-                    special2.SetActive(true);
-                }
-            }
-            if (P1toggleData == 3)
-            {
-                if (character == true)
-                {
-                    DeactivateSingleCharacterSelect();
-                    character3.SetActive(true);
-                }
-                if (ship == true)
-                {
-                    DeactivateSingleShipSelect();
-                    ship3.SetActive(true);
-                }
-                if (primary == true)
-                {
-                    DeactivateSinglePrimarySelect();
-                    primary3.SetActive(true);
-                }
-                if (secondary == true)
-                {
-                    DeactivateSingleSecondarySelect();
-                    secondary3.SetActive(true);
-                }
-                if (special == true)
-                {
-                    DeactivateSingleSpecialSelect();
-                    special3.SetActive(true);
-                }
-            }
-            if (P1toggleData == 4)
-            {
-                if (character == true)
-                {
-                    DeactivateSingleCharacterSelect();
-                    character4.SetActive(true);
-                }
-                if (ship == true)
-                {
-                    DeactivateSingleShipSelect();
-                    ship4.SetActive(true);
-                }
-                if (primary == true)
-                {
-                    P1toggleData = 3;
-
-                    DeactivateSinglePrimarySelect();
-                    primary3.SetActive(true);
-                }
-                if (secondary == true)
-                {
-                    P1toggleData = 3;
-
-                    DeactivateSingleSecondarySelect();
-                    secondary3.SetActive(true);
-                }
-                if (special == true)
-                {
-                    P1toggleData = 3;
-
-                    DeactivateSingleSpecialSelect();
-                    special3.SetActive(true);
-                }
-            }
-            if (P1toggleData >= 5)
-            {
-                if (character == true)
-                {
-                    P1toggleData = 4;
-
-                    DeactivateSingleCharacterSelect();
-                    character4.SetActive(true);
-                }
-                if (ship == true)
-                {
-                    P1toggleData = 5;
-
-                    DeactivateSingleShipSelect();
-                    ship5.SetActive(true);
-                }
-                if (primary == true)
-                {
-                    P1toggleData = 3;
-
-                    DeactivateSinglePrimarySelect();
-                    primary3.SetActive(true);
-                }
-                if (secondary == true)
-                {
-                    P1toggleData = 3;
-
-                    DeactivateSingleSecondarySelect();
-                    secondary3.SetActive(true);
-                }
-                if (special == true)
-                {
-                    P1toggleData = 3;
-
-                    DeactivateSingleSpecialSelect();
-                    special3.SetActive(true);
-                }
-            }
-
-            if (glowTracker > maxSingleGlowTracker)
-            {
-                glowTracker = maxSingleGlowTracker;
-            }
-            if (glowTracker <= 1)
-            {
-                glowTracker = 1;
-
-                ResetGlow();
-                singleReturnButtonGlow.fillAmount = 1;
-            }
-            if (glowTracker == 2)
-            {
-                ResetGlow();
-                characterButtonGlow.fillAmount = 1;
-            }
-            if (glowTracker == 3)
-            {
-                ResetGlow();
-                shipButtonGlow.fillAmount = 1;
-            }
-            if (glowTracker == 4)
-            {
-                ResetGlow();
-                primaryButtonGlow.fillAmount = 1;
-            }
-            if (glowTracker == 5)
-            {
-                ResetGlow();
-                secondaryButtonGlow.fillAmount = 1;
-            }
-            if (glowTracker == 6)
-            {
-                ResetGlow();
-                specialButtonGlow.fillAmount = 1;
-            }
-            if (glowTracker == 7)
-            {
-                ResetGlow();
-                singleStartButtonGlow.fillAmount = 1;
-            }
-
-            if (Input.GetKeyDown(KeyCode.Q))
-            {
-                if (P1toggleData == 1)
-                {
                     P1toggleData = 1;
 
                     if (character == true)
                     {
-                        P1characterType = 1;
+                        DeactivateSingleCharacterSelect();
+                        character1.SetActive(true);
                     }
                     if (ship == true)
                     {
-                        P1shipType = 1;
-
-                        P1LightShipData();
-                        Player1Data();
+                        DeactivateSingleShipSelect();
+                        ship1.SetActive(true);
                     }
                     if (primary == true)
                     {
-                        P1primaryType = 1;
+                        DeactivateSinglePrimarySelect();
+                        primary1.SetActive(true);
                     }
                     if (secondary == true)
                     {
-                        P1secondaryType = 1;
+                        DeactivateSingleSecondarySelect();
+                        secondary1.SetActive(true);
                     }
                     if (special == true)
                     {
-                        P1specialType = 1;
+                        DeactivateSingleSpecialSelect();
+                        special1.SetActive(true);
                     }
                 }
                 if (P1toggleData == 2)
                 {
                     if (character == true)
                     {
-                        P1characterType = 2;
+                        DeactivateSingleCharacterSelect();
+                        character2.SetActive(true);
                     }
                     if (ship == true)
                     {
-                        P1shipType = 2;
-
-                        P1MediumShipData();
-                        Player1Data();
+                        DeactivateSingleShipSelect();
+                        ship2.SetActive(true);
                     }
                     if (primary == true)
                     {
-                        P1primaryType = 2;
+                        DeactivateSinglePrimarySelect();
+                        primary2.SetActive(true);
                     }
                     if (secondary == true)
                     {
-                        P1secondaryType = 2;
+                        DeactivateSingleSecondarySelect();
+                        secondary2.SetActive(true);
                     }
                     if (special == true)
                     {
-                        P1specialType = 2;
+                        DeactivateSingleSpecialSelect();
+                        special2.SetActive(true);
                     }
                 }
                 if (P1toggleData == 3)
                 {
                     if (character == true)
                     {
-                        P1characterType = 3;
+                        DeactivateSingleCharacterSelect();
+                        character3.SetActive(true);
                     }
                     if (ship == true)
                     {
-                        P1shipType = 3;
-
-                        P1HeavyShipData();
-                        Player1Data();
+                        DeactivateSingleShipSelect();
+                        ship3.SetActive(true);
                     }
                     if (primary == true)
                     {
-                        P1primaryType = 3;
+                        DeactivateSinglePrimarySelect();
+                        primary3.SetActive(true);
                     }
                     if (secondary == true)
                     {
-                        P1secondaryType = 3;
+                        DeactivateSingleSecondarySelect();
+                        secondary3.SetActive(true);
                     }
                     if (special == true)
                     {
-                        P1specialType = 3;
+                        DeactivateSingleSpecialSelect();
+                        special3.SetActive(true);
                     }
                 }
                 if (P1toggleData == 4)
                 {
                     if (character == true)
                     {
-                        P1characterType = 4;
+                        DeactivateSingleCharacterSelect();
+                        character4.SetActive(true);
                     }
                     if (ship == true)
                     {
-                        P1shipType = 4;
-
-                        P1LamboShooterData();
-                        Player1Data();
+                        DeactivateSingleShipSelect();
+                        ship4.SetActive(true);
                     }
                     if (primary == true)
                     {
-                        P1primaryType = 3;
+                        P1toggleData = 3;
+
+                        DeactivateSinglePrimarySelect();
+                        primary3.SetActive(true);
                     }
                     if (secondary == true)
                     {
-                        P1secondaryType = 3;
+                        P1toggleData = 3;
+
+                        DeactivateSingleSecondarySelect();
+                        secondary3.SetActive(true);
                     }
                     if (special == true)
                     {
-                        P1specialType = 3;
+                        P1toggleData = 3;
+
+                        DeactivateSingleSpecialSelect();
+                        special3.SetActive(true);
                     }
                 }
-                if (P1toggleData == 5)
+                if (P1toggleData >= 5)
                 {
                     if (character == true)
                     {
-                        P1characterType = 4;
+                        P1toggleData = 4;
+
+                        DeactivateSingleCharacterSelect();
+                        character4.SetActive(true);
                     }
                     if (ship == true)
                     {
-                        P1shipType = 5;
+                        P1toggleData = 5;
 
-                        P1TruckShooterData();
-                        Player1Data();
+                        DeactivateSingleShipSelect();
+                        ship5.SetActive(true);
                     }
                     if (primary == true)
                     {
-                        P1primaryType = 3;
+                        P1toggleData = 3;
+
+                        DeactivateSinglePrimarySelect();
+                        primary3.SetActive(true);
                     }
                     if (secondary == true)
                     {
-                        P1secondaryType = 3;
+                        P1toggleData = 3;
+
+                        DeactivateSingleSecondarySelect();
+                        secondary3.SetActive(true);
                     }
                     if (special == true)
                     {
-                        P1specialType = 3;
+                        P1toggleData = 3;
+
+                        DeactivateSingleSpecialSelect();
+                        special3.SetActive(true);
                     }
                 }
 
-                DeactivateSingleCharacterSelect();
-                DeactivateSingleShipSelect();
-                DeactivateSinglePrimarySelect();
-                DeactivateSingleSecondarySelect();
-                DeactivateSingleSpecialSelect();
-                DeactivateSingleToggle();
-
-                ActivateSingleSelection();
-
-                DeactivateSelectionText();
-
-                ResetBool();
-
-                ResetGlowData();
-                ResetGlow();
-
-                choosing = false;
-            }
-
-            if (Input.GetKeyDown(KeyCode.W) && !choosing)
-            {
-                glowTracker--;
-            }
-            if (Input.GetKeyDown(KeyCode.S) && !choosing)
-            {
-                glowTracker++;
-            }
-
-            if (Input.GetKeyDown(KeyCode.A))
-            {
-                ResetToggleGlow();
-                toggleLeftGlow.fillAmount = 1;
-
-                P1toggleData--;
-            }
-            if (Input.GetKeyDown(KeyCode.D))
-            {
-                ResetToggleGlow();
-                toggleRightGlow.fillAmount = 1;
-
-                P1toggleData++;
-            }
-
-            if (Input.GetKeyDown(KeyCode.Space))
-            {
-                if (glowTracker == 1)
+                if (glowTracker > maxSingleGlowTracker)
                 {
-                    ReturnButton();
+                    glowTracker = maxSingleGlowTracker;
+                }
+                if (glowTracker <= 1)
+                {
+                    glowTracker = 1;
+
+                    ResetGlow();
+                    singleReturnButtonGlow.fillAmount = 1;
                 }
                 if (glowTracker == 2)
                 {
-                    SinglePlayerCharacterButton();
+                    ResetGlow();
+                    characterButtonGlow.fillAmount = 1;
                 }
                 if (glowTracker == 3)
                 {
-                    SinglePlayerShipButton();
+                    ResetGlow();
+                    shipButtonGlow.fillAmount = 1;
                 }
                 if (glowTracker == 4)
                 {
-                    SinglePlayerPrimaryButton();
+                    ResetGlow();
+                    primaryButtonGlow.fillAmount = 1;
                 }
                 if (glowTracker == 5)
                 {
-                    SinglePlayerSecondaryButton();
+                    ResetGlow();
+                    secondaryButtonGlow.fillAmount = 1;
                 }
                 if (glowTracker == 6)
                 {
-                    SinglePlayerSpecialButton();
+                    ResetGlow();
+                    specialButtonGlow.fillAmount = 1;
                 }
                 if (glowTracker == 7)
                 {
-                    StartCoroutine(ActivateSingleStartButton());
+                    ResetGlow();
+                    singleStartButtonGlow.fillAmount = 1;
                 }
-            }
-        }
-        else
-        {
-            if (P1characterType > 0 && P1shipType > 0 && P1primaryType > 0 && P1secondaryType > 0 && P1specialType > 0 && P2characterType > 0 && P2shipType > 0 && P2primaryType > 0 && P2secondaryType > 0 && P2specialType > 0)
-            {
-                maxP2GLowTracker = 6;
 
-                doubleStartButton.SetActive(true);
+                if (Input.GetKeyDown(KeyCode.W) && !choosing)
+                {
+                    glowTracker--;
+                }
+                if (Input.GetKeyDown(KeyCode.S) && !choosing)
+                {
+                    glowTracker++;
+                }
+
+                if (Input.GetKeyDown(KeyCode.A))
+                {
+                    ResetToggleGlow();
+                    toggleLeftGlow.fillAmount = 1;
+
+                    P1toggleData--;
+                }
+                if (Input.GetKeyDown(KeyCode.D))
+                {
+                    ResetToggleGlow();
+                    toggleRightGlow.fillAmount = 1;
+
+                    P1toggleData++;
+                }
+
+                if (Input.GetKeyDown(KeyCode.Space))
+                {
+                    if (!choosing)
+                    {
+                        if (glowTracker == 1)
+                        {
+                            ReturnButton();
+                        }
+                        if (glowTracker == 2)
+                        {
+                            SinglePlayerCharacterButton();
+                        }
+                        if (glowTracker == 3)
+                        {
+                            SinglePlayerShipButton();
+                        }
+                        if (glowTracker == 4)
+                        {
+                            SinglePlayerPrimaryButton();
+                        }
+                        if (glowTracker == 5)
+                        {
+                            SinglePlayerSecondaryButton();
+                        }
+                        if (glowTracker == 6)
+                        {
+                            SinglePlayerSpecialButton();
+                        }
+                        if (glowTracker == 7)
+                        {
+                            StartCoroutine(ActivateSingleStartButton());
+                        }
+                    }
+                    else
+                    {
+                        if (P1toggleData == 1)
+                        {
+                            if (P1character == true)
+                            {
+                                P1characterType = 1;
+                            }
+                            if (P1ship == true)
+                            {
+                                P1shipType = 1;
+
+                                P1LightShipData();
+                                Player1Data();
+                            }
+                            if (P1primary == true)
+                            {
+                                P1primaryType = 1;
+                            }
+                            if (P1secondary == true)
+                            {
+                                P1secondaryType = 1;
+                            }
+                            if (P1special == true)
+                            {
+                                P1specialType = 1;
+                            }
+                        }
+                        if (P1toggleData == 2)
+                        {
+                            if (P1character == true)
+                            {
+                                P1characterType = 2;
+                            }
+                            if (P1ship == true)
+                            {
+                                P1shipType = 2;
+
+                                P1MediumShipData();
+                                Player1Data();
+                            }
+                            if (P1primary == true)
+                            {
+                                P1primaryType = 2;
+                            }
+                            if (P1secondary == true)
+                            {
+                                P1secondaryType = 2;
+                            }
+                            if (P1special == true)
+                            {
+                                P1specialType = 2;
+                            }
+                        }
+                        if (P1toggleData == 3)
+                        {
+                            if (P1character == true)
+                            {
+                                P1characterType = 3;
+                            }
+                            if (P1ship == true)
+                            {
+                                P1shipType = 3;
+
+                                P1HeavyShipData();
+                                Player1Data();
+                            }
+                            if (P1primary == true)
+                            {
+                                P1primaryType = 3;
+                            }
+                            if (P1secondary == true)
+                            {
+                                P1secondaryType = 3;
+                            }
+                            if (P1special == true)
+                            {
+                                P1specialType = 3;
+                            }
+                        }
+                        if (P1toggleData == 4)
+                        {
+                            if (P1character == true)
+                            {
+                                P1characterType = 4;
+                            }
+                            if (P1ship == true)
+                            {
+                                P1shipType = 4;
+
+                                P1LamboShooterData();
+                                Player1Data();
+                            }
+                            if (P1primary == true)
+                            {
+                                P1primaryType = 3;
+                            }
+                            if (P1secondary == true)
+                            {
+                                P1secondaryType = 3;
+                            }
+                            if (P1special == true)
+                            {
+                                P1specialType = 3;
+                            }
+                        }
+                        if (P1toggleData == 5)
+                        {
+                            if (P1character == true)
+                            {
+                                P1characterType = 4;
+                            }
+                            if (P1ship == true)
+                            {
+                                P1shipType = 5;
+
+                                P1TruckShooterData();
+                                Player1Data();
+                            }
+                            if (P1primary == true)
+                            {
+                                P1primaryType = 3;
+                            }
+                            if (P1secondary == true)
+                            {
+                                P1secondaryType = 3;
+                            }
+                            if (P1special == true)
+                            {
+                                P1specialType = 3;
+                            }
+                        }
+
+                        DeactivateSingleCharacterSelect();
+                        DeactivateSingleShipSelect();
+                        DeactivateSinglePrimarySelect();
+                        DeactivateSingleSecondarySelect();
+                        DeactivateSingleSpecialSelect();
+                        DeactivateSingleToggle();
+
+                        ActivateSingleSelection();
+
+                        ResetBool();
+                        ResetGlow();
+
+                        choosing = false;
+                    }
+                }
             }
             else
             {
-                doubleStartButton.SetActive(false);
-            }
+                if (P1characterType > 0 && P1shipType > 0 && P1primaryType > 0 && P1secondaryType > 0 && P1specialType > 0 && P2characterType > 0 && P2shipType > 0 && P2primaryType > 0 && P2secondaryType > 0 && P2specialType > 0)
+                {
+                    maxP2GLowTracker = 6;
 
-            if (P1toggleData <= 1)
-            {
-                ResetP1ToggleGlow();
-                P1toggleLeftGlow.fillAmount = 1;
+                    doubleStartButton.SetActive(true);
+                }
+                else
+                {
+                    doubleStartButton.SetActive(false);
+                }
 
-                P1toggleData = 1;
-                
-                if (P1character == true)
+                if (P1toggleData <= 1)
                 {
-                    DeactivateP1CharacterSelect();
-                    P1character1.SetActive(true);
-                }
-                if (P1ship == true)
-                {
-                    DeactivateP1ShipSelect();
-                    P1ship1.SetActive(true);
-                }
-                if (P1primary == true)
-                {
-                    DeactivateP1PrimarySelect();
-                    P1primary1.SetActive(true);
-                }
-                if (P1secondary == true)
-                {
-                    DeactivateP1SecondarySelect();
-                    P1secondary1.SetActive(true);
-                }
-                if (P1special == true)
-                {
-                    DeactivateP1SpecialSelect();
-                    P1special1.SetActive(true);
-                }
-            }
-            if (P2toggleData <= 1)
-            {
-                ResetP2ToggleGlow();
-                P2toggleLeftGlow.fillAmount = 1;
+                    ResetP1ToggleGlow();
+                    P1toggleLeftGlow.fillAmount = 1;
 
-                P2toggleData = 1;
+                    P1toggleData = 1;
 
-                if (P2character == true)
-                {
-                    DeactivateP2CharacterSelect();
-                    P2character1.SetActive(true);
-                }
-                if (P2ship == true)
-                {
-                    DeactivateP2ShipSelect();
-                    P2ship1.SetActive(true);
-                }
-                if (P2primary == true)
-                {
-                    DeactivateP2PrimarySelect();
-                    P2primary1.SetActive(true);
-                }
-                if (P2secondary == true)
-                {
-                    DeactivateP2SecondarySelect();
-                    P2secondary1.SetActive(true);
-                }
-                if (P2special == true)
-                {
-                    DeactivateP2SpecialSelect();
-                    P2special1.SetActive(true);
-                }
-            }
-
-            if (P1toggleData == 2)
-            {
-                if (P1character == true)
-                {
-                    DeactivateP1CharacterSelect();
-                    P1character2.SetActive(true);
-                }
-                if (P1ship == true)
-                {
-                    DeactivateP1ShipSelect();
-                    P1ship2.SetActive(true);
-                }
-                if (P1primary == true)
-                {
-                    DeactivateP1PrimarySelect();
-                    P1primary2.SetActive(true);
-                }
-                if (P1secondary == true)
-                {
-                    DeactivateP1SecondarySelect();
-                    P1secondary2.SetActive(true);
-                }
-                if (P1special == true)
-                {
-                    DeactivateP1SpecialSelect();
-                    P1special2.SetActive(true);
-                }
-            }
-            if (P2toggleData == 2)
-            {
-                if (P2character == true)
-                {
-                    DeactivateP2CharacterSelect();
-                    P2character2.SetActive(true);
-                }
-                if (P2ship == true)
-                {
-                    DeactivateP2ShipSelect();
-                    P2ship2.SetActive(true);
-                }
-                if (P2primary == true)
-                {
-                    DeactivateP2PrimarySelect();
-                    P2primary2.SetActive(true);
-                }
-                if (P2secondary == true)
-                {
-                    DeactivateP2SecondarySelect();
-                    P2secondary2.SetActive(true);
-                }
-                if (P2special == true)
-                {
-                    DeactivateP2SpecialSelect();
-                    P2special2.SetActive(true);
-                }
-            }
-
-            if (P1toggleData == 3)
-            {
-                if (P1character == true)
-                {
-                    DeactivateP1CharacterSelect();
-                    P1character3.SetActive(true);
-                }
-                if (P1ship == true)
-                {
-                    DeactivateP1ShipSelect();
-                    P1ship3.SetActive(true);
-                }
-                if (P1primary == true)
-                {
-                    DeactivateP1PrimarySelect();
-                    P1primary3.SetActive(true);
-                }
-                if (P1secondary == true)
-                {
-                    DeactivateP1SecondarySelect();
-                    P1secondary3.SetActive(true);
-                }
-                if (P1special == true)
-                {
-                    DeactivateP1SpecialSelect();
-                    P1special3.SetActive(true);
-                }
-            }
-            if (P2toggleData == 3)
-            {
-                if (P2character == true)
-                {
-                    DeactivateP2CharacterSelect();
-                    P2character3.SetActive(true);
-                }
-                if (P2ship == true)
-                {
-                    DeactivateP2ShipSelect();
-                    P2ship3.SetActive(true);
-                }
-                if (P2primary == true)
-                {
-                    DeactivateP2PrimarySelect();
-                    P2primary3.SetActive(true);
-                }
-                if (P2secondary == true)
-                {
-                    DeactivateP2SecondarySelect();
-                    P2secondary3.SetActive(true);
-                }
-                if (P2special == true)
-                {
-                    DeactivateP2SpecialSelect();
-                    P2special3.SetActive(true);
-                }
-            }
-
-            if (P1toggleData == 4)
-            {
-                if (P1character == true)
-                {
-                    DeactivateP1CharacterSelect();
-                    P1character4.SetActive(true);
-                }
-                if (P1ship == true)
-                {
-                    DeactivateP1ShipSelect();
-                    P1ship4.SetActive(true);
-                }
-                if (P1primary == true)
-                {
-                    P1toggleData = 3;
-
-                    DeactivateP1PrimarySelect();
-                    P1primary3.SetActive(true);
-                }
-                if (P1secondary == true)
-                {
-                    P1toggleData = 3;
-
-                    DeactivateP1SecondarySelect();
-                    P1secondary3.SetActive(true);
-                }
-                if (P1special == true)
-                {
-                    P1toggleData = 3;
-
-                    DeactivateP1SpecialSelect();
-                    P1special3.SetActive(true);
-                }
-            }
-            if (P2toggleData == 4)
-            {
-                if (P2character == true)
-                {
-                    DeactivateP2CharacterSelect();
-                    P2character4.SetActive(true);
-                }
-                if (P2ship == true)
-                {
-                    DeactivateP2ShipSelect();
-                    P2ship4.SetActive(true);
-                }
-                if (P2primary == true)
-                {
-                    P2toggleData = 3;
-
-                    DeactivateP2PrimarySelect();
-                    P2primary3.SetActive(true);
-                }
-                if (P2secondary == true)
-                {
-                    P2toggleData = 3;
-
-                    DeactivateP2SecondarySelect();
-                    P2secondary3.SetActive(true);
-                }
-                if (P2special == true)
-                {
-                    P2toggleData = 3;
-
-                    DeactivateP2SpecialSelect();
-                    P2special3.SetActive(true);
-                }
-            }
-
-            if (P1toggleData >= 5)
-            {
-                if (P1character == true)
-                {
-                    P1toggleData = 4;
-
-                    DeactivateP1CharacterSelect();
-                    P1character4.SetActive(true);
-                }
-                if (P1ship == true)
-                {
-                    P1toggleData = 5;
-
-                    DeactivateP1ShipSelect();
-                    P1ship5.SetActive(true);
-                }
-                if (P1primary == true)
-                {
-                    P1toggleData = 3;
-
-                    DeactivateP1PrimarySelect();
-                    P1primary3.SetActive(true);
-                }
-                if (P1secondary == true)
-                {
-                    P1toggleData = 3;
-
-                    DeactivateP1SecondarySelect();
-                    P1secondary3.SetActive(true);
-                }
-                if (P1special == true)
-                {
-                    P1toggleData = 3;
-
-                    DeactivateP1SpecialSelect();
-                    P1special3.SetActive(true);
-                }
-            }
-            if (P2toggleData >= 5)
-            {
-                if (P2character == true)
-                {
-                    P2toggleData = 4;
-
-                    DeactivateP2CharacterSelect();
-                    P2character4.SetActive(true);
-                }
-                if (P2ship == true)
-                {
-                    P2toggleData = 5;
-
-                    DeactivateP2ShipSelect();
-                    P2ship5.SetActive(true);
-                }
-                if (P2primary == true)
-                {
-                    P2toggleData = 3;
-
-                    DeactivateP2PrimarySelect();
-                    P2primary3.SetActive(true);
-                }
-                if (P2secondary == true)
-                {
-                    P2toggleData = 3;
-
-                    DeactivateP2SecondarySelect();
-                    P2secondary3.SetActive(true);
-                }
-                if (P2special == true)
-                {
-                    P2toggleData = 3;
-
-                    DeactivateP2SpecialSelect();
-                    P2special3.SetActive(true);
-                }
-            }
-
-            if (P2glowTracker > maxP2GLowTracker)
-            {
-                P2glowTracker = maxP2GLowTracker;
-            }
-
-            if (P1glowTracker <= 1)
-            {
-                P1glowTracker = 1;
-
-                ResetP1Glow();
-                P1characterButtonGlow.fillAmount = 1;
-            }
-            if (P2glowTracker <= 1)
-            {
-                P2glowTracker = 1;
-
-                ResetP2Glow();
-                P2characterButtonGlow.fillAmount = 1;
-            }
-
-            if (P1glowTracker == 2)
-            {
-                ResetP1Glow();
-                P1shipButtonGlow.fillAmount = 1;
-            }
-            if (P2glowTracker == 2)
-            {
-                ResetP2Glow();
-                P2shipButtonGlow.fillAmount = 1;
-            }
-
-            if (P1glowTracker == 3)
-            {
-                ResetP1Glow();
-                P1primaryButtonGlow.fillAmount = 1;
-            }
-            if (P2glowTracker == 3)
-            {
-                ResetP2Glow();
-                P2primaryButtonGlow.fillAmount = 1;
-            }
-
-            if (P1glowTracker == 4)
-            {
-                ResetP1Glow();
-                P1secondaryButtonGlow.fillAmount = 1;
-            }
-            if (P2glowTracker == 4)
-            {
-                ResetP2Glow();
-                P2secondaryButtonGlow.fillAmount = 1;
-            }
-
-            if (P1glowTracker == 5)
-            {
-                ResetP1Glow();
-                P1specialButtonGlow.fillAmount = 1;
-            }
-            if (P2glowTracker == 5)
-            {
-                ResetP2Glow();
-                P2specialButtonGlow.fillAmount = 1;
-            }
-
-            if (P1glowTracker >= 6)
-            {
-                P1glowTracker = 6;
-
-                ResetP1Glow();
-                doubleReturnButtonGlow.fillAmount = 1;
-            }
-            if (P2glowTracker == 6)
-            {
-                ResetP2Glow();
-                doubleStartButtonGlow.fillAmount = 1;
-            }
-
-            if (Input.GetKeyDown(KeyCode.Q))
-            {
-                if (P1toggleData == 1)
-                {
                     if (P1character == true)
                     {
-                        P1characterType = 1;
+                        DeactivateP1CharacterSelect();
+                        P1character1.SetActive(true);
                     }
                     if (P1ship == true)
                     {
-                        P1shipType = 1;
-
-                        P1LightShipData();
-                        Player1Data();
+                        DeactivateP1ShipSelect();
+                        P1ship1.SetActive(true);
                     }
                     if (P1primary == true)
                     {
-                        P1primaryType = 1;
+                        DeactivateP1PrimarySelect();
+                        P1primary1.SetActive(true);
                     }
                     if (P1secondary == true)
                     {
-                        P1secondaryType = 1;
+                        DeactivateP1SecondarySelect();
+                        P1secondary1.SetActive(true);
                     }
                     if (P1special == true)
                     {
-                        P1specialType = 1;
+                        DeactivateP1SpecialSelect();
+                        P1special1.SetActive(true);
                     }
                 }
-                if (P2toggleData == 1)
+                if (P2toggleData <= 1)
                 {
+                    ResetP2ToggleGlow();
+                    P2toggleLeftGlow.fillAmount = 1;
+
+                    P2toggleData = 1;
+
                     if (P2character == true)
                     {
-                        P2characterType = 1;
+                        DeactivateP2CharacterSelect();
+                        P2character1.SetActive(true);
                     }
                     if (P2ship == true)
                     {
-                        P2shipType = 1;
-
-                        P2LightShipData();
-                        Player2Data();
+                        DeactivateP2ShipSelect();
+                        P2ship1.SetActive(true);
                     }
                     if (P2primary == true)
                     {
-                        P2primaryType = 1;
+                        DeactivateP2PrimarySelect();
+                        P2primary1.SetActive(true);
                     }
                     if (P2secondary == true)
                     {
-                        P2secondaryType = 1;
+                        DeactivateP2SecondarySelect();
+                        P2secondary1.SetActive(true);
                     }
                     if (P2special == true)
                     {
-                        P2specialType = 1;
+                        DeactivateP2SpecialSelect();
+                        P2special1.SetActive(true);
                     }
                 }
 
@@ -1186,52 +792,56 @@ public class SelectionMenuController : MonoBehaviour
                 {
                     if (P1character == true)
                     {
-                        P1characterType = 2;
+                        DeactivateP1CharacterSelect();
+                        P1character2.SetActive(true);
                     }
                     if (P1ship == true)
                     {
-                        P1shipType = 2;
-
-                        P1MediumShipData();
-                        Player1Data();
+                        DeactivateP1ShipSelect();
+                        P1ship2.SetActive(true);
                     }
                     if (P1primary == true)
                     {
-                        P1primaryType = 2;
+                        DeactivateP1PrimarySelect();
+                        P1primary2.SetActive(true);
                     }
                     if (P1secondary == true)
                     {
-                        P1secondaryType = 2;
+                        DeactivateP1SecondarySelect();
+                        P1secondary2.SetActive(true);
                     }
                     if (P1special == true)
                     {
-                        P1specialType = 2;
+                        DeactivateP1SpecialSelect();
+                        P1special2.SetActive(true);
                     }
                 }
                 if (P2toggleData == 2)
                 {
                     if (P2character == true)
                     {
-                        P2characterType = 2;
+                        DeactivateP2CharacterSelect();
+                        P2character2.SetActive(true);
                     }
                     if (P2ship == true)
                     {
-                        P2shipType = 2;
-
-                        P2MediumShipData();
-                        Player2Data();
+                        DeactivateP2ShipSelect();
+                        P2ship2.SetActive(true);
                     }
                     if (P2primary == true)
                     {
-                        P2primaryType = 2;
+                        DeactivateP2PrimarySelect();
+                        P2primary2.SetActive(true);
                     }
                     if (P2secondary == true)
                     {
-                        P2secondaryType = 2;
+                        DeactivateP2SecondarySelect();
+                        P2secondary2.SetActive(true);
                     }
                     if (P2special == true)
                     {
-                        P2specialType = 2;
+                        DeactivateP2SpecialSelect();
+                        P2special2.SetActive(true);
                     }
                 }
 
@@ -1239,52 +849,56 @@ public class SelectionMenuController : MonoBehaviour
                 {
                     if (P1character == true)
                     {
-                        P1characterType = 3;
+                        DeactivateP1CharacterSelect();
+                        P1character3.SetActive(true);
                     }
                     if (P1ship == true)
                     {
-                        P1shipType = 3;
-
-                        P1HeavyShipData();
-                        Player1Data();
+                        DeactivateP1ShipSelect();
+                        P1ship3.SetActive(true);
                     }
                     if (P1primary == true)
                     {
-                        P1primaryType = 3;
+                        DeactivateP1PrimarySelect();
+                        P1primary3.SetActive(true);
                     }
                     if (P1secondary == true)
                     {
-                        P1secondaryType = 3;
+                        DeactivateP1SecondarySelect();
+                        P1secondary3.SetActive(true);
                     }
                     if (P1special == true)
                     {
-                        P1specialType = 3;
+                        DeactivateP1SpecialSelect();
+                        P1special3.SetActive(true);
                     }
                 }
                 if (P2toggleData == 3)
                 {
                     if (P2character == true)
                     {
-                        P2characterType = 3;
+                        DeactivateP2CharacterSelect();
+                        P2character3.SetActive(true);
                     }
                     if (P2ship == true)
                     {
-                        P2shipType = 3;
-
-                        P2HeavyShipData();
-                        Player2Data();
+                        DeactivateP2ShipSelect();
+                        P2ship3.SetActive(true);
                     }
                     if (P2primary == true)
                     {
-                        P2primaryType = 3;
+                        DeactivateP2PrimarySelect();
+                        P2primary3.SetActive(true);
                     }
                     if (P2secondary == true)
                     {
-                        P2secondaryType = 3;
+                        DeactivateP2SecondarySelect();
+                        P2secondary3.SetActive(true);
                     }
                     if (P2special == true)
                     {
-                        P2specialType = 3;
+                        DeactivateP2SpecialSelect();
+                        P2special3.SetActive(true);
                     }
                 }
 
@@ -1292,240 +906,703 @@ public class SelectionMenuController : MonoBehaviour
                 {
                     if (P1character == true)
                     {
-                        P1characterType = 4;
+                        DeactivateP1CharacterSelect();
+                        P1character4.SetActive(true);
                     }
                     if (P1ship == true)
                     {
-                        P1shipType = 4;
-
-                        P1LamboShooterData();
-                        Player1Data();
+                        DeactivateP1ShipSelect();
+                        P1ship4.SetActive(true);
                     }
                     if (P1primary == true)
                     {
-                        P1primaryType = 3;
+                        P1toggleData = 3;
+
+                        DeactivateP1PrimarySelect();
+                        P1primary3.SetActive(true);
                     }
                     if (P1secondary == true)
                     {
-                        P1secondaryType = 3;
+                        P1toggleData = 3;
+
+                        DeactivateP1SecondarySelect();
+                        P1secondary3.SetActive(true);
                     }
                     if (P1special == true)
                     {
-                        P1specialType = 3;
+                        P1toggleData = 3;
+
+                        DeactivateP1SpecialSelect();
+                        P1special3.SetActive(true);
                     }
                 }
                 if (P2toggleData == 4)
                 {
                     if (P2character == true)
                     {
-                        P2characterType = 4;
+                        DeactivateP2CharacterSelect();
+                        P2character4.SetActive(true);
                     }
                     if (P2ship == true)
                     {
-                        P2shipType = 4;
-
-                        P2LamboShooterData();
-                        Player2Data();
+                        DeactivateP2ShipSelect();
+                        P2ship4.SetActive(true);
                     }
                     if (P2primary == true)
                     {
-                        P2primaryType = 3;
+                        P2toggleData = 3;
+
+                        DeactivateP2PrimarySelect();
+                        P2primary3.SetActive(true);
                     }
                     if (P2secondary == true)
                     {
-                        P2secondaryType = 3;
+                        P2toggleData = 3;
+
+                        DeactivateP2SecondarySelect();
+                        P2secondary3.SetActive(true);
                     }
                     if (P2special == true)
                     {
-                        P2specialType = 3;
+                        P2toggleData = 3;
+
+                        DeactivateP2SpecialSelect();
+                        P2special3.SetActive(true);
                     }
                 }
 
-                if (P1toggleData == 5)
+                if (P1toggleData >= 5)
                 {
                     if (P1character == true)
                     {
-                        P1characterType = 4;
+                        P1toggleData = 4;
+
+                        DeactivateP1CharacterSelect();
+                        P1character4.SetActive(true);
                     }
                     if (P1ship == true)
                     {
-                        P1shipType = 5;
+                        P1toggleData = 5;
 
-                        P1TruckShooterData();
-                        Player1Data();
+                        DeactivateP1ShipSelect();
+                        P1ship5.SetActive(true);
                     }
                     if (P1primary == true)
                     {
-                        P1primaryType = 3;
+                        P1toggleData = 3;
+
+                        DeactivateP1PrimarySelect();
+                        P1primary3.SetActive(true);
                     }
                     if (P1secondary == true)
                     {
-                        P1secondaryType = 3;
+                        P1toggleData = 3;
+
+                        DeactivateP1SecondarySelect();
+                        P1secondary3.SetActive(true);
                     }
                     if (P1special == true)
                     {
-                        P1specialType = 3;
+                        P1toggleData = 3;
+
+                        DeactivateP1SpecialSelect();
+                        P1special3.SetActive(true);
                     }
                 }
-                if (P2toggleData == 5)
+                if (P2toggleData >= 5)
                 {
                     if (P2character == true)
                     {
-                        P2characterType = 4;
+                        P2toggleData = 4;
+
+                        DeactivateP2CharacterSelect();
+                        P2character4.SetActive(true);
                     }
                     if (P2ship == true)
                     {
-                        P2shipType = 5;
+                        P2toggleData = 5;
 
-                        P2TruckShooterData();
-                        Player2Data();
+                        DeactivateP2ShipSelect();
+                        P2ship5.SetActive(true);
                     }
                     if (P2primary == true)
                     {
-                        P2primaryType = 3;
+                        P2toggleData = 3;
+
+                        DeactivateP2PrimarySelect();
+                        P2primary3.SetActive(true);
                     }
                     if (P2secondary == true)
                     {
-                        P2secondaryType = 3;
+                        P2toggleData = 3;
+
+                        DeactivateP2SecondarySelect();
+                        P2secondary3.SetActive(true);
                     }
                     if (P2special == true)
                     {
-                        P2specialType = 3;
+                        P2toggleData = 3;
+
+                        DeactivateP2SpecialSelect();
+                        P2special3.SetActive(true);
                     }
                 }
 
-                DeactivateP1CharacterSelect();
-                DeactivateP1ShipSelect();
-                DeactivateP1PrimarySelect();
-                DeactivateP1SecondarySelect();
-                DeactivateP1SpecialSelect();
-                DeactivateP1Toggle();
-
-                DeactivateP2CharacterSelect();
-                DeactivateP2ShipSelect();
-                DeactivateP2PrimarySelect();
-                DeactivateP2SecondarySelect();
-                DeactivateP2SpecialSelect();
-                DeactivateP2Toggle();
-
-                ActivatePlayer1Selection();
-                ActivatePlayer2Selection();
-
-                DeactivateSelectionText();
-
-                ResetBool();
-
-                ResetGlowData();
-                ResetP1Glow();
-                ResetP1Glow();
-
-                P1choosing = false;
-                P2choosing = false;
-            }
-
-            if (Input.GetKeyDown(KeyCode.W) && !P1choosing)
-            {
-                P1glowTracker--;
-            }
-            if (Input.GetKeyDown(KeyCode.Alpha8) && !P2choosing)
-            {
-                P2glowTracker--;
-            }
-
-            if (Input.GetKeyDown(KeyCode.S) && !P1choosing)
-            {
-                P1glowTracker++;
-            }
-            if (Input.GetKeyDown(KeyCode.Alpha5) && !P2choosing)
-            {
-                P2glowTracker++;
-            }
-
-            if (Input.GetKeyDown(KeyCode.A))
-            {
-                ResetP1ToggleGlow();
-                P1toggleLeftGlow.fillAmount = 1;
-
-                P1toggleData--;
-            }
-            if (Input.GetKeyDown(KeyCode.Alpha4))
-            {
-                ResetP2ToggleGlow();
-                P2toggleLeftGlow.fillAmount = 1;
-
-                P2toggleData--;
-            }
-
-            if (Input.GetKeyDown(KeyCode.D))
-            {
-                ResetP1ToggleGlow();
-                P1toggleRightGlow.fillAmount = 1;
-
-                P1toggleData++;
-            }
-            if (Input.GetKeyDown(KeyCode.Alpha6))
-            {
-                ResetP2ToggleGlow();
-                P2toggleRightGlow.fillAmount = 1;
-
-                P2toggleData++;
-            }
-
-            if (Input.GetKeyDown(KeyCode.Space))
-            {
-                if (P1glowTracker == 1)
+                if (P2glowTracker > maxP2GLowTracker)
                 {
-                    Player1CharacterButton();
+                    P2glowTracker = maxP2GLowTracker;
                 }
+
+                if (P1glowTracker <= 1)
+                {
+                    P1glowTracker = 1;
+
+                    ResetP1Glow();
+                    P1characterButtonGlow.fillAmount = 1;
+                }
+                if (P2glowTracker <= 1)
+                {
+                    P2glowTracker = 1;
+
+                    ResetP2Glow();
+                    P2characterButtonGlow.fillAmount = 1;
+                }
+
                 if (P1glowTracker == 2)
                 {
-                    Player1ShipButton();
-                }
-                if (P1glowTracker == 3)
-                {
-                    Player1PrimaryButton();
-                }
-                if (P1glowTracker == 4)
-                {
-                    Player1SecondaryButton();
-                }
-                if (P1glowTracker == 5)
-                {
-                    Player1SpecialButton();
-                }
-                if (P1glowTracker == 6)
-                {
-                    ReturnButton();
-                }
-            }
-            if (Input.GetKeyDown(KeyCode.Alpha0))
-            {
-                if (P2glowTracker == 1)
-                {
-                    Player2CharacterButton();
+                    ResetP1Glow();
+                    P1shipButtonGlow.fillAmount = 1;
                 }
                 if (P2glowTracker == 2)
                 {
-                    Player2ShipButton();
+                    ResetP2Glow();
+                    P2shipButtonGlow.fillAmount = 1;
+                }
+
+                if (P1glowTracker == 3)
+                {
+                    ResetP1Glow();
+                    P1primaryButtonGlow.fillAmount = 1;
                 }
                 if (P2glowTracker == 3)
                 {
-                    Player2PrimaryButton();
+                    ResetP2Glow();
+                    P2primaryButtonGlow.fillAmount = 1;
+                }
+
+                if (P1glowTracker == 4)
+                {
+                    ResetP1Glow();
+                    P1secondaryButtonGlow.fillAmount = 1;
                 }
                 if (P2glowTracker == 4)
                 {
-                    Player2SecondaryButton();
+                    ResetP2Glow();
+                    P2secondaryButtonGlow.fillAmount = 1;
+                }
+
+                if (P1glowTracker == 5)
+                {
+                    ResetP1Glow();
+                    P1specialButtonGlow.fillAmount = 1;
                 }
                 if (P2glowTracker == 5)
                 {
-                    Player2SpecialButton();
+                    ResetP2Glow();
+                    P2specialButtonGlow.fillAmount = 1;
+                }
+
+                if (P1glowTracker >= 6)
+                {
+                    P1glowTracker = 6;
+
+                    ResetP1Glow();
+                    doubleReturnButtonGlow.fillAmount = 1;
                 }
                 if (P2glowTracker == 6)
                 {
-                    StartCoroutine(ActivateDoubleStartButton());
+                    ResetP2Glow();
+                    doubleStartButtonGlow.fillAmount = 1;
+                }
+
+                if (Input.GetKeyDown(KeyCode.W) && !P1choosing)
+                {
+                    P1glowTracker--;
+                }
+                if ((Input.GetKeyDown(KeyCode.Alpha8) || Input.GetKeyDown(KeyCode.Keypad8)) && !P2choosing)
+                {
+                    P2glowTracker--;
+                }
+
+                if (Input.GetKeyDown(KeyCode.S) && !P1choosing)
+                {
+                    P1glowTracker++;
+                }
+                if ((Input.GetKeyDown(KeyCode.Alpha5) || Input.GetKeyDown(KeyCode.Keypad5)) && !P2choosing)
+                {
+                    P2glowTracker++;
+                }
+
+                if (Input.GetKeyDown(KeyCode.A))
+                {
+                    ResetP1ToggleGlow();
+                    P1toggleLeftGlow.fillAmount = 1;
+
+                    P1toggleData--;
+                }
+                if (Input.GetKeyDown(KeyCode.Alpha4) || Input.GetKeyDown(KeyCode.Keypad4))
+                {
+                    ResetP2ToggleGlow();
+                    P2toggleLeftGlow.fillAmount = 1;
+
+                    P2toggleData--;
+                }
+
+                if (Input.GetKeyDown(KeyCode.D))
+                {
+                    ResetP1ToggleGlow();
+                    P1toggleRightGlow.fillAmount = 1;
+
+                    P1toggleData++;
+                }
+                if (Input.GetKeyDown(KeyCode.Alpha6) || Input.GetKeyDown(KeyCode.Keypad6))
+                {
+                    ResetP2ToggleGlow();
+                    P2toggleRightGlow.fillAmount = 1;
+
+                    P2toggleData++;
+                }
+
+                if (Input.GetKeyDown(KeyCode.Space))
+                {
+                    if (!P1choosing)
+                    {
+                        if (P1glowTracker == 1)
+                        {
+                            Player1CharacterButton();
+                        }
+                        if (P1glowTracker == 2)
+                        {
+                            Player1ShipButton();
+                        }
+                        if (P1glowTracker == 3)
+                        {
+                            Player1PrimaryButton();
+                        }
+                        if (P1glowTracker == 4)
+                        {
+                            Player1SecondaryButton();
+                        }
+                        if (P1glowTracker == 5)
+                        {
+                            Player1SpecialButton();
+                        }
+                        if (P1glowTracker == 6)
+                        {
+                            ReturnButton();
+                        }
+                    }
+                    else
+                    {
+                        if (P1toggleData == 1)
+                        {
+                            if (P1character == true)
+                            {
+                                P1characterType = 1;
+                            }
+                            if (P1ship == true)
+                            {
+                                P1shipType = 1;
+
+                                P1LightShipData();
+                                Player1Data();
+                            }
+                            if (P1primary == true)
+                            {
+                                P1primaryType = 1;
+                            }
+                            if (P1secondary == true)
+                            {
+                                P1secondaryType = 1;
+                            }
+                            if (P1special == true)
+                            {
+                                P1specialType = 1;
+                            }
+                        }
+                        if (P1toggleData == 2)
+                        {
+                            if (P1character == true)
+                            {
+                                P1characterType = 2;
+                            }
+                            if (P1ship == true)
+                            {
+                                P1shipType = 2;
+
+                                P1MediumShipData();
+                                Player1Data();
+                            }
+                            if (P1primary == true)
+                            {
+                                P1primaryType = 2;
+                            }
+                            if (P1secondary == true)
+                            {
+                                P1secondaryType = 2;
+                            }
+                            if (P1special == true)
+                            {
+                                P1specialType = 2;
+                            }
+                        }
+                        if (P1toggleData == 3)
+                        {
+                            if (P1character == true)
+                            {
+                                P1characterType = 3;
+                            }
+                            if (P1ship == true)
+                            {
+                                P1shipType = 3;
+
+                                P1HeavyShipData();
+                                Player1Data();
+                            }
+                            if (P1primary == true)
+                            {
+                                P1primaryType = 3;
+                            }
+                            if (P1secondary == true)
+                            {
+                                P1secondaryType = 3;
+                            }
+                            if (P1special == true)
+                            {
+                                P1specialType = 3;
+                            }
+                        }
+                        if (P1toggleData == 4)
+                        {
+                            if (P1character == true)
+                            {
+                                P1characterType = 4;
+                            }
+                            if (P1ship == true)
+                            {
+                                P1shipType = 4;
+
+                                P1LamboShooterData();
+                                Player1Data();
+                            }
+                            if (P1primary == true)
+                            {
+                                P1primaryType = 3;
+                            }
+                            if (P1secondary == true)
+                            {
+                                P1secondaryType = 3;
+                            }
+                            if (P1special == true)
+                            {
+                                P1specialType = 3;
+                            }
+                        }
+                        if (P1toggleData == 5)
+                        {
+                            if (P1character == true)
+                            {
+                                P1characterType = 4;
+                            }
+                            if (P1ship == true)
+                            {
+                                P1shipType = 5;
+
+                                P1TruckShooterData();
+                                Player1Data();
+                            }
+                            if (P1primary == true)
+                            {
+                                P1primaryType = 3;
+                            }
+                            if (P1secondary == true)
+                            {
+                                P1secondaryType = 3;
+                            }
+                            if (P1special == true)
+                            {
+                                P1specialType = 3;
+                            }
+                        }
+
+                        DeactivateP1CharacterSelect();
+                        DeactivateP1ShipSelect();
+                        DeactivateP1PrimarySelect();
+                        DeactivateP1SecondarySelect();
+                        DeactivateP1SpecialSelect();
+                        DeactivateP1Toggle();
+
+                        ActivatePlayer1Selection();
+
+                        ResetBool();
+                        ResetP1Glow();
+
+                        P1choosing = false;
+                    }
+                }
+                if (Input.GetKeyDown(KeyCode.Alpha0) || Input.GetKeyDown(KeyCode.Keypad0))
+                {
+                    if (!P2choosing)
+                    {
+                        if (P2glowTracker == 1)
+                        {
+                            Player2CharacterButton();
+                        }
+                        if (P2glowTracker == 2)
+                        {
+                            Player2ShipButton();
+                        }
+                        if (P2glowTracker == 3)
+                        {
+                            Player2PrimaryButton();
+                        }
+                        if (P2glowTracker == 4)
+                        {
+                            Player2SecondaryButton();
+                        }
+                        if (P2glowTracker == 5)
+                        {
+                            Player2SpecialButton();
+                        }
+                        if (P2glowTracker == 6)
+                        {
+                            StartCoroutine(ActivateDoubleStartButton());
+                        }
+                    }
+                    else
+                    {
+                        if (P2toggleData == 1)
+                        {
+                            if (P2character == true)
+                            {
+                                P2characterType = 1;
+                            }
+                            if (P2ship == true)
+                            {
+                                P2shipType = 1;
+
+                                P2LightShipData();
+                                Player2Data();
+                            }
+                            if (P2primary == true)
+                            {
+                                P2primaryType = 1;
+                            }
+                            if (P2secondary == true)
+                            {
+                                P2secondaryType = 1;
+                            }
+                            if (P2special == true)
+                            {
+                                P2specialType = 1;
+                            }
+                        }
+                        if (P2toggleData == 2)
+                        {
+                            if (P2character == true)
+                            {
+                                P2characterType = 2;
+                            }
+                            if (P2ship == true)
+                            {
+                                P2shipType = 2;
+
+                                P2MediumShipData();
+                                Player2Data();
+                            }
+                            if (P2primary == true)
+                            {
+                                P2primaryType = 2;
+                            }
+                            if (P2secondary == true)
+                            {
+                                P2secondaryType = 2;
+                            }
+                            if (P2special == true)
+                            {
+                                P2specialType = 2;
+                            }
+                        }
+                        if (P2toggleData == 3)
+                        {
+                            if (P2character == true)
+                            {
+                                P2characterType = 3;
+                            }
+                            if (P2ship == true)
+                            {
+                                P2shipType = 3;
+
+                                P2HeavyShipData();
+                                Player2Data();
+                            }
+                            if (P2primary == true)
+                            {
+                                P2primaryType = 3;
+                            }
+                            if (P2secondary == true)
+                            {
+                                P2secondaryType = 3;
+                            }
+                            if (P2special == true)
+                            {
+                                P2specialType = 3;
+                            }
+                        }
+                        if (P2toggleData == 4)
+                        {
+                            if (P2character == true)
+                            {
+                                P2characterType = 4;
+                            }
+                            if (P2ship == true)
+                            {
+                                P2shipType = 4;
+
+                                P2LamboShooterData();
+                                Player2Data();
+                            }
+                            if (P2primary == true)
+                            {
+                                P2primaryType = 3;
+                            }
+                            if (P2secondary == true)
+                            {
+                                P2secondaryType = 3;
+                            }
+                            if (P2special == true)
+                            {
+                                P2specialType = 3;
+                            }
+                        }
+                        if (P2toggleData == 5)
+                        {
+                            if (P2character == true)
+                            {
+                                P2characterType = 4;
+                            }
+                            if (P2ship == true)
+                            {
+                                P2shipType = 5;
+
+                                P2TruckShooterData();
+                                Player2Data();
+                            }
+                            if (P2primary == true)
+                            {
+                                P2primaryType = 3;
+                            }
+                            if (P2secondary == true)
+                            {
+                                P2secondaryType = 3;
+                            }
+                            if (P2special == true)
+                            {
+                                P2specialType = 3;
+                            }
+                        }
+
+                        DeactivateP2CharacterSelect();
+                        DeactivateP2ShipSelect();
+                        DeactivateP2PrimarySelect();
+                        DeactivateP2SecondarySelect();
+                        DeactivateP2SpecialSelect();
+                        DeactivateP2Toggle();
+
+                        ActivatePlayer2Selection();
+
+                        ResetBool();
+                        ResetP2Glow();
+
+                        P2choosing = false;
+                    }
                 }
             }
         }
+        else
+        {
+            if(Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.Alpha0) || Input.GetKeyDown(KeyCode.Keypad0))
+            {
+                breakInstruction = true;
+
+                SkipButton();
+            }
+        }
+    }
+
+    IEnumerator ActivateSingleStartButton()
+    {
+        gamePlay = true;
+
+        Player1WeaponData();
+
+        DeactivateSingleCharacterSelect();
+        DeactivateSingleShipSelect();
+        DeactivateSinglePrimarySelect();
+        DeactivateSingleSecondarySelect();
+        DeactivateSingleSpecialSelect();
+        DeactivateSingleToggle();
+
+        DeactivateSingleSelection();
+        ResetBool();
+
+        guideLine.SetActive(true);
+
+        if(breakInstruction)
+        {
+            yield break;
+        }
+
+        yield return new WaitForSeconds(9f);
+
+        SceneManager.LoadScene("Level1");
+    }
+    IEnumerator ActivateDoubleStartButton()
+    {
+        gamePlay = true;
+
+        Player1WeaponData();
+        Player2WeaponData();
+
+        DeactivateP1CharacterSelect();
+        DeactivateP1ShipSelect();
+        DeactivateP1PrimarySelect();
+        DeactivateP1SecondarySelect();
+        DeactivateP1SpecialSelect();
+        DeactivateP1Toggle();
+
+        DeactivateP2CharacterSelect();
+        DeactivateP2ShipSelect();
+        DeactivateP2PrimarySelect();
+        DeactivateP2SecondarySelect();
+        DeactivateP2SpecialSelect();
+        DeactivateP2Toggle();
+
+        DeactivatePlayer1Selection();
+        DeactivatePlayer2Selection();
+
+        ResetBool();
+
+        guideLine.SetActive(true);
+
+        if (breakInstruction)
+        {
+            yield break;
+        }
+
+        yield return new WaitForSeconds(9f);
+
+        SceneManager.LoadScene("Level1");
     }
 
     //turning object on or off
@@ -1614,15 +1691,6 @@ public class SelectionMenuController : MonoBehaviour
         P2secondaryButton.SetActive(false);
         P2specialButton.SetActive(false);
         doubleStartButton.SetActive(false);
-    }
-
-    private void ActivateSelectionText()
-    {
-        selectionText.SetActive(true);
-    }
-    private void DeactivateSelectionText()
-    {
-        selectionText.SetActive(false);
     }
 
     private void ActivateSingleToggle()
@@ -1836,13 +1904,6 @@ public class SelectionMenuController : MonoBehaviour
         P2special = false;
     }
 
-    private void ResetGlowData()
-    {
-        glowTracker = 1;
-        P1glowTracker = 1;
-        P2glowTracker = 1;
-    }
-
     private void ResetGlow()
     {
         singleReturnButtonGlow.fillAmount = 0;
@@ -1998,55 +2059,17 @@ public class SelectionMenuController : MonoBehaviour
     }
 
     //on click button
-    IEnumerator ActivateSingleStartButton()
+    private void SingleStartButton()
     {
-        Player1WeaponData();
-
-        DeactivateSingleCharacterSelect();
-        DeactivateSingleShipSelect();
-        DeactivateSinglePrimarySelect();
-        DeactivateSingleSecondarySelect();
-        DeactivateSingleSpecialSelect();
-        DeactivateSingleToggle();
-
-        DeactivateSingleSelection();
-        ResetBool();
-
-        guideLine.SetActive(true);
-
-        yield return new WaitForSeconds(10f);
-
-        SceneManager.LoadScene("Level1");
+        StartCoroutine(ActivateSingleStartButton());
     }
-    IEnumerator ActivateDoubleStartButton()
+    private void DoubleStartButton()
     {
-        Player1WeaponData();
-        Player2WeaponData();
+        StartCoroutine(ActivateDoubleStartButton());
+    }
 
-        DeactivateP1CharacterSelect();
-        DeactivateP1ShipSelect();
-        DeactivateP1PrimarySelect();
-        DeactivateP1SecondarySelect();
-        DeactivateP1SpecialSelect();
-        DeactivateP1Toggle();
-
-        DeactivateP2CharacterSelect();
-        DeactivateP2ShipSelect();
-        DeactivateP2PrimarySelect();
-        DeactivateP2SecondarySelect();
-        DeactivateP2SpecialSelect();
-        DeactivateP2Toggle();
-
-        DeactivatePlayer1Selection();
-        DeactivatePlayer2Selection();
-
-        DeactivateSelectionText();
-        ResetBool();
-
-        guideLine.SetActive(true);
-
-        yield return new WaitForSeconds(10f);
-
+    private void SkipButton()
+    {
         SceneManager.LoadScene("Level1");
     }
 
@@ -2081,8 +2104,7 @@ public class SelectionMenuController : MonoBehaviour
     private void SinglePlayerCharacterButton()
     {
         choosing = true;
-
-        ActivateSelectionText();
+        
         ActivateSingleToggle();
         SetP1ToggleData();
 
@@ -2098,8 +2120,7 @@ public class SelectionMenuController : MonoBehaviour
     private void Player1CharacterButton()
     {
         P1choosing = true;
-
-        ActivateSelectionText();
+        
         ActivateP1Toggle();
         SetP1ToggleData();
 
@@ -2115,8 +2136,7 @@ public class SelectionMenuController : MonoBehaviour
     private void Player2CharacterButton()
     {
         P2choosing = true;
-
-        ActivateSelectionText();
+        
         ActivateP2Toggle();
         SetP2ToggleData();
         
@@ -2133,8 +2153,7 @@ public class SelectionMenuController : MonoBehaviour
     private void SinglePlayerShipButton()
     {
         choosing = true;
-
-        ActivateSelectionText();
+        
         ActivateSingleToggle();
         SetP1ToggleData();
 
@@ -2150,8 +2169,7 @@ public class SelectionMenuController : MonoBehaviour
     private void Player1ShipButton()
     {
         P1choosing = true;
-
-        ActivateSelectionText();
+        
         ActivateP1Toggle();
         SetP1ToggleData();
 
@@ -2167,8 +2185,7 @@ public class SelectionMenuController : MonoBehaviour
     private void Player2ShipButton()
     {
         P2choosing = true;
-
-        ActivateSelectionText();
+        
         ActivateP2Toggle();
         SetP2ToggleData();
         
@@ -2185,8 +2202,7 @@ public class SelectionMenuController : MonoBehaviour
     private void SinglePlayerPrimaryButton()
     {
         choosing = true;
-
-        ActivateSelectionText();
+        
         ActivateSingleToggle();
         SetP1ToggleData();
 
@@ -2203,7 +2219,6 @@ public class SelectionMenuController : MonoBehaviour
     {
         P1choosing = true;
 
-        ActivateSelectionText();
         ActivateP1Toggle();
         SetP1ToggleData();
 
@@ -2219,8 +2234,7 @@ public class SelectionMenuController : MonoBehaviour
     private void Player2PrimaryButton()
     {
         P2choosing = true;
-
-        ActivateSelectionText();
+        
         ActivateP2Toggle();
         SetP2ToggleData();
         
@@ -2237,8 +2251,7 @@ public class SelectionMenuController : MonoBehaviour
     private void SinglePlayerSecondaryButton()
     {
         choosing = true;
-
-        ActivateSelectionText();
+        
         ActivateSingleToggle();
         SetP1ToggleData();
 
@@ -2254,8 +2267,7 @@ public class SelectionMenuController : MonoBehaviour
     private void Player1SecondaryButton()
     {
         P1choosing = true;
-
-        ActivateSelectionText();
+        
         ActivateP1Toggle();
         SetP1ToggleData();
 
@@ -2271,8 +2283,7 @@ public class SelectionMenuController : MonoBehaviour
     private void Player2SecondaryButton()
     {
         P2choosing = true;
-
-        ActivateSelectionText();
+        
         ActivateP2Toggle();
         SetP2ToggleData();
 
@@ -2289,8 +2300,7 @@ public class SelectionMenuController : MonoBehaviour
     private void SinglePlayerSpecialButton()
     {
         choosing = true;
-
-        ActivateSelectionText();
+        
         ActivateSingleToggle();
         SetP1ToggleData();
 
@@ -2305,8 +2315,7 @@ public class SelectionMenuController : MonoBehaviour
     private void Player1SpecialButton()
     {
         P1choosing = true;
-
-        ActivateSelectionText();
+        
         ActivateP1Toggle();
         SetP1ToggleData();
 
@@ -2322,8 +2331,7 @@ public class SelectionMenuController : MonoBehaviour
     private void Player2SpecialButton()
     {
         P2choosing = true;
-
-        ActivateSelectionText();
+        
         ActivateP2Toggle();
         SetP2ToggleData();
         

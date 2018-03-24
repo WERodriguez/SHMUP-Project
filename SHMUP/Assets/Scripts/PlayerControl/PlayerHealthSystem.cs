@@ -44,7 +44,6 @@ public class PlayerHealthSystem : MonoBehaviour
 
     private PlayerWeaponController playerWeaponController;
 
-
     //UI Tracking
     public Image P1HealthBar;
     public Image P1ShieldBar;
@@ -90,8 +89,6 @@ public class PlayerHealthSystem : MonoBehaviour
                 transform.position = respawnLocation.position;
                 gameObject.GetComponent<PlayerController>().P1isDead = false;
 
-                P1currentLives--;
-
                 SettingUpPlayer1();
 
                 respawnTimer = 0;
@@ -105,8 +102,6 @@ public class PlayerHealthSystem : MonoBehaviour
                 //Respawns player at location.
                 transform.position = respawnLocation.position;
                 gameObject.GetComponent<PlayerController>().P2isDead = false;
-
-                P2currentLives--;
 
                 SettingUpPlayer2();
 
@@ -157,7 +152,9 @@ public class PlayerHealthSystem : MonoBehaviour
                 P1health.text = "HP: " + P1currentHealth;
                 P1HealthBar.fillAmount = P1currentHealth / P1maxHealth;
                 P1HealthBar.fillAmount = P1currentHealth / P1maxHealth;
-                //Destroy(gameObject);
+
+                P1currentLives--;
+
                 P1Respawn();
             }
         }
@@ -195,7 +192,9 @@ public class PlayerHealthSystem : MonoBehaviour
                 P2currentHealth = 0;
                 P2health.text = "HP: " + P2currentHealth;
                 P2HealthBar.fillAmount = P2currentHealth / P2maxHealth;
-                //Destroy(gameObject);
+
+                P2currentLives--;
+
                 P2Respawn();
             }
         }
