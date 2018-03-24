@@ -10,10 +10,13 @@ public class PlayerWeaponController : MonoBehaviour
     //fireRate controls the... Well Fire Rate
     public float fireRate;
     public float secondaryFireRate;
+    public float superFireRate;
+
 
     //Keeps track of when the weapon can fire again.
     private float nextFire;
     private float nextSecondaryFire;
+    private float nextSuperFire;
 
     //Experimenting with chainfire.
     public int nextGun;
@@ -181,45 +184,34 @@ public class PlayerWeaponController : MonoBehaviour
         //player 1
         if (!whichPlayer)
         {
-            if (P1superWeaponSelector == 0 && P1superAmmo > 0)
+            if (P1superWeaponSelector == 0)
             {
                 MegaBomb();
-                P1superAmmo--;
-                P1superAmmoCounter.text = "Super Ammo: " + P1superAmmo;
             }
-            else if (P1superWeaponSelector == 1 && P1superAmmo > 0)
+            else if (P1superWeaponSelector == 1)
             {
                 BeamCannon();
-                P1superAmmo--;
-                P1superAmmoCounter.text = "Super Ammo: " + P1superAmmo;
             }
-            else if (P1superWeaponSelector == 2 && P1superAmmo > 0)
+            else if (P1superWeaponSelector == 2)
             {
                 MegaShield();
-                P1superAmmo--;
-                P1superAmmoCounter.text = "Super Ammo: " + P1superAmmo;
             }
         }
         //player 2
         if (whichPlayer)
         {
-            if (P2superWeaponSelector == 0 && P2superAmmo > 0)
+            if (P2superWeaponSelector == 0)
             {
                 MegaBomb();
-                P2superAmmo--;
-                P2superAmmoCounter.text = "Super Ammo: " + P2superAmmo;
+                
             }
-            else if (P2superWeaponSelector == 1 && P2superAmmo > 0)
+            else if (P2superWeaponSelector == 1)
             {
                 BeamCannon();
-                P2superAmmo--;
-                P2superAmmoCounter.text = "Super Ammo: " + P2superAmmo;
             }
-            else if (P2superWeaponSelector == 2 && P2superAmmo > 0)
+            else if (P2superWeaponSelector == 2)
             {
                 MegaShield();
-                P2superAmmo--;
-                P2superAmmoCounter.text = "Super Ammo: " + P2superAmmo;
             }
         }
     }
@@ -712,12 +704,26 @@ public class PlayerWeaponController : MonoBehaviour
         //player 1
         if (!whichPlayer)
         {
-            Instantiate(P1superBullet, shotSpawns[0].position, shotSpawns[0].rotation);
+            if (Time.time > nextSuperFire && P1superAmmo > 0)
+            {
+                P1superAmmo--;
+                P1superAmmoCounter.text = "Super Ammo: " + P1superAmmo;
+                superFireRate = 1.0f;
+                nextSuperFire = Time.time + superFireRate;
+                Instantiate(P1superBullet, shotSpawns[0].position, shotSpawns[0].rotation);
+            }
         }
         //player 2
         if (whichPlayer)
         {
-            Instantiate(P2superBullet, shotSpawns[0].position, shotSpawns[0].rotation);
+            if (Time.time > nextSuperFire && P2superAmmo > 0)
+            {
+                P2superAmmo--;
+                P2superAmmoCounter.text = "Super Ammo: " + P2superAmmo;
+                superFireRate = 1.0f;
+                nextSuperFire = Time.time + superFireRate;
+                Instantiate(P2superBullet, shotSpawns[0].position, shotSpawns[0].rotation);
+            }
         }
     }
 
@@ -728,14 +734,27 @@ public class PlayerWeaponController : MonoBehaviour
         //player 1
         if (!whichPlayer)
         {
-            childSuperWeapon = Instantiate(P1superBullet, shotSpawns[0].transform.position, shotSpawns[0].transform.rotation) as GameObject;
-            childSuperWeapon.transform.parent = gameObject.transform;
+            if (Time.time > nextSuperFire && P1superAmmo > 0)
+            {
+                P1superAmmo--;
+                P1superAmmoCounter.text = "Super Ammo: " + P1superAmmo;
+                superFireRate = 8.0f;
+                nextSuperFire = Time.time + superFireRate;
+                childSuperWeapon = Instantiate(P1superBullet, shotSpawns[0].transform.position, shotSpawns[0].transform.rotation) as GameObject;
+                childSuperWeapon.transform.parent = gameObject.transform;
+            }
         }
         //player 2
         if (whichPlayer)
         {
-            childSuperWeapon = Instantiate(P2superBullet, shotSpawns[0].transform.position, shotSpawns[0].transform.rotation) as GameObject;
-            childSuperWeapon.transform.parent = gameObject.transform;
+            if (Time.time > nextSuperFire && P2superAmmo > 0)
+            {
+                P2superAmmo--;
+                P2superAmmoCounter.text = "Super Ammo: " + P2superAmmo;
+                superFireRate = 8.0f;
+                childSuperWeapon = Instantiate(P2superBullet, shotSpawns[0].transform.position, shotSpawns[0].transform.rotation) as GameObject;
+                childSuperWeapon.transform.parent = gameObject.transform;
+            }
         }
     }
 
@@ -747,14 +766,26 @@ public class PlayerWeaponController : MonoBehaviour
         //player 1
         if (!whichPlayer)
         {
-            childSuperWeapon = Instantiate(P1superBullet, gameObject.transform.position, gameObject.transform.rotation) as GameObject;
-            childSuperWeapon.transform.parent = gameObject.transform;
+            if (Time.time > nextSuperFire && P1superAmmo > 0)
+            {
+                P1superAmmo--;
+                P1superAmmoCounter.text = "Super Ammo: " + P1superAmmo;
+                superFireRate = 7.0f;
+                childSuperWeapon = Instantiate(P1superBullet, gameObject.transform.position, gameObject.transform.rotation) as GameObject;
+                childSuperWeapon.transform.parent = gameObject.transform;
+            }
         }
         //player 2
         if (whichPlayer)
         {
-            childSuperWeapon = Instantiate(P2superBullet, gameObject.transform.position, gameObject.transform.rotation) as GameObject;
-            childSuperWeapon.transform.parent = gameObject.transform;
+            if (Time.time > nextSuperFire && P2superAmmo > 0)
+            {
+                P2superAmmo--;
+                P2superAmmoCounter.text = "Super Ammo: " + P2superAmmo;
+                superFireRate = 8.0f;
+                childSuperWeapon = Instantiate(P2superBullet, gameObject.transform.position, gameObject.transform.rotation) as GameObject;
+                childSuperWeapon.transform.parent = gameObject.transform;
+            }
         }
     }
 
