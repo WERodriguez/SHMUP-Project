@@ -6,6 +6,12 @@ using UnityEngine.SceneManagement;
 
 public class MainMenuController : MonoBehaviour
 {
+    private int glowTracker;
+
+    public Image singleGlow;
+    public Image doubleGlow;
+    public Image quitGlow;
+
     public static bool onePlayer;
 
     public GameObject warning;
@@ -16,11 +22,71 @@ public class MainMenuController : MonoBehaviour
     public GameObject singleButton;
     public GameObject doubleButton;
     public GameObject quitButton;
-    private void Start()
+
+    private void Awake()
     {
         DeactivateMainMenu();
+        DeactivateGlow();
+
+        glowTracker = 1;
+    }
+
+    private void Start()
+    {
         StartCoroutine(Timer());
     }
+
+    private void Update()
+    {
+        if(glowTracker <= 1)
+        {
+            glowTracker = 1;
+
+            DeactivateGlow();
+
+            singleGlow.fillAmount = 1;
+        }
+        if (glowTracker == 2)
+        {
+            DeactivateGlow();
+
+            doubleGlow.fillAmount = 1;
+        }
+        if (glowTracker >= 3)
+        {
+            glowTracker = 3;
+
+            DeactivateGlow();
+
+            quitGlow.fillAmount = 1;
+        }
+
+        if(Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.Alpha8) || Input.GetKeyDown(KeyCode.Alpha4))
+        {
+            glowTracker--;
+        }
+        if (Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.D) || Input.GetKeyDown(KeyCode.Alpha5) || Input.GetKeyDown(KeyCode.Alpha6))
+        {
+            glowTracker++;
+        }
+
+        if (Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.Alpha0))
+        {
+            if (glowTracker <= 1)
+            {
+                SingleButton();
+            }
+            if (glowTracker == 2)
+            {
+                DoubleButton();
+            }
+            if (glowTracker >= 3)
+            {
+                QuitButton();
+            }
+        }
+    }
+
     IEnumerator Timer()
     {
         warning.SetActive(true);
@@ -49,19 +115,26 @@ public class MainMenuController : MonoBehaviour
         quitButton.SetActive(false);
     }
 
-    public void SingleButton()
+    private void DeactivateGlow()
+    {
+        singleGlow.fillAmount = 0;
+        doubleGlow.fillAmount = 0;
+        quitGlow.fillAmount = 0;
+    }
+
+    private void SingleButton()
     {
         onePlayer = true;
         SceneManager.LoadScene("SelectionMenu");
     }
 
-    public void DoubleButton()
+    private void DoubleButton()
     {
         onePlayer = false;
         SceneManager.LoadScene("SelectionMenu");
     }
 
-    public void QuitButton()
+    private void QuitButton()
     {
         Application.Quit();
     }

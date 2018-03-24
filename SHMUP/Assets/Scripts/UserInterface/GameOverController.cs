@@ -6,6 +6,11 @@ using UnityEngine.SceneManagement;
 
 public class GameOverController : MonoBehaviour
 {
+    private int glowTracker;
+
+    public Image restartGlow;
+    public Image mainMenuGlow;
+
     public Text matchScore;
     public Text personalScore;
     public Text credit;
@@ -37,6 +42,8 @@ public class GameOverController : MonoBehaviour
         screen.SetActive(false);
         P1screen.SetActive(false);
         P2screen.SetActive(false);
+
+        glowTracker = 1;
     }
 
     private void Start()
@@ -67,6 +74,44 @@ public class GameOverController : MonoBehaviour
         {
             StartCoroutine(DoubleTimer());
         }
+
+        if (glowTracker <= 1)
+        {
+            glowTracker = 1;
+
+            DeactivateGlow();
+
+            restartGlow.fillAmount = 1;
+        }
+        if (glowTracker >= 2)
+        {
+            glowTracker = 2;
+
+            DeactivateGlow();
+
+            mainMenuGlow.fillAmount = 1;
+        }
+
+        if (Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.Alpha8) || Input.GetKeyDown(KeyCode.Alpha4))
+        {
+            glowTracker--;
+        }
+        if (Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.D) || Input.GetKeyDown(KeyCode.Alpha5) || Input.GetKeyDown(KeyCode.Alpha6))
+        {
+            glowTracker++;
+        }
+
+        if (Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.Alpha0))
+        {
+            if (glowTracker <= 1)
+            {
+                RestartButton();
+            }
+            if (glowTracker >= 2)
+            {
+                MainMenuButton();
+            }
+        }
     }
 
     IEnumerator SingleTimer()
@@ -80,7 +125,6 @@ public class GameOverController : MonoBehaviour
         yield return new WaitForSeconds(1f);
         credit.text = "" + currentP1credit;
     }
-
     IEnumerator DoubleTimer()
     {
         yield return new WaitForSeconds(4f);
@@ -96,9 +140,15 @@ public class GameOverController : MonoBehaviour
         P2credit.text = "" + currentP2credit;
     }
 
+    private void DeactivateGlow()
+    {
+        restartGlow.fillAmount = 0;
+        mainMenuGlow.fillAmount = 0;
+    }
+
     private void SetPlayerScore()
     {
-        if(ScoreTracker.score_P1 < 0 || ScoreTracker.score_P2 < 0 || ScoreTracker.totalScore < 0 || ScoreTracker.P1credit < 0 || ScoreTracker.P2credit < 0)
+        if (ScoreTracker.score_P1 < 0 || ScoreTracker.score_P2 < 0 || ScoreTracker.totalScore < 0 || ScoreTracker.P1credit < 0 || ScoreTracker.P2credit < 0)
         {
             currentScore_P1 = 0;
             currentScore_P2 = 0;
@@ -112,7 +162,7 @@ public class GameOverController : MonoBehaviour
         currentTotalScore = ScoreTracker.totalScore;
         currentP1credit = ScoreTracker.P1credit;
         currentP2credit = ScoreTracker.P2credit;
-}
+    }
     private void ResetPlayerScore()
     {
         ScoreTracker.score_P1 = 0;
@@ -143,22 +193,7 @@ public class GameOverController : MonoBehaviour
         PlayerWeaponController.P2savedSuperAmmo = PlayerWeaponController.superAmmoDefault;
     }
 
-    public void MainMenuButton()
-    {
-        if (MainMenuController.onePlayer)
-        {
-            ResetPlayer1Value();
-        }
-        else
-        {
-            ResetPlayer1Value();
-            ResetPlayer2Value();
-        }
-
-        SceneManager.LoadScene("MainMenu");
-    }
-
-    public void RestartButton()
+    private void RestartButton()
     {
         if (MainMenuController.onePlayer)
         {
@@ -173,5 +208,20 @@ public class GameOverController : MonoBehaviour
         ResetPlayerScore();
 
         SceneManager.LoadScene("Level1");
+    }
+
+    private void MainMenuButton()
+    {
+        if (MainMenuController.onePlayer)
+        {
+            ResetPlayer1Value();
+        }
+        else
+        {
+            ResetPlayer1Value();
+            ResetPlayer2Value();
+        }
+
+        SceneManager.LoadScene("MainMenu");
     }
 }

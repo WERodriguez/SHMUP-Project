@@ -6,6 +6,11 @@ using UnityEngine.SceneManagement;
 
 public class ScoreScreenController : MonoBehaviour
 {
+    private int glowTracker;
+
+    public Image nextGlow;
+    public Image hangarGlow;
+
     private int currentTotalScore;
 
     private int currentScore_P1;
@@ -61,6 +66,8 @@ public class ScoreScreenController : MonoBehaviour
         screen.SetActive(false);
         P1screen.SetActive(false);
         P2screen.SetActive(false);
+
+        glowTracker = 1;
     }
 
     private void Start()
@@ -90,6 +97,44 @@ public class ScoreScreenController : MonoBehaviour
         else
         {
             StartCoroutine(DoubleTimer());
+        }
+
+        if (glowTracker <= 1)
+        {
+            glowTracker = 1;
+
+            DeactivateGlow();
+
+            nextGlow.fillAmount = 1;
+        }
+        if (glowTracker >= 2)
+        {
+            glowTracker = 2;
+
+            DeactivateGlow();
+
+            hangarGlow.fillAmount = 1;
+        }
+
+        if (Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.Alpha8) || Input.GetKeyDown(KeyCode.Alpha4))
+        {
+            glowTracker--;
+        }
+        if (Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.D) || Input.GetKeyDown(KeyCode.Alpha5) || Input.GetKeyDown(KeyCode.Alpha6))
+        {
+            glowTracker++;
+        }
+
+        if (Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.Alpha0))
+        {
+            if (glowTracker <= 1)
+            {
+                NexButton();
+            }
+            if (glowTracker >= 2)
+            {
+                HangarButton();
+            }
         }
     }
 
@@ -145,6 +190,12 @@ public class ScoreScreenController : MonoBehaviour
         yield return new WaitForSeconds(1f);
         P1superAmmo.text = "" + currentP1SuperAmmo;
         P2superAmmo.text = "" + currentP2SuperAmmo;
+    }
+
+    private void DeactivateGlow()
+    {
+        nextGlow.fillAmount = 0;
+        hangarGlow.fillAmount = 0;
     }
 
     private void SetPlayerScore()
@@ -204,14 +255,7 @@ public class ScoreScreenController : MonoBehaviour
         PlayerWeaponController.P2savedSuperAmmo = PlayerWeaponController.P2currentSuperAmmo;
     }
 
-    public void HangarButton()
-    {
-        ResetPlayerScore();
-
-        SceneManager.LoadScene("StoreScreen");
-    }
-
-    public void NexButton()
+    private void NexButton()
     {
         ResetPlayerScore();
 
@@ -228,5 +272,12 @@ public class ScoreScreenController : MonoBehaviour
         ResetPlayerScore();
 
         SceneManager.LoadScene("Level1");
+    }
+
+    private void HangarButton()
+    {
+        ResetPlayerScore();
+
+        SceneManager.LoadScene("StoreScreen");
     }
 }

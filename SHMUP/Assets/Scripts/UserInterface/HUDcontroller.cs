@@ -1,13 +1,21 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
 public class HUDcontroller : MonoBehaviour
 {
+    private int glowTracker;
+    private bool pauseMenuOn;
+
+    public Image resumeGlow;
+    public Image restartGlow;
+    public Image mainMenuGlow;
+    public Image player2Glow;
+
     public GameObject P1HUD;
     public GameObject P2HUD;
-    public GameObject pauseText;
 
     public GameObject pauseMenu;
     public GameObject resumeButton;
@@ -23,6 +31,8 @@ public class HUDcontroller : MonoBehaviour
         DeactivatePauseMenu();
 
         winLevel = false;
+        pauseMenuOn = false;
+        glowTracker = 1;
     }
 
     private void Update()
@@ -52,6 +62,65 @@ public class HUDcontroller : MonoBehaviour
         {
             StartCoroutine(ScoreScreenTimer());
         }
+
+        if (pauseMenuOn)
+        {
+            if (glowTracker <= 1)
+            {
+                glowTracker = 1;
+
+                DeactivateGlow();
+                resumeGlow.fillAmount = 1;
+            }
+            if (glowTracker == 2)
+            {
+                DeactivateGlow();
+                restartGlow.fillAmount = 1;
+            }
+            if (glowTracker == 3)
+            {
+                DeactivateGlow();
+                mainMenuGlow.fillAmount = 1;
+            }
+            if (glowTracker >= 4)
+            {
+                glowTracker = 4;
+
+                DeactivateGlow();
+                player2Glow.fillAmount = 1;
+            }
+
+            if (Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.Alpha8) || Input.GetKeyDown(KeyCode.Alpha4))
+            {
+                glowTracker--;
+            }
+            if (Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.D) || Input.GetKeyDown(KeyCode.Alpha5) || Input.GetKeyDown(KeyCode.Alpha6))
+            {
+                glowTracker++;
+            }
+
+            if (Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.Alpha0))
+            {
+                if (glowTracker <= 1)
+                {
+                    ResumeButton();
+                }
+                if (glowTracker == 2)
+                {
+                    RestartButton();
+                }
+                if (glowTracker == 3)
+                {
+                    MainMenuButton();
+                }
+                if (glowTracker == 4)
+                {
+                    Player2Button();
+                }
+
+                glowTracker = 1;
+            }
+        }
     }
 
     IEnumerator GameOverTimer()
@@ -65,9 +134,18 @@ public class HUDcontroller : MonoBehaviour
         SceneManager.LoadScene("ScoreScreen");
     }
 
+    private void DeactivateGlow()
+    {
+        resumeGlow.fillAmount = 0;
+        restartGlow.fillAmount = 0;
+        mainMenuGlow.fillAmount = 0;
+        player2Glow.fillAmount = 0;
+    }
+
     private void ActivatePauseMenu()
     {
         Time.timeScale = 0f;
+        pauseMenuOn = true;
 
         DeactivateHUD();
 
@@ -80,6 +158,7 @@ public class HUDcontroller : MonoBehaviour
     private void DeactivatePauseMenu()
     {
         Time.timeScale = 1f;
+        pauseMenuOn = false;
 
         ActivateHUD();
 
@@ -101,14 +180,11 @@ public class HUDcontroller : MonoBehaviour
             P1HUD.SetActive(true);
             P2HUD.SetActive(true);
         }
-
-        pauseText.SetActive(true);
     }
     private void DeactivateHUD()
     {
         P1HUD.SetActive(false);
         P2HUD.SetActive(false);
-        pauseText.SetActive(false);
     }
 
     private void ResetPlayer1Value()
@@ -132,7 +208,7 @@ public class HUDcontroller : MonoBehaviour
         PlayerWeaponController.P2savedSuperAmmo = PlayerWeaponController.superAmmoDefault;
     }
 
-    public void ResumeButton()
+    private void ResumeButton()
     {
         DeactivatePauseMenu();
         ActivateHUD();
@@ -140,7 +216,7 @@ public class HUDcontroller : MonoBehaviour
         Time.timeScale = 1f;
     }
 
-    public void RestartButton()
+    private void RestartButton()
     {
         if (MainMenuController.onePlayer)
         {
@@ -158,7 +234,7 @@ public class HUDcontroller : MonoBehaviour
         SceneManager.LoadScene("Level1");
     }
 
-    public void MainMenuButton()
+    private void MainMenuButton()
     {
         if (MainMenuController.onePlayer)
         {
@@ -176,7 +252,7 @@ public class HUDcontroller : MonoBehaviour
         SceneManager.LoadScene("MainMenu");
     }
 
-    public void Player2Button()
+    private void Player2Button()
     {
         MainMenuController.onePlayer = false;
 
