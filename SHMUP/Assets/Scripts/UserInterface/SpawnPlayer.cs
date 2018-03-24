@@ -4,20 +4,6 @@ using UnityEngine;
 
 public class SpawnPlayer : MonoBehaviour
 {
-    public GameObject player1Spawn;
-    /*public GameObject player2Spawn;
-
-    public GameObject[] characterList;
-    public GameObject[] shipList;
-    public GameObject[] primaryList;
-    public GameObject[] secondaryList;
-    public GameObject[] specialList;*/
-    
-    public GameObject P1character1;
-    public GameObject P1character2;
-    public GameObject P1character3;
-    public GameObject P1character4;
-    
     public GameObject P1ship1;
     public GameObject P1ship2;
     public GameObject P1ship3;

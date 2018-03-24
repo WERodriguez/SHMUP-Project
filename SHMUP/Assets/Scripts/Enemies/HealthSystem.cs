@@ -30,9 +30,27 @@ public class HealthSystem : MonoBehaviour
 
     public bool scoreScreen;
 
+    public static int P1ramEnemy;
+    public static int P2ramEnemy;
+
+    public static int P1lightEnemy;
+    public static int P2lightEnemy;
+
+    public static int P1missileEnemy;
+    public static int P2missileEnemy;
+
     void Start ()
     {
         currentHealth = maxHealth;
+
+        P1ramEnemy = 0;
+        P2ramEnemy = 0;
+
+        P1lightEnemy = 0;
+        P2lightEnemy = 0;
+
+        P1missileEnemy = 0;
+        P2missileEnemy = 0;
 
         //Tries to grab a points script if the object has any.
         addScore = gameObject.GetComponent<Points>();
@@ -41,7 +59,7 @@ public class HealthSystem : MonoBehaviour
         if (addScore == null)
         {
             return;
-        } 
+        }
     }
 
     //Takes damage from another script and subtracts from the player health and shields.
@@ -104,6 +122,40 @@ public class HealthSystem : MonoBehaviour
         else if (currentHealth <= 0)
         {
             doesLootDrop = Random.Range(0.0f, 100.0f);
+
+            if (this.gameObject.name == "RamEnemy(Clone)")
+            {
+                if (!whatPlayer)
+                {
+                    P1ramEnemy++;
+                }
+                else
+                {
+                    P2ramEnemy++;
+                }
+            }
+            if (this.gameObject.name == "LightShip(Clone)")
+            {
+                if (!whatPlayer)
+                {
+                    P1lightEnemy++;
+                }
+                else
+                {
+                    P2lightEnemy++;
+                }
+            }
+            if (this.gameObject.name == "MissileFighter(Clone)")
+            {
+                if (!whatPlayer)
+                {
+                    P1missileEnemy++;
+                }
+                else
+                {
+                    P2missileEnemy++;
+                }
+            }
 
             if (addScore != null)
             {

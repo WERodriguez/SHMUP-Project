@@ -5,8 +5,6 @@ using UnityEngine.UI;
 
 public class ScoreTracker : MonoBehaviour
 {
-    //Can't figure out how to make the game keep track of player scores separately.
-
     public Text scoreText_P1;
     public Text scoreText_P2;
     public Text levelScoreText;
@@ -53,7 +51,6 @@ public class ScoreTracker : MonoBehaviour
 
     private void UpdateScore()
     {
-        
         //Updates P1 Score
         if (!player)
         {

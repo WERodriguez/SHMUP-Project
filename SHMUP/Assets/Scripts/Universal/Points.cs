@@ -7,7 +7,6 @@ public class Points : MonoBehaviour {
     //Score value for this object.
     public int points;
 
-
     private GameController gameController;
     private ScoreTracker scoreTracker;
     private HealthSystem doILive;
@@ -20,6 +19,7 @@ public class Points : MonoBehaviour {
         gameController = gameControllerObject.GetComponent<GameController>();
         doILive = gameObject.GetComponent<HealthSystem>();
         scoreTracker = gameController.GetComponent<ScoreTracker>();
+
         if (doILive == null)
         {
             amIBad = false;
