@@ -27,7 +27,7 @@ MonoBehaviour:
   fog:
     m_Enabled: 1
     m_Settings:
-      excludeSkybox: 0
+      excludeSkybox: 1
   antialiasing:
     m_Enabled: 1
     m_Settings:
@@ -77,11 +77,11 @@ MonoBehaviour:
       useCameraFov: 1
       kernelSize: 3
   motionBlur:
-    m_Enabled: 0
+    m_Enabled: 1
     m_Settings:
-      shutterAngle: 0
-      sampleCount: 16
-      frameBlending: 0.064
+      shutterAngle: 139
+      sampleCount: 9
+      frameBlending: 0.171
   eyeAdaptation:
     m_Enabled: 1
     m_Settings:
@@ -127,10 +127,10 @@ MonoBehaviour:
         saturation: 0.983
         contrast: 1.109
       channelMixer:
-        red: {x: 0.54, y: 0.44, z: 0.44}
+        red: {x: 0.79, y: -0.19, z: -0.13}
         green: {x: 0, y: 1, z: 0}
-        blue: {x: -0.1, y: 0, z: -2}
-        currentEditingChannel: 0
+        blue: {x: -0.1, y: 0, z: -1.95}
+        currentEditingChannel: 2
       colorWheels:
         mode: 1
         log:
@@ -289,21 +289,21 @@ MonoBehaviour:
     m_Enabled: 1
     m_Settings:
       colored: 1
-      intensity: 0.228
+      intensity: 0.066
       size: 0.3
       luminanceContribution: 1
   vignette:
     m_Enabled: 1
     m_Settings:
       mode: 0
-      color: {r: 0, g: 0.22591278, b: 0.5955882, a: 1}
+      color: {r: 0.5808823, g: 0.42063898, b: 0, a: 1}
       center: {x: 0.5, y: 0.5}
-      intensity: 0.522
-      smoothness: 0.901
-      roundness: 0.208
+      intensity: 0.443
+      smoothness: 1
+      roundness: 0.607
       mask: {fileID: 0}
       opacity: 1
-      rounded: 0
+      rounded: 1
   dithering:
     m_Enabled: 0
   monitors:
