@@ -39,18 +39,17 @@ public class HealthSystem : MonoBehaviour
     public static int P1missileEnemy;
     public static int P2missileEnemy;
 
+    public static int P1destroyerEnemy;
+    public static int P2destroyerEnemy;
+
+    public static bool P1bossKill;
+    public static bool P2bossKill;
+
     void Start ()
     {
         currentHealth = maxHealth;
 
-        P1ramEnemy = 0;
-        P2ramEnemy = 0;
-
-        P1lightEnemy = 0;
-        P2lightEnemy = 0;
-
-        P1missileEnemy = 0;
-        P2missileEnemy = 0;
+        SetSpeechData();
 
         //Tries to grab a points script if the object has any.
         addScore = gameObject.GetComponent<Points>();
@@ -85,10 +84,10 @@ public class HealthSystem : MonoBehaviour
             currentHealth -= excessShieldDamage;
         }
 
-
         if (currentHealth <= 0 && isBoss)
         {
             doesLootDrop = Random.Range(0.0f, 100.0f);
+
             if (addScore != null)
             {
                 addScore.AddPoints(whatPlayer);
@@ -113,6 +112,18 @@ public class HealthSystem : MonoBehaviour
                 if (doesLootDrop <= lootDropChance)
                 {
                     callLoot.LootRoll(Random.Range(0.0f, 100.0f));
+                }
+            }
+
+            if (this.gameObject.tag == "Boss")
+            {
+                if (!whatPlayer)
+                {
+                    P1bossKill = true;
+                }
+                else
+                {
+                    P2bossKill = true;
                 }
             }
 
@@ -156,6 +167,17 @@ public class HealthSystem : MonoBehaviour
                     P2missileEnemy++;
                 }
             }
+            if (this.gameObject.name == "Destroyer(Clone)")
+            {
+                if (!whatPlayer)
+                {
+                    P1destroyerEnemy++;
+                }
+                else
+                {
+                    P2destroyerEnemy++;
+                }
+            }
 
             if (addScore != null)
             {
@@ -169,5 +191,23 @@ public class HealthSystem : MonoBehaviour
                 Destroy(gameObject);
             }
         }
+    }
+
+    private void SetSpeechData()
+    {
+        P1ramEnemy = 0;
+        P2ramEnemy = 0;
+
+        P1lightEnemy = 0;
+        P2lightEnemy = 0;
+
+        P1missileEnemy = 0;
+        P2missileEnemy = 0;
+
+        P1destroyerEnemy = 0;
+        P2destroyerEnemy = 0;
+
+        P1bossKill = false;
+        P2bossKill = false;
     }
 }

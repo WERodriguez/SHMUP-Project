@@ -5,6 +5,14 @@ using UnityEngine.UI;
 
 public class PlayerHealthSystem : MonoBehaviour
 {
+    public static bool P1moreHealth;
+    public static bool P1moreShield;
+    public static bool P1moreLive;
+
+    public static bool P2moreHealth;
+    public static bool P2moreShield;
+    public static bool P2moreLive;
+
     //Player health
     public static float P1maxHealth;
     public static float P1currentHealth;
@@ -205,6 +213,8 @@ public class PlayerHealthSystem : MonoBehaviour
         //player 1
         if(!whichPlayer)
         {
+            P1moreHealth = true;
+
             P1currentHealth += healAmmount;
 
             if (P1currentHealth > P1maxHealth)
@@ -219,6 +229,8 @@ public class PlayerHealthSystem : MonoBehaviour
         //player 2
         if (whichPlayer)
         {
+            P2moreHealth = true;
+
             P2currentHealth += healAmmount;
 
             if (P2currentHealth > P2maxHealth)
@@ -236,6 +248,8 @@ public class PlayerHealthSystem : MonoBehaviour
         //player 1
         if(!whichPlayer)
         {
+            P1moreShield = true;
+
             P1currentShields += shieldHealAmmount;
 
             if (P1currentShields > P1maxShields)
@@ -250,6 +264,8 @@ public class PlayerHealthSystem : MonoBehaviour
         //player 2
         if(whichPlayer)
         {
+            P2moreShield = true;
+
             P2currentShields += shieldHealAmmount;
 
             if (P2currentShields > P2maxShields)
@@ -267,6 +283,8 @@ public class PlayerHealthSystem : MonoBehaviour
         //player 1
         if(!whichPlayer)
         {
+            P1moreLive = true;
+
             P1currentLives += 1;
 
             if (P1currentLives > P1maxLives)
@@ -281,6 +299,8 @@ public class PlayerHealthSystem : MonoBehaviour
         //player 2
         if (whichPlayer)
         {
+            P2moreLive = true;
+
             P2currentLives += 1;
 
             if (P2currentLives > P2maxLives)

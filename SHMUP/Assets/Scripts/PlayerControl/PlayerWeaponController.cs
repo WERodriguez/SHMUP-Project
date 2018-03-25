@@ -5,6 +5,13 @@ using UnityEngine.UI;
 
 public class PlayerWeaponController : MonoBehaviour
 {
+    public static bool P1morePrimary;
+    public static bool P1moreSecondary;
+    public static bool P1moreAmmo;
+
+    public static bool P2morePrimary;
+    public static bool P2moreSecondary;
+    public static bool P2moreAmmo;
 
     //Fire control variables.
     //fireRate controls the... Well Fire Rate
@@ -1301,6 +1308,8 @@ public class PlayerWeaponController : MonoBehaviour
         //player 1
         if (!whichPlayer)
         {
+            P1morePrimary = true;
+
             if (P1currentWLevel >= 5)
             {
                 P1currentWLevel = 5;
@@ -1313,6 +1322,8 @@ public class PlayerWeaponController : MonoBehaviour
         //player 2
         if (whichPlayer)
         {
+            P2morePrimary = true;
+
             if (P2currentWLevel >= 5)
             {
                 P2currentWLevel = 5;
@@ -1328,6 +1339,8 @@ public class PlayerWeaponController : MonoBehaviour
         //player 1
         if (!whichPlayer)
         {
+            P1moreSecondary = true;
+
             if (P1currentSecondaryLevel >= 5)
             {
                 P1currentSecondaryLevel = 5;
@@ -1339,6 +1352,8 @@ public class PlayerWeaponController : MonoBehaviour
         //player 2
         if (whichPlayer)
         {
+            P2moreSecondary = true;
+
             if (P2currentSecondaryLevel >= 5)
             {
                 P2currentSecondaryLevel = 5;
@@ -1354,6 +1369,8 @@ public class PlayerWeaponController : MonoBehaviour
         //player 1
         if (!whichPlayer)
         {
+            P1moreAmmo = true;
+
             if (P1superAmmo >= superAmmoCap)
             {
                 P1superAmmo = superAmmoCap;
@@ -1366,6 +1383,8 @@ public class PlayerWeaponController : MonoBehaviour
         //player 2
         if (whichPlayer)
         {
+            P2moreAmmo = true;
+
             if (P2superAmmo >= superAmmoCap)
             {
                 P2superAmmo = superAmmoCap;
