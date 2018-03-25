@@ -88,8 +88,8 @@ public class PlayerHealthSystem : MonoBehaviour
             Player2Status();
         }
 
-        P1death = false;
-        P2death = true;
+        P1lessLive = false;
+        P2lessLive = true;
     }
 
     private void Update()
@@ -168,7 +168,7 @@ public class PlayerHealthSystem : MonoBehaviour
                 P1HealthBar.fillAmount = P1currentHealth / P1maxHealth;
 
                 P1currentLives--;
-                P1death = true;
+                P1lessLive = true;
 
                 P1Respawn();
             }
@@ -209,7 +209,7 @@ public class PlayerHealthSystem : MonoBehaviour
                 P2HealthBar.fillAmount = P2currentHealth / P2maxHealth;
 
                 P2currentLives--;
-                P2death = true;
+                P2lessLive = true;
 
                 P2Respawn();
             }
