@@ -9,16 +9,43 @@ public class SpeechSystemController : MonoBehaviour
     private bool P2NoLiveSpeech;
 
     public GameObject P1Panel;
-    public Image P1character1;
-    public Image P1character2;
-    public Image P1character3;
-    public Image P1character4;
-
     public GameObject P2Panel;
-    public Image P2character1;
-    public Image P2character2;
-    public Image P2character3;
-    public Image P2character4;
+
+    public Image P1sprite1;
+    public Image P1sprite2;
+    public Image P1sprite3;
+    public Image P1sprite4;
+    public Image P1sprite5;
+
+    public Image P2sprite1;
+    public Image P2sprite2;
+    public Image P2sprite3;
+    public Image P2sprite4;
+    public Image P2sprite5;
+
+    public Sprite character1sprite1;
+    public Sprite character1sprite2;
+    public Sprite character1sprite3;
+    public Sprite character1sprite4;
+    public Sprite character1sprite5;
+
+    public Sprite character2sprite1;
+    public Sprite character2sprite2;
+    public Sprite character2sprite3;
+    public Sprite character2sprite4;
+    public Sprite character2sprite5;
+
+    public Sprite character3sprite1;
+    public Sprite character3sprite2;
+    public Sprite character3sprite3;
+    public Sprite character3sprite4;
+    public Sprite character3sprite5;
+
+    public Sprite character4sprite1;
+    public Sprite character4sprite2;
+    public Sprite character4sprite3;
+    public Sprite character4sprite4;
+    public Sprite character4sprite5;
 
     public GameObject P1speech;
     public Text P1text;
@@ -99,13 +126,31 @@ public class SpeechSystemController : MonoBehaviour
         }
 
         //health pickup
-        if (PlayerHealthSystem.P1currentLives < 0 && P1NoLiveSpeech)
+        if (PlayerHealthSystem.P1lessLive)
         {
-            StartCoroutine(P1NoLive());
+            StartCoroutine(P1LessLive());
         }
-        if (PlayerHealthSystem.P2currentLives < 0 && P2NoLiveSpeech)
+        if (PlayerHealthSystem.P2lessLive)
         {
-            StartCoroutine(P2NoLive());
+            StartCoroutine(P2LessLive());
+        }
+
+        if (PlayerHealthSystem.P1currentLives < 0)
+        {
+            StartCoroutine(P1Death());
+        }
+        if (PlayerHealthSystem.P2currentLives < 0)
+        {
+            StartCoroutine(P2Death());
+        }
+
+        if (PlayerHealthSystem.P1currentHealth <= (PlayerHealthSystem.P1maxHealth / 2) && P1NoLiveSpeech)
+        {
+            StartCoroutine(P1HalfHealth());
+        }
+        if (PlayerHealthSystem.P2currentHealth <= (PlayerHealthSystem.P2maxHealth / 2) && P2NoLiveSpeech)
+        {
+            StartCoroutine(P2HalfHealth());
         }
 
         if (PlayerHealthSystem.P1moreHealth)
@@ -168,11 +213,15 @@ public class SpeechSystemController : MonoBehaviour
     {
         SetPlayer1Character();
 
+        DeactivateP1Characters();
         ActivateP1Speech();
+
+        P1sprite1.fillAmount = 1;
         P1text.text = "Let's go";
 
         yield return new WaitForSeconds(1.5f);
 
+        DeactivateP1Characters();
         DeactivateP1Speech();
     }
     IEnumerator StartingSpeech2P()
@@ -180,161 +229,283 @@ public class SpeechSystemController : MonoBehaviour
         SetPlayer1Character();
         SetPlayer2Character();
 
+        DeactivateP1Characters();
         ActivateP1Speech();
+
+        P1sprite1.fillAmount = 1;
         P1text.text = "Let's go";
 
         yield return new WaitForSeconds(1.5f);
 
+        DeactivateP1Characters();
         DeactivateP1Speech();
+
+        DeactivateP2Characters();
         ActivateP2Speech();
+
+        P2sprite1.fillAmount = 1;
         P2text.text = "Okay";
 
         yield return new WaitForSeconds(1.5f);
 
+        DeactivateP2Characters();
         DeactivateP2Speech();
     }
 
     IEnumerator P1RamEnemy()
     {
+        DeactivateP1Characters();
         ActivateP1Speech();
+
+        P1sprite1.fillAmount = 1;
         P1text.text = "Congratulation you killed " + HealthSystem.P1ramEnemy + " Rammer";
 
         HealthSystem.P1ramEnemy = 0;
 
         yield return new WaitForSeconds(1.5f);
 
+        DeactivateP1Characters();
         DeactivateP1Speech();
     }
     IEnumerator P2RamEnemy()
     {
+        DeactivateP2Characters();
         ActivateP2Speech();
+
+        P2sprite1.fillAmount = 1;
         P2text.text = "Congratulation you killed " + HealthSystem.P2ramEnemy + " Rammer";
 
         HealthSystem.P2ramEnemy = 0;
 
         yield return new WaitForSeconds(1.5f);
 
+        DeactivateP2Characters();
         DeactivateP2Speech();
     }
 
     IEnumerator P1LightEnemy()
     {
+        DeactivateP1Characters();
         ActivateP1Speech();
+
+        P1sprite1.fillAmount = 1;
         P1text.text = "Congratulation you killed " + HealthSystem.P1lightEnemy + " Light Ships";
 
         HealthSystem.P1lightEnemy = 0;
 
         yield return new WaitForSeconds(1.5f);
 
+        DeactivateP1Characters();
         DeactivateP1Speech();
     }
     IEnumerator P2LightEnemy()
     {
+        DeactivateP2Characters();
         ActivateP2Speech();
+
+        P2sprite1.fillAmount = 1;
         P2text.text = "Congratulation you kill " + HealthSystem.P2lightEnemy + " Light Ships";
 
         HealthSystem.P2lightEnemy = 0;
 
         yield return new WaitForSeconds(1.5f);
 
+        DeactivateP2Characters();
         DeactivateP2Speech();
     }
 
     IEnumerator P1MissileEnemy()
     {
+        DeactivateP1Characters();
         ActivateP1Speech();
+
+        P1sprite1.fillAmount = 1;
         P1text.text = "Congratulation you killed " + HealthSystem.P1missileEnemy + " Missile Ship";
 
         HealthSystem.P1missileEnemy = 0;
 
         yield return new WaitForSeconds(1.5f);
 
+        DeactivateP1Characters();
         DeactivateP1Speech();
     }
     IEnumerator P2MissileEnemy()
     {
+        DeactivateP2Characters();
         ActivateP2Speech();
+
+        P2sprite1.fillAmount = 1;
         P2text.text = "Congratulation you killed " + HealthSystem.P2missileEnemy + " Missile Ship";
 
         HealthSystem.P2missileEnemy = 0;
 
         yield return new WaitForSeconds(1.5f);
 
+        DeactivateP2Characters();
         DeactivateP2Speech();
     }
 
     IEnumerator P1DestroyerEnemy()
     {
+        DeactivateP1Characters();
         ActivateP1Speech();
+
+        P1sprite1.fillAmount = 1;
         P1text.text = "Congratulation you killed " + HealthSystem.P1destroyerEnemy + " Destroyer";
 
         HealthSystem.P1destroyerEnemy = 0;
 
         yield return new WaitForSeconds(1.5f);
 
+        DeactivateP1Characters();
         DeactivateP1Speech();
     }
     IEnumerator P2DestroyerEnemy()
     {
+        DeactivateP2Characters();
         ActivateP2Speech();
+
+        P2sprite1.fillAmount = 1;
         P2text.text = "Congratulation you killed " + HealthSystem.P2destroyerEnemy + " Destroyer";
 
         HealthSystem.P2destroyerEnemy = 0;
 
         yield return new WaitForSeconds(1.5f);
 
+        DeactivateP2Characters();
         DeactivateP2Speech();
     }
 
     IEnumerator P1BossKill()
     {
+        DeactivateP1Characters();
         ActivateP1Speech();
 
+        P1sprite3.fillAmount = 1;
         P1text.text = "Congratulation you killed the Boss";
 
         HealthSystem.P1bossKill = false;
 
         yield return new WaitForSeconds(1.5f);
 
+        DeactivateP1Characters();
         DeactivateP1Speech();
     }
     IEnumerator P2BossKill()
     {
+        DeactivateP2Characters();
         ActivateP2Speech();
 
+        P2sprite3.fillAmount = 1;
         P2text.text = "Congratulation you kill the Boss";
 
         HealthSystem.P2bossKill = false;
 
         yield return new WaitForSeconds(1.5f);
 
+        DeactivateP2Characters();
         DeactivateP2Speech();
     }
 
-    IEnumerator P1NoLive()
+    IEnumerator P1LessLive()
     {
+        DeactivateP1Characters();
         ActivateP1Speech();
-        P1text.text = "Why can't i revive";
+
+        P1sprite2.fillAmount = 1;
+        P1text.text = "Reviving";
+
+        PlayerHealthSystem.P1moreHealth = false;
 
         yield return new WaitForSeconds(1.5f);
-        
+
+        DeactivateP1Characters();
         DeactivateP1Speech();
+    }
+    IEnumerator P2LessLive()
+    {
+        DeactivateP2Characters();
+        ActivateP2Speech();
+
+        P2sprite2.fillAmount = 1;
+        P2text.text = "Reviving";
+
+        PlayerHealthSystem.P2moreHealth = false;
+
+        yield return new WaitForSeconds(1.5f);
+
+        DeactivateP2Characters();
+        DeactivateP2Speech();
+    }
+
+    IEnumerator P1Death()
+    {
+        DeactivateP1Characters();
+        ActivateP1Speech();
+
+        P1sprite2.fillAmount = 1;
+        P1text.text = "What do you mean i ran out of live";
+
+        PlayerHealthSystem.P1moreHealth = false;
+
+        yield return new WaitForSeconds(1.5f);
+
+        DeactivateP1Characters();
+        DeactivateP1Speech();
+    }
+    IEnumerator P2Death()
+    {
+        DeactivateP2Characters();
+        ActivateP2Speech();
+
+        P2sprite2.fillAmount = 1;
+        P2text.text = "What do you mean i ran out of live";
+
+        PlayerHealthSystem.P2moreHealth = false;
+
+        yield return new WaitForSeconds(1.5f);
+
+        DeactivateP2Characters();
+        DeactivateP2Speech();
+    }
+
+    IEnumerator P1HalfHealth()
+    {
+        DeactivateP1Characters();
+        ActivateP1Speech();
+
+        P1sprite4.fillAmount = 1;
+        P1text.text = "Medic";
+
+        yield return new WaitForSeconds(1.5f);
+
+        DeactivateP1Characters();
+        DeactivateP1Speech();
+
         P1NoLiveSpeech = true;
     }
-    IEnumerator P2NoLive()
+    IEnumerator P2HalfHealth()
     {
+        DeactivateP2Characters();
         ActivateP2Speech();
-        P2text.text = "Why can't i revive";
+
+        P2sprite4.fillAmount = 1;
+        P2text.text = "Medic";
 
         yield return new WaitForSeconds(1.5f);
-        
+
+        DeactivateP2Characters();
         DeactivateP2Speech();
+
         P2NoLiveSpeech = true;
     }
 
     IEnumerator P1MoreHealth()
     {
+        DeactivateP1Characters();
         ActivateP1Speech();
+
+        P1sprite5.fillAmount = 1;
 
         if(PlayerHealthSystem.P1currentHealth >= PlayerHealthSystem.P1maxHealth)
         {
@@ -349,11 +520,15 @@ public class SpeechSystemController : MonoBehaviour
 
         yield return new WaitForSeconds(1.5f);
 
+        DeactivateP1Characters();
         DeactivateP1Speech();
     }
     IEnumerator P2MoreHealth()
     {
+        DeactivateP2Characters();
         ActivateP2Speech();
+
+        P2sprite5.fillAmount = 1;
 
         if (PlayerHealthSystem.P2currentHealth >= PlayerHealthSystem.P2maxHealth)
         {
@@ -368,12 +543,16 @@ public class SpeechSystemController : MonoBehaviour
 
         yield return new WaitForSeconds(1.5f);
 
+        DeactivateP2Characters();
         DeactivateP2Speech();
     }
 
     IEnumerator P1MoreShield()
     {
+        DeactivateP1Characters();
         ActivateP1Speech();
+
+        P1sprite5.fillAmount = 1;
 
         if (PlayerHealthSystem.P1currentShields >= PlayerHealthSystem.P1maxShields)
         {
@@ -388,11 +567,15 @@ public class SpeechSystemController : MonoBehaviour
 
         yield return new WaitForSeconds(1.5f);
 
+        DeactivateP1Characters();
         DeactivateP1Speech();
     }
     IEnumerator P2MoreShield()
     {
+        DeactivateP2Characters();
         ActivateP2Speech();
+
+        P2sprite5.fillAmount = 1;
 
         if (PlayerHealthSystem.P2currentShields >= PlayerHealthSystem.P2maxShields)
         {
@@ -407,12 +590,16 @@ public class SpeechSystemController : MonoBehaviour
 
         yield return new WaitForSeconds(1.5f);
 
+        DeactivateP2Characters();
         DeactivateP2Speech();
     }
 
     IEnumerator P1MoreLive()
     {
+        DeactivateP1Characters();
         ActivateP1Speech();
+
+        P1sprite5.fillAmount = 1;
 
         if (PlayerHealthSystem.P1currentLives >= 5)
         {
@@ -427,11 +614,15 @@ public class SpeechSystemController : MonoBehaviour
 
         yield return new WaitForSeconds(1.5f);
 
+        DeactivateP1Characters();
         DeactivateP1Speech();
     }
     IEnumerator P2MoreLive()
     {
+        DeactivateP2Characters();
         ActivateP2Speech();
+
+        P2sprite5.fillAmount = 1;
 
         if (PlayerHealthSystem.P2currentLives >= 5)
         {
@@ -446,12 +637,16 @@ public class SpeechSystemController : MonoBehaviour
 
         yield return new WaitForSeconds(1.5f);
 
+        DeactivateP2Characters();
         DeactivateP2Speech();
     }
 
     IEnumerator P1MorePrimary()
     {
+        DeactivateP1Characters();
         ActivateP1Speech();
+
+        P1sprite5.fillAmount = 1;
 
         if (PlayerWeaponController.P1currentWLevel >= 5)
         {
@@ -466,11 +661,15 @@ public class SpeechSystemController : MonoBehaviour
 
         yield return new WaitForSeconds(1.5f);
 
+        DeactivateP1Characters();
         DeactivateP1Speech();
     }
     IEnumerator P2MorePrimary()
     {
+        DeactivateP2Characters();
         ActivateP2Speech();
+
+        P2sprite5.fillAmount = 1;
 
         if (PlayerWeaponController.P2currentWLevel >= 5)
         {
@@ -485,12 +684,16 @@ public class SpeechSystemController : MonoBehaviour
 
         yield return new WaitForSeconds(1.5f);
 
+        DeactivateP2Characters();
         DeactivateP2Speech();
     }
 
     IEnumerator P1MoreSecondary()
     {
+        DeactivateP1Characters();
         ActivateP1Speech();
+
+        P1sprite5.fillAmount = 1;
 
         if (PlayerWeaponController.P1currentSecondaryLevel >= 5)
         {
@@ -505,11 +708,15 @@ public class SpeechSystemController : MonoBehaviour
 
         yield return new WaitForSeconds(1.5f);
 
+        DeactivateP1Characters();
         DeactivateP1Speech();
     }
     IEnumerator P2MoreSecondary()
     {
+        DeactivateP2Characters();
         ActivateP2Speech();
+
+        P2sprite5.fillAmount = 1;
 
         if (PlayerWeaponController.P2currentSecondaryLevel >= 5)
         {
@@ -524,12 +731,16 @@ public class SpeechSystemController : MonoBehaviour
 
         yield return new WaitForSeconds(1.5f);
 
+        DeactivateP2Characters();
         DeactivateP2Speech();
     }
 
     IEnumerator P1MoreAmmo()
     {
+        DeactivateP1Characters();
         ActivateP1Speech();
+
+        P1sprite5.fillAmount = 1;
 
         if (PlayerWeaponController.P1superAmmo >= 5)
         {
@@ -544,11 +755,15 @@ public class SpeechSystemController : MonoBehaviour
 
         yield return new WaitForSeconds(1.5f);
 
+        DeactivateP1Characters();
         DeactivateP1Speech();
     }
     IEnumerator P2MoreAmmo()
     {
+        DeactivateP2Characters();
         ActivateP2Speech();
+
+        P2sprite5.fillAmount = 1;
 
         if (PlayerWeaponController.P2superAmmo >= 5)
         {
@@ -563,36 +778,37 @@ public class SpeechSystemController : MonoBehaviour
 
         yield return new WaitForSeconds(1.5f);
 
+        DeactivateP2Characters();
         DeactivateP2Speech();
     }
 
     private void ActivateP1Speech()
     {
         P1Panel.SetActive(true);
-
         P1speech.SetActive(true);
+
         P1text.enabled = true;
     }
     private void DeactivateP1Speech()
     {
         P1Panel.SetActive(false);
-
         P1speech.SetActive(false);
+
         P1text.enabled = false;
     }
 
     private void ActivateP2Speech()
     {
         P2Panel.SetActive(true);
-
         P2speech.SetActive(true);
+
         P2text.enabled = true;
     }
     private void DeactivateP2Speech()
     {
         P2Panel.SetActive(false);
-
         P2speech.SetActive(false);
+
         P2text.enabled = false;
     }
 
@@ -604,55 +820,89 @@ public class SpeechSystemController : MonoBehaviour
 
     private void DeactivateP1Characters()
     {
-        P1character1.fillAmount = 0;
-        P1character2.fillAmount = 0;
-        P1character3.fillAmount = 0;
-        P1character4.fillAmount = 0;
+        P1sprite1.fillAmount = 0;
+        P1sprite2.fillAmount = 0;
+        P1sprite3.fillAmount = 0;
+        P1sprite4.fillAmount = 0;
+        P1sprite5.fillAmount = 0;
     }
     private void DeactivateP2Characters()
     {
-        P2character1.fillAmount = 0;
-        P2character2.fillAmount = 0;
-        P2character3.fillAmount = 0;
-        P2character4.fillAmount = 0;
+        P2sprite1.fillAmount = 0;
+        P2sprite2.fillAmount = 0;
+        P2sprite3.fillAmount = 0;
+        P2sprite4.fillAmount = 0;
+        P2sprite5.fillAmount = 0;
     }
 
     private void SetPlayer1Character()
     {
         if(SelectionMenuController.P1characterType == 1)
         {
-            P1character1.fillAmount = 1;
+            P1sprite1.sprite = character1sprite1;
+            P1sprite2.sprite = character1sprite2;
+            P1sprite3.sprite = character1sprite3;
+            P1sprite4.sprite = character1sprite4;
+            P1sprite5.sprite = character1sprite5;
         }
         if (SelectionMenuController.P1characterType == 2)
         {
-            P1character2.fillAmount = 1;
+            P1sprite1.sprite = character2sprite1;
+            P1sprite2.sprite = character2sprite2;
+            P1sprite3.sprite = character2sprite3;
+            P1sprite4.sprite = character2sprite4;
+            P1sprite5.sprite = character2sprite5;
         }
         if (SelectionMenuController.P1characterType == 3)
         {
-            P1character3.fillAmount = 1;
+            P1sprite1.sprite = character3sprite1;
+            P1sprite2.sprite = character3sprite2;
+            P1sprite3.sprite = character3sprite3;
+            P1sprite4.sprite = character3sprite4;
+            P1sprite5.sprite = character3sprite5;
         }
         if (SelectionMenuController.P1characterType == 4)
         {
-            P1character4.fillAmount = 1;
+            P1sprite1.sprite = character4sprite1;
+            P1sprite2.sprite = character4sprite2;
+            P1sprite3.sprite = character4sprite3;
+            P1sprite4.sprite = character4sprite4;
+            P1sprite5.sprite = character4sprite5;
         }
     }
     private void SetPlayer2Character()
     {
         if (SelectionMenuController.P2characterType == 1)
         {
-            P2character1.fillAmount = 1;
+            P2sprite1.sprite = character1sprite1;
+            P2sprite2.sprite = character1sprite2;
+            P2sprite3.sprite = character1sprite3;
+            P2sprite4.sprite = character1sprite4;
+            P2sprite5.sprite = character1sprite5;
         }
         if (SelectionMenuController.P2characterType == 2)
         {
-            P2character2.fillAmount = 1;
+            P2sprite1.sprite = character2sprite1;
+            P2sprite2.sprite = character2sprite2;
+            P2sprite3.sprite = character2sprite3;
+            P2sprite4.sprite = character2sprite4;
+            P2sprite5.sprite = character2sprite5;
         }
         if (SelectionMenuController.P2characterType == 3)
         {
-            P2character3.fillAmount = 1;
+            P2sprite1.sprite = character3sprite1;
+            P2sprite2.sprite = character3sprite2;
+            P2sprite3.sprite = character3sprite3;
+            P2sprite4.sprite = character3sprite4;
+            P2sprite5.sprite = character3sprite5;
         }
         if (SelectionMenuController.P2characterType == 4)
         {
-            P2character4.fillAmount = 1;
+            P2sprite1.sprite = character4sprite1;
+            P2sprite2.sprite = character4sprite2;
+            P2sprite3.sprite = character4sprite3;
+            P2sprite4.sprite = character4sprite4;
+            P2sprite5.sprite = character4sprite5;
         }
     }
 }

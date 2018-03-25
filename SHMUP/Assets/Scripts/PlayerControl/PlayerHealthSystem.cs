@@ -5,6 +5,9 @@ using UnityEngine.UI;
 
 public class PlayerHealthSystem : MonoBehaviour
 {
+    public static bool P1lessLive;
+    public static bool P2lessLive;
+
     public static bool P1moreHealth;
     public static bool P1moreShield;
     public static bool P1moreLive;
@@ -84,6 +87,9 @@ public class PlayerHealthSystem : MonoBehaviour
             Player1Status();
             Player2Status();
         }
+
+        P1death = false;
+        P2death = true;
     }
 
     private void Update()
@@ -162,6 +168,7 @@ public class PlayerHealthSystem : MonoBehaviour
                 P1HealthBar.fillAmount = P1currentHealth / P1maxHealth;
 
                 P1currentLives--;
+                P1death = true;
 
                 P1Respawn();
             }
@@ -202,6 +209,7 @@ public class PlayerHealthSystem : MonoBehaviour
                 P2HealthBar.fillAmount = P2currentHealth / P2maxHealth;
 
                 P2currentLives--;
+                P2death = true;
 
                 P2Respawn();
             }
@@ -316,7 +324,7 @@ public class PlayerHealthSystem : MonoBehaviour
     //player 1
     private void P1Respawn()
     {
-        if (P1currentLives <= 0)
+        if (P1currentLives < 0)
         {
             transform.position = playerHidingSpot.position;
             gameObject.GetComponent<PlayerController>().P1isDead = true;
@@ -324,7 +332,7 @@ public class PlayerHealthSystem : MonoBehaviour
             P1canRespawn = false;
             return; ;
         }
-        if(P1currentLives > 0)
+        if(P1currentLives >= 0)
         {
             P1lives.text = "Lives: " + P1currentLives;
             transform.position = playerHidingSpot.position;
@@ -337,7 +345,7 @@ public class PlayerHealthSystem : MonoBehaviour
     //player 2
     private void P2Respawn()
     {
-        if (P2currentLives <= 0)
+        if (P2currentLives < 0)
         {
             transform.position = playerHidingSpot.position;
             gameObject.GetComponent<PlayerController>().P2isDead = true;
@@ -345,7 +353,7 @@ public class PlayerHealthSystem : MonoBehaviour
             P2canRespawn = false;
             return;
         }
-        if (P2currentLives > 0)
+        if (P2currentLives >= 0)
         {
             P2lives.text = "Lives: " + P2currentLives;
             transform.position = playerHidingSpot.position;
