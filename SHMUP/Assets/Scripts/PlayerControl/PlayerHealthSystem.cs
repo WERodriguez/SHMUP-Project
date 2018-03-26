@@ -89,7 +89,7 @@ public class PlayerHealthSystem : MonoBehaviour
         }
 
         P1lessLive = false;
-        P2lessLive = true;
+        P2lessLive = false;
     }
 
     private void Update()
@@ -167,9 +167,6 @@ public class PlayerHealthSystem : MonoBehaviour
                 P1HealthBar.fillAmount = P1currentHealth / P1maxHealth;
                 P1HealthBar.fillAmount = P1currentHealth / P1maxHealth;
 
-                P1currentLives--;
-                P1lessLive = true;
-
                 P1Respawn();
             }
         }
@@ -207,9 +204,6 @@ public class PlayerHealthSystem : MonoBehaviour
                 P2currentHealth = 0;
                 P2health.text = "HP: " + P2currentHealth;
                 P2HealthBar.fillAmount = P2currentHealth / P2maxHealth;
-
-                P2currentLives--;
-                P2lessLive = true;
 
                 P2Respawn();
             }
@@ -324,6 +318,9 @@ public class PlayerHealthSystem : MonoBehaviour
     //player 1
     private void P1Respawn()
     {
+        P1currentLives--;
+        P1lessLive = true;
+
         if (P1currentLives < 0)
         {
             transform.position = playerHidingSpot.position;
@@ -345,6 +342,9 @@ public class PlayerHealthSystem : MonoBehaviour
     //player 2
     private void P2Respawn()
     {
+        P2currentLives--;
+        P2lessLive = true;
+
         if (P2currentLives < 0)
         {
             transform.position = playerHidingSpot.position;

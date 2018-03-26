@@ -105,15 +105,15 @@ public class HUDcontroller : MonoBehaviour
 
             if (MainMenuController.onePlayer)
             {
-                if (PlayerHealthSystem.P1currentHealth <= 0 && PlayerHealthSystem.P1currentShields <= 0 && PlayerHealthSystem.P1currentLives <= 0)
+                if (PlayerHealthSystem.P1currentHealth <= 0 && PlayerHealthSystem.P1currentShields <= 0 && PlayerHealthSystem.P1currentLives < 0)
                 {
                     StartCoroutine(GameOverTimer());
                 }
             }
             else
             {
-                if ((PlayerHealthSystem.P1currentHealth <= 0 && PlayerHealthSystem.P1currentShields <= 0 && PlayerHealthSystem.P1currentLives <= 0)
-                    && (PlayerHealthSystem.P2currentHealth <= 0 && PlayerHealthSystem.P2currentShields <= 0 && PlayerHealthSystem.P2currentLives <= 0))
+                if ((PlayerHealthSystem.P1currentHealth <= 0 && PlayerHealthSystem.P1currentShields <= 0 && PlayerHealthSystem.P1currentLives < 0)
+                    && (PlayerHealthSystem.P2currentHealth <= 0 && PlayerHealthSystem.P2currentShields <= 0 && PlayerHealthSystem.P2currentLives < 0))
                 {
                     StartCoroutine(GameOverTimer());
                 }

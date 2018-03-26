@@ -7,6 +7,8 @@ public class SpeechSystemController : MonoBehaviour
 {
     private bool P1NoLiveSpeech;
     private bool P2NoLiveSpeech;
+    private bool P1HalfHealthSpeech;
+    private bool P2HalfHealthSpeech;
 
     public GameObject P1Panel;
     public GameObject P2Panel;
@@ -79,133 +81,211 @@ public class SpeechSystemController : MonoBehaviour
 
     private void Update()
     {
-        //enemy
-        if(HealthSystem.P1ramEnemy == 3)
+        if(MainMenuController.onePlayer)
         {
-            StartCoroutine(P1RamEnemy());
-        }
-        if (HealthSystem.P2ramEnemy == 3)
-        {
-            StartCoroutine(P2RamEnemy());
-        }
+            //enemy
+            if (HealthSystem.P1ramEnemy == 3)
+            {
+                StartCoroutine(P1RamEnemy());
+            }
 
-        if (HealthSystem.P1lightEnemy == 3)
-        {
-            StartCoroutine(P1LightEnemy());
-        }
-        if (HealthSystem.P2lightEnemy == 3)
-        {
-            StartCoroutine(P2LightEnemy());
-        }
+            if (HealthSystem.P1lightEnemy == 3)
+            {
+                StartCoroutine(P1LightEnemy());
+            }
 
-        if (HealthSystem.P1missileEnemy == 1)
-        {
-            StartCoroutine(P1MissileEnemy());
-        }
-        if (HealthSystem.P2missileEnemy == 1)
-        {
-            StartCoroutine(P2MissileEnemy());
-        }
+            if (HealthSystem.P1missileEnemy == 1)
+            {
+                StartCoroutine(P1MissileEnemy());
+            }
 
-        if (HealthSystem.P1destroyerEnemy == 1)
-        {
-            StartCoroutine(P1DestroyerEnemy());
-        }
-        if (HealthSystem.P2destroyerEnemy == 1)
-        {
-            StartCoroutine(P2DestroyerEnemy());
-        }
+            if (HealthSystem.P1destroyerEnemy == 1)
+            {
+                StartCoroutine(P1DestroyerEnemy());
+            }
 
-        if (HealthSystem.P1bossKill)
-        {
-            StartCoroutine(P1BossKill());
-        }
-        if (HealthSystem.P2bossKill)
-        {
-            StartCoroutine(P2BossKill());
-        }
+            if (HealthSystem.P1bossKill)
+            {
+                StartCoroutine(P1BossKill());
+            }
 
-        //health pickup
-        if (PlayerHealthSystem.P1lessLive)
-        {
-            StartCoroutine(P1LessLive());
-        }
-        if (PlayerHealthSystem.P2lessLive)
-        {
-            StartCoroutine(P2LessLive());
-        }
+            //health pickup
+            if (PlayerHealthSystem.P1lessLive)
+            {
+                StartCoroutine(P1LessLive());
+            }
 
-        if (PlayerHealthSystem.P1currentLives < 0)
-        {
-            StartCoroutine(P1Death());
-        }
-        if (PlayerHealthSystem.P2currentLives < 0)
-        {
-            StartCoroutine(P2Death());
-        }
+            if (PlayerHealthSystem.P1currentLives < 0 && !P1NoLiveSpeech)
+            {
+                StartCoroutine(P1Death());
+            }
 
-        if (PlayerHealthSystem.P1currentHealth <= (PlayerHealthSystem.P1maxHealth / 2) && P1NoLiveSpeech)
-        {
-            StartCoroutine(P1HalfHealth());
-        }
-        if (PlayerHealthSystem.P2currentHealth <= (PlayerHealthSystem.P2maxHealth / 2) && P2NoLiveSpeech)
-        {
-            StartCoroutine(P2HalfHealth());
-        }
+            if (PlayerHealthSystem.P1currentHealth <= (PlayerHealthSystem.P1maxHealth / 2) && !P1HalfHealthSpeech)
+            {
+                StartCoroutine(P1HalfHealth());
+            }
 
-        if (PlayerHealthSystem.P1moreHealth)
-        {
-            StartCoroutine(P1MoreHealth());
-        }
-        if (PlayerHealthSystem.P2moreHealth)
-        {
-            StartCoroutine(P2MoreHealth());
-        }
+            if (PlayerHealthSystem.P1moreHealth)
+            {
+                StartCoroutine(P1MoreHealth());
+            }
 
-        if (PlayerHealthSystem.P1moreShield)
-        {
-            StartCoroutine(P1MoreShield());
-        }
-        if (PlayerHealthSystem.P2moreShield)
-        {
-            StartCoroutine(P2MoreShield());
-        }
+            if (PlayerHealthSystem.P1moreShield)
+            {
+                StartCoroutine(P1MoreShield());
+            }
 
-        if (PlayerHealthSystem.P1moreLive)
-        {
-            StartCoroutine(P1MoreLive());
-        }
-        if (PlayerHealthSystem.P2moreLive)
-        {
-            StartCoroutine(P2MoreLive());
-        }
+            if (PlayerHealthSystem.P1moreLive)
+            {
+                StartCoroutine(P1MoreLive());
+            }
 
-        //weapon pickup
-        if (PlayerWeaponController.P1morePrimary)
-        {
-            StartCoroutine(P1MorePrimary());
-        }
-        if (PlayerWeaponController.P2morePrimary)
-        {
-            StartCoroutine(P2MorePrimary());
-        }
+            //weapon pickup
+            if (PlayerWeaponController.P1morePrimary)
+            {
+                StartCoroutine(P1MorePrimary());
+            }
 
-        if (PlayerWeaponController.P1moreSecondary)
-        {
-            StartCoroutine(P1MoreSecondary());
-        }
-        if (PlayerWeaponController.P2moreSecondary)
-        {
-            StartCoroutine(P2MoreSecondary());
-        }
+            if (PlayerWeaponController.P1moreSecondary)
+            {
+                StartCoroutine(P1MoreSecondary());
+            }
 
-        if (PlayerWeaponController.P1moreAmmo)
-        {
-            StartCoroutine(P1MoreAmmo());
+            if (PlayerWeaponController.P1moreAmmo)
+            {
+                StartCoroutine(P1MoreAmmo());
+            }
         }
-        if (PlayerWeaponController.P2moreAmmo)
+        else
         {
-            StartCoroutine(P2MoreAmmo());
+            //enemy
+            if (HealthSystem.P1ramEnemy == 3)
+            {
+                StartCoroutine(P1RamEnemy());
+            }
+            if (HealthSystem.P2ramEnemy == 3)
+            {
+                StartCoroutine(P2RamEnemy());
+            }
+
+            if (HealthSystem.P1lightEnemy == 3)
+            {
+                StartCoroutine(P1LightEnemy());
+            }
+            if (HealthSystem.P2lightEnemy == 3)
+            {
+                StartCoroutine(P2LightEnemy());
+            }
+
+            if (HealthSystem.P1missileEnemy == 1)
+            {
+                StartCoroutine(P1MissileEnemy());
+            }
+            if (HealthSystem.P2missileEnemy == 1)
+            {
+                StartCoroutine(P2MissileEnemy());
+            }
+
+            if (HealthSystem.P1destroyerEnemy == 1)
+            {
+                StartCoroutine(P1DestroyerEnemy());
+            }
+            if (HealthSystem.P2destroyerEnemy == 1)
+            {
+                StartCoroutine(P2DestroyerEnemy());
+            }
+
+            if (HealthSystem.P1bossKill)
+            {
+                StartCoroutine(P1BossKill());
+            }
+            if (HealthSystem.P2bossKill)
+            {
+                StartCoroutine(P2BossKill());
+            }
+
+            //health pickup
+            if (PlayerHealthSystem.P1lessLive)
+            {
+                StartCoroutine(P1LessLive());
+            }
+            if (PlayerHealthSystem.P2lessLive)
+            {
+                StartCoroutine(P2LessLive());
+            }
+
+            if (PlayerHealthSystem.P1currentLives < 0 && !P1NoLiveSpeech)
+            {
+                StartCoroutine(P1Death());
+            }
+            if (PlayerHealthSystem.P2currentLives < 0 && !P2NoLiveSpeech)
+            {
+                StartCoroutine(P2Death());
+            }
+
+            if (PlayerHealthSystem.P1currentHealth <= (PlayerHealthSystem.P1maxHealth / 2) && !P1HalfHealthSpeech)
+            {
+                StartCoroutine(P1HalfHealth());
+            }
+            if (PlayerHealthSystem.P2currentHealth <= (PlayerHealthSystem.P2maxHealth / 2) && !P2HalfHealthSpeech)
+            {
+                StartCoroutine(P2HalfHealth());
+            }
+
+            if (PlayerHealthSystem.P1moreHealth)
+            {
+                StartCoroutine(P1MoreHealth());
+            }
+            if (PlayerHealthSystem.P2moreHealth)
+            {
+                StartCoroutine(P2MoreHealth());
+            }
+
+            if (PlayerHealthSystem.P1moreShield)
+            {
+                StartCoroutine(P1MoreShield());
+            }
+            if (PlayerHealthSystem.P2moreShield)
+            {
+                StartCoroutine(P2MoreShield());
+            }
+
+            if (PlayerHealthSystem.P1moreLive)
+            {
+                StartCoroutine(P1MoreLive());
+            }
+            if (PlayerHealthSystem.P2moreLive)
+            {
+                StartCoroutine(P2MoreLive());
+            }
+
+            //weapon pickup
+            if (PlayerWeaponController.P1morePrimary)
+            {
+                StartCoroutine(P1MorePrimary());
+            }
+            if (PlayerWeaponController.P2morePrimary)
+            {
+                StartCoroutine(P2MorePrimary());
+            }
+
+            if (PlayerWeaponController.P1moreSecondary)
+            {
+                StartCoroutine(P1MoreSecondary());
+            }
+            if (PlayerWeaponController.P2moreSecondary)
+            {
+                StartCoroutine(P2MoreSecondary());
+            }
+
+            if (PlayerWeaponController.P1moreAmmo)
+            {
+                StartCoroutine(P1MoreAmmo());
+            }
+            if (PlayerWeaponController.P2moreAmmo)
+            {
+                StartCoroutine(P2MoreAmmo());
+            }
         }
     }
 
@@ -415,7 +495,7 @@ public class SpeechSystemController : MonoBehaviour
         P1sprite2.fillAmount = 1;
         P1text.text = "Reviving";
 
-        PlayerHealthSystem.P1moreHealth = false;
+        PlayerHealthSystem.P1lessLive = false;
 
         yield return new WaitForSeconds(1.5f);
 
@@ -430,7 +510,7 @@ public class SpeechSystemController : MonoBehaviour
         P2sprite2.fillAmount = 1;
         P2text.text = "Reviving";
 
-        PlayerHealthSystem.P2moreHealth = false;
+        PlayerHealthSystem.P2lessLive = false;
 
         yield return new WaitForSeconds(1.5f);
 
@@ -446,9 +526,9 @@ public class SpeechSystemController : MonoBehaviour
         P1sprite2.fillAmount = 1;
         P1text.text = "What do you mean i ran out of live";
 
-        PlayerHealthSystem.P1moreHealth = false;
-
         yield return new WaitForSeconds(1.5f);
+
+        P1NoLiveSpeech = true;
 
         DeactivateP1Characters();
         DeactivateP1Speech();
@@ -461,9 +541,9 @@ public class SpeechSystemController : MonoBehaviour
         P2sprite2.fillAmount = 1;
         P2text.text = "What do you mean i ran out of live";
 
-        PlayerHealthSystem.P2moreHealth = false;
-
         yield return new WaitForSeconds(1.5f);
+
+        P2NoLiveSpeech = true;
 
         DeactivateP2Characters();
         DeactivateP2Speech();
@@ -479,10 +559,10 @@ public class SpeechSystemController : MonoBehaviour
 
         yield return new WaitForSeconds(1.5f);
 
+        P1HalfHealthSpeech = true;
+
         DeactivateP1Characters();
         DeactivateP1Speech();
-
-        P1NoLiveSpeech = true;
     }
     IEnumerator P2HalfHealth()
     {
@@ -494,10 +574,10 @@ public class SpeechSystemController : MonoBehaviour
 
         yield return new WaitForSeconds(1.5f);
 
+        P2HalfHealthSpeech = true;
+
         DeactivateP2Characters();
         DeactivateP2Speech();
-
-        P2NoLiveSpeech = true;
     }
 
     IEnumerator P1MoreHealth()
@@ -519,6 +599,8 @@ public class SpeechSystemController : MonoBehaviour
         PlayerHealthSystem.P1moreHealth = false;
 
         yield return new WaitForSeconds(1.5f);
+
+        P1HalfHealthSpeech = false;
 
         DeactivateP1Characters();
         DeactivateP1Speech();
@@ -542,6 +624,8 @@ public class SpeechSystemController : MonoBehaviour
         PlayerHealthSystem.P2moreHealth = false;
 
         yield return new WaitForSeconds(1.5f);
+
+        P2HalfHealthSpeech = false;
 
         DeactivateP2Characters();
         DeactivateP2Speech();
@@ -816,6 +900,8 @@ public class SpeechSystemController : MonoBehaviour
     {
         P1NoLiveSpeech = false;
         P2NoLiveSpeech = false;
+        P1HalfHealthSpeech = false;
+        P2HalfHealthSpeech = false;
     }
 
     private void DeactivateP1Characters()
