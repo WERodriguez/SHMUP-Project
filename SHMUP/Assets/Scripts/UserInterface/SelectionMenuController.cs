@@ -6,6 +6,24 @@ using UnityEngine.SceneManagement;
 
 public class SelectionMenuController : MonoBehaviour
 {
+    public Text characterStat;
+    public Text shipStat;
+    public Text primaryStat;
+    public Text secondaryStat;
+    public Text specialStat;
+
+    public Text P1characterStat;
+    public Text P1shipStat;
+    public Text P1primaryStat;
+    public Text P1secondaryStat;
+    public Text P1specialStat;
+
+    public Text P2characterStat;
+    public Text P2shipStat;
+    public Text P2primaryStat;
+    public Text P2secondaryStat;
+    public Text P2specialStat;
+
     private int glowTracker;
     private int P1glowTracker;
     private int P2glowTracker;
@@ -249,6 +267,10 @@ public class SelectionMenuController : MonoBehaviour
         ResetP1ToggleGlow();
         ResetP2ToggleGlow();
 
+        DeactivateStat();
+        DeactivateP1Stat();
+        DeactivateP2Stat();
+
         maxSingleGlowTracker = 6;
         maxP2GLowTracker = 5;
 
@@ -298,168 +320,6 @@ public class SelectionMenuController : MonoBehaviour
                     singleStartButton.SetActive(false);
                 }
 
-                if (P1toggleData <= 1)
-                {
-                    ResetToggleGlow();
-                    toggleLeftGlow.fillAmount = 1;
-
-                    P1toggleData = 1;
-
-                    if (character == true)
-                    {
-                        DeactivateSingleCharacterSelect();
-                        character1.SetActive(true);
-                    }
-                    if (ship == true)
-                    {
-                        DeactivateSingleShipSelect();
-                        ship1.SetActive(true);
-                    }
-                    if (primary == true)
-                    {
-                        DeactivateSinglePrimarySelect();
-                        primary1.SetActive(true);
-                    }
-                    if (secondary == true)
-                    {
-                        DeactivateSingleSecondarySelect();
-                        secondary1.SetActive(true);
-                    }
-                    if (special == true)
-                    {
-                        DeactivateSingleSpecialSelect();
-                        special1.SetActive(true);
-                    }
-                }
-                if (P1toggleData == 2)
-                {
-                    if (character == true)
-                    {
-                        DeactivateSingleCharacterSelect();
-                        character2.SetActive(true);
-                    }
-                    if (ship == true)
-                    {
-                        DeactivateSingleShipSelect();
-                        ship2.SetActive(true);
-                    }
-                    if (primary == true)
-                    {
-                        DeactivateSinglePrimarySelect();
-                        primary2.SetActive(true);
-                    }
-                    if (secondary == true)
-                    {
-                        DeactivateSingleSecondarySelect();
-                        secondary2.SetActive(true);
-                    }
-                    if (special == true)
-                    {
-                        DeactivateSingleSpecialSelect();
-                        special2.SetActive(true);
-                    }
-                }
-                if (P1toggleData == 3)
-                {
-                    if (character == true)
-                    {
-                        DeactivateSingleCharacterSelect();
-                        character3.SetActive(true);
-                    }
-                    if (ship == true)
-                    {
-                        DeactivateSingleShipSelect();
-                        ship3.SetActive(true);
-                    }
-                    if (primary == true)
-                    {
-                        DeactivateSinglePrimarySelect();
-                        primary3.SetActive(true);
-                    }
-                    if (secondary == true)
-                    {
-                        DeactivateSingleSecondarySelect();
-                        secondary3.SetActive(true);
-                    }
-                    if (special == true)
-                    {
-                        DeactivateSingleSpecialSelect();
-                        special3.SetActive(true);
-                    }
-                }
-                if (P1toggleData == 4)
-                {
-                    if (character == true)
-                    {
-                        DeactivateSingleCharacterSelect();
-                        character4.SetActive(true);
-                    }
-                    if (ship == true)
-                    {
-                        DeactivateSingleShipSelect();
-                        ship4.SetActive(true);
-                    }
-                    if (primary == true)
-                    {
-                        P1toggleData = 3;
-
-                        DeactivateSinglePrimarySelect();
-                        primary3.SetActive(true);
-                    }
-                    if (secondary == true)
-                    {
-                        P1toggleData = 3;
-
-                        DeactivateSingleSecondarySelect();
-                        secondary3.SetActive(true);
-                    }
-                    if (special == true)
-                    {
-                        P1toggleData = 3;
-
-                        DeactivateSingleSpecialSelect();
-                        special3.SetActive(true);
-                    }
-                }
-                if (P1toggleData >= 5)
-                {
-                    if (character == true)
-                    {
-                        P1toggleData = 4;
-
-                        DeactivateSingleCharacterSelect();
-                        character4.SetActive(true);
-                    }
-                    if (ship == true)
-                    {
-                        P1toggleData = 5;
-
-                        DeactivateSingleShipSelect();
-                        ship5.SetActive(true);
-                    }
-                    if (primary == true)
-                    {
-                        P1toggleData = 3;
-
-                        DeactivateSinglePrimarySelect();
-                        primary3.SetActive(true);
-                    }
-                    if (secondary == true)
-                    {
-                        P1toggleData = 3;
-
-                        DeactivateSingleSecondarySelect();
-                        secondary3.SetActive(true);
-                    }
-                    if (special == true)
-                    {
-                        P1toggleData = 3;
-
-                        DeactivateSingleSpecialSelect();
-                        special3.SetActive(true);
-                    }
-                }
-
                 if (glowTracker > maxSingleGlowTracker)
                 {
                     glowTracker = maxSingleGlowTracker;
@@ -496,10 +356,274 @@ public class SelectionMenuController : MonoBehaviour
                     ResetGlow();
                     specialButtonGlow.fillAmount = 1;
                 }
-                if (glowTracker == 7)
+                if (glowTracker >= 7)
                 {
+                    glowTracker = 7;
+
                     ResetGlow();
                     singleStartButtonGlow.fillAmount = 1;
+                }
+
+                if (P1toggleData <= 1)
+                {
+                    ResetToggleGlow();
+                    toggleLeftGlow.fillAmount = 1;
+
+                    P1toggleData = 1;
+
+                    if (character == true)
+                    {
+                        DeactivateSingleCharacterSelect();
+                        character1.SetActive(true);
+
+                        DeactivateStat();
+                        characterStat.enabled = true;
+                        characterStat.text = "Name: Character A\nDescription:";
+                    }
+                    if (ship == true)
+                    {
+                        DeactivateSingleShipSelect();
+                        ship1.SetActive(true);
+
+                        DeactivateStat();
+                        shipStat.enabled = true;
+                        shipStat.text = "Name: Light Ship\nHealth: 100\nShield: 75\nLives: 2/5\nDescription: ";
+                    }
+                    if (primary == true)
+                    {
+                        DeactivateSinglePrimarySelect();
+                        primary1.SetActive(true);
+
+                        DeactivateStat();
+                        primaryStat.enabled = true;
+                        primaryStat.text = "Name: Machine Gun\nFire Rate: *****\nDamage: *\nArea of Effect: *\nDescription: ";
+                    }
+                    if (secondary == true)
+                    {
+                        DeactivateSingleSecondarySelect();
+                        secondary1.SetActive(true);
+
+                        DeactivateStat();
+                        secondaryStat.enabled = true;
+                        secondaryStat.text = "Name: Homing Missiles\nFire Rate: *\nDamage: *****\nArea of Effect: ****\nDescription: ";
+                    }
+                    if (special == true)
+                    {
+                        DeactivateSingleSpecialSelect();
+                        special1.SetActive(true);
+
+                        DeactivateStat();
+                        specialStat.enabled = true;
+                        specialStat.text = "Name: Mega Bomb\nDamage: ****\nArea of Effect: *****\nDuration: **\nAmmo: 3/5\nDescription: ";
+                    }
+                }
+                if (P1toggleData == 2)
+                {
+                    if (character == true)
+                    {
+                        DeactivateSingleCharacterSelect();
+                        character2.SetActive(true);
+
+                        DeactivateStat();
+                        characterStat.enabled = true;
+                        characterStat.text = "Name: Character B\nDescription:";
+                    }
+                    if (ship == true)
+                    {
+                        DeactivateSingleShipSelect();
+                        ship2.SetActive(true);
+
+                        DeactivateStat();
+                        shipStat.enabled = true;
+                        shipStat.text = "Name: Medium Ship\nHealth: 125\nShield: 100\nLives: 2/5\nDescription: ";
+                    }
+                    if (primary == true)
+                    {
+                        DeactivateSinglePrimarySelect();
+                        primary2.SetActive(true);
+
+                        DeactivateStat();
+                        primaryStat.enabled = true;
+                        primaryStat.text = "Name: Flak Cannon\nFire Rate: ***\nDamage: ***\nArea of Effect: ***\nDescription: ";
+                    }
+                    if (secondary == true)
+                    {
+                        DeactivateSingleSecondarySelect();
+                        secondary2.SetActive(true);
+
+                        DeactivateStat();
+                        secondaryStat.enabled = true;
+                        secondaryStat.text = "Name: Sweeper Pods\nFire Rate: *****\nDamage: *\nArea of Effect: **\nDescription: ";
+                    }
+                    if (special == true)
+                    {
+                        DeactivateSingleSpecialSelect();
+                        special2.SetActive(true);
+
+                        DeactivateStat();
+                        specialStat.enabled = true;
+                        specialStat.text = "Name: Beam Cannon\nDamage: *****\nArea of Effect: *****\nDuration: *****\nAmmo: 3/5\nDescription: ";
+                    }
+                }
+                if (P1toggleData == 3)
+                {
+                    if (character == true)
+                    {
+                        DeactivateSingleCharacterSelect();
+                        character3.SetActive(true);
+
+                        DeactivateStat();
+                        characterStat.enabled = true;
+                        characterStat.text = "Name: Character C\nDescription:";
+                    }
+                    if (ship == true)
+                    {
+                        DeactivateSingleShipSelect();
+                        ship3.SetActive(true);
+
+                        DeactivateStat();
+                        shipStat.enabled = true;
+                        shipStat.text = "Name: Light Ship\nHealth: 150\nShield: 125\nLives: 2/5\nDescription: ";
+                    }
+                    if (primary == true)
+                    {
+                        DeactivateSinglePrimarySelect();
+                        primary3.SetActive(true);
+
+                        DeactivateStat();
+                        primaryStat.enabled = true;
+                        primaryStat.text = "Name: PAC\nFire Rate: *\nDamage: *****\nArea of Effect: ***\nDescription: ";
+                    }
+                    if (secondary == true)
+                    {
+                        DeactivateSingleSecondarySelect();
+                        secondary3.SetActive(true);
+
+                        DeactivateStat();
+                        secondaryStat.enabled = true;
+                        secondaryStat.text = "Name: Plasma Gun\nFire Rate: ***\nDamage: ***\nArea of Effect: ****\nDescription: ";
+                    }
+                    if (special == true)
+                    {
+                        DeactivateSingleSpecialSelect();
+                        special3.SetActive(true);
+
+                        DeactivateStat();
+                        specialStat.enabled = true;
+                        specialStat.text = "Name: Super Shield\nDamage: **\nArea of Effect: **\nDuration: *****\nAmmo: 3/5\nDescription: ";
+                    }
+                }
+                if (P1toggleData == 4)
+                {
+                    if (character == true)
+                    {
+                        DeactivateSingleCharacterSelect();
+                        character4.SetActive(true);
+
+                        DeactivateStat();
+                        characterStat.enabled = true;
+                        characterStat.text = "Name: Character D\nDescription:";
+                    }
+                    if (ship == true)
+                    {
+                        DeactivateSingleShipSelect();
+                        ship4.SetActive(true);
+
+                        DeactivateStat();
+                        shipStat.enabled = true;
+                        shipStat.text = "Name: Lambo Shooter\nHealth: 175\nShield: 150\nLives: 2/5\nDescription: ";
+                    }
+                    if (primary == true)
+                    {
+                        P1toggleData = 3;
+
+                        DeactivateSinglePrimarySelect();
+                        primary3.SetActive(true);
+
+                        DeactivateStat();
+                        primaryStat.enabled = true;
+                        primaryStat.text = "Name: PAC\nFire Rate: *\nDamage: *****\nArea of Effect: ***\nDescription: ";
+                    }
+                    if (secondary == true)
+                    {
+                        P1toggleData = 3;
+
+                        DeactivateSingleSecondarySelect();
+                        secondary3.SetActive(true);
+
+                        DeactivateStat();
+                        secondaryStat.enabled = true;
+                        secondaryStat.text = "Name: Plasma Gun\nFire Rate: ***\nDamage: ***\nArea of Effect: ****\nDescription: ";
+                    }
+                    if (special == true)
+                    {
+                        P1toggleData = 3;
+
+                        DeactivateSingleSpecialSelect();
+                        special3.SetActive(true);
+
+                        DeactivateStat();
+                        specialStat.enabled = true;
+                        specialStat.text = "Name: Super Shield\nDamage: **\nArea of Effect: **\nDuration: *****\nAmmo: 3/5\nDescription: ";
+                    }
+                }
+                if (P1toggleData >= 5)
+                {
+                    if (character == true)
+                    {
+                        P1toggleData = 4;
+
+                        DeactivateSingleCharacterSelect();
+                        character4.SetActive(true);
+
+                        DeactivateStat();
+                        characterStat.enabled = true;
+                        characterStat.text = "Name: Character D\nDescription:";
+                    }
+                    if (ship == true)
+                    {
+                        P1toggleData = 5;
+
+                        DeactivateSingleShipSelect();
+                        ship5.SetActive(true);
+
+                        DeactivateStat();
+                        shipStat.enabled = true;
+                        shipStat.text = "Name: Truck Shooter\nHealth: 200\nShield: 200\nLives: 2/5\nDescription: ";
+                    }
+                    if (primary == true)
+                    {
+                        P1toggleData = 3;
+
+                        DeactivateSinglePrimarySelect();
+                        primary3.SetActive(true);
+
+                        DeactivateStat();
+                        primaryStat.enabled = true;
+                        primaryStat.text = "Name: PAC\nFire Rate: *\nDamage: *****\nArea of Effect: ***\nDescription: ";
+                    }
+                    if (secondary == true)
+                    {
+                        P1toggleData = 3;
+
+                        DeactivateSingleSecondarySelect();
+                        secondary3.SetActive(true);
+
+                        DeactivateStat();
+                        secondaryStat.enabled = true;
+                        secondaryStat.text = "Name: Plasma Gun\nFire Rate: ***\nDamage: ***\nArea of Effect: ****\nDescription: ";
+                    }
+                    if (special == true)
+                    {
+                        P1toggleData = 3;
+
+                        DeactivateSingleSpecialSelect();
+                        special3.SetActive(true);
+
+                        DeactivateStat();
+                        specialStat.enabled = true;
+                        specialStat.text = "Name: Super Shield\nDamage: **\nArea of Effect: **\nDuration: *****\nAmmo: 3/5\nDescription: ";
+                    }
                 }
 
                 if (Input.GetKeyDown(KeyCode.W) && !choosing)
@@ -698,6 +822,7 @@ public class SelectionMenuController : MonoBehaviour
                         DeactivateSingleSecondarySelect();
                         DeactivateSingleSpecialSelect();
                         DeactivateSingleToggle();
+                        DeactivateStat();
 
                         ActivateSingleSelection();
 
@@ -719,333 +844,6 @@ public class SelectionMenuController : MonoBehaviour
                 else
                 {
                     doubleStartButton.SetActive(false);
-                }
-
-                if (P1toggleData <= 1)
-                {
-                    ResetP1ToggleGlow();
-                    P1toggleLeftGlow.fillAmount = 1;
-
-                    P1toggleData = 1;
-
-                    if (P1character == true)
-                    {
-                        DeactivateP1CharacterSelect();
-                        P1character1.SetActive(true);
-                    }
-                    if (P1ship == true)
-                    {
-                        DeactivateP1ShipSelect();
-                        P1ship1.SetActive(true);
-                    }
-                    if (P1primary == true)
-                    {
-                        DeactivateP1PrimarySelect();
-                        P1primary1.SetActive(true);
-                    }
-                    if (P1secondary == true)
-                    {
-                        DeactivateP1SecondarySelect();
-                        P1secondary1.SetActive(true);
-                    }
-                    if (P1special == true)
-                    {
-                        DeactivateP1SpecialSelect();
-                        P1special1.SetActive(true);
-                    }
-                }
-                if (P2toggleData <= 1)
-                {
-                    ResetP2ToggleGlow();
-                    P2toggleLeftGlow.fillAmount = 1;
-
-                    P2toggleData = 1;
-
-                    if (P2character == true)
-                    {
-                        DeactivateP2CharacterSelect();
-                        P2character1.SetActive(true);
-                    }
-                    if (P2ship == true)
-                    {
-                        DeactivateP2ShipSelect();
-                        P2ship1.SetActive(true);
-                    }
-                    if (P2primary == true)
-                    {
-                        DeactivateP2PrimarySelect();
-                        P2primary1.SetActive(true);
-                    }
-                    if (P2secondary == true)
-                    {
-                        DeactivateP2SecondarySelect();
-                        P2secondary1.SetActive(true);
-                    }
-                    if (P2special == true)
-                    {
-                        DeactivateP2SpecialSelect();
-                        P2special1.SetActive(true);
-                    }
-                }
-
-                if (P1toggleData == 2)
-                {
-                    if (P1character == true)
-                    {
-                        DeactivateP1CharacterSelect();
-                        P1character2.SetActive(true);
-                    }
-                    if (P1ship == true)
-                    {
-                        DeactivateP1ShipSelect();
-                        P1ship2.SetActive(true);
-                    }
-                    if (P1primary == true)
-                    {
-                        DeactivateP1PrimarySelect();
-                        P1primary2.SetActive(true);
-                    }
-                    if (P1secondary == true)
-                    {
-                        DeactivateP1SecondarySelect();
-                        P1secondary2.SetActive(true);
-                    }
-                    if (P1special == true)
-                    {
-                        DeactivateP1SpecialSelect();
-                        P1special2.SetActive(true);
-                    }
-                }
-                if (P2toggleData == 2)
-                {
-                    if (P2character == true)
-                    {
-                        DeactivateP2CharacterSelect();
-                        P2character2.SetActive(true);
-                    }
-                    if (P2ship == true)
-                    {
-                        DeactivateP2ShipSelect();
-                        P2ship2.SetActive(true);
-                    }
-                    if (P2primary == true)
-                    {
-                        DeactivateP2PrimarySelect();
-                        P2primary2.SetActive(true);
-                    }
-                    if (P2secondary == true)
-                    {
-                        DeactivateP2SecondarySelect();
-                        P2secondary2.SetActive(true);
-                    }
-                    if (P2special == true)
-                    {
-                        DeactivateP2SpecialSelect();
-                        P2special2.SetActive(true);
-                    }
-                }
-
-                if (P1toggleData == 3)
-                {
-                    if (P1character == true)
-                    {
-                        DeactivateP1CharacterSelect();
-                        P1character3.SetActive(true);
-                    }
-                    if (P1ship == true)
-                    {
-                        DeactivateP1ShipSelect();
-                        P1ship3.SetActive(true);
-                    }
-                    if (P1primary == true)
-                    {
-                        DeactivateP1PrimarySelect();
-                        P1primary3.SetActive(true);
-                    }
-                    if (P1secondary == true)
-                    {
-                        DeactivateP1SecondarySelect();
-                        P1secondary3.SetActive(true);
-                    }
-                    if (P1special == true)
-                    {
-                        DeactivateP1SpecialSelect();
-                        P1special3.SetActive(true);
-                    }
-                }
-                if (P2toggleData == 3)
-                {
-                    if (P2character == true)
-                    {
-                        DeactivateP2CharacterSelect();
-                        P2character3.SetActive(true);
-                    }
-                    if (P2ship == true)
-                    {
-                        DeactivateP2ShipSelect();
-                        P2ship3.SetActive(true);
-                    }
-                    if (P2primary == true)
-                    {
-                        DeactivateP2PrimarySelect();
-                        P2primary3.SetActive(true);
-                    }
-                    if (P2secondary == true)
-                    {
-                        DeactivateP2SecondarySelect();
-                        P2secondary3.SetActive(true);
-                    }
-                    if (P2special == true)
-                    {
-                        DeactivateP2SpecialSelect();
-                        P2special3.SetActive(true);
-                    }
-                }
-
-                if (P1toggleData == 4)
-                {
-                    if (P1character == true)
-                    {
-                        DeactivateP1CharacterSelect();
-                        P1character4.SetActive(true);
-                    }
-                    if (P1ship == true)
-                    {
-                        DeactivateP1ShipSelect();
-                        P1ship4.SetActive(true);
-                    }
-                    if (P1primary == true)
-                    {
-                        P1toggleData = 3;
-
-                        DeactivateP1PrimarySelect();
-                        P1primary3.SetActive(true);
-                    }
-                    if (P1secondary == true)
-                    {
-                        P1toggleData = 3;
-
-                        DeactivateP1SecondarySelect();
-                        P1secondary3.SetActive(true);
-                    }
-                    if (P1special == true)
-                    {
-                        P1toggleData = 3;
-
-                        DeactivateP1SpecialSelect();
-                        P1special3.SetActive(true);
-                    }
-                }
-                if (P2toggleData == 4)
-                {
-                    if (P2character == true)
-                    {
-                        DeactivateP2CharacterSelect();
-                        P2character4.SetActive(true);
-                    }
-                    if (P2ship == true)
-                    {
-                        DeactivateP2ShipSelect();
-                        P2ship4.SetActive(true);
-                    }
-                    if (P2primary == true)
-                    {
-                        P2toggleData = 3;
-
-                        DeactivateP2PrimarySelect();
-                        P2primary3.SetActive(true);
-                    }
-                    if (P2secondary == true)
-                    {
-                        P2toggleData = 3;
-
-                        DeactivateP2SecondarySelect();
-                        P2secondary3.SetActive(true);
-                    }
-                    if (P2special == true)
-                    {
-                        P2toggleData = 3;
-
-                        DeactivateP2SpecialSelect();
-                        P2special3.SetActive(true);
-                    }
-                }
-
-                if (P1toggleData >= 5)
-                {
-                    if (P1character == true)
-                    {
-                        P1toggleData = 4;
-
-                        DeactivateP1CharacterSelect();
-                        P1character4.SetActive(true);
-                    }
-                    if (P1ship == true)
-                    {
-                        P1toggleData = 5;
-
-                        DeactivateP1ShipSelect();
-                        P1ship5.SetActive(true);
-                    }
-                    if (P1primary == true)
-                    {
-                        P1toggleData = 3;
-
-                        DeactivateP1PrimarySelect();
-                        P1primary3.SetActive(true);
-                    }
-                    if (P1secondary == true)
-                    {
-                        P1toggleData = 3;
-
-                        DeactivateP1SecondarySelect();
-                        P1secondary3.SetActive(true);
-                    }
-                    if (P1special == true)
-                    {
-                        P1toggleData = 3;
-
-                        DeactivateP1SpecialSelect();
-                        P1special3.SetActive(true);
-                    }
-                }
-                if (P2toggleData >= 5)
-                {
-                    if (P2character == true)
-                    {
-                        P2toggleData = 4;
-
-                        DeactivateP2CharacterSelect();
-                        P2character4.SetActive(true);
-                    }
-                    if (P2ship == true)
-                    {
-                        P2toggleData = 5;
-
-                        DeactivateP2ShipSelect();
-                        P2ship5.SetActive(true);
-                    }
-                    if (P2primary == true)
-                    {
-                        P2toggleData = 3;
-
-                        DeactivateP2PrimarySelect();
-                        P2primary3.SetActive(true);
-                    }
-                    if (P2secondary == true)
-                    {
-                        P2toggleData = 3;
-
-                        DeactivateP2SecondarySelect();
-                        P2secondary3.SetActive(true);
-                    }
-                    if (P2special == true)
-                    {
-                        P2toggleData = 3;
-
-                        DeactivateP2SpecialSelect();
-                        P2special3.SetActive(true);
-                    }
                 }
 
                 if (P2glowTracker > maxP2GLowTracker)
@@ -1119,10 +917,539 @@ public class SelectionMenuController : MonoBehaviour
                     ResetP1Glow();
                     doubleReturnButtonGlow.fillAmount = 1;
                 }
-                if (P2glowTracker == 6)
+                if (P2glowTracker >= 6)
                 {
+                    P2glowTracker = 6;
+
                     ResetP2Glow();
                     doubleStartButtonGlow.fillAmount = 1;
+                }
+
+                if (P1toggleData <= 1)
+                {
+                    ResetP1ToggleGlow();
+                    P1toggleLeftGlow.fillAmount = 1;
+
+                    P1toggleData = 1;
+
+                    if (P1character == true)
+                    {
+                        DeactivateP1CharacterSelect();
+                        P1character1.SetActive(true);
+
+                        DeactivateP1Stat();
+                        P1characterStat.enabled = true;
+                        P1characterStat.text = "Name: Character A\nDescription:";
+                    }
+                    if (P1ship == true)
+                    {
+                        DeactivateP1ShipSelect();
+                        P1ship1.SetActive(true);
+
+                        DeactivateP1Stat();
+                        P1shipStat.enabled = true;
+                        P1shipStat.text = "Name: Light Ship\nHealth: 100\nShield: 75\nLives: 2/5\nDescription: ";
+                    }
+                    if (P1primary == true)
+                    {
+                        DeactivateP1PrimarySelect();
+                        P1primary1.SetActive(true);
+
+                        DeactivateP1Stat();
+                        P1primaryStat.enabled = true;
+                        P1primaryStat.text = "Name: Machine Gun\nFire Rate: *****\nDamage: *\nArea of Effect: *\nDescription: ";
+                    }
+                    if (P1secondary == true)
+                    {
+                        DeactivateP1SecondarySelect();
+                        P1secondary1.SetActive(true);
+
+                        DeactivateP1Stat();
+                        P1secondaryStat.enabled = true;
+                        P1secondaryStat.text = "Name: Homing Missiles\nFire Rate: *\nDamage: *****\nArea of Effect: ****\nDescription: ";
+                    }
+                    if (P1special == true)
+                    {
+                        DeactivateP1SpecialSelect();
+                        P1special1.SetActive(true);
+
+                        DeactivateP1Stat();
+                        P1specialStat.enabled = true;
+                        P1specialStat.text = "Name: Mega Bomb\nDamage: ****\nArea of Effect: *****\nDuration: **\nAmmo: 3/5\nDescription: ";
+                    }
+                }
+                if (P2toggleData <= 1)
+                {
+                    ResetP2ToggleGlow();
+                    P2toggleLeftGlow.fillAmount = 1;
+
+                    P2toggleData = 1;
+
+                    if (P2character == true)
+                    {
+                        DeactivateP2CharacterSelect();
+                        P2character1.SetActive(true);
+
+                        DeactivateP2Stat();
+                        P2characterStat.enabled = true;
+                        P2characterStat.text = "Name: Character A\nDescription:";
+                    }
+                    if (P2ship == true)
+                    {
+                        DeactivateP2ShipSelect();
+                        P2ship1.SetActive(true);
+
+                        DeactivateP2Stat();
+                        P2shipStat.enabled = true;
+                        P2shipStat.text = "Name: Light Ship\nHealth: 100\nShield: 75\nLives: 2/5\nDescription: ";
+                    }
+                    if (P2primary == true)
+                    {
+                        DeactivateP2PrimarySelect();
+                        P2primary1.SetActive(true);
+
+                        DeactivateP2Stat();
+                        P2primaryStat.enabled = true;
+                        P2primaryStat.text = "Name: Machine Gun\nFire Rate: *****\nDamage: *\nArea of Effect: *\nDescription: ";
+                    }
+                    if (P2secondary == true)
+                    {
+                        DeactivateP2SecondarySelect();
+                        P2secondary1.SetActive(true);
+
+                        DeactivateP2Stat();
+                        P2secondaryStat.enabled = true;
+                        P2secondaryStat.text = "Name: Homing Missiles\nFire Rate: *\nDamage: *****\nArea of Effect: ****\nDescription: ";
+                    }
+                    if (P2special == true)
+                    {
+                        DeactivateP2SpecialSelect();
+                        P2special1.SetActive(true);
+
+                        DeactivateP2Stat();
+                        P2specialStat.enabled = true;
+                        P2specialStat.text = "Name: Mega Bomb\nDamage: ****\nArea of Effect: *****\nDuration: **\nAmmo: 3/5\nDescription: ";
+                    }
+                }
+
+                if (P1toggleData == 2)
+                {
+                    if (P1character == true)
+                    {
+                        DeactivateP1CharacterSelect();
+                        P1character2.SetActive(true);
+
+                        DeactivateP1Stat();
+                        P1characterStat.enabled = true;
+                        P1characterStat.text = "Name: Character B\nDescription:";
+                    }
+                    if (P1ship == true)
+                    {
+                        DeactivateP1ShipSelect();
+                        P1ship2.SetActive(true);
+
+                        DeactivateP1Stat();
+                        P1shipStat.enabled = true;
+                        P1shipStat.text = "Name: Medium Ship\nHealth: 125\nShield: 100\nLives: 2/5\nDescription: ";
+                    }
+                    if (P1primary == true)
+                    {
+                        DeactivateP1PrimarySelect();
+                        P1primary2.SetActive(true);
+
+                        DeactivateP1Stat();
+                        P1primaryStat.enabled = true;
+                        P1primaryStat.text = "Name: Flak Cannon\nFire Rate: ***\nDamage: ***\nArea of Effect: *****\nDescription: ";
+                    }
+                    if (P1secondary == true)
+                    {
+                        DeactivateP1SecondarySelect();
+                        P1secondary2.SetActive(true);
+
+                        DeactivateP1Stat();
+                        P1secondaryStat.enabled = true;
+                        P1secondaryStat.text = "Name: Sweeper Pods\nFire Rate: *****\nDamage: *\nArea of Effect: **\nDescription: ";
+                    }
+                    if (P1special == true)
+                    {
+                        DeactivateP1SpecialSelect();
+                        P1special2.SetActive(true);
+
+                        DeactivateP1Stat();
+                        P1specialStat.enabled = true;
+                        P1specialStat.text = "Name: Beam Cannon\nDamage: *****\nArea of Effect: *****\nDuration: *****\nAmmo: 3/5\nDescription: ";
+                    }
+                }
+                if (P2toggleData == 2)
+                {
+                    if (P2character == true)
+                    {
+                        DeactivateP2CharacterSelect();
+                        P2character2.SetActive(true);
+
+                        DeactivateP2Stat();
+                        P2characterStat.enabled = true;
+                        P2characterStat.text = "Name: Character B\nDescription:";
+                    }
+                    if (P2ship == true)
+                    {
+                        DeactivateP2ShipSelect();
+                        P2ship2.SetActive(true);
+
+                        DeactivateP2Stat();
+                        P2shipStat.enabled = true;
+                        P2shipStat.text = "Name: Medium Ship\nHealth: 125\nShield: 100\nLives: 2/5\nDescription: ";
+                    }
+                    if (P2primary == true)
+                    {
+                        DeactivateP2PrimarySelect();
+                        P2primary2.SetActive(true);
+
+                        DeactivateP1Stat();
+                        P1primaryStat.enabled = true;
+                        P1primaryStat.text = "Name: Flak Cannon\nFire Rate: ***\nDamage: ***\nArea of Effect: *****\nDescription: ";
+                    }
+                    if (P2secondary == true)
+                    {
+                        DeactivateP2SecondarySelect();
+                        P2secondary2.SetActive(true);
+
+                        DeactivateP2Stat();
+                        P2secondaryStat.enabled = true;
+                        P2secondaryStat.text = "Name: Sweeper Pods\nFire Rate: *****\nDamage: *\nArea of Effect: **\nDescription: ";
+                    }
+                    if (P2special == true)
+                    {
+                        DeactivateP2SpecialSelect();
+                        P2special2.SetActive(true);
+
+                        DeactivateP2Stat();
+                        P2specialStat.enabled = true;
+                        P2specialStat.text = "Name: Beam Cannon\nDamage: *****\nArea of Effect: *****\nDuration: *****\nAmmo: 3/5\nDescription: ";
+                    }
+                }
+
+                if (P1toggleData == 3)
+                {
+                    if (P1character == true)
+                    {
+                        DeactivateP1CharacterSelect();
+                        P1character3.SetActive(true);
+
+                        DeactivateP1Stat();
+                        P1characterStat.enabled = true;
+                        P1characterStat.text = "Name: Character C\nDescription:";
+                    }
+                    if (P1ship == true)
+                    {
+                        DeactivateP1ShipSelect();
+                        P1ship3.SetActive(true);
+
+                        DeactivateP1Stat();
+                        P1shipStat.enabled = true;
+                        P1shipStat.text = "Name: Heavy Ship\nHealth: 150\nShield: 125\nLives: 2/5\nDescription: ";
+                    }
+                    if (P1primary == true)
+                    {
+                        DeactivateP1PrimarySelect();
+                        P1primary3.SetActive(true);
+
+                        DeactivateP1Stat();
+                        P1primaryStat.enabled = true;
+                        P1primaryStat.text = "Name: PAC\nFire Rate: *\nDamage: *****\nArea of Effect: ***\nDescription: ";
+                    }
+                    if (P1secondary == true)
+                    {
+                        DeactivateP1SecondarySelect();
+                        P1secondary3.SetActive(true);
+
+                        DeactivateP1Stat();
+                        P1secondaryStat.enabled = true;
+                        P1secondaryStat.text = "Name: Plasma Gun\nFire Rate: ***\nDamage: ***\nArea of Effect: ****\nDescription: ";
+                    }
+                    if (P1special == true)
+                    {
+                        DeactivateP1SpecialSelect();
+                        P1special3.SetActive(true);
+
+                        DeactivateP1Stat();
+                        P1specialStat.enabled = true;
+                        P1specialStat.text = "Name: Super Shield\nDamage: **\nArea of Effect: **\nDuration: *****\nAmmo: 3/5\nDescription: ";
+                    }
+                }
+                if (P2toggleData == 3)
+                {
+                    if (P2character == true)
+                    {
+                        DeactivateP2CharacterSelect();
+                        P2character3.SetActive(true);
+
+                        DeactivateP2Stat();
+                        P2characterStat.enabled = true;
+                        P2characterStat.text = "Name: Character C\nDescription:";
+                    }
+                    if (P2ship == true)
+                    {
+                        DeactivateP2ShipSelect();
+                        P2ship3.SetActive(true);
+
+                        DeactivateP2Stat();
+                        P2shipStat.enabled = true;
+                        P2shipStat.text = "Name: Heavy Ship\nHealth: 150\nShield: 125\nLives: 2/5\nDescription: ";
+                    }
+                    if (P2primary == true)
+                    {
+                        DeactivateP2PrimarySelect();
+                        P2primary3.SetActive(true);
+
+                        DeactivateP2Stat();
+                        P2primaryStat.enabled = true;
+                        P2primaryStat.text = "Name: PAC\nFire Rate: *\nDamage: *****\nArea of Effect: ***\nDescription: ";
+                    }
+                    if (P2secondary == true)
+                    {
+                        DeactivateP2SecondarySelect();
+                        P2secondary3.SetActive(true);
+
+                        DeactivateP2Stat();
+                        P2secondaryStat.enabled = true;
+                        P2secondaryStat.text = "Name: Plasma Gun\nFire Rate: ***\nDamage: ***\nArea of Effect: ****\nDescription: ";
+                    }
+                    if (P2special == true)
+                    {
+                        DeactivateP2SpecialSelect();
+                        P2special3.SetActive(true);
+
+                        DeactivateP2Stat();
+                        P2specialStat.enabled = true;
+                        P2specialStat.text = "Name: Super Shield\nDamage: **\nArea of Effect: **\nDuration: *****\nAmmo: 3/5\nDescription: ";
+                    }
+                }
+
+                if (P1toggleData == 4)
+                {
+                    if (P1character == true)
+                    {
+                        DeactivateP1CharacterSelect();
+                        P1character4.SetActive(true);
+
+                        DeactivateP1Stat();
+                        P1characterStat.enabled = true;
+                        P1characterStat.text = "Name: Character D\nDescription:";
+                    }
+                    if (P1ship == true)
+                    {
+                        DeactivateP1ShipSelect();
+                        P1ship4.SetActive(true);
+
+                        DeactivateP1Stat();
+                        P1shipStat.enabled = true;
+                        P1shipStat.text = "Name: Lambo Shooter\nHealth: 175\nShield: 150\nLives: 2/5\nDescription: ";
+                    }
+                    if (P1primary == true)
+                    {
+                        P1toggleData = 3;
+
+                        DeactivateP1PrimarySelect();
+                        P1primary3.SetActive(true);
+
+                        DeactivateP1Stat();
+                        P1primaryStat.enabled = true;
+                        P1primaryStat.text = "Name: PAC\nFire Rate: *\nDamage: *****\nArea of Effect: ***\nDescription: ";
+                    }
+                    if (P1secondary == true)
+                    {
+                        P1toggleData = 3;
+
+                        DeactivateP1SecondarySelect();
+                        P1secondary3.SetActive(true);
+
+                        DeactivateP1Stat();
+                        P1secondaryStat.enabled = true;
+                        P1secondaryStat.text = "Name: Plasma Gun\nFire Rate: ***\nDamage: ***\nArea of Effect: ****\nDescription: ";
+                    }
+                    if (P1special == true)
+                    {
+                        P1toggleData = 3;
+
+                        DeactivateP1SpecialSelect();
+                        P1special3.SetActive(true);
+
+                        DeactivateP1Stat();
+                        P1specialStat.enabled = true;
+                        P1specialStat.text = "Name: Super Shield\nDamage: **\nArea of Effect: **\nDuration: *****\nAmmo: 3/5\nDescription: ";
+                    }
+                }
+                if (P2toggleData == 4)
+                {
+                    if (P2character == true)
+                    {
+                        DeactivateP2CharacterSelect();
+                        P2character4.SetActive(true);
+
+                        DeactivateP2Stat();
+                        P2characterStat.enabled = true;
+                        P2characterStat.text = "Name: Character D\nDescription:";
+                    }
+                    if (P2ship == true)
+                    {
+                        DeactivateP2ShipSelect();
+                        P2ship4.SetActive(true);
+
+                        DeactivateP2Stat();
+                        P2shipStat.enabled = true;
+                        P2shipStat.text = "Name: Lambo Shooter\nHealth: 175\nShield: 150\nLives: 2/5\nDescription: ";
+                    }
+                    if (P2primary == true)
+                    {
+                        P2toggleData = 3;
+
+                        DeactivateP2PrimarySelect();
+                        P2primary3.SetActive(true);
+
+                        DeactivateP2Stat();
+                        P2primaryStat.enabled = true;
+                        P2primaryStat.text = "Name: PAC\nFire Rate: *\nDamage: *****\nArea of Effect: ***\nDescription: ";
+                    }
+                    if (P2secondary == true)
+                    {
+                        P2toggleData = 3;
+
+                        DeactivateP2SecondarySelect();
+                        P2secondary3.SetActive(true);
+
+                        DeactivateP2Stat();
+                        P2secondaryStat.enabled = true;
+                        P2secondaryStat.text = "Name: Plasma Gun\nFire Rate: ***\nDamage: ***\nArea of Effect: ****\nDescription: ";
+                    }
+                    if (P2special == true)
+                    {
+                        P2toggleData = 3;
+
+                        DeactivateP2SpecialSelect();
+                        P2special3.SetActive(true);
+
+                        DeactivateP2Stat();
+                        P2specialStat.enabled = true;
+                        P2specialStat.text = "Name: Super Shield\nDamage: **\nArea of Effect: **\nDuration: *****\nAmmo: 3/5\nDescription: ";
+                    }
+                }
+
+                if (P1toggleData >= 5)
+                {
+                    if (P1character == true)
+                    {
+                        P1toggleData = 4;
+
+                        DeactivateP1CharacterSelect();
+                        P1character4.SetActive(true);
+
+                        DeactivateP1Stat();
+                        P1characterStat.enabled = true;
+                        P1characterStat.text = "Name: Character D\nDescription:";
+                    }
+                    if (P1ship == true)
+                    {
+                        P1toggleData = 5;
+
+                        DeactivateP1ShipSelect();
+                        P1ship5.SetActive(true);
+
+                        DeactivateP1Stat();
+                        P1shipStat.enabled = true;
+                        P1shipStat.text = "Name: Truck Shooter\nHealth: 200\nShield: 200\nLives: 2/5\nDescription: ";
+                    }
+                    if (P1primary == true)
+                    {
+                        P1toggleData = 3;
+
+                        DeactivateP1PrimarySelect();
+                        P1primary3.SetActive(true);
+
+                        DeactivateP1Stat();
+                        P1primaryStat.enabled = true;
+                        P1primaryStat.text = "Name: PAC\nFire Rate: *\nDamage: *****\nArea of Effect: ***\nDescription: ";
+                    }
+                    if (P1secondary == true)
+                    {
+                        P1toggleData = 3;
+
+                        DeactivateP1SecondarySelect();
+                        P1secondary3.SetActive(true);
+
+                        DeactivateP1Stat();
+                        P1secondaryStat.enabled = true;
+                        P1secondaryStat.text = "Name: Plasma Gun\nFire Rate: ***\nDamage: ***\nArea of Effect: ****\nDescription: ";
+                    }
+                    if (P1special == true)
+                    {
+                        P1toggleData = 3;
+
+                        DeactivateP1SpecialSelect();
+                        P1special3.SetActive(true);
+
+                        DeactivateP1Stat();
+                        P1specialStat.enabled = true;
+                        P1specialStat.text = "Name: Super Shield\nDamage: **\nArea of Effect: **\nDuration: *****\nAmmo: 3/5\nDescription: ";
+                    }
+                }
+                if (P2toggleData >= 5)
+                {
+                    if (P2character == true)
+                    {
+                        P2toggleData = 4;
+
+                        DeactivateP2CharacterSelect();
+                        P2character4.SetActive(true);
+
+                        DeactivateP2Stat();
+                        P2characterStat.enabled = true;
+                        P2characterStat.text = "Name: Character D\nDescription:";
+                    }
+                    if (P2ship == true)
+                    {
+                        P2toggleData = 5;
+
+                        DeactivateP2ShipSelect();
+                        P2ship5.SetActive(true);
+
+                        DeactivateP2Stat();
+                        P2shipStat.enabled = true;
+                        P2shipStat.text = "Name: Truck Shooter\nHealth: 200\nShield: 200\nLives: 2/5\nDescription: ";
+                    }
+                    if (P2primary == true)
+                    {
+                        P2toggleData = 3;
+
+                        DeactivateP2PrimarySelect();
+                        P2primary3.SetActive(true);
+
+                        DeactivateP2Stat();
+                        P2primaryStat.enabled = true;
+                        P2primaryStat.text = "Name: PAC\nFire Rate: *\nDamage: *****\nArea of Effect: ***\nDescription: ";
+                    }
+                    if (P2secondary == true)
+                    {
+                        P2toggleData = 3;
+
+                        DeactivateP2SecondarySelect();
+                        P2secondary3.SetActive(true);
+
+                        DeactivateP2Stat();
+                        P2secondaryStat.enabled = true;
+                        P2secondaryStat.text = "Name: Plasma Gun\nFire Rate: ***\nDamage: ***\nArea of Effect: ****\nDescription: ";
+                    }
+                    if (P2special == true)
+                    {
+                        P2toggleData = 3;
+
+                        DeactivateP2SpecialSelect();
+                        P2special3.SetActive(true);
+
+                        DeactivateP2Stat();
+                        P2specialStat.enabled = true;
+                        P2specialStat.text = "Name: Super Shield\nDamage: **\nArea of Effect: **\nDuration: *****\nAmmo: 3/5\nDescription: ";
+                    }
                 }
 
                 if (Input.GetKeyDown(KeyCode.W) && !P1choosing)
@@ -1341,6 +1668,7 @@ public class SelectionMenuController : MonoBehaviour
                         DeactivateP1SecondarySelect();
                         DeactivateP1SpecialSelect();
                         DeactivateP1Toggle();
+                        DeactivateP1Stat();
 
                         ActivatePlayer1Selection();
 
@@ -1518,6 +1846,7 @@ public class SelectionMenuController : MonoBehaviour
                         DeactivateP2SecondarySelect();
                         DeactivateP2SpecialSelect();
                         DeactivateP2Toggle();
+                        DeactivateP2Stat();
 
                         ActivatePlayer2Selection();
 
@@ -1851,6 +2180,31 @@ public class SelectionMenuController : MonoBehaviour
         P2specialButtonShader.SetActive(false);
     }
 
+    private void DeactivateStat()
+    {
+        characterStat.enabled = false;
+        shipStat.enabled = false;
+        primaryStat.enabled = false;
+        secondaryStat.enabled = false;
+        specialStat.enabled = false;
+    }
+    private void DeactivateP1Stat()
+    {
+        P1characterStat.enabled = false;
+        P1shipStat.enabled = false;
+        P1primaryStat.enabled = false;
+        P1secondaryStat.enabled = false;
+        P1specialStat.enabled = false;
+    }
+    private void DeactivateP2Stat()
+    {
+        P2characterStat.enabled = false;
+        P2shipStat.enabled = false;
+        P2primaryStat.enabled = false;
+        P2secondaryStat.enabled = false;
+        P2specialStat.enabled = false;
+    }
+
     //set data
     private void SetP1ToggleData()
     {
@@ -2001,7 +2355,7 @@ public class SelectionMenuController : MonoBehaviour
     //player 1 lambo shooter
     private void P1LamboShooterData()
     {
-        PlayerHealthSystem.P1maxHealth = 75;
+        PlayerHealthSystem.P1maxHealth = 175;
         PlayerHealthSystem.P1maxShields = 150;
         PlayerHealthSystem.P1maxLives = 2;
     }
