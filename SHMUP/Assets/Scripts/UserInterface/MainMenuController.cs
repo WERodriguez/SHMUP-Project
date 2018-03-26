@@ -7,6 +7,7 @@ using UnityEngine.SceneManagement;
 public class MainMenuController : MonoBehaviour
 {
     private int glowTracker;
+	private bool waiting; 
 
     public Image singleGlow;
     public Image doubleGlow;
@@ -29,6 +30,7 @@ public class MainMenuController : MonoBehaviour
         DeactivateGlow();
 
         glowTracker = 1;
+		waiting = false;
     }
 
     private void Start()
@@ -38,53 +40,56 @@ public class MainMenuController : MonoBehaviour
 
     private void Update()
     {
-        if(glowTracker <= 1)
-        {
-            glowTracker = 1;
+		if (waiting)
+		{
+			if (glowTracker <= 1)
+			{
+				glowTracker = 1;
 
-            DeactivateGlow();
+				DeactivateGlow ();
 
-            singleGlow.fillAmount = 1;
-        }
-        if (glowTracker == 2)
-        {
-            DeactivateGlow();
+				singleGlow.fillAmount = 1;
+			}
+			if (glowTracker == 2)
+			{
+				DeactivateGlow ();
 
-            doubleGlow.fillAmount = 1;
-        }
-        if (glowTracker >= 3)
-        {
-            glowTracker = 3;
+				doubleGlow.fillAmount = 1;
+			}
+			if (glowTracker >= 3)
+			{
+				glowTracker = 3;
 
-            DeactivateGlow();
+				DeactivateGlow ();
 
-            quitGlow.fillAmount = 1;
-        }
+				quitGlow.fillAmount = 1;
+			}
 
-        if(Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.Alpha8) || Input.GetKeyDown(KeyCode.Alpha4) || Input.GetKeyDown(KeyCode.Keypad8) || Input.GetKeyDown(KeyCode.Keypad4))
-        {
-            glowTracker--;
-        }
-        if (Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.D) || Input.GetKeyDown(KeyCode.Alpha5) || Input.GetKeyDown(KeyCode.Alpha6) || Input.GetKeyDown(KeyCode.Keypad5) || Input.GetKeyDown(KeyCode.Keypad6))
-        {
-            glowTracker++;
-        }
+			if (Input.GetKeyDown (KeyCode.W) || Input.GetKeyDown (KeyCode.A) || Input.GetKeyDown (KeyCode.Alpha8) || Input.GetKeyDown (KeyCode.Alpha4) || Input.GetKeyDown (KeyCode.Keypad8) || Input.GetKeyDown (KeyCode.Keypad4))
+			{
+				glowTracker--;
+			}
+			if (Input.GetKeyDown (KeyCode.S) || Input.GetKeyDown (KeyCode.D) || Input.GetKeyDown (KeyCode.Alpha5) || Input.GetKeyDown (KeyCode.Alpha6) || Input.GetKeyDown (KeyCode.Keypad5) || Input.GetKeyDown (KeyCode.Keypad6))
+			{
+				glowTracker++;
+			}
 
-        if (Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.Alpha0) || Input.GetKeyDown(KeyCode.Keypad0))
-        {
-            if (glowTracker <= 1)
-            {
-                SingleButton();
-            }
-            if (glowTracker == 2)
-            {
-                DoubleButton();
-            }
-            if (glowTracker >= 3)
-            {
-                QuitButton();
-            }
-        }
+			if (Input.GetKeyDown (KeyCode.Space) || Input.GetKeyDown (KeyCode.Alpha0) || Input.GetKeyDown (KeyCode.Keypad0))
+			{
+				if (glowTracker <= 1)
+				{
+					SingleButton ();
+				}
+				if (glowTracker == 2)
+				{
+					DoubleButton ();
+				}
+				if (glowTracker >= 3)
+				{
+					QuitButton ();
+				}
+			}
+		}
     }
 
     IEnumerator Timer()
@@ -95,7 +100,11 @@ public class MainMenuController : MonoBehaviour
 
         warning.SetActive(false);
 
-        ActivateMainMenu();
+		ActivateMainMenu();
+
+		yield return new WaitForSeconds(2.5f);
+
+		waiting = true;
     }
 
     private void ActivateMainMenu()

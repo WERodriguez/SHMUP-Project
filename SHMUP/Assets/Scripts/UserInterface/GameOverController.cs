@@ -7,6 +7,7 @@ using UnityEngine.SceneManagement;
 public class GameOverController : MonoBehaviour
 {
     private int glowTracker;
+	private bool waiting;
 
     public Image restartGlow;
     public Image mainMenuGlow;
@@ -44,75 +45,89 @@ public class GameOverController : MonoBehaviour
         P2screen.SetActive(false);
 
         glowTracker = 1;
+		waiting = false;
     }
 
     private void Start()
     {
-        hangarButton.SetActive(true);
-        restartButton.SetActive(true);
-
-        if (MainMenuController.onePlayer)
-        {
-            screen.SetActive(true);
-        }
-        else
-        {
-            P1screen.SetActive(true);
-            P2screen.SetActive(true);
-        }
+		StartCoroutine (Timer ());
     }
 
     private void Update()
     {
-        SetPlayerScore();
+		if (waiting)
+		{
+			SetPlayerScore ();
 
-        if (MainMenuController.onePlayer)
-        {
-            StartCoroutine(SingleTimer());
-        }
-        else
-        {
-            StartCoroutine(DoubleTimer());
-        }
+			if (MainMenuController.onePlayer)
+			{
+				StartCoroutine (SingleTimer ());
+			}
+			else
+			{
+				StartCoroutine (DoubleTimer ());
+			}
 
-        if (glowTracker <= 1)
-        {
-            glowTracker = 1;
+			if (glowTracker <= 1)
+			{
+				glowTracker = 1;
 
-            DeactivateGlow();
+				DeactivateGlow ();
 
-            restartGlow.fillAmount = 1;
-        }
-        if (glowTracker >= 2)
-        {
-            glowTracker = 2;
+				restartGlow.fillAmount = 1;
+			}
+			if (glowTracker >= 2)
+			{
+				glowTracker = 2;
 
-            DeactivateGlow();
+				DeactivateGlow ();
 
-            mainMenuGlow.fillAmount = 1;
-        }
+				mainMenuGlow.fillAmount = 1;
+			}
 
-        if (Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.Alpha8) || Input.GetKeyDown(KeyCode.Alpha4) || Input.GetKeyDown(KeyCode.Keypad8) || Input.GetKeyDown(KeyCode.Keypad4))
-        {
-            glowTracker--;
-        }
-        if (Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.D) || Input.GetKeyDown(KeyCode.Alpha5) || Input.GetKeyDown(KeyCode.Alpha6) || Input.GetKeyDown(KeyCode.Keypad5) || Input.GetKeyDown(KeyCode.Keypad6))
-        {
-            glowTracker++;
-        }
+			if (Input.GetKeyDown (KeyCode.W) || Input.GetKeyDown (KeyCode.A) || Input.GetKeyDown (KeyCode.Alpha8) || Input.GetKeyDown (KeyCode.Alpha4) || Input.GetKeyDown (KeyCode.Keypad8) || Input.GetKeyDown (KeyCode.Keypad4))
+			{
+				glowTracker--;
+			}
+			if (Input.GetKeyDown (KeyCode.S) || Input.GetKeyDown (KeyCode.D) || Input.GetKeyDown (KeyCode.Alpha5) || Input.GetKeyDown (KeyCode.Alpha6) || Input.GetKeyDown (KeyCode.Keypad5) || Input.GetKeyDown (KeyCode.Keypad6))
+			{
+				glowTracker++;
+			}
 
-        if (Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.Alpha0) || Input.GetKeyDown(KeyCode.Keypad0))
-        {
-            if (glowTracker <= 1)
-            {
-                RestartButton();
-            }
-            if (glowTracker >= 2)
-            {
-                MainMenuButton();
-            }
-        }
+			if (Input.GetKeyDown (KeyCode.Space) || Input.GetKeyDown (KeyCode.Alpha0) || Input.GetKeyDown (KeyCode.Keypad0))
+			{
+				if (glowTracker <= 1)
+				{
+					RestartButton ();
+				}
+				if (glowTracker >= 2)
+				{
+					MainMenuButton ();
+				}
+			}
+		}
     }
+
+	IEnumerator Timer()
+	{
+		hangarButton.SetActive(true);
+		restartButton.SetActive(true);
+
+		if (MainMenuController.onePlayer)
+		{
+			screen.SetActive(true);
+		}
+		else
+		{
+			P1screen.SetActive(true);
+			P2screen.SetActive(true);
+		}
+
+		DeactivateGlow ();
+
+		yield return new WaitForSeconds (3.5f);
+		waiting = true;
+	}
 
     IEnumerator SingleTimer()
     {
