@@ -74,6 +74,9 @@ public class PlayerHealthSystem : MonoBehaviour
     private float P1excessShieldDamage;
     private float P2excessShieldDamage;
 
+    //HoldsPlayerExplosion
+    public GameObject playerExplosion;
+
     void Start()
     {
         playerWeaponController = gameObject.GetComponent<PlayerWeaponController>();
@@ -167,6 +170,9 @@ public class PlayerHealthSystem : MonoBehaviour
                 P1HealthBar.fillAmount = P1currentHealth / P1maxHealth;
                 P1HealthBar.fillAmount = P1currentHealth / P1maxHealth;
 
+                //Instantiates player explosion where the player died.
+                Instantiate(playerExplosion, gameObject.transform.position, gameObject.transform.rotation);
+
                 P1Respawn();
             }
         }
@@ -204,6 +210,8 @@ public class PlayerHealthSystem : MonoBehaviour
                 P2currentHealth = 0;
                 P2health.text = "HP: " + P2currentHealth;
                 P2HealthBar.fillAmount = P2currentHealth / P2maxHealth;
+
+                Instantiate(playerExplosion, gameObject.transform.position, gameObject.transform.rotation);
 
                 P2Respawn();
             }

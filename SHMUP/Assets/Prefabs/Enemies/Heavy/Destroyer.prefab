@@ -2317,7 +2317,9 @@ MonoBehaviour:
   lootDropChance: 50
   isBoss: 0
   isBossPart: 0
-  scrap: {fileID: 0}
+  heavyEnemy: 1
+  scrap: {fileID: 1025068925807934, guid: 979829eaffdaa5643b1ff2f15a86bb45, type: 2}
+  explosion: {fileID: 1220363091690522, guid: bebda8aa8bb38db4598719bf8dfd9f87, type: 2}
   scoreScreen: 0
 --- !u!198 &198428666773177798
 ParticleSystem:

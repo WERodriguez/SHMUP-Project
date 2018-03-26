@@ -452,7 +452,9 @@ MonoBehaviour:
   lootDropChance: 25
   isBoss: 0
   isBossPart: 0
+  heavyEnemy: 0
   scrap: {fileID: 0}
+  explosion: {fileID: 1902701955808478, guid: 07102b39342c8344fb07026c31065017, type: 2}
   scoreScreen: 0
 --- !u!136 &136545107392561164
 CapsuleCollider:

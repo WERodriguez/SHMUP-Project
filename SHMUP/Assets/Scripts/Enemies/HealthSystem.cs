@@ -25,8 +25,12 @@ public class HealthSystem : MonoBehaviour
     public bool isBoss;
     //Checks if boss part.
     public bool isBossPart;
+    //Booleans for enemy type
+    public bool heavyEnemy;
+
     //For boss/bosspart death
     public GameObject scrap;
+    public GameObject explosion;
 
     public bool scoreScreen;
 
@@ -186,6 +190,12 @@ public class HealthSystem : MonoBehaviour
                 if (doesLootDrop <= lootDropChance)
                 {
                     callLoot.LootRoll(Random.Range(0.0f, 100.0f));
+                }
+
+                Instantiate(explosion, gameObject.transform.position, gameObject.transform.rotation);
+                if (heavyEnemy)
+                {
+                    Instantiate(scrap, gameObject.transform.position, gameObject.transform.rotation);
                 }
 
                 Destroy(gameObject);

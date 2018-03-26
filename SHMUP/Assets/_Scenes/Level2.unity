@@ -2826,7 +2826,7 @@ MonoBehaviour:
   mediumEnemies:
   - {fileID: 1581877229079828, guid: 5335c3a024ab3f046964ac5b7971087a, type: 2}
   heavyEnemies:
-  - {fileID: 1282186330355920, guid: 7300b23da683fc547901dd687a8b9732, type: 2}
+  - {fileID: 1282186330355920, guid: 5cdd7a965dc24924292dd89116ebc26b, type: 2}
   wings:
   - {fileID: 1206159982772688, guid: 175d9d8d97dcbe840b7b91c399228bc1, type: 2}
   bosses:
@@ -5853,15 +5853,37 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   P1Panel: {fileID: 1399292854}
-  P1character1: {fileID: 1269075314}
-  P1character2: {fileID: 758785709}
-  P1character3: {fileID: 442218545}
-  P1character4: {fileID: 1496857728}
   P2Panel: {fileID: 709465658}
-  P2character1: {fileID: 1150188310}
-  P2character2: {fileID: 882833355}
-  P2character3: {fileID: 720055586}
-  P2character4: {fileID: 403625205}
+  P1sprite1: {fileID: 0}
+  P1sprite2: {fileID: 0}
+  P1sprite3: {fileID: 0}
+  P1sprite4: {fileID: 0}
+  P1sprite5: {fileID: 0}
+  P2sprite1: {fileID: 0}
+  P2sprite2: {fileID: 0}
+  P2sprite3: {fileID: 0}
+  P2sprite4: {fileID: 0}
+  P2sprite5: {fileID: 0}
+  character1sprite1: {fileID: 0}
+  character1sprite2: {fileID: 0}
+  character1sprite3: {fileID: 0}
+  character1sprite4: {fileID: 0}
+  character1sprite5: {fileID: 0}
+  character2sprite1: {fileID: 0}
+  character2sprite2: {fileID: 0}
+  character2sprite3: {fileID: 0}
+  character2sprite4: {fileID: 0}
+  character2sprite5: {fileID: 0}
+  character3sprite1: {fileID: 0}
+  character3sprite2: {fileID: 0}
+  character3sprite3: {fileID: 0}
+  character3sprite4: {fileID: 0}
+  character3sprite5: {fileID: 0}
+  character4sprite1: {fileID: 0}
+  character4sprite2: {fileID: 0}
+  character4sprite3: {fileID: 0}
+  character4sprite4: {fileID: 0}
+  character4sprite5: {fileID: 0}
   P1speech: {fileID: 2117196340}
   P1text: {fileID: 1196106771}
   P2speech: {fileID: 659664212}
