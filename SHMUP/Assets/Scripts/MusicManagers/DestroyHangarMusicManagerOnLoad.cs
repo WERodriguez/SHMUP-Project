@@ -2,11 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DestroyMusicOnLoad : MonoBehaviour
-{
-    void Start()
+public class DestroyHangarMusicManagerOnLoad : MonoBehaviour {
+
+	void Start ()
     {
-        Destroy(GameObject.Find("MenuMusicController"));
         Destroy(GameObject.Find("HangarMusicController"));
     }
+
 }
