@@ -35,12 +35,35 @@ public class GameController : MonoBehaviour
     public float startWait;
     public float waveWait;
 
+    //MusicVariables
+    public AudioClip[] levelOneMusic;
+    private AudioSource[] musicPlayer;
+    //Checks if it's time for the boss.
+    private bool isBossTime;
+    private bool stopVolumeDecrease;
+    private bool stopVolumeIncrease;
+
+    public float volumeChangeSpeed;
+    public float desiredVolume;
+    public float volume;
+
     private void Start()
     {
-        //StartCoroutine(SpawnWaves());
+        isBossTime = false;
+        stopVolumeDecrease = false;
+        stopVolumeIncrease = false;
+        musicPlayer = GetComponents<AudioSource>();
+        levelOneMusic = new AudioClip[]
+        {
+            (AudioClip)Resources.Load("Music/LVL1Loop/Be Faster_demo"),
+            (AudioClip)Resources.Load("Music/LVL1Boss/Can't Stop Me_demo")
+        };
 
         if (level == 1)
         {
+            musicPlayer[0].clip = levelOneMusic[0];
+            musicPlayer[1].clip = levelOneMusic[1];
+            musicPlayer[0].Play();
             StartCoroutine(Level1());
         }
         else if (level == 2)
@@ -51,6 +74,38 @@ public class GameController : MonoBehaviour
         else if (level == 3)
         {
 
+        }
+    }
+
+    private void Update()
+    {
+        if (isBossTime && !stopVolumeDecrease)
+        {
+            volume = musicPlayer[0].volume;
+            desiredVolume = -0.1f;
+
+            musicPlayer[0].volume = Mathf.Lerp(volume, desiredVolume, Time.deltaTime * volumeChangeSpeed);
+
+            volume = musicPlayer[0].volume;
+
+            if (volume <= 0)
+            {
+                musicPlayer[0].volume = 0.0f;
+                stopVolumeDecrease = true;
+            }
+        }
+        else if (isBossTime && stopVolumeDecrease && !stopVolumeIncrease)
+        {
+            volume = musicPlayer[1].volume;
+            stopVolumeDecrease = true;
+            desiredVolume = 0.5f;
+            musicPlayer[1].volume = Mathf.Lerp(volume, desiredVolume, Time.deltaTime * volumeChangeSpeed);
+
+            if (volume > 0.5f)
+            {
+                stopVolumeIncrease = true;
+                musicPlayer[1].volume = 0.05f;
+            }
         }
     }
 
@@ -316,12 +371,23 @@ public class GameController : MonoBehaviour
         yield return new WaitForSeconds(6);
         Instantiate(powerUps[2], mainSpawns[5].position, mainSpawns[0].rotation);
         Instantiate(powerUps[2], mainSpawns[7].position, mainSpawns[0].rotation);
+
         yield return new WaitForSeconds(2);
+        //Tells the game it's time for boss fightin.
+        isBossTime = true;
+
+        yield return new WaitForSeconds(2);
+        //Changes the music loop to the boss loop
+        musicPlayer[0].Pause();
+
         Instantiate(powerUps[0], mainSpawns[4].position, mainSpawns[0].rotation);
         Instantiate(powerUps[1], mainSpawns[3].position, mainSpawns[0].rotation);
 
         Instantiate(powerUps[0], mainSpawns[8].position, mainSpawns[0].rotation);
         Instantiate(powerUps[1], mainSpawns[9].position, mainSpawns[0].rotation);
+
+        yield return new WaitForSeconds(2);
+        musicPlayer[1].Play();
 
         yield return new WaitForSeconds(10);
 

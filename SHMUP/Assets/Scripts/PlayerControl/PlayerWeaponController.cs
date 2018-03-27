@@ -106,12 +106,12 @@ public class PlayerWeaponController : MonoBehaviour
     public AudioSource superWeaponSound;
 
     //Muzzle flash code
-    public MuzzleFlash muzzleFlash;
+    //public MuzzleFlash muzzleFlash;
 
     void Start()
     {
         //Finds the muzzle flash.
-        muzzleFlash = GetComponent<MuzzleFlash>();
+        //muzzleFlash = GetComponent<MuzzleFlash>();
 
         audioSources = GetComponents<AudioSource>();
         weaponSounds = new AudioClip[]
@@ -270,25 +270,27 @@ public class PlayerWeaponController : MonoBehaviour
                 //Plays the sound all the way through regardless of how quickly it's called.
                 primaryWeaponSound.PlayOneShot(weaponSounds[0]);
                 //Plays the muzzle flash effect.
-                muzzleFlash.ActivateMachinegunFlash();
+                //muzzleFlash.ActivateMachinegunFlash();
                 Instantiate(P1bullet, shotSpawns[0].position, shotSpawns[0].rotation);
             }
             //Spawns 1 Bullet from all hard points
             else if (P1currentWLevel == 2 && Time.time > nextFire)
             {
+                fireRate = 0.10f;
                 nextFire = Time.time + fireRate;
                 primaryWeaponSound.PlayOneShot(weaponSounds[0]);
                 //Plays the muzzle flash effect.
-                muzzleFlash.ActivateMachinegunFlash();
+                //muzzleFlash.ActivateMachinegunFlash();
                 Instantiate(P1bullet, new Vector3(shotSpawns[0].position.x + 0.5f, shotSpawns[0].position.y, shotSpawns[0].position.z), shotSpawns[0].rotation);
                 Instantiate(P1bullet, new Vector3(shotSpawns[0].position.x + -0.5f, shotSpawns[0].position.y, shotSpawns[0].position.z), shotSpawns[0].rotation);
             }
             else if (P1currentWLevel == 3 && Time.time > nextFire)
             {
+                fireRate = 0.10f;
                 nextFire = Time.time + fireRate;
                 primaryWeaponSound.PlayOneShot(weaponSounds[0]);
                 //Plays the muzzle flash effect.
-                muzzleFlash.ActivateMachinegunFlash();
+                //muzzleFlash.ActivateMachinegunFlash();
                 foreach (var shotSpawn in shotSpawns)
                 {
                     Instantiate(P1bullet, shotSpawn.position, shotSpawn.rotation);
@@ -296,18 +298,20 @@ public class PlayerWeaponController : MonoBehaviour
             }
             else if (P1currentWLevel == 4 && Time.time > nextFire)
             {
+                fireRate = 0.10f;
                 primaryWeaponSound.PlayOneShot(weaponSounds[0]);
                 //How to use FanFire()
                 //int numberOfShots, float spreadAngleIncrementDefault
                 //Plays the muzzle flash effect.
-                muzzleFlash.ActivateMachinegunFlash();
+                //muzzleFlash.ActivateMachinegunFlash();
                 P1FanFire(4, 2.0f);
             }
             else if (P1currentWLevel == 5 && Time.time > nextFire)
             {
+                fireRate = 0.10f;
                 primaryWeaponSound.PlayOneShot(weaponSounds[0]);
                 //Plays the muzzle flash effect.
-                muzzleFlash.ActivateMachinegunFlash();
+                //muzzleFlash.ActivateMachinegunFlash();
                 P1FanFire(5, 3.0f);
             }
         }
@@ -321,25 +325,27 @@ public class PlayerWeaponController : MonoBehaviour
                 nextFire = Time.time + fireRate;
                 primaryWeaponSound.PlayOneShot(weaponSounds[0]);
                 //Plays the muzzle flash effect.
-                muzzleFlash.ActivateMachinegunFlash();
+                //muzzleFlash.ActivateMachinegunFlash();
                 Instantiate(P2bullet, shotSpawns[0].position, shotSpawns[0].rotation);
             }
             //Spawns 1 Bullet from all hard points
             else if (P2currentWLevel == 2 && Time.time > nextFire)
             {
+                fireRate = 0.10f;
                 nextFire = Time.time + fireRate;
                 primaryWeaponSound.PlayOneShot(weaponSounds[0]);
                 //Plays the muzzle flash effect.
-                muzzleFlash.ActivateMachinegunFlash();
+                //muzzleFlash.ActivateMachinegunFlash();
                 Instantiate(P2bullet, new Vector3(shotSpawns[0].position.x + 0.5f, shotSpawns[0].position.y, shotSpawns[0].position.z), shotSpawns[0].rotation);
                 Instantiate(P2bullet, new Vector3(shotSpawns[0].position.x + -0.5f, shotSpawns[0].position.y, shotSpawns[0].position.z), shotSpawns[0].rotation);
             }
             else if (P2currentWLevel == 3 && Time.time > nextFire)
             {
+                fireRate = 0.10f;
                 nextFire = Time.time + fireRate;
                 primaryWeaponSound.PlayOneShot(weaponSounds[0]);
                 //Plays the muzzle flash effect.
-                muzzleFlash.ActivateMachinegunFlash();
+                //muzzleFlash.ActivateMachinegunFlash();
                 foreach (var shotSpawn in shotSpawns)
                 {
                     Instantiate(P2bullet, shotSpawn.position, shotSpawn.rotation);
@@ -347,18 +353,20 @@ public class PlayerWeaponController : MonoBehaviour
             }
             else if (P2currentWLevel == 4 && Time.time > nextFire)
             {
+                fireRate = 0.10f;
                 primaryWeaponSound.PlayOneShot(weaponSounds[0]);
                 //How to use FanFire()
                 //int numberOfShots, float spreadAngleIncrementDefault
                 //Plays the muzzle flash effect.
-                muzzleFlash.ActivateMachinegunFlash();
+                //muzzleFlash.ActivateMachinegunFlash();
                 P2FanFire(4, 2.0f);
             }
             else if (P2currentWLevel == 5 && Time.time > nextFire)
             {
+                fireRate = 0.10f;
                 primaryWeaponSound.PlayOneShot(weaponSounds[0]);
                 //Plays the muzzle flash effect.
-                muzzleFlash.ActivateMachinegunFlash();
+                //muzzleFlash.ActivateMachinegunFlash();
                 P2FanFire(5, 3.0f);
             }
         }
@@ -542,7 +550,7 @@ public class PlayerWeaponController : MonoBehaviour
         {
             if (P1currentSecondaryLevel == 1 && Time.time > nextSecondaryFire)
             {
-                secondaryFireRate = 2;
+                secondaryFireRate = 2.0f;
                 nextSecondaryFire = Time.time + secondaryFireRate;
                 secondaryWeaponSound.PlayOneShot(weaponSounds[3]);
                 foreach (var secondarySpawn in secondarySpawns)
@@ -562,23 +570,23 @@ public class PlayerWeaponController : MonoBehaviour
             }
             else if (P1currentSecondaryLevel == 3 && Time.time > nextSecondaryFire)
             {
+                secondaryFireRate = 1.75f;
                 nextSecondaryFire = Time.time + secondaryFireRate;
                 secondaryWeaponSound.PlayOneShot(weaponSounds[3]);
-                secondaryFireRate = 1.75f;
                 P1SecondaryFanFire(2, 3, 4);
             }
             else if (P1currentSecondaryLevel == 4 && Time.time > nextSecondaryFire)
             {
-                nextSecondaryFire = Time.time + secondaryFireRate;
-                secondaryWeaponSound.PlayOneShot(weaponSounds[3]);
                 secondaryFireRate = 1.5f;
+                nextSecondaryFire = Time.time + secondaryFireRate;
+                secondaryWeaponSound.PlayOneShot(weaponSounds[3]);                
                 P1SecondaryFanFire(2, 3, 4);
             }
             else if (P1currentSecondaryLevel == 5 && Time.time > nextSecondaryFire)
             {
+                secondaryFireRate = 1.5f;
                 nextSecondaryFire = Time.time + secondaryFireRate;
                 secondaryWeaponSound.PlayOneShot(weaponSounds[3]);
-                secondaryFireRate = 1.5f;
                 P1SecondaryFanFire(3, 3, 5);
             }
         }
@@ -607,23 +615,23 @@ public class PlayerWeaponController : MonoBehaviour
             }
             else if (P2currentSecondaryLevel == 3 && Time.time > nextSecondaryFire)
             {
+                secondaryFireRate = 1.75f;
                 nextSecondaryFire = Time.time + secondaryFireRate;
                 secondaryWeaponSound.PlayOneShot(weaponSounds[3]);
-                secondaryFireRate = 1.75f;
                 P2SecondaryFanFire(2, 3, 4);
             }
             else if (P2currentSecondaryLevel == 4 && Time.time > nextSecondaryFire)
             {
+                secondaryFireRate = 1.5f;
                 nextSecondaryFire = Time.time + secondaryFireRate;
                 secondaryWeaponSound.PlayOneShot(weaponSounds[3]);
-                secondaryFireRate = 1.5f;
                 P2SecondaryFanFire(2, 3, 4);
             }
             else if (P2currentSecondaryLevel == 5 && Time.time > nextSecondaryFire)
             {
+                secondaryFireRate = 1.5f;
                 nextSecondaryFire = Time.time + secondaryFireRate;
                 secondaryWeaponSound.PlayOneShot(weaponSounds[3]);
-                secondaryFireRate = 1.5f;
                 P2SecondaryFanFire(3, 3, 5);
             }
         }
