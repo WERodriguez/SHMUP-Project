@@ -125,13 +125,12 @@ public class GameOverController : MonoBehaviour
 
 		DeactivateGlow ();
 
-		yield return new WaitForSeconds (3.5f);
+		yield return new WaitForSeconds (3f);
+
 		waiting = true;
 	}
-
     IEnumerator SingleTimer()
     {
-        yield return new WaitForSeconds(4f);
         matchScore.text = "" + currentTotalScore;
 
         yield return new WaitForSeconds(1f);
@@ -142,7 +141,6 @@ public class GameOverController : MonoBehaviour
     }
     IEnumerator DoubleTimer()
     {
-        yield return new WaitForSeconds(4f);
         P1matchScore.text = "" + currentTotalScore;
         P2matchScore.text = "" + currentTotalScore;
 

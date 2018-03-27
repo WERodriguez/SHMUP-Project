@@ -7,6 +7,7 @@ using UnityEngine.SceneManagement;
 public class ScoreScreenController : MonoBehaviour
 {
     private int glowTracker;
+    private bool waiting;
 
     public Image nextGlow;
     public Image hangarGlow;
@@ -67,10 +68,73 @@ public class ScoreScreenController : MonoBehaviour
         P1screen.SetActive(false);
         P2screen.SetActive(false);
 
+        DeactivateGlow();
+
         glowTracker = 1;
+        waiting = false;
     }
 
     private void Start()
+    {
+        StartCoroutine(Timer());
+    }
+
+    private void Update()
+    {
+        if (waiting)
+        {
+            SetPlayerScore();
+
+            if (MainMenuController.onePlayer)
+            {
+                StartCoroutine(SingleTimer());
+            }
+            else
+            {
+                StartCoroutine(DoubleTimer());
+            }
+
+            if (glowTracker <= 1)
+            {
+                glowTracker = 1;
+
+                DeactivateGlow();
+
+                nextGlow.fillAmount = 1;
+            }
+            if (glowTracker >= 2)
+            {
+                glowTracker = 2;
+
+                DeactivateGlow();
+
+                hangarGlow.fillAmount = 1;
+            }
+
+            if (Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.Alpha8) || Input.GetKeyDown(KeyCode.Alpha4) || Input.GetKeyDown(KeyCode.Keypad8) || Input.GetKeyDown(KeyCode.Keypad4))
+            {
+                glowTracker--;
+            }
+            if (Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.D) || Input.GetKeyDown(KeyCode.Alpha5) || Input.GetKeyDown(KeyCode.Alpha6) || Input.GetKeyDown(KeyCode.Keypad5) || Input.GetKeyDown(KeyCode.Keypad6))
+            {
+                glowTracker++;
+            }
+
+            if (Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.Alpha0) || Input.GetKeyDown(KeyCode.Keypad0))
+            {
+                if (glowTracker <= 1)
+                {
+                    NexButton();
+                }
+                if (glowTracker >= 2)
+                {
+                    HangarButton();
+                }
+            }
+        }
+    }
+
+    IEnumerator Timer()
     {
         hangarButton.SetActive(true);
         nextButton.SetActive(true);
@@ -84,63 +148,14 @@ public class ScoreScreenController : MonoBehaviour
             P1screen.SetActive(true);
             P2screen.SetActive(true);
         }
-    }
 
-    private void Update()
-    {
-        SetPlayerScore();
+        yield return new WaitForSeconds(4f);
 
-        if (MainMenuController.onePlayer)
-        {
-            StartCoroutine(SingleTimer());
-        }
-        else
-        {
-            StartCoroutine(DoubleTimer());
-        }
-
-        if (glowTracker <= 1)
-        {
-            glowTracker = 1;
-
-            DeactivateGlow();
-
-            nextGlow.fillAmount = 1;
-        }
-        if (glowTracker >= 2)
-        {
-            glowTracker = 2;
-
-            DeactivateGlow();
-
-            hangarGlow.fillAmount = 1;
-        }
-
-        if (Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.Alpha8) || Input.GetKeyDown(KeyCode.Alpha4) || Input.GetKeyDown(KeyCode.Keypad8) || Input.GetKeyDown(KeyCode.Keypad4))
-        {
-            glowTracker--;
-        }
-        if (Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.D) || Input.GetKeyDown(KeyCode.Alpha5) || Input.GetKeyDown(KeyCode.Alpha6) || Input.GetKeyDown(KeyCode.Keypad5) || Input.GetKeyDown(KeyCode.Keypad6))
-        {
-            glowTracker++;
-        }
-
-        if (Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.Alpha0) || Input.GetKeyDown(KeyCode.Keypad0))
-        {
-            if (glowTracker <= 1)
-            {
-                NexButton();
-            }
-            if (glowTracker >= 2)
-            {
-                HangarButton();
-            }
-        }
+        waiting = true;
     }
 
     IEnumerator SingleTimer()
     {
-        yield return new WaitForSeconds(4f);
         matchScore.text = "" + currentTotalScore;
 
         yield return new WaitForSeconds(1f);
@@ -163,7 +178,6 @@ public class ScoreScreenController : MonoBehaviour
     }
     IEnumerator DoubleTimer()
     {
-        yield return new WaitForSeconds(4f);
         P1matchScore.text = "" + currentTotalScore;
         P2matchScore.text = "" + currentTotalScore;
 

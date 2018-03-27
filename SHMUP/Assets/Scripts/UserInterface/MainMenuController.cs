@@ -106,7 +106,6 @@ public class MainMenuController : MonoBehaviour
 
 		waiting = true;
     }
-
     private void ActivateMainMenu()
     {
         mainMenuCanvas.SetActive(true);

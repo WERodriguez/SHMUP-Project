@@ -46,10 +46,9 @@ public class PlayerController : MonoBehaviour
 	// Update is called once per frame
 	void Update ()
     {
-        if(P1isDead || P2isDead)
+        if (P1isDead || P2isDead)
         {
             return;
-            
         }
 
         //Player 1 Fire Control.
