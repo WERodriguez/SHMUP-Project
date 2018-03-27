@@ -106,12 +106,12 @@ public class PlayerWeaponController : MonoBehaviour
     public AudioSource superWeaponSound;
 
     //Muzzle flash code
-    //public MuzzleFlash muzzleFlash;
+    public MuzzleFlash muzzleFlash;
 
     void Start()
     {
         //Finds the muzzle flash.
-        //muzzleFlash = GetComponent<MuzzleFlash>();
+        muzzleFlash = GetComponent<MuzzleFlash>();
 
         audioSources = GetComponents<AudioSource>();
         weaponSounds = new AudioClip[]
@@ -270,7 +270,7 @@ public class PlayerWeaponController : MonoBehaviour
                 //Plays the sound all the way through regardless of how quickly it's called.
                 primaryWeaponSound.PlayOneShot(weaponSounds[0]);
                 //Plays the muzzle flash effect.
-                //muzzleFlash.ActivateMachinegunFlash();
+                muzzleFlash.ActivateMachinegunFlash();
                 Instantiate(P1bullet, shotSpawns[0].position, shotSpawns[0].rotation);
             }
             //Spawns 1 Bullet from all hard points
@@ -279,7 +279,7 @@ public class PlayerWeaponController : MonoBehaviour
                 nextFire = Time.time + fireRate;
                 primaryWeaponSound.PlayOneShot(weaponSounds[0]);
                 //Plays the muzzle flash effect.
-                //muzzleFlash.ActivateMachinegunFlash();
+                muzzleFlash.ActivateMachinegunFlash();
                 Instantiate(P1bullet, new Vector3(shotSpawns[0].position.x + 0.5f, shotSpawns[0].position.y, shotSpawns[0].position.z), shotSpawns[0].rotation);
                 Instantiate(P1bullet, new Vector3(shotSpawns[0].position.x + -0.5f, shotSpawns[0].position.y, shotSpawns[0].position.z), shotSpawns[0].rotation);
             }
@@ -288,7 +288,7 @@ public class PlayerWeaponController : MonoBehaviour
                 nextFire = Time.time + fireRate;
                 primaryWeaponSound.PlayOneShot(weaponSounds[0]);
                 //Plays the muzzle flash effect.
-                //muzzleFlash.ActivateMachinegunFlash();
+                muzzleFlash.ActivateMachinegunFlash();
                 foreach (var shotSpawn in shotSpawns)
                 {
                     Instantiate(P1bullet, shotSpawn.position, shotSpawn.rotation);
@@ -300,14 +300,14 @@ public class PlayerWeaponController : MonoBehaviour
                 //How to use FanFire()
                 //int numberOfShots, float spreadAngleIncrementDefault
                 //Plays the muzzle flash effect.
-                //muzzleFlash.ActivateMachinegunFlash();
+                muzzleFlash.ActivateMachinegunFlash();
                 P1FanFire(4, 2.0f);
             }
             else if (P1currentWLevel == 5 && Time.time > nextFire)
             {
                 primaryWeaponSound.PlayOneShot(weaponSounds[0]);
                 //Plays the muzzle flash effect.
-                //muzzleFlash.ActivateMachinegunFlash();
+                muzzleFlash.ActivateMachinegunFlash();
                 P1FanFire(5, 3.0f);
             }
         }
@@ -321,7 +321,7 @@ public class PlayerWeaponController : MonoBehaviour
                 nextFire = Time.time + fireRate;
                 primaryWeaponSound.PlayOneShot(weaponSounds[0]);
                 //Plays the muzzle flash effect.
-                //muzzleFlash.ActivateMachinegunFlash();
+                muzzleFlash.ActivateMachinegunFlash();
                 Instantiate(P2bullet, shotSpawns[0].position, shotSpawns[0].rotation);
             }
             //Spawns 1 Bullet from all hard points
@@ -330,7 +330,7 @@ public class PlayerWeaponController : MonoBehaviour
                 nextFire = Time.time + fireRate;
                 primaryWeaponSound.PlayOneShot(weaponSounds[0]);
                 //Plays the muzzle flash effect.
-                //muzzleFlash.ActivateMachinegunFlash();
+                muzzleFlash.ActivateMachinegunFlash();
                 Instantiate(P2bullet, new Vector3(shotSpawns[0].position.x + 0.5f, shotSpawns[0].position.y, shotSpawns[0].position.z), shotSpawns[0].rotation);
                 Instantiate(P2bullet, new Vector3(shotSpawns[0].position.x + -0.5f, shotSpawns[0].position.y, shotSpawns[0].position.z), shotSpawns[0].rotation);
             }
@@ -339,7 +339,7 @@ public class PlayerWeaponController : MonoBehaviour
                 nextFire = Time.time + fireRate;
                 primaryWeaponSound.PlayOneShot(weaponSounds[0]);
                 //Plays the muzzle flash effect.
-                //muzzleFlash.ActivateMachinegunFlash();
+                muzzleFlash.ActivateMachinegunFlash();
                 foreach (var shotSpawn in shotSpawns)
                 {
                     Instantiate(P2bullet, shotSpawn.position, shotSpawn.rotation);
@@ -351,14 +351,14 @@ public class PlayerWeaponController : MonoBehaviour
                 //How to use FanFire()
                 //int numberOfShots, float spreadAngleIncrementDefault
                 //Plays the muzzle flash effect.
-                //muzzleFlash.ActivateMachinegunFlash();
+                muzzleFlash.ActivateMachinegunFlash();
                 P2FanFire(4, 2.0f);
             }
             else if (P2currentWLevel == 5 && Time.time > nextFire)
             {
                 primaryWeaponSound.PlayOneShot(weaponSounds[0]);
                 //Plays the muzzle flash effect.
-                //muzzleFlash.ActivateMachinegunFlash();
+                muzzleFlash.ActivateMachinegunFlash();
                 P2FanFire(5, 3.0f);
             }
         }
@@ -831,7 +831,7 @@ public class PlayerWeaponController : MonoBehaviour
                 nextSuperFire = Time.time + superFireRate;
                 superWeaponSound.PlayOneShot(weaponSounds[5]);
                 P1superAmmo--;
-                P1superAmmoCounter.text = "Super Ammo: " + P1superAmmo;
+                P1superAmmoCounter.text = "" + P1superAmmo;
                 Instantiate(P1superBullet, shotSpawns[0].position, shotSpawns[0].rotation);
             }
         }
@@ -844,7 +844,7 @@ public class PlayerWeaponController : MonoBehaviour
                 nextSuperFire = Time.time + superFireRate;
                 superWeaponSound.PlayOneShot(weaponSounds[5]);
                 P2superAmmo--;
-                P2superAmmoCounter.text = "Super Ammo: " + P2superAmmo;
+                P2superAmmoCounter.text = "" + P2superAmmo;
                 Instantiate(P2superBullet, shotSpawns[0].position, shotSpawns[0].rotation);
             }
         }
@@ -863,7 +863,7 @@ public class PlayerWeaponController : MonoBehaviour
                 nextSuperFire = Time.time + superFireRate;
                 superWeaponSound.PlayOneShot(weaponSounds[6]);
                 P1superAmmo--;
-                P1superAmmoCounter.text = "Super Ammo: " + P1superAmmo;
+                P1superAmmoCounter.text = "" + P1superAmmo;
                 childSuperWeapon = Instantiate(P1superBullet, shotSpawns[0].transform.position, shotSpawns[0].transform.rotation) as GameObject;
                 childSuperWeapon.transform.parent = gameObject.transform;
             }
@@ -877,7 +877,7 @@ public class PlayerWeaponController : MonoBehaviour
                 nextSuperFire = Time.time + superFireRate;
                 superWeaponSound.PlayOneShot(weaponSounds[6]);
                 P2superAmmo--;
-                P2superAmmoCounter.text = "Super Ammo: " + P2superAmmo;
+                P2superAmmoCounter.text = "" + P2superAmmo;
                 childSuperWeapon = Instantiate(P2superBullet, shotSpawns[0].transform.position, shotSpawns[0].transform.rotation) as GameObject;
                 childSuperWeapon.transform.parent = gameObject.transform;
             }
@@ -898,7 +898,7 @@ public class PlayerWeaponController : MonoBehaviour
                 nextSuperFire = Time.time + superFireRate;
                 superWeaponSound.PlayOneShot(weaponSounds[7]);
                 P1superAmmo--;
-                P1superAmmoCounter.text = "Super Ammo: " + P1superAmmo;
+                P1superAmmoCounter.text = "" + P1superAmmo;
                 childSuperWeapon = Instantiate(P1superBullet, gameObject.transform.position, gameObject.transform.rotation) as GameObject;
                 childSuperWeapon.transform.parent = gameObject.transform;
             }
@@ -912,7 +912,7 @@ public class PlayerWeaponController : MonoBehaviour
                 nextSuperFire = Time.time + superFireRate;
                 superWeaponSound.PlayOneShot(weaponSounds[7]);
                 P2superAmmo--;
-                P2superAmmoCounter.text = "Super Ammo: " + P2superAmmo;
+                P2superAmmoCounter.text = "" + P2superAmmo;
                 childSuperWeapon = Instantiate(P2superBullet, gameObject.transform.position, gameObject.transform.rotation) as GameObject;
                 childSuperWeapon.transform.parent = gameObject.transform;
             }
@@ -1404,7 +1404,7 @@ public class PlayerWeaponController : MonoBehaviour
             }
 
             P1superAmmo += 1;
-            P1superAmmoCounter.text = "Super Ammo: " + P1superAmmo;
+            P1superAmmoCounter.text = "" + P1superAmmo;
         }
         //player 2
         if (whichPlayer)
@@ -1418,7 +1418,7 @@ public class PlayerWeaponController : MonoBehaviour
             }
 
             P2superAmmo += 1;
-            P2superAmmoCounter.text = "Super Ammo: " + P2superAmmo;
+            P2superAmmoCounter.text = "" + P2superAmmo;
         }
     }
 
@@ -1439,7 +1439,7 @@ public class PlayerWeaponController : MonoBehaviour
 
     private void SettingUpPlayer1Weapon()
     {
-        P1superAmmoCounter.text = "Super Ammo: " + P1superAmmo;
+        P1superAmmoCounter.text = "" + P1superAmmo;
 
         P1primaryWeaponSelector = SelectionMenuController.P1primaryType - 1;
         P1secondaryWeaponSelector = SelectionMenuController.P1secondaryType - 1;
@@ -1447,7 +1447,7 @@ public class PlayerWeaponController : MonoBehaviour
     }
     private void SettingUpPlayer2Weapon()
     {
-        P2superAmmoCounter.text = "Super Ammo: " + P2superAmmo;
+        P2superAmmoCounter.text = "" + P2superAmmo;
 
         P2primaryWeaponSelector = SelectionMenuController.P2primaryType - 1;
         P2secondaryWeaponSelector = SelectionMenuController.P2secondaryType - 1;
