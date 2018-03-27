@@ -375,7 +375,7 @@ public class SelectionMenuController : MonoBehaviour
 
                             DeactivateStat();
                             shipStat.enabled = true;
-                            shipStat.text = "Name: Light Ship\nHealth: 100\nShield: 75\nLives: 2/5\nDescription: ";
+                            shipStat.text = "Name: Light Ship\nDescription: \nHealth: 100\nShield: 75\nLives: 2/5";
                         }
                         if (primary == true)
                         {
@@ -384,7 +384,7 @@ public class SelectionMenuController : MonoBehaviour
 
                             DeactivateStat();
                             primaryStat.enabled = true;
-                            primaryStat.text = "Name: Machine Gun\nFire Rate: *****\nDamage: *\nArea of Effect: *\nDescription: ";
+                            primaryStat.text = "Name: Machine Gun\nDescription: \nFire Rate: *****\nDamage: *\nArea of Effect: *";
                         }
                         if (secondary == true)
                         {
@@ -393,7 +393,7 @@ public class SelectionMenuController : MonoBehaviour
 
                             DeactivateStat();
                             secondaryStat.enabled = true;
-                            secondaryStat.text = "Name: Homing Missiles\nFire Rate: *\nDamage: *****\nArea of Effect: ****\nDescription: ";
+                            secondaryStat.text = "Name: Homing Missiles\nDescription: \nFire Rate: *\nDamage: *****\nArea of Effect: ****\n";
                         }
                         if (special == true)
                         {
@@ -402,7 +402,7 @@ public class SelectionMenuController : MonoBehaviour
 
                             DeactivateStat();
                             specialStat.enabled = true;
-                            specialStat.text = "Name: Mega Bomb\nDamage: ****\nArea of Effect: *****\nDuration: **\nAmmo: 3/5\nDescription: ";
+                            specialStat.text = "Name: Mega Bomb\nDescription: \nDamage: ****\nArea of Effect: *****\nDuration: **\n";
                         }
                     }
                     if (P1toggleData == 2)
@@ -423,7 +423,7 @@ public class SelectionMenuController : MonoBehaviour
 
                             DeactivateStat();
                             shipStat.enabled = true;
-                            shipStat.text = "Name: Medium Ship\nHealth: 125\nShield: 100\nLives: 2/5\nDescription: ";
+                            shipStat.text = "Name: Medium Ship\nDescription: \nHealth: 125\nShield: 100\nLives: 2/5";
                         }
                         if (primary == true)
                         {
@@ -432,7 +432,7 @@ public class SelectionMenuController : MonoBehaviour
 
                             DeactivateStat();
                             primaryStat.enabled = true;
-                            primaryStat.text = "Name: Flak Cannon\nFire Rate: ***\nDamage: ***\nArea of Effect: ***\nDescription: ";
+                            primaryStat.text = "Name: Flak Cannon\nDescription: \nFire Rate: ***\nDamage: ***\nArea of Effect: ***";
                         }
                         if (secondary == true)
                         {
@@ -441,7 +441,7 @@ public class SelectionMenuController : MonoBehaviour
 
                             DeactivateStat();
                             secondaryStat.enabled = true;
-                            secondaryStat.text = "Name: Sweeper Pods\nFire Rate: *****\nDamage: *\nArea of Effect: **\nDescription: ";
+                            secondaryStat.text = "Name: Sweeper Pods\nDescription: \nFire Rate: *****\nDamage: *\nArea of Effect: **";
                         }
                         if (special == true)
                         {
@@ -450,7 +450,7 @@ public class SelectionMenuController : MonoBehaviour
 
                             DeactivateStat();
                             specialStat.enabled = true;
-                            specialStat.text = "Name: Beam Cannon\nDamage: *****\nArea of Effect: *****\nDuration: *****\nAmmo: 3/5\nDescription: ";
+                            specialStat.text = "Name: Beam Cannon\nDescription: \nDamage: *****\nArea of Effect: *****\nDuration: *****";
                         }
                     }
                     if (P1toggleData == 3)
@@ -471,7 +471,7 @@ public class SelectionMenuController : MonoBehaviour
 
                             DeactivateStat();
                             shipStat.enabled = true;
-                            shipStat.text = "Name: Light Ship\nHealth: 150\nShield: 125\nLives: 2/5\nDescription: ";
+                            shipStat.text = "Name: Light Ship\nDescription: \nHealth: 150\nShield: 125\nLives: 2/5";
                         }
                         if (primary == true)
                         {
@@ -480,7 +480,7 @@ public class SelectionMenuController : MonoBehaviour
 
                             DeactivateStat();
                             primaryStat.enabled = true;
-                            primaryStat.text = "Name: PAC\nFire Rate: *\nDamage: *****\nArea of Effect: ***\nDescription: ";
+                            primaryStat.text = "Name: PAC\nDescription: \nFire Rate: *\nDamage: *****\nArea of Effect: ***";
                         }
                         if (secondary == true)
                         {
@@ -489,7 +489,7 @@ public class SelectionMenuController : MonoBehaviour
 
                             DeactivateStat();
                             secondaryStat.enabled = true;
-                            secondaryStat.text = "Name: Plasma Gun\nFire Rate: ***\nDamage: ***\nArea of Effect: ****\nDescription: ";
+                            secondaryStat.text = "Name: Plasma Gun\nDescription: \nFire Rate: ***\nDamage: ***\nArea of Effect: ****";
                         }
                         if (special == true)
                         {
@@ -498,7 +498,7 @@ public class SelectionMenuController : MonoBehaviour
 
                             DeactivateStat();
                             specialStat.enabled = true;
-                            specialStat.text = "Name: Super Shield\nDamage: **\nArea of Effect: **\nDuration: *****\nAmmo: 3/5\nDescription: ";
+                            specialStat.text = "Name: Super Shield\nDescription: \nDamage: **\nArea of Effect: **\nDuration: *****";
                         }
                     }
                     if (P1toggleData == 4)
@@ -519,7 +519,7 @@ public class SelectionMenuController : MonoBehaviour
 
                             DeactivateStat();
                             shipStat.enabled = true;
-                            shipStat.text = "Name: Lambo Shooter\nHealth: 175\nShield: 150\nLives: 2/5\nDescription: ";
+                            shipStat.text = "Name: Lambo Shooter\nDescription: \nHealth: 175\nShield: 150\nLives: 2/5";
                         }
                         if (primary == true)
                         {
@@ -530,7 +530,7 @@ public class SelectionMenuController : MonoBehaviour
 
                             DeactivateStat();
                             primaryStat.enabled = true;
-                            primaryStat.text = "Name: PAC\nFire Rate: *\nDamage: *****\nArea of Effect: ***\nDescription: ";
+                            primaryStat.text = "Name: PAC\nDescription: \nFire Rate: *\nDamage: *****\nArea of Effect: ***";
                         }
                         if (secondary == true)
                         {
@@ -541,7 +541,7 @@ public class SelectionMenuController : MonoBehaviour
 
                             DeactivateStat();
                             secondaryStat.enabled = true;
-                            secondaryStat.text = "Name: Plasma Gun\nFire Rate: ***\nDamage: ***\nArea of Effect: ****\nDescription: ";
+                            secondaryStat.text = "Name: Plasma Gun\nDescription: \nFire Rate: ***\nDamage: ***\nArea of Effect: ****";
                         }
                         if (special == true)
                         {
@@ -552,7 +552,7 @@ public class SelectionMenuController : MonoBehaviour
 
                             DeactivateStat();
                             specialStat.enabled = true;
-                            specialStat.text = "Name: Super Shield\nDamage: **\nArea of Effect: **\nDuration: *****\nAmmo: 3/5\nDescription: ";
+                            specialStat.text = "Name: Super Shield\nDescription: \nDamage: **\nArea of Effect: **\nDuration: *****";
                         }
                     }
                     if (P1toggleData >= 5)
@@ -577,7 +577,7 @@ public class SelectionMenuController : MonoBehaviour
 
                             DeactivateStat();
                             shipStat.enabled = true;
-                            shipStat.text = "Name: Truck Shooter\nHealth: 200\nShield: 200\nLives: 2/5\nDescription: ";
+                            shipStat.text = "Name: Truck Shooter\nDescription: \nHealth: 200\nShield: 200\nLives: 2/5";
                         }
                         if (primary == true)
                         {
@@ -588,7 +588,7 @@ public class SelectionMenuController : MonoBehaviour
 
                             DeactivateStat();
                             primaryStat.enabled = true;
-                            primaryStat.text = "Name: PAC\nFire Rate: *\nDamage: *****\nArea of Effect: ***\nDescription: ";
+                            primaryStat.text = "Name: PAC\nDescription: \nFire Rate: *\nDamage: *****\nArea of Effect: ***";
                         }
                         if (secondary == true)
                         {
@@ -599,7 +599,7 @@ public class SelectionMenuController : MonoBehaviour
 
                             DeactivateStat();
                             secondaryStat.enabled = true;
-                            secondaryStat.text = "Name: Plasma Gun\nFire Rate: ***\nDamage: ***\nArea of Effect: ****\nDescription: ";
+                            secondaryStat.text = "Name: Plasma Gun\nDescription: \nFire Rate: ***\nDamage: ***\nArea of Effect: ****";
                         }
                         if (special == true)
                         {
@@ -610,7 +610,7 @@ public class SelectionMenuController : MonoBehaviour
 
                             DeactivateStat();
                             specialStat.enabled = true;
-                            specialStat.text = "Name: Super Shield\nDamage: **\nArea of Effect: **\nDuration: *****\nAmmo: 3/5\nDescription: ";
+                            specialStat.text = "Name: Super Shield\nDescription: \nDamage: **\nArea of Effect: **\nDuration: *****";
                         }
                     }
 
@@ -936,7 +936,7 @@ public class SelectionMenuController : MonoBehaviour
 
                             DeactivateP1Stat();
                             P1shipStat.enabled = true;
-                            P1shipStat.text = "Name: Light Ship\nHealth: 100\nShield: 75\nLives: 2/5\nDescription: ";
+                            P1shipStat.text = "Name: Light Ship\nDescription: \nHealth: 100\nShield: 75\nLives: 2/5";
                         }
                         if (P1primary == true)
                         {
@@ -945,7 +945,7 @@ public class SelectionMenuController : MonoBehaviour
 
                             DeactivateP1Stat();
                             P1primaryStat.enabled = true;
-                            P1primaryStat.text = "Name: Machine Gun\nFire Rate: *****\nDamage: *\nArea of Effect: *\nDescription: ";
+                            P1primaryStat.text = "Name: Machine Gun\nDescription: \nFire Rate: *****\nDamage: *\nArea of Effect: *";
                         }
                         if (P1secondary == true)
                         {
@@ -954,7 +954,7 @@ public class SelectionMenuController : MonoBehaviour
 
                             DeactivateP1Stat();
                             P1secondaryStat.enabled = true;
-                            P1secondaryStat.text = "Name: Homing Missiles\nFire Rate: *\nDamage: *****\nArea of Effect: ****\nDescription: ";
+                            P1secondaryStat.text = "Name: Homing Missiles\nDescription: \nFire Rate: *\nDamage: *****\nArea of Effect: ****";
                         }
                         if (P1special == true)
                         {
@@ -963,7 +963,7 @@ public class SelectionMenuController : MonoBehaviour
 
                             DeactivateP1Stat();
                             P1specialStat.enabled = true;
-                            P1specialStat.text = "Name: Mega Bomb\nDamage: ****\nArea of Effect: *****\nDuration: **\nAmmo: 3/5\nDescription: ";
+                            P1specialStat.text = "Name: Mega Bomb\nDescription: \nDamage: ****\nArea of Effect: *****\nDuration: **";
                         }
                     }
                     if (P2toggleData <= 1)
@@ -989,7 +989,7 @@ public class SelectionMenuController : MonoBehaviour
 
                             DeactivateP2Stat();
                             P2shipStat.enabled = true;
-                            P2shipStat.text = "Name: Light Ship\nHealth: 100\nShield: 75\nLives: 2/5\nDescription: ";
+                            P2shipStat.text = "Name: Light Ship\nDescription: \nHealth: 100\nShield: 75\nLives: 2/5";
                         }
                         if (P2primary == true)
                         {
@@ -998,7 +998,7 @@ public class SelectionMenuController : MonoBehaviour
 
                             DeactivateP2Stat();
                             P2primaryStat.enabled = true;
-                            P2primaryStat.text = "Name: Machine Gun\nFire Rate: *****\nDamage: *\nArea of Effect: *\nDescription: ";
+                            P2primaryStat.text = "Name: Machine Gun\nDescription: \nFire Rate: *****\nDamage: *\nArea of Effect: *";
                         }
                         if (P2secondary == true)
                         {
@@ -1007,7 +1007,7 @@ public class SelectionMenuController : MonoBehaviour
 
                             DeactivateP2Stat();
                             P2secondaryStat.enabled = true;
-                            P2secondaryStat.text = "Name: Homing Missiles\nFire Rate: *\nDamage: *****\nArea of Effect: ****\nDescription: ";
+                            P2secondaryStat.text = "Name: Homing Missiles\nDescription: \nFire Rate: *\nDamage: *****\nArea of Effect: ****";
                         }
                         if (P2special == true)
                         {
@@ -1016,7 +1016,7 @@ public class SelectionMenuController : MonoBehaviour
 
                             DeactivateP2Stat();
                             P2specialStat.enabled = true;
-                            P2specialStat.text = "Name: Mega Bomb\nDamage: ****\nArea of Effect: *****\nDuration: **\nAmmo: 3/5\nDescription: ";
+                            P2specialStat.text = "Name: Mega Bomb\nDescription: \nDamage: ****\nArea of Effect: *****\nDuration: **";
                         }
                     }
 
@@ -1038,7 +1038,7 @@ public class SelectionMenuController : MonoBehaviour
 
                             DeactivateP1Stat();
                             P1shipStat.enabled = true;
-                            P1shipStat.text = "Name: Medium Ship\nHealth: 125\nShield: 100\nLives: 2/5\nDescription: ";
+                            P1shipStat.text = "Name: Medium Ship\nDescription: \nHealth: 125\nShield: 100\nLives: 2/5";
                         }
                         if (P1primary == true)
                         {
@@ -1047,7 +1047,7 @@ public class SelectionMenuController : MonoBehaviour
 
                             DeactivateP1Stat();
                             P1primaryStat.enabled = true;
-                            P1primaryStat.text = "Name: Flak Cannon\nFire Rate: ***\nDamage: ***\nArea of Effect: *****\nDescription: ";
+                            P1primaryStat.text = "Name: Flak Cannon\nDescription: \nFire Rate: ***\nDamage: ***\nArea of Effect: *****";
                         }
                         if (P1secondary == true)
                         {
@@ -1056,7 +1056,7 @@ public class SelectionMenuController : MonoBehaviour
 
                             DeactivateP1Stat();
                             P1secondaryStat.enabled = true;
-                            P1secondaryStat.text = "Name: Sweeper Pods\nFire Rate: *****\nDamage: *\nArea of Effect: **\nDescription: ";
+                            P1secondaryStat.text = "Name: Sweeper Pods\nDescription: \nFire Rate: *****\nDamage: *\nArea of Effect: **";
                         }
                         if (P1special == true)
                         {
@@ -1065,7 +1065,7 @@ public class SelectionMenuController : MonoBehaviour
 
                             DeactivateP1Stat();
                             P1specialStat.enabled = true;
-                            P1specialStat.text = "Name: Beam Cannon\nDamage: *****\nArea of Effect: *****\nDuration: *****\nAmmo: 3/5\nDescription: ";
+                            P1specialStat.text = "Name: Beam Cannon\nDescription: \nDamage: *****\nArea of Effect: *****\nDuration: *****";
                         }
                     }
                     if (P2toggleData == 2)
@@ -1086,16 +1086,16 @@ public class SelectionMenuController : MonoBehaviour
 
                             DeactivateP2Stat();
                             P2shipStat.enabled = true;
-                            P2shipStat.text = "Name: Medium Ship\nHealth: 125\nShield: 100\nLives: 2/5\nDescription: ";
+                            P2shipStat.text = "Name: Medium Ship\nDescription: \nHealth: 125\nShield: 100\nLives: 2/5";
                         }
                         if (P2primary == true)
                         {
                             DeactivateP2PrimarySelect();
                             P2primary2.SetActive(true);
 
-                            DeactivateP1Stat();
-                            P1primaryStat.enabled = true;
-                            P1primaryStat.text = "Name: Flak Cannon\nFire Rate: ***\nDamage: ***\nArea of Effect: *****\nDescription: ";
+                            DeactivateP2Stat();
+                            P2primaryStat.enabled = true;
+                            P2primaryStat.text = "Name: Flak Cannon\nDescription: \nFire Rate: ***\nDamage: ***\nArea of Effect: *****";
                         }
                         if (P2secondary == true)
                         {
@@ -1104,7 +1104,7 @@ public class SelectionMenuController : MonoBehaviour
 
                             DeactivateP2Stat();
                             P2secondaryStat.enabled = true;
-                            P2secondaryStat.text = "Name: Sweeper Pods\nFire Rate: *****\nDamage: *\nArea of Effect: **\nDescription: ";
+                            P2secondaryStat.text = "Name: Sweeper Pods\nDescription: \nFire Rate: *****\nDamage: *\nArea of Effect: **";
                         }
                         if (P2special == true)
                         {
@@ -1113,7 +1113,7 @@ public class SelectionMenuController : MonoBehaviour
 
                             DeactivateP2Stat();
                             P2specialStat.enabled = true;
-                            P2specialStat.text = "Name: Beam Cannon\nDamage: *****\nArea of Effect: *****\nDuration: *****\nAmmo: 3/5\nDescription: ";
+                            P2specialStat.text = "Name: Beam Cannon\nDescription: \nDamage: *****\nArea of Effect: *****\nDuration: *****";
                         }
                     }
 
@@ -1126,7 +1126,7 @@ public class SelectionMenuController : MonoBehaviour
 
                             DeactivateP1Stat();
                             P1characterStat.enabled = true;
-                            P1characterStat.text = "Name: Character C\nDescription:";
+                            P1characterStat.text = "Name: Character C\nDescription: ";
                         }
                         if (P1ship == true)
                         {
@@ -1135,7 +1135,7 @@ public class SelectionMenuController : MonoBehaviour
 
                             DeactivateP1Stat();
                             P1shipStat.enabled = true;
-                            P1shipStat.text = "Name: Heavy Ship\nHealth: 150\nShield: 125\nLives: 2/5\nDescription: ";
+                            P1shipStat.text = "Name: Heavy Ship\nDescription: \nHealth: 150\nShield: 125\nLives: 2/5";
                         }
                         if (P1primary == true)
                         {
@@ -1144,7 +1144,7 @@ public class SelectionMenuController : MonoBehaviour
 
                             DeactivateP1Stat();
                             P1primaryStat.enabled = true;
-                            P1primaryStat.text = "Name: PAC\nFire Rate: *\nDamage: *****\nArea of Effect: ***\nDescription: ";
+                            P1primaryStat.text = "Name: PAC\nDescription: \nFire Rate: *\nDamage: *****\nArea of Effect: ***";
                         }
                         if (P1secondary == true)
                         {
@@ -1153,7 +1153,7 @@ public class SelectionMenuController : MonoBehaviour
 
                             DeactivateP1Stat();
                             P1secondaryStat.enabled = true;
-                            P1secondaryStat.text = "Name: Plasma Gun\nFire Rate: ***\nDamage: ***\nArea of Effect: ****\nDescription: ";
+                            P1secondaryStat.text = "Name: Plasma Gun\nDescription: \nFire Rate: ***\nDamage: ***\nArea of Effect: ****";
                         }
                         if (P1special == true)
                         {
@@ -1162,7 +1162,7 @@ public class SelectionMenuController : MonoBehaviour
 
                             DeactivateP1Stat();
                             P1specialStat.enabled = true;
-                            P1specialStat.text = "Name: Super Shield\nDamage: **\nArea of Effect: **\nDuration: *****\nAmmo: 3/5\nDescription: ";
+                            P1specialStat.text = "Name: Super Shield\nDescription: \nDamage: **\nArea of Effect: **\nDuration: *****";
                         }
                     }
                     if (P2toggleData == 3)
@@ -1183,7 +1183,7 @@ public class SelectionMenuController : MonoBehaviour
 
                             DeactivateP2Stat();
                             P2shipStat.enabled = true;
-                            P2shipStat.text = "Name: Heavy Ship\nHealth: 150\nShield: 125\nLives: 2/5\nDescription: ";
+                            P2shipStat.text = "Name: Heavy Ship\nDescription: \nHealth: 150\nShield: 125\nLives: 2/5";
                         }
                         if (P2primary == true)
                         {
@@ -1192,7 +1192,7 @@ public class SelectionMenuController : MonoBehaviour
 
                             DeactivateP2Stat();
                             P2primaryStat.enabled = true;
-                            P2primaryStat.text = "Name: PAC\nFire Rate: *\nDamage: *****\nArea of Effect: ***\nDescription: ";
+                            P2primaryStat.text = "Name: PAC\nDescription: \nFire Rate: *\nDamage: *****\nArea of Effect: ***";
                         }
                         if (P2secondary == true)
                         {
@@ -1201,7 +1201,7 @@ public class SelectionMenuController : MonoBehaviour
 
                             DeactivateP2Stat();
                             P2secondaryStat.enabled = true;
-                            P2secondaryStat.text = "Name: Plasma Gun\nFire Rate: ***\nDamage: ***\nArea of Effect: ****\nDescription: ";
+                            P2secondaryStat.text = "Name: Plasma Gun\nDescription: \nFire Rate: ***\nDamage: ***\nArea of Effect: ****";
                         }
                         if (P2special == true)
                         {
@@ -1210,7 +1210,7 @@ public class SelectionMenuController : MonoBehaviour
 
                             DeactivateP2Stat();
                             P2specialStat.enabled = true;
-                            P2specialStat.text = "Name: Super Shield\nDamage: **\nArea of Effect: **\nDuration: *****\nAmmo: 3/5\nDescription: ";
+                            P2specialStat.text = "Name: Super Shield\nDescription: \nDamage: **\nArea of Effect: **\nDuration: *****";
                         }
                     }
 
@@ -1232,7 +1232,7 @@ public class SelectionMenuController : MonoBehaviour
 
                             DeactivateP1Stat();
                             P1shipStat.enabled = true;
-                            P1shipStat.text = "Name: Lambo Shooter\nHealth: 175\nShield: 150\nLives: 2/5\nDescription: ";
+                            P1shipStat.text = "Name: Lambo Shooter\nDescription: \nHealth: 175\nShield: 150\nLives: 2/5";
                         }
                         if (P1primary == true)
                         {
@@ -1243,7 +1243,7 @@ public class SelectionMenuController : MonoBehaviour
 
                             DeactivateP1Stat();
                             P1primaryStat.enabled = true;
-                            P1primaryStat.text = "Name: PAC\nFire Rate: *\nDamage: *****\nArea of Effect: ***\nDescription: ";
+                            P1primaryStat.text = "Name: PAC\nDescription: \nFire Rate: *\nDamage: *****\nArea of Effect: ***";
                         }
                         if (P1secondary == true)
                         {
@@ -1254,7 +1254,7 @@ public class SelectionMenuController : MonoBehaviour
 
                             DeactivateP1Stat();
                             P1secondaryStat.enabled = true;
-                            P1secondaryStat.text = "Name: Plasma Gun\nFire Rate: ***\nDamage: ***\nArea of Effect: ****\nDescription: ";
+                            P1secondaryStat.text = "Name: Plasma Gun\nDescription: \nFire Rate: ***\nDamage: ***\nArea of Effect: ****";
                         }
                         if (P1special == true)
                         {
@@ -1265,7 +1265,7 @@ public class SelectionMenuController : MonoBehaviour
 
                             DeactivateP1Stat();
                             P1specialStat.enabled = true;
-                            P1specialStat.text = "Name: Super Shield\nDamage: **\nArea of Effect: **\nDuration: *****\nAmmo: 3/5\nDescription: ";
+                            P1specialStat.text = "Name: Super Shield\nDescription: \nDamage: **\nArea of Effect: **\nDuration: *****";
                         }
                     }
                     if (P2toggleData == 4)
@@ -1286,7 +1286,7 @@ public class SelectionMenuController : MonoBehaviour
 
                             DeactivateP2Stat();
                             P2shipStat.enabled = true;
-                            P2shipStat.text = "Name: Lambo Shooter\nHealth: 175\nShield: 150\nLives: 2/5\nDescription: ";
+                            P2shipStat.text = "Name: Lambo Shooter\nDescription: \nHealth: 175\nShield: 150\nLives: 2/5";
                         }
                         if (P2primary == true)
                         {
@@ -1297,7 +1297,7 @@ public class SelectionMenuController : MonoBehaviour
 
                             DeactivateP2Stat();
                             P2primaryStat.enabled = true;
-                            P2primaryStat.text = "Name: PAC\nFire Rate: *\nDamage: *****\nArea of Effect: ***\nDescription: ";
+                            P2primaryStat.text = "Name: PAC\nDescription: \nFire Rate: *\nDamage: *****\nArea of Effect: ***";
                         }
                         if (P2secondary == true)
                         {
@@ -1308,7 +1308,7 @@ public class SelectionMenuController : MonoBehaviour
 
                             DeactivateP2Stat();
                             P2secondaryStat.enabled = true;
-                            P2secondaryStat.text = "Name: Plasma Gun\nFire Rate: ***\nDamage: ***\nArea of Effect: ****\nDescription: ";
+                            P2secondaryStat.text = "Name: Plasma Gun\nDescription: \nFire Rate: ***\nDamage: ***\nArea of Effect: ****";
                         }
                         if (P2special == true)
                         {
@@ -1319,7 +1319,7 @@ public class SelectionMenuController : MonoBehaviour
 
                             DeactivateP2Stat();
                             P2specialStat.enabled = true;
-                            P2specialStat.text = "Name: Super Shield\nDamage: **\nArea of Effect: **\nDuration: *****\nAmmo: 3/5\nDescription: ";
+                            P2specialStat.text = "Name: Super Shield\nDescription: \nDamage: **\nArea of Effect: **\nDuration: *****";
                         }
                     }
 
@@ -1345,7 +1345,7 @@ public class SelectionMenuController : MonoBehaviour
 
                             DeactivateP1Stat();
                             P1shipStat.enabled = true;
-                            P1shipStat.text = "Name: Truck Shooter\nHealth: 200\nShield: 200\nLives: 2/5\nDescription: ";
+                            P1shipStat.text = "Name: Truck Shooter\nDescription: \nHealth: 200\nShield: 200\nLives: 2/5";
                         }
                         if (P1primary == true)
                         {
@@ -1356,7 +1356,7 @@ public class SelectionMenuController : MonoBehaviour
 
                             DeactivateP1Stat();
                             P1primaryStat.enabled = true;
-                            P1primaryStat.text = "Name: PAC\nFire Rate: *\nDamage: *****\nArea of Effect: ***\nDescription: ";
+                            P1primaryStat.text = "Name: PAC\nDescription: \nFire Rate: *\nDamage: *****\nArea of Effect: ***";
                         }
                         if (P1secondary == true)
                         {
@@ -1367,7 +1367,7 @@ public class SelectionMenuController : MonoBehaviour
 
                             DeactivateP1Stat();
                             P1secondaryStat.enabled = true;
-                            P1secondaryStat.text = "Name: Plasma Gun\nFire Rate: ***\nDamage: ***\nArea of Effect: ****\nDescription: ";
+                            P1secondaryStat.text = "Name: Plasma Gun\nDescription: \nFire Rate: ***\nDamage: ***\nArea of Effect: ****";
                         }
                         if (P1special == true)
                         {
@@ -1378,7 +1378,7 @@ public class SelectionMenuController : MonoBehaviour
 
                             DeactivateP1Stat();
                             P1specialStat.enabled = true;
-                            P1specialStat.text = "Name: Super Shield\nDamage: **\nArea of Effect: **\nDuration: *****\nAmmo: 3/5\nDescription: ";
+                            P1specialStat.text = "Name: Super Shield\nDescription: \nDamage: **\nArea of Effect: **\nDuration: *****";
                         }
                     }
                     if (P2toggleData >= 5)
@@ -1403,7 +1403,7 @@ public class SelectionMenuController : MonoBehaviour
 
                             DeactivateP2Stat();
                             P2shipStat.enabled = true;
-                            P2shipStat.text = "Name: Truck Shooter\nHealth: 200\nShield: 200\nLives: 2/5\nDescription: ";
+                            P2shipStat.text = "Name: Truck Shooter\nDescription: \nHealth: 200\nShield: 200\nLives: 2/5";
                         }
                         if (P2primary == true)
                         {
@@ -1414,7 +1414,7 @@ public class SelectionMenuController : MonoBehaviour
 
                             DeactivateP2Stat();
                             P2primaryStat.enabled = true;
-                            P2primaryStat.text = "Name: PAC\nFire Rate: *\nDamage: *****\nArea of Effect: ***\nDescription: ";
+                            P2primaryStat.text = "Name: PAC\nDescription: \nFire Rate: *\nDamage: *****\nArea of Effect: ***";
                         }
                         if (P2secondary == true)
                         {
@@ -1425,7 +1425,7 @@ public class SelectionMenuController : MonoBehaviour
 
                             DeactivateP2Stat();
                             P2secondaryStat.enabled = true;
-                            P2secondaryStat.text = "Name: Plasma Gun\nFire Rate: ***\nDamage: ***\nArea of Effect: ****\nDescription: ";
+                            P2secondaryStat.text = "Name: Plasma Gun\nDescription: \nFire Rate: ***\nDamage: ***\nArea of Effect: ****";
                         }
                         if (P2special == true)
                         {
@@ -1436,7 +1436,7 @@ public class SelectionMenuController : MonoBehaviour
 
                             DeactivateP2Stat();
                             P2specialStat.enabled = true;
-                            P2specialStat.text = "Name: Super Shield\nDamage: **\nArea of Effect: **\nDuration: *****\nAmmo: 3/5\nDescription: ";
+                            P2specialStat.text = "Name: Super Shield\nDescription: \nDamage: **\nArea of Effect: **\nDuration: *****";
                         }
                     }
 
