@@ -4,59 +4,136 @@ using UnityEngine;
 
 public class MuzzleFlash : MonoBehaviour
 {
-    //Primary weapon muzzle flash.
     public GameObject flashHolder;
-    //Secondary weapon muzzle flashes.
     public GameObject[] flashHolderSecondaries;
 
-    //Hold the sprites for muzzle flashes.
-    public Sprite[] machineGunFlashSprites;
-    public Sprite[] flakCannonFlashSprites;
+    public Sprite[] mgFlashSprites;
+    public Sprite[] flakFlashSprites;
+    public Sprite[] pacFlashSprites;
     public Sprite[] plasmaGunFlashSprites;
-    public Sprite[] PACFlashSprites;
 
-    //Primary weapon lights
-    public Light ballisticLight;
-    public Light energyLight;
 
-    //Secondary weapon lights.
-    public Light[] ballisticLightSecondaries;
-    public Light[] energyLightSecondaries;
+    public SpriteRenderer primarySpriteRenderer;
+    public SpriteRenderer[] secondarySpriteRenderers;
 
-    //Controls the sprite renderer
-    public SpriteRenderer spriteRenderer;
-
-    public float lightIntensity;
+    public float flashTime;
 
     private void Start()
     {
         Deactivate();
+        DeactivateSecondaries();
     }
 
     public void ActivateMachinegunFlash()
     {
-        StartCoroutine(machineGunMuzzleFlash());
+        //StartCoroutine(MGMuzzleFlash());
+        flashHolder.SetActive(true);
+
+        int flashSpriteIndex = Random.Range(0, mgFlashSprites.Length);
+        primarySpriteRenderer.sprite = mgFlashSprites[flashSpriteIndex];
+
+        Invoke("Deactivate", flashTime);
+    }
+
+    public void ActivateFlakCannonFlash()
+    {
+        StartCoroutine(FlakMuzzleFlash());
+    }
+
+    public void ActivatePACFlash()
+    {
+        StartCoroutine(PACMuzzleFlash());
+    }
+
+    public void ActivatePlasmaGunFlash()
+    {
+        StartCoroutine(PlasmaGunMuzzleFlash());
     }
 
     public void Deactivate()
     {
-        ballisticLight.intensity = 0.0f;
         flashHolder.SetActive(false);
     }
 
-    IEnumerator machineGunMuzzleFlash()
+    public void DeactivateSecondaries()
     {
-        lightIntensity = 8.0f;
+        //ballisticLight.intensity = 0.0f;
+        for (int i = 0; i < flashHolderSecondaries.Length; i++)
+        {
+            flashHolderSecondaries[i].SetActive(false);
+        }
+    }
+
+    IEnumerator MGMuzzleFlash()
+    {
         flashHolder.SetActive(true);
 
-        for (int i = 0; i < machineGunFlashSprites.Length; i++)
+        for (int i = 0; i < mgFlashSprites.Length; i++)
         {
-            spriteRenderer.sprite = machineGunFlashSprites[i];
-            ballisticLight.intensity = lightIntensity;
-            lightIntensity -= 2;
-            yield return new WaitForSeconds(0.02f);
+            primarySpriteRenderer.sprite = mgFlashSprites[i];
+            yield return new WaitForSeconds(0.03f);
         }
 
-        Invoke("Deactivate",0.0f);
+        Deactivate();
+    }
+
+    IEnumerator FlakMuzzleFlash()
+    {
+        flashHolder.SetActive(true);
+
+        for (int i = 0; i < flakFlashSprites.Length; i++)
+        {
+            primarySpriteRenderer.sprite = flakFlashSprites[i];
+            yield return new WaitForSeconds(0.03f);
+        }
+
+        Deactivate();
+    }
+
+    IEnumerator PACMuzzleFlash()
+    {
+        flashHolder.SetActive(true);
+
+        //int flashSpriteIndex = Random.Range(0, mgFlashSprites.Length);
+        for (int i = 0; i < pacFlashSprites.Length; i++)
+        {
+            primarySpriteRenderer.sprite = pacFlashSprites[i];
+            yield return new WaitForSeconds(0.04f);
+        }
+
+        Deactivate();
+    }
+
+    IEnumerator PlasmaGunMuzzleFlash()
+    {
+        for (int i = 0; i < flashHolderSecondaries.Length; i++)
+        {
+            flashHolderSecondaries[i].SetActive(true);
+        }
+
+        for (int i = 0; i < pacFlashSprites.Length; i++)
+        {
+            secondarySpriteRenderers[0].sprite = plasmaGunFlashSprites[i];
+            secondarySpriteRenderers[1].sprite = plasmaGunFlashSprites[i];
+            yield return new WaitForSeconds(0.04f);
+        }
+
+        DeactivateSecondaries();
+    }
+
+    public void ActivateSweeperPodsFlash()
+    {
+        for (int i = 0; i < flashHolderSecondaries.Length; i++)
+        {
+            flashHolderSecondaries[i].SetActive(true);
+        }
+
+        int flashSpriteIndex1 = Random.Range(0, mgFlashSprites.Length);
+        int flashSpriteIndex2 = Random.Range(0, mgFlashSprites.Length);
+
+        secondarySpriteRenderers[0].sprite = mgFlashSprites[flashSpriteIndex1];
+        secondarySpriteRenderers[1].sprite = mgFlashSprites[flashSpriteIndex2];
+
+        Invoke("DeactivateSecondaries", flashTime);
     }
 }
