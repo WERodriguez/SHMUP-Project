@@ -431,18 +431,18 @@ public class GameController : MonoBehaviour
         yield return new WaitForSeconds(1);
         Instantiate(mediumEnemies[0], mainSpawns[1].position, mainSpawns[0].rotation);
 
-        yield return new WaitForSeconds(1);
+        yield return new WaitForSeconds(5);
         //Tells the game it's time for boss fightin.
         isBossTime = true;
 
-        yield return new WaitForSeconds(8);
+        yield return new WaitForSeconds(2);
         //Changes the music loop to the boss loop
         musicPlayer[0].Pause();
 
         Instantiate(powerUps[0], mainSpawns[5].position, mainSpawns[0].rotation);
         Instantiate(powerUps[1], mainSpawns[7].position, mainSpawns[0].rotation);
 
-        yield return new WaitForSeconds(5);
+        yield return new WaitForSeconds(6);
         musicPlayer[1].Play();
 
         for (int i = 0; i <=5; i ++)
@@ -455,7 +455,7 @@ public class GameController : MonoBehaviour
         }
 
         yield return new WaitForSeconds(0.5f);
-        Instantiate(lightEnemies[1], mainSpawns[4].position, mainSpawns[0].rotation);
+        Instantiate(lightEnemies[1], mainSpawns[5].position, mainSpawns[0].rotation);
         Instantiate(lightEnemies[1], mainSpawns[6].position, mainSpawns[0].rotation);
         Instantiate(lightEnemies[1], mainSpawns[7].position, mainSpawns[0].rotation);
 
