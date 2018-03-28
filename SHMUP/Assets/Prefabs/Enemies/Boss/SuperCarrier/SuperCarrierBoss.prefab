@@ -924,7 +924,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1783908095477678}
   m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
-  m_LocalPosition: {x: 10, y: 0, z: 40.9}
+  m_LocalPosition: {x: 0, y: 0, z: 77.8}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4830465557889372}
@@ -1515,7 +1515,7 @@ HingeJoint:
   m_Anchor: {x: 0, y: 0, z: 0}
   m_Axis: {x: 0, y: 1, z: 0}
   m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: -5.75, y: 0.9, z: 17.85}
+  m_ConnectedAnchor: {x: -5.75, y: 0.9, z: 17.849998}
   m_UseSpring: 0
   m_Spring:
     spring: 0
@@ -1547,7 +1547,7 @@ HingeJoint:
   m_Anchor: {x: 0, y: 0, z: 0}
   m_Axis: {x: 0, y: 1, z: 0}
   m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: -5.75, y: 0.9, z: 23.85}
+  m_ConnectedAnchor: {x: -5.75, y: 0.9, z: 23.849998}
   m_UseSpring: 0
   m_Spring:
     spring: 0
@@ -1579,7 +1579,7 @@ HingeJoint:
   m_Anchor: {x: 0, y: 0, z: 0}
   m_Axis: {x: 0, y: 1, z: 0}
   m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: -5.75, y: 0.9, z: 20.85}
+  m_ConnectedAnchor: {x: -5.75, y: 0.9, z: 20.849998}
   m_UseSpring: 0
   m_Spring:
     spring: 0
@@ -1611,7 +1611,7 @@ HingeJoint:
   m_Anchor: {x: 0, y: 0, z: 0}
   m_Axis: {x: 0, y: 1, z: 0}
   m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: 5.75, y: 0.9, z: 20.85}
+  m_ConnectedAnchor: {x: 5.75, y: 0.9, z: 20.849998}
   m_UseSpring: 0
   m_Spring:
     spring: 0
@@ -1643,7 +1643,7 @@ HingeJoint:
   m_Anchor: {x: 0, y: 0, z: 0}
   m_Axis: {x: 0, y: 1, z: 0}
   m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: 5.75, y: 0.9, z: 23.85}
+  m_ConnectedAnchor: {x: 5.75, y: 0.9, z: 23.849998}
   m_UseSpring: 0
   m_Spring:
     spring: 0
@@ -1675,7 +1675,7 @@ HingeJoint:
   m_Anchor: {x: 0, y: 0, z: 0}
   m_Axis: {x: 0, y: 1, z: 0}
   m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: 5.75, y: 0.9, z: 17.85}
+  m_ConnectedAnchor: {x: 5.75, y: 0.9, z: 17.849998}
   m_UseSpring: 0
   m_Spring:
     spring: 0
@@ -2019,7 +2019,7 @@ MonoBehaviour:
   fireRate: 5
   nextFire: 0.2
   nextVolley: 0
-  initialDelay: 10
+  initialDelay: 5
   shotSpawns:
   - {fileID: 4864493333738870}
   - {fileID: 4737977555505748}
@@ -2043,7 +2043,7 @@ MonoBehaviour:
   fireRate: 5
   nextFire: 0.2
   nextVolley: 0
-  initialDelay: 10
+  initialDelay: 5
   shotSpawns:
   - {fileID: 4735744421292150}
   - {fileID: 4867733819548986}
@@ -2111,7 +2111,7 @@ MonoBehaviour:
   fireRate: 5
   nextFire: 0.2
   nextVolley: 0
-  initialDelay: 10
+  initialDelay: 5
   shotSpawns:
   - {fileID: 4273437685016572}
   - {fileID: 4732903213393758}
@@ -2147,7 +2147,7 @@ MonoBehaviour:
   fireRate: 5
   nextFire: 0.2
   nextVolley: 0
-  initialDelay: 10
+  initialDelay: 5
   shotSpawns:
   - {fileID: 4833516056893616}
   - {fileID: 4469369362982520}
@@ -2310,7 +2310,7 @@ MonoBehaviour:
   fireRate: 5
   nextFire: 0.2
   nextVolley: 0
-  initialDelay: 10
+  initialDelay: 5
   shotSpawns:
   - {fileID: 4844291302980858}
   - {fileID: 4082346252939600}
@@ -2363,7 +2363,7 @@ MonoBehaviour:
   fireRate: 5
   nextFire: 0.2
   nextVolley: 0
-  initialDelay: 10
+  initialDelay: 5
   shotSpawns:
   - {fileID: 4343205846416488}
   - {fileID: 4781191500704608}
@@ -2412,7 +2412,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 62ec90f5cbd49c845be4718d515b7b7f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 5
+  speed: 20
   bossPosition: 40
   hangarSpawn: {fileID: 4521832746454506}
   enemyships:
@@ -2420,7 +2420,7 @@ MonoBehaviour:
   - {fileID: 1581877229079828, guid: 5335c3a024ab3f046964ac5b7971087a, type: 2}
   - {fileID: 1206159982772688, guid: 175d9d8d97dcbe840b7b91c399228bc1, type: 2}
   - {fileID: 1282186330355920, guid: 5cdd7a965dc24924292dd89116ebc26b, type: 2}
-  startWait: 10
+  startWait: 5
 --- !u!114 &114777062687728644
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2483,7 +2483,7 @@ MonoBehaviour:
   - {fileID: 1369515705846832, guid: 372707eb24a15a94dacd66de6f8dced5, type: 2}
   - {fileID: 1581877229079828, guid: 5335c3a024ab3f046964ac5b7971087a, type: 2}
   - {fileID: 1206159982772688, guid: 175d9d8d97dcbe840b7b91c399228bc1, type: 2}
-  startWait: 10
+  startWait: 5
 --- !u!114 &114805997428315368
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2522,7 +2522,7 @@ MonoBehaviour:
   - {fileID: 1369515705846832, guid: 372707eb24a15a94dacd66de6f8dced5, type: 2}
   - {fileID: 1581877229079828, guid: 5335c3a024ab3f046964ac5b7971087a, type: 2}
   - {fileID: 1206159982772688, guid: 175d9d8d97dcbe840b7b91c399228bc1, type: 2}
-  startWait: 10
+  startWait: 5
 --- !u!114 &114835829892426220
 MonoBehaviour:
   m_ObjectHideFlags: 1

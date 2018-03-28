@@ -120,7 +120,7 @@ public class GameController : MonoBehaviour
         Instantiate(lightEnemies[0], mainSpawns[7].position, mainSpawns[0].rotation);
         Instantiate(lightEnemies[0], mainSpawns[5].position, mainSpawns[0].rotation);
 
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSeconds(1.5f);
 
         //Spawns row of enemies.
         for (int i = 0; i < 3; i++)
@@ -137,7 +137,7 @@ public class GameController : MonoBehaviour
             yield return new WaitForSeconds(spawnWait);
         }
 
-        yield return new WaitForSeconds(1.5f);
+        yield return new WaitForSeconds(1.0f);
 
         for (int i = 0; i < 5; i++)
         {
@@ -145,25 +145,25 @@ public class GameController : MonoBehaviour
             yield return new WaitForSeconds(spawnWait);
         }
 
-        for (int i = 0; i < 3; i++)
+        for (int i = 0; i < 5; i++)
         {
             Instantiate(lightEnemies[0], mainSpawns[10].position, mainSpawns[0].rotation);
             yield return new WaitForSeconds(spawnWait);
         }
 
-        for (int i = 0; i < 3; i++)
+        for (int i = 0; i < 5; i++)
         {
             Instantiate(lightEnemies[0], mainSpawns[3].position, mainSpawns[0].rotation);
             yield return new WaitForSeconds(spawnWait);
         }
 
         //ShooterSpawn
-        yield return new WaitForSeconds(1.5f);
+        yield return new WaitForSeconds(1.0f);
         Instantiate(lightEnemies[1], mainSpawns[7].position, mainSpawns[0].rotation);
         Instantiate(lightEnemies[1], mainSpawns[5].position, mainSpawns[0].rotation);
 
         //SHooterSpawn
-        yield return new WaitForSeconds(5f);
+        yield return new WaitForSeconds(0.5f);
         Instantiate(lightEnemies[1], mainSpawns[8].position, mainSpawns[0].rotation);
         Instantiate(lightEnemies[1], mainSpawns[4].position, mainSpawns[0].rotation);
 
@@ -179,23 +179,24 @@ public class GameController : MonoBehaviour
 
 
         //Wing spawn
-        yield return new WaitForSeconds(2);
+        yield return new WaitForSeconds(2.0f);
         Instantiate(wings[0], mainSpawns[2].position, mainSpawns[0].rotation);
         Instantiate(wings[0], mainSpawns[10].position, mainSpawns[0].rotation);
 
-        yield return new WaitForSeconds(2);
+        yield return new WaitForSeconds(1.5f);
         Instantiate(wings[0], mainSpawns[1].position, mainSpawns[0].rotation);
         Instantiate(wings[0], mainSpawns[11].position, mainSpawns[0].rotation);
 
         //First time missile boat.
-        yield return new WaitForSeconds(8);
+        yield return new WaitForSeconds(3);
         Instantiate(mediumEnemies[0], mainSpawns[6].position, mainSpawns[0].rotation);
 
-        yield return new WaitForSeconds(3);
-        Instantiate(powerUps[2], mainSpawns[6].position, mainSpawns[0].rotation);
+        //Spawns health down the center for the player.
+        yield return new WaitForSeconds(2);
+        Instantiate(powerUps[0], mainSpawns[6].position, mainSpawns[0].rotation);
 
         //Spawns two rows of enemies.
-        yield return new WaitForSeconds(8);
+        yield return new WaitForSeconds(6);
         for (int i = 0; i < 5; i++)
         {
             Instantiate(lightEnemies[0], mainSpawns[8].position, mainSpawns[0].rotation);
@@ -212,48 +213,66 @@ public class GameController : MonoBehaviour
         }
 
         //Spawns two diagonal rows of enemies.
-        yield return new WaitForSeconds(3);
+        yield return new WaitForSeconds(2);
         whichSpawn1 = 0;
         whichSpawn2 = 12;
-        for (int i = 0; i < 5; i++)
+        for (int i = 0; i < 7; i++)
         {
             Instantiate(lightEnemies[1], mainSpawns[whichSpawn1].position, mainSpawns[0].rotation);
-            Instantiate(lightEnemies[1], mainSpawns[whichSpawn2].position, mainSpawns[0].rotation);
             whichSpawn1++;
+            yield return new WaitForSeconds(spawnWait);
+        }
+
+        yield return new WaitForSeconds(1);
+
+        for (int i = 0; i <7; i++)
+        {
+            Instantiate(lightEnemies[1], mainSpawns[whichSpawn2].position, mainSpawns[0].rotation);
             whichSpawn2--;
             yield return new WaitForSeconds(spawnWait);
         }
 
+        yield return new WaitForSeconds(1);
+
         //Spawns two diagonal rows of enemies.
-        yield return new WaitForSeconds(3);
-        whichSpawn1 = 5;
-        whichSpawn2 = 7;
-        for (int i = 0; i < 5; i++)
+        whichSpawn1 = 0;
+        whichSpawn2 = 12;
+        for (int i = 0; i < 7; i++)
         {
             Instantiate(lightEnemies[1], mainSpawns[whichSpawn1].position, mainSpawns[0].rotation);
-            Instantiate(lightEnemies[1], mainSpawns[whichSpawn2].position, mainSpawns[0].rotation);
-            whichSpawn1--;
-            whichSpawn2++;
+            whichSpawn1++;
             yield return new WaitForSeconds(spawnWait);
         }
 
-        yield return new WaitForSeconds(2);
+        yield return new WaitForSeconds(1);
 
-        Instantiate(lightEnemies[1], mainSpawns[12].position, mainSpawns[0].rotation);
+        for (int i = 0; i < 7; i++)
+        {
+            Instantiate(lightEnemies[1], mainSpawns[whichSpawn2].position, mainSpawns[0].rotation);
+            whichSpawn2--;
+            yield return new WaitForSeconds(spawnWait);
+        }
+
+        yield return new WaitForSeconds(3);
+
+        //Spawns shooter enemies from left to right
         Instantiate(lightEnemies[1], mainSpawns[0].position, mainSpawns[0].rotation);
-        Instantiate(lightEnemies[1], mainSpawns[11].position, mainSpawns[0].rotation);
         Instantiate(lightEnemies[1], mainSpawns[1].position, mainSpawns[0].rotation);
-        Instantiate(lightEnemies[1], mainSpawns[10].position, mainSpawns[0].rotation);
         Instantiate(lightEnemies[1], mainSpawns[2].position, mainSpawns[0].rotation);
+
+        //Spawns shooter enemies from right to left
+        Instantiate(lightEnemies[1], mainSpawns[12].position, mainSpawns[0].rotation);
+        Instantiate(lightEnemies[1], mainSpawns[11].position, mainSpawns[0].rotation);
+        Instantiate(lightEnemies[1], mainSpawns[10].position, mainSpawns[0].rotation);
 
 
         //Group of two missile ships.
-        yield return new WaitForSeconds(3);
+        yield return new WaitForSeconds(2);
         Instantiate(mediumEnemies[0], mainSpawns[4].position, mainSpawns[0].rotation);
         Instantiate(mediumEnemies[0], mainSpawns[8].position, mainSpawns[0].rotation);
 
 
-        yield return new WaitForSeconds(5);
+        yield return new WaitForSeconds(3);
         for (int i = 0; i < 5; i++)
         {
             Instantiate(lightEnemies[0], mainSpawns[9].position, mainSpawns[0].rotation);
@@ -267,29 +286,34 @@ public class GameController : MonoBehaviour
         yield return new WaitForSeconds(5);
         for (int i = 0; i < 5; i++)
         {
-            Instantiate(lightEnemies[0], mainSpawns[8].position, mainSpawns[0].rotation);
-            Instantiate(lightEnemies[0], mainSpawns[4].position, mainSpawns[0].rotation);
+            Instantiate(lightEnemies[0], mainSpawns[9].position, mainSpawns[0].rotation);
+            Instantiate(lightEnemies[0], mainSpawns[3].position, mainSpawns[0].rotation);
             yield return new WaitForSeconds(spawnWait);
         }
 
         //Wing spawn
         yield return new WaitForSeconds(10);
-        Instantiate(wings[0], mainSpawns[3].position, mainSpawns[0].rotation);
-        Instantiate(wings[0], mainSpawns[9].position, mainSpawns[0].rotation);
+        Instantiate(wings[0], mainSpawns[2].position, mainSpawns[0].rotation);
+        Instantiate(wings[0], mainSpawns[10].position, mainSpawns[0].rotation);
 
-        yield return new WaitForSeconds(2.5f);
+        yield return new WaitForSeconds(2.0f);
         Instantiate(mediumEnemies[0], mainSpawns[3].position, mainSpawns[0].rotation);
         Instantiate(mediumEnemies[0], mainSpawns[9].position, mainSpawns[0].rotation);
 
         //Wing spawn
-        yield return new WaitForSeconds(6);
+        yield return new WaitForSeconds(2);
         Instantiate(wings[0], mainSpawns[2].position, mainSpawns[0].rotation);
         Instantiate(wings[0], mainSpawns[10].position, mainSpawns[0].rotation);
+
+        yield return new WaitForSeconds(1);
+        Instantiate(wings[0], mainSpawns[4].position, mainSpawns[0].rotation);
+        Instantiate(wings[0], mainSpawns[8].position, mainSpawns[0].rotation);
 
         yield return new WaitForSeconds(3);
         Instantiate(heavyEnemies[0], mainSpawns[3].position, mainSpawns[0].rotation);
 
-        whichSpawn1 = 4;
+        //Spawns 2 missiles after heavy enemy
+        whichSpawn1 = 6;
         for (int i = 0; i < 2; i++)
         {
             Instantiate(mediumEnemies[0], mainSpawns[whichSpawn1].position, mainSpawns[0].rotation);
@@ -297,46 +321,75 @@ public class GameController : MonoBehaviour
             yield return new WaitForSeconds(spawnWait);
         }
 
-        yield return new WaitForSeconds(0.5f);
-
         yield return new WaitForSeconds(10);
         Instantiate(heavyEnemies[0], mainSpawns[9].position, mainSpawns[0].rotation);
 
         yield return new WaitForSeconds(5);
-        Instantiate(wings[0], mainSpawns[6].position, mainSpawns[0].rotation);
-
-        //Spawns 2 PrimaryUp power ups.
-        yield return new WaitForSeconds(3);
-        Instantiate(powerUps[2], mainSpawns[4].position, mainSpawns[0].rotation);
-        Instantiate(powerUps[2], mainSpawns[8].position, mainSpawns[0].rotation);
-
-        yield return new WaitForSeconds(10);
-        Instantiate(wings[0], mainSpawns[6].position, mainSpawns[0].rotation);
-
-        yield return new WaitForSeconds(2);
         for (int i = 0; i < 5; i++)
         {
-            Instantiate(lightEnemies[0], mainSpawns[4].position, mainSpawns[0].rotation);
-            Instantiate(lightEnemies[0], mainSpawns[8].position, mainSpawns[0].rotation);
+            Instantiate(lightEnemies[0], mainSpawns[6].position, mainSpawns[0].rotation);
             yield return new WaitForSeconds(spawnWait);
         }
 
+        //Spawns one shield pick up.
         yield return new WaitForSeconds(3);
+        Instantiate(powerUps[1], mainSpawns[6].position, mainSpawns[0].rotation);
+
+        yield return new WaitForSeconds(8);
         Instantiate(wings[0], mainSpawns[6].position, mainSpawns[0].rotation);
 
-        yield return new WaitForSeconds(2);
-        for (int i = 0; i < 5; i++)
-        {
-            Instantiate(lightEnemies[0], mainSpawns[4].position, mainSpawns[0].rotation);
-            Instantiate(lightEnemies[0], mainSpawns[8].position, mainSpawns[0].rotation);
-            yield return new WaitForSeconds(spawnWait);
-        }
-
-        yield return new WaitForSeconds(3);
+        yield return new WaitForSeconds(0.5f);
         Instantiate(wings[0], mainSpawns[3].position, mainSpawns[0].rotation);
         Instantiate(wings[0], mainSpawns[9].position, mainSpawns[0].rotation);
 
+        yield return new WaitForSeconds(0.5f);
+        //Put shooters in here.
+        whichSpawn1 = 3;
+        whichSpawn2 = 9;
+        for (int i = 0; i < 3; i++)
+        {
+            Instantiate(lightEnemies[1], mainSpawns[whichSpawn1].position, mainSpawns[0].rotation);
+            Instantiate(lightEnemies[1], mainSpawns[whichSpawn2].position, mainSpawns[0].rotation);
+            whichSpawn1++;
+            whichSpawn2--;
+        }
+
+        yield return new WaitForSeconds(1);
+        for (int i = 0; i < 5; i++)
+        {
+            Instantiate(lightEnemies[0], mainSpawns[1].position, mainSpawns[0].rotation);
+            Instantiate(lightEnemies[0], mainSpawns[11].position, mainSpawns[0].rotation);
+            yield return new WaitForSeconds(spawnWait);
+        }
+
         yield return new WaitForSeconds(2);
+        Instantiate(wings[0], mainSpawns[6].position, mainSpawns[0].rotation);
+
+        whichSpawn1 = 0;
+        whichSpawn2 = 12;
+        //Diagonal Shooter Spawn
+        for (int i = 0; i < 3; i++)
+        {
+            Instantiate(lightEnemies[1], mainSpawns[whichSpawn1].position, mainSpawns[0].rotation);
+            Instantiate(lightEnemies[1], mainSpawns[whichSpawn2].position, mainSpawns[0].rotation);
+            whichSpawn1++;
+            whichSpawn2--;
+            yield return new WaitForSeconds(spawnWait);
+        }
+
+        yield return new WaitForSeconds(2);
+        for (int i = 0; i < 5; i++)
+        {
+            Instantiate(lightEnemies[0], mainSpawns[4].position, mainSpawns[0].rotation);
+            Instantiate(lightEnemies[0], mainSpawns[8].position, mainSpawns[0].rotation);
+            yield return new WaitForSeconds(spawnWait);
+        }
+
+        yield return new WaitForSeconds(1.5f);
+        Instantiate(wings[0], mainSpawns[3].position, mainSpawns[0].rotation);
+        Instantiate(wings[0], mainSpawns[9].position, mainSpawns[0].rotation);
+
+        yield return new WaitForSeconds(1);
         for (int i = 0; i < 5; i++)
         {
             Instantiate(lightEnemies[0], mainSpawns[11].position, mainSpawns[0].rotation);
@@ -344,7 +397,17 @@ public class GameController : MonoBehaviour
             yield return new WaitForSeconds(spawnWait);
         }
 
-        yield return new WaitForSeconds(2);
+        whichSpawn1 = 3;
+        whichSpawn2 = 9;
+        for (int i = 0; i < 3; i++)
+        {
+            Instantiate(lightEnemies[1], mainSpawns[whichSpawn1].position, mainSpawns[0].rotation);
+            Instantiate(lightEnemies[1], mainSpawns[whichSpawn2].position, mainSpawns[0].rotation);
+            whichSpawn1++;
+            whichSpawn2--;
+        }
+
+        yield return new WaitForSeconds(1);
         for (int i = 0; i < 5; i++)
         {
             Instantiate(lightEnemies[0], mainSpawns[0].position, mainSpawns[0].rotation);
@@ -352,44 +415,69 @@ public class GameController : MonoBehaviour
             yield return new WaitForSeconds(spawnWait);
         }
 
-        yield return new WaitForSeconds(3);
+        yield return new WaitForSeconds(1.5f);
         Instantiate(lightEnemies[1], mainSpawns[10].position, mainSpawns[0].rotation);
         Instantiate(lightEnemies[1], mainSpawns[11].position, mainSpawns[0].rotation);
         Instantiate(lightEnemies[1], mainSpawns[12].position, mainSpawns[0].rotation);
 
-        yield return new WaitForSeconds(3);
+        yield return new WaitForSeconds(1);
         Instantiate(mediumEnemies[0], mainSpawns[11].position, mainSpawns[0].rotation);
         
-        yield return new WaitForSeconds(3);
+        yield return new WaitForSeconds(1.5f);
         Instantiate(lightEnemies[1], mainSpawns[0].position, mainSpawns[0].rotation);
         Instantiate(lightEnemies[1], mainSpawns[1].position, mainSpawns[0].rotation);
         Instantiate(lightEnemies[1], mainSpawns[2].position, mainSpawns[0].rotation);
 
-        yield return new WaitForSeconds(3);
+        yield return new WaitForSeconds(1);
         Instantiate(mediumEnemies[0], mainSpawns[1].position, mainSpawns[0].rotation);
 
-        yield return new WaitForSeconds(6);
-        Instantiate(powerUps[2], mainSpawns[5].position, mainSpawns[0].rotation);
-        Instantiate(powerUps[2], mainSpawns[7].position, mainSpawns[0].rotation);
-
-        yield return new WaitForSeconds(2);
+        yield return new WaitForSeconds(1);
         //Tells the game it's time for boss fightin.
         isBossTime = true;
 
-        yield return new WaitForSeconds(2);
+        yield return new WaitForSeconds(8);
         //Changes the music loop to the boss loop
         musicPlayer[0].Pause();
 
-        Instantiate(powerUps[0], mainSpawns[4].position, mainSpawns[0].rotation);
-        Instantiate(powerUps[1], mainSpawns[3].position, mainSpawns[0].rotation);
+        Instantiate(powerUps[0], mainSpawns[5].position, mainSpawns[0].rotation);
+        Instantiate(powerUps[1], mainSpawns[7].position, mainSpawns[0].rotation);
 
-        Instantiate(powerUps[0], mainSpawns[8].position, mainSpawns[0].rotation);
-        Instantiate(powerUps[1], mainSpawns[9].position, mainSpawns[0].rotation);
-
-        yield return new WaitForSeconds(2);
+        yield return new WaitForSeconds(5);
         musicPlayer[1].Play();
 
-        yield return new WaitForSeconds(10);
+        for (int i = 0; i <=5; i ++)
+        {
+            Instantiate(wings[0], mainSpawns[6].position, mainSpawns[0].rotation);
+            yield return new WaitForSeconds(0.5f);
+            Instantiate(wings[0], mainSpawns[3].position, mainSpawns[0].rotation);
+            Instantiate(wings[0], mainSpawns[9].position, mainSpawns[0].rotation);
+            yield return new WaitForSeconds(0.5f);
+        }
+
+        yield return new WaitForSeconds(0.5f);
+        Instantiate(lightEnemies[1], mainSpawns[4].position, mainSpawns[0].rotation);
+        Instantiate(lightEnemies[1], mainSpawns[6].position, mainSpawns[0].rotation);
+        Instantiate(lightEnemies[1], mainSpawns[7].position, mainSpawns[0].rotation);
+
+        yield return new WaitForSeconds(0.5f);
+
+        Instantiate(lightEnemies[1], mainSpawns[0].position, mainSpawns[0].rotation);
+        Instantiate(lightEnemies[1], mainSpawns[1].position, mainSpawns[0].rotation);
+        Instantiate(lightEnemies[1], mainSpawns[2].position, mainSpawns[0].rotation);
+
+        Instantiate(lightEnemies[1], mainSpawns[10].position, mainSpawns[0].rotation);
+        Instantiate(lightEnemies[1], mainSpawns[11].position, mainSpawns[0].rotation);
+        Instantiate(lightEnemies[1], mainSpawns[12].position, mainSpawns[0].rotation);
+
+
+        yield return new WaitForSeconds(2.0f);
+        
+        Instantiate(mediumEnemies[0], mainSpawns[6].position, mainSpawns[0].rotation);
+        yield return new WaitForSeconds(0.5f);
+        Instantiate(mediumEnemies[0], mainSpawns[3].position, mainSpawns[0].rotation);
+        Instantiate(mediumEnemies[0], mainSpawns[9].position, mainSpawns[0].rotation);
+
+        yield return new WaitForSeconds(4);
 
         Instantiate(bosses[0], bossSpawn.position, bossSpawn.rotation);
     }
