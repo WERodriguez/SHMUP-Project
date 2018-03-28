@@ -7,22 +7,52 @@ using UnityEngine.SceneManagement;
 public class SelectionMenuController : MonoBehaviour
 {
     public Text characterStat;
-    public Text shipStat;
-    public Text primaryStat;
-    public Text secondaryStat;
-    public Text specialStat;
+    public GameObject ship1Stat;
+    public GameObject ship2Stat;
+    public GameObject ship3Stat;
+    public GameObject ship4Stat;
+    public GameObject ship5Stat;
+    public GameObject primary1Stat;
+    public GameObject primary2Stat;
+    public GameObject primary3Stat;
+    public GameObject secondary1Stat;
+    public GameObject secondary2Stat;
+    public GameObject secondary3Stat;
+    public GameObject special1Stat;
+    public GameObject special2Stat;
+    public GameObject special3Stat;
 
     public Text P1characterStat;
-    public Text P1shipStat;
-    public Text P1primaryStat;
-    public Text P1secondaryStat;
-    public Text P1specialStat;
+    public GameObject P1ship1Stat;
+    public GameObject P1ship2Stat;
+    public GameObject P1ship3Stat;
+    public GameObject P1ship4Stat;
+    public GameObject P1ship5Stat;
+    public GameObject P1primary1Stat;
+    public GameObject P1primary2Stat;
+    public GameObject P1primary3Stat;
+    public GameObject P1secondary1Stat;
+    public GameObject P1secondary2Stat;
+    public GameObject P1secondary3Stat;
+    public GameObject P1special1Stat;
+    public GameObject P1special2Stat;
+    public GameObject P1special3Stat;
 
     public Text P2characterStat;
-    public Text P2shipStat;
-    public Text P2primaryStat;
-    public Text P2secondaryStat;
-    public Text P2specialStat;
+    public GameObject P2ship1Stat;
+    public GameObject P2ship2Stat;
+    public GameObject P2ship3Stat;
+    public GameObject P2ship4Stat;
+    public GameObject P2ship5Stat;
+    public GameObject P2primary1Stat;
+    public GameObject P2primary2Stat;
+    public GameObject P2primary3Stat;
+    public GameObject P2secondary1Stat;
+    public GameObject P2secondary2Stat;
+    public GameObject P2secondary3Stat;
+    public GameObject P2special1Stat;
+    public GameObject P2special2Stat;
+    public GameObject P2special3Stat;
 
     private int glowTracker;
     private int P1glowTracker;
@@ -377,8 +407,7 @@ public class SelectionMenuController : MonoBehaviour
                             ship1.SetActive(true);
 
                             DeactivateStat();
-                            shipStat.enabled = true;
-                            shipStat.text = "Name: Light Ship\nDescription: \nHealth: 100\nShield: 75\nLives: 2/5";
+                            ship1Stat.SetActive(true);
                         }
                         if (primary == true)
                         {
@@ -386,8 +415,7 @@ public class SelectionMenuController : MonoBehaviour
                             primary1.SetActive(true);
 
                             DeactivateStat();
-                            primaryStat.enabled = true;
-                            primaryStat.text = "Name: Machine Gun\nDescription: Basic rapid fire weapon. Spread increases with upgrades\nFire Rate: *****\nDamage: *\nArea of Effect: *";
+                            primary1Stat.SetActive(true);
                         }
                         if (secondary == true)
                         {
@@ -395,8 +423,7 @@ public class SelectionMenuController : MonoBehaviour
                             secondary1.SetActive(true);
 
                             DeactivateStat();
-                            secondaryStat.enabled = true;
-                            secondaryStat.text = "Name: Homing Missiles\nDescription: Fires missiles that seek out targets. Fire rate and number of missiles increase with upgrades.\nFire Rate: *\nDamage: *****\nArea of Effect: ****\n";
+                            secondary1Stat.SetActive(true);
                         }
                         if (special == true)
                         {
@@ -404,8 +431,7 @@ public class SelectionMenuController : MonoBehaviour
                             special1.SetActive(true);
 
                             DeactivateStat();
-                            specialStat.enabled = true;
-                            specialStat.text = "Name: Mega Bomb\nDescription: Deploy a heavy bomb that expands to cover a large area for quick devastation.\nDamage: ****\nArea of Effect: *****\nDuration: **\n";
+                            special1Stat.SetActive(true);
                         }
                     }
                     if (P1toggleData == 2)
@@ -425,8 +451,7 @@ public class SelectionMenuController : MonoBehaviour
                             ship2.SetActive(true);
 
                             DeactivateStat();
-                            shipStat.enabled = true;
-                            shipStat.text = "Name: Medium Ship\nDescription: \nHealth: 125\nShield: 100\nLives: 2/5";
+                            ship2Stat.SetActive(true);
                         }
                         if (primary == true)
                         {
@@ -434,8 +459,7 @@ public class SelectionMenuController : MonoBehaviour
                             primary2.SetActive(true);
 
                             DeactivateStat();
-                            primaryStat.enabled = true;
-                            primaryStat.text = "Name: Flak Cannon\nDescription: Area denial weapon. Shots explode mid air and damage enemies passing through the blast. Covers a wider area with upgrades.\nFire Rate: ***\nDamage: ***\nArea of Effect: ***";
+                            primary2Stat.SetActive(true);
                         }
                         if (secondary == true)
                         {
@@ -443,8 +467,7 @@ public class SelectionMenuController : MonoBehaviour
                             secondary2.SetActive(true);
 
                             DeactivateStat();
-                            secondaryStat.enabled = true;
-                            secondaryStat.text = "Name: Sweeper Pods\nDescription: Wing mounted machine gun pods. Sweep out to the sides with each upgrade to cover a large area.\nFire Rate: *****\nDamage: *\nArea of Effect: **";
+                            secondary2Stat.SetActive(true);
                         }
                         if (special == true)
                         {
@@ -452,8 +475,7 @@ public class SelectionMenuController : MonoBehaviour
                             special2.SetActive(true);
 
                             DeactivateStat();
-                            specialStat.enabled = true;
-                            specialStat.text = "Name: Beam Cannon\nDescription: Someone thought it was a good idea to mount a capital class cannon onto a fighter. Huge beam that shoots through multiple targets.\nDamage: *****\nArea of Effect: *****\nDuration: *****";
+                            special2Stat.SetActive(true);
                         }
                     }
                     if (P1toggleData == 3)
@@ -473,8 +495,7 @@ public class SelectionMenuController : MonoBehaviour
                             ship3.SetActive(true);
 
                             DeactivateStat();
-                            shipStat.enabled = true;
-                            shipStat.text = "Name: Light Ship\nDescription: \nHealth: 150\nShield: 125\nLives: 2/5";
+                            ship3Stat.SetActive(true);
                         }
                         if (primary == true)
                         {
@@ -482,8 +503,7 @@ public class SelectionMenuController : MonoBehaviour
                             primary3.SetActive(true);
 
                             DeactivateStat();
-                            primaryStat.enabled = true;
-                            primaryStat.text = "Name: PAC\nDescription: High powered, slow firing weapon that penetrates multiple targets. Damage and size of shots increases with upgrades.\nFire Rate: *\nDamage: *****\nArea of Effect: ***";
+                            primary3Stat.SetActive(true);
                         }
                         if (secondary == true)
                         {
@@ -491,8 +511,7 @@ public class SelectionMenuController : MonoBehaviour
                             secondary3.SetActive(true);
 
                             DeactivateStat();
-                            secondaryStat.enabled = true;
-                            secondaryStat.text = "Name: Plasma Gun\nDescription: Fires highly volatile balls of plasma that explode mid air into smaller balls of plasma. Fire rate and spread increase with upgrades.\nFire Rate: ***\nDamage: ***\nArea of Effect: ****";
+                            secondary3Stat.SetActive(true);
                         }
                         if (special == true)
                         {
@@ -500,8 +519,7 @@ public class SelectionMenuController : MonoBehaviour
                             special3.SetActive(true);
 
                             DeactivateStat();
-                            specialStat.enabled = true;
-                            specialStat.text = "Name: Super Shield\nDescription: Fires up a defensive barrier that destroys enemy projectiles, missiles, and even damages ships.\nDamage: **\nArea of Effect: **\nDuration: *****";
+                            special3Stat.SetActive(true);
                         }
                     }
                     if (P1toggleData == 4)
@@ -521,8 +539,7 @@ public class SelectionMenuController : MonoBehaviour
                             ship4.SetActive(true);
 
                             DeactivateStat();
-                            shipStat.enabled = true;
-                            shipStat.text = "Name: Lambo Shooter\nDescription: \nHealth: 175\nShield: 150\nLives: 2/5";
+                            ship4Stat.SetActive(true);
                         }
                         if (primary == true)
                         {
@@ -532,8 +549,7 @@ public class SelectionMenuController : MonoBehaviour
                             primary3.SetActive(true);
 
                             DeactivateStat();
-                            primaryStat.enabled = true;
-                            primaryStat.text = "Name: PAC\nDescription: High powered, slow firing weapon that penetrates multiple targets. Damage and size of shots increases with upgrades.\nFire Rate: *\nDamage: *****\nArea of Effect: ***";
+                            primary3Stat.SetActive(true);
                         }
                         if (secondary == true)
                         {
@@ -543,8 +559,7 @@ public class SelectionMenuController : MonoBehaviour
                             secondary3.SetActive(true);
 
                             DeactivateStat();
-                            secondaryStat.enabled = true;
-                            secondaryStat.text = "Name: Plasma Gun\nDescription: Fires highly volatile balls of plasma that explode mid air into smaller balls of plasma. Fire rate and spread increase with upgrades.\nFire Rate: ***\nDamage: ***\nArea of Effect: ****";
+                            secondary3Stat.SetActive(true);
                         }
                         if (special == true)
                         {
@@ -554,8 +569,7 @@ public class SelectionMenuController : MonoBehaviour
                             special3.SetActive(true);
 
                             DeactivateStat();
-                            specialStat.enabled = true;
-                            specialStat.text = "Name: Super Shield\nDescription: Fires up a defensive barrier that destroys enemy projectiles, missiles, and even damages ships.\nDamage: **\nArea of Effect: **\nDuration: *****";
+                            special3Stat.SetActive(true);
                         }
                     }
                     if (P1toggleData >= 5)
@@ -579,8 +593,7 @@ public class SelectionMenuController : MonoBehaviour
                             ship5.SetActive(true);
 
                             DeactivateStat();
-                            shipStat.enabled = true;
-                            shipStat.text = "Name: Truck Shooter\nDescription: \nHealth: 200\nShield: 200\nLives: 2/5";
+                            ship5Stat.SetActive(true);
                         }
                         if (primary == true)
                         {
@@ -590,8 +603,7 @@ public class SelectionMenuController : MonoBehaviour
                             primary3.SetActive(true);
 
                             DeactivateStat();
-                            primaryStat.enabled = true;
-                            primaryStat.text = "Name: PAC\nDescription: High powered, slow firing weapon that penetrates multiple targets. Damage and size of shots increases with upgrades.\nFire Rate: *\nDamage: *****\nArea of Effect: ***";
+                            primary3Stat.SetActive(true);
                         }
                         if (secondary == true)
                         {
@@ -601,8 +613,7 @@ public class SelectionMenuController : MonoBehaviour
                             secondary3.SetActive(true);
 
                             DeactivateStat();
-                            secondaryStat.enabled = true;
-                            secondaryStat.text = "Name: Plasma Gun\nDescription: Fires highly volatile balls of plasma that explode mid air into smaller balls of plasma. Fire rate and spread increase with upgrades.\nFire Rate: ***\nDamage: ***\nArea of Effect: ****";
+                            secondary3Stat.SetActive(true);
                         }
                         if (special == true)
                         {
@@ -612,8 +623,7 @@ public class SelectionMenuController : MonoBehaviour
                             special3.SetActive(true);
 
                             DeactivateStat();
-                            specialStat.enabled = true;
-                            specialStat.text = "Name: Super Shield\nDescription: Fires up a defensive barrier that destroys enemy projectiles, missiles, and even damages ships.\nDamage: **\nArea of Effect: **\nDuration: *****";
+                            special3Stat.SetActive(true);
                         }
                     }
 
@@ -938,8 +948,7 @@ public class SelectionMenuController : MonoBehaviour
                             P1ship1.SetActive(true);
 
                             DeactivateP1Stat();
-                            P1shipStat.enabled = true;
-                            P1shipStat.text = "Name: Light Ship\nDescription: \nHealth: 100\nShield: 75\nLives: 2/5";
+                            P1ship1Stat.SetActive(true);
                         }
                         if (P1primary == true)
                         {
@@ -947,8 +956,7 @@ public class SelectionMenuController : MonoBehaviour
                             P1primary1.SetActive(true);
 
                             DeactivateP1Stat();
-                            P1primaryStat.enabled = true;
-                            P1primaryStat.text = "Name: Machine Gun\nDescription: Basic rapid fire weapon. Spread increases with upgrades\nFire Rate: *****\nDamage: *\nArea of Effect: *";
+                            P1primary1Stat.SetActive(true);
                         }
                         if (P1secondary == true)
                         {
@@ -956,8 +964,7 @@ public class SelectionMenuController : MonoBehaviour
                             P1secondary1.SetActive(true);
 
                             DeactivateP1Stat();
-                            P1secondaryStat.enabled = true;
-                            P1secondaryStat.text = "Name: Homing Missiles\nDescription: Fires missiles that seek out targets. Fire rate and number of missiles increase with upgrades.\nFire Rate: *\nDamage: *****\nArea of Effect: ****";
+                            P1secondary1Stat.SetActive(true);
                         }
                         if (P1special == true)
                         {
@@ -965,8 +972,7 @@ public class SelectionMenuController : MonoBehaviour
                             P1special1.SetActive(true);
 
                             DeactivateP1Stat();
-                            P1specialStat.enabled = true;
-                            P1specialStat.text = "Name: Mega Bomb\nDescription: Deploy a heavy bomb that expands to cover a large area for quick devastation.\nDamage: ****\nArea of Effect: *****\nDuration: **";
+                            P1special1Stat.SetActive(true);
                         }
                     }
                     if (P2toggleData <= 1)
@@ -991,8 +997,7 @@ public class SelectionMenuController : MonoBehaviour
                             P2ship1.SetActive(true);
 
                             DeactivateP2Stat();
-                            P2shipStat.enabled = true;
-                            P2shipStat.text = "Name: Light Ship\nDescription: \nHealth: 100\nShield: 75\nLives: 2/5";
+                            P2ship1Stat.SetActive(true);
                         }
                         if (P2primary == true)
                         {
@@ -1000,8 +1005,7 @@ public class SelectionMenuController : MonoBehaviour
                             P2primary1.SetActive(true);
 
                             DeactivateP2Stat();
-                            P2primaryStat.enabled = true;
-                            P2primaryStat.text = "Name: Machine Gun\nDescription: Basic rapid fire weapon. Spread increases with upgrades\nFire Rate: *****\nDamage: *\nArea of Effect: *";
+                            P2primary1Stat.SetActive(true);
                         }
                         if (P2secondary == true)
                         {
@@ -1009,8 +1013,7 @@ public class SelectionMenuController : MonoBehaviour
                             P2secondary1.SetActive(true);
 
                             DeactivateP2Stat();
-                            P2secondaryStat.enabled = true;
-                            P2secondaryStat.text = "Name: Homing Missiles\nDescription: Fires missiles that seek out targets. Fire rate and number of missiles increase with upgrades.\nFire Rate: *\nDamage: *****\nArea of Effect: ****";
+                            P2secondary1Stat.SetActive(true);
                         }
                         if (P2special == true)
                         {
@@ -1018,8 +1021,7 @@ public class SelectionMenuController : MonoBehaviour
                             P2special1.SetActive(true);
 
                             DeactivateP2Stat();
-                            P2specialStat.enabled = true;
-                            P2specialStat.text = "Name: Mega Bomb\nDescription: Deploy a heavy bomb that expands to cover a large area for quick devastation.\nDamage: ****\nArea of Effect: *****\nDuration: **";
+                            P2special1Stat.SetActive(true);
                         }
                     }
 
@@ -1040,8 +1042,7 @@ public class SelectionMenuController : MonoBehaviour
                             P1ship2.SetActive(true);
 
                             DeactivateP1Stat();
-                            P1shipStat.enabled = true;
-                            P1shipStat.text = "Name: Medium Ship\nDescription: \nHealth: 125\nShield: 100\nLives: 2/5";
+                            P1ship2Stat.SetActive(true);
                         }
                         if (P1primary == true)
                         {
@@ -1049,8 +1050,7 @@ public class SelectionMenuController : MonoBehaviour
                             P1primary2.SetActive(true);
 
                             DeactivateP1Stat();
-                            P1primaryStat.enabled = true;
-                            P1primaryStat.text = "Name: Flak Cannon\nDescription: Area denial weapon. Shots explode mid air and damage enemies passing through the blast. Covers a wider area with upgrades.\nFire Rate: ***\nDamage: ***\nArea of Effect: *****";
+                            P1primary2Stat.SetActive(true);
                         }
                         if (P1secondary == true)
                         {
@@ -1058,8 +1058,7 @@ public class SelectionMenuController : MonoBehaviour
                             P1secondary2.SetActive(true);
 
                             DeactivateP1Stat();
-                            P1secondaryStat.enabled = true;
-                            P1secondaryStat.text = "Name: Sweeper Pods\nDescription: Wing mounted machine gun pods. Sweep out to the sides with each upgrade to cover a large area.\nFire Rate: *****\nDamage: *\nArea of Effect: **";
+                            P1secondary2Stat.SetActive(true);
                         }
                         if (P1special == true)
                         {
@@ -1067,8 +1066,7 @@ public class SelectionMenuController : MonoBehaviour
                             P1special2.SetActive(true);
 
                             DeactivateP1Stat();
-                            P1specialStat.enabled = true;
-                            P1specialStat.text = "Name: Beam Cannon\nDescription: Someone thought it was a good idea to mount a capital class cannon onto a fighter. Huge beam that shoots through multiple targets.\nDamage: *****\nArea of Effect: *****\nDuration: *****";
+                            P1special2Stat.SetActive(true);
                         }
                     }
                     if (P2toggleData == 2)
@@ -1088,8 +1086,7 @@ public class SelectionMenuController : MonoBehaviour
                             P2ship2.SetActive(true);
 
                             DeactivateP2Stat();
-                            P2shipStat.enabled = true;
-                            P2shipStat.text = "Name: Medium Ship\nDescription: \nHealth: 125\nShield: 100\nLives: 2/5";
+                            P2ship2Stat.SetActive(true);
                         }
                         if (P2primary == true)
                         {
@@ -1097,8 +1094,7 @@ public class SelectionMenuController : MonoBehaviour
                             P2primary2.SetActive(true);
 
                             DeactivateP2Stat();
-                            P2primaryStat.enabled = true;
-                            P2primaryStat.text = "Name: Flak Cannon\nDescription: Area denial weapon. Shots explode mid air and damage enemies passing through the blast. Covers a wider area with upgrades.\nFire Rate: ***\nDamage: ***\nArea of Effect: *****";
+                            P2primary2Stat.SetActive(true);
                         }
                         if (P2secondary == true)
                         {
@@ -1106,8 +1102,7 @@ public class SelectionMenuController : MonoBehaviour
                             P2secondary2.SetActive(true);
 
                             DeactivateP2Stat();
-                            P2secondaryStat.enabled = true;
-                            P2secondaryStat.text = "Name: Sweeper Pods\nDescription: Wing mounted machine gun pods. Sweep out to the sides with each upgrade to cover a large area.\nFire Rate: *****\nDamage: *\nArea of Effect: **";
+                            P2secondary2Stat.SetActive(true);
                         }
                         if (P2special == true)
                         {
@@ -1115,8 +1110,7 @@ public class SelectionMenuController : MonoBehaviour
                             P2special2.SetActive(true);
 
                             DeactivateP2Stat();
-                            P2specialStat.enabled = true;
-                            P2specialStat.text = "Name: Beam Cannon\nDescription: Someone thought it was a good idea to mount a capital class cannon onto a fighter. Huge beam that shoots through multiple targets.\nDamage: *****\nArea of Effect: *****\nDuration: *****";
+                            P2special2Stat.SetActive(true);
                         }
                     }
 
@@ -1137,8 +1131,7 @@ public class SelectionMenuController : MonoBehaviour
                             P1ship3.SetActive(true);
 
                             DeactivateP1Stat();
-                            P1shipStat.enabled = true;
-                            P1shipStat.text = "Name: Heavy Ship\nDescription: \nHealth: 150\nShield: 125\nLives: 2/5";
+                            P1ship3Stat.SetActive(true);
                         }
                         if (P1primary == true)
                         {
@@ -1146,8 +1139,7 @@ public class SelectionMenuController : MonoBehaviour
                             P1primary3.SetActive(true);
 
                             DeactivateP1Stat();
-                            P1primaryStat.enabled = true;
-                            P1primaryStat.text = "Name: PAC\nDescription: High powered, slow firing weapon that penetrates multiple targets. Damage and size of shots increases with upgrades.\nFire Rate: *\nDamage: *****\nArea of Effect: ***";
+                            P1primary3Stat.SetActive(true);
                         }
                         if (P1secondary == true)
                         {
@@ -1155,8 +1147,7 @@ public class SelectionMenuController : MonoBehaviour
                             P1secondary3.SetActive(true);
 
                             DeactivateP1Stat();
-                            P1secondaryStat.enabled = true;
-                            P1secondaryStat.text = "Name: Plasma Gun\nDescription: Fires highly volatile balls of plasma that explode mid air into smaller balls of plasma. Fire rate and spread increase with upgrades.\nFire Rate: ***\nDamage: ***\nArea of Effect: ****";
+                            P1secondary3Stat.SetActive(true);
                         }
                         if (P1special == true)
                         {
@@ -1164,8 +1155,7 @@ public class SelectionMenuController : MonoBehaviour
                             P1special3.SetActive(true);
 
                             DeactivateP1Stat();
-                            P1specialStat.enabled = true;
-                            P1specialStat.text = "Name: Super Shield\nDescription: Fires up a defensive barrier that destroys enemy projectiles, missiles, and even damages ships.\nDamage: **\nArea of Effect: **\nDuration: *****";
+                            P1special3Stat.SetActive(true);
                         }
                     }
                     if (P2toggleData == 3)
@@ -1185,8 +1175,7 @@ public class SelectionMenuController : MonoBehaviour
                             P2ship3.SetActive(true);
 
                             DeactivateP2Stat();
-                            P2shipStat.enabled = true;
-                            P2shipStat.text = "Name: Heavy Ship\nDescription: \nHealth: 150\nShield: 125\nLives: 2/5";
+                            P2ship3Stat.SetActive(true);
                         }
                         if (P2primary == true)
                         {
@@ -1194,8 +1183,7 @@ public class SelectionMenuController : MonoBehaviour
                             P2primary3.SetActive(true);
 
                             DeactivateP2Stat();
-                            P2primaryStat.enabled = true;
-                            P2primaryStat.text = "Name: PAC\nDescription: High powered, slow firing weapon that penetrates multiple targets. Damage and size of shots increases with upgrades.\nFire Rate: *\nDamage: *****\nArea of Effect: ***";
+                            P2primary3Stat.SetActive(true);
                         }
                         if (P2secondary == true)
                         {
@@ -1203,8 +1191,7 @@ public class SelectionMenuController : MonoBehaviour
                             P2secondary3.SetActive(true);
 
                             DeactivateP2Stat();
-                            P2secondaryStat.enabled = true;
-                            P2secondaryStat.text = "Name: Plasma Gun\nDescription: Fires highly volatile balls of plasma that explode mid air into smaller balls of plasma. Fire rate and spread increase with upgrades.\nFire Rate: ***\nDamage: ***\nArea of Effect: ****";
+                            P2secondary3Stat.SetActive(true);
                         }
                         if (P2special == true)
                         {
@@ -1212,8 +1199,7 @@ public class SelectionMenuController : MonoBehaviour
                             P2special3.SetActive(true);
 
                             DeactivateP2Stat();
-                            P2specialStat.enabled = true;
-                            P2specialStat.text = "Name: Super Shield\nDescription: Fires up a defensive barrier that destroys enemy projectiles, missiles, and even damages ships.\nDamage: **\nArea of Effect: **\nDuration: *****";
+                            P2special3Stat.SetActive(true);
                         }
                     }
 
@@ -1234,8 +1220,7 @@ public class SelectionMenuController : MonoBehaviour
                             P1ship4.SetActive(true);
 
                             DeactivateP1Stat();
-                            P1shipStat.enabled = true;
-                            P1shipStat.text = "Name: Lambo Shooter\nDescription: \nHealth: 175\nShield: 150\nLives: 2/5";
+                            P1ship4Stat.SetActive(true);
                         }
                         if (P1primary == true)
                         {
@@ -1245,8 +1230,7 @@ public class SelectionMenuController : MonoBehaviour
                             P1primary3.SetActive(true);
 
                             DeactivateP1Stat();
-                            P1primaryStat.enabled = true;
-                            P1primaryStat.text = "Name: PAC\nDescription: High powered, slow firing weapon that penetrates multiple targets. Damage and size of shots increases with upgrades.\nFire Rate: *\nDamage: *****\nArea of Effect: ***";
+                            P1primary3Stat.SetActive(true);
                         }
                         if (P1secondary == true)
                         {
@@ -1256,8 +1240,7 @@ public class SelectionMenuController : MonoBehaviour
                             P1secondary3.SetActive(true);
 
                             DeactivateP1Stat();
-                            P1secondaryStat.enabled = true;
-                            P1secondaryStat.text = "Name: Plasma Gun\nDescription: Fires highly volatile balls of plasma that explode mid air into smaller balls of plasma. Fire rate and spread increase with upgrades.\nFire Rate: ***\nDamage: ***\nArea of Effect: ****";
+                            P1secondary3Stat.SetActive(true);
                         }
                         if (P1special == true)
                         {
@@ -1267,8 +1250,7 @@ public class SelectionMenuController : MonoBehaviour
                             P1special3.SetActive(true);
 
                             DeactivateP1Stat();
-                            P1specialStat.enabled = true;
-                            P1specialStat.text = "Name: Super Shield\nDescription: Fires up a defensive barrier that destroys enemy projectiles, missiles, and even damages ships.\nDamage: **\nArea of Effect: **\nDuration: *****";
+                            P1special3Stat.SetActive(true);
                         }
                     }
                     if (P2toggleData == 4)
@@ -1288,8 +1270,7 @@ public class SelectionMenuController : MonoBehaviour
                             P2ship4.SetActive(true);
 
                             DeactivateP2Stat();
-                            P2shipStat.enabled = true;
-                            P2shipStat.text = "Name: Lambo Shooter\nDescription: \nHealth: 175\nShield: 150\nLives: 2/5";
+                            P2ship4Stat.SetActive(true);
                         }
                         if (P2primary == true)
                         {
@@ -1299,8 +1280,7 @@ public class SelectionMenuController : MonoBehaviour
                             P2primary3.SetActive(true);
 
                             DeactivateP2Stat();
-                            P2primaryStat.enabled = true;
-                            P2primaryStat.text = "Name: PAC\nDescription: High powered, slow firing weapon that penetrates multiple targets. Damage and size of shots increases with upgrades.\nFire Rate: *\nDamage: *****\nArea of Effect: ***";
+                            P2primary3Stat.SetActive(true);
                         }
                         if (P2secondary == true)
                         {
@@ -1310,8 +1290,7 @@ public class SelectionMenuController : MonoBehaviour
                             P2secondary3.SetActive(true);
 
                             DeactivateP2Stat();
-                            P2secondaryStat.enabled = true;
-                            P2secondaryStat.text = "Name: Plasma Gun\nDescription: Fires highly volatile balls of plasma that explode mid air into smaller balls of plasma. Fire rate and spread increase with upgrades.\nFire Rate: ***\nDamage: ***\nArea of Effect: ****";
+                            P2secondary3Stat.SetActive(true);
                         }
                         if (P2special == true)
                         {
@@ -1321,8 +1300,7 @@ public class SelectionMenuController : MonoBehaviour
                             P2special3.SetActive(true);
 
                             DeactivateP2Stat();
-                            P2specialStat.enabled = true;
-                            P2specialStat.text = "Name: Super Shield\nDescription: Fires up a defensive barrier that destroys enemy projectiles, missiles, and even damages ships.\nDamage: **\nArea of Effect: **\nDuration: *****";
+                            P2special3Stat.SetActive(true);
                         }
                     }
 
@@ -1347,8 +1325,7 @@ public class SelectionMenuController : MonoBehaviour
                             P1ship5.SetActive(true);
 
                             DeactivateP1Stat();
-                            P1shipStat.enabled = true;
-                            P1shipStat.text = "Name: Truck Shooter\nDescription: \nHealth: 200\nShield: 200\nLives: 2/5";
+                            P1ship5Stat.SetActive(true);
                         }
                         if (P1primary == true)
                         {
@@ -1358,8 +1335,7 @@ public class SelectionMenuController : MonoBehaviour
                             P1primary3.SetActive(true);
 
                             DeactivateP1Stat();
-                            P1primaryStat.enabled = true;
-                            P1primaryStat.text = "Name: PAC\nDescription: High powered, slow firing weapon that penetrates multiple targets. Damage and size of shots increases with upgrades.\nFire Rate: *\nDamage: *****\nArea of Effect: ***";
+                            P1primary3Stat.SetActive(true);
                         }
                         if (P1secondary == true)
                         {
@@ -1369,8 +1345,7 @@ public class SelectionMenuController : MonoBehaviour
                             P1secondary3.SetActive(true);
 
                             DeactivateP1Stat();
-                            P1secondaryStat.enabled = true;
-                            P1secondaryStat.text = "Name: Plasma Gun\nDescription: Fires highly volatile balls of plasma that explode mid air into smaller balls of plasma. Fire rate and spread increase with upgrades.\nFire Rate: ***\nDamage: ***\nArea of Effect: ****";
+                            P1secondary3Stat.SetActive(true);
                         }
                         if (P1special == true)
                         {
@@ -1380,8 +1355,7 @@ public class SelectionMenuController : MonoBehaviour
                             P1special3.SetActive(true);
 
                             DeactivateP1Stat();
-                            P1specialStat.enabled = true;
-                            P1specialStat.text = "Name: Super Shield\nDescription: Fires up a defensive barrier that destroys enemy projectiles, missiles, and even damages ships.\nDamage: **\nArea of Effect: **\nDuration: *****";
+                            P1special3Stat.SetActive(true);
                         }
                     }
                     if (P2toggleData >= 5)
@@ -1405,8 +1379,7 @@ public class SelectionMenuController : MonoBehaviour
                             P2ship5.SetActive(true);
 
                             DeactivateP2Stat();
-                            P2shipStat.enabled = true;
-                            P2shipStat.text = "Name: Truck Shooter\nDescription: \nHealth: 200\nShield: 200\nLives: 2/5";
+                            P2ship5Stat.SetActive(true);
                         }
                         if (P2primary == true)
                         {
@@ -1416,8 +1389,7 @@ public class SelectionMenuController : MonoBehaviour
                             P2primary3.SetActive(true);
 
                             DeactivateP2Stat();
-                            P2primaryStat.enabled = true;
-                            P2primaryStat.text = "Name: PAC\nDescription: High powered, slow firing weapon that penetrates multiple targets. Damage and size of shots increases with upgrades.\nFire Rate: *\nDamage: *****\nArea of Effect: ***";
+                            P2primary3Stat.SetActive(true);
                         }
                         if (P2secondary == true)
                         {
@@ -1427,8 +1399,7 @@ public class SelectionMenuController : MonoBehaviour
                             P2secondary3.SetActive(true);
 
                             DeactivateP2Stat();
-                            P2secondaryStat.enabled = true;
-                            P2secondaryStat.text = "Name: Plasma Gun\nDescription: Fires highly volatile balls of plasma that explode mid air into smaller balls of plasma. Fire rate and spread increase with upgrades.\nFire Rate: ***\nDamage: ***\nArea of Effect: ****";
+                            P2secondary3Stat.SetActive(true);
                         }
                         if (P2special == true)
                         {
@@ -1438,8 +1409,7 @@ public class SelectionMenuController : MonoBehaviour
                             P2special3.SetActive(true);
 
                             DeactivateP2Stat();
-                            P2specialStat.enabled = true;
-                            P2specialStat.text = "Name: Super Shield\nDescription: Fires up a defensive barrier that destroys enemy projectiles, missiles, and even damages ships.\nDamage: **\nArea of Effect: **\nDuration: *****";
+                            P2special3Stat.SetActive(true);
                         }
                     }
 
@@ -2207,26 +2177,56 @@ public class SelectionMenuController : MonoBehaviour
     private void DeactivateStat()
     {
         characterStat.enabled = false;
-        shipStat.enabled = false;
-        primaryStat.enabled = false;
-        secondaryStat.enabled = false;
-        specialStat.enabled = false;
-    }
+        ship1Stat.SetActive(false);
+        ship2Stat.SetActive(false);
+        ship3Stat.SetActive(false);
+        ship4Stat.SetActive(false);
+        ship5Stat.SetActive(false);
+        primary1Stat.SetActive(false);
+        primary2Stat.SetActive(false);
+        primary3Stat.SetActive(false);
+        secondary1Stat.SetActive(false);
+        secondary2Stat.SetActive(false);
+        secondary3Stat.SetActive(false);
+        special1Stat.SetActive(false);
+        special2Stat.SetActive(false);
+        special3Stat.SetActive(false);
+}
     private void DeactivateP1Stat()
     {
         P1characterStat.enabled = false;
-        P1shipStat.enabled = false;
-        P1primaryStat.enabled = false;
-        P1secondaryStat.enabled = false;
-        P1specialStat.enabled = false;
+        P1ship1Stat.SetActive(false);
+        P1ship2Stat.SetActive(false);
+        P1ship3Stat.SetActive(false);
+        P1ship4Stat.SetActive(false);
+        P1ship5Stat.SetActive(false);
+        P1primary1Stat.SetActive(false);
+        P1primary2Stat.SetActive(false);
+        P1primary3Stat.SetActive(false);
+        P1secondary1Stat.SetActive(false);
+        P1secondary2Stat.SetActive(false);
+        P1secondary3Stat.SetActive(false);
+        P1special1Stat.SetActive(false);
+        P1special2Stat.SetActive(false);
+        P1special3Stat.SetActive(false);
     }
     private void DeactivateP2Stat()
     {
         P2characterStat.enabled = false;
-        P2shipStat.enabled = false;
-        P2primaryStat.enabled = false;
-        P2secondaryStat.enabled = false;
-        P2specialStat.enabled = false;
+        P2ship1Stat.SetActive(false);
+        P2ship2Stat.SetActive(false);
+        P2ship3Stat.SetActive(false);
+        P2ship4Stat.SetActive(false);
+        P2ship5Stat.SetActive(false);
+        P2primary1Stat.SetActive(false);
+        P2primary2Stat.SetActive(false);
+        P2primary3Stat.SetActive(false);
+        P2secondary1Stat.SetActive(false);
+        P2secondary2Stat.SetActive(false);
+        P2secondary3Stat.SetActive(false);
+        P2special1Stat.SetActive(false);
+        P2special2Stat.SetActive(false);
+        P2special3Stat.SetActive(false);
     }
 
     //set data
