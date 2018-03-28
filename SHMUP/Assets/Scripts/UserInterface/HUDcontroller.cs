@@ -37,7 +37,6 @@ public class HUDcontroller : MonoBehaviour
 
     private void Update()
     {
-
         if (pauseMenuOn)
         {
             if (glowTracker <= 1)
@@ -147,8 +146,8 @@ public class HUDcontroller : MonoBehaviour
 
     private void ActivatePauseMenu()
     {
-        Time.timeScale = 0f;
         pauseMenuOn = true;
+        Time.timeScale = 0f;
 
         DeactivateHUD();
 
@@ -160,8 +159,8 @@ public class HUDcontroller : MonoBehaviour
     }
     private void DeactivatePauseMenu()
     {
-        Time.timeScale = 1f;
         pauseMenuOn = false;
+        Time.timeScale = 1f;
 
         ActivateHUD();
 
