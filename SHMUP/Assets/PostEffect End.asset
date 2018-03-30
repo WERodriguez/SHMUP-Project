@@ -9,7 +9,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8a3bdb2cd68f901469e7cc149151eb49, type: 3}
-  m_Name: PostEffect lv2
+  m_Name: PostEffect End
   m_EditorClassIdentifier: 
   debugViews:
     m_Enabled: 1
@@ -71,8 +71,8 @@ MonoBehaviour:
   depthOfField:
     m_Enabled: 1
     m_Settings:
-      focusDistance: 0.16
-      aperture: 28.7
+      focusDistance: 0.1
+      aperture: 28.4
       focalLength: 23
       useCameraFov: 1
       kernelSize: 3
@@ -100,7 +100,7 @@ MonoBehaviour:
     m_Enabled: 1
     m_Settings:
       bloom:
-        intensity: 0.01
+        intensity: 0.019
         threshold: 0.99
         softKnee: 0.51
         radius: 6
@@ -120,17 +120,17 @@ MonoBehaviour:
         neutralWhiteLevel: 5.3
         neutralWhiteClip: 10
       basic:
-        postExposure: 0.56
-        temperature: 76
-        tint: 70
-        hueShift: 13
-        saturation: 0.71
-        contrast: 1.15
+        postExposure: 0.21
+        temperature: 75
+        tint: 50
+        hueShift: 5
+        saturation: 0.983
+        contrast: 1.109
       channelMixer:
-        red: {x: 1, y: 0, z: 0}
-        green: {x: 0, y: 1, z: 0}
-        blue: {x: 0, y: 0, z: 1}
-        currentEditingChannel: 0
+        red: {x: 0.79, y: -0.19, z: -0.13}
+        green: {x: 0, y: 1.32, z: 0}
+        blue: {x: -0.01, y: 0.46, z: 2}
+        currentEditingChannel: 1
       colorWheels:
         mode: 0
         log:
@@ -138,9 +138,9 @@ MonoBehaviour:
           power: {r: 1, g: 1, b: 1, a: 0}
           offset: {r: 1, g: 1, b: 1, a: 0}
         linear:
-          lift: {r: 1, g: 0.9247753, b: 0.98914284, a: 0}
-          gamma: {r: 0.6779927, g: 1, b: 0.44584227, a: 0}
-          gain: {r: 0.7950728, g: 1, b: 0.63505113, a: 0}
+          lift: {r: 0.50651675, g: 0.7042347, b: 1, a: 0}
+          gamma: {r: 0.30646276, g: 1, b: 0.87586945, a: 0}
+          gain: {r: 1, g: 0.57310414, b: 0.23992485, a: 0}
       curves:
         master:
           curve:
@@ -281,7 +281,7 @@ MonoBehaviour:
       lut: {fileID: 0}
       contribution: 1
   chromaticAberration:
-    m_Enabled: 0
+    m_Enabled: 1
     m_Settings:
       spectralTexture: {fileID: 0}
       intensity: 0.262
@@ -289,7 +289,7 @@ MonoBehaviour:
     m_Enabled: 1
     m_Settings:
       colored: 1
-      intensity: 0.02
+      intensity: 0.228
       size: 0.3
       luminanceContribution: 1
   vignette:
@@ -298,9 +298,9 @@ MonoBehaviour:
       mode: 0
       color: {r: 0.03860294, g: 0.15228193, b: 0.30882353, a: 1}
       center: {x: 0.5, y: 0.5}
-      intensity: 0.28
+      intensity: 0.372
       smoothness: 1
-      roundness: 0
+      roundness: 0.523
       mask: {fileID: 0}
       opacity: 1
       rounded: 1
