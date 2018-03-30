@@ -65,17 +65,17 @@ public class MainMenuController : MonoBehaviour
 				quitGlow.fillAmount = 1;
 			}
 
-			if (Input.GetKeyDown (KeyCode.W) || Input.GetKeyDown (KeyCode.A) || Input.GetKeyDown (KeyCode.Alpha8) || Input.GetKeyDown (KeyCode.Alpha4) || Input.GetKeyDown (KeyCode.Keypad8) || Input.GetKeyDown (KeyCode.Keypad4))
-			{
+			if (Input.GetButtonDown("P1VerticalChoiceUp") || Input.GetButtonDown("P2VerticalChoiceUp") || Input.GetKeyDown(KeyCode.Keypad8))
+            {
 				glowTracker--;
 			}
-			if (Input.GetKeyDown (KeyCode.S) || Input.GetKeyDown (KeyCode.D) || Input.GetKeyDown (KeyCode.Alpha5) || Input.GetKeyDown (KeyCode.Alpha6) || Input.GetKeyDown (KeyCode.Keypad5) || Input.GetKeyDown (KeyCode.Keypad6))
-			{
+			if (Input.GetButtonDown("P1VerticalChoiceDown") || Input.GetButtonDown("P2VerticalChoiceDown") || Input.GetKeyDown(KeyCode.Keypad5))
+            {
 				glowTracker++;
 			}
 
-			if (Input.GetKeyDown (KeyCode.Space) || Input.GetKeyDown (KeyCode.Alpha0) || Input.GetKeyDown (KeyCode.Keypad0))
-			{
+			if (Input.GetButtonDown("Fire_P1") || Input.GetButtonDown("Fire_P2") || Input.GetKeyDown(KeyCode.Keypad0))
+            {
 				if (glowTracker <= 1)
 				{
 					SingleButton ();

@@ -627,23 +627,23 @@ public class SelectionMenuController : MonoBehaviour
                         }
                     }
 
-                    if (Input.GetKeyDown(KeyCode.W) && !choosing)
+                    if (Input.GetButtonDown("P1VerticalChoiceUp") && !choosing)
                     {
                         glowTracker--;
                     }
-                    if (Input.GetKeyDown(KeyCode.S) && !choosing)
+                    if (Input.GetButtonDown("P1VerticalChoiceDown") && !choosing)
                     {
                         glowTracker++;
                     }
 
-                    if (Input.GetKeyDown(KeyCode.A))
+                    if (Input.GetButtonDown("P1HorizontalChoiceLeft"))
                     {
                         ResetToggleGlow();
                         toggleLeftGlow.fillAmount = 1;
 
                         P1toggleData--;
                     }
-                    if (Input.GetKeyDown(KeyCode.D))
+                    if (Input.GetButtonDown("P1HorizontalChoiceRight"))
                     {
                         ResetToggleGlow();
                         toggleRightGlow.fillAmount = 1;
@@ -651,7 +651,7 @@ public class SelectionMenuController : MonoBehaviour
                         P1toggleData++;
                     }
 
-                    if (Input.GetKeyDown(KeyCode.Space))
+                    if (Input.GetButtonDown("Fire_P1"))
                     {
                         if (!choosing)
                         {
@@ -1413,32 +1413,32 @@ public class SelectionMenuController : MonoBehaviour
                         }
                     }
 
-                    if (Input.GetKeyDown(KeyCode.W) && !P1choosing)
+                    if (Input.GetButtonDown("P1VerticalChoiceUp") && !P1choosing)
                     {
                         P1glowTracker--;
                     }
-                    if ((Input.GetKeyDown(KeyCode.Alpha8) || Input.GetKeyDown(KeyCode.Keypad8)) && !P2choosing)
+                    if ((Input.GetButtonDown("P2VerticalChoiceUp") || Input.GetKeyDown(KeyCode.Keypad8)) && !P2choosing)
                     {
                         P2glowTracker--;
                     }
 
-                    if (Input.GetKeyDown(KeyCode.S) && !P1choosing)
+                    if (Input.GetButtonDown("P1VerticalChoiceDown") && !P1choosing)
                     {
                         P1glowTracker++;
                     }
-                    if ((Input.GetKeyDown(KeyCode.Alpha5) || Input.GetKeyDown(KeyCode.Keypad5)) && !P2choosing)
+                    if ((Input.GetButtonDown("P2VerticalChoiceDown") || Input.GetKeyDown(KeyCode.Keypad5)) && !P2choosing)
                     {
                         P2glowTracker++;
                     }
 
-                    if (Input.GetKeyDown(KeyCode.A))
+                    if (Input.GetButtonDown("P1HorizontalChoiceLeft"))
                     {
                         ResetP1ToggleGlow();
                         P1toggleLeftGlow.fillAmount = 1;
 
                         P1toggleData--;
                     }
-                    if (Input.GetKeyDown(KeyCode.Alpha4) || Input.GetKeyDown(KeyCode.Keypad4))
+                    if (Input.GetButtonDown("P2HorizontalChoiceLeft") || Input.GetKeyDown(KeyCode.Keypad4))
                     {
                         ResetP2ToggleGlow();
                         P2toggleLeftGlow.fillAmount = 1;
@@ -1446,14 +1446,14 @@ public class SelectionMenuController : MonoBehaviour
                         P2toggleData--;
                     }
 
-                    if (Input.GetKeyDown(KeyCode.D))
+                    if (Input.GetButtonDown("P1HorizontalChoiceRight"))
                     {
                         ResetP1ToggleGlow();
                         P1toggleRightGlow.fillAmount = 1;
 
                         P1toggleData++;
                     }
-                    if (Input.GetKeyDown(KeyCode.Alpha6) || Input.GetKeyDown(KeyCode.Keypad6))
+                    if (Input.GetButtonDown("P2HorizontalChoiceRight") || Input.GetKeyDown(KeyCode.Keypad6))
                     {
                         ResetP2ToggleGlow();
                         P2toggleRightGlow.fillAmount = 1;
@@ -1461,7 +1461,7 @@ public class SelectionMenuController : MonoBehaviour
                         P2toggleData++;
                     }
 
-                    if (Input.GetKeyDown(KeyCode.Space))
+                    if (Input.GetButtonDown("Fire_P1"))
                     {
                         if (!P1choosing)
                         {
@@ -1639,7 +1639,7 @@ public class SelectionMenuController : MonoBehaviour
                             P1choosing = false;
                         }
                     }
-                    if (Input.GetKeyDown(KeyCode.Alpha0) || Input.GetKeyDown(KeyCode.Keypad0))
+                    if (Input.GetButtonDown("Fire_P2") || Input.GetKeyDown(KeyCode.Keypad0))
                     {
                         if (!P2choosing)
                         {
