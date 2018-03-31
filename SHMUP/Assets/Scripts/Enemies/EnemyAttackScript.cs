@@ -12,7 +12,7 @@ public class EnemyAttackScript : MonoBehaviour
     //Just checks if a collider overlaps with a trigger. The thing that is in you. Overlap.
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Boundary") || other.CompareTag("Enemy") || other.CompareTag("EnemyBullet"))
+        if (other.CompareTag("Boundary") || other.CompareTag("LightEnemy") || other.CompareTag("MediumEnemy") || other.CompareTag("HeavyEnemy") || other.CompareTag("OverEnemy") || other.CompareTag("EnemyBullet"))
         {
             return;
         }

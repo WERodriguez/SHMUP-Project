@@ -6,15 +6,15 @@ using UnityEngine.SceneManagement;
 
 public class HangarMenuController : MonoBehaviour
 {
-    public static bool P1gunTest;
-    public static bool P1finalPrimary;
-    public static bool P1finalSecondary;
-    public static bool P1majestic;
+    private bool P1warning;
+    private bool P1verticalSelect;
+    private int P1horizontalGlowTracker;
+    private int P1verticalGlowTracker;
 
-    public static bool P2gunTest;
-    public static bool P2finalPrimary;
-    public static bool P2finalSecondary;
-    public static bool P2majestic;
+    private bool P2warning;
+    private bool P2versticalSelect;
+    private int P2horizontalGlowTracker;
+    private int P2verticalGlowTracker;
 
     private bool P1healthCheck;
     private bool P1shieldCheck;
@@ -26,12 +26,16 @@ public class HangarMenuController : MonoBehaviour
     private bool P2primaryCheck;
     private bool P2secondaryCheck;
 
-    public Text player1Credit;
-    public Text player2Credit;
+    public Text P1Credit;
+    public Text P2Credit;
+
+    public Text P1Warning;
+    public Text P2Warning;
 
     public GameObject selectionButton;
     public GameObject nextButton;
-    public GameObject disableText;
+    public GameObject disableP1Text;
+    public GameObject disableP2Text;
 
     public GameObject P1menu;
     public GameObject P1health;
@@ -40,9 +44,19 @@ public class HangarMenuController : MonoBehaviour
     public GameObject P1primary;
     public GameObject P1secondary;
     public GameObject P1ammo;
-    public GameObject P1primaryTest;
-    public GameObject P1secondaryTest;
-    public GameObject P1supperTest;
+    public GameObject P1healthShader;
+    public GameObject P1shieldShader;
+    public GameObject P1liveShader;
+    public GameObject P1primaryShader;
+    public GameObject P1secondaryShader;
+    public GameObject P1ammoShader;
+    public GameObject P1healthGlow;
+    public GameObject P1shieldGlow;
+    public GameObject P1liveGlow;
+    public GameObject P1primaryGlow;
+    public GameObject P1secondaryGlow;
+    public GameObject P1ammoGlow;
+
     public GameObject P1warningCredit;
     public GameObject P1warningUpgrade;
     public GameObject P1;
@@ -54,9 +68,19 @@ public class HangarMenuController : MonoBehaviour
     public GameObject P2primary;
     public GameObject P2secondary;
     public GameObject P2ammo;
-    public GameObject P2primaryTest;
-    public GameObject P2secondaryTest;
-    public GameObject P2supperTest;
+    public GameObject P2healthShader;
+    public GameObject P2shieldShader;
+    public GameObject P2liveShader;
+    public GameObject P2primaryShader;
+    public GameObject P2secondaryShader;
+    public GameObject P2ammoShader;
+    public GameObject P2healthGlow;
+    public GameObject P2shieldGlow;
+    public GameObject P2liveGlow;
+    public GameObject P2primaryGlow;
+    public GameObject P2secondaryGlow;
+    public GameObject P2ammoGlow;
+
     public GameObject P2warningCredit;
     public GameObject P2warningUpgrade;
     public GameObject P2;
@@ -68,7 +92,8 @@ public class HangarMenuController : MonoBehaviour
         DeactivateP1Menu();
         DeactivateP2Menu();
 
-        DisableWarning();
+        DisableP1Warning();
+        DisableP2Warning();
     }
 
     private void Start()
@@ -91,35 +116,25 @@ public class HangarMenuController : MonoBehaviour
             ActivateP1Menu();
             ActivateP2Menu();
         }
-
-        if (MainMenuController.onePlayer)
-        {
-            player1Credit.text = "Player 1 has: " + ScoreTracker.P1credit;
-        }
-        if (!MainMenuController.onePlayer)
-        {
-            player1Credit.text = "Player 1 has: " + ScoreTracker.P1credit;
-            player2Credit.text = "Player 2 has: " + ScoreTracker.P2credit;
-        }
     }
 
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.Y))
         {
-            DisableWarning();
+            DisableP1Warning();
             ActivateP1Menu();
             ActivateP2Menu();
         }
 
         if (MainMenuController.onePlayer)
         {
-            player1Credit.text = "Player 1 has: " + ScoreTracker.P1credit;
+            P1Credit.text = "Player 1 has: " + ScoreTracker.P1credit;
         }
         if (!MainMenuController.onePlayer)
         {
-            player1Credit.text = "Player 1 has: " + ScoreTracker.P1credit;
-            player2Credit.text = "Player 2 has: " + ScoreTracker.P2credit;
+            P1Credit.text = "Player 1 has: " + ScoreTracker.P1credit;
+            P2Credit.text = "Player 2 has: " + ScoreTracker.P2credit;
         }
     }
 
@@ -146,9 +161,7 @@ public class HangarMenuController : MonoBehaviour
         P1primary.SetActive(true);
         P1secondary.SetActive(true);
         P1ammo.SetActive(true);
-        P1primaryTest.SetActive(true);
-        P1secondaryTest.SetActive(true);
-        P1supperTest.SetActive(true);
+
         P1.SetActive(true);
     }
     private void DeactivateP1Menu()
@@ -159,9 +172,7 @@ public class HangarMenuController : MonoBehaviour
         P1primary.SetActive(false);
         P1secondary.SetActive(false);
         P1ammo.SetActive(false);
-        P1primaryTest.SetActive(false);
-        P1secondaryTest.SetActive(false);
-        P1supperTest.SetActive(false);
+
         P1.SetActive(false);
     }
 
@@ -173,9 +184,7 @@ public class HangarMenuController : MonoBehaviour
         P2primary.SetActive(true);
         P2secondary.SetActive(true);
         P2ammo.SetActive(true);
-        P2primaryTest.SetActive(true);
-        P2secondaryTest.SetActive(true);
-        P2supperTest.SetActive(true);
+
         P2.SetActive(true);
     }
     private void DeactivateP2Menu()
@@ -186,18 +195,21 @@ public class HangarMenuController : MonoBehaviour
         P2primary.SetActive(false);
         P2secondary.SetActive(false);
         P2ammo.SetActive(false);
-        P2primaryTest.SetActive(false);
-        P2secondaryTest.SetActive(false);
-        P2supperTest.SetActive(false);
+
         P2.SetActive(false);
     }
 
-    private void DisableWarning()
+    private void DisableP1Warning()
     {
-        disableText.SetActive(false);
+        disableP1Text.SetActive(false);
 
         P1warningCredit.SetActive(false);
         P1warningUpgrade.SetActive(false);
+    }
+
+    private void DisableP2Warning()
+    {
+        disableP2Text.SetActive(false);
 
         P2warningCredit.SetActive(false);
         P2warningUpgrade.SetActive(false);
@@ -205,16 +217,6 @@ public class HangarMenuController : MonoBehaviour
 
     private void SetBool()
     {
-        P1gunTest = false;
-        P1finalPrimary = false;
-        P1finalSecondary = false;
-        P1majestic = false;
-
-        P2gunTest = false;
-        P2finalPrimary = false;
-        P2finalSecondary = false;
-        P2majestic = false;
-
         P1healthCheck = false;
         P1shieldCheck = false;
         P1primaryCheck = false;
@@ -231,14 +233,14 @@ public class HangarMenuController : MonoBehaviour
         DeactivateP1Menu();
 
         P1warningCredit.SetActive(true);
-        disableText.SetActive(true);
+        disableP1Text.SetActive(true);
     }
     private void P1AlreadyUpgrade()
     {
         DeactivateP1Menu();
 
         P1warningUpgrade.SetActive(true);
-        disableText.SetActive(true);
+        disableP2Text.SetActive(true);
     }
 
     private void P2NotEnoughCredit()
@@ -246,35 +248,35 @@ public class HangarMenuController : MonoBehaviour
         DeactivateP2Menu();
 
         P2warningCredit.SetActive(true);
-        disableText.SetActive(true);
+        disableP1Text.SetActive(true);
     }
     private void P2AlreadyUpgrade()
     {
         DeactivateP2Menu();
 
         P2warningUpgrade.SetActive(true);
-        disableText.SetActive(true);
+        disableP2Text.SetActive(true);
     }
 
     private void ResetPlayer1Value()
     {
-        PlayerHealthSystem.P1currentLives = PlayerHealthSystem.P1maxLives;
-        PlayerHealthSystem.P1currentHealth = PlayerHealthSystem.P1maxHealth;
-        PlayerHealthSystem.P1currentShields = PlayerHealthSystem.P1maxShields;
+        PlayerHealthSystem.P1currentLives = 0;
+        PlayerHealthSystem.P1currentHealth = 0;
+        PlayerHealthSystem.P1currentShields = 0;
 
-        PlayerWeaponController.P1savedWeaponLevel = PlayerWeaponController.baseWLevel;
-        PlayerWeaponController.P1savedSecondaryLevel = PlayerWeaponController.baseSecondaryLevel;
-        PlayerWeaponController.P1savedSuperAmmo = PlayerWeaponController.superAmmoDefault;
+        PlayerWeaponController.P1savedWeaponLevel = 1;
+        PlayerWeaponController.P1savedSecondaryLevel = 0;
+        PlayerWeaponController.P1savedSuperAmmo = 0;
     }
     private void ResetPlayer2Value()
     {
-        PlayerHealthSystem.P2currentLives = PlayerHealthSystem.P2maxLives;
-        PlayerHealthSystem.P2currentHealth = PlayerHealthSystem.P2maxHealth;
-        PlayerHealthSystem.P2currentShields = PlayerHealthSystem.P2maxShields;
+        PlayerHealthSystem.P2currentLives = 0;
+        PlayerHealthSystem.P2currentHealth = 0;
+        PlayerHealthSystem.P2currentShields = 0;
 
-        PlayerWeaponController.P2savedWeaponLevel = PlayerWeaponController.baseWLevel;
-        PlayerWeaponController.P2savedSecondaryLevel = PlayerWeaponController.baseSecondaryLevel;
-        PlayerWeaponController.P2savedSuperAmmo = PlayerWeaponController.superAmmoDefault;
+        PlayerWeaponController.P2savedWeaponLevel = 1;
+        PlayerWeaponController.P2savedSecondaryLevel = 0;
+        PlayerWeaponController.P2savedSuperAmmo = 0;
     }
 
     private void SetPlayer1Value()
@@ -297,7 +299,7 @@ public class HangarMenuController : MonoBehaviour
         PlayerWeaponController.P2savedSecondaryLevel = PlayerWeaponController.P2currentSecondaryLevel;
         PlayerWeaponController.P2savedSuperAmmo = PlayerWeaponController.P2currentSuperAmmo;
     }
-
+    /*
     public void SelectionButton()
     {
         ResetPlayer1Value();
@@ -325,7 +327,7 @@ public class HangarMenuController : MonoBehaviour
     {
         if(PlayerHealthSystem.P1currentHealth >= PlayerHealthSystem.P1maxHealth)
         {
-            player1Credit.text = "You already have full health";
+            P1Warni.text = "You already have full health";
         }
 
         if (P1healthCheck)
@@ -342,7 +344,7 @@ public class HangarMenuController : MonoBehaviour
             if(ScoreTracker.P1credit >= 100)
             {
                 ScoreTracker.P1credit -= 100;
-                player1Credit.text = "Player 1 has: " + ScoreTracker.P1credit;
+                P1Cra.text = "Player 1 has: " + ScoreTracker.P1credit;
 
                 PlayerHealthSystem.P1currentHealth = PlayerHealthSystem.P1maxHealth;
 
@@ -488,20 +490,6 @@ public class HangarMenuController : MonoBehaviour
                 PlayerWeaponController.P1currentSuperAmmo++;
             }
         }
-    }
-    public void P1PrimaryTestButton()
-    {
-        P1gunTest = true;
-        P1finalPrimary = true;
-    }
-    public void P1SecondaryTestButton()
-    {
-        P1gunTest = true;
-        P1finalSecondary = true;
-    }
-    public void P1SuperWeaponTestButton()
-    {
-        P1majestic = true;
     }
 
     public void P2HealthButton()
@@ -672,18 +660,5 @@ public class HangarMenuController : MonoBehaviour
             }
         }
     }
-    public void P2PrimaryTestButton()
-    {
-        P2gunTest = true;
-        P2finalPrimary = true;
-    }
-    public void P2SecondaryTestButton()
-    {
-        P2gunTest = true;
-        P2finalSecondary = true;
-    }
-    public void P2SuperWeaponTestButton()
-    {
-        P2majestic = true;
-    }
+    */
 }

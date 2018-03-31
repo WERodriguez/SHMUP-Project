@@ -240,6 +240,15 @@ public class ScoreScreenController : MonoBehaviour
         currentP2Shields = PlayerHealthSystem.P2currentShields;
         currentP2Lives = PlayerHealthSystem.P2currentLives;
         currentP2SuperAmmo = PlayerWeaponController.P2superAmmo;
+
+        if (PlayerHealthSystem.P1currentLives < 0)
+        {
+            currentP1Lives = 0;
+        }
+        if (PlayerHealthSystem.P2currentLives < 0)
+        {
+            currentP2Lives = 0;
+        }
     }
     private void ResetPlayerScore()
     {
@@ -292,6 +301,6 @@ public class ScoreScreenController : MonoBehaviour
     {
         ResetPlayerScore();
 
-        SceneManager.LoadScene("StoreScreen");
+        SceneManager.LoadScene("Hangar");
     }
 }

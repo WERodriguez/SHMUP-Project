@@ -294,7 +294,7 @@ public class SpeechSystemController : MonoBehaviour
         }
     }
 
-    IEnumerator StartingSpeech1P()
+    public IEnumerator StartingSpeech1P()
     {
         SetPlayer1Character();
 
@@ -373,7 +373,7 @@ public class SpeechSystemController : MonoBehaviour
 
         waitingSpeech = true;
     }
-    IEnumerator StartingSpeech2P()
+    public IEnumerator StartingSpeech2P()
     {
         SetPlayer1Character();
         SetPlayer2Character();
@@ -523,9 +523,11 @@ public class SpeechSystemController : MonoBehaviour
 
         DeactivateP2Characters();
         DeactivateP2Speech();
+
+        waitingSpeech = true;
     }
 
-    IEnumerator P1RamEnemy()
+    public IEnumerator P1RamEnemy()
     {
         DeactivateP1Characters();
         ActivateP1Speech();
@@ -542,10 +544,9 @@ public class SpeechSystemController : MonoBehaviour
         DeactivateP1Characters();
         DeactivateP1Speech();
 
-        waitingSpeech = true;
         P1speaking = false;
     }
-    IEnumerator P2RamEnemy()
+    public IEnumerator P2RamEnemy()
     {
         DeactivateP2Characters();
         ActivateP2Speech();
@@ -565,7 +566,7 @@ public class SpeechSystemController : MonoBehaviour
         P2speaking = false;
     }
 
-    IEnumerator P1LightEnemy()
+    public IEnumerator P1LightEnemy()
     {
         DeactivateP1Characters();
         ActivateP1Speech();
@@ -584,7 +585,7 @@ public class SpeechSystemController : MonoBehaviour
 
         P1speaking = false;
     }
-    IEnumerator P2LightEnemy()
+    public IEnumerator P2LightEnemy()
     {
         DeactivateP2Characters();
         ActivateP2Speech();
@@ -604,7 +605,7 @@ public class SpeechSystemController : MonoBehaviour
         P2speaking = false;
     }
 
-    IEnumerator P1MissileEnemy()
+    public IEnumerator P1MissileEnemy()
     {
         DeactivateP1Characters();
         ActivateP1Speech();
@@ -623,7 +624,7 @@ public class SpeechSystemController : MonoBehaviour
 
         P1speaking = false;
     }
-    IEnumerator P2MissileEnemy()
+    public IEnumerator P2MissileEnemy()
     {
         DeactivateP2Characters();
         ActivateP2Speech();
@@ -643,7 +644,7 @@ public class SpeechSystemController : MonoBehaviour
         P2speaking = false;
     }
 
-    IEnumerator P1DestroyerEnemy()
+    public IEnumerator P1DestroyerEnemy()
     {
         DeactivateP1Characters();
         ActivateP1Speech();
@@ -662,7 +663,7 @@ public class SpeechSystemController : MonoBehaviour
 
         P1speaking = false;
     }
-    IEnumerator P2DestroyerEnemy()
+    public IEnumerator P2DestroyerEnemy()
     {
         DeactivateP2Characters();
         ActivateP2Speech();
@@ -682,7 +683,7 @@ public class SpeechSystemController : MonoBehaviour
         P2speaking = false;
     }
 
-    IEnumerator P1BossKill()
+    public IEnumerator P1BossKill()
     {
         DeactivateP1Characters();
         ActivateP1Speech();
@@ -701,7 +702,7 @@ public class SpeechSystemController : MonoBehaviour
 
         P1speaking = false;
     }
-    IEnumerator P2BossKill()
+    public IEnumerator P2BossKill()
     {
         DeactivateP2Characters();
         ActivateP2Speech();
@@ -721,7 +722,7 @@ public class SpeechSystemController : MonoBehaviour
         P2speaking = false;
     }
 
-    IEnumerator P1LessLive()
+    public IEnumerator P1LessLive()
     {
         DeactivateP1Characters();
         ActivateP1Speech();
@@ -740,7 +741,7 @@ public class SpeechSystemController : MonoBehaviour
 
         P1speaking = false;
     }
-    IEnumerator P2LessLive()
+    public IEnumerator P2LessLive()
     {
         DeactivateP2Characters();
         ActivateP2Speech();
@@ -760,7 +761,7 @@ public class SpeechSystemController : MonoBehaviour
         P2speaking = false;
     }
 
-    IEnumerator P1Death()
+    public IEnumerator P1Death()
     {
         DeactivateP1Characters();
         ActivateP1Speech();
@@ -778,7 +779,7 @@ public class SpeechSystemController : MonoBehaviour
         P1NoLiveSpeech = true;
         P1speaking = false;
     }
-    IEnumerator P2Death()
+    public IEnumerator P2Death()
     {
         DeactivateP2Characters();
         ActivateP2Speech();
@@ -797,7 +798,7 @@ public class SpeechSystemController : MonoBehaviour
         P2speaking = false;
     }
 
-    IEnumerator P1HalfHealth()
+    public IEnumerator P1HalfHealth()
     {
         DeactivateP1Characters();
         ActivateP1Speech();
@@ -816,7 +817,7 @@ public class SpeechSystemController : MonoBehaviour
         P1HalfHealthSpeech = true;
         P1speaking = false;
     }
-    IEnumerator P2HalfHealth()
+    public IEnumerator P2HalfHealth()
     {
         DeactivateP2Characters();
         ActivateP2Speech();
@@ -835,7 +836,7 @@ public class SpeechSystemController : MonoBehaviour
         P2speaking = false;
     }
 
-    IEnumerator P1MoreHealth()
+    public IEnumerator P1MoreHealth()
     {
         DeactivateP1Characters();
         ActivateP1Speech();
@@ -855,7 +856,7 @@ public class SpeechSystemController : MonoBehaviour
         P1HalfHealthSpeech = false;
         P1speaking = false;
     }
-    IEnumerator P2MoreHealth()
+    public IEnumerator P2MoreHealth()
     {
         DeactivateP2Characters();
         ActivateP2Speech();
@@ -876,7 +877,7 @@ public class SpeechSystemController : MonoBehaviour
         P2speaking = false;
     }
 
-    IEnumerator P1MoreShield()
+    public IEnumerator P1MoreShield()
     {
         DeactivateP1Characters();
         ActivateP1Speech();
@@ -895,7 +896,7 @@ public class SpeechSystemController : MonoBehaviour
 
         P1speaking = false;
     }
-    IEnumerator P2MoreShield()
+    public IEnumerator P2MoreShield()
     {
         DeactivateP2Characters();
         ActivateP2Speech();
@@ -915,7 +916,7 @@ public class SpeechSystemController : MonoBehaviour
         P2speaking = false;
     }
 
-    IEnumerator P1MoreLive()
+    public IEnumerator P1MoreLive()
     {
         DeactivateP1Characters();
         ActivateP1Speech();
@@ -934,7 +935,7 @@ public class SpeechSystemController : MonoBehaviour
 
         P1speaking = false;
     }
-    IEnumerator P2MoreLive()
+    public IEnumerator P2MoreLive()
     {
         DeactivateP2Characters();
         ActivateP2Speech();
@@ -954,7 +955,7 @@ public class SpeechSystemController : MonoBehaviour
         P2speaking = false;
     }
 
-    IEnumerator P1MorePrimary()
+    public IEnumerator P1MorePrimary()
     {
         DeactivateP1Characters();
         ActivateP1Speech();
@@ -973,7 +974,7 @@ public class SpeechSystemController : MonoBehaviour
 
         P1speaking = false;
     }
-    IEnumerator P2MorePrimary()
+    public IEnumerator P2MorePrimary()
     {
         DeactivateP2Characters();
         ActivateP2Speech();
@@ -993,7 +994,7 @@ public class SpeechSystemController : MonoBehaviour
         P2speaking = false;
     }
 
-    IEnumerator P1MoreSecondary()
+    public IEnumerator P1MoreSecondary()
     {
         DeactivateP1Characters();
         ActivateP1Speech();
@@ -1012,7 +1013,7 @@ public class SpeechSystemController : MonoBehaviour
 
         P1speaking = false;
     }
-    IEnumerator P2MoreSecondary()
+    public IEnumerator P2MoreSecondary()
     {
         DeactivateP2Characters();
         ActivateP2Speech();
@@ -1032,7 +1033,7 @@ public class SpeechSystemController : MonoBehaviour
         P2speaking = false;
     }
 
-    IEnumerator P1MoreAmmo()
+    public IEnumerator P1MoreAmmo()
     {
         DeactivateP1Characters();
         ActivateP1Speech();
@@ -1051,7 +1052,7 @@ public class SpeechSystemController : MonoBehaviour
 
         P1speaking = false;
     }
-    IEnumerator P2MoreAmmo()
+    public IEnumerator P2MoreAmmo()
     {
         DeactivateP2Characters();
         ActivateP2Speech();
@@ -1197,7 +1198,7 @@ public class SpeechSystemController : MonoBehaviour
         }
     }
 
-    private void P1Lines()
+    public void P1Lines()
     {
         randomSpeech = Random.Range(0, 90);
 
@@ -1349,7 +1350,7 @@ public class SpeechSystemController : MonoBehaviour
                 }
                 if (randomSpeech > 30 && randomSpeech <= 60)
                 {
-                    P1text.text = "Hah!That tickles.";
+                    P1text.text = "Shields up!";
                 }
                 if (randomSpeech > 60)
                 {
@@ -1567,7 +1568,7 @@ public class SpeechSystemController : MonoBehaviour
                 }
                 if (randomSpeech > 30 && randomSpeech <= 60)
                 {
-                    P1text.text = "Hah!That tickles.";
+                    P1text.text = "Shields up!";
                 }
                 if (randomSpeech > 60)
                 {
@@ -2074,7 +2075,7 @@ public class SpeechSystemController : MonoBehaviour
             }
         }
     }
-    private void P2Lines()
+    public void P2Lines()
     {
         randomSpeech = Random.Range(0, 90);
 
@@ -2226,7 +2227,7 @@ public class SpeechSystemController : MonoBehaviour
                 }
                 if (randomSpeech > 30 && randomSpeech <= 60)
                 {
-                    P2text.text = "Hah!That tickles.";
+                    P2text.text = "Shields up!";
                 }
                 if (randomSpeech > 60)
                 {
@@ -2444,7 +2445,7 @@ public class SpeechSystemController : MonoBehaviour
                 }
                 if (randomSpeech > 30 && randomSpeech <= 60)
                 {
-                    P2text.text = "Hah!That tickles.";
+                    P2text.text = "Shields up!";
                 }
                 if (randomSpeech > 60)
                 {

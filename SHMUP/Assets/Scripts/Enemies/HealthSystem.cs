@@ -138,7 +138,7 @@ public class HealthSystem : MonoBehaviour
         {
             doesLootDrop = Random.Range(0.0f, 100.0f);
 
-            if (this.gameObject.name == "RamEnemy(Clone)")
+            if (this.gameObject.tag == "LightEnemy")
             {
                 if (!whatPlayer)
                 {
@@ -149,7 +149,7 @@ public class HealthSystem : MonoBehaviour
                     P2ramEnemy++;
                 }
             }
-            if (this.gameObject.name == "LightShip(Clone)")
+            if (this.gameObject.tag == "MediumEnemy")
             {
                 if (!whatPlayer)
                 {
@@ -160,7 +160,7 @@ public class HealthSystem : MonoBehaviour
                     P2lightEnemy++;
                 }
             }
-            if (this.gameObject.name == "MissileFighter(Clone)")
+            if (this.gameObject.tag == "HeavyEnemy")
             {
                 if (!whatPlayer)
                 {
@@ -171,7 +171,7 @@ public class HealthSystem : MonoBehaviour
                     P2missileEnemy++;
                 }
             }
-            if (this.gameObject.name == "Destroyer(Clone)")
+            if (this.gameObject.tag == "OverEnemy")
             {
                 if (!whatPlayer)
                 {

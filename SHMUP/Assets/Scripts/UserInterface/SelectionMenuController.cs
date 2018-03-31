@@ -2336,14 +2336,14 @@ public class SelectionMenuController : MonoBehaviour
     {
         PlayerHealthSystem.P1maxHealth = 100;
         PlayerHealthSystem.P1maxShields = 75;
-        PlayerHealthSystem.P1maxLives = 2;
+        PlayerHealthSystem.P1maxLives = 5;
     }
     //player 2 light ship
     private void P2LightShipData()
     {
         PlayerHealthSystem.P2maxHealth = 100;
         PlayerHealthSystem.P2maxShields = 75;
-        PlayerHealthSystem.P2maxLives = 2;
+        PlayerHealthSystem.P2maxLives = 5;
     }
 
     //player 1 medium ship
@@ -2351,14 +2351,14 @@ public class SelectionMenuController : MonoBehaviour
     {
         PlayerHealthSystem.P1maxHealth = 125;
         PlayerHealthSystem.P1maxShields = 100;
-        PlayerHealthSystem.P1maxLives = 2;
+        PlayerHealthSystem.P1maxLives = 5;
     }
     //player 2 medium ship
     private void P2MediumShipData()
     {
         PlayerHealthSystem.P2maxHealth = 125;
         PlayerHealthSystem.P2maxShields = 100;
-        PlayerHealthSystem.P2maxLives = 2;
+        PlayerHealthSystem.P2maxLives = 5;
     }
 
     //plaer 1 heavy ship
@@ -2366,14 +2366,14 @@ public class SelectionMenuController : MonoBehaviour
     {
         PlayerHealthSystem.P1maxHealth = 150;
         PlayerHealthSystem.P1maxShields = 125;
-        PlayerHealthSystem.P1maxLives = 2;
+        PlayerHealthSystem.P1maxLives = 5;
     }
     //plaer 2 heavy ship
     private void P2HeavyShipData()
     {
         PlayerHealthSystem.P2maxHealth = 150;
         PlayerHealthSystem.P2maxShields = 125;
-        PlayerHealthSystem.P2maxLives = 2;
+        PlayerHealthSystem.P2maxLives = 5;
     }
 
     //player 1 lambo shooter
@@ -2381,14 +2381,14 @@ public class SelectionMenuController : MonoBehaviour
     {
         PlayerHealthSystem.P1maxHealth = 175;
         PlayerHealthSystem.P1maxShields = 150;
-        PlayerHealthSystem.P1maxLives = 2;
+        PlayerHealthSystem.P1maxLives = 5;
     }
     //player 2 lambo shooter
     private void P2LamboShooterData()
     {
         PlayerHealthSystem.P2maxHealth = 75;
         PlayerHealthSystem.P2maxShields = 150;
-        PlayerHealthSystem.P2maxLives = 2;
+        PlayerHealthSystem.P2maxLives = 5;
     }
 
     //player 1 truck shooter
@@ -2396,14 +2396,14 @@ public class SelectionMenuController : MonoBehaviour
     {
         PlayerHealthSystem.P1maxHealth = 200;
         PlayerHealthSystem.P1maxShields = 200;
-        PlayerHealthSystem.P1maxLives = 2;
+        PlayerHealthSystem.P1maxLives = 5;
     }
     //player 2 truck shooter
     private void P2TruckShooterData()
     {
         PlayerHealthSystem.P2maxHealth = 200;
         PlayerHealthSystem.P2maxShields = 200;
-        PlayerHealthSystem.P2maxLives = 2;
+        PlayerHealthSystem.P2maxLives = 5;
     }
 
     //player 1 ship data
@@ -2411,14 +2411,14 @@ public class SelectionMenuController : MonoBehaviour
     {
         PlayerHealthSystem.P1savedHealth = PlayerHealthSystem.P1maxHealth;
         PlayerHealthSystem.P1savedShields = PlayerHealthSystem.P1maxShields;
-        PlayerHealthSystem.P1savedLives = PlayerHealthSystem.P1maxLives;
+        PlayerHealthSystem.P1savedLives = 3;
     }
     //player 2 ship data
     private void Player2Data()
     {
         PlayerHealthSystem.P2savedHealth = PlayerHealthSystem.P2maxHealth;
         PlayerHealthSystem.P2savedShields = PlayerHealthSystem.P2maxShields;
-        PlayerHealthSystem.P2savedLives = PlayerHealthSystem.P2maxLives;
+        PlayerHealthSystem.P2savedLives = 3;
     }
 
     //player 1 Weapon data

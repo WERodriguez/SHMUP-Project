@@ -295,7 +295,7 @@ public class PlayerHealthSystem : MonoBehaviour
         {
             P1moreLive = true;
 
-            P1currentLives += 1;
+            P1currentLives ++;
 
             if (P1currentLives > P1maxLives)
             {
@@ -311,7 +311,7 @@ public class PlayerHealthSystem : MonoBehaviour
         {
             P2moreLive = true;
 
-            P2currentLives += 1;
+            P2currentLives ++;
 
             if (P2currentLives > P2maxLives)
             {
