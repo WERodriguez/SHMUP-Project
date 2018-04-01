@@ -70,13 +70,11 @@ public class HangarMenuController : MonoBehaviour
     public GameObject P1shipHorizontal;
     public GameObject P1primaryHorizontal;
     public GameObject P1secondaryHorizontal;
-    public GameObject P1specialHorizontal;
     public GameObject P1toggleLeft;
     public GameObject P1toggleRight;
     public GameObject P1shipGlowHorizontal;
     public GameObject P1primaryGlowHorizontal;
     public GameObject P1secondaryGlowHorizontal;
-    public GameObject P1specialGlowHorizontal;
     public GameObject P1toggleLeftGlow;
     public GameObject P1toggleRightGlow;
 
@@ -112,15 +110,27 @@ public class HangarMenuController : MonoBehaviour
     public GameObject P2shipHorizontal;
     public GameObject P2primaryHorizontal;
     public GameObject P2secondaryHorizontal;
-    public GameObject P2specialHorizontal;
     public GameObject P2toggleLeft;
     public GameObject P2toggleRight;
     public GameObject P2shipGlowHorizontal;
     public GameObject P2primaryGlowHorizontal;
     public GameObject P2secondaryGlowHorizontal;
-    public GameObject P2specialGlowHorizontal;
     public GameObject P2toggleLeftGlow;
     public GameObject P2toggleRightGlow;
+
+    public Animator P1healthStartingAnimation;
+    public Animator P1shieldStartingAnimation;
+    public Animator P1liveStartingAnimation;
+    public Animator P1primaryStartingAnimation;
+    public Animator P1secondaryStartingAnimation;
+    public Animator P1specialStartingAnimation;
+
+    public Animator P2healthStartingAnimation;
+    public Animator P2shieldStartingAnimation;
+    public Animator P2liveStartingAnimation;
+    public Animator P2primaryStartingAnimation;
+    public Animator P2secondaryStartingAnimation;
+    public Animator P2specialStartingAnimation;
 
     private void Awake()
     {
