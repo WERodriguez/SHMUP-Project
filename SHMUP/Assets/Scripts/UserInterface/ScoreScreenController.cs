@@ -70,7 +70,6 @@ public class ScoreScreenController : MonoBehaviour
 
         DeactivateGlow();
 
-        MainMenuController.currentStage ++;
         glowTracker = 1;
         waiting = false;
     }
@@ -137,6 +136,8 @@ public class ScoreScreenController : MonoBehaviour
 
     IEnumerator Timer()
     {
+        MainMenuController.currentStage++;
+
         hangarButton.SetActive(true);
         nextButton.SetActive(true);
 
@@ -292,8 +293,6 @@ public class ScoreScreenController : MonoBehaviour
             SetPlayer1Value();
             SetPlayer2Value();
         }
-
-        ResetPlayerScore();
 
         if(MainMenuController.currentStage <= 1)
         {
