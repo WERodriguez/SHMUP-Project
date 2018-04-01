@@ -44,7 +44,7 @@ public class OverlyDramaticDeath : MonoBehaviour
         {
             //Instantiates explosions from an array that holds 3 explosions.
             //X and Z coordinates of explosions are random. Y and rotation are static.
-            Instantiate(explosions[Random.Range(0, 3)], new Vector3(gameObject.transform.position.x + Random.Range(-4.0f, 4.0f),
+            Instantiate(explosions[Random.Range(0, 3)], new Vector3(gameObject.transform.position.x + Random.Range(-2.5f, 2.5f),
                 gameObject.transform.position.z + Random.Range(-6.0f, 6.0f),
                 gameObject.transform.position.y), gameObject.transform.rotation);
 
