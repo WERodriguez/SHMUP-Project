@@ -189,6 +189,7 @@ public class HangarMenuController : MonoBehaviour
         ResetP1ToggleData();
         DeactivateP1WarningPanel();
         ResetP1Bool();
+        ResetP1SwitchBool();
         
         DeactivateP1WarningPanel();
 
@@ -205,6 +206,7 @@ public class HangarMenuController : MonoBehaviour
         ResetP2ToggleData();
         DeactivateP2WarningPanel();
         ResetP2Bool();
+        ResetP2SwitchBool();
         
         DeactivateP2WarningPanel();
 
@@ -1478,6 +1480,7 @@ public class HangarMenuController : MonoBehaviour
 
         DeactivateP1WarningPanel();
 
+        ResetP1SwitchBool();
         P1switch = true;
         P1shipSwitch = true;
     }
@@ -1489,7 +1492,8 @@ public class HangarMenuController : MonoBehaviour
         yield return new WaitForSeconds(3f);
 
         DeactivateP1WarningPanel();
-        
+
+        ResetP1SwitchBool();
         P1switch = true;
         P1primarySwitch = true;
     }
@@ -1502,6 +1506,7 @@ public class HangarMenuController : MonoBehaviour
 
         DeactivateP1WarningPanel();
 
+        ResetP1SwitchBool();
         P1switch = true;
         P1secondarySwitch = true;
     }
@@ -1783,6 +1788,7 @@ public class HangarMenuController : MonoBehaviour
 
         DeactivateP2WarningPanel();
 
+        ResetP2SwitchBool();
         P2switch = true;
         P2shipSwitch = true;
     }
@@ -1795,6 +1801,7 @@ public class HangarMenuController : MonoBehaviour
 
         DeactivateP2WarningPanel();
 
+        ResetP2SwitchBool();
         P2switch = true;
         P2primarySwitch = true;
     }
@@ -1807,6 +1814,7 @@ public class HangarMenuController : MonoBehaviour
 
         DeactivateP2WarningPanel();
 
+        ResetP2SwitchBool();
         P2switch = true;
         P2secondarySwitch = true;
     }
@@ -2423,9 +2431,6 @@ public class HangarMenuController : MonoBehaviour
         P1shieldCheck = false;
         P1primaryCheck = false;
         P1secondaryCheck = false;
-        P1shipSwitch = false;
-        P1primarySwitch = false;
-        P1secondarySwitch = false;
     }
     private void ResetP2Bool()
     {
@@ -2433,10 +2438,20 @@ public class HangarMenuController : MonoBehaviour
         P2shieldCheck = false;
         P2primaryCheck = false;
         P2secondaryCheck = false;
+    }
+
+    private void ResetP1SwitchBool()
+    {
+        P1shipSwitch = false;
+        P1primarySwitch = false;
+        P1secondarySwitch = false;
+    }
+    private void ResetP2SwitchBool()
+    {
         P2shipSwitch = false;
         P2primarySwitch = false;
         P2secondarySwitch = false;
-}
+    }
 
     private void ResetPlayerScore()
     {
