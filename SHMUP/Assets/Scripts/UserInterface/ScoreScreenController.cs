@@ -70,6 +70,7 @@ public class ScoreScreenController : MonoBehaviour
 
         DeactivateGlow();
 
+        MainMenuController.currentStage ++;
         glowTracker = 1;
         waiting = false;
     }
@@ -259,9 +260,9 @@ public class ScoreScreenController : MonoBehaviour
 
     private void SetPlayer1Value()
     {
-        PlayerHealthSystem.P1savedLives = PlayerHealthSystem.P1currentLives;
         PlayerHealthSystem.P1savedHealth = PlayerHealthSystem.P1currentHealth;
         PlayerHealthSystem.P1savedShields = PlayerHealthSystem.P1currentShields;
+        PlayerHealthSystem.P1savedLives = PlayerHealthSystem.P1currentLives;
 
         PlayerWeaponController.P1savedWeaponLevel = PlayerWeaponController.P1currentWLevel;
         PlayerWeaponController.P1savedSecondaryLevel = PlayerWeaponController.P1currentSecondaryLevel;
@@ -269,9 +270,9 @@ public class ScoreScreenController : MonoBehaviour
     }
     private void SetPlayer2Value()
     {
-        PlayerHealthSystem.P2savedLives = PlayerHealthSystem.P2currentLives;
         PlayerHealthSystem.P2savedHealth = PlayerHealthSystem.P2currentHealth;
         PlayerHealthSystem.P2savedShields = PlayerHealthSystem.P2currentShields;
+        PlayerHealthSystem.P2savedLives = PlayerHealthSystem.P2currentLives;
 
         PlayerWeaponController.P2savedWeaponLevel = PlayerWeaponController.P2currentWLevel;
         PlayerWeaponController.P2savedSecondaryLevel = PlayerWeaponController.P2currentSecondaryLevel;
@@ -294,7 +295,18 @@ public class ScoreScreenController : MonoBehaviour
 
         ResetPlayerScore();
 
-        SceneManager.LoadScene("Level1");
+        if(MainMenuController.currentStage <= 1)
+        {
+            SceneManager.LoadScene("Level1");
+        }
+        if (MainMenuController.currentStage == 2)
+        {
+            SceneManager.LoadScene("Level2");
+        }
+        if (MainMenuController.currentStage >= 3)
+        {
+            SceneManager.LoadScene("Level3");
+        }
     }
 
     public void HangarButton()

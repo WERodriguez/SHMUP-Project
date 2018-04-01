@@ -29,13 +29,14 @@ public class HangarMenuController : MonoBehaviour
     public Text P1Credit;
     public Text P2Credit;
 
-    public Text P1Warning;
-    public Text P2Warning;
+    public Text P1WarningText;
+    public Text P2WarningText;
 
-    public GameObject selectionButton;
+    public GameObject P1Warning;
+    public GameObject P2Warning;
+
+    public GameObject restartButton;
     public GameObject nextButton;
-    public GameObject disableP1Text;
-    public GameObject disableP2Text;
 
     public GameObject P1menu;
     public GameObject P1health;
@@ -43,23 +44,41 @@ public class HangarMenuController : MonoBehaviour
     public GameObject P1live;
     public GameObject P1primary;
     public GameObject P1secondary;
-    public GameObject P1ammo;
+    public GameObject P1special;
     public GameObject P1healthShader;
     public GameObject P1shieldShader;
     public GameObject P1liveShader;
     public GameObject P1primaryShader;
     public GameObject P1secondaryShader;
-    public GameObject P1ammoShader;
+    public GameObject P1specialShader;
     public GameObject P1healthGlow;
     public GameObject P1shieldGlow;
     public GameObject P1liveGlow;
     public GameObject P1primaryGlow;
     public GameObject P1secondaryGlow;
-    public GameObject P1ammoGlow;
+    public GameObject P1specialGlow;
+    
+    public GameObject P1ship1;
+    public GameObject P1ship2;
+    public GameObject P1ship3;
+    public GameObject P1ship4;
+    public GameObject P1ship5;
 
-    public GameObject P1warningCredit;
-    public GameObject P1warningUpgrade;
-    public GameObject P1;
+    public GameObject P1beamCannon;
+
+    public GameObject P1menuHorizontal;
+    public GameObject P1shipHorizontal;
+    public GameObject P1primaryHorizontal;
+    public GameObject P1secondaryHorizontal;
+    public GameObject P1specialHorizontal;
+    public GameObject P1toggleLeft;
+    public GameObject P1toggleRight;
+    public GameObject P1shipGlowHorizontal;
+    public GameObject P1primaryGlowHorizontal;
+    public GameObject P1secondaryGlowHorizontal;
+    public GameObject P1specialGlowHorizontal;
+    public GameObject P1toggleLeftGlow;
+    public GameObject P1toggleRightGlow;
 
     public GameObject P2menu;
     public GameObject P2health;
@@ -67,66 +86,52 @@ public class HangarMenuController : MonoBehaviour
     public GameObject P2live;
     public GameObject P2primary;
     public GameObject P2secondary;
-    public GameObject P2ammo;
+    public GameObject P2special;
     public GameObject P2healthShader;
     public GameObject P2shieldShader;
     public GameObject P2liveShader;
     public GameObject P2primaryShader;
     public GameObject P2secondaryShader;
-    public GameObject P2ammoShader;
+    public GameObject P2specialShader;
     public GameObject P2healthGlow;
     public GameObject P2shieldGlow;
     public GameObject P2liveGlow;
     public GameObject P2primaryGlow;
     public GameObject P2secondaryGlow;
-    public GameObject P2ammoGlow;
+    public GameObject P2specialGlow;
 
-    public GameObject P2warningCredit;
-    public GameObject P2warningUpgrade;
-    public GameObject P2;
+    public GameObject P2ship1;
+    public GameObject P2ship2;
+    public GameObject P2ship3;
+    public GameObject P2ship4;
+    public GameObject P2ship5;
+
+    public GameObject P2beamCannon;
+
+    public GameObject P2menuHorizontal;
+    public GameObject P2shipHorizontal;
+    public GameObject P2primaryHorizontal;
+    public GameObject P2secondaryHorizontal;
+    public GameObject P2specialHorizontal;
+    public GameObject P2toggleLeft;
+    public GameObject P2toggleRight;
+    public GameObject P2shipGlowHorizontal;
+    public GameObject P2primaryGlowHorizontal;
+    public GameObject P2secondaryGlowHorizontal;
+    public GameObject P2specialGlowHorizontal;
+    public GameObject P2toggleLeftGlow;
+    public GameObject P2toggleRightGlow;
 
     private void Awake()
     {
-        DeactivateOption();
-
-        DeactivateP1Menu();
-        DeactivateP2Menu();
-
-        DisableP1Warning();
-        DisableP2Warning();
     }
 
     private void Start()
     {
-        ActivateOption();
-
-        SetBool();
-
-        if (MainMenuController.onePlayer)
-        {
-            SetPlayer1Value();
-            
-            ActivateP1Menu();
-        }
-        if (!MainMenuController.onePlayer)
-        {
-            SetPlayer1Value();
-            SetPlayer2Value();
-
-            ActivateP1Menu();
-            ActivateP2Menu();
-        }
     }
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Y))
-        {
-            DisableP1Warning();
-            ActivateP1Menu();
-            ActivateP2Menu();
-        }
-
         if (MainMenuController.onePlayer)
         {
             P1Credit.text = "Player 1 has: " + ScoreTracker.P1credit;
@@ -136,83 +141,6 @@ public class HangarMenuController : MonoBehaviour
             P1Credit.text = "Player 1 has: " + ScoreTracker.P1credit;
             P2Credit.text = "Player 2 has: " + ScoreTracker.P2credit;
         }
-    }
-
-    private void ActivateOption()
-    {
-        selectionButton.SetActive(true);
-        nextButton.SetActive(true);
-        P1menu.SetActive(true);
-        P2menu.SetActive(true);
-    }
-    private void DeactivateOption()
-    {
-        selectionButton.SetActive(false);
-        nextButton.SetActive(false);
-        P1menu.SetActive(false);
-        P2menu.SetActive(false);
-    }
-
-    private void ActivateP1Menu()
-    {
-        P1health.SetActive(true);
-        P1shield.SetActive(true);
-        P1live.SetActive(true);
-        P1primary.SetActive(true);
-        P1secondary.SetActive(true);
-        P1ammo.SetActive(true);
-
-        P1.SetActive(true);
-    }
-    private void DeactivateP1Menu()
-    {
-        P1health.SetActive(false);
-        P1shield.SetActive(false);
-        P1live.SetActive(false);
-        P1primary.SetActive(false);
-        P1secondary.SetActive(false);
-        P1ammo.SetActive(false);
-
-        P1.SetActive(false);
-    }
-
-    private void ActivateP2Menu()
-    {
-        P2health.SetActive(true);
-        P2shield.SetActive(true);
-        P2live.SetActive(true);
-        P2primary.SetActive(true);
-        P2secondary.SetActive(true);
-        P2ammo.SetActive(true);
-
-        P2.SetActive(true);
-    }
-    private void DeactivateP2Menu()
-    {
-        P2health.SetActive(false);
-        P2shield.SetActive(false);
-        P2live.SetActive(false);
-        P2primary.SetActive(false);
-        P2secondary.SetActive(false);
-        P2ammo.SetActive(false);
-
-        P2.SetActive(false);
-    }
-
-    private void DisableP1Warning()
-    {
-        disableP1Text.SetActive(false);
-
-        P1warningCredit.SetActive(false);
-        P1warningUpgrade.SetActive(false);
-    }
-
-    private void DisableP2Warning()
-    {
-        disableP2Text.SetActive(false);
-
-        P2warningCredit.SetActive(false);
-        P2warningUpgrade.SetActive(false);
     }
 
     private void SetBool()
@@ -228,55 +156,34 @@ public class HangarMenuController : MonoBehaviour
         P2secondaryCheck = false;
     }
 
-    private void P1NotEnoughCredit()
+    private void ResetPlayerScore()
     {
-        DeactivateP1Menu();
-
-        P1warningCredit.SetActive(true);
-        disableP1Text.SetActive(true);
-    }
-    private void P1AlreadyUpgrade()
-    {
-        DeactivateP1Menu();
-
-        P1warningUpgrade.SetActive(true);
-        disableP2Text.SetActive(true);
-    }
-
-    private void P2NotEnoughCredit()
-    {
-        DeactivateP2Menu();
-
-        P2warningCredit.SetActive(true);
-        disableP1Text.SetActive(true);
-    }
-    private void P2AlreadyUpgrade()
-    {
-        DeactivateP2Menu();
-
-        P2warningUpgrade.SetActive(true);
-        disableP2Text.SetActive(true);
+        ScoreTracker.score_P1 = 0;
+        ScoreTracker.score_P2 = 0;
+        ScoreTracker.totalScore = 0;
+        ScoreTracker.P1credit = 0;
+        ScoreTracker.P2credit = 0;
     }
 
     private void ResetPlayer1Value()
     {
-        PlayerHealthSystem.P1currentLives = 0;
-        PlayerHealthSystem.P1currentHealth = 0;
-        PlayerHealthSystem.P1currentShields = 0;
+        PlayerHealthSystem.P1currentHealth = PlayerHealthSystem.P1maxShields;
+        PlayerHealthSystem.P1currentShields = PlayerHealthSystem.P1maxHealth;
+        PlayerHealthSystem.P1currentLives = 3;
 
-        PlayerWeaponController.P1savedWeaponLevel = 1;
-        PlayerWeaponController.P1savedSecondaryLevel = 0;
-        PlayerWeaponController.P1savedSuperAmmo = 0;
+        PlayerWeaponController.P1savedWeaponLevel = PlayerWeaponController.baseWLevel;
+        PlayerWeaponController.P1savedSecondaryLevel = PlayerWeaponController.baseSecondaryLevel;
+        PlayerWeaponController.P1savedSuperAmmo = PlayerWeaponController.superAmmoDefault;
     }
     private void ResetPlayer2Value()
     {
-        PlayerHealthSystem.P2currentLives = 0;
-        PlayerHealthSystem.P2currentHealth = 0;
-        PlayerHealthSystem.P2currentShields = 0;
+        PlayerHealthSystem.P2currentHealth = PlayerHealthSystem.P2maxHealth;
+        PlayerHealthSystem.P2currentShields = PlayerHealthSystem.P2maxShields;
+        PlayerHealthSystem.P2currentLives = 3;
 
-        PlayerWeaponController.P2savedWeaponLevel = 1;
-        PlayerWeaponController.P2savedSecondaryLevel = 0;
-        PlayerWeaponController.P2savedSuperAmmo = 0;
+        PlayerWeaponController.P2savedWeaponLevel = PlayerWeaponController.baseWLevel;
+        PlayerWeaponController.P2savedSecondaryLevel = PlayerWeaponController.baseSecondaryLevel;
+        PlayerWeaponController.P2savedSuperAmmo = PlayerWeaponController.superAmmoDefault;
     }
 
     private void SetPlayer1Value()
@@ -299,13 +206,35 @@ public class HangarMenuController : MonoBehaviour
         PlayerWeaponController.P2savedSecondaryLevel = PlayerWeaponController.P2currentSecondaryLevel;
         PlayerWeaponController.P2savedSuperAmmo = PlayerWeaponController.P2currentSuperAmmo;
     }
-    /*
-    public void SelectionButton()
+    
+    public void RestartButton()
     {
-        ResetPlayer1Value();
-        ResetPlayer2Value();
+        MainMenuController.currentStage--;
 
-        SceneManager.LoadScene("SelectionMenu");
+        if (MainMenuController.onePlayer)
+        {
+            ResetPlayer1Value();
+        }
+        else
+        {
+            ResetPlayer1Value();
+            ResetPlayer2Value();
+        }
+
+        ResetPlayerScore();
+
+        if (MainMenuController.currentStage <= 1)
+        {
+            SceneManager.LoadScene("Level1");
+        }
+        if (MainMenuController.currentStage == 2)
+        {
+            SceneManager.LoadScene("Level2");
+        }
+        if (MainMenuController.currentStage >= 3)
+        {
+            SceneManager.LoadScene("Level3");
+        }
     }
 
     public void NextButton()
@@ -320,345 +249,17 @@ public class HangarMenuController : MonoBehaviour
             SetPlayer2Value();
         }
 
-        SceneManager.LoadScene("Level1");
-    }
-
-    public void P1HealthButton()
-    {
-        if(PlayerHealthSystem.P1currentHealth >= PlayerHealthSystem.P1maxHealth)
+        if (MainMenuController.currentStage <= 1)
         {
-            P1Warni.text = "You already have full health";
+            SceneManager.LoadScene("Level1");
         }
-
-        if (P1healthCheck)
+        if (MainMenuController.currentStage == 2)
         {
-            P1AlreadyUpgrade();
+            SceneManager.LoadScene("Level2");
         }
-
-        if(PlayerHealthSystem.P1currentHealth < PlayerHealthSystem.P1maxHealth && !P1healthCheck)
+        if (MainMenuController.currentStage >= 3)
         {
-            if(ScoreTracker.P1credit < 100)
-            {
-                P1NotEnoughCredit();
-            }
-            if(ScoreTracker.P1credit >= 100)
-            {
-                ScoreTracker.P1credit -= 100;
-                P1Cra.text = "Player 1 has: " + ScoreTracker.P1credit;
-
-                PlayerHealthSystem.P1currentHealth = PlayerHealthSystem.P1maxHealth;
-
-                P1healthCheck = true;
-            }
+            SceneManager.LoadScene("Level3");
         }
     }
-    public void P1ShieldButton()
-    {
-        if (PlayerHealthSystem.P1currentShields >= PlayerHealthSystem.P1maxShields)
-        {
-            player1Credit.text = "Your shield is fully charged";
-        }
-
-        if (P1shieldCheck)
-        {
-            P1AlreadyUpgrade();
-        }
-
-        if (PlayerHealthSystem.P1currentShields < PlayerHealthSystem.P1maxShields && !P1shieldCheck)
-        {
-            if (ScoreTracker.P1credit < 100)
-            {
-                P1NotEnoughCredit();
-            }
-            if (ScoreTracker.P1credit >= 100)
-            {
-                ScoreTracker.P1credit -= 100;
-                player1Credit.text = "Player 1 has: " + ScoreTracker.P1credit;
-
-                PlayerHealthSystem.P1currentShields = PlayerHealthSystem.P1maxShields;
-
-                P1shieldCheck = true;
-            }
-        }
-    }
-    public void P1LiveButton()
-    {
-        if (PlayerHealthSystem.P1currentLives >= 5)
-        {
-            PlayerHealthSystem.P1currentLives = 5;
-
-            player1Credit.text = "5 is the number of Max Lives";
-        }
-
-        if (PlayerHealthSystem.P1currentLives < 5)
-        {
-            if (ScoreTracker.P1credit < 100)
-            {
-                P1NotEnoughCredit();
-            }
-            if (ScoreTracker.P1credit >= 100)
-            {
-                ScoreTracker.P1credit -= 100;
-                player1Credit.text = "Player 1 has: " + ScoreTracker.P1credit;
-
-                PlayerHealthSystem.P1currentLives++;
-            }
-        }
-    }
-    public void P1PrimaryButton()
-    {
-        if(PlayerWeaponController.P1currentWLevel >= 5)
-        {
-            PlayerWeaponController.P1currentWLevel = 5;
-
-            player1Credit.text = "Your primary weapon is at max level";
-        }
-        
-        if (P1primaryCheck)
-        {
-            P1AlreadyUpgrade();
-        }
-
-        if (PlayerWeaponController.P1currentWLevel < 5 && !P1primaryCheck)
-        {
-            if (ScoreTracker.P1credit < 100)
-            {
-                P1NotEnoughCredit();
-            }
-            if (ScoreTracker.P1credit >= 100)
-            {
-                ScoreTracker.P1credit -= 100;
-                player1Credit.text = "Player 1 has: " + ScoreTracker.P1credit;
-
-                PlayerWeaponController.P1currentWLevel++;
-
-                P1primaryCheck = true;
-            }
-        }
-    }
-    public void P1SecondaryButton()
-    {
-        if (PlayerWeaponController.P1currentSecondaryLevel >= 5)
-        {
-            PlayerWeaponController.P1currentSecondaryLevel = 5;
-
-            player1Credit.text = "Your secondary weapon is at max level";
-        }
-
-        if (P1secondaryCheck)
-        {
-            P1AlreadyUpgrade();
-        }
-
-        if (PlayerWeaponController.P1currentSecondaryLevel < 5 && !P1secondaryCheck)
-        {
-            if (ScoreTracker.P1credit < 100)
-            {
-                P1NotEnoughCredit();
-            }
-            if (ScoreTracker.P1credit >= 100)
-            {
-                ScoreTracker.P1credit -= 100;
-                player1Credit.text = "Player 1 has: " + ScoreTracker.P1credit;
-
-                PlayerWeaponController.P1currentSecondaryLevel++;
-
-                P1secondaryCheck = true;
-            }
-        }
-    }
-    public void P1AmmoButton()
-    {
-        if (PlayerWeaponController.P1currentSuperAmmo >= 5)
-        {
-            PlayerWeaponController.P1currentSuperAmmo = 5;
-
-            player1Credit.text = "5 is the highest number of ammo you can have";
-        }
-
-        if (PlayerWeaponController.P1currentSuperAmmo < 5)
-        {
-            if (ScoreTracker.P1credit < 100)
-            {
-                P1NotEnoughCredit();
-            }
-            if (ScoreTracker.P1credit >= 100)
-            {
-                ScoreTracker.P1credit -= 100;
-                player1Credit.text = "Player 1 has: " + ScoreTracker.P1credit;
-
-                PlayerWeaponController.P1currentSuperAmmo++;
-            }
-        }
-    }
-
-    public void P2HealthButton()
-    {
-        if (PlayerHealthSystem.P2currentHealth >= PlayerHealthSystem.P2maxHealth)
-        {
-            player2Credit.text = "You already have full health";
-        }
-
-        if (P2healthCheck)
-        {
-            P2AlreadyUpgrade();
-        }
-
-        if (PlayerHealthSystem.P2currentHealth < PlayerHealthSystem.P2maxHealth && !P2healthCheck)
-        {
-            if (ScoreTracker.P2credit < 100)
-            {
-                P2NotEnoughCredit();
-            }
-            if (ScoreTracker.P2credit >= 100)
-            {
-                ScoreTracker.P2credit -= 100;
-                player2Credit.text = "Player 2 has: " + ScoreTracker.P2credit;
-
-                PlayerHealthSystem.P2currentHealth = PlayerHealthSystem.P2maxHealth;
-
-                P2healthCheck = true;
-            }
-        }
-    }
-    public void P2ShieldButton()
-    {
-        if (PlayerHealthSystem.P2currentShields >= PlayerHealthSystem.P2maxShields)
-        {
-            player2Credit.text = "Your shield is fully charged";
-        }
-
-        if (P2shieldCheck)
-        {
-            P2AlreadyUpgrade();
-        }
-
-        if (PlayerHealthSystem.P2currentShields < PlayerHealthSystem.P2maxShields && !P2shieldCheck)
-        {
-            if (ScoreTracker.P2credit < 100)
-            {
-                P2NotEnoughCredit();
-            }
-            if (ScoreTracker.P2credit >= 100)
-            {
-                ScoreTracker.P2credit -= 100;
-                player2Credit.text = "Player 2 has: " + ScoreTracker.P2credit;
-
-                PlayerHealthSystem.P2currentShields = PlayerHealthSystem.P2maxShields;
-
-                P2shieldCheck = true;
-            }
-        }
-    }
-    public void P2LiveButton()
-    {
-        if (PlayerHealthSystem.P2currentLives >= 5)
-        {
-            PlayerHealthSystem.P2currentLives = 5;
-
-            player2Credit.text = "5 is the number of Max Lives";
-        }
-
-        if (PlayerHealthSystem.P2currentLives < 5)
-        {
-            if (ScoreTracker.P2credit < 100)
-            {
-                P2NotEnoughCredit();
-            }
-            if (ScoreTracker.P2credit >= 100)
-            {
-                ScoreTracker.P2credit -= 100;
-                player2Credit.text = "Player 2 has: " + ScoreTracker.P2credit;
-
-                PlayerHealthSystem.P2currentLives++;
-            }
-        }
-    }
-    public void P2PrimaryButton()
-    {
-        if (PlayerWeaponController.P2currentWLevel >= 5)
-        {
-            PlayerWeaponController.P2currentWLevel = 5;
-
-            player2Credit.text = "Your primary weapon is at max level";
-        }
-
-        if (P2primaryCheck)
-        {
-            P2AlreadyUpgrade();
-        }
-
-        if (PlayerWeaponController.P2currentWLevel < 5 && !P2primaryCheck)
-        {
-            if (ScoreTracker.P2credit < 100)
-            {
-                P2NotEnoughCredit();
-            }
-            if (ScoreTracker.P2credit >= 100)
-            {
-                ScoreTracker.P2credit -= 100;
-                player2Credit.text = "Player 2 has: " + ScoreTracker.P2credit;
-
-                PlayerWeaponController.P2currentWLevel++;
-
-                P2primaryCheck = true;
-            }
-        }
-    }
-    public void P2SecondaryButton()
-    {
-        if (PlayerWeaponController.P2currentSecondaryLevel >= 5)
-        {
-            PlayerWeaponController.P2currentSecondaryLevel = 5;
-
-            player2Credit.text = "Your secondary weapon is at max level";
-        }
-
-        if (P2secondaryCheck)
-        {
-            P2AlreadyUpgrade();
-        }
-
-        if (PlayerWeaponController.P2currentSecondaryLevel < 5 && !P2secondaryCheck)
-        {
-            if (ScoreTracker.P2credit < 100)
-            {
-                P2NotEnoughCredit();
-            }
-            if (ScoreTracker.P2credit >= 100)
-            {
-                ScoreTracker.P2credit -= 100;
-                player2Credit.text = "Player 2 has: " + ScoreTracker.P2credit;
-
-                PlayerWeaponController.P2currentSecondaryLevel++;
-
-                P2secondaryCheck = true;
-            }
-        }
-    }
-    public void P2AmmoButton()
-    {
-        if (PlayerWeaponController.P2currentSuperAmmo >= 5)
-        {
-            PlayerWeaponController.P2currentSuperAmmo = 5;
-
-            player2Credit.text = "5 is the highest number of ammo you can have";
-        }
-
-        if (PlayerWeaponController.P2currentSuperAmmo < 5)
-        {
-            if (ScoreTracker.P2credit < 100)
-            {
-                P2NotEnoughCredit();
-            }
-            if (ScoreTracker.P2credit >= 100)
-            {
-                ScoreTracker.P2credit -= 100;
-                player2Credit.text = "Player 2 has: " + ScoreTracker.P2credit;
-
-                PlayerWeaponController.P2currentSuperAmmo++;
-            }
-        }
-    }
-    */
 }

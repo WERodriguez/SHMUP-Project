@@ -187,9 +187,9 @@ public class GameOverController : MonoBehaviour
 
     private void ResetPlayer1Value()
     {
-        PlayerHealthSystem.P1currentLives = PlayerHealthSystem.P1maxLives;
         PlayerHealthSystem.P1currentHealth = PlayerHealthSystem.P1maxHealth;
         PlayerHealthSystem.P1currentShields = PlayerHealthSystem.P1maxShields;
+        PlayerHealthSystem.P1currentLives = 3;
 
         PlayerWeaponController.P1savedWeaponLevel = PlayerWeaponController.baseWLevel;
         PlayerWeaponController.P1savedSecondaryLevel = PlayerWeaponController.baseSecondaryLevel;
@@ -197,9 +197,9 @@ public class GameOverController : MonoBehaviour
     }
     private void ResetPlayer2Value()
     {
-        PlayerHealthSystem.P2currentLives = PlayerHealthSystem.P2maxLives;
         PlayerHealthSystem.P2currentHealth = PlayerHealthSystem.P2maxHealth;
         PlayerHealthSystem.P2currentShields = PlayerHealthSystem.P2maxShields;
+        PlayerHealthSystem.P2currentLives = 3;
 
         PlayerWeaponController.P2savedWeaponLevel = PlayerWeaponController.baseWLevel;
         PlayerWeaponController.P2savedSecondaryLevel = PlayerWeaponController.baseSecondaryLevel;
@@ -220,7 +220,18 @@ public class GameOverController : MonoBehaviour
 
         ResetPlayerScore();
 
-        SceneManager.LoadScene("Level1");
+        if (MainMenuController.currentStage <= 1)
+        {
+            SceneManager.LoadScene("Level1");
+        }
+        if (MainMenuController.currentStage == 2)
+        {
+            SceneManager.LoadScene("Level2");
+        }
+        if (MainMenuController.currentStage >= 3)
+        {
+            SceneManager.LoadScene("Level3");
+        }
     }
 
     public void MainMenuButton()

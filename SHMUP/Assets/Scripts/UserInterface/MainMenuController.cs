@@ -13,6 +13,7 @@ public class MainMenuController : MonoBehaviour
     public Image doubleGlow;
     public Image quitGlow;
 
+    public static int currentStage;
     public static bool onePlayer;
 
     public GameObject warning;
@@ -29,6 +30,7 @@ public class MainMenuController : MonoBehaviour
         DeactivateMainMenu();
         DeactivateGlow();
 
+        currentStage = 1;
         glowTracker = 1;
 		waiting = false;
     }
