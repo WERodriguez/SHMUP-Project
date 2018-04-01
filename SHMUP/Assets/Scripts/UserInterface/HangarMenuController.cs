@@ -6,23 +6,39 @@ using UnityEngine.SceneManagement;
 
 public class HangarMenuController : MonoBehaviour
 {
+    private bool waiting;
+
     private bool P1warning;
     private bool P1verticalSelect;
+    private bool P1switch;
+    private bool P1testing;
+    private bool P1testingDone;
+
     private bool P1healthCheck;
     private bool P1shieldCheck;
     private bool P1primaryCheck;
     private bool P1secondaryCheck;
+    private bool P1shipSwitch;
+    private bool P1primarySwitch;
+    private bool P1secondarySwitch;
 
     private int P1horizontalGlowTracker;
     private int P1verticalGlowTracker;
     private int P1toggleData;
 
     private bool P2warning;
-    private bool P2versticalSelect;
+    private bool P2verticalSelect;
+    private bool P2switch;
+    private bool P2testing;
+    private bool P2testingDone;
+
     private bool P2healthCheck;
     private bool P2shieldCheck;
     private bool P2primaryCheck;
     private bool P2secondaryCheck;
+    private bool P2shipSwitch;
+    private bool P2primarySwitch;
+    private bool P2secondarySwitch;
 
     private int P2horizontalGlowTracker;
     private int P2verticalGlowTracker;
@@ -136,6 +152,25 @@ public class HangarMenuController : MonoBehaviour
     public Animator P1Ships;
     public Animator P2Ships;
 
+    public Transform P1level1SpawnPoint;
+    public Transform P1level2SpawnPoint;
+    public Transform P1level3SpawnPoint;
+    public Transform P1level4SpawnPoint;
+    public Transform P1level5SpawnPoint;
+
+    public Transform P2level1SpawnPoint;
+    public Transform P2level2SpawnPoint;
+    public Transform P2level3SpawnPoint;
+    public Transform P2level4SpawnPoint;
+    public Transform P2level5SpawnPoint;
+
+    public GameObject machineGunBullet;
+    public GameObject flakCannonBullet;
+    public GameObject pacBullet;
+    public GameObject homingMissiles;
+    public GameObject sweeperPods;
+    public GameObject plasmaBullet;
+
     private void Awake()
     {
         DeactivateButton();
@@ -152,10 +187,9 @@ public class HangarMenuController : MonoBehaviour
         DeactivateP1ToggleGlow();
 
         ResetP1ToggleData();
-        ResetP1Warning();
+        DeactivateP1WarningPanel();
         ResetP1Bool();
-
-        DeactivateP1CreditText();
+        
         DeactivateP1WarningPanel();
 
         DeactivateP2Menu();
@@ -169,12 +203,25 @@ public class HangarMenuController : MonoBehaviour
         DeactivateP2ToggleGlow();
 
         ResetP2ToggleData();
-        ResetP2Warning();
-        ResetP2Bool();
-
-        DeactivateP2CreditText();
         DeactivateP2WarningPanel();
-    }
+        ResetP2Bool();
+        
+        DeactivateP2WarningPanel();
+
+        waiting = true;
+
+        P1Credit.enabled = false;
+        P1verticalSelect = true;
+        P1switch = false;
+        P1testing = false;
+        P1testingDone = true;
+
+        P2Credit.enabled = false;
+        P2verticalSelect = true;
+        P2switch = false;
+        P2testing = false;
+        P2testingDone = true;
+}
 
     private void Start()
     {
@@ -191,6 +238,804 @@ public class HangarMenuController : MonoBehaviour
         {
             P1Credit.text = "Player 1 has: " + ScoreTracker.P1credit;
             P2Credit.text = "Player 2 has: " + ScoreTracker.P2credit;
+        }
+
+        if (!waiting)
+        {
+            if (MainMenuController.onePlayer)
+            {
+                if (!P1warning)
+                {
+                    if (P1switch)
+                    {
+                        if (P1testingDone)
+                        {
+                            if (Input.GetButtonDown("P1HorizontalChoiceLeft"))
+                            {
+                                P1testing = false;
+                                P1toggleData--;
+
+                                DeactivateP1ToggleGlow();
+                                P1toggleLeftGlow.SetActive(true);
+                            }
+                            if (Input.GetButtonDown("P1HorizontalChoiceRight"))
+                            {
+                                P1testing = false;
+                                P1toggleData++;
+
+                                DeactivateP1ToggleGlow();
+                                P1toggleRightGlow.SetActive(true);
+                            }
+
+                            if (P1shipSwitch)
+                            {
+                                if (P1toggleData <= 1)
+                                {
+                                    P1toggleData = 1;
+
+                                    DeactivateP1Ships();
+                                    P1ship1.SetActive(true);
+                                }
+                                if (P1toggleData == 2)
+                                {
+                                    DeactivateP1Ships();
+                                    P1ship2.SetActive(true);
+                                }
+                                if (P1toggleData == 3)
+                                {
+                                    DeactivateP1Ships();
+                                    P1ship3.SetActive(true);
+                                }
+                                if (P1toggleData == 4)
+                                {
+                                    DeactivateP1Ships();
+                                    P1ship4.SetActive(true);
+                                }
+                                if (P1toggleData >= 5)
+                                {
+                                    P1toggleData = 5;
+
+                                    DeactivateP1Ships();
+                                    P1ship5.SetActive(true);
+                                }
+                            }
+                            if (!P1testing)
+                            {
+                                if (P1primarySwitch)
+                                {
+                                    if (P1toggleData <= 1)
+                                    {
+                                        StartCoroutine(P1TestMachineGun());
+                                    }
+                                    if (P1toggleData == 2)
+                                    {
+                                        StartCoroutine(P1TestFlakCannon());
+                                    }
+                                    if (P1toggleData >= 3)
+                                    {
+                                        StartCoroutine(P1TestPAC());
+                                    }
+                                }
+                                if (P1secondarySwitch)
+                                {
+                                    if (P1toggleData <= 1)
+                                    {
+                                        StartCoroutine(P1TestHomingMissiles());
+                                    }
+                                    if (P1toggleData == 2)
+                                    {
+                                        StartCoroutine(P1TestSweeperPods());
+                                    }
+                                    if (P1toggleData >= 3)
+                                    {
+                                        StartCoroutine(P1TestPlasmaBullet());
+                                    }
+                                }
+                            }
+
+                            if (Input.GetButtonDown("Fire_P1"))
+                            {
+                                if (P1shipSwitch)
+                                {
+                                    StartCoroutine(P1ShipChange());
+                                }
+                                if (P1primarySwitch)
+                                {
+                                    StartCoroutine(P1PrimaryChange());
+                                }
+                                if (P1secondarySwitch)
+                                {
+                                    StartCoroutine(P1SecondaryChange());
+                                }
+                            }
+                        }
+                    }
+                    else
+                    {
+                        if (Input.GetButtonDown("P1VerticalChoiceUp"))
+                        {
+                            P1verticalSelect = true;
+                            P1verticalGlowTracker--;
+                        }
+                        if (Input.GetButtonDown("P1VerticalChoiceDown"))
+                        {
+                            P1verticalSelect = true;
+                            P1verticalGlowTracker++;
+                        }
+
+                        if (Input.GetButtonDown("P1HorizontalChoiceLeft"))
+                        {
+                            P1verticalSelect = false;
+                            P1horizontalGlowTracker--;
+                        }
+                        if (Input.GetButtonDown("P1HorizontalChoiceRight"))
+                        {
+                            P1verticalSelect = false;
+                            P1horizontalGlowTracker++;
+                        }
+
+
+                        if (P1verticalSelect)
+                        {
+                            DeactivateP1HorizontalMenuGlow();
+
+                            P1horizontalGlowTracker = 0;
+
+                            if (P1verticalGlowTracker <= 1)
+                            {
+                                P1verticalGlowTracker = 1;
+
+                                DeactivateButtonGlow();
+                                DeactivateP1Glow();
+                                restartButtonGlow.SetActive(true);
+                            }
+                            if (P1verticalGlowTracker == 2)
+                            {
+                                DeactivateButtonGlow();
+                                DeactivateP1Glow();
+                                P1healthGlow.SetActive(true);
+                            }
+                            if (P1verticalGlowTracker == 3)
+                            {
+                                DeactivateButtonGlow();
+                                DeactivateP1Glow();
+                                P1shieldGlow.SetActive(true);
+                            }
+                            if (P1verticalGlowTracker == 4)
+                            {
+                                DeactivateButtonGlow();
+                                DeactivateP1Glow();
+                                P1liveGlow.SetActive(true);
+                            }
+                            if (P1verticalGlowTracker == 5)
+                            {
+                                DeactivateButtonGlow();
+                                DeactivateP1Glow();
+                                P1primaryGlow.SetActive(true);
+                            }
+                            if (P1verticalGlowTracker == 6)
+                            {
+                                DeactivateButtonGlow();
+                                DeactivateP1Glow();
+                                P1secondaryGlow.SetActive(true);
+                            }
+                            if (P1verticalGlowTracker == 7)
+                            {
+                                DeactivateButtonGlow();
+                                DeactivateP1Glow();
+                                P1specialGlow.SetActive(true);
+                            }
+                            if (P1verticalGlowTracker >= 8)
+                            {
+                                P1verticalGlowTracker = 8;
+
+                                DeactivateButtonGlow();
+                                DeactivateP1Glow();
+                                nextButtonGlow.SetActive(true);
+                            }
+
+                            if (Input.GetButtonDown("Fire_P1"))
+                            {
+                                if (P1verticalGlowTracker == 1)
+                                {
+                                    RestartButton();
+                                }
+                                if (P1verticalGlowTracker == 2)
+                                {
+                                    StartCoroutine(P1HealthRestore());
+                                }
+                                if (P1verticalGlowTracker == 3)
+                                {
+                                    StartCoroutine(P1ShieldRestore());
+                                }
+                                if (P1verticalGlowTracker == 4)
+                                {
+                                    StartCoroutine(P1LiveAdd());
+                                }
+                                if (P1verticalGlowTracker == 5)
+                                {
+                                    StartCoroutine(P1PrimaryUpgrade());
+                                }
+                                if (P1verticalGlowTracker == 6)
+                                {
+                                    StartCoroutine(P1SecondaryUpgrade());
+                                }
+                                if (P1verticalGlowTracker == 7)
+                                {
+                                    StartCoroutine(P1AmmoAdd());
+                                }
+                                if (P1verticalGlowTracker == 8)
+                                {
+                                    NextButton();
+                                }
+                            }
+                        }
+                        else
+                        {
+                            DeactivateButtonGlow();
+                            DeactivateP1Glow();
+
+                            P1verticalGlowTracker = 0;
+
+                            if (P1horizontalGlowTracker <= 1)
+                            {
+                                P1horizontalGlowTracker = 1;
+
+                                DeactivateP1HorizontalMenuGlow();
+                                P1shipGlowHorizontal.SetActive(true);
+                            }
+                            if (P1horizontalGlowTracker == 2)
+                            {
+                                DeactivateP1HorizontalMenuGlow();
+                                P1primaryGlowHorizontal.SetActive(true);
+                            }
+                            if (P1horizontalGlowTracker >= 3)
+                            {
+                                P1horizontalGlowTracker = 3;
+
+                                DeactivateP1HorizontalMenuGlow();
+                                P1secondaryGlowHorizontal.SetActive(true);
+                            }
+
+                            if (Input.GetButtonDown("Fire_P1"))
+                            {
+                                if (P1horizontalGlowTracker <= 1)
+                                {
+                                    StartCoroutine(P1ShipSwitch());
+                                }
+                                if (P1horizontalGlowTracker == 2)
+                                {
+                                    StartCoroutine(P1PrimarySwitch());
+                                }
+                                if (P1horizontalGlowTracker >= 3)
+                                {
+                                    StartCoroutine(P1SecondarySwitch());
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            else
+            {
+                if (!P1warning)
+                {
+                    if (P1switch)
+                    {
+                        if (P1testingDone)
+                        {
+                            if (Input.GetButtonDown("P1HorizontalChoiceLeft"))
+                            {
+                                P1testing = false;
+                                P1toggleData--;
+
+                                DeactivateP1ToggleGlow();
+                                P1toggleLeftGlow.SetActive(true);
+                            }
+                            if (Input.GetButtonDown("P1HorizontalChoiceRight"))
+                            {
+                                P1testing = false;
+                                P1toggleData++;
+
+                                DeactivateP1ToggleGlow();
+                                P1toggleRightGlow.SetActive(true);
+                            }
+
+                            if (P1shipSwitch)
+                            {
+                                if (P1toggleData <= 1)
+                                {
+                                    P1toggleData = 1;
+
+                                    DeactivateP1Ships();
+                                    P1ship1.SetActive(true);
+                                }
+                                if (P1toggleData == 2)
+                                {
+                                    DeactivateP1Ships();
+                                    P1ship2.SetActive(true);
+                                }
+                                if (P1toggleData == 3)
+                                {
+                                    DeactivateP1Ships();
+                                    P1ship3.SetActive(true);
+                                }
+                                if (P1toggleData == 4)
+                                {
+                                    DeactivateP1Ships();
+                                    P1ship4.SetActive(true);
+                                }
+                                if (P1toggleData >= 5)
+                                {
+                                    P1toggleData = 5;
+
+                                    DeactivateP1Ships();
+                                    P1ship5.SetActive(true);
+                                }
+                            }
+                            if (!P1testing)
+                            {
+                                if (P1primarySwitch)
+                                {
+                                    if (P1toggleData <= 1)
+                                    {
+                                        StartCoroutine(P1TestMachineGun());
+                                    }
+                                    if (P1toggleData == 2)
+                                    {
+                                        StartCoroutine(P1TestFlakCannon());
+                                    }
+                                    if (P1toggleData >= 3)
+                                    {
+                                        StartCoroutine(P1TestPAC());
+                                    }
+                                }
+                                if (P1secondarySwitch)
+                                {
+                                    if (P1toggleData <= 1)
+                                    {
+                                        StartCoroutine(P1TestHomingMissiles());
+                                    }
+                                    if (P1toggleData == 2)
+                                    {
+                                        StartCoroutine(P1TestSweeperPods());
+                                    }
+                                    if (P1toggleData >= 3)
+                                    {
+                                        StartCoroutine(P1TestPlasmaBullet());
+                                    }
+                                }
+                            }
+
+                            if (Input.GetButtonDown("Fire_P1"))
+                            {
+                                if (P1shipSwitch)
+                                {
+                                    StartCoroutine(P1ShipChange());
+                                }
+                                if (P1primarySwitch)
+                                {
+                                    StartCoroutine(P1PrimaryChange());
+                                }
+                                if (P1secondarySwitch)
+                                {
+                                    StartCoroutine(P1SecondaryChange());
+                                }
+                            }
+                        }
+                    }
+                    else
+                    {
+                        if (Input.GetButtonDown("P1VerticalChoiceUp"))
+                        {
+                            P1verticalSelect = true;
+                            P1verticalGlowTracker--;
+                        }
+                        if (Input.GetButtonDown("P1VerticalChoiceDown"))
+                        {
+                            P1verticalSelect = true;
+                            P1verticalGlowTracker++;
+                        }
+
+                        if (Input.GetButtonDown("P1HorizontalChoiceLeft"))
+                        {
+                            P1verticalSelect = false;
+                            P1horizontalGlowTracker--;
+                        }
+                        if (Input.GetButtonDown("P1HorizontalChoiceRight"))
+                        {
+                            P1verticalSelect = false;
+                            P1horizontalGlowTracker++;
+                        }
+
+                        if (P1verticalSelect)
+                        {
+                            DeactivateP1HorizontalMenuGlow();
+
+                            P1horizontalGlowTracker = 0;
+
+                            if (P1verticalGlowTracker <= 1)
+                            {
+                                P1verticalGlowTracker = 1;
+
+                                DeactivateButtonGlow();
+                                DeactivateP1Glow();
+                                restartButtonGlow.SetActive(true);
+                            }
+                            if (P1verticalGlowTracker == 2)
+                            {
+                                DeactivateButtonGlow();
+                                DeactivateP1Glow();
+                                P1healthGlow.SetActive(true);
+                            }
+                            if (P1verticalGlowTracker == 3)
+                            {
+                                DeactivateButtonGlow();
+                                DeactivateP1Glow();
+                                P1shieldGlow.SetActive(true);
+                            }
+                            if (P1verticalGlowTracker == 4)
+                            {
+                                DeactivateButtonGlow();
+                                DeactivateP1Glow();
+                                P1liveGlow.SetActive(true);
+                            }
+                            if (P1verticalGlowTracker == 5)
+                            {
+                                DeactivateButtonGlow();
+                                DeactivateP1Glow();
+                                P1primaryGlow.SetActive(true);
+                            }
+                            if (P1verticalGlowTracker == 6)
+                            {
+                                DeactivateButtonGlow();
+                                DeactivateP1Glow();
+                                P1secondaryGlow.SetActive(true);
+                            }
+                            if (P1verticalGlowTracker >= 7)
+                            {
+                                P1verticalGlowTracker = 7;
+
+                                DeactivateButtonGlow();
+                                DeactivateP1Glow();
+                                P1specialGlow.SetActive(true);
+                            }
+
+                            if (Input.GetButtonDown("Fire_P1"))
+                            {
+                                if (P1verticalGlowTracker == 1)
+                                {
+                                    RestartButton();
+                                }
+                                if (P1verticalGlowTracker == 2)
+                                {
+                                    StartCoroutine(P1HealthRestore());
+                                }
+                                if (P1verticalGlowTracker == 3)
+                                {
+                                    StartCoroutine(P1ShieldRestore());
+                                }
+                                if (P1verticalGlowTracker == 4)
+                                {
+                                    StartCoroutine(P1LiveAdd());
+                                }
+                                if (P1verticalGlowTracker == 5)
+                                {
+                                    StartCoroutine(P1PrimaryUpgrade());
+                                }
+                                if (P1verticalGlowTracker == 6)
+                                {
+                                    StartCoroutine(P1SecondaryUpgrade());
+                                }
+                                if (P1verticalGlowTracker == 7)
+                                {
+                                    StartCoroutine(P1AmmoAdd());
+                                }
+
+                            }
+                        }
+                        else
+                        {
+                            restartButtonGlow.SetActive(false);
+                            DeactivateP1Glow();
+
+                            P1verticalGlowTracker = 0;
+
+                            if (P1horizontalGlowTracker <= 1)
+                            {
+                                P1horizontalGlowTracker = 1;
+
+                                DeactivateP1HorizontalMenuGlow();
+                                P1shipGlowHorizontal.SetActive(true);
+                            }
+                            if (P1horizontalGlowTracker == 2)
+                            {
+                                DeactivateP1HorizontalMenuGlow();
+                                P1primaryGlowHorizontal.SetActive(true);
+                            }
+                            if (P1horizontalGlowTracker >= 3)
+                            {
+                                P1horizontalGlowTracker = 3;
+
+                                DeactivateP1HorizontalMenuGlow();
+                                P1secondaryGlowHorizontal.SetActive(true);
+                            }
+
+                            if (Input.GetButtonDown("Fire_P1"))
+                            {
+                                if (P1horizontalGlowTracker <= 1)
+                                {
+                                    StartCoroutine(P1ShipSwitch());
+                                }
+                                if (P1horizontalGlowTracker == 2)
+                                {
+                                    StartCoroutine(P1PrimarySwitch());
+                                }
+                                if (P1horizontalGlowTracker >= 3)
+                                {
+                                    StartCoroutine(P1SecondarySwitch());
+                                }
+                            }
+                        }
+                    }
+                }
+
+                if (!P2warning)
+                {
+                    if (P2switch)
+                    {
+                        if (P2testingDone)
+                        {
+                            if (Input.GetButtonDown("P2HorizontalChoiceLeft"))
+                            {
+                                P2testing = false;
+                                P2toggleData++;
+
+                                DeactivateP2ToggleGlow();
+                                P2toggleLeftGlow.SetActive(true);
+                            }
+                            if (Input.GetButtonDown("P2HorizontalChoiceRight"))
+                            {
+                                P2testing = false;
+                                P2toggleData--;
+
+                                DeactivateP2ToggleGlow();
+                                P2toggleRightGlow.SetActive(true);
+                            }
+
+                            if (P2shipSwitch)
+                            {
+                                if (P2toggleData <= 1)
+                                {
+                                    P2toggleData = 1;
+
+                                    DeactivateP2Ships();
+                                    P2ship1.SetActive(true);
+                                }
+                                if (P2toggleData == 2)
+                                {
+                                    DeactivateP2Ships();
+                                    P2ship2.SetActive(true);
+                                }
+                                if (P2toggleData == 3)
+                                {
+                                    DeactivateP2Ships();
+                                    P2ship3.SetActive(true);
+                                }
+                                if (P2toggleData == 4)
+                                {
+                                    DeactivateP2Ships();
+                                    P2ship4.SetActive(true);
+                                }
+                                if (P2toggleData >= 5)
+                                {
+                                    P2toggleData = 5;
+
+                                    DeactivateP2Ships();
+                                    P2ship5.SetActive(true);
+                                }
+                            }
+                            if (!P2testing)
+                            {
+                                if (P2primarySwitch)
+                                {
+                                    if (P2toggleData <= 1)
+                                    {
+                                        StartCoroutine(P2TestMachineGun());
+                                    }
+                                    if (P2toggleData == 2)
+                                    {
+                                        StartCoroutine(P2TestFlakCannon());
+                                    }
+                                    if (P2toggleData >= 3)
+                                    {
+                                        StartCoroutine(P2TestPAC());
+                                    }
+                                }
+                                if (P2secondarySwitch)
+                                {
+                                    if (P2toggleData <= 1)
+                                    {
+                                        StartCoroutine(P2TestHomingMissiles());
+                                    }
+                                    if (P2toggleData == 2)
+                                    {
+                                        StartCoroutine(P2TestSweeperPods());
+                                    }
+                                    if (P2toggleData >= 3)
+                                    {
+                                        StartCoroutine(P2TestPlasmaBullet());
+                                    }
+                                }
+                            }
+
+                            if (Input.GetButtonDown("Fire_P2"))
+                            {
+                                if (P2shipSwitch)
+                                {
+                                    StartCoroutine(P2ShipChange());
+                                }
+                                if (P2primarySwitch)
+                                {
+                                    StartCoroutine(P2PrimaryChange());
+                                }
+                                if (P2secondarySwitch)
+                                {
+                                    StartCoroutine(P2SecondaryChange());
+                                }
+                            }
+                        }
+                    }
+                    else
+                    {
+                        if (Input.GetButtonDown("P2VerticalChoiceUp") || Input.GetKeyDown(KeyCode.Keypad8))
+                        {
+                            P2verticalSelect = true;
+                            P2verticalGlowTracker--;
+                        }
+                        if (Input.GetButtonDown("P2VerticalChoiceDown") || Input.GetKeyDown(KeyCode.Keypad5))
+                        {
+                            P2verticalSelect = true;
+                            P2verticalGlowTracker++;
+                        }
+
+                        if (Input.GetButtonDown("P2HorizontalChoiceLeft") || Input.GetKeyDown(KeyCode.Keypad4))
+                        {
+                            P2verticalSelect = false;
+                            P2horizontalGlowTracker++;
+                        }
+                        if (Input.GetButtonDown("P2HorizontalChoiceRight") || Input.GetKeyDown(KeyCode.Keypad6))
+                        {
+                            P2verticalSelect = false;
+                            P2horizontalGlowTracker--;
+                        }
+
+
+                        if (P2verticalSelect)
+                        {
+                            DeactivateP2HorizontalMenuGlow();
+
+                            P2horizontalGlowTracker = 0;
+
+                            if (P2verticalGlowTracker <= 1)
+                            {
+                                P2verticalGlowTracker = 1;
+
+                                DeactivateP2Glow();
+                                nextButtonGlow.SetActive(true);
+                            }
+                            if (P2verticalGlowTracker == 2)
+                            {
+                                nextButtonGlow.SetActive(false);
+                                DeactivateP2Glow();
+                                P2healthGlow.SetActive(true);
+                            }
+                            if (P2verticalGlowTracker == 3)
+                            {
+                                DeactivateP2Glow();
+                                P2shieldGlow.SetActive(true);
+                            }
+                            if (P2verticalGlowTracker == 4)
+                            {
+                                DeactivateP2Glow();
+                                P2liveGlow.SetActive(true);
+                            }
+                            if (P2verticalGlowTracker == 5)
+                            {
+                                DeactivateP2Glow();
+                                P2primaryGlow.SetActive(true);
+                            }
+                            if (P2verticalGlowTracker == 6)
+                            {
+                                DeactivateP2Glow();
+                                P2secondaryGlow.SetActive(true);
+                            }
+                            if (P2verticalGlowTracker >= 7)
+                            {
+                                P2verticalGlowTracker = 7;
+
+                                DeactivateP2Glow();
+                                P2specialGlow.SetActive(true);
+                            }
+
+                            if (Input.GetButtonDown("Fire_P2") || Input.GetKeyDown(KeyCode.Keypad0))
+                            {
+                                if (P2verticalGlowTracker == 1)
+                                {
+                                    NextButton();
+                                }
+                                if (P2verticalGlowTracker == 2)
+                                {
+                                    StartCoroutine(P2HealthRestore());
+                                }
+                                if (P2verticalGlowTracker == 3)
+                                {
+                                    StartCoroutine(P2ShieldRestore());
+                                }
+                                if (P2verticalGlowTracker == 4)
+                                {
+                                    StartCoroutine(P2LiveAdd());
+                                }
+                                if (P2verticalGlowTracker == 5)
+                                {
+                                    StartCoroutine(P2PrimaryUpgrade());
+                                }
+                                if (P2verticalGlowTracker == 6)
+                                {
+                                    StartCoroutine(P2SecondaryUpgrade());
+                                }
+                                if (P2verticalGlowTracker == 7)
+                                {
+                                    StartCoroutine(P2AmmoAdd());
+                                }
+                            }
+                        }
+                        else
+                        {
+                            nextButtonGlow.SetActive(false);
+                            DeactivateP2Glow();
+
+                            P2verticalGlowTracker = 0;
+
+                            if (P2horizontalGlowTracker <= 1)
+                            {
+                                P2horizontalGlowTracker = 1;
+
+                                DeactivateP2HorizontalMenuGlow();
+                                P2shipGlowHorizontal.SetActive(true);
+                            }
+                            if (P2horizontalGlowTracker == 2)
+                            {
+                                DeactivateP2HorizontalMenuGlow();
+                                P2primaryGlowHorizontal.SetActive(true);
+                            }
+                            if (P2horizontalGlowTracker >= 3)
+                            {
+                                P2horizontalGlowTracker = 3;
+
+                                DeactivateP2HorizontalMenuGlow();
+                                P2secondaryGlowHorizontal.SetActive(true);
+                            }
+
+                            if (Input.GetButtonDown("Fire_P2") || Input.GetKeyDown(KeyCode.Keypad0))
+                            {
+                                if (P2horizontalGlowTracker <= 1)
+                                {
+                                    StartCoroutine(P2ShipSwitch());
+                                }
+                                if (P2horizontalGlowTracker == 2)
+                                {
+                                    StartCoroutine(P2PrimarySwitch());
+                                }
+                                if (P2horizontalGlowTracker >= 3)
+                                {
+                                    StartCoroutine(P2SecondarySwitch());
+                                }
+                            }
+                        }
+                    }
+                }
+            }
         }
     }
 
@@ -236,7 +1081,7 @@ public class HangarMenuController : MonoBehaviour
             P2menu.SetActive(true);
             P2menuHorizontal.SetActive(true);
         }
-        
+
         yield return new WaitForSeconds(1f);
 
         if (MainMenuController.onePlayer)
@@ -263,15 +1108,15 @@ public class HangarMenuController : MonoBehaviour
 
         if (MainMenuController.onePlayer)
         {
-            ActivateP1CreditText();
+            P1Credit.enabled = true;
 
             P1shield.SetActive(true);
             P1shieldStartingAnimation.SetBool("StartAnimation", true);
         }
         else
         {
-            ActivateP1CreditText();
-            ActivateP2CreditText();
+            P1Credit.enabled = true;
+            P2Credit.enabled = true;
 
             P1shield.SetActive(true);
             P1shieldStartingAnimation.SetBool("StartAnimation", true);
@@ -355,15 +1200,917 @@ public class HangarMenuController : MonoBehaviour
 
         yield return new WaitForSeconds(.5f);
 
-        if (MainMenuController.onePlayer)
+        waiting = false;
+    }
+
+    IEnumerator P1HealthRestore()
+    {
+        if (PlayerHealthSystem.P1currentHealth >= PlayerHealthSystem.P1maxHealth)
         {
-            P1shipGlowHorizontal.SetActive(true);
+            P1WarningText.text = "You already have full health";
+            ActivateP1WarningPanel();
+
+            yield return new WaitForSeconds(2.4f);
+
+            DeactivateP1WarningPanel();
+
+            P1healthShader.SetActive(true);
         }
-        else
+
+        if (P1healthCheck)
         {
-            P1shipGlowHorizontal.SetActive(true);
-            P2shipGlowHorizontal.SetActive(true);
+            P1WarningText.text = "You already restore your health";
+            ActivateP1WarningPanel();
+
+            yield return new WaitForSeconds(2.4f);
+
+            DeactivateP1WarningPanel();
         }
+
+        if (PlayerHealthSystem.P1currentHealth < PlayerHealthSystem.P1maxHealth && !P1healthCheck)
+        {
+            if (ScoreTracker.P1credit < 100)
+            {
+                P1WarningText.text = "You don't have enough credit";
+                ActivateP1WarningPanel();
+
+                yield return new WaitForSeconds(2.4f);
+
+                DeactivateP1WarningPanel();
+                ActivateP1Shader();
+            }
+            if (ScoreTracker.P1credit >= 100)
+            {
+                ScoreTracker.P1credit -= 100;
+
+                PlayerHealthSystem.P1currentHealth = PlayerHealthSystem.P1maxHealth;
+
+                P1healthShader.SetActive(true);
+                P1healthCheck = true;
+            }
+        }
+    }
+    IEnumerator P1ShieldRestore()
+    {
+        if (PlayerHealthSystem.P1currentShields >= PlayerHealthSystem.P1maxShields)
+        {
+            P1WarningText.text = "Your shield was fully charged";
+            ActivateP1WarningPanel();
+
+            yield return new WaitForSeconds(2.4f);
+
+            DeactivateP1WarningPanel();
+
+            P1shieldShader.SetActive(true);
+        }
+
+        if (P1shieldCheck)
+        {
+            P1WarningText.text = "You already recharge your shield";
+            ActivateP1WarningPanel();
+
+            yield return new WaitForSeconds(2.4f);
+
+            DeactivateP1WarningPanel();
+        }
+
+        if (PlayerHealthSystem.P1currentShields < PlayerHealthSystem.P1maxShields && !P1shieldCheck)
+        {
+            if (ScoreTracker.P1credit < 100)
+            {
+                P1WarningText.text = "You don't have enough credit";
+                ActivateP1WarningPanel();
+
+                yield return new WaitForSeconds(2.4f);
+
+                DeactivateP1WarningPanel();
+                ActivateP1Shader();
+            }
+            if (ScoreTracker.P1credit >= 100)
+            {
+                ScoreTracker.P1credit -= 100;
+
+                PlayerHealthSystem.P1currentShields = PlayerHealthSystem.P1maxShields;
+
+                P1shieldShader.SetActive(true);
+                P1shieldCheck = true;
+            }
+        }
+    }
+    IEnumerator P1LiveAdd()
+    {
+        if (PlayerHealthSystem.P1currentLives >= 5)
+        {
+            PlayerHealthSystem.P1currentLives = 5;
+
+            P1WarningText.text = "You can only have 5 Spares";
+            ActivateP1WarningPanel();
+
+            yield return new WaitForSeconds(2.4f);
+
+            DeactivateP1WarningPanel();
+
+            P1liveShader.SetActive(true);
+        }
+
+        if (PlayerHealthSystem.P1currentLives < 5)
+        {
+            if (ScoreTracker.P1credit < 100)
+            {
+                P1WarningText.text = "You don't have enough credit";
+                ActivateP1WarningPanel();
+
+                yield return new WaitForSeconds(2.4f);
+
+                DeactivateP1WarningPanel();
+                ActivateP1Shader();
+            }
+            if (ScoreTracker.P1credit >= 100)
+            {
+                ScoreTracker.P1credit -= 100;
+
+                PlayerHealthSystem.P1currentLives++;
+            }
+        }
+    }
+    IEnumerator P1PrimaryUpgrade()
+    {
+        if (PlayerWeaponController.P1currentWLevel >= 5)
+        {
+            PlayerWeaponController.P1currentWLevel = 5;
+
+            P1WarningText.text = "Your primary weapon is at max level";
+            ActivateP1WarningPanel();
+
+            yield return new WaitForSeconds(2.4f);
+
+            DeactivateP1WarningPanel();
+
+            P1primaryShader.SetActive(true);
+        }
+
+        if (P1primaryCheck)
+        {
+            P1WarningText.text = "You can only upgrade your primary once";
+            ActivateP1WarningPanel();
+
+            yield return new WaitForSeconds(2.4f);
+
+            DeactivateP1WarningPanel();
+        }
+
+        if (PlayerWeaponController.P1currentWLevel < 5 && !P1primaryCheck)
+        {
+            if (ScoreTracker.P1credit < 100)
+            {
+                P1WarningText.text = "You don't have enough credit";
+                ActivateP1WarningPanel();
+
+                yield return new WaitForSeconds(2.4f);
+
+                DeactivateP1WarningPanel();
+                ActivateP1Shader();
+            }
+            if (ScoreTracker.P1credit >= 100)
+            {
+                ScoreTracker.P1credit -= 100;
+
+                PlayerWeaponController.P1currentWLevel++;
+
+                P1primaryShader.SetActive(true);
+
+                P1primaryCheck = true;
+            }
+        }
+    }
+    IEnumerator P1SecondaryUpgrade()
+    {
+        if (PlayerWeaponController.P1currentSecondaryLevel >= 5)
+        {
+            PlayerWeaponController.P1currentSecondaryLevel = 5;
+
+            P1WarningText.text = "Your secondary weapon is at max level";
+            ActivateP1WarningPanel();
+
+            yield return new WaitForSeconds(2.4f);
+
+            DeactivateP1WarningPanel();
+
+            P1secondaryShader.SetActive(true);
+        }
+
+        if (P1secondaryCheck)
+        {
+            P1WarningText.text = "You can only upgrade your secondary once";
+            ActivateP1WarningPanel();
+
+            yield return new WaitForSeconds(2.4f);
+
+            DeactivateP1WarningPanel();
+        }
+
+        if (PlayerWeaponController.P1currentSecondaryLevel < 5 && !P1secondaryCheck)
+        {
+            if (ScoreTracker.P1credit < 100)
+            {
+                P1WarningText.text = "You don't have enough credit";
+                ActivateP1WarningPanel();
+
+                yield return new WaitForSeconds(2.4f);
+
+                DeactivateP1WarningPanel();
+                ActivateP1Shader();
+            }
+            if (ScoreTracker.P1credit >= 100)
+            {
+                ScoreTracker.P1credit -= 100;
+
+                PlayerWeaponController.P1currentSecondaryLevel++;
+
+                P1secondaryShader.SetActive(true);
+
+                P1secondaryCheck = true;
+            }
+        }
+    }
+    IEnumerator P1AmmoAdd()
+    {
+        if (PlayerWeaponController.P1currentSuperAmmo >= 5)
+        {
+            PlayerWeaponController.P1currentSuperAmmo = 5;
+
+            P1WarningText.text = "Your ship only have sapce for 5 super charge";
+            ActivateP1WarningPanel();
+
+            yield return new WaitForSeconds(2.4f);
+
+            DeactivateP1WarningPanel();
+
+            P1specialShader.SetActive(true);
+        }
+
+        if (PlayerWeaponController.P1currentSuperAmmo < 5)
+        {
+            if (ScoreTracker.P1credit < 100)
+            {
+                P1WarningText.text = "You don't have enough credit";
+                ActivateP1WarningPanel();
+
+                yield return new WaitForSeconds(2.4f);
+
+                DeactivateP1WarningPanel();
+                ActivateP1Shader();
+            }
+            if (ScoreTracker.P1credit >= 100)
+            {
+                ScoreTracker.P1credit -= 100;
+
+                PlayerWeaponController.P1currentSuperAmmo++;
+            }
+        }
+    }
+    IEnumerator P1ShipSwitch()
+    {
+        P1WarningText.text = "It cost 1000 credit to swapping out your current ship";
+        ActivateP1WarningPanel();
+
+        yield return new WaitForSeconds(3f);
+
+        DeactivateP1WarningPanel();
+
+        P1switch = true;
+        P1shipSwitch = true;
+    }
+    IEnumerator P1PrimarySwitch()
+    {
+        P1WarningText.text = "Your current primary level is: " + PlayerWeaponController.P1currentWLevel + ". It cost 1000 credit to swapping out your current primary";
+        ActivateP1WarningPanel();
+
+        yield return new WaitForSeconds(3f);
+
+        DeactivateP1WarningPanel();
+        
+        P1switch = true;
+        P1primarySwitch = true;
+    }
+    IEnumerator P1SecondarySwitch()
+    {
+        P1WarningText.text = "Your current secondary level is: " + PlayerWeaponController.P1currentSecondaryLevel + ". It cost 1000 credit to swapping out your current secondary";
+        ActivateP1WarningPanel();
+
+        yield return new WaitForSeconds(3f);
+
+        DeactivateP1WarningPanel();
+
+        P1switch = true;
+        P1secondarySwitch = true;
+    }
+
+    IEnumerator P2HealthRestore()
+    {
+        if (PlayerHealthSystem.P2currentHealth >= PlayerHealthSystem.P2maxHealth)
+        {
+            P2WarningText.text = "You already have full health";
+            ActivateP2WarningPanel();
+
+            yield return new WaitForSeconds(2.4f);
+
+            DeactivateP2WarningPanel();
+
+            P2healthShader.SetActive(true);
+        }
+
+        if (P2healthCheck)
+        {
+            P2WarningText.text = "You already restore your health";
+            ActivateP2WarningPanel();
+
+            yield return new WaitForSeconds(2.4f);
+
+            DeactivateP2WarningPanel();
+        }
+
+        if (PlayerHealthSystem.P2currentHealth < PlayerHealthSystem.P2maxHealth && !P2healthCheck)
+        {
+            if (ScoreTracker.P2credit < 100)
+            {
+                P2WarningText.text = "You don't have enough credit";
+                ActivateP2WarningPanel();
+
+                yield return new WaitForSeconds(2.4f);
+
+                DeactivateP2WarningPanel();
+                ActivateP2Shader();
+            }
+            if (ScoreTracker.P2credit >= 100)
+            {
+                ScoreTracker.P2credit -= 100;
+
+                PlayerHealthSystem.P2currentHealth = PlayerHealthSystem.P2maxHealth;
+
+                P2healthShader.SetActive(true);
+
+                P2healthCheck = true;
+            }
+        }
+    }
+    IEnumerator P2ShieldRestore()
+    {
+        if (PlayerHealthSystem.P2currentShields >= PlayerHealthSystem.P2maxShields)
+        {
+            P2WarningText.text = "Your shield was fully charged";
+            ActivateP2WarningPanel();
+
+            yield return new WaitForSeconds(2.4f);
+
+            DeactivateP2WarningPanel();
+
+            P2shieldShader.SetActive(true);
+        }
+
+        if (P2shieldCheck)
+        {
+            P2WarningText.text = "You already recharge your shield";
+            ActivateP2WarningPanel();
+
+            yield return new WaitForSeconds(2.4f);
+
+            DeactivateP2WarningPanel();
+        }
+
+        if (PlayerHealthSystem.P2currentShields < PlayerHealthSystem.P2maxShields && !P2shieldCheck)
+        {
+            if (ScoreTracker.P2credit < 100)
+            {
+                P2WarningText.text = "You don't have enough credit";
+                ActivateP2WarningPanel();
+
+                yield return new WaitForSeconds(2.4f);
+
+                DeactivateP2WarningPanel();
+                ActivateP2Shader();
+            }
+            if (ScoreTracker.P2credit >= 100)
+            {
+                ScoreTracker.P2credit -= 100;
+
+                PlayerHealthSystem.P2currentShields = PlayerHealthSystem.P2maxShields;
+
+                P2shieldShader.SetActive(true);
+
+                P2shieldCheck = true;
+            }
+        }
+    }
+    IEnumerator P2LiveAdd()
+    {
+        if (PlayerHealthSystem.P2currentLives >= 5)
+        {
+            PlayerHealthSystem.P2currentLives = 5;
+
+            P2WarningText.text = "You can only have 5 Spares";
+            ActivateP2WarningPanel();
+
+            yield return new WaitForSeconds(2.4f);
+
+            DeactivateP2WarningPanel();
+
+            P2liveShader.SetActive(true);
+        }
+
+        if (PlayerHealthSystem.P2currentLives < 5)
+        {
+            if (ScoreTracker.P2credit < 100)
+            {
+                P2WarningText.text = "You don't have enough credit";
+                ActivateP2WarningPanel();
+
+                yield return new WaitForSeconds(2.4f);
+
+                DeactivateP2WarningPanel();
+                ActivateP2Shader();
+            }
+            if (ScoreTracker.P2credit >= 100)
+            {
+                ScoreTracker.P2credit -= 100;
+
+                PlayerHealthSystem.P2currentLives++;
+            }
+        }
+    }
+    IEnumerator P2PrimaryUpgrade()
+    {
+        if (PlayerWeaponController.P2currentWLevel >= 5)
+        {
+            PlayerWeaponController.P2currentWLevel = 5;
+
+            P2WarningText.text = "Your primary weapon is at max level";
+            ActivateP2WarningPanel();
+
+            yield return new WaitForSeconds(2.4f);
+
+            DeactivateP2WarningPanel();
+
+            P2primaryShader.SetActive(true);
+        }
+
+        if (P2primaryCheck)
+        {
+            P2WarningText.text = "You can only upgrade your primary once";
+            ActivateP2WarningPanel();
+
+            yield return new WaitForSeconds(2.4f);
+
+            DeactivateP2WarningPanel();
+        }
+
+        if (PlayerWeaponController.P2currentWLevel < 5 && !P2primaryCheck)
+        {
+            if (ScoreTracker.P2credit < 100)
+            {
+                P2WarningText.text = "You don't have enough credit";
+                ActivateP2WarningPanel();
+
+                yield return new WaitForSeconds(2.4f);
+
+                DeactivateP2WarningPanel();
+                ActivateP2Shader();
+            }
+            if (ScoreTracker.P2credit >= 100)
+            {
+                ScoreTracker.P2credit -= 100;
+
+                PlayerWeaponController.P2currentWLevel++;
+
+                P2primaryShader.SetActive(true);
+
+                P2primaryCheck = true;
+            }
+        }
+    }
+    IEnumerator P2SecondaryUpgrade()
+    {
+        if (PlayerWeaponController.P2currentSecondaryLevel >= 5)
+        {
+            PlayerWeaponController.P2currentSecondaryLevel = 5;
+
+            P2WarningText.text = "Your secondary weapon is at max level";
+            ActivateP2WarningPanel();
+
+            yield return new WaitForSeconds(2.4f);
+
+            DeactivateP2WarningPanel();
+
+            P2secondaryShader.SetActive(true);
+        }
+
+        if (P2secondaryCheck)
+        {
+            P2WarningText.text = "You can only upgrade your secondary once";
+            ActivateP2WarningPanel();
+
+            yield return new WaitForSeconds(2.4f);
+
+            DeactivateP2WarningPanel();
+        }
+
+        if (PlayerWeaponController.P2currentSecondaryLevel < 5 && !P2secondaryCheck)
+        {
+            if (ScoreTracker.P2credit < 100)
+            {
+                P2WarningText.text = "You don't have enough credit";
+                ActivateP2WarningPanel();
+
+                yield return new WaitForSeconds(2.4f);
+
+                DeactivateP2WarningPanel();
+                ActivateP2Shader();
+            }
+            if (ScoreTracker.P2credit >= 100)
+            {
+                ScoreTracker.P2credit -= 100;
+
+                PlayerWeaponController.P2currentSecondaryLevel++;
+
+                P2secondaryShader.SetActive(true);
+
+                P2secondaryCheck = true;
+            }
+        }
+    }
+    IEnumerator P2AmmoAdd()
+    {
+        if (PlayerWeaponController.P2currentSuperAmmo >= 5)
+        {
+            PlayerWeaponController.P2currentSuperAmmo = 5;
+
+            P2WarningText.text = "Your ship only have sapce for 5 super charge";
+            ActivateP2WarningPanel();
+
+            yield return new WaitForSeconds(2.4f);
+
+            DeactivateP2WarningPanel();
+
+            P2specialShader.SetActive(true);
+        }
+
+        if (PlayerWeaponController.P2currentSuperAmmo < 5)
+        {
+            if (ScoreTracker.P2credit < 100)
+            {
+                P2WarningText.text = "You don't have enough credit";
+                ActivateP2WarningPanel();
+
+                yield return new WaitForSeconds(2.4f);
+
+                DeactivateP2WarningPanel();
+                ActivateP2Shader();
+            }
+            if (ScoreTracker.P2credit >= 100)
+            {
+                ScoreTracker.P2credit -= 100;
+
+                PlayerWeaponController.P2currentSuperAmmo++;
+            }
+        }
+    }
+    IEnumerator P2ShipSwitch()
+    {
+        P2WarningText.text = "It cost 1000 credit to swapping out your current ship";
+        ActivateP2WarningPanel();
+
+        yield return new WaitForSeconds(3f);
+
+        DeactivateP2WarningPanel();
+
+        P2switch = true;
+        P2shipSwitch = true;
+    }
+    IEnumerator P2PrimarySwitch()
+    {
+        P2WarningText.text = "Your current primary level is: " + PlayerWeaponController.P2currentWLevel + ". It cost 1000 credit to swapping out your current primary";
+        ActivateP2WarningPanel();
+
+        yield return new WaitForSeconds(3f);
+
+        DeactivateP2WarningPanel();
+
+        P2switch = true;
+        P2primarySwitch = true;
+    }
+    IEnumerator P2SecondarySwitch()
+    {
+        P2WarningText.text = "Your current secondary level is: " + PlayerWeaponController.P2currentSecondaryLevel + ". It cost 1000 credit to swapping out your current secondary";
+        ActivateP2WarningPanel();
+
+        yield return new WaitForSeconds(3f);
+
+        DeactivateP2WarningPanel();
+
+        P2switch = true;
+        P2secondarySwitch = true;
+    }
+
+    IEnumerator P1TestMachineGun()
+    {
+        P1testingDone = false;
+        P1testing = true;
+        P1toggleData = 1;
+
+        for (int counter = 0; counter < 4; counter++)
+        {
+            Instantiate(machineGunBullet, P1level2SpawnPoint.position, P1level2SpawnPoint.rotation);
+            Instantiate(machineGunBullet, P1level3SpawnPoint.position, P1level3SpawnPoint.rotation);
+            yield return new WaitForSeconds(1f);
+        }
+
+        P1testingDone = true;
+    }
+    IEnumerator P1TestFlakCannon()
+    {
+        P1testingDone = false;
+        P1testing = true;
+
+        Instantiate(flakCannonBullet, P1level1SpawnPoint.position, P1level1SpawnPoint.rotation);
+        yield return new WaitForSeconds(1f);
+
+        P1testingDone = true;
+    }
+    IEnumerator P1TestPAC()
+    {
+        P1testingDone = false;
+        P1testing = true;
+        P1toggleData = 3;
+
+        Instantiate(pacBullet, P1level1SpawnPoint.position, P1level1SpawnPoint.rotation);
+        yield return new WaitForSeconds(1f);
+
+        P1testingDone = true;
+    }
+    IEnumerator P1TestHomingMissiles()
+    {
+        P1testingDone = false;
+        P1testing = true;
+        P1toggleData = 1;
+
+        Instantiate(homingMissiles, P1level4SpawnPoint.position, P1level4SpawnPoint.rotation);
+        Instantiate(homingMissiles, P1level5SpawnPoint.position, P1level5SpawnPoint.rotation);
+        yield return new WaitForSeconds(1f);
+
+        P1testingDone = true;
+    }
+    IEnumerator P1TestSweeperPods()
+    {
+        P1testingDone = false;
+        P1testing = true;
+
+        Instantiate(sweeperPods, P1level4SpawnPoint.position, P1level4SpawnPoint.rotation);
+        Instantiate(sweeperPods, P1level5SpawnPoint.position, P1level5SpawnPoint.rotation);
+        yield return new WaitForSeconds(1f);
+
+        P1testingDone = true;
+    }
+    IEnumerator P1TestPlasmaBullet()
+    {
+        P1testingDone = false;
+        P1testing = true;
+        P1toggleData = 3;
+
+        Instantiate(plasmaBullet, P1level4SpawnPoint.position, P1level4SpawnPoint.rotation);
+        Instantiate(plasmaBullet, P1level5SpawnPoint.position, P1level5SpawnPoint.rotation);
+        yield return new WaitForSeconds(1f);
+
+        P1testingDone = true;
+    }
+
+    IEnumerator P2TestMachineGun()
+    {
+        P2testingDone = false;
+        P2testing = true;
+        P2toggleData = 1;
+
+        for (int counter = 0; counter < 4; counter++)
+        {
+            Instantiate(machineGunBullet, P2level2SpawnPoint.position, P2level2SpawnPoint.rotation);
+            Instantiate(machineGunBullet, P2level3SpawnPoint.position, P2level3SpawnPoint.rotation);
+            yield return new WaitForSeconds(1f);
+        }
+
+        P2testingDone = true;
+    }
+    IEnumerator P2TestFlakCannon()
+    {
+        P2testingDone = false;
+        P2testing = true;
+
+        Instantiate(flakCannonBullet, P2level1SpawnPoint.position, P2level1SpawnPoint.rotation);
+        yield return new WaitForSeconds(1f);
+
+        P2testingDone = true;
+    }
+    IEnumerator P2TestPAC()
+    {
+        P2testingDone = false;
+        P2testing = true;
+        P2toggleData = 3;
+
+        Instantiate(pacBullet, P2level1SpawnPoint.position, P2level1SpawnPoint.rotation);
+        yield return new WaitForSeconds(1f);
+
+        P2testingDone = true;
+    }
+    IEnumerator P2TestHomingMissiles()
+    {
+        P2testingDone = false;
+        P2testing = true;
+        P2toggleData = 1;
+
+        Instantiate(homingMissiles, P2level4SpawnPoint.position, P2level4SpawnPoint.rotation);
+        Instantiate(homingMissiles, P2level5SpawnPoint.position, P2level5SpawnPoint.rotation);
+        yield return new WaitForSeconds(1f);
+    
+        P2testingDone = true;
+    }
+    IEnumerator P2TestSweeperPods()
+    {
+        P2testingDone = false;
+        P2testing = true;
+
+        Instantiate(sweeperPods, P2level4SpawnPoint.position, P2level4SpawnPoint.rotation);
+        Instantiate(sweeperPods, P2level5SpawnPoint.position, P2level5SpawnPoint.rotation);
+        yield return new WaitForSeconds(1f);
+
+        P2testingDone = true;
+    }
+    IEnumerator P2TestPlasmaBullet()
+    {
+        P2testingDone = false;
+        P2testing = true;
+        P2toggleData = 3;
+
+        Instantiate(plasmaBullet, P2level4SpawnPoint.position, P2level4SpawnPoint.rotation);
+        Instantiate(plasmaBullet, P2level5SpawnPoint.position, P2level5SpawnPoint.rotation);
+        yield return new WaitForSeconds(1f);
+
+        P2testingDone = true;
+    }
+
+    IEnumerator P1ShipChange()
+    {
+        if (ScoreTracker.P1credit < 1000)
+        {
+            P1WarningText.text = "You don't have enough credit";
+            ActivateP1WarningPanel();
+
+            yield return new WaitForSeconds(2.5f);
+
+            DeactivateP1WarningPanel();
+        }
+        if (ScoreTracker.P1credit >= 1000)
+        {
+            ScoreTracker.P1credit -= 1000;
+            SelectionMenuController.P1shipType = P1toggleData;
+
+            P1WarningText.text = "Thank you for your purchases";
+            ActivateP1WarningPanel();
+
+            yield return new WaitForSeconds(2.5f);
+
+            DeactivateP1WarningPanel();
+        }
+
+        P1switch = false;
+    }
+    IEnumerator P1PrimaryChange()
+    {
+        if (ScoreTracker.P1credit < 1000)
+        {
+            P1WarningText.text = "You don't have enough credit";
+            ActivateP1WarningPanel();
+
+            yield return new WaitForSeconds(2.5f);
+
+            DeactivateP1WarningPanel();
+        }
+        if (ScoreTracker.P1credit >= 1000)
+        {
+            ScoreTracker.P1credit -= 1000;
+            SelectionMenuController.P1primaryType = P1toggleData;
+
+            P1WarningText.text = "Thank you for your purchases";
+            ActivateP1WarningPanel();
+
+            yield return new WaitForSeconds(2.5f);
+
+            DeactivateP1WarningPanel();
+        }
+
+        P1switch = false;
+    }
+    IEnumerator P1SecondaryChange()
+    {
+        if (ScoreTracker.P1credit < 1000)
+        {
+            P1WarningText.text = "You don't have enough credit";
+            ActivateP1WarningPanel();
+
+            yield return new WaitForSeconds(2.5f);
+
+            DeactivateP1WarningPanel();
+        }
+        if (ScoreTracker.P1credit >= 1000)
+        {
+            ScoreTracker.P1credit -= 1000;
+            SelectionMenuController.P1secondaryType = P1toggleData;
+
+            P1WarningText.text = "Thank you for your purchases";
+            ActivateP1WarningPanel();
+
+            yield return new WaitForSeconds(2.5f);
+
+            DeactivateP1WarningPanel();
+        }
+
+        P1switch = false;
+    }
+
+    IEnumerator P2ShipChange()
+    {
+        if (ScoreTracker.P2credit < 1000)
+        {
+            P2WarningText.text = "You don't have enough credit";
+            ActivateP2WarningPanel();
+
+            yield return new WaitForSeconds(2.5f);
+
+            DeactivateP2WarningPanel();
+        }
+        if (ScoreTracker.P2credit >= 1000)
+        {
+            ScoreTracker.P2credit -= 1000;
+            SelectionMenuController.P2shipType = P2toggleData;
+
+            P2WarningText.text = "Thank you for your purchases";
+            ActivateP2WarningPanel();
+
+            yield return new WaitForSeconds(2.5f);
+
+            DeactivateP2WarningPanel();
+        }
+
+        P2switch = false;
+    }
+    IEnumerator P2PrimaryChange()
+    {
+        if (ScoreTracker.P2credit < 1000)
+        {
+            P2WarningText.text = "You don't have enough credit";
+            ActivateP2WarningPanel();
+
+            yield return new WaitForSeconds(2.5f);
+
+            DeactivateP2WarningPanel();
+        }
+        if (ScoreTracker.P2credit >= 1000)
+        {
+            ScoreTracker.P2credit -= 1000;
+            SelectionMenuController.P2primaryType = P2toggleData;
+
+            P2WarningText.text = "Thank you for your purchases";
+            ActivateP2WarningPanel();
+
+            yield return new WaitForSeconds(2.5f);
+
+            DeactivateP2WarningPanel();
+        }
+
+        P2switch = false;
+    }
+    IEnumerator P2SecondaryChange()
+    {
+        if (ScoreTracker.P2credit < 1000)
+        {
+            P2WarningText.text = "You don't have enough credit";
+            ActivateP2WarningPanel();
+
+            yield return new WaitForSeconds(2.5f);
+
+            DeactivateP2WarningPanel();
+        }
+        if (ScoreTracker.P2credit >= 1000)
+        {
+            ScoreTracker.P2credit -= 1000;
+            SelectionMenuController.P2secondaryType = P2toggleData;
+
+            P2WarningText.text = "Thank you for your purchases";
+            ActivateP2WarningPanel();
+
+            yield return new WaitForSeconds(2.5f);
+
+            DeactivateP2WarningPanel();
+        }
+
+        P2switch = false;
     }
 
     private void ActivateButton()
@@ -444,6 +2191,15 @@ public class HangarMenuController : MonoBehaviour
         P2specialGlow.SetActive(false);
     }
 
+    private void ActivateP1Shader()
+    {
+        P1healthShader.SetActive(true);
+        P1shieldShader.SetActive(true);
+        P1liveShader.SetActive(true);
+        P1primaryShader.SetActive(true);
+        P1secondaryShader.SetActive(true);
+        P1specialShader.SetActive(true);
+    }
     private void DeactivateP1Shader()
     {
         P1healthShader.SetActive(false);
@@ -452,6 +2208,16 @@ public class HangarMenuController : MonoBehaviour
         P1primaryShader.SetActive(false);
         P1secondaryShader.SetActive(false);
         P1specialShader.SetActive(false);
+    }
+
+    private void ActivateP2Shader()
+    {
+        P2healthShader.SetActive(true);
+        P2shieldShader.SetActive(true);
+        P2liveShader.SetActive(true);
+        P2primaryShader.SetActive(true);
+        P2secondaryShader.SetActive(true);
+        P2specialShader.SetActive(true);
     }
     private void DeactivateP2Shader()
     {
@@ -497,10 +2263,10 @@ public class HangarMenuController : MonoBehaviour
 
     private void ActivateP2Ships()
     {
-        //if (SelectionMenuController.P2shipType == 1)
-        //{
+        if (SelectionMenuController.P2shipType == 1)
+        {
             P2ship1.SetActive(true);
-        //}
+        }
         if (SelectionMenuController.P2shipType == 2)
         {
             P2ship2.SetActive(true);
@@ -618,38 +2384,28 @@ public class HangarMenuController : MonoBehaviour
 
     private void ActivateP1WarningPanel()
     {
+        P1WarningText.enabled = true;
+        P1warning = true;
         P1Warning.SetActive(true);
     }
     private void DeactivateP1WarningPanel()
     {
+        P1WarningText.enabled = false;
+        P1warning = false;
         P1Warning.SetActive(false);
     }
 
     private void ActivateP2WarningPanel()
     {
+        P2WarningText.enabled = true;
+        P2warning = true;
         P2Warning.SetActive(true);
     }
     private void DeactivateP2WarningPanel()
     {
+        P2WarningText.enabled = false;
+        P2warning = false;
         P2Warning.SetActive(false);
-    }
-
-    private void ActivateP1CreditText()
-    {
-        P1Credit.enabled = true;
-    }
-    private void DeactivateP1CreditText()
-    {
-        P1Credit.enabled = false;
-    }
-
-    private void ActivateP2CreditText()
-    {
-        P2Credit.enabled = true;
-    }
-    private void DeactivateP2CreditText()
-    {
-        P2Credit.enabled = false;
     }
 
     private void ResetP1ToggleData()
@@ -661,21 +2417,15 @@ public class HangarMenuController : MonoBehaviour
         P2toggleData = 1;
     }
 
-    private void ResetP1Warning()
-    {
-        P1warning = false;
-    }
-    private void ResetP2Warning()
-    {
-        P2warning = false;
-    }
-
     private void ResetP1Bool()
     {
         P1healthCheck = false;
         P1shieldCheck = false;
         P1primaryCheck = false;
         P1secondaryCheck = false;
+        P1shipSwitch = false;
+        P1primarySwitch = false;
+        P1secondarySwitch = false;
     }
     private void ResetP2Bool()
     {
@@ -683,7 +2433,10 @@ public class HangarMenuController : MonoBehaviour
         P2shieldCheck = false;
         P2primaryCheck = false;
         P2secondaryCheck = false;
-    }
+        P2shipSwitch = false;
+        P2primarySwitch = false;
+        P2secondarySwitch = false;
+}
 
     private void ResetPlayerScore()
     {
@@ -691,7 +2444,6 @@ public class HangarMenuController : MonoBehaviour
         ScoreTracker.score_P2 = 0;
         ScoreTracker.totalScore = 0;
     }
-
     private void ResetPlayerCredit()
     {
         ScoreTracker.P1credit = 0;
@@ -739,8 +2491,8 @@ public class HangarMenuController : MonoBehaviour
         PlayerWeaponController.P2savedSecondaryLevel = PlayerWeaponController.P2currentSecondaryLevel;
         PlayerWeaponController.P2savedSuperAmmo = PlayerWeaponController.P2currentSuperAmmo;
     }
-    
-    public void RestartButton()
+        
+    private void RestartButton()
     {
         ResetPlayerScore();
         ResetPlayerCredit();
@@ -771,7 +2523,7 @@ public class HangarMenuController : MonoBehaviour
         }
     }
 
-    public void NextButton()
+    private void NextButton()
     {
         ResetPlayerScore();
 
