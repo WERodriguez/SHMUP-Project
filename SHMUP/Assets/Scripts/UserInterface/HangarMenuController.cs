@@ -1987,6 +1987,9 @@ public class HangarMenuController : MonoBehaviour
             DeactivateP1WarningPanel();
         }
 
+        DeactivateP1Ships();
+        ActivateP1Ships();
+
         P1switch = false;
     }
     IEnumerator P1PrimaryChange()
@@ -2065,6 +2068,9 @@ public class HangarMenuController : MonoBehaviour
 
             DeactivateP2WarningPanel();
         }
+
+        DeactivateP2Ships();
+        ActivateP2Ships();
 
         P2switch = false;
     }
