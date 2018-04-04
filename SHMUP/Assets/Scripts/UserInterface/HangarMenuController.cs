@@ -152,6 +152,7 @@ public class HangarMenuController : MonoBehaviour
     public Animator P1Ships;
     public Animator P2Ships;
 
+    public Transform[] P1primarySpawnPoint;
     public Transform P1level1SpawnPoint;
     public Transform P1level2SpawnPoint;
     public Transform P1level3SpawnPoint;
@@ -1827,8 +1828,13 @@ public class HangarMenuController : MonoBehaviour
 
         for (int counter = 0; counter < 4; counter++)
         {
+            /*
             Instantiate(machineGunBullet, P1level2SpawnPoint.position, P1level2SpawnPoint.rotation);
             Instantiate(machineGunBullet, P1level3SpawnPoint.position, P1level3SpawnPoint.rotation);
+            */
+            Instantiate(machineGunBullet, P1primarySpawnPoint[0].position, Quaternion.Euler(-75, -15 , 15 *counter));
+            Instantiate(machineGunBullet, P1primarySpawnPoint[1].position, Quaternion.Euler(-75, -15, 15 * counter));
+            Instantiate(machineGunBullet, P1primarySpawnPoint[2].position, Quaternion.Euler(-75, -15, 15 * counter));
             yield return new WaitForSeconds(1f);
         }
 
@@ -2245,7 +2251,7 @@ public class HangarMenuController : MonoBehaviour
 
     private void ActivateP1Ships()
     {
-        if(SelectionMenuController.P1shipType == 1)
+        if (SelectionMenuController.P1shipType == 1)
         {
             P1ship1.SetActive(true);
         }
@@ -2511,6 +2517,13 @@ public class HangarMenuController : MonoBehaviour
         PlayerWeaponController.P2savedWeaponLevel = PlayerWeaponController.P2currentWLevel;
         PlayerWeaponController.P2savedSecondaryLevel = PlayerWeaponController.P2currentSecondaryLevel;
         PlayerWeaponController.P2savedSuperAmmo = PlayerWeaponController.P2currentSuperAmmo;
+    }
+
+    private void CheckP1Primary()
+    {
+        if (PlayerWeaponController.P1currentWLevel <= 1)
+        {
+        }
     }
         
     private void RestartButton()
