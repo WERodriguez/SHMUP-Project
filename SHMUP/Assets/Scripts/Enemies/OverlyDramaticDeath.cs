@@ -13,6 +13,13 @@ public class OverlyDramaticDeath : MonoBehaviour
 
     //Holds explosions
     public GameObject[] explosions;
+    //What it says.
+    public float timeBetweenExplosions;
+    //Ranges that explosions can spawn at during overly dramatic switch. 
+    //Used with Random.Range(minimum Float, max Float)
+    public float xRange;
+    public float yRange;
+    public float zRange;
 
     //Checks if heavy scrap or not.
     public bool isHeavyScrap;
@@ -44,11 +51,11 @@ public class OverlyDramaticDeath : MonoBehaviour
         {
             //Instantiates explosions from an array that holds 3 explosions.
             //X and Z coordinates of explosions are random. Y and rotation are static.
-            Instantiate(explosions[Random.Range(0, 3)], new Vector3(gameObject.transform.position.x + Random.Range(-2.5f, 2.5f),
-                gameObject.transform.position.z + Random.Range(-6.0f, 6.0f),
-                gameObject.transform.position.y), gameObject.transform.rotation);
+            Instantiate(explosions[Random.Range(0, 3)], new Vector3(gameObject.transform.position.x + Random.Range(-xRange, xRange),
+                gameObject.transform.position.y + Random.Range(-yRange, yRange),
+                gameObject.transform.position.z + Random.Range(-zRange, zRange)), gameObject.transform.rotation);
 
-            yield return new WaitForSeconds(0.5f);
+            yield return new WaitForSeconds(timeBetweenExplosions);
         }
     }
 }

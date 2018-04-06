@@ -33,6 +33,8 @@ public class KerberosStage2 : MonoBehaviour
     public bool canIAppearYet;
     //Lets the ship know if it can fade out and when to stop.
     public bool canIFadeYet;
+    //Because otherwise explosions go off literally every frame. It's hilarious but wrong.
+    public bool stopDying;
     //How fast the alpha channel is changed.
     public float fadePerSecond;
     //How long the fade will last.
@@ -40,12 +42,27 @@ public class KerberosStage2 : MonoBehaviour
     //How long it will take to appear.
     public float appearDuration;
 
+    //Keeps track of all the guns so the boss knows when to die.
     public GameObject[] gunArray;
     //Holds next boss stage
     public GameObject nextStage;
 
-	// Use this for initialization
-	void Start ()
+    //Holds explosions to play during an overly dramatic instance switch.
+    public GameObject[] explosions;
+    //What it says.
+    public float timeBetweenExplosions;
+    //Ranges that explosions can spawn at during overly dramatic switch. 
+    //Used with Random.Range(minimum Float, max Float)
+    public float xRange;
+    public float yRange;
+    public float zRange;
+
+    //Grabs the loot and point scripts
+    private Points addScore;
+    private LootDropRoller callLoot;
+
+    // Use this for initialization
+    void Start ()
     {
         canIFadeYet = false;
         canIAppearYet = false;
@@ -53,7 +70,7 @@ public class KerberosStage2 : MonoBehaviour
         //Gathers all of the child renderers
         childRenderers = GetComponentsInChildren<Renderer>();
         StartCoroutine(BossAppears());
-	}
+    }
 
     // Update is called once per frame
     void Update()
@@ -88,8 +105,9 @@ public class KerberosStage2 : MonoBehaviour
         }
 
         //Checks if every single gun in the array is destroyed before starting the death coroutine.
-        if(gunArray[0] == null && gunArray[1] == null && gunArray[2] == null && gunArray[3] == null && gunArray[4] == null && gunArray[5] == null && gunArray[6] == null && gunArray[7] == null)
-        { 
+        if (gunArray[0] == null && gunArray[1] == null && gunArray[2] == null && gunArray[3] == null && gunArray[4] == null && gunArray[5] == null && gunArray[6] == null && gunArray[7] == null && !stopDying)
+        {
+            stopDying = true;
             StartCoroutine(DeadStage());
         }
     }
@@ -134,6 +152,7 @@ public class KerberosStage2 : MonoBehaviour
     {
         canIMove = false;
         speed = 0.5f;
+        StartCoroutine(dramaticExplosions());
         desiredPosition = deathPosition;
         yield return new WaitForSeconds(3);
 
@@ -172,6 +191,20 @@ public class KerberosStage2 : MonoBehaviour
             desiredPosition = positions[Random.Range(0, positions.Length)];
 
             yield return new WaitForSeconds(Random.Range(1.0f, timeToMoveAgain));
+        }
+    }
+
+    IEnumerator dramaticExplosions()
+    {
+        while (true)
+        {
+            //Instantiates explosions from an array that holds 3 explosions.
+            //X and Z coordinates of explosions are random. Y and rotation are static.            
+            Instantiate(explosions[Random.Range(0, 3)], new Vector3(gameObject.transform.position.x + Random.Range(-xRange, xRange),
+                gameObject.transform.position.y + Random.Range(-yRange, yRange),
+                gameObject.transform.position.z + Random.Range(-zRange, zRange)), gameObject.transform.rotation);
+
+            yield return new WaitForSeconds(timeBetweenExplosions);
         }
     }
 }
