@@ -279,7 +279,6 @@ GameObject:
   m_Component:
   - component: {fileID: 4383734083335276}
   - component: {fileID: 33531230545718740}
-  - component: {fileID: 64785096002020190}
   - component: {fileID: 23906737364290390}
   m_Layer: 0
   m_Name: BeamMuzzleFlash
@@ -468,7 +467,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1445266577318892}
   m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
-  m_LocalPosition: {x: 5.86, y: 0, z: 19.5}
+  m_LocalPosition: {x: 25.238974, y: 30.32784, z: 24.822437}
   m_LocalScale: {x: 0.6611948, y: 0.6611948, z: 0.6611948}
   m_Children:
   - {fileID: 4374295189707094}
@@ -723,20 +722,6 @@ MeshFilter:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1931851060980262}
-  m_Mesh: {fileID: 10210, guid: 0000000000000000e000000000000000, type: 0}
---- !u!64 &64785096002020190
-MeshCollider:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1931851060980262}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Convex: 0
-  m_InflateMesh: 0
-  m_SkinWidth: 0.01
   m_Mesh: {fileID: 10210, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!82 &82194912040487210
 AudioSource:

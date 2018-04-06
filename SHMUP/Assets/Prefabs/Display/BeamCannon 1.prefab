@@ -164,7 +164,6 @@ GameObject:
   m_Component:
   - component: {fileID: 4887576583302088}
   - component: {fileID: 33332912916284228}
-  - component: {fileID: 64718973747734442}
   - component: {fileID: 23488806821602502}
   m_Layer: 0
   m_Name: Beam
@@ -294,7 +293,6 @@ GameObject:
   m_Component:
   - component: {fileID: 4894580405695868}
   - component: {fileID: 33462401203355658}
-  - component: {fileID: 64448565629498658}
   - component: {fileID: 23649067206404618}
   m_Layer: 0
   m_Name: BeamMuzzleFlash
@@ -399,7 +397,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1910731586845924}
   m_LocalRotation: {x: -0.7071068, y: 0, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: -220, y: 1.27759, z: 4.495798}
+  m_LocalPosition: {x: 25.366837, y: 30.116055, z: 24.75042}
   m_LocalScale: {x: 30, y: 30, z: 30}
   m_Children:
   - {fileID: 4887576583302088}
@@ -723,34 +721,6 @@ MeshFilter:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1852812570264236}
-  m_Mesh: {fileID: 10210, guid: 0000000000000000e000000000000000, type: 0}
---- !u!64 &64448565629498658
-MeshCollider:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1852812570264236}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Convex: 0
-  m_InflateMesh: 0
-  m_SkinWidth: 0.01
-  m_Mesh: {fileID: 10210, guid: 0000000000000000e000000000000000, type: 0}
---- !u!64 &64718973747734442
-MeshCollider:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1529331214060606}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Convex: 0
-  m_InflateMesh: 0
-  m_SkinWidth: 0.01
   m_Mesh: {fileID: 10210, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!108 &108112386144518226
 Light:
@@ -1384,6 +1354,8 @@ MonoBehaviour:
   childRenderers: []
   fadePerSecond: 1
   canIFadeYet: 0
+  beamSounds: []
+  beamAudioSource: {fileID: 0}
 --- !u!136 &136980485312272396
 CapsuleCollider:
   m_ObjectHideFlags: 1

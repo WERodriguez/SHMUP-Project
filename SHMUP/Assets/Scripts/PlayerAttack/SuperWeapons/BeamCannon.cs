@@ -50,6 +50,7 @@ public class BeamCannon : MonoBehaviour
         dealDamage = false;
         canIFadeYet = false;
         beamCollider = GetComponent<CapsuleCollider>();
+        childRenderers = GetComponentsInChildren<Renderer>();
         //This is the really weird way Unity decided to set colliders to active/inactive.
         //Since the collider is on by default. This line turns off the collider on start.
         //When this line pops up again it will turn on the collider.
