@@ -153,17 +153,10 @@ public class HangarMenuController : MonoBehaviour
     public Animator P2Ships;
 
     public Transform[] P1primarySpawnPoint;
-    public Transform P1level1SpawnPoint;
-    public Transform P1level2SpawnPoint;
-    public Transform P1level3SpawnPoint;
-    public Transform P1level4SpawnPoint;
-    public Transform P1level5SpawnPoint;
+    public Transform[] P1secondarySpawnPoint;
 
-    public Transform P2level1SpawnPoint;
-    public Transform P2level2SpawnPoint;
-    public Transform P2level3SpawnPoint;
-    public Transform P2level4SpawnPoint;
-    public Transform P2level5SpawnPoint;
+    public Transform[] P2primarySpawnPoint;
+    public Transform[] P2secondarySpawnPoint;
 
     public GameObject machineGunBullet;
     public GameObject flakCannonBullet;
@@ -191,7 +184,7 @@ public class HangarMenuController : MonoBehaviour
         DeactivateP1WarningPanel();
         ResetP1Bool();
         ResetP1SwitchBool();
-        
+
         DeactivateP1WarningPanel();
 
         DeactivateP2Menu();
@@ -208,7 +201,7 @@ public class HangarMenuController : MonoBehaviour
         DeactivateP2WarningPanel();
         ResetP2Bool();
         ResetP2SwitchBool();
-        
+
         DeactivateP2WarningPanel();
 
         waiting = true;
@@ -224,7 +217,7 @@ public class HangarMenuController : MonoBehaviour
         P2switch = false;
         P2testing = false;
         P2testingDone = true;
-}
+    }
 
     private void Start()
     {
@@ -350,6 +343,10 @@ public class HangarMenuController : MonoBehaviour
                                 {
                                     StartCoroutine(P1SecondaryChange());
                                 }
+
+                                P1testing = false;
+                                ResetP1ToggleData();
+                                DeactivateP1ToggleGlow();
                             }
                         }
                     }
@@ -624,6 +621,10 @@ public class HangarMenuController : MonoBehaviour
                                 {
                                     StartCoroutine(P1SecondaryChange());
                                 }
+
+                                P1testing = false;
+                                ResetP1ToggleData();
+                                DeactivateP1ToggleGlow();
                             }
                         }
                     }
@@ -789,7 +790,7 @@ public class HangarMenuController : MonoBehaviour
                     {
                         if (P2testingDone)
                         {
-                            if (Input.GetButtonDown("P2HorizontalChoiceLeft"))
+                            if (Input.GetButtonDown("P2HorizontalChoiceLeft") || Input.GetKeyDown(KeyCode.Keypad4))
                             {
                                 P2testing = false;
                                 P2toggleData++;
@@ -797,7 +798,7 @@ public class HangarMenuController : MonoBehaviour
                                 DeactivateP2ToggleGlow();
                                 P2toggleLeftGlow.SetActive(true);
                             }
-                            if (Input.GetButtonDown("P2HorizontalChoiceRight"))
+                            if (Input.GetButtonDown("P2HorizontalChoiceRight") || Input.GetKeyDown(KeyCode.Keypad6))
                             {
                                 P2testing = false;
                                 P2toggleData--;
@@ -886,6 +887,11 @@ public class HangarMenuController : MonoBehaviour
                                 {
                                     StartCoroutine(P2SecondaryChange());
                                 }
+
+                                P2testing = false;
+
+                                ResetP2ToggleData();
+                                DeactivateP2ToggleGlow();
                             }
                         }
                     }
@@ -1477,7 +1483,7 @@ public class HangarMenuController : MonoBehaviour
         P1WarningText.text = "It cost 1000 credit to swapping out your current ship";
         ActivateP1WarningPanel();
 
-        yield return new WaitForSeconds(3f);
+        yield return new WaitForSeconds(1.5f);
 
         DeactivateP1WarningPanel();
 
@@ -1490,7 +1496,7 @@ public class HangarMenuController : MonoBehaviour
         P1WarningText.text = "Your current primary level is: " + PlayerWeaponController.P1currentWLevel + ". It cost 1000 credit to swapping out your current primary";
         ActivateP1WarningPanel();
 
-        yield return new WaitForSeconds(3f);
+        yield return new WaitForSeconds(1.5f);
 
         DeactivateP1WarningPanel();
 
@@ -1503,7 +1509,7 @@ public class HangarMenuController : MonoBehaviour
         P1WarningText.text = "Your current secondary level is: " + PlayerWeaponController.P1currentSecondaryLevel + ". It cost 1000 credit to swapping out your current secondary";
         ActivateP1WarningPanel();
 
-        yield return new WaitForSeconds(3f);
+        yield return new WaitForSeconds(1.5f);
 
         DeactivateP1WarningPanel();
 
@@ -1785,7 +1791,7 @@ public class HangarMenuController : MonoBehaviour
         P2WarningText.text = "It cost 1000 credit to swapping out your current ship";
         ActivateP2WarningPanel();
 
-        yield return new WaitForSeconds(3f);
+        yield return new WaitForSeconds(1.5f);
 
         DeactivateP2WarningPanel();
 
@@ -1798,7 +1804,7 @@ public class HangarMenuController : MonoBehaviour
         P2WarningText.text = "Your current primary level is: " + PlayerWeaponController.P2currentWLevel + ". It cost 1000 credit to swapping out your current primary";
         ActivateP2WarningPanel();
 
-        yield return new WaitForSeconds(3f);
+        yield return new WaitForSeconds(1.5f);
 
         DeactivateP2WarningPanel();
 
@@ -1811,7 +1817,7 @@ public class HangarMenuController : MonoBehaviour
         P2WarningText.text = "Your current secondary level is: " + PlayerWeaponController.P2currentSecondaryLevel + ". It cost 1000 credit to swapping out your current secondary";
         ActivateP2WarningPanel();
 
-        yield return new WaitForSeconds(3f);
+        yield return new WaitForSeconds(1.5f);
 
         DeactivateP2WarningPanel();
 
@@ -1828,14 +1834,8 @@ public class HangarMenuController : MonoBehaviour
 
         for (int counter = 0; counter < 4; counter++)
         {
-            /*
-            Instantiate(machineGunBullet, P1level2SpawnPoint.position, P1level2SpawnPoint.rotation);
-            Instantiate(machineGunBullet, P1level3SpawnPoint.position, P1level3SpawnPoint.rotation);
-            */
-            Instantiate(machineGunBullet, P1primarySpawnPoint[0].position, Quaternion.Euler(-75, -15 , 15 *counter));
-            Instantiate(machineGunBullet, P1primarySpawnPoint[1].position, Quaternion.Euler(-75, -15, 15 * counter));
-            Instantiate(machineGunBullet, P1primarySpawnPoint[2].position, Quaternion.Euler(-75, -15, 15 * counter));
-            yield return new WaitForSeconds(1f);
+            CheckP1Primary();
+            yield return new WaitForSeconds(.5f);
         }
 
         P1testingDone = true;
@@ -1845,7 +1845,7 @@ public class HangarMenuController : MonoBehaviour
         P1testingDone = false;
         P1testing = true;
 
-        Instantiate(flakCannonBullet, P1level1SpawnPoint.position, P1level1SpawnPoint.rotation);
+        CheckP1Primary();
         yield return new WaitForSeconds(1f);
 
         P1testingDone = true;
@@ -1856,7 +1856,7 @@ public class HangarMenuController : MonoBehaviour
         P1testing = true;
         P1toggleData = 3;
 
-        Instantiate(pacBullet, P1level1SpawnPoint.position, P1level1SpawnPoint.rotation);
+        CheckP1Primary();
         yield return new WaitForSeconds(1f);
 
         P1testingDone = true;
@@ -1867,9 +1867,22 @@ public class HangarMenuController : MonoBehaviour
         P1testing = true;
         P1toggleData = 1;
 
-        Instantiate(homingMissiles, P1level4SpawnPoint.position, P1level4SpawnPoint.rotation);
-        Instantiate(homingMissiles, P1level5SpawnPoint.position, P1level5SpawnPoint.rotation);
-        yield return new WaitForSeconds(1f);
+        if(PlayerWeaponController.P1currentSecondaryLevel % 2 == 1)
+        {
+            for (int counter = 0; counter < 2; counter++)
+            {
+                CheckP1Secondary();
+                yield return new WaitForSeconds(3f);
+            }
+        }
+        if (PlayerWeaponController.P1currentSecondaryLevel % 2 == 0)
+        {
+            for (int counter = 0; counter < 2; counter++)
+            {
+                CheckP1Secondary();
+                yield return new WaitForSeconds(1f);
+            }
+        }
 
         P1testingDone = true;
     }
@@ -1878,9 +1891,22 @@ public class HangarMenuController : MonoBehaviour
         P1testingDone = false;
         P1testing = true;
 
-        Instantiate(sweeperPods, P1level4SpawnPoint.position, P1level4SpawnPoint.rotation);
-        Instantiate(sweeperPods, P1level5SpawnPoint.position, P1level5SpawnPoint.rotation);
-        yield return new WaitForSeconds(1f);
+        if (PlayerWeaponController.P1currentSecondaryLevel % 2 == 1)
+        {
+            for (int counter = 0; counter < 2; counter++)
+            {
+                CheckP1Secondary();
+                yield return new WaitForSeconds(3f);
+            }
+        }
+        if (PlayerWeaponController.P1currentSecondaryLevel % 2 == 0)
+        {
+            for (int counter = 0; counter < 2; counter++)
+            {
+                CheckP1Secondary();
+                yield return new WaitForSeconds(1f);
+            }
+        }
 
         P1testingDone = true;
     }
@@ -1890,9 +1916,22 @@ public class HangarMenuController : MonoBehaviour
         P1testing = true;
         P1toggleData = 3;
 
-        Instantiate(plasmaBullet, P1level4SpawnPoint.position, P1level4SpawnPoint.rotation);
-        Instantiate(plasmaBullet, P1level5SpawnPoint.position, P1level5SpawnPoint.rotation);
-        yield return new WaitForSeconds(1f);
+        if (PlayerWeaponController.P1currentSecondaryLevel % 2 == 1)
+        {
+            for (int counter = 0; counter < 2; counter++)
+            {
+                CheckP1Secondary();
+                yield return new WaitForSeconds(3f);
+            }
+        }
+        if (PlayerWeaponController.P1currentSecondaryLevel % 2 == 0)
+        {
+            for (int counter = 0; counter < 2; counter++)
+            {
+                CheckP1Secondary();
+                yield return new WaitForSeconds(1f);
+            }
+        }
 
         P1testingDone = true;
     }
@@ -1905,9 +1944,8 @@ public class HangarMenuController : MonoBehaviour
 
         for (int counter = 0; counter < 4; counter++)
         {
-            Instantiate(machineGunBullet, P2level2SpawnPoint.position, P2level2SpawnPoint.rotation);
-            Instantiate(machineGunBullet, P2level3SpawnPoint.position, P2level3SpawnPoint.rotation);
-            yield return new WaitForSeconds(1f);
+            CheckP2Primary();
+            yield return new WaitForSeconds(.5f);
         }
 
         P2testingDone = true;
@@ -1917,7 +1955,7 @@ public class HangarMenuController : MonoBehaviour
         P2testingDone = false;
         P2testing = true;
 
-        Instantiate(flakCannonBullet, P2level1SpawnPoint.position, P2level1SpawnPoint.rotation);
+        CheckP2Primary();
         yield return new WaitForSeconds(1f);
 
         P2testingDone = true;
@@ -1928,7 +1966,7 @@ public class HangarMenuController : MonoBehaviour
         P2testing = true;
         P2toggleData = 3;
 
-        Instantiate(pacBullet, P2level1SpawnPoint.position, P2level1SpawnPoint.rotation);
+        CheckP2Primary();
         yield return new WaitForSeconds(1f);
 
         P2testingDone = true;
@@ -1939,10 +1977,23 @@ public class HangarMenuController : MonoBehaviour
         P2testing = true;
         P2toggleData = 1;
 
-        Instantiate(homingMissiles, P2level4SpawnPoint.position, P2level4SpawnPoint.rotation);
-        Instantiate(homingMissiles, P2level5SpawnPoint.position, P2level5SpawnPoint.rotation);
-        yield return new WaitForSeconds(1f);
-    
+        if (PlayerWeaponController.P2currentSecondaryLevel % 2 == 1)
+        {
+            for (int counter = 0; counter < 2; counter++)
+            {
+                CheckP2Secondary();
+                yield return new WaitForSeconds(3f);
+            }
+        }
+        if (PlayerWeaponController.P2currentSecondaryLevel % 2 == 0)
+        {
+            for (int counter = 0; counter < 2; counter++)
+            {
+                CheckP2Secondary();
+                yield return new WaitForSeconds(1f);
+            }
+        }
+
         P2testingDone = true;
     }
     IEnumerator P2TestSweeperPods()
@@ -1950,9 +2001,22 @@ public class HangarMenuController : MonoBehaviour
         P2testingDone = false;
         P2testing = true;
 
-        Instantiate(sweeperPods, P2level4SpawnPoint.position, P2level4SpawnPoint.rotation);
-        Instantiate(sweeperPods, P2level5SpawnPoint.position, P2level5SpawnPoint.rotation);
-        yield return new WaitForSeconds(1f);
+        if (PlayerWeaponController.P2currentSecondaryLevel % 2 == 1)
+        {
+            for (int counter = 0; counter < 2; counter++)
+            {
+                CheckP2Secondary();
+                yield return new WaitForSeconds(3f);
+            }
+        }
+        if (PlayerWeaponController.P2currentSecondaryLevel % 2 == 0)
+        {
+            for (int counter = 0; counter < 2; counter++)
+            {
+                CheckP2Secondary();
+                yield return new WaitForSeconds(1f);
+            }
+        }
 
         P2testingDone = true;
     }
@@ -1962,9 +2026,22 @@ public class HangarMenuController : MonoBehaviour
         P2testing = true;
         P2toggleData = 3;
 
-        Instantiate(plasmaBullet, P2level4SpawnPoint.position, P2level4SpawnPoint.rotation);
-        Instantiate(plasmaBullet, P2level5SpawnPoint.position, P2level5SpawnPoint.rotation);
-        yield return new WaitForSeconds(1f);
+        if (PlayerWeaponController.P2currentSecondaryLevel % 2 == 1)
+        {
+            for (int counter = 0; counter < 2; counter++)
+            {
+                CheckP2Secondary();
+                yield return new WaitForSeconds(3f);
+            }
+        }
+        if (PlayerWeaponController.P2currentSecondaryLevel % 2 == 0)
+        {
+            for (int counter = 0; counter < 2; counter++)
+            {
+                CheckP2Secondary();
+                yield return new WaitForSeconds(1f);
+            }
+        }
 
         P2testingDone = true;
     }
@@ -2521,11 +2598,378 @@ public class HangarMenuController : MonoBehaviour
 
     private void CheckP1Primary()
     {
-        if (PlayerWeaponController.P1currentWLevel <= 1)
+        if (P1toggleData == 1)
         {
+            if (PlayerWeaponController.P1currentWLevel <= 1)
+            {
+                Instantiate(machineGunBullet, P1primarySpawnPoint[0].position, P1primarySpawnPoint[0].rotation);
+            }
+            if (PlayerWeaponController.P1currentWLevel == 2)
+            {
+                Instantiate(machineGunBullet, P1primarySpawnPoint[1].position, P1primarySpawnPoint[1].rotation);
+                Instantiate(machineGunBullet, P1primarySpawnPoint[2].position, P1primarySpawnPoint[2].rotation);
+            }
+            if (PlayerWeaponController.P1currentWLevel == 3)
+            {
+                Instantiate(machineGunBullet, P1primarySpawnPoint[0].position, P1primarySpawnPoint[0].rotation);
+                Instantiate(machineGunBullet, P1primarySpawnPoint[1].position, P1primarySpawnPoint[1].rotation);
+                Instantiate(machineGunBullet, P1primarySpawnPoint[2].position, P1primarySpawnPoint[2].rotation);
+            }
+            if (PlayerWeaponController.P1currentWLevel == 4)
+            {
+                Instantiate(machineGunBullet, P1primarySpawnPoint[0].position, P1primarySpawnPoint[0].rotation);
+                Instantiate(machineGunBullet, P1primarySpawnPoint[1].position, P1primarySpawnPoint[1].rotation);
+                Instantiate(machineGunBullet, P1primarySpawnPoint[2].position, P1primarySpawnPoint[2].rotation);
+                Instantiate(machineGunBullet, P1primarySpawnPoint[3].position, P1primarySpawnPoint[3].rotation);
+                Instantiate(machineGunBullet, P1primarySpawnPoint[4].position, P1primarySpawnPoint[4].rotation);
+            }
+            if (PlayerWeaponController.P1currentWLevel >= 5)
+            {
+                Instantiate(machineGunBullet, P1primarySpawnPoint[0].position, P1primarySpawnPoint[0].rotation);
+                Instantiate(machineGunBullet, P1primarySpawnPoint[1].position, P1primarySpawnPoint[1].rotation);
+                Instantiate(machineGunBullet, P1primarySpawnPoint[2].position, P1primarySpawnPoint[2].rotation);
+                Instantiate(machineGunBullet, P1primarySpawnPoint[3].position, P1primarySpawnPoint[3].rotation);
+                Instantiate(machineGunBullet, P1primarySpawnPoint[4].position, P1primarySpawnPoint[4].rotation);
+                Instantiate(machineGunBullet, P1primarySpawnPoint[5].position, P1primarySpawnPoint[5].rotation);
+                Instantiate(machineGunBullet, P1primarySpawnPoint[6].position, P1primarySpawnPoint[6].rotation);
+            }
+        }
+        if (P1toggleData == 2)
+        {
+            if (PlayerWeaponController.P1currentWLevel <= 1)
+            {
+                Instantiate(flakCannonBullet, P1primarySpawnPoint[0].position, P1primarySpawnPoint[0].rotation);
+            }
+            if (PlayerWeaponController.P1currentWLevel == 2)
+            {
+                Instantiate(flakCannonBullet, P1primarySpawnPoint[1].position, P1primarySpawnPoint[1].rotation);
+                Instantiate(flakCannonBullet, P1primarySpawnPoint[2].position, P1primarySpawnPoint[2].rotation);
+            }
+            if (PlayerWeaponController.P1currentWLevel == 3)
+            {
+                Instantiate(flakCannonBullet, P1primarySpawnPoint[0].position, P1primarySpawnPoint[0].rotation);
+                Instantiate(flakCannonBullet, P1primarySpawnPoint[1].position, P1primarySpawnPoint[1].rotation);
+                Instantiate(flakCannonBullet, P1primarySpawnPoint[2].position, P1primarySpawnPoint[2].rotation);
+            }
+            if (PlayerWeaponController.P1currentWLevel == 4)
+            {
+                Instantiate(flakCannonBullet, P1primarySpawnPoint[0].position, P1primarySpawnPoint[0].rotation);
+                Instantiate(flakCannonBullet, P1primarySpawnPoint[1].position, P1primarySpawnPoint[1].rotation);
+                Instantiate(flakCannonBullet, P1primarySpawnPoint[2].position, P1primarySpawnPoint[2].rotation);
+                Instantiate(flakCannonBullet, P1primarySpawnPoint[3].position, P1primarySpawnPoint[3].rotation);
+                Instantiate(flakCannonBullet, P1primarySpawnPoint[4].position, P1primarySpawnPoint[4].rotation);
+            }
+            if (PlayerWeaponController.P1currentWLevel >= 5)
+            {
+                Instantiate(flakCannonBullet, P1primarySpawnPoint[0].position, P1primarySpawnPoint[0].rotation);
+                Instantiate(flakCannonBullet, P1primarySpawnPoint[1].position, P1primarySpawnPoint[1].rotation);
+                Instantiate(flakCannonBullet, P1primarySpawnPoint[2].position, P1primarySpawnPoint[2].rotation);
+                Instantiate(flakCannonBullet, P1primarySpawnPoint[3].position, P1primarySpawnPoint[3].rotation);
+                Instantiate(flakCannonBullet, P1primarySpawnPoint[4].position, P1primarySpawnPoint[4].rotation);
+                Instantiate(flakCannonBullet, P1primarySpawnPoint[5].position, P1primarySpawnPoint[5].rotation);
+                Instantiate(flakCannonBullet, P1primarySpawnPoint[6].position, P1primarySpawnPoint[6].rotation);
+            }
+        }
+        if (P1toggleData == 3)
+        {
+            if (PlayerWeaponController.P1currentWLevel <= 1)
+            {
+                Instantiate(pacBullet, P1primarySpawnPoint[0].position, P1primarySpawnPoint[0].rotation);
+            }
+            if (PlayerWeaponController.P1currentWLevel == 2)
+            {
+                Instantiate(pacBullet, P1primarySpawnPoint[1].position, P1primarySpawnPoint[1].rotation);
+                Instantiate(pacBullet, P1primarySpawnPoint[2].position, P1primarySpawnPoint[2].rotation);
+            }
+            if (PlayerWeaponController.P1currentWLevel == 3)
+            {
+                Instantiate(pacBullet, P1primarySpawnPoint[0].position, P1primarySpawnPoint[0].rotation);
+                Instantiate(pacBullet, P1primarySpawnPoint[1].position, P1primarySpawnPoint[1].rotation);
+                Instantiate(pacBullet, P1primarySpawnPoint[2].position, P1primarySpawnPoint[2].rotation);
+            }
+            if (PlayerWeaponController.P1currentWLevel == 4)
+            {
+                Instantiate(pacBullet, P1primarySpawnPoint[0].position, P1primarySpawnPoint[0].rotation);
+                Instantiate(pacBullet, P1primarySpawnPoint[1].position, P1primarySpawnPoint[1].rotation);
+                Instantiate(pacBullet, P1primarySpawnPoint[2].position, P1primarySpawnPoint[2].rotation);
+                Instantiate(pacBullet, P1primarySpawnPoint[3].position, P1primarySpawnPoint[3].rotation);
+                Instantiate(pacBullet, P1primarySpawnPoint[4].position, P1primarySpawnPoint[4].rotation);
+            }
+            if (PlayerWeaponController.P1currentWLevel >= 5)
+            {
+                Instantiate(pacBullet, P1primarySpawnPoint[0].position, P1primarySpawnPoint[0].rotation);
+                Instantiate(pacBullet, P1primarySpawnPoint[1].position, P1primarySpawnPoint[1].rotation);
+                Instantiate(pacBullet, P1primarySpawnPoint[2].position, P1primarySpawnPoint[2].rotation);
+                Instantiate(pacBullet, P1primarySpawnPoint[3].position, P1primarySpawnPoint[3].rotation);
+                Instantiate(pacBullet, P1primarySpawnPoint[4].position, P1primarySpawnPoint[4].rotation);
+                Instantiate(pacBullet, P1primarySpawnPoint[5].position, P1primarySpawnPoint[5].rotation);
+                Instantiate(pacBullet, P1primarySpawnPoint[6].position, P1primarySpawnPoint[6].rotation);
+            }
         }
     }
-        
+    private void CheckP2Primary()
+    {
+        if (P2toggleData == 1)
+        {
+            if (PlayerWeaponController.P2currentWLevel <= 1)
+            {
+                Instantiate(machineGunBullet, P2primarySpawnPoint[0].position, P2primarySpawnPoint[0].rotation);
+            }
+            if (PlayerWeaponController.P2currentWLevel == 2)
+            {
+                Instantiate(machineGunBullet, P2primarySpawnPoint[1].position, P2primarySpawnPoint[1].rotation);
+                Instantiate(machineGunBullet, P2primarySpawnPoint[2].position, P2primarySpawnPoint[2].rotation);
+            }
+            if (PlayerWeaponController.P2currentWLevel == 3)
+            {
+                Instantiate(machineGunBullet, P2primarySpawnPoint[0].position, P2primarySpawnPoint[0].rotation);
+                Instantiate(machineGunBullet, P2primarySpawnPoint[1].position, P2primarySpawnPoint[1].rotation);
+                Instantiate(machineGunBullet, P2primarySpawnPoint[2].position, P2primarySpawnPoint[2].rotation);
+            }
+            if (PlayerWeaponController.P2currentWLevel == 4)
+            {
+                Instantiate(machineGunBullet, P2primarySpawnPoint[0].position, P2primarySpawnPoint[0].rotation);
+                Instantiate(machineGunBullet, P2primarySpawnPoint[1].position, P2primarySpawnPoint[1].rotation);
+                Instantiate(machineGunBullet, P2primarySpawnPoint[2].position, P2primarySpawnPoint[2].rotation);
+                Instantiate(machineGunBullet, P2primarySpawnPoint[3].position, P2primarySpawnPoint[3].rotation);
+                Instantiate(machineGunBullet, P2primarySpawnPoint[4].position, P2primarySpawnPoint[4].rotation);
+            }
+            if (PlayerWeaponController.P2currentWLevel >= 5)
+            {
+                Instantiate(machineGunBullet, P2primarySpawnPoint[0].position, P2primarySpawnPoint[0].rotation);
+                Instantiate(machineGunBullet, P2primarySpawnPoint[1].position, P2primarySpawnPoint[1].rotation);
+                Instantiate(machineGunBullet, P2primarySpawnPoint[2].position, P2primarySpawnPoint[2].rotation);
+                Instantiate(machineGunBullet, P2primarySpawnPoint[3].position, P2primarySpawnPoint[3].rotation);
+                Instantiate(machineGunBullet, P2primarySpawnPoint[4].position, P2primarySpawnPoint[4].rotation);
+                Instantiate(machineGunBullet, P2primarySpawnPoint[5].position, P2primarySpawnPoint[5].rotation);
+                Instantiate(machineGunBullet, P2primarySpawnPoint[6].position, P2primarySpawnPoint[6].rotation);
+            }
+        }
+        if (P2toggleData == 2)
+        {
+            if (PlayerWeaponController.P2currentWLevel <= 1)
+            {
+                Instantiate(flakCannonBullet, P2primarySpawnPoint[0].position, P2primarySpawnPoint[0].rotation);
+            }
+            if (PlayerWeaponController.P2currentWLevel == 2)
+            {
+                Instantiate(flakCannonBullet, P2primarySpawnPoint[1].position, P2primarySpawnPoint[1].rotation);
+                Instantiate(flakCannonBullet, P2primarySpawnPoint[2].position, P2primarySpawnPoint[2].rotation);
+            }
+            if (PlayerWeaponController.P2currentWLevel == 3)
+            {
+                Instantiate(flakCannonBullet, P2primarySpawnPoint[0].position, P2primarySpawnPoint[0].rotation);
+                Instantiate(flakCannonBullet, P2primarySpawnPoint[1].position, P2primarySpawnPoint[1].rotation);
+                Instantiate(flakCannonBullet, P2primarySpawnPoint[2].position, P2primarySpawnPoint[2].rotation);
+            }
+            if (PlayerWeaponController.P2currentWLevel == 4)
+            {
+                Instantiate(flakCannonBullet, P2primarySpawnPoint[0].position, P2primarySpawnPoint[0].rotation);
+                Instantiate(flakCannonBullet, P2primarySpawnPoint[1].position, P2primarySpawnPoint[1].rotation);
+                Instantiate(flakCannonBullet, P2primarySpawnPoint[2].position, P2primarySpawnPoint[2].rotation);
+                Instantiate(flakCannonBullet, P2primarySpawnPoint[3].position, P2primarySpawnPoint[3].rotation);
+                Instantiate(flakCannonBullet, P2primarySpawnPoint[4].position, P2primarySpawnPoint[4].rotation);
+            }
+            if (PlayerWeaponController.P2currentWLevel >= 5)
+            {
+                Instantiate(flakCannonBullet, P2primarySpawnPoint[0].position, P2primarySpawnPoint[0].rotation);
+                Instantiate(flakCannonBullet, P2primarySpawnPoint[1].position, P2primarySpawnPoint[1].rotation);
+                Instantiate(flakCannonBullet, P2primarySpawnPoint[2].position, P2primarySpawnPoint[2].rotation);
+                Instantiate(flakCannonBullet, P2primarySpawnPoint[3].position, P2primarySpawnPoint[3].rotation);
+                Instantiate(flakCannonBullet, P2primarySpawnPoint[4].position, P2primarySpawnPoint[4].rotation);
+                Instantiate(flakCannonBullet, P2primarySpawnPoint[5].position, P2primarySpawnPoint[5].rotation);
+                Instantiate(flakCannonBullet, P2primarySpawnPoint[6].position, P2primarySpawnPoint[6].rotation);
+            }
+        }
+        if (P2toggleData == 3)
+        {
+            if (PlayerWeaponController.P2currentWLevel <= 1)
+            {
+                Instantiate(pacBullet, P2primarySpawnPoint[0].position, P2primarySpawnPoint[0].rotation);
+            }
+            if (PlayerWeaponController.P2currentWLevel == 2)
+            {
+                Instantiate(pacBullet, P2primarySpawnPoint[1].position, P2primarySpawnPoint[1].rotation);
+                Instantiate(pacBullet, P2primarySpawnPoint[2].position, P2primarySpawnPoint[2].rotation);
+            }
+            if (PlayerWeaponController.P2currentWLevel == 3)
+            {
+                Instantiate(pacBullet, P2primarySpawnPoint[0].position, P2primarySpawnPoint[0].rotation);
+                Instantiate(pacBullet, P2primarySpawnPoint[1].position, P2primarySpawnPoint[1].rotation);
+                Instantiate(pacBullet, P2primarySpawnPoint[2].position, P2primarySpawnPoint[2].rotation);
+            }
+            if (PlayerWeaponController.P2currentWLevel == 4)
+            {
+                Instantiate(pacBullet, P2primarySpawnPoint[0].position, P2primarySpawnPoint[0].rotation);
+                Instantiate(pacBullet, P2primarySpawnPoint[1].position, P2primarySpawnPoint[1].rotation);
+                Instantiate(pacBullet, P2primarySpawnPoint[2].position, P2primarySpawnPoint[2].rotation);
+                Instantiate(pacBullet, P2primarySpawnPoint[3].position, P2primarySpawnPoint[3].rotation);
+                Instantiate(pacBullet, P2primarySpawnPoint[4].position, P2primarySpawnPoint[4].rotation);
+            }
+            if (PlayerWeaponController.P2currentWLevel >= 5)
+            {
+                Instantiate(pacBullet, P2primarySpawnPoint[0].position, P2primarySpawnPoint[0].rotation);
+                Instantiate(pacBullet, P2primarySpawnPoint[1].position, P2primarySpawnPoint[1].rotation);
+                Instantiate(pacBullet, P2primarySpawnPoint[2].position, P2primarySpawnPoint[2].rotation);
+                Instantiate(pacBullet, P2primarySpawnPoint[3].position, P2primarySpawnPoint[3].rotation);
+                Instantiate(pacBullet, P2primarySpawnPoint[4].position, P2primarySpawnPoint[4].rotation);
+                Instantiate(pacBullet, P2primarySpawnPoint[5].position, P2primarySpawnPoint[5].rotation);
+                Instantiate(pacBullet, P2primarySpawnPoint[6].position, P2primarySpawnPoint[6].rotation);
+            }
+        }
+    }
+
+    private void CheckP1Secondary()
+    {
+        if (P1toggleData == 1)
+        {
+            if (PlayerWeaponController.P1currentSecondaryLevel <= 1 || PlayerWeaponController.P1currentSecondaryLevel == 2)
+            {
+                Instantiate(homingMissiles, P1secondarySpawnPoint[0].position, P1secondarySpawnPoint[0].rotation);
+                Instantiate(homingMissiles, P1secondarySpawnPoint[1].position, P1secondarySpawnPoint[1].rotation);
+            }
+            if (PlayerWeaponController.P1currentSecondaryLevel == 3 || PlayerWeaponController.P1currentSecondaryLevel == 4)
+            {
+                Instantiate(homingMissiles, P1secondarySpawnPoint[2].position, P1secondarySpawnPoint[2].rotation);
+                Instantiate(homingMissiles, P1secondarySpawnPoint[3].position, P1secondarySpawnPoint[3].rotation);
+                Instantiate(homingMissiles, P1secondarySpawnPoint[4].position, P1secondarySpawnPoint[4].rotation);
+                Instantiate(homingMissiles, P1secondarySpawnPoint[5].position, P1secondarySpawnPoint[5].rotation);
+            }
+            if (PlayerWeaponController.P1currentSecondaryLevel >= 5)
+            {
+                Instantiate(homingMissiles, P1secondarySpawnPoint[0].position, P1secondarySpawnPoint[0].rotation);
+                Instantiate(homingMissiles, P1secondarySpawnPoint[1].position, P1secondarySpawnPoint[1].rotation);
+                Instantiate(homingMissiles, P1secondarySpawnPoint[2].position, P1secondarySpawnPoint[2].rotation);
+                Instantiate(homingMissiles, P1secondarySpawnPoint[3].position, P1secondarySpawnPoint[3].rotation);
+                Instantiate(homingMissiles, P1secondarySpawnPoint[4].position, P1secondarySpawnPoint[4].rotation);
+                Instantiate(homingMissiles, P1secondarySpawnPoint[5].position, P1secondarySpawnPoint[5].rotation);
+            }
+        }
+        if (P1toggleData == 2)
+        {
+            if (PlayerWeaponController.P1currentSecondaryLevel <= 1 || PlayerWeaponController.P1currentSecondaryLevel == 2)
+            {
+                Instantiate(sweeperPods, P1secondarySpawnPoint[0].position, P1secondarySpawnPoint[0].rotation);
+                Instantiate(sweeperPods, P1secondarySpawnPoint[1].position, P1secondarySpawnPoint[1].rotation);
+            }
+            if (PlayerWeaponController.P1currentSecondaryLevel == 3 || PlayerWeaponController.P1currentSecondaryLevel == 4)
+            {
+                Instantiate(sweeperPods, P1secondarySpawnPoint[2].position, P1secondarySpawnPoint[2].rotation);
+                Instantiate(sweeperPods, P1secondarySpawnPoint[3].position, P1secondarySpawnPoint[3].rotation);
+                Instantiate(sweeperPods, P1secondarySpawnPoint[4].position, P1secondarySpawnPoint[4].rotation);
+                Instantiate(sweeperPods, P1secondarySpawnPoint[5].position, P1secondarySpawnPoint[5].rotation);
+            }
+            if (PlayerWeaponController.P1currentSecondaryLevel >= 5)
+            {
+                Instantiate(sweeperPods, P1secondarySpawnPoint[0].position, P1secondarySpawnPoint[0].rotation);
+                Instantiate(sweeperPods, P1secondarySpawnPoint[1].position, P1secondarySpawnPoint[1].rotation);
+                Instantiate(sweeperPods, P1secondarySpawnPoint[2].position, P1secondarySpawnPoint[2].rotation);
+                Instantiate(sweeperPods, P1secondarySpawnPoint[3].position, P1secondarySpawnPoint[3].rotation);
+                Instantiate(sweeperPods, P1secondarySpawnPoint[4].position, P1secondarySpawnPoint[4].rotation);
+                Instantiate(sweeperPods, P1secondarySpawnPoint[5].position, P1secondarySpawnPoint[5].rotation);
+            }
+        }
+        if (P1toggleData == 3)
+        {
+            if (PlayerWeaponController.P1currentSecondaryLevel <= 1 || PlayerWeaponController.P1currentSecondaryLevel == 2)
+            {
+                Instantiate(plasmaBullet, P1secondarySpawnPoint[0].position, P1secondarySpawnPoint[0].rotation);
+                Instantiate(plasmaBullet, P1secondarySpawnPoint[1].position, P1secondarySpawnPoint[1].rotation);
+            }
+            if (PlayerWeaponController.P1currentSecondaryLevel == 3 || PlayerWeaponController.P1currentSecondaryLevel == 4)
+            {
+                Instantiate(plasmaBullet, P1secondarySpawnPoint[2].position, P1secondarySpawnPoint[2].rotation);
+                Instantiate(plasmaBullet, P1secondarySpawnPoint[3].position, P1secondarySpawnPoint[3].rotation);
+                Instantiate(plasmaBullet, P1secondarySpawnPoint[4].position, P1secondarySpawnPoint[4].rotation);
+                Instantiate(plasmaBullet, P1secondarySpawnPoint[5].position, P1secondarySpawnPoint[5].rotation);
+            }
+            if (PlayerWeaponController.P1currentSecondaryLevel >= 5)
+            {
+                Instantiate(plasmaBullet, P1secondarySpawnPoint[0].position, P1secondarySpawnPoint[0].rotation);
+                Instantiate(plasmaBullet, P1secondarySpawnPoint[1].position, P1secondarySpawnPoint[1].rotation);
+                Instantiate(plasmaBullet, P1secondarySpawnPoint[2].position, P1secondarySpawnPoint[2].rotation);
+                Instantiate(plasmaBullet, P1secondarySpawnPoint[3].position, P1secondarySpawnPoint[3].rotation);
+                Instantiate(plasmaBullet, P1secondarySpawnPoint[4].position, P1secondarySpawnPoint[4].rotation);
+                Instantiate(plasmaBullet, P1secondarySpawnPoint[5].position, P1secondarySpawnPoint[5].rotation);
+            }
+        }
+    }
+    private void CheckP2Secondary()
+    {
+        if (P2toggleData == 1)
+        {
+            if (PlayerWeaponController.P2currentSecondaryLevel <= 1 || PlayerWeaponController.P2currentSecondaryLevel == 2)
+            {
+                Instantiate(homingMissiles, P2secondarySpawnPoint[0].position, P2secondarySpawnPoint[0].rotation);
+                Instantiate(homingMissiles, P2secondarySpawnPoint[1].position, P2secondarySpawnPoint[1].rotation);
+            }
+            if (PlayerWeaponController.P2currentSecondaryLevel == 3 || PlayerWeaponController.P2currentSecondaryLevel == 4)
+            {
+                Instantiate(homingMissiles, P2secondarySpawnPoint[2].position, P2secondarySpawnPoint[2].rotation);
+                Instantiate(homingMissiles, P2secondarySpawnPoint[3].position, P2secondarySpawnPoint[3].rotation);
+                Instantiate(homingMissiles, P2secondarySpawnPoint[4].position, P2secondarySpawnPoint[4].rotation);
+                Instantiate(homingMissiles, P2secondarySpawnPoint[5].position, P2secondarySpawnPoint[5].rotation);
+            }
+            if (PlayerWeaponController.P2currentSecondaryLevel >= 5)
+            {
+                Instantiate(homingMissiles, P2secondarySpawnPoint[0].position, P2secondarySpawnPoint[0].rotation);
+                Instantiate(homingMissiles, P2secondarySpawnPoint[1].position, P2secondarySpawnPoint[1].rotation);
+                Instantiate(homingMissiles, P2secondarySpawnPoint[2].position, P2secondarySpawnPoint[2].rotation);
+                Instantiate(homingMissiles, P2secondarySpawnPoint[3].position, P2secondarySpawnPoint[3].rotation);
+                Instantiate(homingMissiles, P2secondarySpawnPoint[4].position, P2secondarySpawnPoint[4].rotation);
+                Instantiate(homingMissiles, P2secondarySpawnPoint[5].position, P2secondarySpawnPoint[5].rotation);
+            }
+        }
+        if (P2toggleData == 2)
+        {
+            if (PlayerWeaponController.P2currentSecondaryLevel <= 1 || PlayerWeaponController.P2currentSecondaryLevel == 2)
+            {
+                Instantiate(sweeperPods, P2secondarySpawnPoint[0].position, P2secondarySpawnPoint[0].rotation);
+                Instantiate(sweeperPods, P2secondarySpawnPoint[1].position, P2secondarySpawnPoint[1].rotation);
+            }
+            if (PlayerWeaponController.P2currentSecondaryLevel == 3 || PlayerWeaponController.P2currentSecondaryLevel == 4)
+            {
+                Instantiate(sweeperPods, P2secondarySpawnPoint[2].position, P2secondarySpawnPoint[2].rotation);
+                Instantiate(sweeperPods, P2secondarySpawnPoint[3].position, P2secondarySpawnPoint[3].rotation);
+                Instantiate(sweeperPods, P2secondarySpawnPoint[4].position, P2secondarySpawnPoint[4].rotation);
+                Instantiate(sweeperPods, P2secondarySpawnPoint[5].position, P2secondarySpawnPoint[5].rotation);
+            }
+            if (PlayerWeaponController.P2currentSecondaryLevel >= 5)
+            {
+                Instantiate(sweeperPods, P2secondarySpawnPoint[0].position, P2secondarySpawnPoint[0].rotation);
+                Instantiate(sweeperPods, P2secondarySpawnPoint[1].position, P2secondarySpawnPoint[1].rotation);
+                Instantiate(sweeperPods, P2secondarySpawnPoint[2].position, P2secondarySpawnPoint[2].rotation);
+                Instantiate(sweeperPods, P2secondarySpawnPoint[3].position, P2secondarySpawnPoint[3].rotation);
+                Instantiate(sweeperPods, P2secondarySpawnPoint[4].position, P2secondarySpawnPoint[4].rotation);
+                Instantiate(sweeperPods, P2secondarySpawnPoint[5].position, P2secondarySpawnPoint[5].rotation);
+            }
+        }
+        if (P2toggleData == 3)
+        {
+            if (PlayerWeaponController.P2currentSecondaryLevel <= 1 || PlayerWeaponController.P2currentSecondaryLevel == 2)
+            {
+                Instantiate(plasmaBullet, P2secondarySpawnPoint[0].position, P2secondarySpawnPoint[0].rotation);
+                Instantiate(plasmaBullet, P2secondarySpawnPoint[1].position, P2secondarySpawnPoint[1].rotation);
+            }
+            if (PlayerWeaponController.P2currentSecondaryLevel == 3 || PlayerWeaponController.P2currentSecondaryLevel == 4)
+            {
+                Instantiate(plasmaBullet, P2secondarySpawnPoint[2].position, P2secondarySpawnPoint[2].rotation);
+                Instantiate(plasmaBullet, P2secondarySpawnPoint[3].position, P2secondarySpawnPoint[3].rotation);
+                Instantiate(plasmaBullet, P2secondarySpawnPoint[4].position, P2secondarySpawnPoint[4].rotation);
+                Instantiate(plasmaBullet, P2secondarySpawnPoint[5].position, P2secondarySpawnPoint[5].rotation);
+            }
+            if (PlayerWeaponController.P2currentSecondaryLevel >= 5)
+            {
+                Instantiate(plasmaBullet, P2secondarySpawnPoint[0].position, P2secondarySpawnPoint[0].rotation);
+                Instantiate(plasmaBullet, P2secondarySpawnPoint[1].position, P2secondarySpawnPoint[1].rotation);
+                Instantiate(plasmaBullet, P2secondarySpawnPoint[2].position, P2secondarySpawnPoint[2].rotation);
+                Instantiate(plasmaBullet, P2secondarySpawnPoint[3].position, P2secondarySpawnPoint[3].rotation);
+                Instantiate(plasmaBullet, P2secondarySpawnPoint[4].position, P2secondarySpawnPoint[4].rotation);
+                Instantiate(plasmaBullet, P2secondarySpawnPoint[5].position, P2secondarySpawnPoint[5].rotation);
+            }
+        }
+    }
+
     private void RestartButton()
     {
         ResetPlayerScore();
