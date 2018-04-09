@@ -7,11 +7,15 @@ using UnityEngine.SceneManagement;
 public class MainMenuController : MonoBehaviour
 {
     private int glowTracker;
-	private bool waiting; 
+    private int controlGlowTracker;
+	private bool waiting;
+    private bool controlList;
 
     public Image singleGlow;
     public Image doubleGlow;
     public Image quitGlow;
+    public Image controlGlow;
+    public Image nextGlow;
 
     public static int currentStage;
     public static bool onePlayer;
@@ -19,20 +23,26 @@ public class MainMenuController : MonoBehaviour
     public GameObject warning;
 
     public GameObject mainMenuCanvas;
-    public GameObject backGround;
+    public GameObject mainMenuBackground;
+    public GameObject controlMenuBackground;
     public GameObject buttonList;
     public GameObject singleButton;
     public GameObject doubleButton;
     public GameObject quitButton;
+    public GameObject controlButton;
+    public GameObject nextButton;
 
     private void Awake()
     {
         DeactivateMainMenu();
-        DeactivateGlow();
+        DeactivateControlList();
+        DeactivateMainMenuGlow();
+        DeactivateControlListGlow();
+        ResetGlowTracker();
 
         currentStage = 1;
-        glowTracker = 1;
 		waiting = false;
+        controlList = false;
     }
 
     private void Start()
@@ -44,53 +54,102 @@ public class MainMenuController : MonoBehaviour
     {
 		if (waiting)
 		{
-			if (glowTracker <= 1)
-			{
-				glowTracker = 1;
-
-				DeactivateGlow ();
-
-				singleGlow.fillAmount = 1;
-			}
-			if (glowTracker == 2)
-			{
-				DeactivateGlow ();
-
-				doubleGlow.fillAmount = 1;
-			}
-			if (glowTracker >= 3)
-			{
-				glowTracker = 3;
-
-				DeactivateGlow ();
-
-				quitGlow.fillAmount = 1;
-			}
-
-			if (Input.GetButtonDown("P1VerticalChoiceUp") || Input.GetButtonDown("P2VerticalChoiceUp") || Input.GetKeyDown(KeyCode.Keypad8))
+            if (!controlList)
             {
-				glowTracker--;
-			}
-			if (Input.GetButtonDown("P1VerticalChoiceDown") || Input.GetButtonDown("P2VerticalChoiceDown") || Input.GetKeyDown(KeyCode.Keypad5))
-            {
-				glowTracker++;
-			}
+                if (glowTracker <= 1)
+                {
+                    glowTracker = 1;
 
-			if (Input.GetButtonDown("Fire_P1") || Input.GetButtonDown("Fire_P2") || Input.GetKeyDown(KeyCode.Keypad0))
+                    DeactivateMainMenuGlow();
+
+                    singleGlow.fillAmount = 1;
+                }
+                if (glowTracker == 2)
+                {
+                    DeactivateMainMenuGlow();
+
+                    doubleGlow.fillAmount = 1;
+                }
+                if (glowTracker == 3)
+                {
+                    DeactivateMainMenuGlow();
+
+                    quitGlow.fillAmount = 1;
+                }
+                if (glowTracker >= 4)
+                {
+                    glowTracker = 4;
+
+                    DeactivateMainMenuGlow();
+
+                    controlGlow.fillAmount = 1;
+                }
+
+                if (Input.GetButtonDown("P1VerticalChoiceUp") || Input.GetButtonDown("P2VerticalChoiceUp") || Input.GetKeyDown(KeyCode.Keypad8))
+                {
+                    glowTracker--;
+                }
+                if (Input.GetButtonDown("P1VerticalChoiceDown") || Input.GetButtonDown("P2VerticalChoiceDown") || Input.GetKeyDown(KeyCode.Keypad5))
+                {
+                    glowTracker++;
+                }
+
+                if (Input.GetButtonDown("Fire_P1") || Input.GetButtonDown("Fire_P2") || Input.GetKeyDown(KeyCode.Keypad0))
+                {
+                    if (glowTracker == 1)
+                    {
+                        SingleButton();
+                    }
+                    if (glowTracker == 2)
+                    {
+                        DoubleButton();
+                    }
+                    if (glowTracker == 3)
+                    {
+                        QuitButton();
+                    }
+                    if (glowTracker == 4)
+                    {
+                        ControlButton();
+                    }
+                }
+            }
+            else
             {
-				if (glowTracker <= 1)
-				{
-					SingleButton ();
-				}
-				if (glowTracker == 2)
-				{
-					DoubleButton ();
-				}
-				if (glowTracker >= 3)
-				{
-					QuitButton ();
-				}
-			}
+                if (glowTracker <= 1)
+                {
+                    glowTracker = 1;
+
+                    DeactivateControlListGlow();
+
+                    nextGlow.fillAmount = 1;
+                }
+                if (glowTracker >= 1)
+                {
+                    glowTracker = 1;
+
+                    DeactivateControlListGlow();
+
+                    nextGlow.fillAmount = 1;
+                }
+
+                if (Input.GetButtonDown("P1VerticalChoiceUp") || Input.GetButtonDown("P2VerticalChoiceUp") || Input.GetKeyDown(KeyCode.Keypad8))
+                {
+                    glowTracker--;
+                }
+                if (Input.GetButtonDown("P1VerticalChoiceDown") || Input.GetButtonDown("P2VerticalChoiceDown") || Input.GetKeyDown(KeyCode.Keypad5))
+                {
+                    glowTracker++;
+                }
+
+                if (Input.GetButtonDown("Fire_P1") || Input.GetButtonDown("Fire_P2") || Input.GetKeyDown(KeyCode.Keypad0))
+                {
+                    if (controlGlowTracker == 1)
+                    {
+                        NextButton();
+                    }
+                }
+            }
 		}
     }
 
@@ -115,6 +174,7 @@ public class MainMenuController : MonoBehaviour
         singleButton.SetActive(true);
         doubleButton.SetActive(true);
         quitButton.SetActive(true);
+        controlButton.SetActive(true);
     }
     private void DeactivateMainMenu()
     {
@@ -123,29 +183,68 @@ public class MainMenuController : MonoBehaviour
         singleButton.SetActive(false);
         doubleButton.SetActive(false);
         quitButton.SetActive(false);
+        controlButton.SetActive(false);
     }
 
-    private void DeactivateGlow()
+    private void ActivateControlList()
+    {
+        controlMenuBackground.SetActive(true);
+    }
+    private void DeactivateControlList()
+    {
+        controlMenuBackground.SetActive(false);
+    }
+
+    private void DeactivateMainMenuGlow()
     {
         singleGlow.fillAmount = 0;
         doubleGlow.fillAmount = 0;
         quitGlow.fillAmount = 0;
+        controlGlow.fillAmount = 0;
+    }
+    private void DeactivateControlListGlow()
+    {
+        nextGlow.fillAmount = 0;
     }
 
-    public void SingleButton()
+    private void ResetGlowTracker()
+    {
+        glowTracker = 1;
+        controlGlowTracker = 1;
+    }
+
+    private void SingleButton()
     {
         onePlayer = true;
         SceneManager.LoadScene("SelectionMenu");
     }
 
-    public void DoubleButton()
+    private void DoubleButton()
     {
         onePlayer = false;
         SceneManager.LoadScene("SelectionMenu");
     }
 
-    public void QuitButton()
+    private void QuitButton()
     {
         Application.Quit();
+    }
+
+    private void ControlButton()
+    {
+        DeactivateMainMenuGlow();
+        ActivateControlList();
+        ResetGlowTracker();
+
+        controlList = true;
+    }
+
+    private void NextButton()
+    {
+        DeactivateMainMenuGlow();
+        DeactivateControlList();
+        ResetGlowTracker();
+
+        controlList = false;
     }
 }
