@@ -949,9 +949,6 @@ public class SelectionMenuController : MonoBehaviour
 
                     if (P1toggleData <= 1)
                     {
-                        ResetP1ToggleGlow();
-                        P1toggleLeftGlow.fillAmount = 1;
-
                         P1toggleData = 1;
 
                         if (P1character == true)
@@ -1191,9 +1188,6 @@ public class SelectionMenuController : MonoBehaviour
 
                     if (P2toggleData <= 1)
                     {
-                        ResetP2ToggleGlow();
-                        P2toggleLeftGlow.fillAmount = 1;
-
                         P2toggleData = 1;
 
                         if (P2character == true)
@@ -1469,14 +1463,14 @@ public class SelectionMenuController : MonoBehaviour
                         ResetP2ToggleGlow();
                         P2toggleLeftGlow.fillAmount = 1;
 
-                        P2toggleData--;
+                        P2toggleData++;
                     }
                     if (Input.GetButtonDown("P2HorizontalChoiceRight") || Input.GetKeyDown(KeyCode.Keypad6))
                     {
                         ResetP2ToggleGlow();
                         P2toggleRightGlow.fillAmount = 1;
 
-                        P2toggleData++;
+                        P2toggleData--;
                     }
 
                     if (Input.GetButtonDown("Fire_P1"))

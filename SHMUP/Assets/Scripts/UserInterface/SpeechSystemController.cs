@@ -18,6 +18,9 @@ public class SpeechSystemController : MonoBehaviour
     public GameObject P1Panel;
     public GameObject P2Panel;
 
+    public GameObject P1speech;
+    public GameObject P2speech;
+
     public Image P1sprite1;
     public Image P1sprite2;
     public Image P1sprite3;
@@ -54,14 +57,8 @@ public class SpeechSystemController : MonoBehaviour
     public Sprite character4sprite4;
     public Sprite character4sprite5;
 
-    public GameObject P1speech;
     public Text P1text;
-
-    public GameObject P2speech;
     public Text P2text;
-
-    private GameObject player1CurrentCharacter;
-    private GameObject player2CurrentCharacter;
 
     private void Awake()
     {

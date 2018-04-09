@@ -163,9 +163,11 @@ public class MainMenuController : MonoBehaviour
 
 		ActivateMainMenu();
 
-		yield return new WaitForSeconds(2.5f);
+        yield return new WaitForSeconds(2.5f);
 
-		waiting = true;
+        ControlButton();
+
+        waiting = true;
     }
     private void ActivateMainMenu()
     {
