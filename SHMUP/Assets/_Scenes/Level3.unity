@@ -3026,7 +3026,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 939564698}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 23.9, z: 0}
+  m_LocalPosition: {x: 0, y: 10.5, z: 22.1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 624925697}
@@ -3271,7 +3271,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1027689927}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 33.9, z: 0}
+  m_LocalPosition: {x: 0, y: 20.5, z: 22.1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1939125427}
@@ -5049,7 +5049,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1379564779}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 23.9, z: 0}
+  m_LocalPosition: {x: 0, y: 10.5, z: 22.1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1825581009}
@@ -5205,6 +5205,49 @@ MonoBehaviour:
   restartGlow: {fileID: 626109738}
   mainMenuGlow: {fileID: 2129759808}
   player2Glow: {fileID: 950153941}
+  P2returnButtonGlow: {fileID: 0}
+  P2startButtonGlow: {fileID: 0}
+  P2toggleLeftGlow: {fileID: 0}
+  P2toggleRightGlow: {fileID: 0}
+  P2characterButtonGlow: {fileID: 0}
+  P2shipButtonGlow: {fileID: 0}
+  P2primaryButtonGlow: {fileID: 0}
+  P2secondaryButtonGlow: {fileID: 0}
+  P2specialButtonGlow: {fileID: 0}
+  choice: {fileID: 0}
+  stat: {fileID: 0}
+  character1: {fileID: 0}
+  character2: {fileID: 0}
+  character3: {fileID: 0}
+  character4: {fileID: 0}
+  ship1: {fileID: 0}
+  ship2: {fileID: 0}
+  ship3: {fileID: 0}
+  ship4: {fileID: 0}
+  ship5: {fileID: 0}
+  primary1: {fileID: 0}
+  primary2: {fileID: 0}
+  primary3: {fileID: 0}
+  secondary1: {fileID: 0}
+  secondary2: {fileID: 0}
+  secondary3: {fileID: 0}
+  special1: {fileID: 0}
+  special2: {fileID: 0}
+  special3: {fileID: 0}
+  ship1Stat: {fileID: 0}
+  ship2Stat: {fileID: 0}
+  ship3Stat: {fileID: 0}
+  ship4Stat: {fileID: 0}
+  ship5Stat: {fileID: 0}
+  primary1Stat: {fileID: 0}
+  primary2Stat: {fileID: 0}
+  primary3Stat: {fileID: 0}
+  secondary1Stat: {fileID: 0}
+  secondary2Stat: {fileID: 0}
+  secondary3Stat: {fileID: 0}
+  special1Stat: {fileID: 0}
+  special2Stat: {fileID: 0}
+  special3Stat: {fileID: 0}
   P1HUD: {fileID: 23119107}
   P2HUD: {fileID: 1169242526}
   pauseMenu: {fileID: 389511316}
@@ -5212,6 +5255,27 @@ MonoBehaviour:
   restartButton: {fileID: 1352244799}
   mainMenuButton: {fileID: 149003556}
   player2Button: {fileID: 1473109349}
+  addingPlayer2Canvas: {fileID: 0}
+  P2returnButton: {fileID: 0}
+  P2startButton: {fileID: 0}
+  P2characterButton: {fileID: 0}
+  P2shipButton: {fileID: 0}
+  P2primaryButton: {fileID: 0}
+  P2secondaryButton: {fileID: 0}
+  P2specialButton: {fileID: 0}
+  P2characterButtonShader: {fileID: 0}
+  P2shipButtonShader: {fileID: 0}
+  P2primaryButtonShader: {fileID: 0}
+  P2secondaryButtonShader: {fileID: 0}
+  P2specialButtonShader: {fileID: 0}
+  P2toggleLeft: {fileID: 0}
+  P2toggleRight: {fileID: 0}
+  P2ship1: {fileID: 0}
+  P2ship2: {fileID: 0}
+  P2ship3: {fileID: 0}
+  P2ship4: {fileID: 0}
+  P2ship5: {fileID: 0}
+  P2characterText: {fileID: 0}
 --- !u!1 &1416988920
 GameObject:
   m_ObjectHideFlags: 0
@@ -5267,7 +5331,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1427880760}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 23.9, z: 0}
+  m_LocalPosition: {x: 0, y: 10.5, z: 22.1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1659137607}
@@ -5813,7 +5877,7 @@ Light:
   m_Enabled: 1
   serializedVersion: 8
   m_Type: 1
-  m_Color: {r: 0.40146613, g: 0.35607702, b: 0.5441177, a: 0.822}
+  m_Color: {r: 1, g: 0, b: 0, a: 0.822}
   m_Intensity: 3.04
   m_Range: 10
   m_SpotAngle: 30
@@ -6163,7 +6227,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1635040743}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 23.9, z: 0}
+  m_LocalPosition: {x: 0, y: 10.5, z: 22.1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1054762944}
@@ -6670,6 +6734,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   P1Panel: {fileID: 1399292854}
   P2Panel: {fileID: 709465658}
+  P1speech: {fileID: 2117196340}
+  P2speech: {fileID: 659664212}
   P1sprite1: {fileID: 1269075314}
   P1sprite2: {fileID: 758785709}
   P1sprite3: {fileID: 442218545}
@@ -6700,9 +6766,7 @@ MonoBehaviour:
   character4sprite3: {fileID: 21300000, guid: 5fb8d3752e11ae24a87fa1023cd14c9a, type: 3}
   character4sprite4: {fileID: 21300000, guid: f5ef8ef2c6165844eab56691c2be0994, type: 3}
   character4sprite5: {fileID: 21300000, guid: 6c8a620f6216f78459b2ccf05ebd3d2f, type: 3}
-  P1speech: {fileID: 2117196340}
   P1text: {fileID: 1196106771}
-  P2speech: {fileID: 659664212}
   P2text: {fileID: 1507329879}
 --- !u!1 &1775985109
 GameObject:
@@ -7456,7 +7520,7 @@ Camera:
     height: 1
   near clip plane: 0.3
   far clip plane: 1000
-  field of view: 73
+  field of view: 62.3
   orthographic: 0
   orthographic size: 5
   m_Depth: -1
@@ -7480,13 +7544,13 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 2024011027}
-  m_LocalRotation: {x: 0.55268884, y: -0, z: -0, w: 0.8333877}
-  m_LocalPosition: {x: 0, y: 43.4, z: 13}
+  m_LocalRotation: {x: 0.4047426, y: 0, z: 0, w: 0.9144307}
+  m_LocalPosition: {x: 0, y: 30.26, z: -13.66}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 67.103004, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 47.75, y: 0, z: 0}
 --- !u!1 &2068099984
 GameObject:
   m_ObjectHideFlags: 0
