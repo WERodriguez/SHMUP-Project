@@ -281,8 +281,11 @@ public class HUDcontroller : MonoBehaviour
                     {
                         if (choosingPlayer2Vertical == 1)
                         {
+                            MainMenuController.onePlayer = true;
+
                             addingPlayer2 = false;
                             addingMenu = false;
+                            pauseMenuOn = false;
 
                             ActivatePauseMenu();
                             DeactivateAddingVerticalButton();
@@ -354,6 +357,7 @@ public class HUDcontroller : MonoBehaviour
                             MainMenuController.onePlayer = false;
                             addingPlayer2 = false;
                             addingMenu = false;
+                            pauseMenuOn = false;
 
                             ActivateHUD();
                             DeactivateAddingVerticalButton();
@@ -1059,7 +1063,6 @@ public class HUDcontroller : MonoBehaviour
 
     public void Player2Button()
     {
-        MainMenuController.onePlayer = false;
         addingPlayer2 = true;
         addingMenu = true;
 
