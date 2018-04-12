@@ -57,10 +57,6 @@ public class KerberosStage2 : MonoBehaviour
     public float yRange;
     public float zRange;
 
-    //Grabs the loot and point scripts
-    private Points addScore;
-    private LootDropRoller callLoot;
-
     // Use this for initialization
     void Start ()
     {
@@ -69,6 +65,7 @@ public class KerberosStage2 : MonoBehaviour
         canIMove = false;
         //Gathers all of the child renderers
         childRenderers = GetComponentsInChildren<Renderer>();
+        desiredPosition = gameObject.transform.position;
         StartCoroutine(BossAppears());
     }
 

@@ -21,12 +21,37 @@ public class HealthSystem : MonoBehaviour
     private LootDropRoller callLoot;
     private float doesLootDrop;
 
+    //Checks if it is dead and stops shenanigans from happening like multi wreck spawns.
+    public bool isDead;
     //Checks if boss.
     public bool isBoss;
+    //Checks if multiStage boss
+    public bool isMultiStageBoss;
     //Checks if boss part.
     public bool isBossPart;
     //Booleans for enemy type
     public bool heavyEnemy;
+
+    //Checks if the ship can fade away.
+    public bool canIFadeYet;
+    //Contains all child object renderers for manipulation.
+    public Component[] childRenderers;
+    //How fast the alpha channel is changed.
+    public float fadePerSecond;
+    //How long the fade will last.
+    public float fadeDuration;
+    //Next boss stage to spawn.
+    public GameObject nextStage;
+    //Explosioooons to spawn on dramatic death.
+    public GameObject[] explosions;
+    //What it says.
+    public float timeBetweenExplosions;
+    //Ranges that explosions can spawn at during overly dramatic switch. 
+    //Used with Random.Range(minimum Float, max Float)
+    public float xRange;
+    public float yRange;
+    public float zRange;
+
 
     //For boss/bosspart death
     public GameObject scrap;
@@ -59,9 +84,33 @@ public class HealthSystem : MonoBehaviour
         addScore = gameObject.GetComponent<Points>();
         callLoot = gameObject.GetComponent<LootDropRoller>();
 
+        if (isMultiStageBoss)
+        {
+            childRenderers = GetComponentsInChildren<Renderer>();
+        }
+
         if (addScore == null)
         {
             return;
+        }
+    }
+
+    private void Update()
+    {
+        if (canIFadeYet)
+        {
+            //Goes through all the children and fades them out.
+            foreach (Renderer childObjectColor in childRenderers)
+            {
+                if (childObjectColor == null)
+                {
+                    continue;
+                }
+                //Keeping this around just for notes. This is how you change material colors
+                //childObjectToFade.material.color = Color.red;
+                childObjectColor.material.color = new Color(childObjectColor.material.color.r, childObjectColor.material.color.g, childObjectColor.material.color.b,
+                    childObjectColor.material.color.a - (fadePerSecond * Time.deltaTime));
+            }
         }
     }
 
@@ -88,8 +137,29 @@ public class HealthSystem : MonoBehaviour
             currentHealth -= excessShieldDamage;
         }
 
-        if (currentHealth <= 0 && isBoss)
+        if (currentHealth <= 0 && isMultiStageBoss && !isDead)
         {
+            isDead = true;
+            Debug.Log("I'm Supposed To Die");
+            StartCoroutine(DeadStage());
+
+            doesLootDrop = Random.Range(0.0f, 100.0f);
+
+            if (addScore != null)
+            {
+                addScore.AddPoints(whatPlayer);
+                if (doesLootDrop <= lootDropChance)
+                {
+                    callLoot.LootRoll(Random.Range(0.0f, 100.0f));
+                }
+            }
+
+            return;
+        }
+        else if (currentHealth <= 0 && isBoss && !isDead)
+        {
+            isDead = true;
+
             doesLootDrop = Random.Range(0.0f, 100.0f);
 
             if (addScore != null)
@@ -105,8 +175,9 @@ public class HealthSystem : MonoBehaviour
 
             HUDcontroller.winLevel = true;
         }
-        else if (currentHealth <= 0 && isBossPart)
+        else if (currentHealth <= 0 && isBossPart && !isDead)
         {
+            isDead = true;
             doesLootDrop = Random.Range(0.0f, 100.0f);
 
             if (addScore != null)
@@ -134,7 +205,7 @@ public class HealthSystem : MonoBehaviour
             Instantiate(scrap, gameObject.transform.position, gameObject.transform.rotation);
             Destroy(gameObject);
         }
-        else if (currentHealth <= 0)
+        else if (currentHealth <= 0 && !isDead)
         {
             doesLootDrop = Random.Range(0.0f, 100.0f);
 
@@ -219,5 +290,51 @@ public class HealthSystem : MonoBehaviour
 
         P1bossKill = false;
         P2bossKill = false;
+    }
+
+    IEnumerator DeadStage()
+    {
+        StartCoroutine(dramaticExplosions());
+        yield return new WaitForSeconds(3);
+
+        canIFadeYet = true;
+
+        foreach (Renderer childObjectColor in childRenderers)
+        {
+            if (childObjectColor == null)
+            {
+                continue;
+            }
+            //SetFloat Changes the material shader.
+            //("_Mode", float) I haven't figured out why the first part is needed yet but it is Second part sets the mode.
+            // 0 = Opaque, 1 = Cutout, 2 = Fade, 3 = Transparent
+            childObjectColor.material.SetFloat("_Mode", 2);
+            //After setting the mode we have to set all these other variables or it won't work.
+            childObjectColor.material.SetInt("_SrcBlend", (int)UnityEngine.Rendering.BlendMode.SrcAlpha);
+            childObjectColor.material.SetInt("_DstBlend", (int)UnityEngine.Rendering.BlendMode.OneMinusSrcAlpha);
+            childObjectColor.material.SetInt("_ZWrite", 0);
+            childObjectColor.material.DisableKeyword("_ALPHATEST_ON");
+            childObjectColor.material.EnableKeyword("_ALPHABLEND_ON");
+            childObjectColor.material.DisableKeyword("_ALPHAPREMULTIPLY_ON");
+            childObjectColor.material.renderQueue = 3000;
+        }
+        yield return new WaitForSeconds(fadeDuration);
+        canIFadeYet = false;
+        Instantiate(nextStage, gameObject.transform.position, Quaternion.Euler(0, 180, 0));
+        Destroy(gameObject);
+    }
+
+    IEnumerator dramaticExplosions()
+    {
+        while (true)
+        {
+            //Instantiates explosions from an array that holds 3 explosions.
+            //X and Z coordinates of explosions are random. Y and rotation are static.            
+            Instantiate(explosions[Random.Range(0, 3)], new Vector3(gameObject.transform.position.x + Random.Range(-xRange, xRange),
+                gameObject.transform.position.y + Random.Range(-yRange, yRange),
+                gameObject.transform.position.z + Random.Range(-zRange, zRange)), gameObject.transform.rotation);
+
+            yield return new WaitForSeconds(timeBetweenExplosions);
+        }
     }
 }
