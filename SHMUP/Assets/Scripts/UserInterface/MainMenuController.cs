@@ -11,12 +11,6 @@ public class MainMenuController : MonoBehaviour
 	private bool waiting;
     private bool controlList;
 
-    public Image singleGlow;
-    public Image doubleGlow;
-    public Image quitGlow;
-    public Image controlGlow;
-    public Image nextGlow;
-
     public static int currentStage;
     public static bool onePlayer;
 
@@ -25,16 +19,29 @@ public class MainMenuController : MonoBehaviour
     public GameObject mainMenuCanvas;
     public GameObject mainMenuBackground;
     public GameObject controlMenuBackground;
+    public GameObject controlMenu;
+    public GameObject controlInGame;
     public GameObject buttonList;
     public GameObject singleButton;
     public GameObject doubleButton;
     public GameObject quitButton;
     public GameObject controlButton;
-    public GameObject nextButton;
+    public GameObject creditButton;
+
+    public Image singleGlow;
+    public Image doubleGlow;
+    public Image quitGlow;
+    public Image controlGlow;
+    public Image creditGlow;
+    public Image rightGlow;
+    public Image leftGlow;
+
+    public Text intro;
 
     private void Awake()
     {
         DeactivateMainMenu();
+        DeactivateControlBackground();
         DeactivateControlList();
         DeactivateMainMenuGlow();
         DeactivateControlListGlow();
@@ -76,13 +83,19 @@ public class MainMenuController : MonoBehaviour
 
                     quitGlow.fillAmount = 1;
                 }
-                if (glowTracker >= 4)
+                if (glowTracker == 4)
                 {
-                    glowTracker = 4;
-
                     DeactivateMainMenuGlow();
 
                     controlGlow.fillAmount = 1;
+                }
+                if (glowTracker >= 5)
+                {
+                    glowTracker = 5;
+
+                    DeactivateMainMenuGlow();
+
+                    creditGlow.fillAmount = 1;
                 }
 
                 if (Input.GetButtonDown("P1VerticalChoiceUp") || Input.GetButtonDown("P2VerticalChoiceUp") || Input.GetKeyDown(KeyCode.Keypad8))
@@ -112,6 +125,10 @@ public class MainMenuController : MonoBehaviour
                     {
                         ControlButton();
                     }
+                    if(glowTracker == 5)
+                    {
+                        CreditButton();
+                    }
                 }
             }
             else
@@ -120,34 +137,44 @@ public class MainMenuController : MonoBehaviour
                 {
                     glowTracker = 1;
 
-                    DeactivateControlListGlow();
+                    intro.text = "Menu Interaction\n- Keyboard -";
 
-                    nextGlow.fillAmount = 1;
+                    DeactivateControlList();
+                    controlMenu.SetActive(true);
                 }
-                if (glowTracker >= 1)
+                if (glowTracker >= 2)
                 {
-                    glowTracker = 1;
+                    glowTracker = 2;
 
-                    DeactivateControlListGlow();
+                    intro.text = "In-Game Interaction\n- Keyboard -";
 
-                    nextGlow.fillAmount = 1;
+                    DeactivateControlList();
+                    controlInGame.SetActive(true);
                 }
 
-                if (Input.GetButtonDown("P1VerticalChoiceUp") || Input.GetButtonDown("P2VerticalChoiceUp") || Input.GetKeyDown(KeyCode.Keypad8))
+                if (Input.GetButtonDown("P1HorizontalChoiceRight") || Input.GetButtonDown("P2HorizontalChoiceRight") || Input.GetKeyDown(KeyCode.Keypad6))
                 {
                     glowTracker--;
+
+                    DeactivateControlListGlow();
+                    rightGlow.fillAmount = 1;
                 }
-                if (Input.GetButtonDown("P1VerticalChoiceDown") || Input.GetButtonDown("P2VerticalChoiceDown") || Input.GetKeyDown(KeyCode.Keypad5))
+                if (Input.GetButtonDown("P1HorizontalChoiceLeft") || Input.GetButtonDown("P2HorizontalChoiceLeft") || Input.GetKeyDown(KeyCode.Keypad4))
                 {
                     glowTracker++;
+
+                    DeactivateControlListGlow();
+                    leftGlow.fillAmount = 1;
                 }
 
                 if (Input.GetButtonDown("Fire_P1") || Input.GetButtonDown("Fire_P2") || Input.GetKeyDown(KeyCode.Keypad0))
                 {
-                    if (controlGlowTracker == 1)
-                    {
-                        NextButton();
-                    }
+                    DeactivateMainMenuGlow();
+                    DeactivateControlBackground();
+                    DeactivateControlList();
+                    ResetGlowTracker();
+
+                    controlList = false;
                 }
             }
 		}
@@ -164,9 +191,7 @@ public class MainMenuController : MonoBehaviour
 		ActivateMainMenu();
 
         yield return new WaitForSeconds(2.5f);
-
-        ControlButton();
-
+        
         waiting = true;
     }
     private void ActivateMainMenu()
@@ -188,13 +213,28 @@ public class MainMenuController : MonoBehaviour
         controlButton.SetActive(false);
     }
 
-    private void ActivateControlList()
+    private void ActivateControlBackground()
     {
         controlMenuBackground.SetActive(true);
+
+        intro.enabled = true;
+    }
+    private void DeactivateControlBackground()
+    {
+        controlMenuBackground.SetActive(false);
+
+        intro.enabled = false;
+    }
+
+    private void ActivateControlList()
+    {
+        controlMenu.SetActive(true);
+        controlInGame.SetActive(true);
     }
     private void DeactivateControlList()
     {
-        controlMenuBackground.SetActive(false);
+        controlMenu.SetActive(false);
+        controlInGame.SetActive(false);
     }
 
     private void DeactivateMainMenuGlow()
@@ -203,10 +243,13 @@ public class MainMenuController : MonoBehaviour
         doubleGlow.fillAmount = 0;
         quitGlow.fillAmount = 0;
         controlGlow.fillAmount = 0;
+        creditGlow.fillAmount = 0;
     }
+
     private void DeactivateControlListGlow()
     {
-        nextGlow.fillAmount = 0;
+        rightGlow.fillAmount = 0;
+        leftGlow.fillAmount = 0;
     }
 
     private void ResetGlowTracker()
@@ -235,18 +278,14 @@ public class MainMenuController : MonoBehaviour
     private void ControlButton()
     {
         DeactivateMainMenuGlow();
-        ActivateControlList();
+        ActivateControlBackground();
         ResetGlowTracker();
 
         controlList = true;
     }
 
-    private void NextButton()
+    private void CreditButton()
     {
-        DeactivateMainMenuGlow();
-        DeactivateControlList();
-        ResetGlowTracker();
-
-        controlList = false;
+        SceneManager.LoadScene("Credit");
     }
 }

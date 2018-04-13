@@ -6,12 +6,14 @@ using UnityEngine.SceneManagement;
 
 public class HUDcontroller : MonoBehaviour
 {
+    public static bool pauseMenuOn;
+    public static bool changePlayer2Sprite;
+
     private int glowTracker;
     private int maxGlowTracker;
     private int choosingPlayer2Vertical;
     private int choosingPlayer2Horizontal;
     private int maxP2GLowTracker;
-    private bool pauseMenuOn;
     private bool addingPlayer2;
     private bool addingMenu;
 
@@ -37,7 +39,9 @@ public class HUDcontroller : MonoBehaviour
     public Image P2secondaryButtonGlow;
     public Image P2specialButtonGlow;
 
-    public Image choice;
+    public Image characterChoice;
+    public Image shipChoice;
+    public Image weaponChoice;
     public Image stat;
 
     public Sprite character1;
@@ -285,7 +289,6 @@ public class HUDcontroller : MonoBehaviour
 
                             addingPlayer2 = false;
                             addingMenu = false;
-                            pauseMenuOn = false;
 
                             ActivatePauseMenu();
                             DeactivateAddingVerticalButton();
@@ -307,6 +310,8 @@ public class HUDcontroller : MonoBehaviour
                             DeactivateAddingVerticalButton();
                             DeactivateAddingVerticalChoices();
                             ActivateAddingHorizontal();
+
+                            P2characterButton.SetActive(true);
                         }
                         if (choosingPlayer2Vertical == 3)
                         {
@@ -318,6 +323,8 @@ public class HUDcontroller : MonoBehaviour
                             DeactivateAddingVerticalButton();
                             DeactivateAddingVerticalChoices();
                             ActivateAddingHorizontal();
+
+                            P2shipButton.SetActive(true);
                         }
                         if (choosingPlayer2Vertical == 4)
                         {
@@ -329,6 +336,8 @@ public class HUDcontroller : MonoBehaviour
                             DeactivateAddingVerticalButton();
                             DeactivateAddingVerticalChoices();
                             ActivateAddingHorizontal();
+
+                            P2primaryButton.SetActive(true);
                         }
                         if (choosingPlayer2Vertical == 5)
                         {
@@ -340,6 +349,8 @@ public class HUDcontroller : MonoBehaviour
                             DeactivateAddingVerticalButton();
                             DeactivateAddingVerticalChoices();
                             ActivateAddingHorizontal();
+
+                            P2secondaryButton.SetActive(true);
                         }
                         if (choosingPlayer2Vertical == 6)
                         {
@@ -351,11 +362,14 @@ public class HUDcontroller : MonoBehaviour
                             DeactivateAddingVerticalButton();
                             DeactivateAddingVerticalChoices();
                             ActivateAddingHorizontal();
+
+                            P2specialButton.SetActive(true);
                         }
                         if (choosingPlayer2Vertical == 7)
                         {
                             MainMenuController.onePlayer = false;
                             addingPlayer2 = false;
+                            changePlayer2Sprite = true;
                             addingMenu = false;
                             pauseMenuOn = false;
 
@@ -594,6 +608,7 @@ public class HUDcontroller : MonoBehaviour
         winLevel = false;
         pauseMenuOn = false;
         addingPlayer2 = false;
+        changePlayer2Sprite = false;
         addingMenu = false;
     }
     private void SetAddingBool()
@@ -672,7 +687,9 @@ public class HUDcontroller : MonoBehaviour
         P2toggleLeft.SetActive(false);
         P2toggleRight.SetActive(false);
 
-        choice.enabled = false;
+        characterChoice.enabled = false;
+        shipChoice.enabled = false;
+        weaponChoice.enabled = false;
         stat.enabled = false;
         P2characterText.enabled = false;
     }
@@ -793,35 +810,37 @@ public class HUDcontroller : MonoBehaviour
         {
             if(choosingPlayer2Horizontal == 1)
             {
-                choice.sprite = character1;
+                characterChoice.sprite = character1;
 
                 P2characterText.text = "Name: Character A\nDescription:";
             }
             if (choosingPlayer2Horizontal == 2)
             {
-                choice.sprite = character2;
+                characterChoice.sprite = character2;
 
-                P2characterText.text = "Name: Nomad\nDescription: An overconfident, hotshot pilot that hunts the machine menace wherever it goes.";
+                P2characterText.text = "Name: Nomad\nDescription: A confident, hotshot pilot that hunts the machine menace wherever it goes.";
             }
             if (choosingPlayer2Horizontal == 3)
             {
-                choice.sprite = character3;
+                characterChoice.sprite = character3;
 
                 P2characterText.text = "Name: Character A\nDescription:";
             }
             if (choosingPlayer2Horizontal == 4)
             {
-                choice.sprite = character4;
+                characterChoice.sprite = character4;
 
                 P2characterText.text = "Name: Jaeger\nDescription: A cocky, hot headed pilot on the hunt for more fame and glory.";
             }
+
+            characterChoice.enabled = true;
             P2characterText.enabled = true;
         }
         if (ship)
         {
             if (choosingPlayer2Horizontal == 1)
             {
-                choice.sprite = ship1;
+                shipChoice.sprite = ship1;
                 stat.sprite = ship1Stat;
 
                 P2LightShipData();
@@ -830,7 +849,7 @@ public class HUDcontroller : MonoBehaviour
             }
             if (choosingPlayer2Horizontal == 2)
             {
-                choice.sprite = ship2;
+                shipChoice.sprite = ship2;
                 stat.sprite = ship2Stat;
 
                 P2MediumShipData();
@@ -839,7 +858,7 @@ public class HUDcontroller : MonoBehaviour
             }
             if (choosingPlayer2Horizontal == 3)
             {
-                choice.sprite = ship3;
+                shipChoice.sprite = ship3;
                 stat.sprite = ship3Stat;
 
                 P2HeavyShipData();
@@ -848,7 +867,7 @@ public class HUDcontroller : MonoBehaviour
             }
             if (choosingPlayer2Horizontal == 4)
             {
-                choice.sprite = ship4;
+                shipChoice.sprite = ship4;
                 stat.sprite = ship4Stat;
 
                 P2LamboShooterData();
@@ -857,7 +876,7 @@ public class HUDcontroller : MonoBehaviour
             }
             if (choosingPlayer2Horizontal == 5)
             {
-                choice.sprite = ship5;
+                shipChoice.sprite = ship5;
                 stat.sprite = ship5Stat;
 
                 P2TruckShooterData();
@@ -865,70 +884,72 @@ public class HUDcontroller : MonoBehaviour
                 Player2WeaponData();
             }
 
+            shipChoice.enabled = true;
             stat.enabled = true;
         }
         if (primary)
         {
             if (choosingPlayer2Horizontal == 1)
             {
-                choice.sprite = primary1;
+                weaponChoice.sprite = primary1;
                 stat.sprite = primary1Stat;
             }
             if (choosingPlayer2Horizontal == 2)
             {
-                choice.sprite = primary2;
+                weaponChoice.sprite = primary2;
                 stat.sprite = primary2Stat;
             }
             if (choosingPlayer2Horizontal == 3)
             {
-                choice.sprite = primary3;
+                weaponChoice.sprite = primary3;
                 stat.sprite = primary3Stat;
             }
 
+            weaponChoice.enabled = true;
             stat.enabled = true;
         }
         if (secondary)
         {
             if (choosingPlayer2Horizontal == 1)
             {
-                choice.sprite = secondary1;
+                weaponChoice.sprite = secondary1;
                 stat.sprite = secondary1Stat;
             }
             if (choosingPlayer2Horizontal == 2)
             {
-                choice.sprite = secondary2;
+                weaponChoice.sprite = secondary2;
                 stat.sprite = secondary2Stat;
             }
             if (choosingPlayer2Horizontal == 3)
             {
-                choice.sprite = secondary3;
+                weaponChoice.sprite = secondary3;
                 stat.sprite = secondary3Stat;
             }
 
+            weaponChoice.enabled = true;
             stat.enabled = true;
         }
         if (special)
         {
             if (choosingPlayer2Horizontal == 1)
             {
-                choice.sprite = special1;
+                weaponChoice.sprite = special1;
                 stat.sprite = special1Stat;
             }
             if (choosingPlayer2Horizontal == 2)
             {
-                choice.sprite = special2;
+                weaponChoice.sprite = special2;
                 stat.sprite = special2Stat;
             }
             if (choosingPlayer2Horizontal == 3)
             {
-                choice.sprite = special3;
+                weaponChoice.sprite = special3;
                 stat.sprite = special3Stat;
             }
 
+            weaponChoice.enabled = true;
             stat.enabled = true;
         }
-
-        choice.enabled = true;
     }
 
     private void P2LightShipData()

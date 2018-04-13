@@ -87,6 +87,10 @@ public class SpeechSystemController : MonoBehaviour
 
     private void Update()
     {
+        if(HUDcontroller.changePlayer2Sprite)
+        {
+            StartCoroutine(Player2SpriteChange());
+        }
         if (waitingSpeech)
         {
             if (MainMenuController.onePlayer)
@@ -340,7 +344,7 @@ public class SpeechSystemController : MonoBehaviour
             }
             if (randomSpeech > 30 && randomSpeech <= 60)
             {
-                P1text.text = "Oh yeah!";
+                P1text.text = "Yeah!";
             }
             if (randomSpeech > 60)
             {
@@ -355,7 +359,7 @@ public class SpeechSystemController : MonoBehaviour
             }
             if (randomSpeech > 30 && randomSpeech <= 60)
             {
-                P1text.text = "Oh yeah!";
+                P1text.text = "Yeah!";
             }
             if (randomSpeech > 60)
             {
@@ -522,6 +526,13 @@ public class SpeechSystemController : MonoBehaviour
         DeactivateP2Speech();
 
         waitingSpeech = true;
+    }
+
+    IEnumerator Player2SpriteChange()
+    {
+        SetPlayer2Character();
+
+        yield return new WaitForSeconds(.25f);
     }
 
     IEnumerator P1RamEnemy()

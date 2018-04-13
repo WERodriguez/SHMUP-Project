@@ -443,7 +443,7 @@ public class SelectionMenuController : MonoBehaviour
 
                             DeactivateStat();
                             characterStat.enabled = true;
-                            characterStat.text = "Name: Nomad\nDescription: An overconfident, hotshot pilot that hunts the machine menace wherever it goes.";
+                            characterStat.text = "Name: Nomad\nDescription: A confident, hotshot pilot that hunts the machine menace wherever it goes.";
                         }
                         if (ship == true)
                         {
@@ -1002,7 +1002,7 @@ public class SelectionMenuController : MonoBehaviour
 
                             DeactivateP1Stat();
                             P1characterStat.enabled = true;
-                            P1characterStat.text = "Name: Nomad\nDescription: An overconfident, hotshot pilot that hunts the machine menace wherever it goes.";
+                            P1characterStat.text = "Name: Nomad\nDescription: A confident, hotshot pilot that hunts the machine menace wherever it goes.";
                         }
                         if (P1ship == true)
                         {
@@ -1241,7 +1241,7 @@ public class SelectionMenuController : MonoBehaviour
 
                             DeactivateP2Stat();
                             P2characterStat.enabled = true;
-                            P2characterStat.text = "Name: Nomad\nDescription: An overconfident, hotshot pilot that hunts the machine menace wherever it goes.";
+                            P2characterStat.text = "Name: Nomad\nDescription: A confident, hotshot pilot that hunts the machine menace wherever it goes.";
                         }
                         if (P2ship == true)
                         {
@@ -2515,6 +2515,9 @@ public class SelectionMenuController : MonoBehaviour
 
     public void ReturnButton()
     {
+        Destroy(GameObject.Find("MenuMusicController"));
+        Destroy(GameObject.Find("HangarMusicController"));
+
         ResetBool();
         ResetInt();
         ResetP1ToggleData();
