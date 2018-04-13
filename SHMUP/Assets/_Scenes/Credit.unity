@@ -407,8 +407,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0.5}
   m_AnchorMax: {x: 1, y: 0.5}
-  m_AnchoredPosition: {x: -430, y: 0}
-  m_SizeDelta: {x: 400, y: 400}
+  m_AnchoredPosition: {x: -400, y: -360}
+  m_SizeDelta: {x: 400, y: 900}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &643593871
 MonoBehaviour:
@@ -437,13 +437,40 @@ MonoBehaviour:
     m_BestFit: 0
     m_MinSize: 0
     m_MaxSize: 40
-    m_Alignment: 4
+    m_Alignment: 3
     m_AlignByGeometry: 0
     m_RichText: 1
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Role
+  m_Text: 'Sarah Case
+
+
+    Daniel Dvorak
+
+
+    Waldo Rodriguez
+
+
+    Tyler Chighizola
+
+
+    Waldo Rodriguez
+
+
+    Taylor Crook
+
+
+    Matthew S.
+
+
+    Beba
+
+
+    Jeremy Dandeneau
+
+
+    Khoa Anh Nguyen'
 --- !u!222 &643593872
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -943,8 +970,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 0, y: 0.5}
-  m_AnchoredPosition: {x: 430, y: 0}
-  m_SizeDelta: {x: 400, y: 400}
+  m_AnchoredPosition: {x: 400, y: -360}
+  m_SizeDelta: {x: 400, y: 900}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2029942945
 MonoBehaviour:
@@ -973,25 +1000,40 @@ MonoBehaviour:
     m_BestFit: 0
     m_MinSize: 0
     m_MaxSize: 40
-    m_Alignment: 4
+    m_Alignment: 5
     m_AlignByGeometry: 0
     m_RichText: 1
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'Name
+  m_Text: 'Executive Producer
 
-    Name
 
-    Name
+    Creative Director
 
-    Name
 
-    Name
+    Producer
 
-    Name
 
-    Name'
+    Art Lead
+
+
+    Tech Lead
+
+
+    Artist
+
+
+    Artist
+
+
+    Artist
+
+
+    Artist
+
+
+    Programmer'
 --- !u!222 &2029942946
 CanvasRenderer:
   m_ObjectHideFlags: 0

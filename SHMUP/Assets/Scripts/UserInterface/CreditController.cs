@@ -31,7 +31,7 @@ public class CreditController : MonoBehaviour
 
         mainMenuButton.SetActive(false);
 
-        yield return new WaitForSeconds(4f);
+        yield return new WaitForSeconds(7.5f);
 
         mainMenuButton.SetActive(true);
 
