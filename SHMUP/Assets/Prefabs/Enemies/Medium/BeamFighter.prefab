@@ -154,7 +154,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1772701896655842}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 2.32}
+  m_LocalPosition: {x: 0, y: 0, z: 1.5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4150648175219890}
@@ -447,9 +447,21 @@ MonoBehaviour:
   currentShields: 0
   maxShields: 30
   lootDropChance: 10
+  isDead: 0
   isBoss: 0
+  isMultiStageBoss: 0
   isBossPart: 0
   heavyEnemy: 0
+  canIFadeYet: 0
+  childRenderers: []
+  fadePerSecond: 0
+  fadeDuration: 0
+  nextStage: {fileID: 0}
+  explosions: []
+  timeBetweenExplosions: 0
+  xRange: 0
+  yRange: 0
+  zRange: 0
   scrap: {fileID: 0}
   explosion: {fileID: 1660496361234082, guid: 017676dccc468c54c85104ea286b6e64, type: 2}
   scoreScreen: 0
@@ -465,7 +477,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 20
-  deployPosition: 12
+  deployPosition: 18
   retreatTime: 10
   deployed: 0
   retreatForward: 1

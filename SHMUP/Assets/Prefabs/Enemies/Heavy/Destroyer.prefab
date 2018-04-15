@@ -2301,7 +2301,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   burstSize: 2
-  fireRate: 3
+  fireRate: 5
   nextFire: 0.25
   nextVolley: 3
   initialDelay: 5
@@ -2325,7 +2325,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   burstSize: 2
-  fireRate: 3
+  fireRate: 5
   nextFire: 0.25
   nextVolley: 3
   initialDelay: 5
@@ -2349,7 +2349,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   burstSize: 2
-  fireRate: 3
+  fireRate: 5
   nextFire: 0.25
   nextVolley: 3
   initialDelay: 5
@@ -2402,7 +2402,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   burstSize: 2
-  fireRate: 3
+  fireRate: 5
   nextFire: 0.25
   nextVolley: 3
   initialDelay: 5
@@ -2426,7 +2426,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   burstSize: 2
-  fireRate: 3
+  fireRate: 5
   nextFire: 0.25
   nextVolley: 3
   initialDelay: 5
@@ -2450,7 +2450,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   burstSize: 2
-  fireRate: 3
+  fireRate: 5
   nextFire: 0.25
   nextVolley: 3
   initialDelay: 5
@@ -2474,7 +2474,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   burstSize: 2
-  fireRate: 3
+  fireRate: 5
   nextFire: 0.25
   nextVolley: 3
   initialDelay: 5
@@ -2498,7 +2498,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   burstSize: 2
-  fireRate: 3
+  fireRate: 5
   nextFire: 0.25
   nextVolley: 3
   initialDelay: 5
@@ -2526,9 +2526,21 @@ MonoBehaviour:
   currentShields: 0
   maxShields: 0
   lootDropChance: 50
+  isDead: 0
   isBoss: 0
+  isMultiStageBoss: 0
   isBossPart: 0
   heavyEnemy: 1
+  canIFadeYet: 0
+  childRenderers: []
+  fadePerSecond: 0
+  fadeDuration: 0
+  nextStage: {fileID: 0}
+  explosions: []
+  timeBetweenExplosions: 0
+  xRange: 0
+  yRange: 0
+  zRange: 0
   scrap: {fileID: 1025068925807934, guid: 979829eaffdaa5643b1ff2f15a86bb45, type: 2}
   explosion: {fileID: 1220363091690522, guid: bebda8aa8bb38db4598719bf8dfd9f87, type: 2}
   scoreScreen: 0

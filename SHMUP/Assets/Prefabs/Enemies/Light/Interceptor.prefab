@@ -407,11 +407,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d3452d5ab293955449f192fffcd85071, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  burstSize: 5
-  fireRate: 1
+  burstSize: 3
+  fireRate: 2
   nextFire: 0.1
   nextVolley: 0
-  initialDelay: 1
+  initialDelay: 0.5
   shotSpawns:
   - {fileID: 4910372726443894}
   shot: {fileID: 1378027018846096, guid: 7f2df5d83d51f1448a6bfd541f9b06e2, type: 2}
@@ -459,9 +459,21 @@ MonoBehaviour:
   currentShields: 0
   maxShields: 5
   lootDropChance: 25
+  isDead: 0
   isBoss: 0
+  isMultiStageBoss: 0
   isBossPart: 0
   heavyEnemy: 0
+  canIFadeYet: 0
+  childRenderers: []
+  fadePerSecond: 0
+  fadeDuration: 0
+  nextStage: {fileID: 0}
+  explosions: []
+  timeBetweenExplosions: 0
+  xRange: 0
+  yRange: 0
+  zRange: 0
   scrap: {fileID: 0}
   explosion: {fileID: 1902701955808478, guid: 07102b39342c8344fb07026c31065017, type: 2}
   scoreScreen: 0

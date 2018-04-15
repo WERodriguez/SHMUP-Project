@@ -1114,7 +1114,7 @@ MonoBehaviour:
   fireRate: 5
   nextFire: 0.2
   nextVolley: 0
-  initialDelay: 3
+  initialDelay: 6
   shotSpawns:
   - {fileID: 4081933547883402}
   - {fileID: 4125095724594758}
@@ -1158,9 +1158,21 @@ MonoBehaviour:
   currentShields: 0
   maxShields: 50
   lootDropChance: 50
+  isDead: 0
   isBoss: 0
+  isMultiStageBoss: 0
   isBossPart: 0
   heavyEnemy: 1
+  canIFadeYet: 0
+  childRenderers: []
+  fadePerSecond: 0
+  fadeDuration: 0
+  nextStage: {fileID: 0}
+  explosions: []
+  timeBetweenExplosions: 0
+  xRange: 0
+  yRange: 0
+  zRange: 0
   scrap: {fileID: 1270600566633742, guid: f2e61dc1dba472a42abda2288ffc8811, type: 2}
   explosion: {fileID: 1220363091690522, guid: bebda8aa8bb38db4598719bf8dfd9f87, type: 2}
   scoreScreen: 0

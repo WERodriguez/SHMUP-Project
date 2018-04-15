@@ -286,7 +286,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8857a43f3db518d40862d91b96262a94, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damageAmmount: 10
+  damageAmmount: 7
   impactSparks: {fileID: 1745067665915236, guid: 4430ffee161627e49aef157c4d7119b1,
     type: 2}
 --- !u!114 &114681134702591748
@@ -300,7 +300,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 32528e37a8705d1419524fc8ce5b2adf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 30
+  speed: 20
 --- !u!135 &135948374176423664
 SphereCollider:
   m_ObjectHideFlags: 1
