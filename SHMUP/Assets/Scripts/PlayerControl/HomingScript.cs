@@ -13,7 +13,9 @@ public class HomingScript : MonoBehaviour
     public float speed;
     public float rotateSpeed;
 
-    public string enemyTag = "Enemy";
+    public List<GameObject> enemies = new List<GameObject>();
+
+    public string enemyTag = "LightEnemy";
 
     private Rigidbody rb;
 
@@ -21,15 +23,21 @@ public class HomingScript : MonoBehaviour
     {
         rb = GetComponent<Rigidbody>();
 
-        InvokeRepeating("UpdateTarget", 0f, 0.5f);
-		
+        InvokeRepeating("UpdateTarget", 0f, 0.5f);		
 	}
 
     //Renews search for target. 
     //Searches through all objects marked as an enemy, finds the closest and sets it as target.
     void UpdateTarget()
     {
-        GameObject[] enemies = GameObject.FindGameObjectsWithTag(enemyTag);
+        //GameObject[] enemies = GameObject.FindGameObjectsWithTag(enemyTag);
+
+        enemies.AddRange(GameObject.FindGameObjectsWithTag(enemyTag));
+        enemies.AddRange(GameObject.FindGameObjectsWithTag("MediumEnemy"));
+        enemies.AddRange(GameObject.FindGameObjectsWithTag("HeavyEnemy"));
+        enemies.AddRange(GameObject.FindGameObjectsWithTag("OverEnemy"));
+        enemies.AddRange(GameObject.FindGameObjectsWithTag("Boss"));
+
         //Temporary variable that stores enemy distance.
         //If you don't have an enemy locked on it'll give you an infinite distance and that causes problems.
         //This makes sure that if bad things aren't in range they don't get chased.

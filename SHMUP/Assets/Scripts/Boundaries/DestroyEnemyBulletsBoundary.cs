@@ -34,5 +34,9 @@ public class DestroyEnemyBulletsBoundary : MonoBehaviour
             //Destroys the bullets after 2 seconds so they can finish playing their sounds.
             Destroy(other.gameObject, 2);
         }
+        else if(other.CompareTag("LightEnemy") || other.CompareTag("MediumEnemy"))
+        {
+            Destroy(other.gameObject);
+        }
     }
 }

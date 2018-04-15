@@ -616,10 +616,22 @@ MonoBehaviour:
   maxHealth: 20
   currentShields: 0
   maxShields: 30
-  lootDropChance: 50
+  lootDropChance: 75
+  isDead: 0
   isBoss: 0
+  isMultiStageBoss: 0
   isBossPart: 0
   heavyEnemy: 0
+  canIFadeYet: 0
+  childRenderers: []
+  fadePerSecond: 0
+  fadeDuration: 0
+  nextStage: {fileID: 0}
+  explosions: []
+  timeBetweenExplosions: 0
+  xRange: 0
+  yRange: 0
+  zRange: 0
   scrap: {fileID: 0}
   explosion: {fileID: 1660496361234082, guid: 017676dccc468c54c85104ea286b6e64, type: 2}
   scoreScreen: 0

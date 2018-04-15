@@ -69,12 +69,11 @@ public class GameController : MonoBehaviour
         else if (level == 2)
         {
             StartCoroutine(Level2());
-
         }
 
         else if (level == 3)
         {
-
+            StartCoroutine(Level3());
         }
     }
 
@@ -667,13 +666,15 @@ public class GameController : MonoBehaviour
             whichSpawn2-= 2;
         }
 
+        //InterceptorGroup
         yield return new WaitForSeconds(12.0f);
         whichSpawn1 = 3;
         whichSpawn2 = 9;
-        for (int i = 0; i <= 5; i++)
+        for (int i = 0; i <= 4; i++)
         {
             yield return new WaitForSeconds(0.15f);
             Instantiate(lightEnemies[2], mainSpawns[whichSpawn1].position, mainSpawns[12].rotation);
+            yield return new WaitForSeconds(0.15f);
             Instantiate(lightEnemies[2], mainSpawns[whichSpawn2].position, mainSpawns[12].rotation);
             whichSpawn1 += 1;
             whichSpawn2 -= 1;
@@ -683,12 +684,257 @@ public class GameController : MonoBehaviour
         Instantiate(heavyEnemies[1], mainSpawns[3].position, mainSpawns[12].rotation);
         Instantiate(heavyEnemies[1], mainSpawns[9].position, mainSpawns[12].rotation);
 
+        yield return new WaitForSeconds(12);
+        //Tells the game it's time for boss fightin.
+        isBossTime = true;
+
+        yield return new WaitForSeconds(2);
+        //Changes the music loop to the boss loop
+        musicPlayer[0].Pause();
+
+        Instantiate(powerUps[0], mainSpawns[5].position, mainSpawns[0].rotation);
+        Instantiate(powerUps[1], mainSpawns[7].position, mainSpawns[0].rotation);
+
+        yield return new WaitForSeconds(1);
+        musicPlayer[1].Play();
+
+        yield return new WaitForSeconds(9);
+
+        Instantiate(bosses[1], bossSpawn.position, bossSpawn.rotation);
+    }
+
+    IEnumerator Level3()
+    {
+        yield return new WaitForSeconds(startWait);
+
+        //Interceptor Group
+        whichSpawn1 = 0;
+        whichSpawn2 = 12;
+        for (int i = 0; i <= 4; i++)
+        {
+            Instantiate(lightEnemies[2], mainSpawns[whichSpawn1].position, mainSpawns[12].rotation);
+            yield return new WaitForSeconds(0.15f);
+            Instantiate(lightEnemies[2], mainSpawns[whichSpawn2].position, mainSpawns[12].rotation);
+            whichSpawn1 += 1;
+            whichSpawn2 -= 1;
+            yield return new WaitForSeconds(0.15f);
+        }
+        yield return new WaitForSeconds(1.50f);
+        //Machinegun Wing
+        Instantiate(lightEnemies[3], mainSpawns[6].position, mainSpawns[0].rotation);
+        yield return new WaitForSeconds(0.15f);
+        Instantiate(lightEnemies[3], mainSpawns[5].position, mainSpawns[0].rotation);
+        Instantiate(lightEnemies[3], mainSpawns[7].position, mainSpawns[0].rotation);
+        //Destroyer Escort
+        yield return new WaitForSeconds(0.1f);
+        Instantiate(heavyEnemies[0], mainSpawns[6].position, mainSpawns[0].rotation);
+
+        //TorpedoGroup
+        yield return new WaitForSeconds(0.1f);
+        Instantiate(mediumEnemies[1], mainSpawns[0].position, mainSpawns[0].rotation);
+        Instantiate(mediumEnemies[1], mainSpawns[12].position, mainSpawns[0].rotation);
+
+        yield return new WaitForSeconds(0.25f);
+        Instantiate(mediumEnemies[1], mainSpawns[2].position, mainSpawns[0].rotation);
+        Instantiate(mediumEnemies[1], mainSpawns[10].position, mainSpawns[0].rotation);
 
 
-        //Ignore this bit for now
-        //It's the old boss spawn that we will adjust later to make the next boss's entry super cool
-        //And stuff
-        //WITNESS ME
+        //CarrierGroup
+        yield return new WaitForSeconds(6.0f);
+        Instantiate(heavyEnemies[1], mainSpawns[2].position, mainSpawns[0].rotation);
+        yield return new WaitForSeconds(6.0f);
+        Instantiate(heavyEnemies[1], mainSpawns[10].position, mainSpawns[0].rotation);
+
+        //BeamFighter
+        yield return new WaitForSeconds(8.0f);
+        Instantiate(mediumEnemies[2], mainSpawns[6].position, mainSpawns[0].rotation);
+
+        //Heavy fighters intro.
+        yield return new WaitForSeconds(16.0f);
+        Instantiate(mediumEnemies[3], mainSpawns[6].position, mainSpawns[0].rotation);
+        yield return new WaitForSeconds(5.0f);
+        Instantiate(mediumEnemies[3], mainSpawns[3].position, mainSpawns[0].rotation);
+        yield return new WaitForSeconds(0.25f);
+        Instantiate(mediumEnemies[3], mainSpawns[9].position, mainSpawns[0].rotation);
+
+        yield return new WaitForSeconds(2.0f);
+        Instantiate(powerUps[0], mainSpawns[3].position, mainSpawns[12].rotation);
+        Instantiate(powerUps[3], mainSpawns[9].position, mainSpawns[12].rotation);
+
+        //Interceptor group.
+        yield return new WaitForSeconds(3.0f);
+        for (int i = 0; i <= 2; i++)
+        {
+            Instantiate(lightEnemies[2], mainSpawns[0].position, mainSpawns[12].rotation);
+            yield return new WaitForSeconds(0.15f);
+        }
+        for (int i = 0; i <= 2; i++)
+        {
+            Instantiate(lightEnemies[2], mainSpawns[12].position, mainSpawns[12].rotation);
+            yield return new WaitForSeconds(0.15f);
+        }
+
+        //Ram wings.
+        yield return new WaitForSeconds(2.0f);
+        Instantiate(wings[0], mainSpawns[2].position, mainSpawns[0].rotation);
+        Instantiate(wings[0], mainSpawns[10].position, mainSpawns[0].rotation);
+
+        //Missile fighters and torp boat.
+        yield return new WaitForSeconds(0.25f);
+        Instantiate(mediumEnemies[0], mainSpawns[2].position, mainSpawns[0].rotation);
+        Instantiate(mediumEnemies[0], mainSpawns[10].position, mainSpawns[0].rotation);
+        Instantiate(mediumEnemies[1], mainSpawns[6].position, mainSpawns[0].rotation);
+
+        yield return new WaitForSeconds(1.25f);
+        Instantiate(powerUps[5], mainSpawns[6].position, mainSpawns[12].rotation);
+
+
+        //Beam fighter group.
+        yield return new WaitForSeconds(3.5f);
+        whichSpawn1 = 1;
+        whichSpawn2 = 11;
+        for (int i = 0; i <= 2; i++)
+        {
+            Instantiate(mediumEnemies[2], mainSpawns[whichSpawn1].position, mainSpawns[12].rotation);
+            yield return new WaitForSeconds(1.5f);
+            Instantiate(mediumEnemies[2], mainSpawns[whichSpawn2].position, mainSpawns[12].rotation);
+            whichSpawn1 += 2;
+            whichSpawn2 -= 2;
+            yield return new WaitForSeconds(1.5f);
+        }
+
+        yield return new WaitForSeconds(10.0f);
+        //Interceptors.
+        whichSpawn1 = 0;
+        whichSpawn2 = 12;
+        for (int i = 0; i <= 4; i++)
+        {
+            Instantiate(lightEnemies[2], mainSpawns[whichSpawn1].position, mainSpawns[12].rotation);
+            yield return new WaitForSeconds(0.15f);
+            Instantiate(lightEnemies[2], mainSpawns[whichSpawn2].position, mainSpawns[12].rotation);
+            whichSpawn1 += 1;
+            whichSpawn2 -= 1;
+            yield return new WaitForSeconds(0.15f);
+        }
+        //HeavyFighter Group
+        yield return new WaitForSeconds(0.45f);
+        Instantiate(mediumEnemies[3], mainSpawns[3].position, mainSpawns[0].rotation);
+        yield return new WaitForSeconds(0.25f);
+        Instantiate(mediumEnemies[3], mainSpawns[9].position, mainSpawns[0].rotation);
+
+
+        Instantiate(powerUps[1], mainSpawns[3].position, mainSpawns[12].rotation);
+        Instantiate(powerUps[2], mainSpawns[9].position, mainSpawns[12].rotation);
+
+
+        yield return new WaitForSeconds(3.5f);
+        //Battlecruiser spawn.
+        Instantiate(heavyEnemies[2], mainSpawns[6].position, mainSpawns[0].rotation);
+        //Ram line spawns
+        for (int i = 0; i <= 2; i++)
+        {
+            Instantiate(lightEnemies[0], mainSpawns[2].position, mainSpawns[12].rotation);
+            Instantiate(lightEnemies[0], mainSpawns[10].position, mainSpawns[12].rotation);
+            yield return new WaitForSeconds(0.15f);
+        }
+
+        //Shooter enemy spawns
+        yield return new WaitForSeconds(5.0f);
+        whichSpawn1 = 0;
+        whichSpawn2 = 12;
+        for (int i = 0; i <= 3; i++)
+        {
+            Instantiate(lightEnemies[1], mainSpawns[whichSpawn1].position, mainSpawns[12].rotation);
+            yield return new WaitForSeconds(0.15f);
+            Instantiate(lightEnemies[1], mainSpawns[whichSpawn2].position, mainSpawns[12].rotation);
+            whichSpawn1 += 1;
+            whichSpawn2 -= 1;
+            yield return new WaitForSeconds(0.15f);
+        }
+
+        //Wing spawns
+        yield return new WaitForSeconds(3.0f);
+        Instantiate(wings[0], mainSpawns[3].position, mainSpawns[12].rotation);
+        Instantiate(wings[0], mainSpawns[9].position, mainSpawns[12].rotation);
+
+        //Torpedo Spawnss
+        yield return new WaitForSeconds(3.0f);
+        Instantiate(mediumEnemies[1], mainSpawns[2].position, mainSpawns[0].rotation);
+        yield return new WaitForSeconds(2.0f);
+        Instantiate(mediumEnemies[1], mainSpawns[10].position, mainSpawns[0].rotation);
+
+        //Wing spawns
+        yield return new WaitForSeconds(7.0f);
+        Instantiate(wings[0], mainSpawns[3].position, mainSpawns[12].rotation);
+        Instantiate(wings[0], mainSpawns[9].position, mainSpawns[12].rotation);
+        //Missile/WingSpawns
+        yield return new WaitForSeconds(2.0f);
+        Instantiate(mediumEnemies[1], mainSpawns[2].position, mainSpawns[0].rotation);
+        Instantiate(mediumEnemies[1], mainSpawns[10].position, mainSpawns[0].rotation);
+        Instantiate(wings[0], mainSpawns[4].position, mainSpawns[12].rotation);
+        Instantiate(wings[0], mainSpawns[8].position, mainSpawns[12].rotation);
+
+        //BattleCruiser
+        yield return new WaitForSeconds(6.0f);
+        Instantiate(heavyEnemies[2], mainSpawns[10].position, mainSpawns[0].rotation);
+
+        //ShooterLine
+        yield return new WaitForSeconds(3.0f);
+        Instantiate(lightEnemies[1], mainSpawns[6].position, mainSpawns[12].rotation);
+        Instantiate(lightEnemies[1], mainSpawns[5].position, mainSpawns[12].rotation);
+        Instantiate(lightEnemies[1], mainSpawns[7].position, mainSpawns[12].rotation);
+        yield return new WaitForSeconds(3.0f);
+        Instantiate(lightEnemies[1], mainSpawns[6].position, mainSpawns[12].rotation);
+        Instantiate(lightEnemies[1], mainSpawns[5].position, mainSpawns[12].rotation);
+        Instantiate(lightEnemies[1], mainSpawns[7].position, mainSpawns[12].rotation);
+        //Torpedo boat
+        yield return new WaitForSeconds(5.0f);
+        Instantiate(mediumEnemies[1], mainSpawns[6].position, mainSpawns[12].rotation);
+
+        //Battlecruiser
+        yield return new WaitForSeconds(5.0f);
+        Instantiate(heavyEnemies[2], mainSpawns[2].position, mainSpawns[0].rotation);
+
+        //Carrier
+        yield return new WaitForSeconds(15.0f);
+        Instantiate(heavyEnemies[1], mainSpawns[6].position, mainSpawns[0].rotation);
+        yield return new WaitForSeconds(3.0f);
+        whichSpawn1 = 0;
+        whichSpawn2 = 12;
+        //ShooterSpawn
+        for (int i = 0; i <= 3; i++)
+        {
+            Instantiate(lightEnemies[1], mainSpawns[whichSpawn1].position, mainSpawns[12].rotation);
+            yield return new WaitForSeconds(0.15f);
+            Instantiate(lightEnemies[1], mainSpawns[whichSpawn2].position, mainSpawns[12].rotation);
+            whichSpawn1 += 1;
+            whichSpawn2 -= 1;
+            yield return new WaitForSeconds(0.15f);
+        }
+        Instantiate(lightEnemies[3], mainSpawns[4].position, mainSpawns[12].rotation);
+        Instantiate(lightEnemies[3], mainSpawns[8].position, mainSpawns[12].rotation);
+
+        //ShooterSpawn
+        yield return new WaitForSeconds(3.0f);
+        whichSpawn1 = 0;
+        whichSpawn2 = 12;
+        for (int i = 0; i <= 3; i++)
+        {
+            Instantiate(lightEnemies[1], mainSpawns[whichSpawn1].position, mainSpawns[12].rotation);
+            yield return new WaitForSeconds(0.15f);
+            Instantiate(lightEnemies[1], mainSpawns[whichSpawn2].position, mainSpawns[12].rotation);
+            whichSpawn1 += 1;
+            whichSpawn2 -= 1;
+            yield return new WaitForSeconds(0.15f);
+        }
+        Instantiate(lightEnemies[3], mainSpawns[4].position, mainSpawns[12].rotation);
+        Instantiate(lightEnemies[3], mainSpawns[8].position, mainSpawns[12].rotation);
+
+
+
+
+
+
         yield return new WaitForSeconds(12);
         //Tells the game it's time for boss fightin.
         isBossTime = true;

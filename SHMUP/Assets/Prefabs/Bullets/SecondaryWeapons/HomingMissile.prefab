@@ -101,7 +101,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1851002434471204}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 14.66, y: 0, z: 8.7}
+  m_LocalPosition: {x: -20.8, y: 0, z: 3.1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4278465652226704}
@@ -365,7 +365,8 @@ MonoBehaviour:
   range: 15
   speed: 30
   rotateSpeed: 8
-  enemyTag: Enemy
+  enemies: []
+  enemyTag: LightEnemy
 --- !u!136 &136408799087123224
 CapsuleCollider:
   m_ObjectHideFlags: 1

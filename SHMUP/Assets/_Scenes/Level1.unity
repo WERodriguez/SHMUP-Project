@@ -1417,6 +1417,11 @@ Prefab:
       propertyPath: levelScoreText
       value: 
       objectReference: {fileID: 1653870644}
+    - target: {fileID: 114114988136570890, guid: 888c7a88b750c4047a1ff8a089ef7c1d,
+        type: 2}
+      propertyPath: level
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 888c7a88b750c4047a1ff8a089ef7c1d, type: 2}
   m_IsPrefabParent: 0
@@ -10015,12 +10020,12 @@ Prefab:
     - target: {fileID: 65912379170050136, guid: 0dd42229666526b4f9de4b0dda9b1a5c,
         type: 2}
       propertyPath: m_Size.z
-      value: 0.054929744
+      value: 0.6390568
       objectReference: {fileID: 0}
     - target: {fileID: 65912379170050136, guid: 0dd42229666526b4f9de4b0dda9b1a5c,
         type: 2}
       propertyPath: m_Center.z
-      value: -0.4566772
+      value: -0.74874127
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 0dd42229666526b4f9de4b0dda9b1a5c, type: 2}
