@@ -445,7 +445,7 @@ MonoBehaviour:
   currentHealth: 0
   maxHealth: 20
   currentShields: 0
-  maxShields: 30
+  maxShields: 5
   lootDropChance: 50
   isDead: 0
   isBoss: 0
@@ -478,7 +478,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 20
   deployPosition: 18
-  retreatTime: 10
+  retreatTime: 13
   deployed: 0
   retreatForward: 1
 --- !u!114 &114506329061464064

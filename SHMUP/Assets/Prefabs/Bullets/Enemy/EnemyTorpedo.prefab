@@ -472,7 +472,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   explosion: {fileID: 1645902461043704, guid: 9b75c5d2db178ec4d96f59f2a3e1ab97, type: 2}
   hasFuse: 0
-  damageAmmount: 15
+  damageAmmount: 0
   fuseTime: 0
 --- !u!114 &114985529432497106
 MonoBehaviour:
@@ -486,7 +486,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentHealth: 0
-  maxHealth: 15
+  maxHealth: 5
   currentShields: 0
   maxShields: 0
   lootDropChance: 5

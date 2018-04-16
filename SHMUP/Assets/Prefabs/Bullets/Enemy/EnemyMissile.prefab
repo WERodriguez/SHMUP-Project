@@ -430,13 +430,25 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentHealth: 0
-  maxHealth: 3
+  maxHealth: 2
   currentShields: 0
   maxShields: 0
   lootDropChance: 5
+  isDead: 0
   isBoss: 0
+  isMultiStageBoss: 0
   isBossPart: 0
   heavyEnemy: 0
+  canIFadeYet: 0
+  childRenderers: []
+  fadePerSecond: 0
+  fadeDuration: 0
+  nextStage: {fileID: 0}
+  explosions: []
+  timeBetweenExplosions: 0
+  xRange: 0
+  yRange: 0
+  zRange: 0
   scrap: {fileID: 0}
   explosion: {fileID: 1022230640483370, guid: 6c17b449007f1e147aa129a85194ef5a, type: 2}
   scoreScreen: 0
@@ -469,7 +481,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   explosion: {fileID: 1022230640483370, guid: 6c17b449007f1e147aa129a85194ef5a, type: 2}
   hasFuse: 1
-  damageAmmount: 5
+  damageAmmount: 0
   fuseTime: 5
 --- !u!114 &114767033789183916
 MonoBehaviour:
