@@ -5,6 +5,8 @@ using UnityEngine.SceneManagement;
 
 public class GameController : MonoBehaviour
 {
+    public GameObject bossWarning;
+
     //Arrays of enemies and powerups.
     public GameObject[] lightEnemies;
     public GameObject[] mediumEnemies;
@@ -49,6 +51,8 @@ public class GameController : MonoBehaviour
 
     private void Start()
     {
+        bossWarning.SetActive(false);
+
         isBossTime = false;
         stopVolumeDecrease = false;
         stopVolumeIncrease = false;
@@ -477,7 +481,13 @@ public class GameController : MonoBehaviour
         Instantiate(mediumEnemies[0], mainSpawns[3].position, mainSpawns[0].rotation);
         Instantiate(mediumEnemies[0], mainSpawns[9].position, mainSpawns[0].rotation);
 
-        yield return new WaitForSeconds(4);
+        yield return new WaitForSeconds(1);
+
+        bossWarning.SetActive(true);
+
+        yield return new WaitForSeconds(6);
+
+        bossWarning.SetActive(false);
 
         Instantiate(bosses[0], bossSpawn.position, bossSpawn.rotation);
     }
@@ -698,7 +708,13 @@ public class GameController : MonoBehaviour
         yield return new WaitForSeconds(1);
         musicPlayer[1].Play();
 
-        yield return new WaitForSeconds(9);
+        yield return new WaitForSeconds(1);
+
+        bossWarning.SetActive(true);
+
+        yield return new WaitForSeconds(6);
+
+        bossWarning.SetActive(false);
 
         Instantiate(bosses[1], bossSpawn.position, bossSpawn.rotation);
     }
@@ -949,7 +965,13 @@ public class GameController : MonoBehaviour
         yield return new WaitForSeconds(1);
         musicPlayer[1].Play();
 
-        yield return new WaitForSeconds(9);
+        yield return new WaitForSeconds(1);
+
+        bossWarning.SetActive(true);
+
+        yield return new WaitForSeconds(6);
+
+        bossWarning.SetActive(false);
 
         Instantiate(bosses[1], bossSpawn.position, bossSpawn.rotation);
     }
