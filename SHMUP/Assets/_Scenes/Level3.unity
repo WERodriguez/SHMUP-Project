@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18278195, g: 0.22848602, b: 0.30703178, a: 1}
+  m_IndirectSpecularColor: {r: 0.18278241, g: 0.22848673, b: 0.30703282, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -8735,6 +8735,21 @@ Prefab:
       propertyPath: bossWarning
       value: 
       objectReference: {fileID: 1175562205}
+    - target: {fileID: 114581096122617018, guid: 888c7a88b750c4047a1ff8a089ef7c1d,
+        type: 2}
+      propertyPath: levelScoreText
+      value: 
+      objectReference: {fileID: 742104026}
+    - target: {fileID: 114581096122617018, guid: 888c7a88b750c4047a1ff8a089ef7c1d,
+        type: 2}
+      propertyPath: scoreText_P1
+      value: 
+      objectReference: {fileID: 1656440512}
+    - target: {fileID: 114581096122617018, guid: 888c7a88b750c4047a1ff8a089ef7c1d,
+        type: 2}
+      propertyPath: scoreText_P2
+      value: 
+      objectReference: {fileID: 95398798}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 888c7a88b750c4047a1ff8a089ef7c1d, type: 2}
   m_IsPrefabParent: 0

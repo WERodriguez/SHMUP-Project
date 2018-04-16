@@ -71,7 +71,6 @@ public class EnemyBeamCannon : MonoBehaviour
             {
                 //Keeping this around just for notes. This is how you change material colors
                 //childObjectToFade.material.color = Color.red;
-                Debug.Log("Am supposed to be invisible now!");
                 childObjectColor.material.color = new Color(childObjectColor.material.color.r, childObjectColor.material.color.g, childObjectColor.material.color.b,
                     childObjectColor.material.color.a - (fadePerSecond * Time.deltaTime));
             }
