@@ -137,6 +137,7 @@ public class ScoreScreenController : MonoBehaviour
     IEnumerator Timer()
     {
         MainMenuController.currentStage++;
+        HUDcontroller.winLevel = false;
 
         hangarButton.SetActive(true);
         nextButton.SetActive(true);

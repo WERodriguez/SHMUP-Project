@@ -81,13 +81,13 @@ public class MainMenuController : MonoBehaviour
                 {
                     DeactivateMainMenuGlow();
 
-                    quitGlow.fillAmount = 1;
+                    controlGlow.fillAmount = 1;
                 }
                 if (glowTracker == 4)
                 {
                     DeactivateMainMenuGlow();
 
-                    controlGlow.fillAmount = 1;
+                    creditGlow.fillAmount = 1;
                 }
                 if (glowTracker >= 5)
                 {
@@ -95,7 +95,7 @@ public class MainMenuController : MonoBehaviour
 
                     DeactivateMainMenuGlow();
 
-                    creditGlow.fillAmount = 1;
+                    quitGlow.fillAmount = 1;
                 }
 
                 if (Input.GetButtonDown("P1VerticalChoiceUp") || Input.GetButtonDown("P2VerticalChoiceUp") || Input.GetKeyDown(KeyCode.Keypad8))
@@ -119,15 +119,15 @@ public class MainMenuController : MonoBehaviour
                     }
                     if (glowTracker == 3)
                     {
-                        QuitButton();
+                        ControlButton();
                     }
                     if (glowTracker == 4)
                     {
-                        ControlButton();
+                        CreditButton();
                     }
                     if(glowTracker == 5)
                     {
-                        CreditButton();
+                        QuitButton();
                     }
                 }
             }

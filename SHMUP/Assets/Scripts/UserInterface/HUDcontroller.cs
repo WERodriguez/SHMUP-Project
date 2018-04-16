@@ -804,6 +804,15 @@ public class HUDcontroller : MonoBehaviour
         PlayerWeaponController.P2savedSuperAmmo = PlayerWeaponController.superAmmoDefault;
     }
 
+    private void ResetPlayerScore()
+    {
+        ScoreTracker.score_P1 = 0;
+        ScoreTracker.score_P2 = 0;
+        ScoreTracker.totalScore = 0;
+        ScoreTracker.P1credit = 0;
+        ScoreTracker.P2credit = 0;
+    }
+
     private void CheckSprite()
     {
         if (character)
@@ -1048,6 +1057,8 @@ public class HUDcontroller : MonoBehaviour
 
     private void RestartButton()
     {
+        ResetPlayerScore();
+
         if (MainMenuController.onePlayer)
         {
             ResetPlayer1Value();
@@ -1066,6 +1077,8 @@ public class HUDcontroller : MonoBehaviour
 
     private void MainMenuButton()
     {
+        ResetPlayerScore();
+
         if (MainMenuController.onePlayer)
         {
             ResetPlayer1Value();

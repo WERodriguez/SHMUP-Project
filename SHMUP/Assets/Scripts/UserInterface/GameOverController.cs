@@ -236,6 +236,8 @@ public class GameOverController : MonoBehaviour
 
     public void MainMenuButton()
     {
+        ResetPlayerScore();
+
         if (MainMenuController.onePlayer)
         {
             ResetPlayer1Value();
