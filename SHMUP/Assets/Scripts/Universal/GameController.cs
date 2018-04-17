@@ -38,7 +38,9 @@ public class GameController : MonoBehaviour
     public float waveWait;
 
     //MusicVariables
-    public AudioClip[] levelOneMusic;
+    private AudioClip[] levelOneMusic;
+    private AudioClip[] levelTwoMusic;
+    private AudioClip[] levelThreeMusic;
     private AudioSource[] musicPlayer;
     //Checks if it's time for the boss.
     private bool isBossTime;
@@ -62,6 +64,16 @@ public class GameController : MonoBehaviour
             (AudioClip)Resources.Load("Music/LVL1Loop/Be Faster_demo"),
             (AudioClip)Resources.Load("Music/LVL1Boss/Can't Stop Me_demo")
         };
+        levelTwoMusic = new AudioClip[]
+        {
+            (AudioClip)Resources.Load("Music/LVL2Loop/Time For Action_demo"),
+            (AudioClip)Resources.Load("Music/LVL2Boss/Heart of Warrior (Looped)")
+        };
+        levelThreeMusic = new AudioClip[]
+        {
+            (AudioClip)Resources.Load("Music/LVL3Loop/Unbreakable (Looped)"),
+            (AudioClip)Resources.Load("Music/LVL3Boss/No Way Back (Looped)")
+        };
 
         if (level == 1)
         {
@@ -72,11 +84,17 @@ public class GameController : MonoBehaviour
         }
         else if (level == 2)
         {
+            musicPlayer[0].clip = levelTwoMusic[0];
+            musicPlayer[1].clip = levelTwoMusic[1];
+            musicPlayer[0].Play();
             StartCoroutine(Level2());
         }
 
         else if (level == 3)
         {
+            musicPlayer[0].clip = levelThreeMusic[0];
+            musicPlayer[1].clip = levelThreeMusic[1];
+            musicPlayer[0].Play();
             StartCoroutine(Level3());
         }
     }
@@ -446,7 +464,13 @@ public class GameController : MonoBehaviour
         Instantiate(powerUps[0], mainSpawns[5].position, mainSpawns[0].rotation);
         Instantiate(powerUps[1], mainSpawns[7].position, mainSpawns[0].rotation);
 
-        yield return new WaitForSeconds(6);
+        bossWarning.SetActive(true);
+
+        yield return new WaitForSeconds(3);
+
+        bossWarning.SetActive(false);
+
+        yield return new WaitForSeconds(3);
         musicPlayer[1].Play();
 
         for (int i = 0; i <=5; i ++)
@@ -483,11 +507,8 @@ public class GameController : MonoBehaviour
 
         yield return new WaitForSeconds(1);
 
-        bossWarning.SetActive(true);
 
         yield return new WaitForSeconds(6);
-
-        bossWarning.SetActive(false);
 
         Instantiate(bosses[0], bossSpawn.position, bossSpawn.rotation);
     }
@@ -704,17 +725,20 @@ public class GameController : MonoBehaviour
 
         Instantiate(powerUps[0], mainSpawns[5].position, mainSpawns[0].rotation);
         Instantiate(powerUps[1], mainSpawns[7].position, mainSpawns[0].rotation);
+        bossWarning.SetActive(true);
 
-        yield return new WaitForSeconds(1);
+        yield return new WaitForSeconds(3);
+
+        bossWarning.SetActive(false);
+
+        yield return new WaitForSeconds(0.5f);
         musicPlayer[1].Play();
 
         yield return new WaitForSeconds(1);
 
-        bossWarning.SetActive(true);
 
         yield return new WaitForSeconds(6);
 
-        bossWarning.SetActive(false);
 
         Instantiate(bosses[1], bossSpawn.position, bossSpawn.rotation);
     }
@@ -962,16 +986,18 @@ public class GameController : MonoBehaviour
         Instantiate(powerUps[0], mainSpawns[5].position, mainSpawns[0].rotation);
         Instantiate(powerUps[1], mainSpawns[7].position, mainSpawns[0].rotation);
 
-        yield return new WaitForSeconds(1);
+        bossWarning.SetActive(true);
+        yield return new WaitForSeconds(3);
+        bossWarning.SetActive(false);
+
+        yield return new WaitForSeconds(0.5f);
         musicPlayer[1].Play();
 
         yield return new WaitForSeconds(1);
 
-        bossWarning.SetActive(true);
 
         yield return new WaitForSeconds(6);
 
-        bossWarning.SetActive(false);
 
         Instantiate(bosses[1], bossSpawn.position, bossSpawn.rotation);
     }
