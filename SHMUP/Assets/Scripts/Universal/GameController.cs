@@ -464,14 +464,16 @@ public class GameController : MonoBehaviour
         Instantiate(powerUps[0], mainSpawns[5].position, mainSpawns[0].rotation);
         Instantiate(powerUps[1], mainSpawns[7].position, mainSpawns[0].rotation);
 
+        yield return new WaitForSeconds(1);
+
+        musicPlayer[1].Play();
         bossWarning.SetActive(true);
 
-        yield return new WaitForSeconds(3);
+        yield return new WaitForSeconds(4);
 
         bossWarning.SetActive(false);
 
         yield return new WaitForSeconds(3);
-        musicPlayer[1].Play();
 
         for (int i = 0; i <=5; i ++)
         {
@@ -725,20 +727,17 @@ public class GameController : MonoBehaviour
 
         Instantiate(powerUps[0], mainSpawns[5].position, mainSpawns[0].rotation);
         Instantiate(powerUps[1], mainSpawns[7].position, mainSpawns[0].rotation);
-        bossWarning.SetActive(true);
-
-        yield return new WaitForSeconds(3);
-
-        bossWarning.SetActive(false);
-
-        yield return new WaitForSeconds(0.5f);
-        musicPlayer[1].Play();
 
         yield return new WaitForSeconds(1);
 
+        musicPlayer[1].Play();
+        bossWarning.SetActive(true);
 
-        yield return new WaitForSeconds(6);
+        yield return new WaitForSeconds(4);
 
+        bossWarning.SetActive(false);
+
+        yield return new WaitForSeconds(7.5f);
 
         Instantiate(bosses[1], bossSpawn.position, bossSpawn.rotation);
     }
@@ -970,11 +969,6 @@ public class GameController : MonoBehaviour
         Instantiate(lightEnemies[3], mainSpawns[4].position, mainSpawns[12].rotation);
         Instantiate(lightEnemies[3], mainSpawns[8].position, mainSpawns[12].rotation);
 
-
-
-
-
-
         yield return new WaitForSeconds(12);
         //Tells the game it's time for boss fightin.
         isBossTime = true;
@@ -986,18 +980,16 @@ public class GameController : MonoBehaviour
         Instantiate(powerUps[0], mainSpawns[5].position, mainSpawns[0].rotation);
         Instantiate(powerUps[1], mainSpawns[7].position, mainSpawns[0].rotation);
 
-        bossWarning.SetActive(true);
-        yield return new WaitForSeconds(3);
-        bossWarning.SetActive(false);
-
-        yield return new WaitForSeconds(0.5f);
-        musicPlayer[1].Play();
-
         yield return new WaitForSeconds(1);
 
+        musicPlayer[1].Play();
+        bossWarning.SetActive(true);
 
-        yield return new WaitForSeconds(6);
+        yield return new WaitForSeconds(4);
 
+        bossWarning.SetActive(false);
+
+        yield return new WaitForSeconds(7.5f);
 
         Instantiate(bosses[1], bossSpawn.position, bossSpawn.rotation);
     }

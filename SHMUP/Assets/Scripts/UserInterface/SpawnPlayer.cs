@@ -122,12 +122,12 @@ public class SpawnPlayer : MonoBehaviour
 
     private void SpawnPlayer1()
     {
-        Instantiate(player1CurrentShip, player1Spawn.position, Quaternion.identity);
+        Instantiate(player1CurrentShip, player1Spawn.position, player1Spawn.rotation);
         DeactivateP1OriginalShips();
     }
     private void SpawnPlayer2()
     {
-        Instantiate(player2CurrentShip, player2Spawn.position, Quaternion.identity);
+        Instantiate(player2CurrentShip, player2Spawn.position, player2Spawn.rotation);
         DeactivateP2OriginalShips();
     }
 }

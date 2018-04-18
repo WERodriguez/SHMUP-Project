@@ -44,7 +44,7 @@ public class BossShooting : MonoBehaviour
     {
         while (!HUDcontroller.winLevel)
         {
-            activationCheck = Random.Range(0f, 100f);
+            activationCheck = Random.Range(0f, 100f);Debug.Log(activationCheck);
 
             yield return new WaitForSeconds(waitTime);
         }
