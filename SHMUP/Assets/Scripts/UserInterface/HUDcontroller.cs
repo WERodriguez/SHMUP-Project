@@ -764,6 +764,21 @@ public class HUDcontroller : MonoBehaviour
         P2HUD.SetActive(false);
     }
 
+    private void ResetType()
+    {
+        SelectionMenuController.P1characterType = 0;
+        SelectionMenuController.P1shipType = 0;
+        SelectionMenuController.P1primaryType = 0;
+        SelectionMenuController.P1secondaryType = 0;
+        SelectionMenuController.P1specialType = 0;
+
+        SelectionMenuController.P2characterType = 0;
+        SelectionMenuController.P2shipType = 0;
+        SelectionMenuController.P2primaryType = 0;
+        SelectionMenuController.P2secondaryType = 0;
+        SelectionMenuController.P2specialType = 0;
+    }
+
     private void ResetPlayer2Choices()
     {
         SelectionMenuController.P2characterType = 0;
@@ -1072,12 +1087,24 @@ public class HUDcontroller : MonoBehaviour
         DeactivatePauseMenu();
         ActivateHUD();
 
-        SceneManager.LoadScene("Level1");
+        if (MainMenuController.currentStage <= 1)
+        {
+            SceneManager.LoadScene("Level1");
+        }
+        if (MainMenuController.currentStage == 2)
+        {
+            SceneManager.LoadScene("Level2");
+        }
+        if (MainMenuController.currentStage == 3)
+        {
+            SceneManager.LoadScene("Level3");
+        }
     }
 
     private void MainMenuButton()
     {
         ResetPlayerScore();
+        ResetType();
 
         if (MainMenuController.onePlayer)
         {
