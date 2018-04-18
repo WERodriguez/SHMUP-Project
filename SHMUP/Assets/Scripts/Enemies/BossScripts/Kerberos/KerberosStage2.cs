@@ -16,6 +16,7 @@ public class KerberosStage2 : MonoBehaviour
     public Vector3 deathPosition;
     //Currently selected position.
     private Vector3 desiredPosition;
+    private Vector3 currentPositionHeight;
 
     //How long the boss takes before the boss starts moving.
     public float startDelay;
@@ -52,6 +53,11 @@ public class KerberosStage2 : MonoBehaviour
     // Use this for initialization
     void Start ()
     {
+        currentPositionHeight = gameObject.transform.position;
+        for(int i = 0; i < positions.Length; i++)
+        {
+            positions[i].y = currentPositionHeight.y;
+        }
         canIMove = false;
         //Gathers all of the child renderers
         childRenderers = GetComponentsInChildren<Renderer>();

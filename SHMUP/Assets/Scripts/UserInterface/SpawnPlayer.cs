@@ -4,20 +4,27 @@ using UnityEngine;
 
 public class SpawnPlayer : MonoBehaviour
 {
+    //P1 ship list
     public GameObject P1ship1;
     public GameObject P1ship2;
     public GameObject P1ship3;
     public GameObject P1ship4;
     public GameObject P1ship5;
-    
+
+    //P2 ship list
     public GameObject P2ship1;
     public GameObject P2ship2;
     public GameObject P2ship3;
     public GameObject P2ship4;
     public GameObject P2ship5;
 
+    //Currently selected ships
     private GameObject player1CurrentShip;
     private GameObject player2CurrentShip;
+
+    //Player spawn locations
+    public Transform player1Spawn;
+    public Transform player2Spawn;
 
     private void Start()
     {
@@ -115,12 +122,12 @@ public class SpawnPlayer : MonoBehaviour
 
     private void SpawnPlayer1()
     {
-        Instantiate(player1CurrentShip, new Vector3(-9, 0, 0), Quaternion.identity);
+        Instantiate(player1CurrentShip, player1Spawn.position, Quaternion.identity);
         DeactivateP1OriginalShips();
     }
     private void SpawnPlayer2()
     {
-        Instantiate(player2CurrentShip, new Vector3(9, 0, 0), Quaternion.identity);
+        Instantiate(player2CurrentShip, player2Spawn.position, Quaternion.identity);
         DeactivateP2OriginalShips();
     }
 }
