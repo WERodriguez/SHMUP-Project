@@ -2995,7 +2995,7 @@ public class HangarMenuController : MonoBehaviour
         {
             SceneManager.LoadScene("Level2");
         }
-        if (MainMenuController.currentStage >= 3)
+        if (MainMenuController.currentStage == 3)
         {
             SceneManager.LoadScene("Level3");
         }
@@ -3026,6 +3026,10 @@ public class HangarMenuController : MonoBehaviour
         if (MainMenuController.currentStage >= 3)
         {
             SceneManager.LoadScene("Level3");
+        }
+        if (MainMenuController.currentStage > 3)
+        {
+            SceneManager.LoadScene("Credit");
         }
     }
 }

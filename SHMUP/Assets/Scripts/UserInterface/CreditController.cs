@@ -25,6 +25,41 @@ public class CreditController : MonoBehaviour
         }
     }
 
+    private void ResetPlayer1Value()
+    {
+        PlayerHealthSystem.P1currentHealth = 0;
+        PlayerHealthSystem.P1currentShields = 0;
+        PlayerHealthSystem.P1currentLives = 0;
+
+        PlayerWeaponController.P1savedWeaponLevel = 0;
+        PlayerWeaponController.P1savedSecondaryLevel = 0;
+        PlayerWeaponController.P1savedSuperAmmo = 0;
+    }
+    private void ResetPlayer2Value()
+    {
+        PlayerHealthSystem.P2currentHealth = 0;
+        PlayerHealthSystem.P2currentShields = 0;
+        PlayerHealthSystem.P2currentLives = 0;
+
+        PlayerWeaponController.P2savedWeaponLevel = 0;
+        PlayerWeaponController.P2savedSecondaryLevel = 0;
+        PlayerWeaponController.P2savedSuperAmmo = 0;
+    }
+    private void ResetType()
+    {
+        SelectionMenuController.P1characterType = 0;
+        SelectionMenuController.P1shipType = 0;
+        SelectionMenuController.P1primaryType = 0;
+        SelectionMenuController.P1secondaryType = 0;
+        SelectionMenuController.P1specialType = 0;
+
+        SelectionMenuController.P2characterType = 0;
+        SelectionMenuController.P2shipType = 0;
+        SelectionMenuController.P2primaryType = 0;
+        SelectionMenuController.P2secondaryType = 0;
+        SelectionMenuController.P2specialType = 0;
+    }
+
     IEnumerator Timer()
     {
         waiting = true;
@@ -40,6 +75,12 @@ public class CreditController : MonoBehaviour
 
     private void MainMenuButton()
     {
+        MainMenuController.currentStage = 1;
+
+        ResetPlayer1Value();
+        ResetPlayer2Value();
+        ResetType();
+
         Destroy(GameObject.Find("MenuMusicController"));
         Destroy(GameObject.Find("HangarMusicController"));
 
