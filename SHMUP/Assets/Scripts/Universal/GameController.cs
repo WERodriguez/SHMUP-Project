@@ -991,7 +991,7 @@ public class GameController : MonoBehaviour
 
         yield return new WaitForSeconds(7.5f);
 
-        Instantiate(bosses[1], bossSpawn.position, bossSpawn.rotation);
+        Instantiate(bosses[2], bossSpawn.position, bossSpawn.rotation);
     }
 
     private void CallBoss()

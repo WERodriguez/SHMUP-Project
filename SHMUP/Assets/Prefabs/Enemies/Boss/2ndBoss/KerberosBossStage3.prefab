@@ -1851,7 +1851,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1523893516237116}
   m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
-  m_LocalPosition: {x: -1.6, y: 0, z: 35}
+  m_LocalPosition: {x: 8, y: 0, z: 15.37}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4311417597921412}
@@ -2232,8 +2232,8 @@ MonoBehaviour:
   - {fileID: 1377257822477044}
   - {fileID: 1720749571773224}
   - {fileID: 1500227913269126}
-  xMin: -12
-  xMax: 12
+  xMin: -8
+  xMax: 8
   dodgeDirection: 0
   dodgeDuration: 3
   dodgeDelay: 3

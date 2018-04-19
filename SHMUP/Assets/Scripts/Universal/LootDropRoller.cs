@@ -24,7 +24,7 @@ public class LootDropRoller : MonoBehaviour
             {
                 return;
             }
-            Instantiate(loot[0], parentTransform.position, parentTransform.rotation);
+            Instantiate(loot[0], parentTransform.position, Quaternion.Euler(0,180,0));
         }
         else if(roll> 50 && roll <= 65)
         {
@@ -32,7 +32,7 @@ public class LootDropRoller : MonoBehaviour
             {
                 return;
             }
-            Instantiate(loot[1], parentTransform.position, parentTransform.rotation);
+            Instantiate(loot[1], parentTransform.position, Quaternion.Euler(0, 180, 0));
         }
         else if(roll > 65 && roll <= 80)
         {
@@ -40,7 +40,7 @@ public class LootDropRoller : MonoBehaviour
             {
                 return;
             }
-            Instantiate(loot[2], parentTransform.position, parentTransform.rotation);
+            Instantiate(loot[2], parentTransform.position, Quaternion.Euler(0, 180, 0));
         }
         else if(roll > 80 && roll <= 95)
         {
@@ -48,7 +48,7 @@ public class LootDropRoller : MonoBehaviour
             {
                 return;
             }
-            Instantiate(loot[3], parentTransform.position, parentTransform.rotation);
+            Instantiate(loot[3], parentTransform.position, Quaternion.Euler(0, 180, 0));
         }
         else if(roll > 95)
         {
@@ -56,7 +56,7 @@ public class LootDropRoller : MonoBehaviour
             {
                 return;
             }
-            Instantiate(loot[4], parentTransform.position, parentTransform.rotation);
+            Instantiate(loot[4], parentTransform.position, Quaternion.Euler(0, 180, 0));
         }
 
     }

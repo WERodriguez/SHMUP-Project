@@ -5,9 +5,8 @@ using UnityEngine;
 public class EnemyBeamCannon : MonoBehaviour
 {
     //Grabs the health system from an enemy target.
-    private HealthSystem health;
+    private PlayerHealthSystem health;
 
-    public bool whoDoIBelongTo;
     //How Much Damage the beam does.
     public float damageAmmount;
     //How long between damage tics.
@@ -85,7 +84,7 @@ public class EnemyBeamCannon : MonoBehaviour
             return;
         }
 
-        health = other.GetComponent<HealthSystem>();
+        health = other.GetComponent<PlayerHealthSystem>();
 
         if (health == null)
         {
@@ -102,7 +101,7 @@ public class EnemyBeamCannon : MonoBehaviour
             return;
         }
 
-        health = other.GetComponent<HealthSystem>();
+        health = other.GetComponent<PlayerHealthSystem>();
 
         if (health == null)
         {
@@ -148,7 +147,7 @@ public class EnemyBeamCannon : MonoBehaviour
     {
         while(dealDamage)
         {
-            health.Damage(damageAmmount, whoDoIBelongTo);
+            health.Damage(damageAmmount);
             yield return new WaitForSeconds(damageTicRate);
         }
     }
