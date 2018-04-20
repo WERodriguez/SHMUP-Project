@@ -465,8 +465,8 @@ public class GameController : MonoBehaviour
         Instantiate(powerUps[1], mainSpawns[7].position, mainSpawns[0].rotation);
 
         yield return new WaitForSeconds(1);
-
         musicPlayer[1].Play();
+
         bossWarning.SetActive(true);
 
         yield return new WaitForSeconds(4);

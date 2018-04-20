@@ -11,6 +11,9 @@ public class ShieldPickup : MonoBehaviour
 
     public float shieldHealingAmmount;
 
+    //Game object that plays the pick up sound to avoid the sound not playing or cutting itself off.
+    public GameObject pickUpSoundPlayer;
+
     private void Start()
     {
         addScore = gameObject.GetComponent<Points>();
@@ -37,6 +40,7 @@ public class ShieldPickup : MonoBehaviour
         whoDunIt = whatPlayer.whichPlayer;
         addScore.AddPoints(whoDunIt);
         health.ShieldHealing(shieldHealingAmmount);
+        Instantiate(pickUpSoundPlayer, gameObject.transform.position, gameObject.transform.rotation);
 
         Destroy(gameObject);
     }
