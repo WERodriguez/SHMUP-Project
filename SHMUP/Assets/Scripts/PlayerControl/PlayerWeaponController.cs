@@ -382,28 +382,30 @@ public class PlayerWeaponController : MonoBehaviour
             //Spawns 1 Bullet from primary hard point.
             if (P1currentWLevel == 1 && Time.time > nextFire)
             {
-                fireRate = 1.5f;
+                fireRate = 1.0f;
                 primaryWeaponSound.PlayOneShot(weaponSounds[1]);
                 nextFire = Time.time + fireRate;
                 Instantiate(P1bullet, shotSpawns[0].position, shotSpawns[0].rotation);
             }
             else if (P1currentWLevel == 2 && Time.time > nextFire)
             {
-                fireRate = 1.25f;
+                fireRate = 1.0f;
+                nextFire = Time.time + fireRate;
                 primaryWeaponSound.PlayOneShot(weaponSounds[1]);
-                P1ChainFire();
+                Instantiate(P1bullet, new Vector3(shotSpawns[0].position.x + 1.0f, shotSpawns[0].position.y, shotSpawns[0].position.z), shotSpawns[0].rotation);
+                Instantiate(P1bullet, new Vector3(shotSpawns[0].position.x - 1.0f, shotSpawns[0].position.y, shotSpawns[0].position.z), shotSpawns[0].rotation);
             }
             else if (P1currentWLevel == 3 && Time.time > nextFire)
             {
                 fireRate = 1.0f;
                 primaryWeaponSound.PlayOneShot(weaponSounds[1]);
-                P1ChainFire();
+                P1FanFire(3, 20.0f);
             }
             else if (P1currentWLevel == 4 && Time.time > nextFire)
             {
                 fireRate = 1f;
                 primaryWeaponSound.PlayOneShot(weaponSounds[1]);
-                P1FanFire(3, 20.0f);
+                P1FanFire(5, 20.0f);
             }
             else if (P1currentWLevel == 5 && Time.time > nextFire)
             {
@@ -418,28 +420,30 @@ public class PlayerWeaponController : MonoBehaviour
             //Spawns 1 Bullet from primary hard point.
             if (P2currentWLevel == 1 && Time.time > nextFire)
             {
-                fireRate = 1.5f;
+                fireRate = 1.0f;
                 primaryWeaponSound.PlayOneShot(weaponSounds[1]);
                 nextFire = Time.time + fireRate;
                 Instantiate(P2bullet, shotSpawns[0].position, shotSpawns[0].rotation);
             }
             else if (P2currentWLevel == 2 && Time.time > nextFire)
             {
-                fireRate = 1.25f;
+                fireRate = 1.0f;
+                nextFire = Time.time + fireRate;
                 primaryWeaponSound.PlayOneShot(weaponSounds[1]);
-                P2ChainFire();
+                Instantiate(P2bullet, new Vector3(shotSpawns[0].position.x + 1.0f, shotSpawns[0].position.y, shotSpawns[0].position.z), shotSpawns[0].rotation);
+                Instantiate(P2bullet, new Vector3(shotSpawns[0].position.x - 1.0f, shotSpawns[0].position.y, shotSpawns[0].position.z), shotSpawns[0].rotation);
             }
             else if (P2currentWLevel == 3 && Time.time > nextFire)
             {
                 fireRate = 1.0f;
                 primaryWeaponSound.PlayOneShot(weaponSounds[1]);
-                P2ChainFire();
+                P2FanFire(3, 20.0f);
             }
             else if (P2currentWLevel == 4 && Time.time > nextFire)
             {
                 fireRate = 1f;
                 primaryWeaponSound.PlayOneShot(weaponSounds[1]);
-                P2FanFire(3, 20.0f);
+                P2FanFire(5, 20.0f);
             }
             else if (P2currentWLevel == 5 && Time.time > nextFire)
             {
@@ -660,28 +664,28 @@ public class PlayerWeaponController : MonoBehaviour
                 nextSecondaryFire = Time.time + secondaryFireRate;
                 secondaryWeaponSound.PlayOneShot(weaponSounds[0]);
                 //How many bullets. Initial angle to be fired at. How much to increase the angle by.
-                P1SecondaryFanFire(2, 30, 5);
+                P1SecondaryFanFire(2, 10, 5);
             }
             else if (P1currentSecondaryLevel == 3 && Time.time > nextSecondaryFire)
             {
                 secondaryFireRate = 0.10f;
                 nextSecondaryFire = Time.time + secondaryFireRate;
                 secondaryWeaponSound.PlayOneShot(weaponSounds[0]);
-                P1SecondaryFanFire(3, 30, 5);
+                P1SecondaryFanFire(3, 10, 5);
             }
             else if (P1currentSecondaryLevel == 4 && Time.time > nextSecondaryFire)
             {
                 secondaryFireRate = 0.10f;
                 nextSecondaryFire = Time.time + secondaryFireRate;
                 secondaryWeaponSound.PlayOneShot(weaponSounds[0]);
-                P1SecondaryFanFire(4, 30, 5);
+                P1SecondaryFanFire(4, 10, 5);
             }
             else if (P1currentSecondaryLevel == 5 && Time.time > nextSecondaryFire)
             {
                 secondaryFireRate = 0.10f;
                 nextSecondaryFire = Time.time + secondaryFireRate;
                 secondaryWeaponSound.PlayOneShot(weaponSounds[0]);
-                P1SecondaryFanFire(5, 30, 5);
+                P1SecondaryFanFire(5, 10, 5);
             }
         }
         //player 2
@@ -703,28 +707,28 @@ public class PlayerWeaponController : MonoBehaviour
                 nextSecondaryFire = Time.time + secondaryFireRate;
                 secondaryWeaponSound.PlayOneShot(weaponSounds[0]);
                 //How many bullets. Initial angle to be fired at. How much to increase the angle by.
-                P2SecondaryFanFire(2, 30, 5);
+                P2SecondaryFanFire(2, 10, 5);
             }
             else if (P2currentSecondaryLevel == 3 && Time.time > nextSecondaryFire)
             {
                 secondaryFireRate = 0.10f;
                 nextSecondaryFire = Time.time + secondaryFireRate;
                 secondaryWeaponSound.PlayOneShot(weaponSounds[0]);
-                P2SecondaryFanFire(3, 30, 5);
+                P2SecondaryFanFire(3, 10, 5);
             }
             else if (P2currentSecondaryLevel == 4 && Time.time > nextSecondaryFire)
             {
                 secondaryFireRate = 0.10f;
                 nextSecondaryFire = Time.time + secondaryFireRate;
                 secondaryWeaponSound.PlayOneShot(weaponSounds[0]);
-                P2SecondaryFanFire(4, 30, 5);
+                P2SecondaryFanFire(4, 10, 5);
             }
             else if (P2currentSecondaryLevel == 5 && Time.time > nextSecondaryFire)
             {
                 secondaryFireRate = 0.10f;
                 nextSecondaryFire = Time.time + secondaryFireRate;
                 secondaryWeaponSound.PlayOneShot(weaponSounds[0]);
-                P2SecondaryFanFire(5, 30, 5);
+                P2SecondaryFanFire(5, 10, 5);
             }
         }
     }

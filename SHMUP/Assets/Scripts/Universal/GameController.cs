@@ -749,7 +749,7 @@ public class GameController : MonoBehaviour
         //Interceptor Group
         whichSpawn1 = 0;
         whichSpawn2 = 12;
-        for (int i = 0; i <= 4; i++)
+        for (int i = 0; i <= 3; i++)
         {
             Instantiate(lightEnemies[2], mainSpawns[whichSpawn1].position, mainSpawns[12].rotation);
             yield return new WaitForSeconds(0.15f);
@@ -846,7 +846,7 @@ public class GameController : MonoBehaviour
         //Interceptors.
         whichSpawn1 = 0;
         whichSpawn2 = 12;
-        for (int i = 0; i <= 4; i++)
+        for (int i = 0; i <= 3; i++)
         {
             Instantiate(lightEnemies[2], mainSpawns[whichSpawn1].position, mainSpawns[12].rotation);
             yield return new WaitForSeconds(0.15f);
@@ -988,6 +988,33 @@ public class GameController : MonoBehaviour
         yield return new WaitForSeconds(4);
 
         bossWarning.SetActive(false);
+
+        
+        Instantiate(mediumEnemies[3], mainSpawns[6].position, mainSpawns[0].rotation);
+        yield return new WaitForSeconds(0.5f);
+        Instantiate(mediumEnemies[3], mainSpawns[3].position, mainSpawns[0].rotation);
+        yield return new WaitForSeconds(0.5f);
+        Instantiate(mediumEnemies[3], mainSpawns[9].position, mainSpawns[0].rotation);
+
+        yield return new WaitForSeconds(0.5f);
+        Instantiate(powerUps[5], mainSpawns[6].position, mainSpawns[0].rotation);
+        Instantiate(powerUps[1], mainSpawns[4].position, mainSpawns[0].rotation);
+        Instantiate(powerUps[0], mainSpawns[8].position, mainSpawns[0].rotation);
+
+
+        Instantiate(heavyEnemies[1], mainSpawns[6].position, mainSpawns[0].rotation);
+        yield return new WaitForSeconds(1.5f);
+        Instantiate(heavyEnemies[2], mainSpawns[3].position, mainSpawns[0].rotation);
+        yield return new WaitForSeconds(1.5f);
+        Instantiate(heavyEnemies[2], mainSpawns[9].position, mainSpawns[0].rotation);
+
+        yield return new WaitForSeconds(1.5f);
+        Instantiate(heavyEnemies[2], mainSpawns[6].position, mainSpawns[0].rotation);
+        yield return new WaitForSeconds(1.5f);
+        Instantiate(heavyEnemies[1], mainSpawns[3].position, mainSpawns[0].rotation);
+        yield return new WaitForSeconds(1.5f);
+        Instantiate(heavyEnemies[1], mainSpawns[9].position, mainSpawns[0].rotation);
+
 
         yield return new WaitForSeconds(7.5f);
 

@@ -1370,6 +1370,11 @@ Prefab:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 114114988136570890, guid: 888c7a88b750c4047a1ff8a089ef7c1d,
+        type: 2}
+      propertyPath: bosses.Array.size
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 4109044923904456, guid: 888c7a88b750c4047a1ff8a089ef7c1d, type: 2}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -1427,6 +1432,12 @@ Prefab:
       propertyPath: bossWarning
       value: 
       objectReference: {fileID: 1437316712}
+    - target: {fileID: 114114988136570890, guid: 888c7a88b750c4047a1ff8a089ef7c1d,
+        type: 2}
+      propertyPath: bosses.Array.data[2]
+      value: 
+      objectReference: {fileID: 1836927889457090, guid: 7db8e85eccb4ed24bb76a347943d68bb,
+        type: 2}
     m_RemovedComponents:
     - {fileID: 114721709833129874, guid: 888c7a88b750c4047a1ff8a089ef7c1d, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: 888c7a88b750c4047a1ff8a089ef7c1d, type: 2}

@@ -157,6 +157,7 @@ GameObject:
   - component: {fileID: 65549734158166066}
   - component: {fileID: 65128127037423092}
   - component: {fileID: 114119508562472174}
+  - component: {fileID: 65021605303942812}
   m_Layer: 0
   m_Name: Destroyer
   m_TagString: OverEnemy
@@ -876,7 +877,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1282186330355920}
   m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 8.1, y: 0, z: 22}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4788716663978520}
@@ -1980,6 +1981,18 @@ HingeJoint:
   m_BreakTorque: Infinity
   m_EnableCollision: 0
   m_EnablePreprocessing: 1
+--- !u!65 &65021605303942812
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1282186330355920}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1.579387, y: 3.82, z: 4.461473}
+  m_Center: {x: -3.710307, y: 0, z: -4.149867}
 --- !u!65 &65128127037423092
 BoxCollider:
   m_ObjectHideFlags: 1
@@ -2002,8 +2015,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 9, y: 3.82, z: 4.4614735}
-  m_Center: {x: 0, y: 0, z: -4.149867}
+  m_Size: {x: 1.5793867, y: 3.82, z: 4.4614735}
+  m_Center: {x: 3.7103066, y: 0, z: -4.149867}
 --- !u!95 &95215348662275032
 Animator:
   serializedVersion: 3
