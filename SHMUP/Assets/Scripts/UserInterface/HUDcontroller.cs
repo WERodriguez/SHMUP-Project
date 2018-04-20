@@ -836,7 +836,7 @@ public class HUDcontroller : MonoBehaviour
             {
                 characterChoice.sprite = character1;
 
-                P2characterText.text = "Name: Character A\nDescription:";
+                P2characterText.text = "Name: Sparky\nDescription: Truck driver turned toaster hunter after losing her truck";
             }
             if (choosingPlayer2Horizontal == 2)
             {
@@ -848,7 +848,7 @@ public class HUDcontroller : MonoBehaviour
             {
                 characterChoice.sprite = character3;
 
-                P2characterText.text = "Name: Character A\nDescription:";
+                P2characterText.text = "Name: Dozer\nDescription: Former truck driver on a quest for vengeance against the machines";
             }
             if (choosingPlayer2Horizontal == 4)
             {

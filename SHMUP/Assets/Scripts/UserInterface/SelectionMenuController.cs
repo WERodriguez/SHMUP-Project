@@ -392,7 +392,7 @@ public class SelectionMenuController : MonoBehaviour
 
                         DeactivateStat();
                         characterStat.enabled = true;
-                        characterStat.text = "Name: Character A\nDescription:";
+                        characterStat.text = "Name: Sparky\nDescription: Truck driver turned toaster hunter after losing her truck";
                     }
                     if (ship == true)
                     {
@@ -480,7 +480,7 @@ public class SelectionMenuController : MonoBehaviour
 
                         DeactivateStat();
                         characterStat.enabled = true;
-                        characterStat.text = "Name: Character C\nDescription:";
+                        characterStat.text = "Name: Dozer\nDescription: Former truck driver on a quest for vengeance against the machines";
                     }
                     if (ship == true)
                     {
@@ -951,7 +951,7 @@ public class SelectionMenuController : MonoBehaviour
 
                         DeactivateP1Stat();
                         P1characterStat.enabled = true;
-                        P1characterStat.text = "Name: Character A\nDescription:";
+                        P1characterStat.text = "Name: Sparky\nDescription: Truck driver turned toaster hunter after losing her truck";
                     }
                     if (P1ship == true)
                     {
@@ -1039,7 +1039,7 @@ public class SelectionMenuController : MonoBehaviour
 
                         DeactivateP1Stat();
                         P1characterStat.enabled = true;
-                        P1characterStat.text = "Name: Character C\nDescription: ";
+                        P1characterStat.text = "Name: Dozer\nDescription: Former truck driver on a quest for vengeance against the machines";
                     }
                     if (P1ship == true)
                     {
@@ -1190,7 +1190,7 @@ public class SelectionMenuController : MonoBehaviour
 
                         DeactivateP2Stat();
                         P2characterStat.enabled = true;
-                        P2characterStat.text = "Name: Character A\nDescription:";
+                        P2characterStat.text = "Name: Sparky\nDescription: Truck driver turned toaster hunter after losing her truck";
                     }
                     if (P2ship == true)
                     {
@@ -1278,7 +1278,7 @@ public class SelectionMenuController : MonoBehaviour
 
                         DeactivateP2Stat();
                         P2characterStat.enabled = true;
-                        P2characterStat.text = "Name: Character C\nDescription:";
+                        P2characterStat.text = "Name: Dozer\nDescription: Former truck driver on a quest for vengeance against the machines";
                     }
                     if (P2ship == true)
                     {

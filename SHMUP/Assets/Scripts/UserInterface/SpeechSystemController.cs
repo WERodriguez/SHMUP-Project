@@ -6,9 +6,11 @@ using UnityEngine.UI;
 public class SpeechSystemController : MonoBehaviour
 {
     private bool waitingSpeech;
-    private float randomSpeech;
     private bool P1speaking;
     private bool P2speaking;
+
+    private float P1randomSpeech;
+    private float P2randomSpeech;
 
     private bool P1NoLiveSpeech;
     private bool P2NoLiveSpeech;
@@ -304,64 +306,64 @@ public class SpeechSystemController : MonoBehaviour
         
         P1sprite1.fillAmount = 1;
 
-        randomSpeech = Random.Range(0, 90);
+        P1randomSpeech = Random.Range(0, 90);
 
         if (SelectionMenuController.P1characterType == 1)
         {
-            if (randomSpeech <= 30)
+            if (P1randomSpeech <= 30)
             {
-                P1text.text = "Let’s dance!";
+                P1text.text = "Roll out!";
             }
-            if (randomSpeech > 30 && randomSpeech <= 60)
+            if (P1randomSpeech > 30 && P1randomSpeech <= 60)
             {
-                P1text.text = "Oh yeah!";
+                P1text.text = "Coming for ya, toasters!";
             }
-            if (randomSpeech > 60)
+            if (P1randomSpeech > 60)
             {
-                P1text.text = "Try to keep up!";
+                P1text.text = "Let’s wreck’em!";
             }
         }
         if (SelectionMenuController.P1characterType == 2)
         {
-            if (randomSpeech <= 30)
+            if (P1randomSpeech <= 30)
             {
                 P1text.text = "Let’s dance!";
             }
-            if (randomSpeech > 30 && randomSpeech <= 60)
+            if (P1randomSpeech > 30 && P1randomSpeech <= 60)
             {
                 P1text.text = "Oh yeah!";
             }
-            if (randomSpeech > 60)
+            if (P1randomSpeech > 60)
             {
                 P1text.text = "Try to keep up!";
             }
         }
         if (SelectionMenuController.P1characterType == 3)
         {
-            if (randomSpeech <= 30)
+            if (P1randomSpeech <= 30)
             {
-                P1text.text = "Let’s rock!";
+                P1text.text = "Rolling out!";
             }
-            if (randomSpeech > 30 && randomSpeech <= 60)
+            if (P1randomSpeech > 30 && P1randomSpeech <= 60)
             {
-                P1text.text = "Yeah!";
+                P1text.text = "Oh yeah!";
             }
-            if (randomSpeech > 60)
+            if (P1randomSpeech > 60)
             {
-                P1text.text = "I’ll show you toasters how it’s done!";
+                P1text.text = "Let’s crush’em!";
             }
         }
         if (SelectionMenuController.P1characterType == 4)
         {
-            if (randomSpeech <= 30)
+            if (P1randomSpeech <= 30)
             {
                 P1text.text = "Let’s rock!";
             }
-            if (randomSpeech > 30 && randomSpeech <= 60)
+            if (P1randomSpeech > 30 && P1randomSpeech <= 60)
             {
                 P1text.text = "Yeah!";
             }
-            if (randomSpeech > 60)
+            if (P1randomSpeech > 60)
             {
                 P1text.text = "I’ll show you toasters how it’s done!";
             }
@@ -384,64 +386,64 @@ public class SpeechSystemController : MonoBehaviour
         
         P1sprite1.fillAmount = 1;
 
-        randomSpeech = Random.Range(0, 90);
+        P1randomSpeech = Random.Range(0, 90);
 
         if (SelectionMenuController.P1characterType == 1)
         {
-            if (randomSpeech <= 30)
+            if (P1randomSpeech <= 30)
             {
-                P1text.text = "Let’s dance!";
+                P1text.text = "Roll out!";
             }
-            if (randomSpeech > 30 && randomSpeech <= 60)
+            if (P1randomSpeech > 30 && P1randomSpeech <= 60)
             {
-                P1text.text = "Oh yeah!";
+                P1text.text = "Coming for ya, toasters!";
             }
-            if (randomSpeech > 60)
+            if (P1randomSpeech > 60)
             {
-                P1text.text = "Try to keep up!";
+                P1text.text = "Let’s wreck’em!";
             }
         }
         if (SelectionMenuController.P1characterType == 2)
         {
-            if (randomSpeech <= 30)
+            if (P1randomSpeech <= 30)
             {
                 P1text.text = "Let’s dance!";
             }
-            if (randomSpeech > 30 && randomSpeech <= 60)
+            if (P1randomSpeech > 30 && P1randomSpeech <= 60)
             {
                 P1text.text = "Oh yeah!";
             }
-            if (randomSpeech > 60)
+            if (P1randomSpeech > 60)
             {
                 P1text.text = "Try to keep up!";
             }
         }
         if (SelectionMenuController.P1characterType == 3)
         {
-            if (randomSpeech <= 30)
+            if (P1randomSpeech <= 30)
             {
-                P1text.text = "Let’s rock!";
+                P1text.text = "Rolling out!";
             }
-            if (randomSpeech > 30 && randomSpeech <= 60)
+            if (P1randomSpeech > 30 && P1randomSpeech <= 60)
             {
                 P1text.text = "Oh yeah!";
             }
-            if (randomSpeech > 60)
+            if (P1randomSpeech > 60)
             {
-                P1text.text = "I’ll show you toasters how it’s done!";
+                P1text.text = "Let’s crush’em!";
             }
         }
         if (SelectionMenuController.P1characterType == 4)
         {
-            if (randomSpeech <= 30)
+            if (P1randomSpeech <= 30)
             {
                 P1text.text = "Let’s rock!";
             }
-            if (randomSpeech > 30 && randomSpeech <= 60)
+            if (P1randomSpeech > 30 && P1randomSpeech <= 60)
             {
                 P1text.text = "Oh yeah!";
             }
-            if (randomSpeech > 60)
+            if (P1randomSpeech > 60)
             {
                 P1text.text = "I’ll show you toasters how it’s done!";
             }
@@ -457,64 +459,64 @@ public class SpeechSystemController : MonoBehaviour
 
         P2sprite1.fillAmount = 1;
 
-        randomSpeech = Random.Range(0, 90);
+        P2randomSpeech = Random.Range(0, 90);
 
         if (SelectionMenuController.P2characterType == 1)
         {
-            if (randomSpeech <= 30)
+            if (P2randomSpeech <= 30)
             {
-                P2text.text = "Let’s dance!";
+                P2text.text = "Roll out!";
             }
-            if (randomSpeech > 30 && randomSpeech <= 60)
+            if (P2randomSpeech > 30 && P2randomSpeech <= 60)
             {
-                P2text.text = "Oh yeah!";
+                P2text.text = "Coming for ya, toasters!";
             }
-            if (randomSpeech > 60)
+            if (P2randomSpeech > 60)
             {
-                P2text.text = "Try to keep up!";
+                P2text.text = "Let’s wreck’em!";
             }
         }
         if (SelectionMenuController.P2characterType == 2)
         {
-            if (randomSpeech <= 30)
+            if (P2randomSpeech <= 30)
             {
                 P2text.text = "Let’s dance!";
             }
-            if (randomSpeech > 30 && randomSpeech <= 60)
+            if (P2randomSpeech > 30 && P2randomSpeech <= 60)
             {
                 P2text.text = "Oh yeah!";
             }
-            if (randomSpeech > 60)
+            if (P2randomSpeech > 60)
             {
                 P2text.text = "Try to keep up!";
             }
         }
         if (SelectionMenuController.P2characterType == 3)
         {
-            if (randomSpeech <= 30)
+            if (P2randomSpeech <= 30)
             {
-                P2text.text = "Let’s rock!";
+                P2text.text = "Rolling out!";
             }
-            if (randomSpeech > 30 && randomSpeech <= 60)
+            if (P2randomSpeech > 30 && P2randomSpeech <= 60)
             {
                 P2text.text = "Oh yeah!";
             }
-            if (randomSpeech > 60)
+            if (P2randomSpeech > 60)
             {
-                P2text.text = "I’ll show you toasters how it’s done!";
+                P2text.text = "Let’s crush’em!";
             }
         }
         if (SelectionMenuController.P2characterType == 4)
         {
-            if (randomSpeech <= 30)
+            if (P2randomSpeech <= 30)
             {
                 P2text.text = "Let’s rock!";
             }
-            if (randomSpeech > 30 && randomSpeech <= 60)
+            if (P2randomSpeech > 30 && P2randomSpeech <= 60)
             {
                 P2text.text = "Oh yeah!";
             }
-            if (randomSpeech > 60)
+            if (P2randomSpeech > 60)
             {
                 P2text.text = "I’ll show you toasters how it’s done!";
             }
@@ -1208,223 +1210,223 @@ public class SpeechSystemController : MonoBehaviour
 
     private void P1Lines()
     {
-        randomSpeech = Random.Range(0, 90);
+        P1randomSpeech = Random.Range(0, 90);
 
         if (SelectionMenuController.P1characterType == 1)
         {
             //enemy
             if (HealthSystem.P1ramEnemy == 3)
             {
-                if (randomSpeech <= 30)
+                if (P1randomSpeech <= 30)
                 {
-                    P1text.text = "Splash!";
+                    P1text.text = "That was cute.";
                 }
-                if (randomSpeech > 30 && randomSpeech <= 60)
+                if (P1randomSpeech > 30 && P1randomSpeech <= 60)
                 {
-                    P1text.text = "Wrecked!";
+                    P1text.text = "Why are there always so many?";
                 }
-                if (randomSpeech > 60)
+                if (P1randomSpeech > 60)
                 {
-                    P1text.text = "Gotta do better than that!";
+                    P1text.text = "Little things just bounce off my hull.";
                 }
             }
             if (HealthSystem.P1lightEnemy == 3)
             {
-                if (randomSpeech <= 30)
+                if (P1randomSpeech <= 30)
                 {
-                    P1text.text = "Splash!";
+                    P1text.text = "That was cute.";
                 }
-                if (randomSpeech > 30 && randomSpeech <= 60)
+                if (P1randomSpeech > 30 && P1randomSpeech <= 60)
                 {
-                    P1text.text = "Wrecked!";
+                    P1text.text = "Why are there always so many?";
                 }
-                if (randomSpeech > 60)
+                if (P1randomSpeech > 60)
                 {
-                    P1text.text = "Gotta do better than that!";
+                    P1text.text = "Little things just bounce off my hull.";
                 }
             }
             if (HealthSystem.P1missileEnemy == 1)
             {
-                if (randomSpeech <= 30)
+                if (P1randomSpeech <= 30)
                 {
-                    P1text.text = "Slagged another one!";
+                    P1text.text = "Toasters are trying now!";
                 }
-                if (randomSpeech > 30 && randomSpeech <= 60)
+                if (P1randomSpeech > 30 && P1randomSpeech <= 60)
                 {
-                    P1text.text = "Look out below!";
+                    P1text.text = "Bye, bye!";
                 }
-                if (randomSpeech > 60)
+                if (P1randomSpeech > 60)
                 {
-                    P1text.text = "It’s raining scrap";
+                    P1text.text = "It’s raining spare parts!";
                 }
             }
             if (HealthSystem.P1destroyerEnemy == 1)
             {
-                if (randomSpeech <= 30)
+                if (P1randomSpeech <= 30)
                 {
-                    P1text.text = "Slagged another one!";
+                    P1text.text = "Supersized toaster down!";
                 }
-                if (randomSpeech > 30 && randomSpeech <= 60)
+                if (P1randomSpeech > 30 && P1randomSpeech <= 60)
+                {
+                    P1text.text = "Think they’re mad about that one?";
+                }
+                if (P1randomSpeech > 60)
                 {
                     P1text.text = "Look out below!";
-                }
-                if (randomSpeech > 60)
-                {
-                    P1text.text = "It’s raining scrap";
                 }
             }
             if (HealthSystem.P1bossKill)
             {
-                if (randomSpeech <= 30)
+                if (P1randomSpeech <= 30)
                 {
-                    P1text.text = "Another successful hunt!";
+                    P1text.text = "That went better than I thought!";
                 }
-                if (randomSpeech > 30 && randomSpeech <= 60)
+                if (P1randomSpeech > 30 && P1randomSpeech <= 60)
                 {
-                    P1text.text = "Thought you had me there, didn’t ya?";
+                    P1text.text = "Game over toaster!";
                 }
-                if (randomSpeech > 60)
+                if (P1randomSpeech > 60)
                 {
-                    P1text.text = "The crew’s gonna love hearing this one.";
+                    P1text.text = "That’s gonna be a mess to clean up.";
                 }
             }
 
             //health pickup
             if (PlayerHealthSystem.P1lessLive)
             {
-                if (randomSpeech <= 30)
+                if (P1randomSpeech <= 30)
                 {
-                    P1text.text = "Dangit! That was my favorite ship.";
+                    P1text.text = "Sparky ain’t supposed to spark!";
                 }
-                if (randomSpeech > 30 && randomSpeech <= 60)
+                if (P1randomSpeech > 30 && P1randomSpeech <= 60)
                 {
-                    P1text.text = "What’s with all the alarms?!";
+                    P1text.text = "Wings are gone…\nThat’s not good.";
                 }
-                if (randomSpeech > 60)
+                if (P1randomSpeech > 60)
                 {
-                    P1text.text = "At least I have a spare.";
+                    P1text.text = "I’ll be back toasters!";
                 }
             }
             if (PlayerHealthSystem.P1currentLives < 0 && !P1NoLiveSpeech)
             {
-                if (randomSpeech <= 30)
+                if (P1randomSpeech <= 30)
                 {
-                    P1text.text = "That was my last ship?!?";
+                    P1text.text = "Union benefits!?";
                 }
-                if (randomSpeech > 30 && randomSpeech <= 60)
+                if (P1randomSpeech > 30 && P1randomSpeech <= 60)
                 {
-                    P1text.text = "Emergency landing!";
+                    P1text.text = "Dang it! I’m out!";
                 }
-                if (randomSpeech > 60)
+                if (P1randomSpeech > 60)
                 {
-                    P1text.text = "Eject!Eject!";
+                    P1text.text = "Sparky’s out of commission!";
                 }
             }
             if (PlayerHealthSystem.P1currentHealth <= (PlayerHealthSystem.P1maxHealth / 2) && !P1HalfHealthSpeech)
             {
-                if (randomSpeech <= 30)
+                if (P1randomSpeech <= 30)
                 {
-                    P1text.text = "Dangit! That was my favorite ship.";
+                    P1text.text = "Sparky ain’t supposed to spark!";
                 }
-                if (randomSpeech > 30 && randomSpeech <= 60)
+                if (P1randomSpeech > 30 && P1randomSpeech <= 60)
                 {
-                    P1text.text = "What’s with all the alarms?!";
+                    P1text.text = "Wings are gone…\nThat’s not good.";
                 }
-                if (randomSpeech > 60)
+                if (P1randomSpeech > 60)
                 {
-                    P1text.text = "At least I have a spare.";
+                    P1text.text = "I’ll be back toasters!";
                 }
             }
             if (PlayerHealthSystem.P1moreHealth)
             {
-                if (randomSpeech <= 30)
+                if (P1randomSpeech <= 30)
                 {
-                    P1text.text = "It was just a scratch!";
+                    P1text.text = "Phew! That wing was starting to fall.";
                 }
-                if (randomSpeech > 30 && randomSpeech <= 60)
+                if (P1randomSpeech > 30 && P1randomSpeech <= 60)
                 {
-                    P1text.text = "Was starting to miss that wing!";
+                    P1text.text = "Sparky ain’t sparking now!";
                 }
-                if (randomSpeech > 60)
+                if (P1randomSpeech > 60)
                 {
-                    P1text.text = "Just like new.";
+                    P1text.text = "Like new!";
                 }
             }
             if (PlayerHealthSystem.P1moreShield)
             {
-                if (randomSpeech <= 30)
+                if (P1randomSpeech <= 30)
                 {
-                    P1text.text = "Can’t scratch my paint!";
+                    P1text.text = "This is the good kind of sparking!";
                 }
-                if (randomSpeech > 30 && randomSpeech <= 60)
+                if (P1randomSpeech > 30 && P1randomSpeech <= 60)
                 {
-                    P1text.text = "Shields up!";
+                    P1text.text = "Shiny shields!";
                 }
-                if (randomSpeech > 60)
+                if (P1randomSpeech > 60)
                 {
-                    P1text.text = "Hah!That tickles.";
+                    P1text.text = "Tickles every time.";
                 }
             }
             if (PlayerHealthSystem.P1moreLive)
             {
-                if (randomSpeech <= 30)
+                if (P1randomSpeech <= 30)
                 {
-                    P1text.text = "Nice! A spare!";
+                    P1text.text = "Where were these when my truck blew up?";
                 }
-                if (randomSpeech > 30 && randomSpeech <= 60)
+                if (P1randomSpeech > 30 && P1randomSpeech <= 60)
                 {
-                    P1text.text = "You can never have too many ships.";
+                    P1text.text = "Not a new truck but I’ll take it!";
                 }
-                if (randomSpeech > 60)
+                if (P1randomSpeech > 60)
                 {
-                    P1text.text = "Just try and stop me!";
+                    P1text.text = "Sparky ain’t going away, toasters!";
                 }
             }
 
             //weapon pickup
             if (PlayerWeaponController.P1morePrimary)
             {
-                if (randomSpeech <= 30)
+                if (P1randomSpeech <= 30)
                 {
-                    P1text.text = "More guns! More glory!";
+                    P1text.text = "Shiny new gun!";
                 }
-                if (randomSpeech > 30 && randomSpeech <= 60)
+                if (P1randomSpeech > 30 && P1randomSpeech <= 60)
                 {
-                    P1text.text = "Oooh you’re gonna get it now.";
+                    P1text.text = "Gonna make it rain with this!";
                 }
-                if (randomSpeech > 60)
+                if (P1randomSpeech > 60)
                 {
-                    P1text.text = "Ya dun goofed, toasters.";
+                    P1text.text = "Light show just got better!";
                 }
             }
             if (PlayerWeaponController.P1moreSecondary)
             {
-                if (randomSpeech <= 30)
+                if (P1randomSpeech <= 30)
                 {
-                    P1text.text = "More guns! More glory!";
+                    P1text.text = "Shiny new gun!";
                 }
-                if (randomSpeech > 30 && randomSpeech <= 60)
+                if (P1randomSpeech > 30 && P1randomSpeech <= 60)
                 {
-                    P1text.text = "Oooh you’re gonna get it now.";
+                    P1text.text = "Gonna make it rain with this!";
                 }
-                if (randomSpeech > 60)
+                if (P1randomSpeech > 60)
                 {
-                    P1text.text = "Ya dun goofed, toasters.";
+                    P1text.text = "Light show just got better!";
                 }
             }
             if (PlayerWeaponController.P1moreAmmo)
             {
-                if (randomSpeech <= 30)
+                if (P1randomSpeech <= 30)
                 {
-                    P1text.text = "It’s a big girl gun!";
+                    P1text.text = "Do toasters feel fear?";
                 }
-                if (randomSpeech > 30 && randomSpeech <= 60)
+                if (P1randomSpeech > 30 && P1randomSpeech <= 60)
                 {
-                    P1text.text = "Ready to melt some toasters!";
+                    P1text.text = "Gonna slag me some toasters.";
                 }
-                if (randomSpeech > 60)
+                if (P1randomSpeech > 60)
                 {
-                    P1text.text = "Today just got a whole lot better";
+                    P1text.text = "Never enough!";
                 }
             }
         }
@@ -1433,75 +1435,75 @@ public class SpeechSystemController : MonoBehaviour
             //enemy
             if (HealthSystem.P1ramEnemy == 3)
             {
-                if (randomSpeech <= 30)
+                if (P1randomSpeech <= 30)
                 {
                     P1text.text = "Splash!";
                 }
-                if (randomSpeech > 30 && randomSpeech <= 60)
+                if (P1randomSpeech > 30 && P1randomSpeech <= 60)
                 {
                     P1text.text = "Wrecked!";
                 }
-                if (randomSpeech > 60)
+                if (P1randomSpeech > 60)
                 {
                     P1text.text = "Gotta do better than that!";
                 }
             }
             if (HealthSystem.P1lightEnemy == 3)
             {
-                if (randomSpeech <= 30)
+                if (P1randomSpeech <= 30)
                 {
                     P1text.text = "Splash!";
                 }
-                if (randomSpeech > 30 && randomSpeech <= 60)
+                if (P1randomSpeech > 30 && P1randomSpeech <= 60)
                 {
                     P1text.text = "Wrecked!";
                 }
-                if (randomSpeech > 60)
+                if (P1randomSpeech > 60)
                 {
                     P1text.text = "Gotta do better than that!";
                 }
             }
             if (HealthSystem.P1missileEnemy == 1)
             {
-                if (randomSpeech <= 30)
+                if (P1randomSpeech <= 30)
                 {
                     P1text.text = "Slagged another one!";
                 }
-                if (randomSpeech > 30 && randomSpeech <= 60)
+                if (P1randomSpeech > 30 && P1randomSpeech <= 60)
                 {
                     P1text.text = "Look out below!";
                 }
-                if (randomSpeech > 60)
+                if (P1randomSpeech > 60)
                 {
                     P1text.text = "It’s raining scrap";
                 }
             }
             if (HealthSystem.P1destroyerEnemy == 1)
             {
-                if (randomSpeech <= 30)
+                if (P1randomSpeech <= 30)
                 {
                     P1text.text = "Slagged another one!";
                 }
-                if (randomSpeech > 30 && randomSpeech <= 60)
+                if (P1randomSpeech > 30 && P1randomSpeech <= 60)
                 {
                     P1text.text = "Look out below!";
                 }
-                if (randomSpeech > 60)
+                if (P1randomSpeech > 60)
                 {
                     P1text.text = "It’s raining scrap";
                 }
             }
             if (HealthSystem.P1bossKill)
             {
-                if (randomSpeech <= 30)
+                if (P1randomSpeech <= 30)
                 {
                     P1text.text = "Another successful hunt!";
                 }
-                if (randomSpeech > 30 && randomSpeech <= 60)
+                if (P1randomSpeech > 30 && P1randomSpeech <= 60)
                 {
                     P1text.text = "Thought you had me there, didn’t ya?";
                 }
-                if (randomSpeech > 60)
+                if (P1randomSpeech > 60)
                 {
                     P1text.text = "The crew’s gonna love hearing this one.";
                 }
@@ -1510,90 +1512,90 @@ public class SpeechSystemController : MonoBehaviour
             //health pickup
             if (PlayerHealthSystem.P1lessLive)
             {
-                if (randomSpeech <= 30)
+                if (P1randomSpeech <= 30)
                 {
                     P1text.text = "Dangit! That was my favorite ship.";
                 }
-                if (randomSpeech > 30 && randomSpeech <= 60)
+                if (P1randomSpeech > 30 && P1randomSpeech <= 60)
                 {
                     P1text.text = "What’s with all the alarms?!";
                 }
-                if (randomSpeech > 60)
+                if (P1randomSpeech > 60)
                 {
                     P1text.text = "At least I have a spare.";
                 }
             }
             if (PlayerHealthSystem.P1currentLives < 0 && !P1NoLiveSpeech)
             {
-                if (randomSpeech <= 30)
+                if (P1randomSpeech <= 30)
                 {
                     P1text.text = "That was my last ship?!?";
                 }
-                if (randomSpeech > 30 && randomSpeech <= 60)
+                if (P1randomSpeech > 30 && P1randomSpeech <= 60)
                 {
                     P1text.text = "Emergency landing!";
                 }
-                if (randomSpeech > 60)
+                if (P1randomSpeech > 60)
                 {
                     P1text.text = "Eject!Eject!";
                 }
             }
             if (PlayerHealthSystem.P1currentHealth <= (PlayerHealthSystem.P1maxHealth / 2) && !P1HalfHealthSpeech)
             {
-                if (randomSpeech <= 30)
+                if (P1randomSpeech <= 30)
                 {
                     P1text.text = "Dangit! That was my favorite ship.";
                 }
-                if (randomSpeech > 30 && randomSpeech <= 60)
+                if (P1randomSpeech > 30 && P1randomSpeech <= 60)
                 {
                     P1text.text = "What’s with all the alarms?!";
                 }
-                if (randomSpeech > 60)
+                if (P1randomSpeech > 60)
                 {
                     P1text.text = "At least I have a spare.";
                 }
             }
             if (PlayerHealthSystem.P1moreHealth)
             {
-                if (randomSpeech <= 30)
+                if (P1randomSpeech <= 30)
                 {
                     P1text.text = "It was just a scratch!";
                 }
-                if (randomSpeech > 30 && randomSpeech <= 60)
+                if (P1randomSpeech > 30 && P1randomSpeech <= 60)
                 {
                     P1text.text = "Was starting to miss that wing!";
                 }
-                if (randomSpeech > 60)
+                if (P1randomSpeech > 60)
                 {
                     P1text.text = "Just like new.";
                 }
             }
             if (PlayerHealthSystem.P1moreShield)
             {
-                if (randomSpeech <= 30)
+                if (P1randomSpeech <= 30)
                 {
                     P1text.text = "Can’t scratch my paint!";
                 }
-                if (randomSpeech > 30 && randomSpeech <= 60)
+                if (P1randomSpeech > 30 && P1randomSpeech <= 60)
                 {
                     P1text.text = "Shields up!";
                 }
-                if (randomSpeech > 60)
+                if (P1randomSpeech > 60)
                 {
                     P1text.text = "Hah!That tickles.";
                 }
             }
             if (PlayerHealthSystem.P1moreLive)
             {
-                if (randomSpeech <= 30)
+                if (P1randomSpeech <= 30)
                 {
                     P1text.text = "Nice! A spare!";
                 }
-                if (randomSpeech > 30 && randomSpeech <= 60)
+                if (P1randomSpeech > 30 && P1randomSpeech <= 60)
                 {
                     P1text.text = "You can never have too many ships.";
                 }
-                if (randomSpeech > 60)
+                if (P1randomSpeech > 60)
                 {
                     P1text.text = "Just try and stop me!";
                 }
@@ -1602,45 +1604,45 @@ public class SpeechSystemController : MonoBehaviour
             //weapon pickup
             if (PlayerWeaponController.P1morePrimary)
             {
-                if (randomSpeech <= 30)
+                if (P1randomSpeech <= 30)
                 {
                     P1text.text = "More guns! More glory!";
                 }
-                if (randomSpeech > 30 && randomSpeech <= 60)
+                if (P1randomSpeech > 30 && P1randomSpeech <= 60)
                 {
                     P1text.text = "Oooh you’re gonna get it now.";
                 }
-                if (randomSpeech > 60)
+                if (P1randomSpeech > 60)
                 {
                     P1text.text = "Ya dun goofed, toasters.";
                 }
             }
             if (PlayerWeaponController.P1moreSecondary)
             {
-                if (randomSpeech <= 30)
+                if (P1randomSpeech <= 30)
                 {
                     P1text.text = "More guns! More glory!";
                 }
-                if (randomSpeech > 30 && randomSpeech <= 60)
+                if (P1randomSpeech > 30 && P1randomSpeech <= 60)
                 {
                     P1text.text = "Oooh you’re gonna get it now.";
                 }
-                if (randomSpeech > 60)
+                if (P1randomSpeech > 60)
                 {
                     P1text.text = "Ya dun goofed, toasters.";
                 }
             }
             if (PlayerWeaponController.P1moreAmmo)
             {
-                if (randomSpeech <= 30)
+                if (P1randomSpeech <= 30)
                 {
                     P1text.text = "It’s a big girl gun!";
                 }
-                if (randomSpeech > 30 && randomSpeech <= 60)
+                if (P1randomSpeech > 30 && P1randomSpeech <= 60)
                 {
                     P1text.text = "Ready to melt some toasters!";
                 }
-                if (randomSpeech > 60)
+                if (P1randomSpeech > 60)
                 {
                     P1text.text = "Today just got a whole lot better";
                 }
@@ -1651,216 +1653,216 @@ public class SpeechSystemController : MonoBehaviour
             //enemy
             if (HealthSystem.P1ramEnemy == 3)
             {
-                if (randomSpeech <= 30)
+                if (P1randomSpeech <= 30)
                 {
-                    P1text.text = "Like they ever stood a chance!";
+                    P1text.text = "Pain train coming through!";
                 }
-                if (randomSpeech > 30 && randomSpeech <= 60)
+                if (P1randomSpeech > 30 && P1randomSpeech <= 60)
                 {
-                    P1text.text = "Where do they keep getting these?!";
+                    P1text.text = "Not even a garbage truck can handle all this trash!";
                 }
-                if (randomSpeech > 60)
+                if (P1randomSpeech > 60)
                 {
-                    P1text.text = "Not even a fair fight.";
+                    P1text.text = "Was that a speed bump?";
                 }
             }
             if (HealthSystem.P1lightEnemy == 3)
             {
-                if (randomSpeech <= 30)
+                if (P1randomSpeech <= 30)
                 {
-                    P1text.text = "Like they ever stood a chance!";
+                    P1text.text = "Pain train coming through!";
                 }
-                if (randomSpeech > 30 && randomSpeech <= 60)
+                if (P1randomSpeech > 30 && P1randomSpeech <= 60)
                 {
-                    P1text.text = "Where do they keep getting these?!";
+                    P1text.text = "Not even a garbage truck can handle all this trash!";
                 }
-                if (randomSpeech > 60)
+                if (P1randomSpeech > 60)
                 {
-                    P1text.text = "Not even a fair fight.";
+                    P1text.text = "Was that a speed bump?";
                 }
             }
             if (HealthSystem.P1missileEnemy == 1)
             {
-                if (randomSpeech <= 30)
+                if (P1randomSpeech <= 30)
                 {
-                    P1text.text = "Splash!!!";
+                    P1text.text = "Making it rain!";
                 }
-                if (randomSpeech > 30 && randomSpeech <= 60)
+                if (P1randomSpeech > 30 && P1randomSpeech <= 60)
                 {
-                    P1text.text = "At least you tried.";
+                    P1text.text = "Quality scrap right there.";
                 }
-                if (randomSpeech > 60)
+                if (P1randomSpeech > 60)
                 {
-                    P1text.text = "Try and keep up!";
+                    P1text.text = "Crushed!";
                 }
             }
             if (HealthSystem.P1destroyerEnemy == 1)
             {
-                if (randomSpeech <= 30)
+                if (P1randomSpeech <= 30)
                 {
-                    P1text.text = "Splash!!!";
+                    P1text.text = "Didn’t know they made’em that big!";
                 }
-                if (randomSpeech > 30 && randomSpeech <= 60)
+                if (P1randomSpeech > 30 && P1randomSpeech <= 60)
                 {
-                    P1text.text = "At least you tried.";
+                    P1text.text = "That big’un wasn’t so tough.";
                 }
-                if (randomSpeech > 60)
+                if (P1randomSpeech > 60)
                 {
-                    P1text.text = "Try and keep up!";
+                    P1text.text = "Can’t stop the Dozer!";
                 }
             }
             if (HealthSystem.P1bossKill)
             {
-                if (randomSpeech <= 30)
+                if (P1randomSpeech <= 30)
                 {
-                    P1text.text = "Woo! Actually broke a sweat.";
+                    P1text.text = "I’m the biggest and the strongest!";
                 }
-                if (randomSpeech > 30 && randomSpeech <= 60)
+                if (P1randomSpeech > 30 && P1randomSpeech <= 60)
                 {
-                    P1text.text = "What did you think was gonna happen?!";
+                    P1text.text = "That was for my truck, toasters!";
                 }
-                if (randomSpeech > 60)
+                if (P1randomSpeech > 60)
                 {
-                    P1text.text = "Can’t wait to brag about this!";
+                    P1text.text = "Too bad we don’t have time to sell the scrap.";
                 }
             }
 
             //health pickup
             if (PlayerHealthSystem.P1lessLive)
             {
-                if (randomSpeech <= 30)
+                if (P1randomSpeech <= 30)
                 {
-                    P1text.text = "Jokes on you I got a spare!";
+                    P1text.text = "Duct tape’s  peeling off!";
                 }
-                if (randomSpeech > 30 && randomSpeech <= 60)
+                if (P1randomSpeech > 30 && P1randomSpeech <= 60)
                 {
-                    P1text.text = "That light’s not supposed to flash!";
+                    P1text.text = "Didn’t know I had a window there! Wait...";
                 }
-                if (randomSpeech > 60)
+                if (P1randomSpeech > 60)
                 {
-                    P1text.text = "Lucky shot!";
+                    P1text.text = "Ground’s coming up awful quick!";
                 }
             }
             if (PlayerHealthSystem.P1currentLives < 0 && !P1NoLiveSpeech)
             {
-                if (randomSpeech <= 30)
+                if (P1randomSpeech <= 30)
                 {
-                    P1text.text = "What do you mean I don’t have a spare?!?";
+                    P1text.text = "At least I have my union benefits!";
                 }
-                if (randomSpeech > 30 && randomSpeech <= 60)
+                if (P1randomSpeech > 30 && P1randomSpeech <= 60)
                 {
-                    P1text.text = "Guess I’m walking…";
+                    P1text.text = "What do you mean I ain’t got no spares?!";
                 }
-                if (randomSpeech > 60)
+                if (P1randomSpeech > 60)
                 {
-                    P1text.text = "Going down!";
+                    P1text.text = "Dozer down! Dozer down!";
                 }
             }
             if (PlayerHealthSystem.P1currentHealth <= (PlayerHealthSystem.P1maxHealth / 2) && !P1HalfHealthSpeech)
             {
-                if (randomSpeech <= 30)
+                if (P1randomSpeech <= 30)
                 {
-                    P1text.text = "Jokes on you I got a spare!";
+                    P1text.text = "Duct tape’s  peeling off!";
                 }
-                if (randomSpeech > 30 && randomSpeech <= 60)
+                if (P1randomSpeech > 30 && P1randomSpeech <= 60)
                 {
-                    P1text.text = "That light’s not supposed to flash!";
+                    P1text.text = "Didn’t know I had a window there! Wait...";
                 }
-                if (randomSpeech > 60)
+                if (P1randomSpeech > 60)
                 {
-                    P1text.text = "Lucky shot!";
+                    P1text.text = "Ground’s coming up awful quick!";
                 }
             }
             if (PlayerHealthSystem.P1moreHealth)
             {
-                if (randomSpeech <= 30)
+                if (P1randomSpeech <= 30)
                 {
-                    P1text.text = "Fresh paint job!";
+                    P1text.text = "Only the finest duct tape for my ship!";
                 }
-                if (randomSpeech > 30 && randomSpeech <= 60)
+                if (P1randomSpeech > 30 && P1randomSpeech <= 60)
                 {
-                    P1text.text = "I was starting to miss that wing.";
+                    P1text.text = "Just like new!";
                 }
-                if (randomSpeech > 60)
+                if (P1randomSpeech > 60)
                 {
-                    P1text.text = "Guess I could get some fresh air later.";
+                    P1text.text = "Hey that rattlin’ stopped.";
                 }
             }
             if (PlayerHealthSystem.P1moreShield)
             {
-                if (randomSpeech <= 30)
+                if (P1randomSpeech <= 30)
                 {
-                    P1text.text = "Ain’t scratching my paint job now!";
+                    P1text.text = "Wish I had these when I was learning to drive!";
                 }
-                if (randomSpeech > 30 && randomSpeech <= 60)
+                if (P1randomSpeech > 30 && P1randomSpeech <= 60)
                 {
-                    P1text.text = "Hey toasters!You dropped a battery!!";
+                    P1text.text = "Think toaster batteries work on a truck?";
                 }
-                if (randomSpeech > 60)
+                if (P1randomSpeech > 60)
                 {
-                    P1text.text = "O - o oh tingly.";
+                    P1text.text = "Try and scratch me now!";
                 }
             }
             if (PlayerHealthSystem.P1moreLive)
             {
-                if (randomSpeech <= 30)
+                if (P1randomSpeech <= 30)
                 {
-                    P1text.text = "Like I need a spare ship!";
+                    P1text.text = "Another one for the fleet!";
                 }
-                if (randomSpeech > 30 && randomSpeech <= 60)
+                if (P1randomSpeech > 30 && P1randomSpeech <= 60)
                 {
-                    P1text.text = "Guess we can give that spare to the museum.";
+                    P1text.text = "Brand, spanking, new ship!";
                 }
-                if (randomSpeech > 60)
+                if (P1randomSpeech > 60)
                 {
-                    P1text.text = "Nice!An extra ship!!";
+                    P1text.text = "We’ll put some character on this later!";
                 }
             }
 
             //weapon pickup
             if (PlayerWeaponController.P1morePrimary)
             {
-                if (randomSpeech <= 30)
+                if (P1randomSpeech <= 30)
                 {
-                    P1text.text = "Now with more freedom!";
+                    P1text.text = "Oooh. More gun.";
                 }
-                if (randomSpeech > 30 && randomSpeech <= 60)
+                if (P1randomSpeech > 30 && P1randomSpeech <= 60)
                 {
-                    P1text.text = "No we’re talking!";
+                    P1text.text = "This! Is! My! Boomstick!";
                 }
-                if (randomSpeech > 60)
+                if (P1randomSpeech > 60)
                 {
-                    P1text.text = "Didn’t think I could get any better!";
+                    P1text.text = "PEW! PEW!";
                 }
             }
             if (PlayerWeaponController.P1moreSecondary)
             {
-                if (randomSpeech <= 30)
+                if (P1randomSpeech <= 30)
                 {
-                    P1text.text = "Now with more freedom!";
+                    P1text.text = "Oooh. More gun.";
                 }
-                if (randomSpeech > 30 && randomSpeech <= 60)
+                if (P1randomSpeech > 30 && P1randomSpeech <= 60)
                 {
-                    P1text.text = "No we’re talking!";
+                    P1text.text = "This! Is! My! Boomstick!";
                 }
-                if (randomSpeech > 60)
+                if (P1randomSpeech > 60)
                 {
-                    P1text.text = "Didn’t think I could get any better!";
+                    P1text.text = "PEW! PEW!";
                 }
             }
             if (PlayerWeaponController.P1moreAmmo)
             {
-                if (randomSpeech <= 30)
+                if (P1randomSpeech <= 30)
                 {
-                    P1text.text = "It’s a big boy gun!";
+                    P1text.text = "Ya dun goofed now!";
                 }
-                if (randomSpeech > 30 && randomSpeech <= 60)
+                if (P1randomSpeech > 30 && P1randomSpeech <= 60)
                 {
-                    P1text.text = "More fuel for the big red button!";
+                    P1text.text = "Gonna have a fireworks show now!";
                 }
-                if (randomSpeech > 60)
+                if (P1randomSpeech > 60)
                 {
-                    P1text.text = "Scrap heap’s gonna get a lot bigger!";
+                    P1text.text = "Big gun’s loaded!";
                 }
             }
         }
@@ -1869,75 +1871,75 @@ public class SpeechSystemController : MonoBehaviour
             //enemy
             if (HealthSystem.P1ramEnemy == 3)
             {
-                if (randomSpeech <= 30)
+                if (P1randomSpeech <= 30)
                 {
                     P1text.text = "Like they ever stood a chance!";
                 }
-                if (randomSpeech > 30 && randomSpeech <= 60)
+                if (P1randomSpeech > 30 && P1randomSpeech <= 60)
                 {
                     P1text.text = "Where do they keep getting these?!";
                 }
-                if (randomSpeech > 60)
+                if (P1randomSpeech > 60)
                 {
                     P1text.text = "Not even a fair fight.";
                 }
             }
             if (HealthSystem.P1lightEnemy == 3)
             {
-                if (randomSpeech <= 30)
+                if (P1randomSpeech <= 30)
                 {
                     P1text.text = "Like they ever stood a chance!";
                 }
-                if (randomSpeech > 30 && randomSpeech <= 60)
+                if (P1randomSpeech > 30 && P1randomSpeech <= 60)
                 {
                     P1text.text = "Where do they keep getting these?!";
                 }
-                if (randomSpeech > 60)
+                if (P1randomSpeech > 60)
                 {
                     P1text.text = "Not even a fair fight.";
                 }
             }
             if (HealthSystem.P1missileEnemy == 1)
             {
-                if (randomSpeech <= 30)
+                if (P1randomSpeech <= 30)
                 {
                     P1text.text = "Splash!!!";
                 }
-                if (randomSpeech > 30 && randomSpeech <= 60)
+                if (P1randomSpeech > 30 && P1randomSpeech <= 60)
                 {
                     P1text.text = "At least you tried.";
                 }
-                if (randomSpeech > 60)
+                if (P1randomSpeech > 60)
                 {
                     P1text.text = "Try and keep up!";
                 }
             }
             if (HealthSystem.P1destroyerEnemy == 1)
             {
-                if (randomSpeech <= 30)
+                if (P1randomSpeech <= 30)
                 {
                     P1text.text = "Splash!!!";
                 }
-                if (randomSpeech > 30 && randomSpeech <= 60)
+                if (P1randomSpeech > 30 && P1randomSpeech <= 60)
                 {
                     P1text.text = "At least you tried.";
                 }
-                if (randomSpeech > 60)
+                if (P1randomSpeech > 60)
                 {
                     P1text.text = "Try and keep up!";
                 }
             }
             if (HealthSystem.P1bossKill)
             {
-                if (randomSpeech <= 30)
+                if (P1randomSpeech <= 30)
                 {
                     P1text.text = "Woo! Actually broke a sweat.";
                 }
-                if (randomSpeech > 30 && randomSpeech <= 60)
+                if (P1randomSpeech > 30 && P1randomSpeech <= 60)
                 {
                     P1text.text = "What did you think was gonna happen?!";
                 }
-                if (randomSpeech > 60)
+                if (P1randomSpeech > 60)
                 {
                     P1text.text = "Can’t wait to brag about this!";
                 }
@@ -1946,90 +1948,90 @@ public class SpeechSystemController : MonoBehaviour
             //health pickup
             if (PlayerHealthSystem.P1lessLive)
             {
-                if (randomSpeech <= 30)
+                if (P1randomSpeech <= 30)
                 {
                     P1text.text = "Jokes on you I got a spare!";
                 }
-                if (randomSpeech > 30 && randomSpeech <= 60)
+                if (P1randomSpeech > 30 && P1randomSpeech <= 60)
                 {
                     P1text.text = "That light’s not supposed to flash!";
                 }
-                if (randomSpeech > 60)
+                if (P1randomSpeech > 60)
                 {
                     P1text.text = "Lucky shot!";
                 }
             }
             if (PlayerHealthSystem.P1currentLives < 0 && !P1NoLiveSpeech)
             {
-                if (randomSpeech <= 30)
+                if (P1randomSpeech <= 30)
                 {
                     P1text.text = "What do you mean I don’t have a spare?!?";
                 }
-                if (randomSpeech > 30 && randomSpeech <= 60)
+                if (P1randomSpeech > 30 && P1randomSpeech <= 60)
                 {
                     P1text.text = "Guess I’m walking…";
                 }
-                if (randomSpeech > 60)
+                if (P1randomSpeech > 60)
                 {
                     P1text.text = "Going down!";
                 }
             }
             if (PlayerHealthSystem.P1currentHealth <= (PlayerHealthSystem.P1maxHealth / 2) && !P1HalfHealthSpeech)
             {
-                if (randomSpeech <= 30)
+                if (P1randomSpeech <= 30)
                 {
                     P1text.text = "Jokes on you I got a spare!";
                 }
-                if (randomSpeech > 30 && randomSpeech <= 60)
+                if (P1randomSpeech > 30 && P1randomSpeech <= 60)
                 {
                     P1text.text = "That light’s not supposed to flash!";
                 }
-                if (randomSpeech > 60)
+                if (P1randomSpeech > 60)
                 {
                     P1text.text = "Lucky shot!";
                 }
             }
             if (PlayerHealthSystem.P1moreHealth)
             {
-                if (randomSpeech <= 30)
+                if (P1randomSpeech <= 30)
                 {
                     P1text.text = "Fresh paint job!";
                 }
-                if (randomSpeech > 30 && randomSpeech <= 60)
+                if (P1randomSpeech > 30 && P1randomSpeech <= 60)
                 {
                     P1text.text = "I was starting to miss that wing.";
                 }
-                if (randomSpeech > 60)
+                if (P1randomSpeech > 60)
                 {
                     P1text.text = "Guess I could get some fresh air later.";
                 }
             }
             if (PlayerHealthSystem.P1moreShield)
             {
-                if (randomSpeech <= 30)
+                if (P1randomSpeech <= 30)
                 {
                     P1text.text = "Ain’t scratching my paint job now!";
                 }
-                if (randomSpeech > 30 && randomSpeech <= 60)
+                if (P1randomSpeech > 30 && P1randomSpeech <= 60)
                 {
                     P1text.text = "Hey toasters!You dropped a battery!!";
                 }
-                if (randomSpeech > 60)
+                if (P1randomSpeech > 60)
                 {
                     P1text.text = "O - o oh tingly.";
                 }
             }
             if (PlayerHealthSystem.P1moreLive)
             {
-                if (randomSpeech <= 30)
+                if (P1randomSpeech <= 30)
                 {
                     P1text.text = "Like I need a spare ship!";
                 }
-                if (randomSpeech > 30 && randomSpeech <= 60)
+                if (P1randomSpeech > 30 && P1randomSpeech <= 60)
                 {
                     P1text.text = "Guess we can give that spare to the museum.";
                 }
-                if (randomSpeech > 60)
+                if (P1randomSpeech > 60)
                 {
                     P1text.text = "Nice!An extra ship!!";
                 }
@@ -2038,45 +2040,45 @@ public class SpeechSystemController : MonoBehaviour
             //weapon pickup
             if (PlayerWeaponController.P1morePrimary)
             {
-                if (randomSpeech <= 30)
+                if (P1randomSpeech <= 30)
                 {
                     P1text.text = "Now with more freedom!";
                 }
-                if (randomSpeech > 30 && randomSpeech <= 60)
+                if (P1randomSpeech > 30 && P1randomSpeech <= 60)
                 {
                     P1text.text = "No we’re talking!";
                 }
-                if (randomSpeech > 60)
+                if (P1randomSpeech > 60)
                 {
                     P1text.text = "Didn’t think I could get any better!";
                 }
             }
             if (PlayerWeaponController.P1moreSecondary)
             {
-                if (randomSpeech <= 30)
+                if (P1randomSpeech <= 30)
                 {
                     P1text.text = "Now with more freedom!";
                 }
-                if (randomSpeech > 30 && randomSpeech <= 60)
+                if (P1randomSpeech > 30 && P1randomSpeech <= 60)
                 {
                     P1text.text = "No we’re talking!";
                 }
-                if (randomSpeech > 60)
+                if (P1randomSpeech > 60)
                 {
                     P1text.text = "Didn’t think I could get any better!";
                 }
             }
             if (PlayerWeaponController.P1moreAmmo)
             {
-                if (randomSpeech <= 30)
+                if (P1randomSpeech <= 30)
                 {
                     P1text.text = "It’s a big boy gun!";
                 }
-                if (randomSpeech > 30 && randomSpeech <= 60)
+                if (P1randomSpeech > 30 && P1randomSpeech <= 60)
                 {
                     P1text.text = "More fuel for the big red button!";
                 }
-                if (randomSpeech > 60)
+                if (P1randomSpeech > 60)
                 {
                     P1text.text = "Scrap heap’s gonna get a lot bigger!";
                 }
@@ -2085,223 +2087,223 @@ public class SpeechSystemController : MonoBehaviour
     }
     private void P2Lines()
     {
-        randomSpeech = Random.Range(0, 90);
+        P2randomSpeech = Random.Range(0, 90);
 
         if (SelectionMenuController.P2characterType == 1)
         {
             //enemy
             if (HealthSystem.P2ramEnemy == 3)
             {
-                if (randomSpeech <= 30)
+                if (P2randomSpeech <= 30)
                 {
-                    P2text.text = "Splash!";
+                    P2text.text = "That was cute.";
                 }
-                if (randomSpeech > 30 && randomSpeech <= 60)
+                if (P2randomSpeech > 30 && P2randomSpeech <= 60)
                 {
-                    P2text.text = "Wrecked!";
+                    P2text.text = "Why are there always so many?";
                 }
-                if (randomSpeech > 60)
+                if (P2randomSpeech > 60)
                 {
-                    P2text.text = "Gotta do better than that!";
+                    P2text.text = "Little things just bounce off my hull.";
                 }
             }
             if (HealthSystem.P2lightEnemy == 3)
             {
-                if (randomSpeech <= 30)
+                if (P2randomSpeech <= 30)
                 {
-                    P2text.text = "Splash!";
+                    P2text.text = "That was cute.";
                 }
-                if (randomSpeech > 30 && randomSpeech <= 60)
+                if (P2randomSpeech > 30 && P2randomSpeech <= 60)
                 {
-                    P2text.text = "Wrecked!";
+                    P2text.text = "Why are there always so many?";
                 }
-                if (randomSpeech > 60)
+                if (P2randomSpeech > 60)
                 {
-                    P2text.text = "Gotta do better than that!";
+                    P2text.text = "Little things just bounce off my hull.";
                 }
             }
             if (HealthSystem.P2missileEnemy == 1)
             {
-                if (randomSpeech <= 30)
+                if (P2randomSpeech <= 30)
                 {
-                    P2text.text = "Slagged another one!";
+                    P2text.text = "Toasters are trying now!";
                 }
-                if (randomSpeech > 30 && randomSpeech <= 60)
+                if (P2randomSpeech > 30 && P2randomSpeech <= 60)
                 {
-                    P2text.text = "Look out below!";
+                    P2text.text = "Bye, bye!";
                 }
-                if (randomSpeech > 60)
+                if (P2randomSpeech > 60)
                 {
-                    P2text.text = "It’s raining scrap";
+                    P2text.text = "It’s raining spare parts!";
                 }
             }
             if (HealthSystem.P2destroyerEnemy == 1)
             {
-                if (randomSpeech <= 30)
+                if (P2randomSpeech <= 30)
                 {
-                    P2text.text = "Slagged another one!";
+                    P2text.text = "Supersized toaster down!";
                 }
-                if (randomSpeech > 30 && randomSpeech <= 60)
+                if (P2randomSpeech > 30 && P2randomSpeech <= 60)
+                {
+                    P2text.text = "Think they’re mad about that one?";
+                }
+                if (P2randomSpeech > 60)
                 {
                     P2text.text = "Look out below!";
-                }
-                if (randomSpeech > 60)
-                {
-                    P2text.text = "It’s raining scrap";
                 }
             }
             if (HealthSystem.P2bossKill)
             {
-                if (randomSpeech <= 30)
+                if (P2randomSpeech <= 30)
                 {
-                    P2text.text = "Another successful hunt!";
+                    P2text.text = "That went better than I thought!";
                 }
-                if (randomSpeech > 30 && randomSpeech <= 60)
+                if (P2randomSpeech > 30 && P2randomSpeech <= 60)
                 {
-                    P2text.text = "Thought you had me there, didn’t ya?";
+                    P2text.text = "Game over toaster!";
                 }
-                if (randomSpeech > 60)
+                if (P2randomSpeech > 60)
                 {
-                    P2text.text = "The crew’s gonna love hearing this one.";
+                    P2text.text = "That’s gonna be a mess to clean up.";
                 }
             }
 
             //health pickup
             if (PlayerHealthSystem.P2lessLive)
             {
-                if (randomSpeech <= 30)
+                if (P2randomSpeech <= 30)
                 {
-                    P2text.text = "Dangit! That was my favorite ship.";
+                    P2text.text = "Sparky ain’t supposed to spark!";
                 }
-                if (randomSpeech > 30 && randomSpeech <= 60)
+                if (P2randomSpeech > 30 && P2randomSpeech <= 60)
                 {
-                    P2text.text = "What’s with all the alarms?!";
+                    P2text.text = "Wings are gone…\nThat’s not good.";
                 }
-                if (randomSpeech > 60)
+                if (P2randomSpeech > 60)
                 {
-                    P2text.text = "At least I have a spare.";
+                    P2text.text = "I’ll be back toasters!";
                 }
             }
             if (PlayerHealthSystem.P2currentLives < 0 && !P2NoLiveSpeech)
             {
-                if (randomSpeech <= 30)
+                if (P2randomSpeech <= 30)
                 {
-                    P2text.text = "That was my last ship?!?";
+                    P2text.text = "Union benefits!?";
                 }
-                if (randomSpeech > 30 && randomSpeech <= 60)
+                if (P2randomSpeech > 30 && P2randomSpeech <= 60)
                 {
-                    P2text.text = "Emergency landing!";
+                    P2text.text = "Dang it! I’m out!";
                 }
-                if (randomSpeech > 60)
+                if (P2randomSpeech > 60)
                 {
-                    P2text.text = "Eject!Eject!";
+                    P2text.text = "Sparky’s out of commission!";
                 }
             }
             if (PlayerHealthSystem.P2currentHealth <= (PlayerHealthSystem.P2maxHealth / 2) && !P2HalfHealthSpeech)
             {
-                if (randomSpeech <= 30)
+                if (P2randomSpeech <= 30)
                 {
-                    P2text.text = "Dangit! That was my favorite ship.";
+                    P2text.text = "Sparky ain’t supposed to spark!";
                 }
-                if (randomSpeech > 30 && randomSpeech <= 60)
+                if (P2randomSpeech > 30 && P2randomSpeech <= 60)
                 {
-                    P2text.text = "What’s with all the alarms?!";
+                    P2text.text = "Wings are gone…\nThat’s not good.";
                 }
-                if (randomSpeech > 60)
+                if (P2randomSpeech > 60)
                 {
-                    P2text.text = "At least I have a spare.";
+                    P2text.text = "I’ll be back toasters!";
                 }
             }
             if (PlayerHealthSystem.P2moreHealth)
             {
-                if (randomSpeech <= 30)
+                if (P2randomSpeech <= 30)
                 {
-                    P2text.text = "It was just a scratch!";
+                    P2text.text = "Phew! That wing was starting to fall.";
                 }
-                if (randomSpeech > 30 && randomSpeech <= 60)
+                if (P2randomSpeech > 30 && P2randomSpeech <= 60)
                 {
-                    P2text.text = "Was starting to miss that wing!";
+                    P2text.text = "Sparky ain’t sparking now!";
                 }
-                if (randomSpeech > 60)
+                if (P2randomSpeech > 60)
                 {
-                    P2text.text = "Just like new.";
+                    P2text.text = "Like new!";
                 }
             }
             if (PlayerHealthSystem.P2moreShield)
             {
-                if (randomSpeech <= 30)
+                if (P2randomSpeech <= 30)
                 {
-                    P2text.text = "Can’t scratch my paint!";
+                    P2text.text = "This is the good kind of sparking!";
                 }
-                if (randomSpeech > 30 && randomSpeech <= 60)
+                if (P2randomSpeech > 30 && P2randomSpeech <= 60)
                 {
-                    P2text.text = "Shields up!";
+                    P2text.text = "Shiny shields!";
                 }
-                if (randomSpeech > 60)
+                if (P2randomSpeech > 60)
                 {
-                    P2text.text = "Hah!That tickles.";
+                    P2text.text = "Tickles every time.";
                 }
             }
             if (PlayerHealthSystem.P2moreLive)
             {
-                if (randomSpeech <= 30)
+                if (P2randomSpeech <= 30)
                 {
-                    P2text.text = "Nice! A spare!";
+                    P2text.text = "Where were these when my truck blew up?";
                 }
-                if (randomSpeech > 30 && randomSpeech <= 60)
+                if (P2randomSpeech > 30 && P2randomSpeech <= 60)
                 {
-                    P2text.text = "You can never have too many ships.";
+                    P2text.text = "Not a new truck but I’ll take it!";
                 }
-                if (randomSpeech > 60)
+                if (P2randomSpeech > 60)
                 {
-                    P2text.text = "Just try and stop me!";
+                    P2text.text = "Sparky ain’t going away, toasters!";
                 }
             }
 
             //weapon pickup
             if (PlayerWeaponController.P2morePrimary)
             {
-                if (randomSpeech <= 30)
+                if (P2randomSpeech <= 30)
                 {
-                    P2text.text = "More guns! More glory!";
+                    P2text.text = "Shiny new gun!";
                 }
-                if (randomSpeech > 30 && randomSpeech <= 60)
+                if (P2randomSpeech > 30 && P2randomSpeech <= 60)
                 {
-                    P2text.text = "Oooh you’re gonna get it now.";
+                    P2text.text = "Gonna make it rain with this!";
                 }
-                if (randomSpeech > 60)
+                if (P2randomSpeech > 60)
                 {
-                    P2text.text = "Ya dun goofed, toasters.";
+                    P2text.text = "Light show just got better!";
                 }
             }
             if (PlayerWeaponController.P2moreSecondary)
             {
-                if (randomSpeech <= 30)
+                if (P2randomSpeech <= 30)
                 {
-                    P2text.text = "More guns! More glory!";
+                    P2text.text = "Shiny new gun!";
                 }
-                if (randomSpeech > 30 && randomSpeech <= 60)
+                if (P2randomSpeech > 30 && P2randomSpeech <= 60)
                 {
-                    P2text.text = "Oooh you’re gonna get it now.";
+                    P2text.text = "Gonna make it rain with this!";
                 }
-                if (randomSpeech > 60)
+                if (P2randomSpeech > 60)
                 {
-                    P2text.text = "Ya dun goofed, toasters.";
+                    P2text.text = "Light show just got better!";
                 }
             }
             if (PlayerWeaponController.P2moreAmmo)
             {
-                if (randomSpeech <= 30)
+                if (P2randomSpeech <= 30)
                 {
-                    P2text.text = "It’s a big girl gun!";
+                    P2text.text = "Do toasters feel fear?";
                 }
-                if (randomSpeech > 30 && randomSpeech <= 60)
+                if (P2randomSpeech > 30 && P2randomSpeech <= 60)
                 {
-                    P2text.text = "Ready to melt some toasters!";
+                    P2text.text = "Gonna slag me some toasters.";
                 }
-                if (randomSpeech > 60)
+                if (P2randomSpeech > 60)
                 {
-                    P2text.text = "Today just got a whole lot better";
+                    P2text.text = "Never enough!";
                 }
             }
         }
@@ -2310,75 +2312,75 @@ public class SpeechSystemController : MonoBehaviour
             //enemy
             if (HealthSystem.P2ramEnemy == 3)
             {
-                if (randomSpeech <= 30)
+                if (P2randomSpeech <= 30)
                 {
                     P2text.text = "Splash!";
                 }
-                if (randomSpeech > 30 && randomSpeech <= 60)
+                if (P2randomSpeech > 30 && P2randomSpeech <= 60)
                 {
                     P2text.text = "Wrecked!";
                 }
-                if (randomSpeech > 60)
+                if (P2randomSpeech > 60)
                 {
                     P2text.text = "Gotta do better than that!";
                 }
             }
             if (HealthSystem.P2lightEnemy == 3)
             {
-                if (randomSpeech <= 30)
+                if (P2randomSpeech <= 30)
                 {
                     P2text.text = "Splash!";
                 }
-                if (randomSpeech > 30 && randomSpeech <= 60)
+                if (P2randomSpeech > 30 && P2randomSpeech <= 60)
                 {
                     P2text.text = "Wrecked!";
                 }
-                if (randomSpeech > 60)
+                if (P2randomSpeech > 60)
                 {
                     P2text.text = "Gotta do better than that!";
                 }
             }
             if (HealthSystem.P2missileEnemy == 1)
             {
-                if (randomSpeech <= 30)
+                if (P2randomSpeech <= 30)
                 {
                     P2text.text = "Slagged another one!";
                 }
-                if (randomSpeech > 30 && randomSpeech <= 60)
+                if (P2randomSpeech > 30 && P2randomSpeech <= 60)
                 {
                     P2text.text = "Look out below!";
                 }
-                if (randomSpeech > 60)
+                if (P2randomSpeech > 60)
                 {
                     P2text.text = "It’s raining scrap";
                 }
             }
             if (HealthSystem.P2destroyerEnemy == 1)
             {
-                if (randomSpeech <= 30)
+                if (P2randomSpeech <= 30)
                 {
                     P2text.text = "Slagged another one!";
                 }
-                if (randomSpeech > 30 && randomSpeech <= 60)
+                if (P2randomSpeech > 30 && P2randomSpeech <= 60)
                 {
                     P2text.text = "Look out below!";
                 }
-                if (randomSpeech > 60)
+                if (P2randomSpeech > 60)
                 {
                     P2text.text = "It’s raining scrap";
                 }
             }
             if (HealthSystem.P2bossKill)
             {
-                if (randomSpeech <= 30)
+                if (P2randomSpeech <= 30)
                 {
                     P2text.text = "Another successful hunt!";
                 }
-                if (randomSpeech > 30 && randomSpeech <= 60)
+                if (P2randomSpeech > 30 && P2randomSpeech <= 60)
                 {
                     P2text.text = "Thought you had me there, didn’t ya?";
                 }
-                if (randomSpeech > 60)
+                if (P2randomSpeech > 60)
                 {
                     P2text.text = "The crew’s gonna love hearing this one.";
                 }
@@ -2387,90 +2389,90 @@ public class SpeechSystemController : MonoBehaviour
             //health pickup
             if (PlayerHealthSystem.P2lessLive)
             {
-                if (randomSpeech <= 30)
+                if (P2randomSpeech <= 30)
                 {
                     P2text.text = "Dangit! That was my favorite ship.";
                 }
-                if (randomSpeech > 30 && randomSpeech <= 60)
+                if (P2randomSpeech > 30 && P2randomSpeech <= 60)
                 {
                     P2text.text = "What’s with all the alarms?!";
                 }
-                if (randomSpeech > 60)
+                if (P2randomSpeech > 60)
                 {
                     P2text.text = "At least I have a spare.";
                 }
             }
             if (PlayerHealthSystem.P2currentLives < 0 && !P2NoLiveSpeech)
             {
-                if (randomSpeech <= 30)
+                if (P2randomSpeech <= 30)
                 {
                     P2text.text = "That was my last ship?!?";
                 }
-                if (randomSpeech > 30 && randomSpeech <= 60)
+                if (P2randomSpeech > 30 && P2randomSpeech <= 60)
                 {
                     P2text.text = "Emergency landing!";
                 }
-                if (randomSpeech > 60)
+                if (P2randomSpeech > 60)
                 {
                     P2text.text = "Eject!Eject!";
                 }
             }
             if (PlayerHealthSystem.P2currentHealth <= (PlayerHealthSystem.P2maxHealth / 2) && !P2HalfHealthSpeech)
             {
-                if (randomSpeech <= 30)
+                if (P2randomSpeech <= 30)
                 {
                     P2text.text = "Dangit! That was my favorite ship.";
                 }
-                if (randomSpeech > 30 && randomSpeech <= 60)
+                if (P2randomSpeech > 30 && P2randomSpeech <= 60)
                 {
                     P2text.text = "What’s with all the alarms?!";
                 }
-                if (randomSpeech > 60)
+                if (P2randomSpeech > 60)
                 {
                     P2text.text = "At least I have a spare.";
                 }
             }
             if (PlayerHealthSystem.P2moreHealth)
             {
-                if (randomSpeech <= 30)
+                if (P2randomSpeech <= 30)
                 {
                     P2text.text = "It was just a scratch!";
                 }
-                if (randomSpeech > 30 && randomSpeech <= 60)
+                if (P2randomSpeech > 30 && P2randomSpeech <= 60)
                 {
                     P2text.text = "Was starting to miss that wing!";
                 }
-                if (randomSpeech > 60)
+                if (P2randomSpeech > 60)
                 {
                     P2text.text = "Just like new.";
                 }
             }
             if (PlayerHealthSystem.P2moreShield)
             {
-                if (randomSpeech <= 30)
+                if (P2randomSpeech <= 30)
                 {
                     P2text.text = "Can’t scratch my paint!";
                 }
-                if (randomSpeech > 30 && randomSpeech <= 60)
+                if (P2randomSpeech > 30 && P2randomSpeech <= 60)
                 {
                     P2text.text = "Shields up!";
                 }
-                if (randomSpeech > 60)
+                if (P2randomSpeech > 60)
                 {
                     P2text.text = "Hah!That tickles.";
                 }
             }
             if (PlayerHealthSystem.P2moreLive)
             {
-                if (randomSpeech <= 30)
+                if (P2randomSpeech <= 30)
                 {
                     P2text.text = "Nice! A spare!";
                 }
-                if (randomSpeech > 30 && randomSpeech <= 60)
+                if (P2randomSpeech > 30 && P2randomSpeech <= 60)
                 {
                     P2text.text = "You can never have too many ships.";
                 }
-                if (randomSpeech > 60)
+                if (P2randomSpeech > 60)
                 {
                     P2text.text = "Just try and stop me!";
                 }
@@ -2479,45 +2481,45 @@ public class SpeechSystemController : MonoBehaviour
             //weapon pickup
             if (PlayerWeaponController.P2morePrimary)
             {
-                if (randomSpeech <= 30)
+                if (P2randomSpeech <= 30)
                 {
                     P2text.text = "More guns! More glory!";
                 }
-                if (randomSpeech > 30 && randomSpeech <= 60)
+                if (P2randomSpeech > 30 && P2randomSpeech <= 60)
                 {
                     P2text.text = "Oooh you’re gonna get it now.";
                 }
-                if (randomSpeech > 60)
+                if (P2randomSpeech > 60)
                 {
                     P2text.text = "Ya dun goofed, toasters.";
                 }
             }
             if (PlayerWeaponController.P2moreSecondary)
             {
-                if (randomSpeech <= 30)
+                if (P2randomSpeech <= 30)
                 {
                     P2text.text = "More guns! More glory!";
                 }
-                if (randomSpeech > 30 && randomSpeech <= 60)
+                if (P2randomSpeech > 30 && P2randomSpeech <= 60)
                 {
                     P2text.text = "Oooh you’re gonna get it now.";
                 }
-                if (randomSpeech > 60)
+                if (P2randomSpeech > 60)
                 {
                     P2text.text = "Ya dun goofed, toasters.";
                 }
             }
             if (PlayerWeaponController.P2moreAmmo)
             {
-                if (randomSpeech <= 30)
+                if (P2randomSpeech <= 30)
                 {
                     P2text.text = "It’s a big girl gun!";
                 }
-                if (randomSpeech > 30 && randomSpeech <= 60)
+                if (P2randomSpeech > 30 && P2randomSpeech <= 60)
                 {
                     P2text.text = "Ready to melt some toasters!";
                 }
-                if (randomSpeech > 60)
+                if (P2randomSpeech > 60)
                 {
                     P2text.text = "Today just got a whole lot better";
                 }
@@ -2528,216 +2530,216 @@ public class SpeechSystemController : MonoBehaviour
             //enemy
             if (HealthSystem.P2ramEnemy == 3)
             {
-                if (randomSpeech <= 30)
+                if (P2randomSpeech <= 30)
                 {
-                    P2text.text = "Like they ever stood a chance!";
+                    P2text.text = "Pain train coming through!";
                 }
-                if (randomSpeech > 30 && randomSpeech <= 60)
+                if (P2randomSpeech > 30 && P2randomSpeech <= 60)
                 {
-                    P2text.text = "Where do they keep getting these?!";
+                    P2text.text = "Not even a garbage truck can handle all this trash!";
                 }
-                if (randomSpeech > 60)
+                if (P2randomSpeech > 60)
                 {
-                    P2text.text = "Not even a fair fight.";
+                    P2text.text = "Was that a speed bump?";
                 }
             }
             if (HealthSystem.P2lightEnemy == 3)
             {
-                if (randomSpeech <= 30)
+                if (P2randomSpeech <= 30)
                 {
-                    P2text.text = "Like they ever stood a chance!";
+                    P2text.text = "Pain train coming through!";
                 }
-                if (randomSpeech > 30 && randomSpeech <= 60)
+                if (P2randomSpeech > 30 && P2randomSpeech <= 60)
                 {
-                    P2text.text = "Where do they keep getting these?!";
+                    P2text.text = "Not even a garbage truck can handle all this trash!";
                 }
-                if (randomSpeech > 60)
+                if (P2randomSpeech > 60)
                 {
-                    P2text.text = "Not even a fair fight.";
+                    P2text.text = "Was that a speed bump?";
                 }
             }
             if (HealthSystem.P2missileEnemy == 1)
             {
-                if (randomSpeech <= 30)
+                if (P2randomSpeech <= 30)
                 {
-                    P2text.text = "Splash!!!";
+                    P2text.text = "Pain train coming through!";
                 }
-                if (randomSpeech > 30 && randomSpeech <= 60)
+                if (P2randomSpeech > 30 && P2randomSpeech <= 60)
                 {
-                    P2text.text = "At least you tried.";
+                    P2text.text = "Not even a garbage truck can handle all this trash!";
                 }
-                if (randomSpeech > 60)
+                if (P2randomSpeech > 60)
                 {
-                    P2text.text = "Try and keep up!";
+                    P2text.text = "Was that a speed bump?";
                 }
             }
             if (HealthSystem.P2destroyerEnemy == 1)
             {
-                if (randomSpeech <= 30)
+                if (P2randomSpeech <= 30)
                 {
-                    P2text.text = "Splash!!!";
+                    P2text.text = "Didn’t know they made’em that big!";
                 }
-                if (randomSpeech > 30 && randomSpeech <= 60)
+                if (P2randomSpeech > 30 && P2randomSpeech <= 60)
                 {
-                    P2text.text = "At least you tried.";
+                    P2text.text = "That big’un wasn’t so tough.";
                 }
-                if (randomSpeech > 60)
+                if (P2randomSpeech > 60)
                 {
-                    P2text.text = "Try and keep up!";
+                    P2text.text = "Can’t stop the Dozer!";
                 }
             }
             if (HealthSystem.P2bossKill)
             {
-                if (randomSpeech <= 30)
+                if (P2randomSpeech <= 30)
                 {
-                    P2text.text = "Woo! Actually broke a sweat.";
+                    P2text.text = "I’m the biggest and the strongest!";
                 }
-                if (randomSpeech > 30 && randomSpeech <= 60)
+                if (P2randomSpeech > 30 && P2randomSpeech <= 60)
                 {
-                    P2text.text = "What did you think was gonna happen?!";
+                    P2text.text = "That was for my truck, toasters!";
                 }
-                if (randomSpeech > 60)
+                if (P2randomSpeech > 60)
                 {
-                    P2text.text = "Can’t wait to brag about this!";
+                    P2text.text = "Too bad we don’t have time to sell the scrap.";
                 }
             }
 
             //health pickup
             if (PlayerHealthSystem.P2lessLive)
             {
-                if (randomSpeech <= 30)
+                if (P2randomSpeech <= 30)
                 {
-                    P2text.text = "Jokes on you I got a spare!";
+                    P2text.text = "Duct tape’s  peeling off!";
                 }
-                if (randomSpeech > 30 && randomSpeech <= 60)
+                if (P2randomSpeech > 30 && P2randomSpeech <= 60)
                 {
-                    P2text.text = "That light’s not supposed to flash!";
+                    P2text.text = "Didn’t know I had a window there! Wait...";
                 }
-                if (randomSpeech > 60)
+                if (P2randomSpeech > 60)
                 {
-                    P2text.text = "Lucky shot!";
+                    P2text.text = "Ground’s coming up awful quick!";
                 }
             }
             if (PlayerHealthSystem.P2currentLives < 0 && !P2NoLiveSpeech)
             {
-                if (randomSpeech <= 30)
+                if (P2randomSpeech <= 30)
                 {
-                    P2text.text = "What do you mean I don’t have a spare?!?";
+                    P2text.text = "At least I have my union benefits!";
                 }
-                if (randomSpeech > 30 && randomSpeech <= 60)
+                if (P2randomSpeech > 30 && P2randomSpeech <= 60)
                 {
-                    P2text.text = "Guess I’m walking…";
+                    P2text.text = "What do you mean I ain’t got no spares?!";
                 }
-                if (randomSpeech > 60)
+                if (P2randomSpeech > 60)
                 {
-                    P2text.text = "Going down!";
+                    P2text.text = "Dozer down! Dozer down!";
                 }
             }
             if (PlayerHealthSystem.P2currentHealth <= (PlayerHealthSystem.P2maxHealth / 2) && !P2HalfHealthSpeech)
             {
-                if (randomSpeech <= 30)
+                if (P2randomSpeech <= 30)
                 {
-                    P2text.text = "Jokes on you I got a spare!";
+                    P2text.text = "Duct tape’s  peeling off!";
                 }
-                if (randomSpeech > 30 && randomSpeech <= 60)
+                if (P2randomSpeech > 30 && P2randomSpeech <= 60)
                 {
-                    P2text.text = "That light’s not supposed to flash!";
+                    P2text.text = "Didn’t know I had a window there! Wait...";
                 }
-                if (randomSpeech > 60)
+                if (P2randomSpeech > 60)
                 {
-                    P2text.text = "Lucky shot!";
+                    P2text.text = "Ground’s coming up awful quick!";
                 }
             }
             if (PlayerHealthSystem.P2moreHealth)
             {
-                if (randomSpeech <= 30)
+                if (P2randomSpeech <= 30)
                 {
-                    P2text.text = "Fresh paint job!";
+                    P2text.text = "Only the finest duct tape for my ship!";
                 }
-                if (randomSpeech > 30 && randomSpeech <= 60)
+                if (P2randomSpeech > 30 && P2randomSpeech <= 60)
                 {
-                    P2text.text = "I was starting to miss that wing.";
+                    P2text.text = "Just like new!";
                 }
-                if (randomSpeech > 60)
+                if (P2randomSpeech > 60)
                 {
-                    P2text.text = "Guess I could get some fresh air later.";
+                    P2text.text = "Hey that rattlin’ stopped.";
                 }
             }
             if (PlayerHealthSystem.P2moreShield)
             {
-                if (randomSpeech <= 30)
+                if (P2randomSpeech <= 30)
                 {
-                    P2text.text = "Ain’t scratching my paint job now!";
+                    P2text.text = "Wish I had these when I was learning to drive!";
                 }
-                if (randomSpeech > 30 && randomSpeech <= 60)
+                if (P2randomSpeech > 30 && P2randomSpeech <= 60)
                 {
-                    P2text.text = "Hey toasters!You dropped a battery!!";
+                    P2text.text = "Think toaster batteries work on a truck?";
                 }
-                if (randomSpeech > 60)
+                if (P2randomSpeech > 60)
                 {
-                    P2text.text = "O - o oh tingly.";
+                    P2text.text = "Try and scratch me now!";
                 }
             }
             if (PlayerHealthSystem.P2moreLive)
             {
-                if (randomSpeech <= 30)
+                if (P2randomSpeech <= 30)
                 {
-                    P2text.text = "Like I need a spare ship!";
+                    P2text.text = "Another one for the fleet!";
                 }
-                if (randomSpeech > 30 && randomSpeech <= 60)
+                if (P2randomSpeech > 30 && P2randomSpeech <= 60)
                 {
-                    P2text.text = "Guess we can give that spare to the museum.";
+                    P2text.text = "Brand, spanking, new ship!";
                 }
-                if (randomSpeech > 60)
+                if (P2randomSpeech > 60)
                 {
-                    P2text.text = "Nice!An extra ship!!";
+                    P2text.text = "We’ll put some character on this later!";
                 }
             }
 
             //weapon pickup
             if (PlayerWeaponController.P2morePrimary)
             {
-                if (randomSpeech <= 30)
+                if (P2randomSpeech <= 30)
                 {
-                    P2text.text = "Now with more freedom!";
+                    P2text.text = "Oooh. More gun.";
                 }
-                if (randomSpeech > 30 && randomSpeech <= 60)
+                if (P2randomSpeech > 30 && P2randomSpeech <= 60)
                 {
-                    P2text.text = "No we’re talking!";
+                    P2text.text = "This! Is! My! Boomstick!";
                 }
-                if (randomSpeech > 60)
+                if (P2randomSpeech > 60)
                 {
-                    P2text.text = "Didn’t think I could get any better!";
+                    P2text.text = "PEW! PEW!";
                 }
             }
             if (PlayerWeaponController.P2moreSecondary)
             {
-                if (randomSpeech <= 30)
+                if (P2randomSpeech <= 30)
                 {
-                    P2text.text = "Now with more freedom!";
+                    P2text.text = "Oooh. More gun.";
                 }
-                if (randomSpeech > 30 && randomSpeech <= 60)
+                if (P2randomSpeech > 30 && P2randomSpeech <= 60)
                 {
-                    P2text.text = "No we’re talking!";
+                    P2text.text = "This! Is! My! Boomstick!";
                 }
-                if (randomSpeech > 60)
+                if (P2randomSpeech > 60)
                 {
-                    P2text.text = "Didn’t think I could get any better!";
+                    P2text.text = "PEW! PEW!";
                 }
             }
             if (PlayerWeaponController.P2moreAmmo)
             {
-                if (randomSpeech <= 30)
+                if (P2randomSpeech <= 30)
                 {
-                    P2text.text = "It’s a big boy gun!";
+                    P2text.text = "Ya dun goofed now!";
                 }
-                if (randomSpeech > 30 && randomSpeech <= 60)
+                if (P2randomSpeech > 30 && P2randomSpeech <= 60)
                 {
-                    P2text.text = "More fuel for the big red button!";
+                    P2text.text = "Gonna have a fireworks show now!";
                 }
-                if (randomSpeech > 60)
+                if (P2randomSpeech > 60)
                 {
-                    P2text.text = "Scrap heap’s gonna get a lot bigger!";
+                    P2text.text = "Big gun’s loaded!";
                 }
             }
         }
@@ -2746,75 +2748,75 @@ public class SpeechSystemController : MonoBehaviour
             //enemy
             if (HealthSystem.P2ramEnemy == 3)
             {
-                if (randomSpeech <= 30)
+                if (P2randomSpeech <= 30)
                 {
                     P2text.text = "Like they ever stood a chance!";
                 }
-                if (randomSpeech > 30 && randomSpeech <= 60)
+                if (P2randomSpeech > 30 && P2randomSpeech <= 60)
                 {
                     P2text.text = "Where do they keep getting these?!";
                 }
-                if (randomSpeech > 60)
+                if (P2randomSpeech > 60)
                 {
                     P2text.text = "Not even a fair fight.";
                 }
             }
             if (HealthSystem.P2lightEnemy == 3)
             {
-                if (randomSpeech <= 30)
+                if (P2randomSpeech <= 30)
                 {
                     P2text.text = "Like they ever stood a chance!";
                 }
-                if (randomSpeech > 30 && randomSpeech <= 60)
+                if (P2randomSpeech > 30 && P2randomSpeech <= 60)
                 {
                     P2text.text = "Where do they keep getting these?!";
                 }
-                if (randomSpeech > 60)
+                if (P2randomSpeech > 60)
                 {
                     P2text.text = "Not even a fair fight.";
                 }
             }
             if (HealthSystem.P2missileEnemy == 1)
             {
-                if (randomSpeech <= 30)
+                if (P2randomSpeech <= 30)
                 {
                     P2text.text = "Splash!!!";
                 }
-                if (randomSpeech > 30 && randomSpeech <= 60)
+                if (P2randomSpeech > 30 && P2randomSpeech <= 60)
                 {
                     P2text.text = "At least you tried.";
                 }
-                if (randomSpeech > 60)
+                if (P2randomSpeech > 60)
                 {
                     P2text.text = "Try and keep up!";
                 }
             }
             if (HealthSystem.P2destroyerEnemy == 1)
             {
-                if (randomSpeech <= 30)
+                if (P2randomSpeech <= 30)
                 {
                     P2text.text = "Splash!!!";
                 }
-                if (randomSpeech > 30 && randomSpeech <= 60)
+                if (P2randomSpeech > 30 && P2randomSpeech <= 60)
                 {
                     P2text.text = "At least you tried.";
                 }
-                if (randomSpeech > 60)
+                if (P2randomSpeech > 60)
                 {
                     P2text.text = "Try and keep up!";
                 }
             }
             if (HealthSystem.P2bossKill)
             {
-                if (randomSpeech <= 30)
+                if (P2randomSpeech <= 30)
                 {
                     P2text.text = "Woo! Actually broke a sweat.";
                 }
-                if (randomSpeech > 30 && randomSpeech <= 60)
+                if (P2randomSpeech > 30 && P2randomSpeech <= 60)
                 {
                     P2text.text = "What did you think was gonna happen?!";
                 }
-                if (randomSpeech > 60)
+                if (P2randomSpeech > 60)
                 {
                     P2text.text = "Can’t wait to brag about this!";
                 }
@@ -2823,90 +2825,90 @@ public class SpeechSystemController : MonoBehaviour
             //health pickup
             if (PlayerHealthSystem.P2lessLive)
             {
-                if (randomSpeech <= 30)
+                if (P2randomSpeech <= 30)
                 {
                     P2text.text = "Jokes on you I got a spare!";
                 }
-                if (randomSpeech > 30 && randomSpeech <= 60)
+                if (P2randomSpeech > 30 && P2randomSpeech <= 60)
                 {
                     P2text.text = "That light’s not supposed to flash!";
                 }
-                if (randomSpeech > 60)
+                if (P2randomSpeech > 60)
                 {
                     P2text.text = "Lucky shot!";
                 }
             }
             if (PlayerHealthSystem.P2currentLives < 0 && !P2NoLiveSpeech)
             {
-                if (randomSpeech <= 30)
+                if (P2randomSpeech <= 30)
                 {
                     P2text.text = "What do you mean I don’t have a spare?!?";
                 }
-                if (randomSpeech > 30 && randomSpeech <= 60)
+                if (P2randomSpeech > 30 && P2randomSpeech <= 60)
                 {
                     P2text.text = "Guess I’m walking…";
                 }
-                if (randomSpeech > 60)
+                if (P2randomSpeech > 60)
                 {
                     P2text.text = "Going down!";
                 }
             }
             if (PlayerHealthSystem.P2currentHealth <= (PlayerHealthSystem.P2maxHealth / 2) && !P2HalfHealthSpeech)
             {
-                if (randomSpeech <= 30)
+                if (P2randomSpeech <= 30)
                 {
                     P2text.text = "Jokes on you I got a spare!";
                 }
-                if (randomSpeech > 30 && randomSpeech <= 60)
+                if (P2randomSpeech > 30 && P2randomSpeech <= 60)
                 {
                     P2text.text = "That light’s not supposed to flash!";
                 }
-                if (randomSpeech > 60)
+                if (P2randomSpeech > 60)
                 {
                     P2text.text = "Lucky shot!";
                 }
             }
             if (PlayerHealthSystem.P2moreHealth)
             {
-                if (randomSpeech <= 30)
+                if (P2randomSpeech <= 30)
                 {
                     P2text.text = "Fresh paint job!";
                 }
-                if (randomSpeech > 30 && randomSpeech <= 60)
+                if (P2randomSpeech > 30 && P2randomSpeech <= 60)
                 {
                     P2text.text = "I was starting to miss that wing.";
                 }
-                if (randomSpeech > 60)
+                if (P2randomSpeech > 60)
                 {
                     P2text.text = "Guess I could get some fresh air later.";
                 }
             }
             if (PlayerHealthSystem.P2moreShield)
             {
-                if (randomSpeech <= 30)
+                if (P2randomSpeech <= 30)
                 {
                     P2text.text = "Ain’t scratching my paint job now!";
                 }
-                if (randomSpeech > 30 && randomSpeech <= 60)
+                if (P2randomSpeech > 30 && P2randomSpeech <= 60)
                 {
                     P2text.text = "Hey toasters!You dropped a battery!!";
                 }
-                if (randomSpeech > 60)
+                if (P2randomSpeech > 60)
                 {
                     P2text.text = "O - o oh tingly.";
                 }
             }
             if (PlayerHealthSystem.P2moreLive)
             {
-                if (randomSpeech <= 30)
+                if (P2randomSpeech <= 30)
                 {
                     P2text.text = "Like I need a spare ship!";
                 }
-                if (randomSpeech > 30 && randomSpeech <= 60)
+                if (P2randomSpeech > 30 && P2randomSpeech <= 60)
                 {
                     P2text.text = "Guess we can give that spare to the museum.";
                 }
-                if (randomSpeech > 60)
+                if (P2randomSpeech > 60)
                 {
                     P2text.text = "Nice!An extra ship!!";
                 }
@@ -2915,45 +2917,45 @@ public class SpeechSystemController : MonoBehaviour
             //weapon pickup
             if (PlayerWeaponController.P2morePrimary)
             {
-                if (randomSpeech <= 30)
+                if (P2randomSpeech <= 30)
                 {
                     P2text.text = "Now with more freedom!";
                 }
-                if (randomSpeech > 30 && randomSpeech <= 60)
+                if (P2randomSpeech > 30 && P2randomSpeech <= 60)
                 {
                     P2text.text = "No we’re talking!";
                 }
-                if (randomSpeech > 60)
+                if (P2randomSpeech > 60)
                 {
                     P2text.text = "Didn’t think I could get any better!";
                 }
             }
             if (PlayerWeaponController.P2moreSecondary)
             {
-                if (randomSpeech <= 30)
+                if (P2randomSpeech <= 30)
                 {
                     P2text.text = "Now with more freedom!";
                 }
-                if (randomSpeech > 30 && randomSpeech <= 60)
+                if (P2randomSpeech > 30 && P2randomSpeech <= 60)
                 {
                     P2text.text = "No we’re talking!";
                 }
-                if (randomSpeech > 60)
+                if (P2randomSpeech > 60)
                 {
                     P2text.text = "Didn’t think I could get any better!";
                 }
             }
             if (PlayerWeaponController.P2moreAmmo)
             {
-                if (randomSpeech <= 30)
+                if (P2randomSpeech <= 30)
                 {
                     P2text.text = "It’s a big boy gun!";
                 }
-                if (randomSpeech > 30 && randomSpeech <= 60)
+                if (P2randomSpeech > 30 && P2randomSpeech <= 60)
                 {
                     P2text.text = "More fuel for the big red button!";
                 }
-                if (randomSpeech > 60)
+                if (P2randomSpeech > 60)
                 {
                     P2text.text = "Scrap heap’s gonna get a lot bigger!";
                 }
