@@ -725,6 +725,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   points: 250
+  pickUpSoundPlayer: {fileID: 0}
 --- !u!114 &114921057193062530
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -769,7 +770,7 @@ CapsuleCollider:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1691032034094590}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   m_Radius: 2
   m_Height: 3
