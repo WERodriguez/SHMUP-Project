@@ -14,8 +14,6 @@ public class MainMenuController : MonoBehaviour
     public static int currentStage;
     public static bool onePlayer;
 
-    public GameObject warning;
-
     public GameObject mainMenuCanvas;
     public GameObject mainMenuBackground;
     public GameObject controlMenuBackground;
@@ -182,12 +180,6 @@ public class MainMenuController : MonoBehaviour
 
     IEnumerator Timer()
     {
-        warning.SetActive(true);
-
-        yield return new WaitForSeconds(6.0f);
-
-        warning.SetActive(false);
-
 		ActivateMainMenu();
 
         yield return new WaitForSeconds(2.5f);
