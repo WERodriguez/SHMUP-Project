@@ -140,6 +140,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   points: 100
+  pickUpSoundPlayer: {fileID: 1992440504926610, guid: 3aea392a04090504db35adbf0e39aafa,
+    type: 2}
 --- !u!114 &114780701624646174
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -151,7 +153,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 32528e37a8705d1419524fc8ce5b2adf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 10
+  speed: 5
 --- !u!135 &135131041736485808
 SphereCollider:
   m_ObjectHideFlags: 1

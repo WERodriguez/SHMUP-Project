@@ -497,6 +497,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   points: 100
+  pickUpSoundPlayer: {fileID: 1170564496503676, guid: 97aca5cc170d28944b5dd8b1b055f923,
+    type: 2}
 --- !u!114 &114239303107673246
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -508,7 +510,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 32528e37a8705d1419524fc8ce5b2adf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 10
+  speed: 5
 --- !u!114 &114570200135306130
 MonoBehaviour:
   m_ObjectHideFlags: 1

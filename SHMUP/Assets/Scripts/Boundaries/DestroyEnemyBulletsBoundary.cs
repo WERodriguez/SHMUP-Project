@@ -11,6 +11,7 @@ public class DestroyEnemyBulletsBoundary : MonoBehaviour
         EnemyHoming otherThingsHoming;
         Rigidbody otherRB;
 
+        
         if (other.CompareTag("EnemyBullet"))
         {
             //Grabs said scripts and components.
