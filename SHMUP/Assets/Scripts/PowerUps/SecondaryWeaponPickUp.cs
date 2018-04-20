@@ -8,6 +8,9 @@ public class SecondaryWeaponPickUp : MonoBehaviour
     private PlayerController whatPlayer;
     private Points addScore;
 
+    //Game object that plays the pick up sound to avoid the sound not playing or cutting itself off.
+    public GameObject pickUpSoundPlayer;
+
     private void Start()
     {
         addScore = gameObject.GetComponent<Points>();
@@ -34,6 +37,7 @@ public class SecondaryWeaponPickUp : MonoBehaviour
         whoDunIt = whatPlayer.whichPlayer;
         addScore.AddPoints(whoDunIt);
         gunUpgrade.MoreSecondaryGun();
+        Instantiate(pickUpSoundPlayer, gameObject.transform.position, gameObject.transform.rotation);
 
         Destroy(gameObject);
     }
