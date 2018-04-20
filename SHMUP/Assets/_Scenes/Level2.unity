@@ -4915,20 +4915,20 @@ MonoBehaviour:
   character2: {fileID: 21300000, guid: 932d58032b1ceb942af6cafc736d3f5a, type: 3}
   character3: {fileID: 21300000, guid: df14bf2cdfa23fa42891229fd001279a, type: 3}
   character4: {fileID: 21300000, guid: bb7944cf28ecabc4895bcdb6ab9b4844, type: 3}
-  ship1: {fileID: 21300000, guid: 61d22c198dc40a34ba149788b6b537c9, type: 3}
-  ship2: {fileID: 21300000, guid: ca54115d919c96d439ec8c481eae838f, type: 3}
-  ship3: {fileID: 21300000, guid: c8f10024b24fb764e9402d10ebecbba7, type: 3}
-  ship4: {fileID: 21300000, guid: aa8094e279f485446966ae5887500125, type: 3}
-  ship5: {fileID: 21300000, guid: 0d4b4d2232b246c4393f059d9f7666b5, type: 3}
-  primary1: {fileID: 21300000, guid: d80e340473372a0448d49cc4cdb62af5, type: 3}
-  primary2: {fileID: 21300000, guid: 4b316cb57f158a54385e535088b0f0ce, type: 3}
-  primary3: {fileID: 21300000, guid: 610aabab718903844abd3ed01527178e, type: 3}
-  secondary1: {fileID: 21300000, guid: afe607666606cd241b425a06f5ecdcc7, type: 3}
-  secondary2: {fileID: 21300000, guid: 1c0ca70a019d81144880fa06479a1b1d, type: 3}
-  secondary3: {fileID: 21300000, guid: aec8eec40305629448850343d741c594, type: 3}
-  special1: {fileID: 21300000, guid: 047a134c5cabdd54497c072ad38c766e, type: 3}
-  special2: {fileID: 21300000, guid: 161fd314c385fb140848e11d597efcc0, type: 3}
-  special3: {fileID: 21300000, guid: e5d6a1fbcb38ea046904e41cfb350e52, type: 3}
+  ship1: {fileID: 21300000, guid: 450fd4e78f631de4bbca2d846d73c478, type: 3}
+  ship2: {fileID: 21300000, guid: 1f9bc8b546e040846a12c86fbf0a1f24, type: 3}
+  ship3: {fileID: 21300000, guid: acff5bb68f8e71644b71ab7815519bd8, type: 3}
+  ship4: {fileID: 21300000, guid: 4df01e8e595159d4694b7d2692d8e962, type: 3}
+  ship5: {fileID: 21300000, guid: 18536eb769a15684e91bc56ddd490aab, type: 3}
+  primary1: {fileID: 21300000, guid: 8112d2ad8a217c94fb92d6b3ded7f650, type: 3}
+  primary2: {fileID: 21300000, guid: fc8f3ea4e5c32fe4eba3e975c85c50fc, type: 3}
+  primary3: {fileID: 21300000, guid: 56d7106716b93314693e6bd538cfb44e, type: 3}
+  secondary1: {fileID: 21300000, guid: 29708565edc49184390ada7fca5e066f, type: 3}
+  secondary2: {fileID: 21300000, guid: 56341b49cdd481d4da20ee55d9ecf6a3, type: 3}
+  secondary3: {fileID: 21300000, guid: 5cfd440cc93188d42b7df6d087ec4f77, type: 3}
+  special1: {fileID: 21300000, guid: a175257cd56805741856f38584f8b215, type: 3}
+  special2: {fileID: 21300000, guid: cd1956efec48ec949b50b3b2908383d0, type: 3}
+  special3: {fileID: 21300000, guid: 56d7106716b93314693e6bd538cfb44e, type: 3}
   ship1Stat: {fileID: 21300000, guid: 106e618768d95c94eb4064c19b957550, type: 3}
   ship2Stat: {fileID: 21300000, guid: aebe5298e9128ca42a69cb6fb21df58a, type: 3}
   ship3Stat: {fileID: 21300000, guid: c412d6aea3d4b464295e9cc37c1d8fee, type: 3}
@@ -6202,8 +6202,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 0, y: 0.5}
-  m_AnchoredPosition: {x: 240, y: 70}
-  m_SizeDelta: {x: 400, y: 300}
+  m_AnchoredPosition: {x: 240, y: 110}
+  m_SizeDelta: {x: 400, y: 500}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1250244442
 MonoBehaviour:
@@ -6225,7 +6225,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300000, guid: 0d4b4d2232b246c4393f059d9f7666b5, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 18536eb769a15684e91bc56ddd490aab, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -8616,7 +8616,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 0, y: 0.5}
-  m_AnchoredPosition: {x: 240, y: 70}
+  m_AnchoredPosition: {x: 240, y: 110}
   m_SizeDelta: {x: 180, y: 300}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1677444723
@@ -8916,8 +8916,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 0, y: 0.5}
-  m_AnchoredPosition: {x: 240, y: 70}
-  m_SizeDelta: {x: 270, y: 270}
+  m_AnchoredPosition: {x: 240, y: 110}
+  m_SizeDelta: {x: 360, y: 360}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1772418198
 MonoBehaviour:
@@ -8939,7 +8939,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300000, guid: afe607666606cd241b425a06f5ecdcc7, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 8112d2ad8a217c94fb92d6b3ded7f650, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
