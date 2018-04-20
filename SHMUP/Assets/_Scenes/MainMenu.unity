@@ -1415,6 +1415,16 @@ Prefab:
       propertyPath: m_RootOrder
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 82974572393104776, guid: 864f9010ae491c845a6637f04950d33d,
+        type: 2}
+      propertyPath: Loop
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 82974572393104776, guid: 864f9010ae491c845a6637f04950d33d,
+        type: 2}
+      propertyPath: m_PlayOnAwake
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 114295903214291688, guid: 864f9010ae491c845a6637f04950d33d, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: 864f9010ae491c845a6637f04950d33d, type: 2}
@@ -1424,17 +1434,6 @@ GameObject:
   m_PrefabParentObject: {fileID: 1018749298725326, guid: 864f9010ae491c845a6637f04950d33d,
     type: 2}
   m_PrefabInternal: {fileID: 684962225}
---- !u!114 &684962227
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 684962226}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3c2b847829e608540acfa157f05a7ca8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &706988142
 GameObject:
   m_ObjectHideFlags: 0
@@ -1481,6 +1480,7 @@ MonoBehaviour:
   rightGlow: {fileID: 296573666}
   leftGlow: {fileID: 1977098206}
   intro: {fileID: 1476523967}
+  audioSource: {fileID: 684962226}
 --- !u!4 &706988144
 Transform:
   m_ObjectHideFlags: 0

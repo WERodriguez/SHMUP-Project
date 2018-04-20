@@ -36,6 +36,8 @@ public class MainMenuController : MonoBehaviour
 
     public Text intro;
 
+    public GameObject audioSource;
+
     private void Awake()
     {
         DeactivateMainMenu();
@@ -176,6 +178,15 @@ public class MainMenuController : MonoBehaviour
                 }
             }
 		}
+
+        if(!TitleController.fromTitle)
+        {
+            audioSource.SetActive(true);
+        }
+        else
+        {
+            audioSource.SetActive(false);
+        }
     }
 
     IEnumerator Timer()
@@ -252,23 +263,24 @@ public class MainMenuController : MonoBehaviour
 
     private void SingleButton()
     {
+        DestroyMusic();
+
         onePlayer = true;
         SceneManager.LoadScene("SelectionMenu");
     }
 
     private void DoubleButton()
     {
+        DestroyMusic();
+
         onePlayer = false;
         SceneManager.LoadScene("SelectionMenu");
     }
 
-    private void QuitButton()
-    {
-        Application.Quit();
-    }
-
     private void ControlButton()
     {
+        DestroyMusic();
+
         DeactivateMainMenuGlow();
         ActivateControlBackground();
         ResetGlowTracker();
@@ -278,6 +290,21 @@ public class MainMenuController : MonoBehaviour
 
     private void CreditButton()
     {
+        DestroyMusic();
+
         SceneManager.LoadScene("Credit");
+    }
+
+    private void QuitButton()
+    {
+        Application.Quit();
+    }
+
+    private void DestroyMusic()
+    {
+        Destroy(GameObject.Find("MenuMusicController"));
+        Destroy(GameObject.Find("HangarMusicController"));
+
+        TitleController.fromTitle = false;
     }
 }

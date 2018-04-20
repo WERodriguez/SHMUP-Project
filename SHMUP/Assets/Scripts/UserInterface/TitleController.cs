@@ -6,6 +6,8 @@ using UnityEngine.SceneManagement;
 
 public class TitleController : MonoBehaviour
 {
+    public static bool fromTitle;
+
     public GameObject logo;
     public GameObject warning;
     public GameObject skipButton;
@@ -19,6 +21,7 @@ public class TitleController : MonoBehaviour
         warning.SetActive(false);
         skipButton.SetActive(false);
 
+        fromTitle = true;
         canSkip = false;
         skipPressed = false;
     }
