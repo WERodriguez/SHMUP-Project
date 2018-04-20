@@ -2558,18 +2558,18 @@ MonoBehaviour:
   m_Text: 'Player 2 Control
 
 
-    8 - move up
+    num 8 - move up
 
-    4 - move left
+    num 4 - move left
 
-    5 - move down
+    num 5 - move down
 
-    6 - move right
+    num 6 - move right
 
 
-    0 - shoot
+    num 0 - shoot
 
-    0x2 - special'
+    num 0x2 - special'
 --- !u!222 &1397605026
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -2896,16 +2896,16 @@ MonoBehaviour:
   m_Text: 'Player 2 Control
 
 
-    8 - toggle up
+    num 8 - toggle up
 
-    4 - toggle left
+    num 4 - toggle left
 
-    5 - toggle down
+    num 5 - toggle down
 
-    6 - toggle right
+    num 6 - toggle right
 
 
-    0 - choose'
+    num 0 - choose'
 --- !u!222 &1681367686
 CanvasRenderer:
   m_ObjectHideFlags: 0
