@@ -65,7 +65,6 @@ public class SelectionMenuController : MonoBehaviour
     private bool P2choosing;
 
     private bool waiting;
-    private bool gamePlay;
     private bool breakInstruction;
 
     public Image singleReturnButtonGlow;
@@ -132,9 +131,6 @@ public class SelectionMenuController : MonoBehaviour
     public GameObject P2Menu;
     public GameObject singleMenuBackground;
     public GameObject doubleMenuBackground;
-
-    public GameObject guideLine;
-    public GameObject guidelineBackground;
 
     public GameObject singleReturnButton;
     public GameObject singleStartButton;
@@ -313,7 +309,6 @@ public class SelectionMenuController : MonoBehaviour
         P2choosing = false;
 
         waiting = false;
-        gamePlay = false;
         breakInstruction = false;
     }
 
@@ -326,1568 +321,1556 @@ public class SelectionMenuController : MonoBehaviour
     {
         if (waiting)
         {
-            if (!gamePlay)
+            if (MainMenuController.onePlayer)
             {
-                if (MainMenuController.onePlayer)
+                if (P1characterType > 0 && P1shipType > 0 && P1primaryType > 0 && P1secondaryType > 0 && P1specialType > 0)
                 {
-                    if (P1characterType > 0 && P1shipType > 0 && P1primaryType > 0 && P1secondaryType > 0 && P1specialType > 0)
-                    {
-                        maxSingleGlowTracker = 7;
+                    maxSingleGlowTracker = 7;
 
-                        singleStartButton.SetActive(true);
-                    }
-                    else
-                    {
-                        singleStartButton.SetActive(false);
-                    }
-
-                    if (glowTracker > maxSingleGlowTracker)
-                    {
-                        glowTracker = maxSingleGlowTracker;
-                    }
-                    if (glowTracker <= 1)
-                    {
-                        glowTracker = 1;
-
-                        ResetGlow();
-                        singleReturnButtonGlow.fillAmount = 1;
-                    }
-                    if (glowTracker == 2)
-                    {
-                        ResetGlow();
-                        characterButtonGlow.fillAmount = 1;
-                    }
-                    if (glowTracker == 3)
-                    {
-                        ResetGlow();
-                        shipButtonGlow.fillAmount = 1;
-                    }
-                    if (glowTracker == 4)
-                    {
-                        ResetGlow();
-                        primaryButtonGlow.fillAmount = 1;
-                    }
-                    if (glowTracker == 5)
-                    {
-                        ResetGlow();
-                        secondaryButtonGlow.fillAmount = 1;
-                    }
-                    if (glowTracker == 6)
-                    {
-                        ResetGlow();
-                        specialButtonGlow.fillAmount = 1;
-                    }
-                    if (glowTracker >= 7)
-                    {
-                        glowTracker = 7;
-
-                        ResetGlow();
-                        singleStartButtonGlow.fillAmount = 1;
-                    }
-
-                    if (P1toggleData <= 1)
-                    {
-                        ResetToggleGlow();
-                        toggleLeftGlow.fillAmount = 1;
-
-                        P1toggleData = 1;
-
-                        if (character == true)
-                        {
-                            DeactivateSingleCharacterSelect();
-                            character1.SetActive(true);
-
-                            DeactivateStat();
-                            characterStat.enabled = true;
-                            characterStat.text = "Name: Character A\nDescription:";
-                        }
-                        if (ship == true)
-                        {
-                            DeactivateSingleShipSelect();
-                            ship1.SetActive(true);
-
-                            DeactivateStat();
-                            ship1Stat.SetActive(true);
-                        }
-                        if (primary == true)
-                        {
-                            DeactivateSinglePrimarySelect();
-                            primary1.SetActive(true);
-
-                            DeactivateStat();
-                            primary1Stat.SetActive(true);
-                        }
-                        if (secondary == true)
-                        {
-                            DeactivateSingleSecondarySelect();
-                            secondary1.SetActive(true);
-
-                            DeactivateStat();
-                            secondary1Stat.SetActive(true);
-                        }
-                        if (special == true)
-                        {
-                            DeactivateSingleSpecialSelect();
-                            special1.SetActive(true);
-
-                            DeactivateStat();
-                            special1Stat.SetActive(true);
-                        }
-                    }
-                    if (P1toggleData == 2)
-                    {
-                        if (character == true)
-                        {
-                            DeactivateSingleCharacterSelect();
-                            character2.SetActive(true);
-
-                            DeactivateStat();
-                            characterStat.enabled = true;
-                            characterStat.text = "Name: Nomad\nDescription: A confident, hotshot pilot that hunts the machine menace wherever it goes.";
-                        }
-                        if (ship == true)
-                        {
-                            DeactivateSingleShipSelect();
-                            ship2.SetActive(true);
-
-                            DeactivateStat();
-                            ship2Stat.SetActive(true);
-                        }
-                        if (primary == true)
-                        {
-                            DeactivateSinglePrimarySelect();
-                            primary2.SetActive(true);
-
-                            DeactivateStat();
-                            primary2Stat.SetActive(true);
-                        }
-                        if (secondary == true)
-                        {
-                            DeactivateSingleSecondarySelect();
-                            secondary2.SetActive(true);
-
-                            DeactivateStat();
-                            secondary2Stat.SetActive(true);
-                        }
-                        if (special == true)
-                        {
-                            DeactivateSingleSpecialSelect();
-                            special2.SetActive(true);
-
-                            DeactivateStat();
-                            special2Stat.SetActive(true);
-                        }
-                    }
-                    if (P1toggleData == 3)
-                    {
-                        if (character == true)
-                        {
-                            DeactivateSingleCharacterSelect();
-                            character3.SetActive(true);
-
-                            DeactivateStat();
-                            characterStat.enabled = true;
-                            characterStat.text = "Name: Character C\nDescription:";
-                        }
-                        if (ship == true)
-                        {
-                            DeactivateSingleShipSelect();
-                            ship3.SetActive(true);
-
-                            DeactivateStat();
-                            ship3Stat.SetActive(true);
-                        }
-                        if (primary == true)
-                        {
-                            DeactivateSinglePrimarySelect();
-                            primary3.SetActive(true);
-
-                            DeactivateStat();
-                            primary3Stat.SetActive(true);
-                        }
-                        if (secondary == true)
-                        {
-                            DeactivateSingleSecondarySelect();
-                            secondary3.SetActive(true);
-
-                            DeactivateStat();
-                            secondary3Stat.SetActive(true);
-                        }
-                        if (special == true)
-                        {
-                            DeactivateSingleSpecialSelect();
-                            special3.SetActive(true);
-
-                            DeactivateStat();
-                            special3Stat.SetActive(true);
-                        }
-                    }
-                    if (P1toggleData == 4)
-                    {
-                        if (character == true)
-                        {
-                            DeactivateSingleCharacterSelect();
-                            character4.SetActive(true);
-
-                            DeactivateStat();
-                            characterStat.enabled = true;
-                            characterStat.text = "Name: Jaeger\nDescription: A cocky, hot headed pilot on the hunt for more fame and glory.";
-                        }
-                        if (ship == true)
-                        {
-                            DeactivateSingleShipSelect();
-                            ship4.SetActive(true);
-
-                            DeactivateStat();
-                            ship4Stat.SetActive(true);
-                        }
-                        if (primary == true)
-                        {
-                            P1toggleData = 3;
-
-                            DeactivateSinglePrimarySelect();
-                            primary3.SetActive(true);
-
-                            DeactivateStat();
-                            primary3Stat.SetActive(true);
-                        }
-                        if (secondary == true)
-                        {
-                            P1toggleData = 3;
-
-                            DeactivateSingleSecondarySelect();
-                            secondary3.SetActive(true);
-
-                            DeactivateStat();
-                            secondary3Stat.SetActive(true);
-                        }
-                        if (special == true)
-                        {
-                            P1toggleData = 3;
-
-                            DeactivateSingleSpecialSelect();
-                            special3.SetActive(true);
-
-                            DeactivateStat();
-                            special3Stat.SetActive(true);
-                        }
-                    }
-                    if (P1toggleData >= 5)
-                    {
-                        if (character == true)
-                        {
-                            P1toggleData = 4;
-
-                            DeactivateSingleCharacterSelect();
-                            character4.SetActive(true);
-
-                            DeactivateStat();
-                            characterStat.enabled = true;
-                            characterStat.text = "Name: Jaeger\nDescription: A cocky, hot headed pilot on the hunt for more fame and glory.";
-                        }
-                        if (ship == true)
-                        {
-                            P1toggleData = 5;
-
-                            DeactivateSingleShipSelect();
-                            ship5.SetActive(true);
-
-                            DeactivateStat();
-                            ship5Stat.SetActive(true);
-                        }
-                        if (primary == true)
-                        {
-                            P1toggleData = 3;
-
-                            DeactivateSinglePrimarySelect();
-                            primary3.SetActive(true);
-
-                            DeactivateStat();
-                            primary3Stat.SetActive(true);
-                        }
-                        if (secondary == true)
-                        {
-                            P1toggleData = 3;
-
-                            DeactivateSingleSecondarySelect();
-                            secondary3.SetActive(true);
-
-                            DeactivateStat();
-                            secondary3Stat.SetActive(true);
-                        }
-                        if (special == true)
-                        {
-                            P1toggleData = 3;
-
-                            DeactivateSingleSpecialSelect();
-                            special3.SetActive(true);
-
-                            DeactivateStat();
-                            special3Stat.SetActive(true);
-                        }
-                    }
-
-                    if (Input.GetButtonDown("P1VerticalChoiceUp") && !choosing)
-                    {
-                        glowTracker--;
-                    }
-                    if (Input.GetButtonDown("P1VerticalChoiceDown") && !choosing)
-                    {
-                        glowTracker++;
-                    }
-
-                    if (Input.GetButtonDown("P1HorizontalChoiceLeft"))
-                    {
-                        ResetToggleGlow();
-                        toggleLeftGlow.fillAmount = 1;
-
-                        P1toggleData--;
-                    }
-                    if (Input.GetButtonDown("P1HorizontalChoiceRight"))
-                    {
-                        ResetToggleGlow();
-                        toggleRightGlow.fillAmount = 1;
-
-                        P1toggleData++;
-                    }
-
-                    if (Input.GetButtonDown("Fire_P1"))
-                    {
-                        if (!choosing)
-                        {
-                            if (glowTracker == 1)
-                            {
-                                ReturnButton();
-                            }
-                            if (glowTracker == 2)
-                            {
-                                SinglePlayerCharacterButton();
-                            }
-                            if (glowTracker == 3)
-                            {
-                                SinglePlayerShipButton();
-                            }
-                            if (glowTracker == 4)
-                            {
-                                SinglePlayerPrimaryButton();
-                            }
-                            if (glowTracker == 5)
-                            {
-                                SinglePlayerSecondaryButton();
-                            }
-                            if (glowTracker == 6)
-                            {
-                                SinglePlayerSpecialButton();
-                            }
-                            if (glowTracker == 7)
-                            {
-                                StartCoroutine(ActivateSingleStartButton());
-                            }
-                        }
-                        else
-                        {
-                            if (P1toggleData == 1)
-                            {
-                                if (character == true)
-                                {
-                                    P1characterType = 1;
-                                    characterButtonShader.SetActive(true);
-                                }
-                                if (ship == true)
-                                {
-                                    P1shipType = 1;
-                                    shipButtonShader.SetActive(true);
-
-                                    P1LightShipData();
-                                    Player1Data();
-                                }
-                                if (primary == true)
-                                {
-                                    P1primaryType = 1;
-                                    primaryButtonShader.SetActive(true);
-                                }
-                                if (secondary == true)
-                                {
-                                    P1secondaryType = 1;
-                                    secondaryButtonShader.SetActive(true);
-                                }
-                                if (special == true)
-                                {
-                                    P1specialType = 1;
-                                    specialButtonShader.SetActive(true);
-                                }
-                            }
-                            if (P1toggleData == 2)
-                            {
-                                if (character == true)
-                                {
-                                    P1characterType = 2;
-                                    characterButtonShader.SetActive(true);
-                                }
-                                if (ship == true)
-                                {
-                                    P1shipType = 2;
-                                    shipButtonShader.SetActive(true);
-
-                                    P1MediumShipData();
-                                    Player1Data();
-                                }
-                                if (primary == true)
-                                {
-                                    P1primaryType = 2;
-                                    primaryButtonShader.SetActive(true);
-                                }
-                                if (secondary == true)
-                                {
-                                    P1secondaryType = 2;
-                                    secondaryButtonShader.SetActive(true);
-                                }
-                                if (special == true)
-                                {
-                                    P1specialType = 2;
-                                    specialButtonShader.SetActive(true);
-                                }
-                            }
-                            if (P1toggleData == 3)
-                            {
-                                if (character == true)
-                                {
-                                    P1characterType = 3;
-                                    characterButtonShader.SetActive(true);
-                                }
-                                if (ship == true)
-                                {
-                                    P1shipType = 3;
-                                    shipButtonShader.SetActive(true);
-
-                                    P1HeavyShipData();
-                                    Player1Data();
-                                }
-                                if (primary == true)
-                                {
-                                    P1primaryType = 3;
-                                    primaryButtonShader.SetActive(true);
-                                }
-                                if (secondary == true)
-                                {
-                                    P1secondaryType = 3;
-                                    secondaryButtonShader.SetActive(true);
-                                }
-                                if (special == true)
-                                {
-                                    P1specialType = 3;
-                                    specialButtonShader.SetActive(true);
-                                }
-                            }
-                            if (P1toggleData == 4)
-                            {
-                                if (character == true)
-                                {
-                                    P1characterType = 4;
-                                    characterButtonShader.SetActive(true);
-                                }
-                                if (ship == true)
-                                {
-                                    P1shipType = 4;
-                                    shipButtonShader.SetActive(true);
-
-                                    P1LamboShooterData();
-                                    Player1Data();
-                                }
-                                if (primary == true)
-                                {
-                                    P1primaryType = 3;
-                                    primaryButtonShader.SetActive(true);
-                                }
-                                if (secondary == true)
-                                {
-                                    P1secondaryType = 3;
-                                    secondaryButtonShader.SetActive(true);
-                                }
-                                if (special == true)
-                                {
-                                    P1specialType = 3;
-                                    specialButtonShader.SetActive(true);
-                                }
-                            }
-                            if (P1toggleData == 5)
-                            {
-                                if (character == true)
-                                {
-                                    P1characterType = 4;
-                                    characterButtonShader.SetActive(true);
-                                }
-                                if (ship == true)
-                                {
-                                    P1shipType = 5;
-                                    shipButtonShader.SetActive(true);
-
-                                    P1TruckShooterData();
-                                    Player1Data();
-                                }
-                                if (primary == true)
-                                {
-                                    P1primaryType = 3;
-                                    primaryButtonShader.SetActive(true);
-                                }
-                                if (secondary == true)
-                                {
-                                    P1secondaryType = 3;
-                                    secondaryButtonShader.SetActive(true);
-                                }
-                                if (special == true)
-                                {
-                                    P1specialType = 3;
-                                    specialButtonShader.SetActive(true);
-                                }
-                            }
-
-                            DeactivateSingleCharacterSelect();
-                            DeactivateSingleShipSelect();
-                            DeactivateSinglePrimarySelect();
-                            DeactivateSingleSecondarySelect();
-                            DeactivateSingleSpecialSelect();
-                            DeactivateSingleToggle();
-                            DeactivateStat();
-
-                            ActivateSingleSelection();
-
-                            ResetBool();
-                            ResetGlow();
-
-                            choosing = false;
-                        }
-                    }
+                    singleStartButton.SetActive(true);
                 }
                 else
                 {
-                    if (P1characterType > 0 && P1shipType > 0 && P1primaryType > 0 && P1secondaryType > 0 && P1specialType > 0 && P2characterType > 0 && P2shipType > 0 && P2primaryType > 0 && P2secondaryType > 0 && P2specialType > 0)
-                    {
-                        maxP2GLowTracker = 6;
+                    singleStartButton.SetActive(false);
+                }
 
-                        doubleStartButton.SetActive(true);
+                if (glowTracker > maxSingleGlowTracker)
+                {
+                    glowTracker = maxSingleGlowTracker;
+                }
+                if (glowTracker <= 1)
+                {
+                    glowTracker = 1;
+
+                    ResetGlow();
+                    singleReturnButtonGlow.fillAmount = 1;
+                }
+                if (glowTracker == 2)
+                {
+                    ResetGlow();
+                    characterButtonGlow.fillAmount = 1;
+                }
+                if (glowTracker == 3)
+                {
+                    ResetGlow();
+                    shipButtonGlow.fillAmount = 1;
+                }
+                if (glowTracker == 4)
+                {
+                    ResetGlow();
+                    primaryButtonGlow.fillAmount = 1;
+                }
+                if (glowTracker == 5)
+                {
+                    ResetGlow();
+                    secondaryButtonGlow.fillAmount = 1;
+                }
+                if (glowTracker == 6)
+                {
+                    ResetGlow();
+                    specialButtonGlow.fillAmount = 1;
+                }
+                if (glowTracker >= 7)
+                {
+                    glowTracker = 7;
+
+                    ResetGlow();
+                    singleStartButtonGlow.fillAmount = 1;
+                }
+
+                if (P1toggleData <= 1)
+                {
+                    ResetToggleGlow();
+                    toggleLeftGlow.fillAmount = 1;
+
+                    P1toggleData = 1;
+
+                    if (character == true)
+                    {
+                        DeactivateSingleCharacterSelect();
+                        character1.SetActive(true);
+
+                        DeactivateStat();
+                        characterStat.enabled = true;
+                        characterStat.text = "Name: Character A\nDescription:";
+                    }
+                    if (ship == true)
+                    {
+                        DeactivateSingleShipSelect();
+                        ship1.SetActive(true);
+
+                        DeactivateStat();
+                        ship1Stat.SetActive(true);
+                    }
+                    if (primary == true)
+                    {
+                        DeactivateSinglePrimarySelect();
+                        primary1.SetActive(true);
+
+                        DeactivateStat();
+                        primary1Stat.SetActive(true);
+                    }
+                    if (secondary == true)
+                    {
+                        DeactivateSingleSecondarySelect();
+                        secondary1.SetActive(true);
+
+                        DeactivateStat();
+                        secondary1Stat.SetActive(true);
+                    }
+                    if (special == true)
+                    {
+                        DeactivateSingleSpecialSelect();
+                        special1.SetActive(true);
+
+                        DeactivateStat();
+                        special1Stat.SetActive(true);
+                    }
+                }
+                if (P1toggleData == 2)
+                {
+                    if (character == true)
+                    {
+                        DeactivateSingleCharacterSelect();
+                        character2.SetActive(true);
+
+                        DeactivateStat();
+                        characterStat.enabled = true;
+                        characterStat.text = "Name: Nomad\nDescription: A confident, hotshot pilot that hunts the machine menace wherever it goes.";
+                    }
+                    if (ship == true)
+                    {
+                        DeactivateSingleShipSelect();
+                        ship2.SetActive(true);
+
+                        DeactivateStat();
+                        ship2Stat.SetActive(true);
+                    }
+                    if (primary == true)
+                    {
+                        DeactivateSinglePrimarySelect();
+                        primary2.SetActive(true);
+
+                        DeactivateStat();
+                        primary2Stat.SetActive(true);
+                    }
+                    if (secondary == true)
+                    {
+                        DeactivateSingleSecondarySelect();
+                        secondary2.SetActive(true);
+
+                        DeactivateStat();
+                        secondary2Stat.SetActive(true);
+                    }
+                    if (special == true)
+                    {
+                        DeactivateSingleSpecialSelect();
+                        special2.SetActive(true);
+
+                        DeactivateStat();
+                        special2Stat.SetActive(true);
+                    }
+                }
+                if (P1toggleData == 3)
+                {
+                    if (character == true)
+                    {
+                        DeactivateSingleCharacterSelect();
+                        character3.SetActive(true);
+
+                        DeactivateStat();
+                        characterStat.enabled = true;
+                        characterStat.text = "Name: Character C\nDescription:";
+                    }
+                    if (ship == true)
+                    {
+                        DeactivateSingleShipSelect();
+                        ship3.SetActive(true);
+
+                        DeactivateStat();
+                        ship3Stat.SetActive(true);
+                    }
+                    if (primary == true)
+                    {
+                        DeactivateSinglePrimarySelect();
+                        primary3.SetActive(true);
+
+                        DeactivateStat();
+                        primary3Stat.SetActive(true);
+                    }
+                    if (secondary == true)
+                    {
+                        DeactivateSingleSecondarySelect();
+                        secondary3.SetActive(true);
+
+                        DeactivateStat();
+                        secondary3Stat.SetActive(true);
+                    }
+                    if (special == true)
+                    {
+                        DeactivateSingleSpecialSelect();
+                        special3.SetActive(true);
+
+                        DeactivateStat();
+                        special3Stat.SetActive(true);
+                    }
+                }
+                if (P1toggleData == 4)
+                {
+                    if (character == true)
+                    {
+                        DeactivateSingleCharacterSelect();
+                        character4.SetActive(true);
+
+                        DeactivateStat();
+                        characterStat.enabled = true;
+                        characterStat.text = "Name: Jaeger\nDescription: A cocky, hot headed pilot on the hunt for more fame and glory.";
+                    }
+                    if (ship == true)
+                    {
+                        DeactivateSingleShipSelect();
+                        ship4.SetActive(true);
+
+                        DeactivateStat();
+                        ship4Stat.SetActive(true);
+                    }
+                    if (primary == true)
+                    {
+                        P1toggleData = 3;
+
+                        DeactivateSinglePrimarySelect();
+                        primary3.SetActive(true);
+
+                        DeactivateStat();
+                        primary3Stat.SetActive(true);
+                    }
+                    if (secondary == true)
+                    {
+                        P1toggleData = 3;
+
+                        DeactivateSingleSecondarySelect();
+                        secondary3.SetActive(true);
+
+                        DeactivateStat();
+                        secondary3Stat.SetActive(true);
+                    }
+                    if (special == true)
+                    {
+                        P1toggleData = 3;
+
+                        DeactivateSingleSpecialSelect();
+                        special3.SetActive(true);
+
+                        DeactivateStat();
+                        special3Stat.SetActive(true);
+                    }
+                }
+                if (P1toggleData >= 5)
+                {
+                    if (character == true)
+                    {
+                        P1toggleData = 4;
+
+                        DeactivateSingleCharacterSelect();
+                        character4.SetActive(true);
+
+                        DeactivateStat();
+                        characterStat.enabled = true;
+                        characterStat.text = "Name: Jaeger\nDescription: A cocky, hot headed pilot on the hunt for more fame and glory.";
+                    }
+                    if (ship == true)
+                    {
+                        P1toggleData = 5;
+
+                        DeactivateSingleShipSelect();
+                        ship5.SetActive(true);
+
+                        DeactivateStat();
+                        ship5Stat.SetActive(true);
+                    }
+                    if (primary == true)
+                    {
+                        P1toggleData = 3;
+
+                        DeactivateSinglePrimarySelect();
+                        primary3.SetActive(true);
+
+                        DeactivateStat();
+                        primary3Stat.SetActive(true);
+                    }
+                    if (secondary == true)
+                    {
+                        P1toggleData = 3;
+
+                        DeactivateSingleSecondarySelect();
+                        secondary3.SetActive(true);
+
+                        DeactivateStat();
+                        secondary3Stat.SetActive(true);
+                    }
+                    if (special == true)
+                    {
+                        P1toggleData = 3;
+
+                        DeactivateSingleSpecialSelect();
+                        special3.SetActive(true);
+
+                        DeactivateStat();
+                        special3Stat.SetActive(true);
+                    }
+                }
+
+                if (Input.GetButtonDown("P1VerticalChoiceUp") && !choosing)
+                {
+                    glowTracker--;
+                }
+                if (Input.GetButtonDown("P1VerticalChoiceDown") && !choosing)
+                {
+                    glowTracker++;
+                }
+
+                if (Input.GetButtonDown("P1HorizontalChoiceLeft"))
+                {
+                    ResetToggleGlow();
+                    toggleLeftGlow.fillAmount = 1;
+
+                    P1toggleData--;
+                }
+                if (Input.GetButtonDown("P1HorizontalChoiceRight"))
+                {
+                    ResetToggleGlow();
+                    toggleRightGlow.fillAmount = 1;
+
+                    P1toggleData++;
+                }
+
+                if (Input.GetButtonDown("Fire_P1"))
+                {
+                    if (!choosing)
+                    {
+                        if (glowTracker == 1)
+                        {
+                            ReturnButton();
+                        }
+                        if (glowTracker == 2)
+                        {
+                            SinglePlayerCharacterButton();
+                        }
+                        if (glowTracker == 3)
+                        {
+                            SinglePlayerShipButton();
+                        }
+                        if (glowTracker == 4)
+                        {
+                            SinglePlayerPrimaryButton();
+                        }
+                        if (glowTracker == 5)
+                        {
+                            SinglePlayerSecondaryButton();
+                        }
+                        if (glowTracker == 6)
+                        {
+                            SinglePlayerSpecialButton();
+                        }
+                        if (glowTracker == 7)
+                        {
+                            SingleStartButton();
+                        }
                     }
                     else
                     {
-                        doubleStartButton.SetActive(false);
-                    }
-
-                    if (P2glowTracker > maxP2GLowTracker)
-                    {
-                        P2glowTracker = maxP2GLowTracker;
-                    }
-
-                    if (P1glowTracker <= 1)
-                    {
-                        P1glowTracker = 1;
-
-                        ResetP1Glow();
-                        P1characterButtonGlow.fillAmount = 1;
-                    }
-                    if (P1glowTracker == 2)
-                    {
-                        ResetP1Glow();
-                        P1shipButtonGlow.fillAmount = 1;
-                    }
-                    if (P1glowTracker == 3)
-                    {
-                        ResetP1Glow();
-                        P1primaryButtonGlow.fillAmount = 1;
-                    }
-                    if (P1glowTracker == 4)
-                    {
-                        ResetP1Glow();
-                        P1secondaryButtonGlow.fillAmount = 1;
-                    }
-                    if (P1glowTracker == 5)
-                    {
-                        ResetP1Glow();
-                        P1specialButtonGlow.fillAmount = 1;
-                    }
-                    if (P1glowTracker >= 6)
-                    {
-                        P1glowTracker = 6;
-
-                        ResetP1Glow();
-                        doubleReturnButtonGlow.fillAmount = 1;
-                    }
-
-                    if (P2glowTracker <= 1)
-                    {
-                        P2glowTracker = 1;
-
-                        ResetP2Glow();
-                        P2characterButtonGlow.fillAmount = 1;
-                    }
-                    if (P2glowTracker == 2)
-                    {
-                        ResetP2Glow();
-                        P2shipButtonGlow.fillAmount = 1;
-                    }
-                    if (P2glowTracker == 3)
-                    {
-                        ResetP2Glow();
-                        P2primaryButtonGlow.fillAmount = 1;
-                    }
-                    if (P2glowTracker == 4)
-                    {
-                        ResetP2Glow();
-                        P2secondaryButtonGlow.fillAmount = 1;
-                    }
-                    if (P2glowTracker == 5)
-                    {
-                        ResetP2Glow();
-                        P2specialButtonGlow.fillAmount = 1;
-                    }
-                    if (P2glowTracker >= 6)
-                    {
-                        P2glowTracker = 6;
-
-                        ResetP2Glow();
-                        doubleStartButtonGlow.fillAmount = 1;
-                    }
-
-                    if (P1toggleData <= 1)
-                    {
-                        P1toggleData = 1;
-
-                        if (P1character == true)
+                        if (P1toggleData == 1)
                         {
-                            DeactivateP1CharacterSelect();
-                            P1character1.SetActive(true);
-
-                            DeactivateP1Stat();
-                            P1characterStat.enabled = true;
-                            P1characterStat.text = "Name: Character A\nDescription:";
-                        }
-                        if (P1ship == true)
-                        {
-                            DeactivateP1ShipSelect();
-                            P1ship1.SetActive(true);
-
-                            DeactivateP1Stat();
-                            P1ship1Stat.SetActive(true);
-                        }
-                        if (P1primary == true)
-                        {
-                            DeactivateP1PrimarySelect();
-                            P1primary1.SetActive(true);
-
-                            DeactivateP1Stat();
-                            P1primary1Stat.SetActive(true);
-                        }
-                        if (P1secondary == true)
-                        {
-                            DeactivateP1SecondarySelect();
-                            P1secondary1.SetActive(true);
-
-                            DeactivateP1Stat();
-                            P1secondary1Stat.SetActive(true);
-                        }
-                        if (P1special == true)
-                        {
-                            DeactivateP1SpecialSelect();
-                            P1special1.SetActive(true);
-
-                            DeactivateP1Stat();
-                            P1special1Stat.SetActive(true);
-                        }
-                    }
-                    if (P1toggleData == 2)
-                    {
-                        if (P1character == true)
-                        {
-                            DeactivateP1CharacterSelect();
-                            P1character2.SetActive(true);
-
-                            DeactivateP1Stat();
-                            P1characterStat.enabled = true;
-                            P1characterStat.text = "Name: Nomad\nDescription: A confident, hotshot pilot that hunts the machine menace wherever it goes.";
-                        }
-                        if (P1ship == true)
-                        {
-                            DeactivateP1ShipSelect();
-                            P1ship2.SetActive(true);
-
-                            DeactivateP1Stat();
-                            P1ship2Stat.SetActive(true);
-                        }
-                        if (P1primary == true)
-                        {
-                            DeactivateP1PrimarySelect();
-                            P1primary2.SetActive(true);
-
-                            DeactivateP1Stat();
-                            P1primary2Stat.SetActive(true);
-                        }
-                        if (P1secondary == true)
-                        {
-                            DeactivateP1SecondarySelect();
-                            P1secondary2.SetActive(true);
-
-                            DeactivateP1Stat();
-                            P1secondary2Stat.SetActive(true);
-                        }
-                        if (P1special == true)
-                        {
-                            DeactivateP1SpecialSelect();
-                            P1special2.SetActive(true);
-
-                            DeactivateP1Stat();
-                            P1special2Stat.SetActive(true);
-                        }
-                    }
-                    if (P1toggleData == 3)
-                    {
-                        if (P1character == true)
-                        {
-                            DeactivateP1CharacterSelect();
-                            P1character3.SetActive(true);
-
-                            DeactivateP1Stat();
-                            P1characterStat.enabled = true;
-                            P1characterStat.text = "Name: Character C\nDescription: ";
-                        }
-                        if (P1ship == true)
-                        {
-                            DeactivateP1ShipSelect();
-                            P1ship3.SetActive(true);
-
-                            DeactivateP1Stat();
-                            P1ship3Stat.SetActive(true);
-                        }
-                        if (P1primary == true)
-                        {
-                            DeactivateP1PrimarySelect();
-                            P1primary3.SetActive(true);
-
-                            DeactivateP1Stat();
-                            P1primary3Stat.SetActive(true);
-                        }
-                        if (P1secondary == true)
-                        {
-                            DeactivateP1SecondarySelect();
-                            P1secondary3.SetActive(true);
-
-                            DeactivateP1Stat();
-                            P1secondary3Stat.SetActive(true);
-                        }
-                        if (P1special == true)
-                        {
-                            DeactivateP1SpecialSelect();
-                            P1special3.SetActive(true);
-
-                            DeactivateP1Stat();
-                            P1special3Stat.SetActive(true);
-                        }
-                    }
-                    if (P1toggleData == 4)
-                    {
-                        if (P1character == true)
-                        {
-                            DeactivateP1CharacterSelect();
-                            P1character4.SetActive(true);
-
-                            DeactivateP1Stat();
-                            P1characterStat.enabled = true;
-                            P1characterStat.text = "Name: Jaeger\nDescription: A cocky, hot headed pilot on the hunt for more fame and glory.";
-                        }
-                        if (P1ship == true)
-                        {
-                            DeactivateP1ShipSelect();
-                            P1ship4.SetActive(true);
-
-                            DeactivateP1Stat();
-                            P1ship4Stat.SetActive(true);
-                        }
-                        if (P1primary == true)
-                        {
-                            P1toggleData = 3;
-
-                            DeactivateP1PrimarySelect();
-                            P1primary3.SetActive(true);
-
-                            DeactivateP1Stat();
-                            P1primary3Stat.SetActive(true);
-                        }
-                        if (P1secondary == true)
-                        {
-                            P1toggleData = 3;
-
-                            DeactivateP1SecondarySelect();
-                            P1secondary3.SetActive(true);
-
-                            DeactivateP1Stat();
-                            P1secondary3Stat.SetActive(true);
-                        }
-                        if (P1special == true)
-                        {
-                            P1toggleData = 3;
-
-                            DeactivateP1SpecialSelect();
-                            P1special3.SetActive(true);
-
-                            DeactivateP1Stat();
-                            P1special3Stat.SetActive(true);
-                        }
-                    }
-                    if (P1toggleData >= 5)
-                    {
-                        if (P1character == true)
-                        {
-                            P1toggleData = 4;
-
-                            DeactivateP1CharacterSelect();
-                            P1character4.SetActive(true);
-
-                            DeactivateP1Stat();
-                            P1characterStat.enabled = true;
-                            P1characterStat.text = "Name: Jaeger\nDescription: A cocky, hot headed pilot on the hunt for more fame and glory.";
-                        }
-                        if (P1ship == true)
-                        {
-                            P1toggleData = 5;
-
-                            DeactivateP1ShipSelect();
-                            P1ship5.SetActive(true);
-
-                            DeactivateP1Stat();
-                            P1ship5Stat.SetActive(true);
-                        }
-                        if (P1primary == true)
-                        {
-                            P1toggleData = 3;
-
-                            DeactivateP1PrimarySelect();
-                            P1primary3.SetActive(true);
-
-                            DeactivateP1Stat();
-                            P1primary3Stat.SetActive(true);
-                        }
-                        if (P1secondary == true)
-                        {
-                            P1toggleData = 3;
-
-                            DeactivateP1SecondarySelect();
-                            P1secondary3.SetActive(true);
-
-                            DeactivateP1Stat();
-                            P1secondary3Stat.SetActive(true);
-                        }
-                        if (P1special == true)
-                        {
-                            P1toggleData = 3;
-
-                            DeactivateP1SpecialSelect();
-                            P1special3.SetActive(true);
-
-                            DeactivateP1Stat();
-                            P1special3Stat.SetActive(true);
-                        }
-                    }
-
-                    if (P2toggleData <= 1)
-                    {
-                        P2toggleData = 1;
-
-                        if (P2character == true)
-                        {
-                            DeactivateP2CharacterSelect();
-                            P2character1.SetActive(true);
-
-                            DeactivateP2Stat();
-                            P2characterStat.enabled = true;
-                            P2characterStat.text = "Name: Character A\nDescription:";
-                        }
-                        if (P2ship == true)
-                        {
-                            DeactivateP2ShipSelect();
-                            P2ship1.SetActive(true);
-
-                            DeactivateP2Stat();
-                            P2ship1Stat.SetActive(true);
-                        }
-                        if (P2primary == true)
-                        {
-                            DeactivateP2PrimarySelect();
-                            P2primary1.SetActive(true);
-
-                            DeactivateP2Stat();
-                            P2primary1Stat.SetActive(true);
-                        }
-                        if (P2secondary == true)
-                        {
-                            DeactivateP2SecondarySelect();
-                            P2secondary1.SetActive(true);
-
-                            DeactivateP2Stat();
-                            P2secondary1Stat.SetActive(true);
-                        }
-                        if (P2special == true)
-                        {
-                            DeactivateP2SpecialSelect();
-                            P2special1.SetActive(true);
-
-                            DeactivateP2Stat();
-                            P2special1Stat.SetActive(true);
-                        }
-                    }
-                    if (P2toggleData == 2)
-                    {
-                        if (P2character == true)
-                        {
-                            DeactivateP2CharacterSelect();
-                            P2character2.SetActive(true);
-
-                            DeactivateP2Stat();
-                            P2characterStat.enabled = true;
-                            P2characterStat.text = "Name: Nomad\nDescription: A confident, hotshot pilot that hunts the machine menace wherever it goes.";
-                        }
-                        if (P2ship == true)
-                        {
-                            DeactivateP2ShipSelect();
-                            P2ship2.SetActive(true);
-
-                            DeactivateP2Stat();
-                            P2ship2Stat.SetActive(true);
-                        }
-                        if (P2primary == true)
-                        {
-                            DeactivateP2PrimarySelect();
-                            P2primary2.SetActive(true);
-
-                            DeactivateP2Stat();
-                            P2primary2Stat.SetActive(true);
-                        }
-                        if (P2secondary == true)
-                        {
-                            DeactivateP2SecondarySelect();
-                            P2secondary2.SetActive(true);
-
-                            DeactivateP2Stat();
-                            P2secondary2Stat.SetActive(true);
-                        }
-                        if (P2special == true)
-                        {
-                            DeactivateP2SpecialSelect();
-                            P2special2.SetActive(true);
-
-                            DeactivateP2Stat();
-                            P2special2Stat.SetActive(true);
-                        }
-                    }
-                    if (P2toggleData == 3)
-                    {
-                        if (P2character == true)
-                        {
-                            DeactivateP2CharacterSelect();
-                            P2character3.SetActive(true);
-
-                            DeactivateP2Stat();
-                            P2characterStat.enabled = true;
-                            P2characterStat.text = "Name: Character C\nDescription:";
-                        }
-                        if (P2ship == true)
-                        {
-                            DeactivateP2ShipSelect();
-                            P2ship3.SetActive(true);
-
-                            DeactivateP2Stat();
-                            P2ship3Stat.SetActive(true);
-                        }
-                        if (P2primary == true)
-                        {
-                            DeactivateP2PrimarySelect();
-                            P2primary3.SetActive(true);
-
-                            DeactivateP2Stat();
-                            P2primary3Stat.SetActive(true);
-                        }
-                        if (P2secondary == true)
-                        {
-                            DeactivateP2SecondarySelect();
-                            P2secondary3.SetActive(true);
-
-                            DeactivateP2Stat();
-                            P2secondary3Stat.SetActive(true);
-                        }
-                        if (P2special == true)
-                        {
-                            DeactivateP2SpecialSelect();
-                            P2special3.SetActive(true);
-
-                            DeactivateP2Stat();
-                            P2special3Stat.SetActive(true);
-                        }
-                    }
-                    if (P2toggleData == 4)
-                    {
-                        if (P2character == true)
-                        {
-                            DeactivateP2CharacterSelect();
-                            P2character4.SetActive(true);
-
-                            DeactivateP2Stat();
-                            P2characterStat.enabled = true;
-                            P2characterStat.text = "Name: Jaeger\nDescription: A cocky, hot headed pilot on the hunt for more fame and glory.";
-                        }
-                        if (P2ship == true)
-                        {
-                            DeactivateP2ShipSelect();
-                            P2ship4.SetActive(true);
-
-                            DeactivateP2Stat();
-                            P2ship4Stat.SetActive(true);
-                        }
-                        if (P2primary == true)
-                        {
-                            P2toggleData = 3;
-
-                            DeactivateP2PrimarySelect();
-                            P2primary3.SetActive(true);
-
-                            DeactivateP2Stat();
-                            P2primary3Stat.SetActive(true);
-                        }
-                        if (P2secondary == true)
-                        {
-                            P2toggleData = 3;
-
-                            DeactivateP2SecondarySelect();
-                            P2secondary3.SetActive(true);
-
-                            DeactivateP2Stat();
-                            P2secondary3Stat.SetActive(true);
-                        }
-                        if (P2special == true)
-                        {
-                            P2toggleData = 3;
-
-                            DeactivateP2SpecialSelect();
-                            P2special3.SetActive(true);
-
-                            DeactivateP2Stat();
-                            P2special3Stat.SetActive(true);
-                        }
-                    }
-                    if (P2toggleData >= 5)
-                    {
-                        if (P2character == true)
-                        {
-                            P2toggleData = 4;
-
-                            DeactivateP2CharacterSelect();
-                            P2character4.SetActive(true);
-
-                            DeactivateP2Stat();
-                            P2characterStat.enabled = true;
-                            P2characterStat.text = "Name: Jaeger\nDescription: A cocky, hot headed pilot on the hunt for more fame and glory.";
-                        }
-                        if (P2ship == true)
-                        {
-                            P2toggleData = 5;
-
-                            DeactivateP2ShipSelect();
-                            P2ship5.SetActive(true);
-
-                            DeactivateP2Stat();
-                            P2ship5Stat.SetActive(true);
-                        }
-                        if (P2primary == true)
-                        {
-                            P2toggleData = 3;
-
-                            DeactivateP2PrimarySelect();
-                            P2primary3.SetActive(true);
-
-                            DeactivateP2Stat();
-                            P2primary3Stat.SetActive(true);
-                        }
-                        if (P2secondary == true)
-                        {
-                            P2toggleData = 3;
-
-                            DeactivateP2SecondarySelect();
-                            P2secondary3.SetActive(true);
-
-                            DeactivateP2Stat();
-                            P2secondary3Stat.SetActive(true);
-                        }
-                        if (P2special == true)
-                        {
-                            P2toggleData = 3;
-
-                            DeactivateP2SpecialSelect();
-                            P2special3.SetActive(true);
-
-                            DeactivateP2Stat();
-                            P2special3Stat.SetActive(true);
-                        }
-                    }
-
-                    if (Input.GetButtonDown("P1VerticalChoiceUp") && !P1choosing)
-                    {
-                        P1glowTracker--;
-                    }
-                    if (Input.GetButtonDown("P1VerticalChoiceDown") && !P1choosing)
-                    {
-                        P1glowTracker++;
-                    }
-
-                    if ((Input.GetButtonDown("P2VerticalChoiceUp") || Input.GetKeyDown(KeyCode.Keypad8)) && !P2choosing)
-                    {
-                        P2glowTracker--;
-                    }
-                    if ((Input.GetButtonDown("P2VerticalChoiceDown") || Input.GetKeyDown(KeyCode.Keypad5)) && !P2choosing)
-                    {
-                        P2glowTracker++;
-                    }
-
-                    if (Input.GetButtonDown("P1HorizontalChoiceLeft"))
-                    {
-                        ResetP1ToggleGlow();
-                        P1toggleLeftGlow.fillAmount = 1;
-
-                        P1toggleData--;
-                    }
-                    if (Input.GetButtonDown("P1HorizontalChoiceRight"))
-                    {
-                        ResetP1ToggleGlow();
-                        P1toggleRightGlow.fillAmount = 1;
-
-                        P1toggleData++;
-                    }
-
-                    if (Input.GetButtonDown("P2HorizontalChoiceLeft") || Input.GetKeyDown(KeyCode.Keypad4))
-                    {
-                        ResetP2ToggleGlow();
-                        P2toggleLeftGlow.fillAmount = 1;
-
-                        P2toggleData++;
-                    }
-                    if (Input.GetButtonDown("P2HorizontalChoiceRight") || Input.GetKeyDown(KeyCode.Keypad6))
-                    {
-                        ResetP2ToggleGlow();
-                        P2toggleRightGlow.fillAmount = 1;
-
-                        P2toggleData--;
-                    }
-
-                    if (Input.GetButtonDown("Fire_P1"))
-                    {
-                        if (!P1choosing)
-                        {
-                            if (P1glowTracker == 1)
+                            if (character == true)
                             {
-                                Player1CharacterButton();
+                                P1characterType = 1;
+                                characterButtonShader.SetActive(true);
                             }
-                            if (P1glowTracker == 2)
+                            if (ship == true)
                             {
-                                Player1ShipButton();
+                                P1shipType = 1;
+                                shipButtonShader.SetActive(true);
+
+                                P1LightShipData();
+                                Player1Data();
                             }
-                            if (P1glowTracker == 3)
+                            if (primary == true)
                             {
-                                Player1PrimaryButton();
+                                P1primaryType = 1;
+                                primaryButtonShader.SetActive(true);
                             }
-                            if (P1glowTracker == 4)
+                            if (secondary == true)
                             {
-                                Player1SecondaryButton();
+                                P1secondaryType = 1;
+                                secondaryButtonShader.SetActive(true);
                             }
-                            if (P1glowTracker == 5)
+                            if (special == true)
                             {
-                                Player1SpecialButton();
-                            }
-                            if (P1glowTracker == 6)
-                            {
-                                ReturnButton();
+                                P1specialType = 1;
+                                specialButtonShader.SetActive(true);
                             }
                         }
-                        else
+                        if (P1toggleData == 2)
                         {
-                            if (P1toggleData == 1)
+                            if (character == true)
                             {
-                                if (P1character == true)
-                                {
-                                    P1characterType = 1;
-                                    P1characterButtonShader.SetActive(true);
-                                }
-                                if (P1ship == true)
-                                {
-                                    P1shipType = 1;
-                                    P1shipButtonShader.SetActive(true);
+                                P1characterType = 2;
+                                characterButtonShader.SetActive(true);
+                            }
+                            if (ship == true)
+                            {
+                                P1shipType = 2;
+                                shipButtonShader.SetActive(true);
 
-                                    P1LightShipData();
-                                    Player1Data();
-                                }
-                                if (P1primary == true)
-                                {
-                                    P1primaryType = 1;
-                                    P1primaryButtonShader.SetActive(true);
-                                }
-                                if (P1secondary == true)
-                                {
-                                    P1secondaryType = 1;
-                                    P1secondaryButtonShader.SetActive(true);
-                                }
-                                if (P1special == true)
-                                {
-                                    P1specialType = 1;
-                                    P1specialButtonShader.SetActive(true);
-                                }
+                                P1MediumShipData();
+                                Player1Data();
                             }
-                            if (P1toggleData == 2)
+                            if (primary == true)
                             {
-                                if (P1character == true)
-                                {
-                                    P1characterType = 2;
-                                    P1characterButtonShader.SetActive(true);
-                                }
-                                if (P1ship == true)
-                                {
-                                    P1shipType = 2;
-                                    P1shipButtonShader.SetActive(true);
-
-                                    P1MediumShipData();
-                                    Player1Data();
-                                }
-                                if (P1primary == true)
-                                {
-                                    P1primaryType = 2;
-                                    P1primaryButtonShader.SetActive(true);
-                                }
-                                if (P1secondary == true)
-                                {
-                                    P1secondaryType = 2;
-                                    P1secondaryButtonShader.SetActive(true);
-                                }
-                                if (P1special == true)
-                                {
-                                    P1specialType = 2;
-                                    P1specialButtonShader.SetActive(true);
-                                }
+                                P1primaryType = 2;
+                                primaryButtonShader.SetActive(true);
                             }
-                            if (P1toggleData == 3)
+                            if (secondary == true)
                             {
-                                if (P1character == true)
-                                {
-                                    P1characterType = 3;
-                                    P1characterButtonShader.SetActive(true);
-                                }
-                                if (P1ship == true)
-                                {
-                                    P1shipType = 3;
-                                    P1shipButtonShader.SetActive(true);
-
-                                    P1HeavyShipData();
-                                    Player1Data();
-                                }
-                                if (P1primary == true)
-                                {
-                                    P1primaryType = 3;
-                                    P1primaryButtonShader.SetActive(true);
-                                }
-                                if (P1secondary == true)
-                                {
-                                    P1secondaryType = 3;
-                                    P1secondaryButtonShader.SetActive(true);
-                                }
-                                if (P1special == true)
-                                {
-                                    P1specialType = 3;
-                                    P1specialButtonShader.SetActive(true);
-                                }
+                                P1secondaryType = 2;
+                                secondaryButtonShader.SetActive(true);
                             }
-                            if (P1toggleData == 4)
+                            if (special == true)
                             {
-                                if (P1character == true)
-                                {
-                                    P1characterType = 4;
-                                    P1characterButtonShader.SetActive(true);
-                                }
-                                if (P1ship == true)
-                                {
-                                    P1shipType = 4;
-                                    P1shipButtonShader.SetActive(true);
-
-                                    P1LamboShooterData();
-                                    Player1Data();
-                                }
-                                if (P1primary == true)
-                                {
-                                    P1primaryType = 3;
-                                    P1primaryButtonShader.SetActive(true);
-                                }
-                                if (P1secondary == true)
-                                {
-                                    P1secondaryType = 3;
-                                    P1secondaryButtonShader.SetActive(true);
-                                }
-                                if (P1special == true)
-                                {
-                                    P1specialType = 3;
-                                    P1specialButtonShader.SetActive(true);
-                                }
-                            }
-                            if (P1toggleData == 5)
-                            {
-                                if (P1character == true)
-                                {
-                                    P1characterType = 4;
-                                    P1characterButtonShader.SetActive(true);
-                                }
-                                if (P1ship == true)
-                                {
-                                    P1shipType = 5;
-                                    P1shipButtonShader.SetActive(true);
-
-                                    P1TruckShooterData();
-                                    Player1Data();
-                                }
-                                if (P1primary == true)
-                                {
-                                    P1primaryType = 3;
-                                    P1primaryButtonShader.SetActive(true);
-                                }
-                                if (P1secondary == true)
-                                {
-                                    P1secondaryType = 3;
-                                    P1secondaryButtonShader.SetActive(true);
-                                }
-                                if (P1special == true)
-                                {
-                                    P1specialType = 3;
-                                    P1specialButtonShader.SetActive(true);
-                                }
-                            }
-
-                            DeactivateP1CharacterSelect();
-                            DeactivateP1ShipSelect();
-                            DeactivateP1PrimarySelect();
-                            DeactivateP1SecondarySelect();
-                            DeactivateP1SpecialSelect();
-                            DeactivateP1Toggle();
-                            DeactivateP1Stat();
-
-                            ActivatePlayer1Selection();
-
-                            ResetBool();
-                            ResetP1Glow();
-
-                            P1choosing = false;
-                        }
-                    }
-                    if (Input.GetButtonDown("Fire_P2") || Input.GetKeyDown(KeyCode.Keypad0))
-                    {
-                        if (!P2choosing)
-                        {
-                            if (P2glowTracker == 1)
-                            {
-                                Player2CharacterButton();
-                            }
-                            if (P2glowTracker == 2)
-                            {
-                                Player2ShipButton();
-                            }
-                            if (P2glowTracker == 3)
-                            {
-                                Player2PrimaryButton();
-                            }
-                            if (P2glowTracker == 4)
-                            {
-                                Player2SecondaryButton();
-                            }
-                            if (P2glowTracker == 5)
-                            {
-                                Player2SpecialButton();
-                            }
-                            if (P2glowTracker == 6)
-                            {
-                                StartCoroutine(ActivateDoubleStartButton());
+                                P1specialType = 2;
+                                specialButtonShader.SetActive(true);
                             }
                         }
-                        else
+                        if (P1toggleData == 3)
                         {
-                            if (P2toggleData == 1)
+                            if (character == true)
                             {
-                                if (P2character == true)
-                                {
-                                    P2characterType = 1;
-                                    P2characterButtonShader.SetActive(true);
-                                }
-                                if (P2ship == true)
-                                {
-                                    P2shipType = 1;
-                                    P2shipButtonShader.SetActive(true);
-
-                                    P2LightShipData();
-                                    Player2Data();
-                                }
-                                if (P2primary == true)
-                                {
-                                    P2primaryType = 1;
-                                    P2primaryButtonShader.SetActive(true);
-                                }
-                                if (P2secondary == true)
-                                {
-                                    P2secondaryType = 1;
-                                    P2secondaryButtonShader.SetActive(true);
-                                }
-                                if (P2special == true)
-                                {
-                                    P2specialType = 1;
-                                    P2specialButtonShader.SetActive(true);
-                                }
+                                P1characterType = 3;
+                                characterButtonShader.SetActive(true);
                             }
-                            if (P2toggleData == 2)
+                            if (ship == true)
                             {
-                                if (P2character == true)
-                                {
-                                    P2characterType = 2;
-                                    P2characterButtonShader.SetActive(true);
-                                }
-                                if (P2ship == true)
-                                {
-                                    P2shipType = 2;
-                                    P2shipButtonShader.SetActive(true);
+                                P1shipType = 3;
+                                shipButtonShader.SetActive(true);
 
-                                    P2MediumShipData();
-                                    Player2Data();
-                                }
-                                if (P2primary == true)
-                                {
-                                    P2primaryType = 2;
-                                    P2primaryButtonShader.SetActive(true);
-                                }
-                                if (P2secondary == true)
-                                {
-                                    P2secondaryType = 2;
-                                    P2secondaryButtonShader.SetActive(true);
-                                }
-                                if (P2special == true)
-                                {
-                                    P2specialType = 2;
-                                    P2specialButtonShader.SetActive(true);
-                                }
+                                P1HeavyShipData();
+                                Player1Data();
                             }
-                            if (P2toggleData == 3)
+                            if (primary == true)
                             {
-                                if (P2character == true)
-                                {
-                                    P2characterType = 3;
-                                    P2characterButtonShader.SetActive(true);
-                                }
-                                if (P2ship == true)
-                                {
-                                    P2shipType = 3;
-                                    P2shipButtonShader.SetActive(true);
-
-                                    P2HeavyShipData();
-                                    Player2Data();
-                                }
-                                if (P2primary == true)
-                                {
-                                    P2primaryType = 3;
-                                    P2primaryButtonShader.SetActive(true);
-                                }
-                                if (P2secondary == true)
-                                {
-                                    P2secondaryType = 3;
-                                    P2secondaryButtonShader.SetActive(true);
-                                }
-                                if (P2special == true)
-                                {
-                                    P2specialType = 3;
-                                    P2specialButtonShader.SetActive(true);
-                                }
+                                P1primaryType = 3;
+                                primaryButtonShader.SetActive(true);
                             }
-                            if (P2toggleData == 4)
+                            if (secondary == true)
                             {
-                                if (P2character == true)
-                                {
-                                    P2characterType = 4;
-                                    P2characterButtonShader.SetActive(true);
-                                }
-                                if (P2ship == true)
-                                {
-                                    P2shipType = 4;
-                                    P2shipButtonShader.SetActive(true);
-
-                                    P2LamboShooterData();
-                                    Player2Data();
-                                }
-                                if (P2primary == true)
-                                {
-                                    P2primaryType = 3;
-                                    P2primaryButtonShader.SetActive(true);
-                                }
-                                if (P2secondary == true)
-                                {
-                                    P2secondaryType = 3;
-                                    P2secondaryButtonShader.SetActive(true);
-                                }
-                                if (P2special == true)
-                                {
-                                    P2specialType = 3;
-                                    P2specialButtonShader.SetActive(true);
-                                }
+                                P1secondaryType = 3;
+                                secondaryButtonShader.SetActive(true);
                             }
-                            if (P2toggleData == 5)
+                            if (special == true)
                             {
-                                if (P2character == true)
-                                {
-                                    P2characterType = 4;
-                                    P2characterButtonShader.SetActive(true);
-                                }
-                                if (P2ship == true)
-                                {
-                                    P2shipType = 5;
-                                    P2shipButtonShader.SetActive(true);
-
-                                    P2TruckShooterData();
-                                    Player2Data();
-                                }
-                                if (P2primary == true)
-                                {
-                                    P2primaryType = 3;
-                                    P2primaryButtonShader.SetActive(true);
-                                }
-                                if (P2secondary == true)
-                                {
-                                    P2secondaryType = 3;
-                                    P2secondaryButtonShader.SetActive(true);
-                                }
-                                if (P2special == true)
-                                {
-                                    P2specialType = 3;
-                                    P2specialButtonShader.SetActive(true);
-                                }
+                                P1specialType = 3;
+                                specialButtonShader.SetActive(true);
                             }
-
-                            DeactivateP2CharacterSelect();
-                            DeactivateP2ShipSelect();
-                            DeactivateP2PrimarySelect();
-                            DeactivateP2SecondarySelect();
-                            DeactivateP2SpecialSelect();
-                            DeactivateP2Toggle();
-                            DeactivateP2Stat();
-
-                            ActivatePlayer2Selection();
-
-                            ResetBool();
-                            ResetP2Glow();
-
-                            P2choosing = false;
                         }
+                        if (P1toggleData == 4)
+                        {
+                            if (character == true)
+                            {
+                                P1characterType = 4;
+                                characterButtonShader.SetActive(true);
+                            }
+                            if (ship == true)
+                            {
+                                P1shipType = 4;
+                                shipButtonShader.SetActive(true);
+
+                                P1LamboShooterData();
+                                Player1Data();
+                            }
+                            if (primary == true)
+                            {
+                                P1primaryType = 3;
+                                primaryButtonShader.SetActive(true);
+                            }
+                            if (secondary == true)
+                            {
+                                P1secondaryType = 3;
+                                secondaryButtonShader.SetActive(true);
+                            }
+                            if (special == true)
+                            {
+                                P1specialType = 3;
+                                specialButtonShader.SetActive(true);
+                            }
+                        }
+                        if (P1toggleData == 5)
+                        {
+                            if (character == true)
+                            {
+                                P1characterType = 4;
+                                characterButtonShader.SetActive(true);
+                            }
+                            if (ship == true)
+                            {
+                                P1shipType = 5;
+                                shipButtonShader.SetActive(true);
+
+                                P1TruckShooterData();
+                                Player1Data();
+                            }
+                            if (primary == true)
+                            {
+                                P1primaryType = 3;
+                                primaryButtonShader.SetActive(true);
+                            }
+                            if (secondary == true)
+                            {
+                                P1secondaryType = 3;
+                                secondaryButtonShader.SetActive(true);
+                            }
+                            if (special == true)
+                            {
+                                P1specialType = 3;
+                                specialButtonShader.SetActive(true);
+                            }
+                        }
+
+                        DeactivateSingleCharacterSelect();
+                        DeactivateSingleShipSelect();
+                        DeactivateSinglePrimarySelect();
+                        DeactivateSingleSecondarySelect();
+                        DeactivateSingleSpecialSelect();
+                        DeactivateSingleToggle();
+                        DeactivateStat();
+
+                        ActivateSingleSelection();
+
+                        ResetBool();
+                        ResetGlow();
+
+                        choosing = false;
                     }
                 }
             }
             else
             {
-                if (Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.Alpha0) || Input.GetKeyDown(KeyCode.Keypad0))
+                if (P1characterType > 0 && P1shipType > 0 && P1primaryType > 0 && P1secondaryType > 0 && P1specialType > 0 && P2characterType > 0 && P2shipType > 0 && P2primaryType > 0 && P2secondaryType > 0 && P2specialType > 0)
                 {
-                    breakInstruction = true;
+                    maxP2GLowTracker = 6;
 
-                    SkipButton();
+                    doubleStartButton.SetActive(true);
+                }
+                else
+                {
+                    doubleStartButton.SetActive(false);
+                }
+
+                if (P2glowTracker > maxP2GLowTracker)
+                {
+                    P2glowTracker = maxP2GLowTracker;
+                }
+
+                if (P1glowTracker <= 1)
+                {
+                    P1glowTracker = 1;
+
+                    ResetP1Glow();
+                    P1characterButtonGlow.fillAmount = 1;
+                }
+                if (P1glowTracker == 2)
+                {
+                    ResetP1Glow();
+                    P1shipButtonGlow.fillAmount = 1;
+                }
+                if (P1glowTracker == 3)
+                {
+                    ResetP1Glow();
+                    P1primaryButtonGlow.fillAmount = 1;
+                }
+                if (P1glowTracker == 4)
+                {
+                    ResetP1Glow();
+                    P1secondaryButtonGlow.fillAmount = 1;
+                }
+                if (P1glowTracker == 5)
+                {
+                    ResetP1Glow();
+                    P1specialButtonGlow.fillAmount = 1;
+                }
+                if (P1glowTracker >= 6)
+                {
+                    P1glowTracker = 6;
+
+                    ResetP1Glow();
+                    doubleReturnButtonGlow.fillAmount = 1;
+                }
+
+                if (P2glowTracker <= 1)
+                {
+                    P2glowTracker = 1;
+
+                    ResetP2Glow();
+                    P2characterButtonGlow.fillAmount = 1;
+                }
+                if (P2glowTracker == 2)
+                {
+                    ResetP2Glow();
+                    P2shipButtonGlow.fillAmount = 1;
+                }
+                if (P2glowTracker == 3)
+                {
+                    ResetP2Glow();
+                    P2primaryButtonGlow.fillAmount = 1;
+                }
+                if (P2glowTracker == 4)
+                {
+                    ResetP2Glow();
+                    P2secondaryButtonGlow.fillAmount = 1;
+                }
+                if (P2glowTracker == 5)
+                {
+                    ResetP2Glow();
+                    P2specialButtonGlow.fillAmount = 1;
+                }
+                if (P2glowTracker >= 6)
+                {
+                    P2glowTracker = 6;
+
+                    ResetP2Glow();
+                    doubleStartButtonGlow.fillAmount = 1;
+                }
+
+                if (P1toggleData <= 1)
+                {
+                    P1toggleData = 1;
+
+                    if (P1character == true)
+                    {
+                        DeactivateP1CharacterSelect();
+                        P1character1.SetActive(true);
+
+                        DeactivateP1Stat();
+                        P1characterStat.enabled = true;
+                        P1characterStat.text = "Name: Character A\nDescription:";
+                    }
+                    if (P1ship == true)
+                    {
+                        DeactivateP1ShipSelect();
+                        P1ship1.SetActive(true);
+
+                        DeactivateP1Stat();
+                        P1ship1Stat.SetActive(true);
+                    }
+                    if (P1primary == true)
+                    {
+                        DeactivateP1PrimarySelect();
+                        P1primary1.SetActive(true);
+
+                        DeactivateP1Stat();
+                        P1primary1Stat.SetActive(true);
+                    }
+                    if (P1secondary == true)
+                    {
+                        DeactivateP1SecondarySelect();
+                        P1secondary1.SetActive(true);
+
+                        DeactivateP1Stat();
+                        P1secondary1Stat.SetActive(true);
+                    }
+                    if (P1special == true)
+                    {
+                        DeactivateP1SpecialSelect();
+                        P1special1.SetActive(true);
+
+                        DeactivateP1Stat();
+                        P1special1Stat.SetActive(true);
+                    }
+                }
+                if (P1toggleData == 2)
+                {
+                    if (P1character == true)
+                    {
+                        DeactivateP1CharacterSelect();
+                        P1character2.SetActive(true);
+
+                        DeactivateP1Stat();
+                        P1characterStat.enabled = true;
+                        P1characterStat.text = "Name: Nomad\nDescription: A confident, hotshot pilot that hunts the machine menace wherever it goes.";
+                    }
+                    if (P1ship == true)
+                    {
+                        DeactivateP1ShipSelect();
+                        P1ship2.SetActive(true);
+
+                        DeactivateP1Stat();
+                        P1ship2Stat.SetActive(true);
+                    }
+                    if (P1primary == true)
+                    {
+                        DeactivateP1PrimarySelect();
+                        P1primary2.SetActive(true);
+
+                        DeactivateP1Stat();
+                        P1primary2Stat.SetActive(true);
+                    }
+                    if (P1secondary == true)
+                    {
+                        DeactivateP1SecondarySelect();
+                        P1secondary2.SetActive(true);
+
+                        DeactivateP1Stat();
+                        P1secondary2Stat.SetActive(true);
+                    }
+                    if (P1special == true)
+                    {
+                        DeactivateP1SpecialSelect();
+                        P1special2.SetActive(true);
+
+                        DeactivateP1Stat();
+                        P1special2Stat.SetActive(true);
+                    }
+                }
+                if (P1toggleData == 3)
+                {
+                    if (P1character == true)
+                    {
+                        DeactivateP1CharacterSelect();
+                        P1character3.SetActive(true);
+
+                        DeactivateP1Stat();
+                        P1characterStat.enabled = true;
+                        P1characterStat.text = "Name: Character C\nDescription: ";
+                    }
+                    if (P1ship == true)
+                    {
+                        DeactivateP1ShipSelect();
+                        P1ship3.SetActive(true);
+
+                        DeactivateP1Stat();
+                        P1ship3Stat.SetActive(true);
+                    }
+                    if (P1primary == true)
+                    {
+                        DeactivateP1PrimarySelect();
+                        P1primary3.SetActive(true);
+
+                        DeactivateP1Stat();
+                        P1primary3Stat.SetActive(true);
+                    }
+                    if (P1secondary == true)
+                    {
+                        DeactivateP1SecondarySelect();
+                        P1secondary3.SetActive(true);
+
+                        DeactivateP1Stat();
+                        P1secondary3Stat.SetActive(true);
+                    }
+                    if (P1special == true)
+                    {
+                        DeactivateP1SpecialSelect();
+                        P1special3.SetActive(true);
+
+                        DeactivateP1Stat();
+                        P1special3Stat.SetActive(true);
+                    }
+                }
+                if (P1toggleData == 4)
+                {
+                    if (P1character == true)
+                    {
+                        DeactivateP1CharacterSelect();
+                        P1character4.SetActive(true);
+
+                        DeactivateP1Stat();
+                        P1characterStat.enabled = true;
+                        P1characterStat.text = "Name: Jaeger\nDescription: A cocky, hot headed pilot on the hunt for more fame and glory.";
+                    }
+                    if (P1ship == true)
+                    {
+                        DeactivateP1ShipSelect();
+                        P1ship4.SetActive(true);
+
+                        DeactivateP1Stat();
+                        P1ship4Stat.SetActive(true);
+                    }
+                    if (P1primary == true)
+                    {
+                        P1toggleData = 3;
+
+                        DeactivateP1PrimarySelect();
+                        P1primary3.SetActive(true);
+
+                        DeactivateP1Stat();
+                        P1primary3Stat.SetActive(true);
+                    }
+                    if (P1secondary == true)
+                    {
+                        P1toggleData = 3;
+
+                        DeactivateP1SecondarySelect();
+                        P1secondary3.SetActive(true);
+
+                        DeactivateP1Stat();
+                        P1secondary3Stat.SetActive(true);
+                    }
+                    if (P1special == true)
+                    {
+                        P1toggleData = 3;
+
+                        DeactivateP1SpecialSelect();
+                        P1special3.SetActive(true);
+
+                        DeactivateP1Stat();
+                        P1special3Stat.SetActive(true);
+                    }
+                }
+                if (P1toggleData >= 5)
+                {
+                    if (P1character == true)
+                    {
+                        P1toggleData = 4;
+
+                        DeactivateP1CharacterSelect();
+                        P1character4.SetActive(true);
+
+                        DeactivateP1Stat();
+                        P1characterStat.enabled = true;
+                        P1characterStat.text = "Name: Jaeger\nDescription: A cocky, hot headed pilot on the hunt for more fame and glory.";
+                    }
+                    if (P1ship == true)
+                    {
+                        P1toggleData = 5;
+
+                        DeactivateP1ShipSelect();
+                        P1ship5.SetActive(true);
+
+                        DeactivateP1Stat();
+                        P1ship5Stat.SetActive(true);
+                    }
+                    if (P1primary == true)
+                    {
+                        P1toggleData = 3;
+
+                        DeactivateP1PrimarySelect();
+                        P1primary3.SetActive(true);
+
+                        DeactivateP1Stat();
+                        P1primary3Stat.SetActive(true);
+                    }
+                    if (P1secondary == true)
+                    {
+                        P1toggleData = 3;
+
+                        DeactivateP1SecondarySelect();
+                        P1secondary3.SetActive(true);
+
+                        DeactivateP1Stat();
+                        P1secondary3Stat.SetActive(true);
+                    }
+                    if (P1special == true)
+                    {
+                        P1toggleData = 3;
+
+                        DeactivateP1SpecialSelect();
+                        P1special3.SetActive(true);
+
+                        DeactivateP1Stat();
+                        P1special3Stat.SetActive(true);
+                    }
+                }
+
+                if (P2toggleData <= 1)
+                {
+                    P2toggleData = 1;
+
+                    if (P2character == true)
+                    {
+                        DeactivateP2CharacterSelect();
+                        P2character1.SetActive(true);
+
+                        DeactivateP2Stat();
+                        P2characterStat.enabled = true;
+                        P2characterStat.text = "Name: Character A\nDescription:";
+                    }
+                    if (P2ship == true)
+                    {
+                        DeactivateP2ShipSelect();
+                        P2ship1.SetActive(true);
+
+                        DeactivateP2Stat();
+                        P2ship1Stat.SetActive(true);
+                    }
+                    if (P2primary == true)
+                    {
+                        DeactivateP2PrimarySelect();
+                        P2primary1.SetActive(true);
+
+                        DeactivateP2Stat();
+                        P2primary1Stat.SetActive(true);
+                    }
+                    if (P2secondary == true)
+                    {
+                        DeactivateP2SecondarySelect();
+                        P2secondary1.SetActive(true);
+
+                        DeactivateP2Stat();
+                        P2secondary1Stat.SetActive(true);
+                    }
+                    if (P2special == true)
+                    {
+                        DeactivateP2SpecialSelect();
+                        P2special1.SetActive(true);
+
+                        DeactivateP2Stat();
+                        P2special1Stat.SetActive(true);
+                    }
+                }
+                if (P2toggleData == 2)
+                {
+                    if (P2character == true)
+                    {
+                        DeactivateP2CharacterSelect();
+                        P2character2.SetActive(true);
+
+                        DeactivateP2Stat();
+                        P2characterStat.enabled = true;
+                        P2characterStat.text = "Name: Nomad\nDescription: A confident, hotshot pilot that hunts the machine menace wherever it goes.";
+                    }
+                    if (P2ship == true)
+                    {
+                        DeactivateP2ShipSelect();
+                        P2ship2.SetActive(true);
+
+                        DeactivateP2Stat();
+                        P2ship2Stat.SetActive(true);
+                    }
+                    if (P2primary == true)
+                    {
+                        DeactivateP2PrimarySelect();
+                        P2primary2.SetActive(true);
+
+                        DeactivateP2Stat();
+                        P2primary2Stat.SetActive(true);
+                    }
+                    if (P2secondary == true)
+                    {
+                        DeactivateP2SecondarySelect();
+                        P2secondary2.SetActive(true);
+
+                        DeactivateP2Stat();
+                        P2secondary2Stat.SetActive(true);
+                    }
+                    if (P2special == true)
+                    {
+                        DeactivateP2SpecialSelect();
+                        P2special2.SetActive(true);
+
+                        DeactivateP2Stat();
+                        P2special2Stat.SetActive(true);
+                    }
+                }
+                if (P2toggleData == 3)
+                {
+                    if (P2character == true)
+                    {
+                        DeactivateP2CharacterSelect();
+                        P2character3.SetActive(true);
+
+                        DeactivateP2Stat();
+                        P2characterStat.enabled = true;
+                        P2characterStat.text = "Name: Character C\nDescription:";
+                    }
+                    if (P2ship == true)
+                    {
+                        DeactivateP2ShipSelect();
+                        P2ship3.SetActive(true);
+
+                        DeactivateP2Stat();
+                        P2ship3Stat.SetActive(true);
+                    }
+                    if (P2primary == true)
+                    {
+                        DeactivateP2PrimarySelect();
+                        P2primary3.SetActive(true);
+
+                        DeactivateP2Stat();
+                        P2primary3Stat.SetActive(true);
+                    }
+                    if (P2secondary == true)
+                    {
+                        DeactivateP2SecondarySelect();
+                        P2secondary3.SetActive(true);
+
+                        DeactivateP2Stat();
+                        P2secondary3Stat.SetActive(true);
+                    }
+                    if (P2special == true)
+                    {
+                        DeactivateP2SpecialSelect();
+                        P2special3.SetActive(true);
+
+                        DeactivateP2Stat();
+                        P2special3Stat.SetActive(true);
+                    }
+                }
+                if (P2toggleData == 4)
+                {
+                    if (P2character == true)
+                    {
+                        DeactivateP2CharacterSelect();
+                        P2character4.SetActive(true);
+
+                        DeactivateP2Stat();
+                        P2characterStat.enabled = true;
+                        P2characterStat.text = "Name: Jaeger\nDescription: A cocky, hot headed pilot on the hunt for more fame and glory.";
+                    }
+                    if (P2ship == true)
+                    {
+                        DeactivateP2ShipSelect();
+                        P2ship4.SetActive(true);
+
+                        DeactivateP2Stat();
+                        P2ship4Stat.SetActive(true);
+                    }
+                    if (P2primary == true)
+                    {
+                        P2toggleData = 3;
+
+                        DeactivateP2PrimarySelect();
+                        P2primary3.SetActive(true);
+
+                        DeactivateP2Stat();
+                        P2primary3Stat.SetActive(true);
+                    }
+                    if (P2secondary == true)
+                    {
+                        P2toggleData = 3;
+
+                        DeactivateP2SecondarySelect();
+                        P2secondary3.SetActive(true);
+
+                        DeactivateP2Stat();
+                        P2secondary3Stat.SetActive(true);
+                    }
+                    if (P2special == true)
+                    {
+                        P2toggleData = 3;
+
+                        DeactivateP2SpecialSelect();
+                        P2special3.SetActive(true);
+
+                        DeactivateP2Stat();
+                        P2special3Stat.SetActive(true);
+                    }
+                }
+                if (P2toggleData >= 5)
+                {
+                    if (P2character == true)
+                    {
+                        P2toggleData = 4;
+
+                        DeactivateP2CharacterSelect();
+                        P2character4.SetActive(true);
+
+                        DeactivateP2Stat();
+                        P2characterStat.enabled = true;
+                        P2characterStat.text = "Name: Jaeger\nDescription: A cocky, hot headed pilot on the hunt for more fame and glory.";
+                    }
+                    if (P2ship == true)
+                    {
+                        P2toggleData = 5;
+
+                        DeactivateP2ShipSelect();
+                        P2ship5.SetActive(true);
+
+                        DeactivateP2Stat();
+                        P2ship5Stat.SetActive(true);
+                    }
+                    if (P2primary == true)
+                    {
+                        P2toggleData = 3;
+
+                        DeactivateP2PrimarySelect();
+                        P2primary3.SetActive(true);
+
+                        DeactivateP2Stat();
+                        P2primary3Stat.SetActive(true);
+                    }
+                    if (P2secondary == true)
+                    {
+                        P2toggleData = 3;
+
+                        DeactivateP2SecondarySelect();
+                        P2secondary3.SetActive(true);
+
+                        DeactivateP2Stat();
+                        P2secondary3Stat.SetActive(true);
+                    }
+                    if (P2special == true)
+                    {
+                        P2toggleData = 3;
+
+                        DeactivateP2SpecialSelect();
+                        P2special3.SetActive(true);
+
+                        DeactivateP2Stat();
+                        P2special3Stat.SetActive(true);
+                    }
+                }
+
+                if (Input.GetButtonDown("P1VerticalChoiceUp") && !P1choosing)
+                {
+                    P1glowTracker--;
+                }
+                if (Input.GetButtonDown("P1VerticalChoiceDown") && !P1choosing)
+                {
+                    P1glowTracker++;
+                }
+
+                if ((Input.GetButtonDown("P2VerticalChoiceUp") || Input.GetKeyDown(KeyCode.Keypad8)) && !P2choosing)
+                {
+                    P2glowTracker--;
+                }
+                if ((Input.GetButtonDown("P2VerticalChoiceDown") || Input.GetKeyDown(KeyCode.Keypad5)) && !P2choosing)
+                {
+                    P2glowTracker++;
+                }
+
+                if (Input.GetButtonDown("P1HorizontalChoiceLeft"))
+                {
+                    ResetP1ToggleGlow();
+                    P1toggleLeftGlow.fillAmount = 1;
+
+                    P1toggleData--;
+                }
+                if (Input.GetButtonDown("P1HorizontalChoiceRight"))
+                {
+                    ResetP1ToggleGlow();
+                    P1toggleRightGlow.fillAmount = 1;
+
+                    P1toggleData++;
+                }
+
+                if (Input.GetButtonDown("P2HorizontalChoiceLeft") || Input.GetKeyDown(KeyCode.Keypad4))
+                {
+                    ResetP2ToggleGlow();
+                    P2toggleLeftGlow.fillAmount = 1;
+
+                    P2toggleData++;
+                }
+                if (Input.GetButtonDown("P2HorizontalChoiceRight") || Input.GetKeyDown(KeyCode.Keypad6))
+                {
+                    ResetP2ToggleGlow();
+                    P2toggleRightGlow.fillAmount = 1;
+
+                    P2toggleData--;
+                }
+
+                if (Input.GetButtonDown("Fire_P1"))
+                {
+                    if (!P1choosing)
+                    {
+                        if (P1glowTracker == 1)
+                        {
+                            Player1CharacterButton();
+                        }
+                        if (P1glowTracker == 2)
+                        {
+                            Player1ShipButton();
+                        }
+                        if (P1glowTracker == 3)
+                        {
+                            Player1PrimaryButton();
+                        }
+                        if (P1glowTracker == 4)
+                        {
+                            Player1SecondaryButton();
+                        }
+                        if (P1glowTracker == 5)
+                        {
+                            Player1SpecialButton();
+                        }
+                        if (P1glowTracker == 6)
+                        {
+                            ReturnButton();
+                        }
+                    }
+                    else
+                    {
+                        if (P1toggleData == 1)
+                        {
+                            if (P1character == true)
+                            {
+                                P1characterType = 1;
+                                P1characterButtonShader.SetActive(true);
+                            }
+                            if (P1ship == true)
+                            {
+                                P1shipType = 1;
+                                P1shipButtonShader.SetActive(true);
+
+                                P1LightShipData();
+                                Player1Data();
+                            }
+                            if (P1primary == true)
+                            {
+                                P1primaryType = 1;
+                                P1primaryButtonShader.SetActive(true);
+                            }
+                            if (P1secondary == true)
+                            {
+                                P1secondaryType = 1;
+                                P1secondaryButtonShader.SetActive(true);
+                            }
+                            if (P1special == true)
+                            {
+                                P1specialType = 1;
+                                P1specialButtonShader.SetActive(true);
+                            }
+                        }
+                        if (P1toggleData == 2)
+                        {
+                            if (P1character == true)
+                            {
+                                P1characterType = 2;
+                                P1characterButtonShader.SetActive(true);
+                            }
+                            if (P1ship == true)
+                            {
+                                P1shipType = 2;
+                                P1shipButtonShader.SetActive(true);
+
+                                P1MediumShipData();
+                                Player1Data();
+                            }
+                            if (P1primary == true)
+                            {
+                                P1primaryType = 2;
+                                P1primaryButtonShader.SetActive(true);
+                            }
+                            if (P1secondary == true)
+                            {
+                                P1secondaryType = 2;
+                                P1secondaryButtonShader.SetActive(true);
+                            }
+                            if (P1special == true)
+                            {
+                                P1specialType = 2;
+                                P1specialButtonShader.SetActive(true);
+                            }
+                        }
+                        if (P1toggleData == 3)
+                        {
+                            if (P1character == true)
+                            {
+                                P1characterType = 3;
+                                P1characterButtonShader.SetActive(true);
+                            }
+                            if (P1ship == true)
+                            {
+                                P1shipType = 3;
+                                P1shipButtonShader.SetActive(true);
+
+                                P1HeavyShipData();
+                                Player1Data();
+                            }
+                            if (P1primary == true)
+                            {
+                                P1primaryType = 3;
+                                P1primaryButtonShader.SetActive(true);
+                            }
+                            if (P1secondary == true)
+                            {
+                                P1secondaryType = 3;
+                                P1secondaryButtonShader.SetActive(true);
+                            }
+                            if (P1special == true)
+                            {
+                                P1specialType = 3;
+                                P1specialButtonShader.SetActive(true);
+                            }
+                        }
+                        if (P1toggleData == 4)
+                        {
+                            if (P1character == true)
+                            {
+                                P1characterType = 4;
+                                P1characterButtonShader.SetActive(true);
+                            }
+                            if (P1ship == true)
+                            {
+                                P1shipType = 4;
+                                P1shipButtonShader.SetActive(true);
+
+                                P1LamboShooterData();
+                                Player1Data();
+                            }
+                            if (P1primary == true)
+                            {
+                                P1primaryType = 3;
+                                P1primaryButtonShader.SetActive(true);
+                            }
+                            if (P1secondary == true)
+                            {
+                                P1secondaryType = 3;
+                                P1secondaryButtonShader.SetActive(true);
+                            }
+                            if (P1special == true)
+                            {
+                                P1specialType = 3;
+                                P1specialButtonShader.SetActive(true);
+                            }
+                        }
+                        if (P1toggleData == 5)
+                        {
+                            if (P1character == true)
+                            {
+                                P1characterType = 4;
+                                P1characterButtonShader.SetActive(true);
+                            }
+                            if (P1ship == true)
+                            {
+                                P1shipType = 5;
+                                P1shipButtonShader.SetActive(true);
+
+                                P1TruckShooterData();
+                                Player1Data();
+                            }
+                            if (P1primary == true)
+                            {
+                                P1primaryType = 3;
+                                P1primaryButtonShader.SetActive(true);
+                            }
+                            if (P1secondary == true)
+                            {
+                                P1secondaryType = 3;
+                                P1secondaryButtonShader.SetActive(true);
+                            }
+                            if (P1special == true)
+                            {
+                                P1specialType = 3;
+                                P1specialButtonShader.SetActive(true);
+                            }
+                        }
+
+                        DeactivateP1CharacterSelect();
+                        DeactivateP1ShipSelect();
+                        DeactivateP1PrimarySelect();
+                        DeactivateP1SecondarySelect();
+                        DeactivateP1SpecialSelect();
+                        DeactivateP1Toggle();
+                        DeactivateP1Stat();
+
+                        ActivatePlayer1Selection();
+
+                        ResetBool();
+                        ResetP1Glow();
+
+                        P1choosing = false;
+                    }
+                }
+                if (Input.GetButtonDown("Fire_P2") || Input.GetKeyDown(KeyCode.Keypad0))
+                {
+                    if (!P2choosing)
+                    {
+                        if (P2glowTracker == 1)
+                        {
+                            Player2CharacterButton();
+                        }
+                        if (P2glowTracker == 2)
+                        {
+                            Player2ShipButton();
+                        }
+                        if (P2glowTracker == 3)
+                        {
+                            Player2PrimaryButton();
+                        }
+                        if (P2glowTracker == 4)
+                        {
+                            Player2SecondaryButton();
+                        }
+                        if (P2glowTracker == 5)
+                        {
+                            Player2SpecialButton();
+                        }
+                        if (P2glowTracker == 6)
+                        {
+                            DoubleStartButton();
+                        }
+                    }
+                    else
+                    {
+                        if (P2toggleData == 1)
+                        {
+                            if (P2character == true)
+                            {
+                                P2characterType = 1;
+                                P2characterButtonShader.SetActive(true);
+                            }
+                            if (P2ship == true)
+                            {
+                                P2shipType = 1;
+                                P2shipButtonShader.SetActive(true);
+
+                                P2LightShipData();
+                                Player2Data();
+                            }
+                            if (P2primary == true)
+                            {
+                                P2primaryType = 1;
+                                P2primaryButtonShader.SetActive(true);
+                            }
+                            if (P2secondary == true)
+                            {
+                                P2secondaryType = 1;
+                                P2secondaryButtonShader.SetActive(true);
+                            }
+                            if (P2special == true)
+                            {
+                                P2specialType = 1;
+                                P2specialButtonShader.SetActive(true);
+                            }
+                        }
+                        if (P2toggleData == 2)
+                        {
+                            if (P2character == true)
+                            {
+                                P2characterType = 2;
+                                P2characterButtonShader.SetActive(true);
+                            }
+                            if (P2ship == true)
+                            {
+                                P2shipType = 2;
+                                P2shipButtonShader.SetActive(true);
+
+                                P2MediumShipData();
+                                Player2Data();
+                            }
+                            if (P2primary == true)
+                            {
+                                P2primaryType = 2;
+                                P2primaryButtonShader.SetActive(true);
+                            }
+                            if (P2secondary == true)
+                            {
+                                P2secondaryType = 2;
+                                P2secondaryButtonShader.SetActive(true);
+                            }
+                            if (P2special == true)
+                            {
+                                P2specialType = 2;
+                                P2specialButtonShader.SetActive(true);
+                            }
+                        }
+                        if (P2toggleData == 3)
+                        {
+                            if (P2character == true)
+                            {
+                                P2characterType = 3;
+                                P2characterButtonShader.SetActive(true);
+                            }
+                            if (P2ship == true)
+                            {
+                                P2shipType = 3;
+                                P2shipButtonShader.SetActive(true);
+
+                                P2HeavyShipData();
+                                Player2Data();
+                            }
+                            if (P2primary == true)
+                            {
+                                P2primaryType = 3;
+                                P2primaryButtonShader.SetActive(true);
+                            }
+                            if (P2secondary == true)
+                            {
+                                P2secondaryType = 3;
+                                P2secondaryButtonShader.SetActive(true);
+                            }
+                            if (P2special == true)
+                            {
+                                P2specialType = 3;
+                                P2specialButtonShader.SetActive(true);
+                            }
+                        }
+                        if (P2toggleData == 4)
+                        {
+                            if (P2character == true)
+                            {
+                                P2characterType = 4;
+                                P2characterButtonShader.SetActive(true);
+                            }
+                            if (P2ship == true)
+                            {
+                                P2shipType = 4;
+                                P2shipButtonShader.SetActive(true);
+
+                                P2LamboShooterData();
+                                Player2Data();
+                            }
+                            if (P2primary == true)
+                            {
+                                P2primaryType = 3;
+                                P2primaryButtonShader.SetActive(true);
+                            }
+                            if (P2secondary == true)
+                            {
+                                P2secondaryType = 3;
+                                P2secondaryButtonShader.SetActive(true);
+                            }
+                            if (P2special == true)
+                            {
+                                P2specialType = 3;
+                                P2specialButtonShader.SetActive(true);
+                            }
+                        }
+                        if (P2toggleData == 5)
+                        {
+                            if (P2character == true)
+                            {
+                                P2characterType = 4;
+                                P2characterButtonShader.SetActive(true);
+                            }
+                            if (P2ship == true)
+                            {
+                                P2shipType = 5;
+                                P2shipButtonShader.SetActive(true);
+
+                                P2TruckShooterData();
+                                Player2Data();
+                            }
+                            if (P2primary == true)
+                            {
+                                P2primaryType = 3;
+                                P2primaryButtonShader.SetActive(true);
+                            }
+                            if (P2secondary == true)
+                            {
+                                P2secondaryType = 3;
+                                P2secondaryButtonShader.SetActive(true);
+                            }
+                            if (P2special == true)
+                            {
+                                P2specialType = 3;
+                                P2specialButtonShader.SetActive(true);
+                            }
+                        }
+
+                        DeactivateP2CharacterSelect();
+                        DeactivateP2ShipSelect();
+                        DeactivateP2PrimarySelect();
+                        DeactivateP2SecondarySelect();
+                        DeactivateP2SpecialSelect();
+                        DeactivateP2Toggle();
+                        DeactivateP2Stat();
+
+                        ActivatePlayer2Selection();
+
+                        ResetBool();
+                        ResetP2Glow();
+
+                        P2choosing = false;
+                    }
                 }
             }
         }
@@ -1910,78 +1893,9 @@ public class SelectionMenuController : MonoBehaviour
             ActivateDoubleInitialAnimation();
         }
 
-        guidelineBackground.SetActive(false);
-        guideLine.SetActive(false);
-
         yield return new WaitForSeconds(2.5f);
 
         waiting = true;
-    }
-    IEnumerator ActivateSingleStartButton()
-    {
-        gamePlay = true;
-
-        Player1WeaponData();
-
-        DeactivateSingleCharacterSelect();
-        DeactivateSingleShipSelect();
-        DeactivateSinglePrimarySelect();
-        DeactivateSingleSecondarySelect();
-        DeactivateSingleSpecialSelect();
-        DeactivateSingleToggle();
-
-        DeactivateSingleSelection();
-        ResetBool();
-
-        guidelineBackground.SetActive(true);
-        guideLine.SetActive(true);
-
-        if(breakInstruction)
-        {
-            yield break;
-        }
-
-        yield return new WaitForSeconds(9f);
-
-        SceneManager.LoadScene("Level1");
-    }
-    IEnumerator ActivateDoubleStartButton()
-    {
-        gamePlay = true;
-
-        Player1WeaponData();
-        Player2WeaponData();
-
-        DeactivateP1CharacterSelect();
-        DeactivateP1ShipSelect();
-        DeactivateP1PrimarySelect();
-        DeactivateP1SecondarySelect();
-        DeactivateP1SpecialSelect();
-        DeactivateP1Toggle();
-
-        DeactivateP2CharacterSelect();
-        DeactivateP2ShipSelect();
-        DeactivateP2PrimarySelect();
-        DeactivateP2SecondarySelect();
-        DeactivateP2SpecialSelect();
-        DeactivateP2Toggle();
-
-        DeactivatePlayer1Selection();
-        DeactivatePlayer2Selection();
-
-        ResetBool();
-
-        guidelineBackground.SetActive(true);
-        guideLine.SetActive(true);
-
-        if (breakInstruction)
-        {
-            yield break;
-        }
-
-        yield return new WaitForSeconds(9f);
-
-        SceneManager.LoadScene("Level1");
     }
 
     //turning object on or off
@@ -2501,15 +2415,19 @@ public class SelectionMenuController : MonoBehaviour
     //on click button
     public void SingleStartButton()
     {
-        StartCoroutine(ActivateSingleStartButton());
+        Player1WeaponData();
+
+        ResetBool();
+
+        SceneManager.LoadScene("Level1");
     }
     public void DoubleStartButton()
     {
-        StartCoroutine(ActivateDoubleStartButton());
-    }
+        Player1WeaponData();
+        Player2WeaponData();
 
-    public void SkipButton()
-    {
+        ResetBool();
+
         SceneManager.LoadScene("Level1");
     }
 
