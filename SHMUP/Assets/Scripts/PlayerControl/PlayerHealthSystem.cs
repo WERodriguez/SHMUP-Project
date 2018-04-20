@@ -76,10 +76,16 @@ public class PlayerHealthSystem : MonoBehaviour
 
     //HoldsPlayerExplosion
     public GameObject playerExplosion;
+    //Mini shield to show the player they're invulnerable at the moment.
+    public GameObject respawnShield;
+    public GameObject childShield;
+    //Is player invulnerable?
+    public bool invulnerable;
 
     void Start()
     {
         playerWeaponController = gameObject.GetComponent<PlayerWeaponController>();
+        invulnerable = false;
 
         if (MainMenuController.onePlayer)
         {
@@ -105,6 +111,7 @@ public class PlayerHealthSystem : MonoBehaviour
                 //Respawns player at location.
                 transform.position = respawnLocation.position;
                 gameObject.GetComponent<PlayerController>().P1isDead = false;
+                StartCoroutine(RespawnInvulnerability());
 
                 SettingUpPlayer1();
 
@@ -119,6 +126,7 @@ public class PlayerHealthSystem : MonoBehaviour
                 //Respawns player at location.
                 transform.position = respawnLocation.position;
                 gameObject.GetComponent<PlayerController>().P2isDead = false;
+                StartCoroutine(RespawnInvulnerability());
 
                 SettingUpPlayer2();
 
@@ -134,6 +142,10 @@ public class PlayerHealthSystem : MonoBehaviour
     //Takes damage from another script and subtracts from the player health and shields.
     public void Damage(float damageAmmount)
     {
+        if(invulnerable)
+        {
+            return;
+        }
         //player 1
         if(!whichPlayer)
         {
@@ -421,5 +433,16 @@ public class PlayerHealthSystem : MonoBehaviour
 
         P2HealthBar.fillAmount = P2currentHealth / P2maxHealth;
         P2ShieldBar.fillAmount = P2currentShields / P2maxShields;
+    }
+
+    IEnumerator RespawnInvulnerability()
+    {
+        invulnerable = true;
+        childShield = Instantiate(respawnShield, gameObject.transform.position, gameObject.transform.rotation) as GameObject;
+
+        //childShield = Instantiate(respawnShield, new Vector3(gameObject.transform.position.x, gameObject.transform.position.y, gameObject.transform.position.z), gameObject.transform.rotation) as GameObject;
+        childShield.transform.parent = gameObject.transform;
+        yield return new WaitForSeconds(3);
+        invulnerable = false;
     }
 }
