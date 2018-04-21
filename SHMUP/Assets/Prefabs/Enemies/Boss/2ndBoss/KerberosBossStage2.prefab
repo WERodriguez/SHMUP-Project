@@ -1368,6 +1368,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   points: 500
+  pickUpSoundPlayer: {fileID: 0}
 --- !u!114 &114125570792329114
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1434,6 +1435,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   points: 500
+  pickUpSoundPlayer: {fileID: 0}
 --- !u!114 &114171169449826018
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1642,6 +1644,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   points: 500
+  pickUpSoundPlayer: {fileID: 0}
 --- !u!114 &114370449407569036
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1762,6 +1765,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   points: 500
+  pickUpSoundPlayer: {fileID: 0}
 --- !u!114 &114619136678061036
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1828,6 +1832,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   points: 500
+  pickUpSoundPlayer: {fileID: 0}
 --- !u!114 &114697304583544492
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1840,6 +1845,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   points: 500
+  pickUpSoundPlayer: {fileID: 0}
 --- !u!114 &114751864159201576
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1920,6 +1926,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   points: 500
+  pickUpSoundPlayer: {fileID: 0}
 --- !u!114 &114835876843963704
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1966,6 +1973,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   points: 500
+  pickUpSoundPlayer: {fileID: 0}
 --- !u!114 &114912097433475230
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2012,13 +2020,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentHealth: 0
-  maxHealth: 999999
+  maxHealth: 300
   currentShields: 0
-  maxShields: 999999
+  maxShields: 300
   lootDropChance: 0
   isDead: 0
   isBoss: 0
-  isMultiStageBoss: 0
+  isMultiStageBoss: 1
   isBossPart: 0
   heavyEnemy: 0
   canIFadeYet: 0

@@ -4312,7 +4312,7 @@ RectTransform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 418877251}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: 0, y: 0.13052616, z: 0, w: 0.9914449}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -4320,7 +4320,7 @@ RectTransform:
   - {fileID: 1782027578}
   m_Father: {fileID: 551242869}
   m_RootOrder: 10
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 15, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
   m_AnchoredPosition: {x: 115, y: -60}
@@ -4608,6 +4608,7 @@ MonoBehaviour:
   P2secondaryGlowHorizontal: {fileID: 1035480991}
   P2toggleLeftGlow: {fileID: 141211359}
   P2toggleRightGlow: {fileID: 626981680}
+  nextButtonAnimation: {fileID: 418877256}
   P1healthStartingAnimation: {fileID: 1623734087}
   P1shieldStartingAnimation: {fileID: 269213758}
   P1liveStartingAnimation: {fileID: 1458891971}
