@@ -62,12 +62,7 @@ public class PlayerHealthSystem : MonoBehaviour
     public Image P2HealthBar;
     public Image P2ShieldBar;
     
-    public Text P1health;
-    public Text P1shields;
-    public Text P1lives;
-
-    public Text P2health;
-    public Text P2shields;
+    public Text P1lives;    
     public Text P2lives;
 
     //Stores any left over damage to deal to players through shields.
@@ -173,7 +168,6 @@ public class PlayerHealthSystem : MonoBehaviour
                     P1currentShields = 0;
                 }
 
-                P1shields.text = "" + P1currentShields;
                 P1ShieldBar.fillAmount = P1currentShields / P1maxShields;
             }
             //if excess shield damage is less than 0 it is substracted from health.
@@ -181,15 +175,13 @@ public class PlayerHealthSystem : MonoBehaviour
             {
                 P1excessShieldDamage *= -1;
                 P1currentHealth -= P1excessShieldDamage;
-
-                P1health.text = "" + P1currentHealth;
+                
                 P1HealthBar.fillAmount = P1currentHealth / P1maxHealth;
             }
 
             if (P1currentHealth < minHealth)
             {
                 P1currentHealth = 0;
-                P1health.text = "" + P1currentHealth;
                 P1HealthBar.fillAmount = P1currentHealth / P1maxHealth;
                 P1HealthBar.fillAmount = P1currentHealth / P1maxHealth;
 
@@ -215,7 +207,7 @@ public class PlayerHealthSystem : MonoBehaviour
                 {
                     P2currentShields = 0;
                 }
-                P2shields.text = "" + P2currentShields;
+
                 P2ShieldBar.fillAmount = P2currentShields / P2maxShields;
             }
             //if excess shield damage is less than 0 it is substracted from health.
@@ -224,14 +216,12 @@ public class PlayerHealthSystem : MonoBehaviour
                 P2excessShieldDamage *= -1;
                 P2currentHealth -= P2excessShieldDamage;
 
-                P2health.text = "" + P2currentHealth;
                 P2HealthBar.fillAmount = P2currentHealth / P2maxHealth;
             }
 
             if (P2currentHealth < minHealth)
             {
                 P2currentHealth = 0;
-                P2health.text = "" + P2currentHealth;
                 P2HealthBar.fillAmount = P2currentHealth / P2maxHealth;
 
                 Instantiate(playerExplosion, gameObject.transform.position, gameObject.transform.rotation);
@@ -254,8 +244,7 @@ public class PlayerHealthSystem : MonoBehaviour
             {
                 P1currentHealth = P1maxHealth;
             }
-
-            P1health.text = "HP: " + P1currentHealth;
+            
             P1HealthBar.fillAmount = P1currentHealth / P1maxHealth;
         }
 
@@ -270,8 +259,7 @@ public class PlayerHealthSystem : MonoBehaviour
             {
                 P2currentHealth = P2maxHealth;
             }
-
-            P2health.text = "" + P2currentHealth;
+            
             P2HealthBar.fillAmount = P2currentHealth / P2maxHealth;
         }
     }
@@ -289,8 +277,7 @@ public class PlayerHealthSystem : MonoBehaviour
             {
                 P1currentShields = P1maxShields;
             }
-
-            P1shields.text = "" + P1currentShields;
+            
             P1ShieldBar.fillAmount = P1currentShields / P1maxShields;
         }
 
@@ -306,7 +293,6 @@ public class PlayerHealthSystem : MonoBehaviour
                 P2currentShields = P2maxShields;
             }
 
-            P2shields.text = "" + P2currentShields;
             P2ShieldBar.fillAmount = P2currentShields / P2maxShields;
         }
     }
@@ -400,10 +386,6 @@ public class PlayerHealthSystem : MonoBehaviour
         P1currentShields = P1savedShields;
         P1currentLives = P1savedLives;
 
-        P1health.text = "" + P1currentHealth;
-        P1shields.text = "" + P1currentShields;
-        P1lives.text = "" + P1currentLives;
-
         P1HealthBar.fillAmount = P1currentHealth / P1maxHealth;
         P1ShieldBar.fillAmount = P1currentShields / P1maxShields;
     }
@@ -412,10 +394,6 @@ public class PlayerHealthSystem : MonoBehaviour
         P2currentHealth = P2savedHealth;
         P2currentShields = P2savedShields;
         P2currentLives = P2savedLives;
-
-        P2health.text = "" + P2currentHealth;
-        P2shields.text = "" + P2currentShields;
-        P2lives.text = "" + P2currentLives;
 
         P2HealthBar.fillAmount = P2currentHealth / P2maxHealth;
         P2ShieldBar.fillAmount = P2currentShields / P2maxShields;
@@ -426,9 +404,6 @@ public class PlayerHealthSystem : MonoBehaviour
         P1currentHealth = P1maxHealth;
 
         //Tries to grab a points script if the object has any.
-        P1health.text = "" + P1currentHealth;
-        P1shields.text = "" + P1currentShields;
-        P1lives.text = "" + P1currentLives;
 
         P1HealthBar.fillAmount = P1currentHealth / P1maxHealth;
         P1ShieldBar.fillAmount = P1currentShields / P1maxShields;
@@ -438,9 +413,6 @@ public class PlayerHealthSystem : MonoBehaviour
         P2currentHealth = P2maxHealth;
 
         //Tries to grab a points script if the object has any.
-        P2health.text = "" + P2currentHealth;
-        P2shields.text = "" + P2currentShields;
-        P2lives.text = "" + P2currentLives;
 
         P2HealthBar.fillAmount = P2currentHealth / P2maxHealth;
         P2ShieldBar.fillAmount = P2currentShields / P2maxShields;
