@@ -99,6 +99,17 @@ public class PlayerHealthSystem : MonoBehaviour
 
         P1lessLive = false;
         P2lessLive = false;
+
+        if(P1currentLives < 0)
+        {
+            P1currentLives = -1;
+            P1lives.text = "" + P1currentLives;
+        }
+        if (P2currentLives < 0)
+        {
+            P2currentLives = -1;
+            P2lives.text = "" + P2currentLives;
+        }
     }
 
     private void Update()
