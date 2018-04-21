@@ -29,7 +29,7 @@ public class OverlyDramaticDeath : MonoBehaviour
     {
         if (isHeavyScrap)
         {
-            //driftSpeedX = Random.Range(-driftSpeedX, driftSpeedX);
+            driftSpeedX = Random.Range(-driftSpeedX, driftSpeedX);
         }
 
         rb = gameObject.GetComponent<Rigidbody>();

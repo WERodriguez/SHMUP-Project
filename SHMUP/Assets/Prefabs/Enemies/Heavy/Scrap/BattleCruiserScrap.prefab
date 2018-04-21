@@ -546,7 +546,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1158960839754700}
   m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 69.30452, y: 30.101173, z: -55.733315}
   m_LocalScale: {x: 1.7194268, y: 1.7194268, z: 1.7194268}
   m_Children:
   - {fileID: 4310840894200982}
@@ -1092,11 +1092,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fallSpeed: -5
-  driftSpeedX: 0
+  driftSpeedX: 3
   driftSpeedZ: -10
   deathDuration: 3
   explosions:
   - {fileID: 1902701955808478, guid: 07102b39342c8344fb07026c31065017, type: 2}
   - {fileID: 1660496361234082, guid: 017676dccc468c54c85104ea286b6e64, type: 2}
   - {fileID: 1220363091690522, guid: bebda8aa8bb38db4598719bf8dfd9f87, type: 2}
+  timeBetweenExplosions: 0.25
+  xRange: 2
+  yRange: 1
+  zRange: 5
   isHeavyScrap: 1
