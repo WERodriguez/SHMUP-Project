@@ -32,10 +32,6 @@ public class HealthSystem : MonoBehaviour
     //Booleans for enemy type
     public bool heavyEnemy;
 
-    //Checks if the ship can fade away.
-    public bool canIFadeYet;
-    //Contains all child object renderers for manipulation.
-    public Component[] childRenderers;
     //How fast the alpha channel is changed.
     public float fadePerSecond;
     //How long the fade will last.
@@ -84,33 +80,9 @@ public class HealthSystem : MonoBehaviour
         addScore = gameObject.GetComponent<Points>();
         callLoot = gameObject.GetComponent<LootDropRoller>();
 
-        if (isMultiStageBoss)
-        {
-            childRenderers = GetComponentsInChildren<Renderer>();
-        }
-
         if (addScore == null)
         {
             return;
-        }
-    }
-
-    private void Update()
-    {
-        if (canIFadeYet)
-        {
-            //Goes through all the children and fades them out.
-            foreach (Renderer childObjectColor in childRenderers)
-            {
-                if (childObjectColor == null)
-                {
-                    continue;
-                }
-                //Keeping this around just for notes. This is how you change material colors
-                //childObjectToFade.material.color = Color.red;
-                childObjectColor.material.color = new Color(childObjectColor.material.color.r, childObjectColor.material.color.g, childObjectColor.material.color.b,
-                    childObjectColor.material.color.a - (fadePerSecond * Time.deltaTime));
-            }
         }
     }
 
@@ -207,6 +179,7 @@ public class HealthSystem : MonoBehaviour
         }
         else if (currentHealth <= 0 && !isDead)
         {
+            isDead = true;
             doesLootDrop = Random.Range(0.0f, 100.0f);
 
             if (this.gameObject.tag == "LightEnemy")
@@ -296,30 +269,7 @@ public class HealthSystem : MonoBehaviour
     {
         StartCoroutine(dramaticExplosions());
         yield return new WaitForSeconds(3);
-
-        canIFadeYet = true;
-
-        foreach (Renderer childObjectColor in childRenderers)
-        {
-            if (childObjectColor == null)
-            {
-                continue;
-            }
-            //SetFloat Changes the material shader.
-            //("_Mode", float) I haven't figured out why the first part is needed yet but it is Second part sets the mode.
-            // 0 = Opaque, 1 = Cutout, 2 = Fade, 3 = Transparent
-            childObjectColor.material.SetFloat("_Mode", 2);
-            //After setting the mode we have to set all these other variables or it won't work.
-            childObjectColor.material.SetInt("_SrcBlend", (int)UnityEngine.Rendering.BlendMode.SrcAlpha);
-            childObjectColor.material.SetInt("_DstBlend", (int)UnityEngine.Rendering.BlendMode.OneMinusSrcAlpha);
-            childObjectColor.material.SetInt("_ZWrite", 0);
-            childObjectColor.material.DisableKeyword("_ALPHATEST_ON");
-            childObjectColor.material.EnableKeyword("_ALPHABLEND_ON");
-            childObjectColor.material.DisableKeyword("_ALPHAPREMULTIPLY_ON");
-            childObjectColor.material.renderQueue = 3000;
-        }
         yield return new WaitForSeconds(fadeDuration);
-        canIFadeYet = false;
         Instantiate(nextStage, gameObject.transform.position, Quaternion.Euler(0, 180, 0));
         Destroy(gameObject);
     }
