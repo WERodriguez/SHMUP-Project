@@ -1097,6 +1097,9 @@ public class HangarMenuController : MonoBehaviour
         {
             ActivateP1Ships();
             P1Ships.SetBool("StartAnimation", true);
+
+            P1health.SetActive(true);
+            P1healthStartingAnimation.SetBool("StartAnimation", true);
         }
         else
         {
