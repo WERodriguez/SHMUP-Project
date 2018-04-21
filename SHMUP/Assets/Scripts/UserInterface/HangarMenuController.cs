@@ -1067,6 +1067,8 @@ public class HangarMenuController : MonoBehaviour
 
             P1menu.SetActive(true);
             P1menuHorizontal.SetActive(true);
+
+            P1menuAnimation.SetBool("singlePlayer", true);
         }
         else
         {
@@ -1215,14 +1217,13 @@ public class HangarMenuController : MonoBehaviour
 
         yield return new WaitForSeconds(.5f);
 
-        if (MainMenuController.onePlayer)
+        if (!MainMenuController.onePlayer)
         {
-            P1menuAnimation.SetBool("singlePlayer", true);
-            nextButtonAnimation.SetBool("singlePlayer", true);
+            nextButtonAnimation.SetBool("bottomMove", true);
         }
         else
         {
-            nextButtonAnimation.SetBool("singlePlayer", false);
+            nextButtonAnimation.SetBool("bottomMove", false);
         }
 
         yield return new WaitForSeconds(.5f);

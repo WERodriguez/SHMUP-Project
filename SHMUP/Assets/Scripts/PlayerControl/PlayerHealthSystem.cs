@@ -103,12 +103,12 @@ public class PlayerHealthSystem : MonoBehaviour
         if(P1currentLives < 0)
         {
             P1currentLives = -1;
-            P1lives.text = "" + P1currentLives;
+            P1lives.text = "0";
         }
         if (P2currentLives < 0)
         {
             P2currentLives = -1;
-            P2lives.text = "" + P2currentLives;
+            P2lives.text = "0";
         }
     }
 
