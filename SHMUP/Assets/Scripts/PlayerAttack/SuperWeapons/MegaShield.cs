@@ -21,6 +21,7 @@ public class MegaShield : MonoBehaviour
 
     //Place Holder shield graphics.
     private GameObject shield;
+    private PlayerHealthSystem playerHealthSystem;
 
     //HandlesAudio
     public AudioClip[] shieldSounds;
@@ -28,6 +29,8 @@ public class MegaShield : MonoBehaviour
 
     void Start()
     {
+        playerHealthSystem = gameObject.GetComponentInParent<PlayerHealthSystem>();
+        playerHealthSystem.invulnerable = true;
         shieldAudioSource = GetComponent<AudioSource>();
         shieldSounds = new AudioClip[]
         {
@@ -110,6 +113,7 @@ public class MegaShield : MonoBehaviour
         yield return new WaitForSeconds(shieldFizzle);
 
         yield return new WaitForSeconds(0.01f);
+        playerHealthSystem.invulnerable = false;
         Destroy(gameObject);
     }
     IEnumerator ShieldDamage()
