@@ -1221,10 +1221,6 @@ public class HangarMenuController : MonoBehaviour
         {
             nextButtonAnimation.SetBool("bottomMove", true);
         }
-        else
-        {
-            nextButtonAnimation.SetBool("bottomMove", false);
-        }
 
         yield return new WaitForSeconds(.5f);
 
