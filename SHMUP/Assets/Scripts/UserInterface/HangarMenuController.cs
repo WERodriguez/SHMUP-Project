@@ -135,6 +135,7 @@ public class HangarMenuController : MonoBehaviour
     public GameObject P2toggleLeftGlow;
     public GameObject P2toggleRightGlow;
 
+    public Animator P1menuAnimation;
     public Animator nextButtonAnimation;
 
     public Animator P1healthStartingAnimation;
@@ -1093,15 +1094,6 @@ public class HangarMenuController : MonoBehaviour
             P2menuHorizontal.SetActive(true);
         }
 
-        if (MainMenuController.onePlayer)
-        {
-            nextButtonAnimation.SetBool("singlePlayer", true);
-        }
-        else
-        {
-            nextButtonAnimation.SetBool("singlePlayer", false);
-        }
-
         yield return new WaitForSeconds(1f);
 
         if (MainMenuController.onePlayer)
@@ -1219,6 +1211,18 @@ public class HangarMenuController : MonoBehaviour
 
             P2special.SetActive(true);
             P2specialStartingAnimation.SetBool("StartAnimation", true);
+        }
+
+        yield return new WaitForSeconds(.5f);
+
+        if (MainMenuController.onePlayer)
+        {
+            P1menuAnimation.SetBool("singlePlayer", true);
+            nextButtonAnimation.SetBool("singlePlayer", true);
+        }
+        else
+        {
+            nextButtonAnimation.SetBool("singlePlayer", false);
         }
 
         yield return new WaitForSeconds(.5f);
