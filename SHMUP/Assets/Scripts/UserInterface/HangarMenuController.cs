@@ -1217,7 +1217,7 @@ public class HangarMenuController : MonoBehaviour
 
         yield return new WaitForSeconds(.5f);
 
-        if (!MainMenuController.onePlayer)
+        if (MainMenuController.onePlayer)
         {
             nextButtonAnimation.SetBool("bottomMove", true);
         }
