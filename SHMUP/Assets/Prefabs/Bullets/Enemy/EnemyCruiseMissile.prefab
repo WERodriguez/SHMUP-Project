@@ -439,8 +439,6 @@ MonoBehaviour:
   isMultiStageBoss: 0
   isBossPart: 0
   heavyEnemy: 0
-  canIFadeYet: 0
-  childRenderers: []
   fadePerSecond: 0
   fadeDuration: 0
   nextStage: {fileID: 0}
@@ -479,6 +477,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   points: 25
+  pickUpSoundPlayer: {fileID: 0}
 --- !u!114 &114621922896995490
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -491,9 +490,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   loot:
-  - {fileID: 1505891778851898, guid: 14a97c9a509736d449fa2a3291fe5629, type: 2}
-  - {fileID: 1313422228245866, guid: 0b2af73c956b7ad4d92e165a4795307e, type: 2}
-  - {fileID: 1690140789816752, guid: 7f1e6a94db9c6944a8120ef600f9e71d, type: 2}
+  - {fileID: 1495949067345648, guid: c01bfe1f9707d064fb9ca01cf3ededeb, type: 2}
+  - {fileID: 1869739280697806, guid: 55610c021b1df9d458ac850441f49684, type: 2}
+  - {fileID: 1350948195152354, guid: 4126c3a71b7235f4e9a177488b99d74d, type: 2}
   - {fileID: 1422309226636108, guid: 93857d61cdd968f479d05539d55a646c, type: 2}
   - {fileID: 1027124774643018, guid: 94c669beecb1fff468034be30b2e1c69, type: 2}
 --- !u!114 &114659661296573664

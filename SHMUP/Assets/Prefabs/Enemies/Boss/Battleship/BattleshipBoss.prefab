@@ -3191,15 +3191,13 @@ MonoBehaviour:
   currentHealth: 0
   maxHealth: 1000
   currentShields: 0
-  maxShields: 1000
+  maxShields: 2000
   lootDropChance: 0
   isDead: 0
   isBoss: 1
   isMultiStageBoss: 0
   isBossPart: 0
   heavyEnemy: 0
-  canIFadeYet: 0
-  childRenderers: []
   fadePerSecond: 0
   fadeDuration: 0
   nextStage: {fileID: 0}

@@ -1154,17 +1154,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentHealth: 0
-  maxHealth: 75
+  maxHealth: 175
   currentShields: 0
   maxShields: 50
-  lootDropChance: 75
+  lootDropChance: 50
   isDead: 0
   isBoss: 0
   isMultiStageBoss: 0
   isBossPart: 0
   heavyEnemy: 1
-  canIFadeYet: 0
-  childRenderers: []
   fadePerSecond: 0
   fadeDuration: 0
   nextStage: {fileID: 0}
@@ -1188,6 +1186,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   points: 750
+  pickUpSoundPlayer: {fileID: 0}
 --- !u!198 &198034087270692610
 ParticleSystem:
   m_ObjectHideFlags: 1

@@ -615,15 +615,13 @@ MonoBehaviour:
   currentHealth: 0
   maxHealth: 20
   currentShields: 0
-  maxShields: 15
-  lootDropChance: 75
+  maxShields: 40
+  lootDropChance: 50
   isDead: 0
   isBoss: 0
   isMultiStageBoss: 0
   isBossPart: 0
   heavyEnemy: 0
-  canIFadeYet: 0
-  childRenderers: []
   fadePerSecond: 0
   fadeDuration: 0
   nextStage: {fileID: 0}
@@ -647,6 +645,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   points: 300
+  pickUpSoundPlayer: {fileID: 0}
 --- !u!114 &114243148598523108
 MonoBehaviour:
   m_ObjectHideFlags: 1
