@@ -3030,13 +3030,13 @@ public class HangarMenuController : MonoBehaviour
             SetPlayer1Value();
             SetPlayer2Value();
 
-            if (PlayerHealthSystem.P1currentLives <= 0 && !P1buy)
+            if (PlayerHealthSystem.P1currentLives <0 && !P1buy)
             {
                 PlayerHealthSystem.P1savedHealth = PlayerHealthSystem.P1maxHealth;
                 PlayerHealthSystem.P1savedShields = PlayerHealthSystem.P1maxShields;
                 PlayerHealthSystem.P1savedLives = 1;
             }
-            if (PlayerHealthSystem.P2currentLives <= 0 && !P2buy)
+            if (PlayerHealthSystem.P2currentLives < 0 && !P2buy)
             {
                 PlayerHealthSystem.P2savedHealth = PlayerHealthSystem.P1maxHealth;
                 PlayerHealthSystem.P2savedShields = PlayerHealthSystem.P1maxShields;
