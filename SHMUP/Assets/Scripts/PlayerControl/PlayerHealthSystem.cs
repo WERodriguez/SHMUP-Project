@@ -94,17 +94,6 @@ public class PlayerHealthSystem : MonoBehaviour
 
         P1lessLive = false;
         P2lessLive = false;
-
-        if(P1currentLives < 0)
-        {
-            P1currentLives = -1;
-            P1lives.text = "0";
-        }
-        if (P2currentLives < 0)
-        {
-            P2currentLives = -1;
-            P2lives.text = "0";
-        }
     }
 
     private void Update()
@@ -335,10 +324,9 @@ public class PlayerHealthSystem : MonoBehaviour
     //player 1
     private void P1Respawn()
     {
-        P1currentLives--;
         P1lessLive = true;
 
-        if (P1currentLives < 0)
+        if (P1currentLives <= 0)
         {
             transform.position = playerHidingSpot.position;
             gameObject.GetComponent<PlayerController>().P1isDead = true;
@@ -346,8 +334,9 @@ public class PlayerHealthSystem : MonoBehaviour
             P1canRespawn = false;
             return; ;
         }
-        if(P1currentLives >= 0)
+        if(P1currentLives > 0)
         {
+            P1currentLives--;
             P1lives.text = "" + P1currentLives;
             transform.position = playerHidingSpot.position;
             gameObject.GetComponent<PlayerController>().P1isDead = true;
@@ -359,10 +348,9 @@ public class PlayerHealthSystem : MonoBehaviour
     //player 2
     private void P2Respawn()
     {
-        P2currentLives--;
         P2lessLive = true;
 
-        if (P2currentLives < 0)
+        if (P2currentLives <= 0)
         {
             transform.position = playerHidingSpot.position;
             gameObject.GetComponent<PlayerController>().P2isDead = true;
@@ -370,8 +358,9 @@ public class PlayerHealthSystem : MonoBehaviour
             P2canRespawn = false;
             return;
         }
-        if (P2currentLives >= 0)
+        if (P2currentLives > 0)
         {
+            P2currentLives--;
             P2lives.text = "" + P2currentLives;
             transform.position = playerHidingSpot.position;
             gameObject.GetComponent<PlayerController>().P2isDead = true;
