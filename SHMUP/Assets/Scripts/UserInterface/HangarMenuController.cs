@@ -7,6 +7,8 @@ using UnityEngine.SceneManagement;
 public class HangarMenuController : MonoBehaviour
 {
     private bool waiting;
+    private bool P1buy;
+    private bool P2buy;
 
     private bool P1warning;
     private bool P1verticalSelect;

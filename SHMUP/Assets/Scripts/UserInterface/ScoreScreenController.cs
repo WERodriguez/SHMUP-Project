@@ -293,6 +293,19 @@ public class ScoreScreenController : MonoBehaviour
         {
             SetPlayer1Value();
             SetPlayer2Value();
+
+            if(PlayerHealthSystem.P1currentLives <= 0)
+            {
+                PlayerHealthSystem.P1savedHealth = PlayerHealthSystem.P1maxHealth;
+                PlayerHealthSystem.P1savedShields = PlayerHealthSystem.P1maxShields;
+                PlayerHealthSystem.P1savedLives = 1;
+            }
+            if (PlayerHealthSystem.P2currentLives <= 0)
+            {
+                PlayerHealthSystem.P2savedHealth = PlayerHealthSystem.P1maxHealth;
+                PlayerHealthSystem.P2savedShields = PlayerHealthSystem.P1maxShields;
+                PlayerHealthSystem.P2savedLives = 1;
+            }
         }
 
         if(MainMenuController.currentStage <= 1)
