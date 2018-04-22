@@ -34,15 +34,24 @@ public class SpawnPlayer : MonoBehaviour
         //ship spawning
         if(MainMenuController.onePlayer)
         {
-            CheckPlayer1Ship();
-            Invoke("SpawnPlayer1", 0f);
+            if(PlayerHealthSystem.P1currentLives > 0)
+            {
+                CheckPlayer1Ship();
+                Invoke("SpawnPlayer1", 0f);
+            }
         }
         else
         {
-            CheckPlayer1Ship();
-            Invoke("SpawnPlayer1", 0f);
-            CheckPlayer2Ship();
-            Invoke("SpawnPlayer2", 0f);
+            if(PlayerHealthSystem.P1currentLives > 0)
+            {
+                CheckPlayer1Ship();
+                Invoke("SpawnPlayer1", 0f);
+            }
+            if (PlayerHealthSystem.P2currentLives > 0)
+            {
+                CheckPlayer2Ship();
+                Invoke("SpawnPlayer2", 0f);
+            }
         }
     }
 
