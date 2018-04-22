@@ -433,7 +433,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   nextFire: 0
-  fireDelay: 0.25
+  fireDelay: 1.5
   fireRate: 6
   shot: {fileID: 1382464415124152, guid: 8a39e86437047bf4b95f454b204ae5d9, type: 2}
   shotSpawns:
@@ -451,6 +451,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   points: 100
+  pickUpSoundPlayer: {fileID: 0}
 --- !u!114 &114249386465895602
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -465,15 +466,13 @@ MonoBehaviour:
   currentHealth: 0
   maxHealth: 25
   currentShields: 0
-  maxShields: 0
-  lootDropChance: 50
+  maxShields: 5
+  lootDropChance: 35
   isDead: 0
   isBoss: 0
   isMultiStageBoss: 0
   isBossPart: 0
   heavyEnemy: 0
-  canIFadeYet: 0
-  childRenderers: []
   fadePerSecond: 0
   fadeDuration: 0
   nextStage: {fileID: 0}

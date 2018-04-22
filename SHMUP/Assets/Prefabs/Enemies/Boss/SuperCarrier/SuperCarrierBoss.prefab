@@ -1936,6 +1936,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   points: 150
+  pickUpSoundPlayer: {fileID: 0}
 --- !u!114 &114049038715784620
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2068,9 +2069,19 @@ MonoBehaviour:
   currentShields: 0
   maxShields: 0
   lootDropChance: 25
+  isDead: 0
   isBoss: 0
+  isMultiStageBoss: 0
   isBossPart: 0
   heavyEnemy: 0
+  fadePerSecond: 0
+  fadeDuration: 0
+  nextStage: {fileID: 0}
+  explosions: []
+  timeBetweenExplosions: 0
+  xRange: 0
+  yRange: 0
+  zRange: 0
   scrap: {fileID: 0}
   explosion: {fileID: 1902701955808478, guid: 07102b39342c8344fb07026c31065017, type: 2}
   scoreScreen: 0
@@ -2090,9 +2101,19 @@ MonoBehaviour:
   currentShields: 0
   maxShields: 0
   lootDropChance: 100
+  isDead: 0
   isBoss: 0
+  isMultiStageBoss: 0
   isBossPart: 1
   heavyEnemy: 0
+  fadePerSecond: 0
+  fadeDuration: 0
+  nextStage: {fileID: 0}
+  explosions: []
+  timeBetweenExplosions: 0
+  xRange: 0
+  yRange: 0
+  zRange: 0
   scrap: {fileID: 1737076073364992, guid: 8aeee3e73d1548b4ca2161cf6c897e86, type: 2}
   explosion: {fileID: 0}
   scoreScreen: 0
@@ -2132,6 +2153,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   points: 2500
+  pickUpSoundPlayer: {fileID: 0}
 --- !u!114 &114347516073890624
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2172,9 +2194,19 @@ MonoBehaviour:
   currentShields: 0
   maxShields: 0
   lootDropChance: 25
+  isDead: 0
   isBoss: 0
+  isMultiStageBoss: 0
   isBossPart: 0
   heavyEnemy: 0
+  fadePerSecond: 0
+  fadeDuration: 0
+  nextStage: {fileID: 0}
+  explosions: []
+  timeBetweenExplosions: 0
+  xRange: 0
+  yRange: 0
+  zRange: 0
   scrap: {fileID: 0}
   explosion: {fileID: 1902701955808478, guid: 07102b39342c8344fb07026c31065017, type: 2}
   scoreScreen: 0
@@ -2194,9 +2226,19 @@ MonoBehaviour:
   currentShields: 0
   maxShields: 0
   lootDropChance: 25
+  isDead: 0
   isBoss: 0
+  isMultiStageBoss: 0
   isBossPart: 0
   heavyEnemy: 0
+  fadePerSecond: 0
+  fadeDuration: 0
+  nextStage: {fileID: 0}
+  explosions: []
+  timeBetweenExplosions: 0
+  xRange: 0
+  yRange: 0
+  zRange: 0
   scrap: {fileID: 0}
   explosion: {fileID: 1902701955808478, guid: 07102b39342c8344fb07026c31065017, type: 2}
   scoreScreen: 0
@@ -2229,6 +2271,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   points: 2500
+  pickUpSoundPlayer: {fileID: 0}
 --- !u!114 &114422492442902280
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2245,9 +2288,19 @@ MonoBehaviour:
   currentShields: 0
   maxShields: 0
   lootDropChance: 25
+  isDead: 0
   isBoss: 0
+  isMultiStageBoss: 0
   isBossPart: 0
   heavyEnemy: 0
+  fadePerSecond: 0
+  fadeDuration: 0
+  nextStage: {fileID: 0}
+  explosions: []
+  timeBetweenExplosions: 0
+  xRange: 0
+  yRange: 0
+  zRange: 0
   scrap: {fileID: 0}
   explosion: {fileID: 1902701955808478, guid: 07102b39342c8344fb07026c31065017, type: 2}
   scoreScreen: 0
@@ -2267,9 +2320,19 @@ MonoBehaviour:
   currentShields: 0
   maxShields: 0
   lootDropChance: 25
+  isDead: 0
   isBoss: 0
+  isMultiStageBoss: 0
   isBossPart: 0
   heavyEnemy: 0
+  fadePerSecond: 0
+  fadeDuration: 0
+  nextStage: {fileID: 0}
+  explosions: []
+  timeBetweenExplosions: 0
+  xRange: 0
+  yRange: 0
+  zRange: 0
   scrap: {fileID: 0}
   explosion: {fileID: 1902701955808478, guid: 07102b39342c8344fb07026c31065017, type: 2}
   scoreScreen: 0
@@ -2289,9 +2352,19 @@ MonoBehaviour:
   currentShields: 0
   maxShields: 0
   lootDropChance: 100
+  isDead: 0
   isBoss: 0
+  isMultiStageBoss: 0
   isBossPart: 1
   heavyEnemy: 0
+  fadePerSecond: 0
+  fadeDuration: 0
+  nextStage: {fileID: 0}
+  explosions: []
+  timeBetweenExplosions: 0
+  xRange: 0
+  yRange: 0
+  zRange: 0
   scrap: {fileID: 1320757564216458, guid: 79ec2d2fee660974bba88747bd4662cb, type: 2}
   explosion: {fileID: 0}
   scoreScreen: 0
@@ -2331,6 +2404,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   points: 150
+  pickUpSoundPlayer: {fileID: 0}
 --- !u!114 &114676795727168130
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2384,6 +2458,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   points: 5000
+  pickUpSoundPlayer: {fileID: 0}
 --- !u!114 &114730177537282096
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2433,6 +2508,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   points: 150
+  pickUpSoundPlayer: {fileID: 0}
 --- !u!114 &114788100263175038
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2449,9 +2525,19 @@ MonoBehaviour:
   currentShields: 0
   maxShields: 0
   lootDropChance: 25
+  isDead: 0
   isBoss: 0
+  isMultiStageBoss: 0
   isBossPart: 0
   heavyEnemy: 0
+  fadePerSecond: 0
+  fadeDuration: 0
+  nextStage: {fileID: 0}
+  explosions: []
+  timeBetweenExplosions: 0
+  xRange: 0
+  yRange: 0
+  zRange: 0
   scrap: {fileID: 0}
   explosion: {fileID: 1902701955808478, guid: 07102b39342c8344fb07026c31065017, type: 2}
   scoreScreen: 0
@@ -2467,6 +2553,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   points: 150
+  pickUpSoundPlayer: {fileID: 0}
 --- !u!114 &114799460707709702
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2496,13 +2583,23 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentHealth: 0
-  maxHealth: 500
+  maxHealth: 800
   currentShields: 0
   maxShields: 0
   lootDropChance: 100
+  isDead: 0
   isBoss: 1
+  isMultiStageBoss: 0
   isBossPart: 0
   heavyEnemy: 0
+  fadePerSecond: 0
+  fadeDuration: 0
+  nextStage: {fileID: 0}
+  explosions: []
+  timeBetweenExplosions: 0
+  xRange: 0
+  yRange: 0
+  zRange: 0
   scrap: {fileID: 1138192319124262, guid: 4bce727b8bcfd1e4ab08f333d1ad2e4f, type: 2}
   explosion: {fileID: 0}
   scoreScreen: 0
@@ -2552,6 +2649,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   points: 150
+  pickUpSoundPlayer: {fileID: 0}
 --- !u!114 &114982674073518672
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2564,3 +2662,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   points: 150
+  pickUpSoundPlayer: {fileID: 0}

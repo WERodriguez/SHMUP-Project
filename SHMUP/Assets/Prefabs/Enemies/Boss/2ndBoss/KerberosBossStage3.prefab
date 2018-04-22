@@ -2287,17 +2287,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentHealth: 0
-  maxHealth: 600
+  maxHealth: 1000
   currentShields: 0
-  maxShields: 400
+  maxShields: 500
   lootDropChance: 100
   isDead: 0
   isBoss: 1
   isMultiStageBoss: 0
   isBossPart: 0
   heavyEnemy: 0
-  canIFadeYet: 0
-  childRenderers: []
   fadePerSecond: 0
   fadeDuration: 0
   nextStage: {fileID: 0}
