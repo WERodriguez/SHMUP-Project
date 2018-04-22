@@ -210,6 +210,8 @@ public class HangarMenuController : MonoBehaviour
         DeactivateP2WarningPanel();
 
         waiting = true;
+        P1buy = false;
+        P2buy = false;
 
         P1Credit.enabled = false;
         P1verticalSelect = true;
@@ -1356,6 +1358,8 @@ public class HangarMenuController : MonoBehaviour
                 ScoreTracker.P1credit -= 100;
 
                 PlayerHealthSystem.P1currentLives++;
+
+                P1buy = true;
             }
         }
     }
@@ -1404,7 +1408,6 @@ public class HangarMenuController : MonoBehaviour
                 PlayerWeaponController.P1currentWLevel++;
 
                 P1primaryShader.SetActive(true);
-
                 P1primaryCheck = true;
             }
         }
@@ -1454,7 +1457,6 @@ public class HangarMenuController : MonoBehaviour
                 PlayerWeaponController.P1currentSecondaryLevel++;
 
                 P1secondaryShader.SetActive(true);
-
                 P1secondaryCheck = true;
             }
         }
@@ -1578,7 +1580,6 @@ public class HangarMenuController : MonoBehaviour
                 PlayerHealthSystem.P2currentHealth = PlayerHealthSystem.P2maxHealth;
 
                 P2healthShader.SetActive(true);
-
                 P2healthCheck = true;
             }
         }
@@ -1626,7 +1627,6 @@ public class HangarMenuController : MonoBehaviour
                 PlayerHealthSystem.P2currentShields = PlayerHealthSystem.P2maxShields;
 
                 P2shieldShader.SetActive(true);
-
                 P2shieldCheck = true;
             }
         }
@@ -1664,6 +1664,7 @@ public class HangarMenuController : MonoBehaviour
                 ScoreTracker.P2credit -= 100;
 
                 PlayerHealthSystem.P2currentLives++;
+                P2buy = true;
             }
         }
     }
@@ -1712,7 +1713,6 @@ public class HangarMenuController : MonoBehaviour
                 PlayerWeaponController.P2currentWLevel++;
 
                 P2primaryShader.SetActive(true);
-
                 P2primaryCheck = true;
             }
         }
@@ -1762,7 +1762,6 @@ public class HangarMenuController : MonoBehaviour
                 PlayerWeaponController.P2currentSecondaryLevel++;
 
                 P2secondaryShader.SetActive(true);
-
                 P2secondaryCheck = true;
             }
         }
@@ -3030,6 +3029,19 @@ public class HangarMenuController : MonoBehaviour
         {
             SetPlayer1Value();
             SetPlayer2Value();
+
+            if (PlayerHealthSystem.P1currentLives <= 0 && !P1buy)
+            {
+                PlayerHealthSystem.P1savedHealth = PlayerHealthSystem.P1maxHealth;
+                PlayerHealthSystem.P1savedShields = PlayerHealthSystem.P1maxShields;
+                PlayerHealthSystem.P1savedLives = 1;
+            }
+            if (PlayerHealthSystem.P2currentLives <= 0 && !P2buy)
+            {
+                PlayerHealthSystem.P2savedHealth = PlayerHealthSystem.P1maxHealth;
+                PlayerHealthSystem.P2savedShields = PlayerHealthSystem.P1maxShields;
+                PlayerHealthSystem.P2savedLives = 1;
+            }
         }
 
         if (MainMenuController.currentStage <= 1)
