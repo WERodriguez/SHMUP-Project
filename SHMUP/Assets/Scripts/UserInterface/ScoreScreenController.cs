@@ -298,13 +298,13 @@ public class ScoreScreenController : MonoBehaviour
             {
                 PlayerHealthSystem.P1savedHealth = PlayerHealthSystem.P1maxHealth;
                 PlayerHealthSystem.P1savedShields = PlayerHealthSystem.P1maxShields;
-                PlayerHealthSystem.P1savedLives = 1;
+                PlayerHealthSystem.P1savedLives = 0;
             }
             if (PlayerHealthSystem.P2currentLives < 0)
             {
                 PlayerHealthSystem.P2savedHealth = PlayerHealthSystem.P1maxHealth;
                 PlayerHealthSystem.P2savedShields = PlayerHealthSystem.P1maxShields;
-                PlayerHealthSystem.P2savedLives = 1;
+                PlayerHealthSystem.P2savedLives = 0;
             }
         }
 
