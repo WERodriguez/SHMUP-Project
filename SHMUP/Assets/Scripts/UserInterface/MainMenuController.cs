@@ -11,6 +11,9 @@ public class MainMenuController : MonoBehaviour
 	private bool waiting;
     private bool controlList;
 
+    public bool arcadeBuild;
+    public bool limbitlessBuild;
+
     public static int currentStage;
     public static bool onePlayer;
 
@@ -25,6 +28,9 @@ public class MainMenuController : MonoBehaviour
     public GameObject quitButton;
     public GameObject controlButton;
     public GameObject creditButton;
+
+    public GameObject[] menuBuildType;
+    public GameObject[] inGameBuildType;
 
     public Image singleGlow;
     public Image doubleGlow;
@@ -43,6 +49,7 @@ public class MainMenuController : MonoBehaviour
         DeactivateMainMenu();
         DeactivateControlBackground();
         DeactivateControlList();
+        DeactivateControlType();
         DeactivateMainMenuGlow();
         DeactivateControlListGlow();
         ResetGlowTracker();
@@ -136,8 +143,31 @@ public class MainMenuController : MonoBehaviour
                 if (glowTracker <= 1)
                 {
                     glowTracker = 1;
+                    
+                    if (!arcadeBuild && !limbitlessBuild)
+                    {
+                        intro.text = "Menu Interaction\n- Keyboard -";
 
-                    intro.text = "Menu Interaction\n- Keyboard -";
+                        DeactivateControlType();
+                        menuBuildType[0].SetActive(true);
+                        inGameBuildType[0].SetActive(true);
+                    }
+                    if (arcadeBuild)
+                    {
+                        intro.text = "Menu Interaction\n- Arcade -";
+
+                        DeactivateControlType();
+                        menuBuildType[1].SetActive(true);
+                        inGameBuildType[1].SetActive(true);
+                    }
+                    if (limbitlessBuild)
+                    {
+                        intro.text = "Menu Interaction\n- LimbitLess -";
+
+                        DeactivateControlType();
+                        menuBuildType[2].SetActive(true);
+                        inGameBuildType[2].SetActive(true);
+                    }
 
                     DeactivateControlList();
                     controlMenu.SetActive(true);
@@ -146,7 +176,30 @@ public class MainMenuController : MonoBehaviour
                 {
                     glowTracker = 2;
 
-                    intro.text = "In-Game Interaction\n- Keyboard -";
+                    if (!arcadeBuild && !limbitlessBuild)
+                    {
+                        intro.text = "In-Game Interaction\n- Keyboard -";
+
+                        DeactivateControlType();
+                        menuBuildType[0].SetActive(true);
+                        inGameBuildType[0].SetActive(true);
+                    }
+                    if (arcadeBuild)
+                    {
+                        intro.text = "In-Game Interaction\n- Arcade -";
+
+                        DeactivateControlType();
+                        menuBuildType[1].SetActive(true);
+                        inGameBuildType[1].SetActive(true);
+                    }
+                    if (limbitlessBuild)
+                    {
+                        intro.text = "In-Game Interaction\n- LimbitLess -";
+
+                        DeactivateControlType();
+                        menuBuildType[2].SetActive(true);
+                        inGameBuildType[2].SetActive(true);
+                    }
 
                     DeactivateControlList();
                     controlInGame.SetActive(true);
@@ -229,15 +282,19 @@ public class MainMenuController : MonoBehaviour
         intro.enabled = false;
     }
 
-    private void ActivateControlList()
-    {
-        controlMenu.SetActive(true);
-        controlInGame.SetActive(true);
-    }
     private void DeactivateControlList()
     {
         controlMenu.SetActive(false);
         controlInGame.SetActive(false);
+    }
+    private void DeactivateControlType()
+    {
+        for (int counter = 0; counter < 3; counter++)
+        {
+            menuBuildType[counter].SetActive(false);
+            inGameBuildType[counter].SetActive(false);
+            Debug.Log(counter);
+        }
     }
 
     private void DeactivateMainMenuGlow()
@@ -279,8 +336,6 @@ public class MainMenuController : MonoBehaviour
 
     private void ControlButton()
     {
-        DestroyMusic();
-
         DeactivateMainMenuGlow();
         ActivateControlBackground();
         ResetGlowTracker();
