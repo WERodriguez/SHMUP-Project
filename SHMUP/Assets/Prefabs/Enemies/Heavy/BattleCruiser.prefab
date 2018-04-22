@@ -1047,7 +1047,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1363557204429728}
   m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
-  m_LocalPosition: {x: 28, y: 0, z: 24.12}
+  m_LocalPosition: {x: -17.74775, y: 140.2067, z: 225.0817}
   m_LocalScale: {x: 1.7194268, y: 1.7194268, z: 1.7194268}
   m_Children:
   - {fileID: 4170439139416332}
@@ -2155,7 +2155,7 @@ MonoBehaviour:
   - {fileID: 4735319396468130}
   shot: {fileID: 1378027018846096, guid: 7f2df5d83d51f1448a6bfd541f9b06e2, type: 2}
   target: {fileID: 0}
-  range: 40
+  range: 150
   rotateSpeed: 2
   playerTag: Player
 --- !u!114 &114091920560500678
@@ -2234,7 +2234,7 @@ MonoBehaviour:
   - {fileID: 4183805456400614}
   shot: {fileID: 1378027018846096, guid: 7f2df5d83d51f1448a6bfd541f9b06e2, type: 2}
   target: {fileID: 0}
-  range: 40
+  range: 150
   rotateSpeed: 2
   playerTag: Player
 --- !u!114 &114277659603337238
@@ -2258,7 +2258,7 @@ MonoBehaviour:
   - {fileID: 4470459854706368}
   shot: {fileID: 1378027018846096, guid: 7f2df5d83d51f1448a6bfd541f9b06e2, type: 2}
   target: {fileID: 0}
-  range: 40
+  range: 150
   rotateSpeed: 2
   playerTag: Player
 --- !u!114 &114323289069878288
@@ -2299,7 +2299,7 @@ MonoBehaviour:
   - {fileID: 4336044317142696}
   shot: {fileID: 1378027018846096, guid: 7f2df5d83d51f1448a6bfd541f9b06e2, type: 2}
   target: {fileID: 0}
-  range: 40
+  range: 150
   rotateSpeed: 2
   playerTag: Player
 --- !u!114 &114432973940098364
@@ -2335,7 +2335,7 @@ MonoBehaviour:
   - {fileID: 4211525843885252}
   shot: {fileID: 1378027018846096, guid: 7f2df5d83d51f1448a6bfd541f9b06e2, type: 2}
   target: {fileID: 0}
-  range: 40
+  range: 150
   rotateSpeed: 2
   playerTag: Player
 --- !u!114 &114509772488898358
@@ -2359,7 +2359,7 @@ MonoBehaviour:
   - {fileID: 4603091247787046}
   shot: {fileID: 1378027018846096, guid: 7f2df5d83d51f1448a6bfd541f9b06e2, type: 2}
   target: {fileID: 0}
-  range: 40
+  range: 150
   rotateSpeed: 2
   playerTag: Player
 --- !u!114 &114761962175127390
@@ -2383,7 +2383,7 @@ MonoBehaviour:
   - {fileID: 4007832565284204}
   shot: {fileID: 1378027018846096, guid: 7f2df5d83d51f1448a6bfd541f9b06e2, type: 2}
   target: {fileID: 0}
-  range: 40
+  range: 150
   rotateSpeed: 2
   playerTag: Player
 --- !u!114 &114786359530455784
@@ -2419,7 +2419,7 @@ MonoBehaviour:
   - {fileID: 4126326151907148}
   shot: {fileID: 1378027018846096, guid: 7f2df5d83d51f1448a6bfd541f9b06e2, type: 2}
   target: {fileID: 0}
-  range: 40
+  range: 150
   rotateSpeed: 2
   playerTag: Player
 --- !u!114 &114933261709173776
