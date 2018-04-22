@@ -374,11 +374,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d3452d5ab293955449f192fffcd85071, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  burstSize: 4
-  fireRate: 10
+  burstSize: 6
+  fireRate: 5
   nextFire: 0.25
   nextVolley: 0
-  initialDelay: 3.5
+  initialDelay: 2
   shotSpawns:
   - {fileID: 4919245696697280}
   - {fileID: 4790484141078152}
@@ -398,9 +398,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cb2c78399eb6c90498d7e7077d1d0493, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 20
+  speed: 15
   deployPosition: 18
-  retreatTime: 3
+  retreatTime: 4
   deployed: 0
   retreatForward: 0
 --- !u!114 &114397896433691716
@@ -416,9 +416,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   loot:
   - {fileID: 1892471356948724, guid: 56db219919d6aef44a29f5db438ebbca, type: 2}
-  - {fileID: 1869739280697806, guid: 55610c021b1df9d458ac850441f49684, type: 2}
-  - {fileID: 1495949067345648, guid: c01bfe1f9707d064fb9ca01cf3ededeb, type: 2}
+  - {fileID: 1505891778851898, guid: 14a97c9a509736d449fa2a3291fe5629, type: 2}
   - {fileID: 1422309226636108, guid: 93857d61cdd968f479d05539d55a646c, type: 2}
+  - {fileID: 1869739280697806, guid: 55610c021b1df9d458ac850441f49684, type: 2}
   - {fileID: 1027124774643018, guid: 94c669beecb1fff468034be30b2e1c69, type: 2}
 --- !u!114 &114854872361343548
 MonoBehaviour:
@@ -452,6 +452,7 @@ MonoBehaviour:
   scrap: {fileID: 0}
   explosion: {fileID: 1660496361234082, guid: 017676dccc468c54c85104ea286b6e64, type: 2}
   scoreScreen: 0
+  invulnerable: 0
 --- !u!114 &114939871728579094
 MonoBehaviour:
   m_ObjectHideFlags: 1

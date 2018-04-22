@@ -17,9 +17,14 @@ public class SuperCarrierMain : MonoBehaviour
     public float startWait;
     private int shipSpawns;
 
+    private HealthSystem healthSystem;
 	// Use this for initialization
 	void Start ()
     {
+        //Gets the health system
+        healthSystem = GetComponent<HealthSystem>();
+        //Sets boss to invulnerable at start.
+        healthSystem.invulnerable = true;
         gameObject.name = "SuperCarrierBoss";
         rb = GetComponent<Rigidbody>();
         rb.velocity = transform.forward * speed;
@@ -33,6 +38,8 @@ public class SuperCarrierMain : MonoBehaviour
         if (transform.position.z <= bossPosition)
         {
             rb.velocity = transform.forward * 0;
+            //Makes the boss vulnerable when deployed
+            healthSystem.invulnerable = false;
         }
 
     }

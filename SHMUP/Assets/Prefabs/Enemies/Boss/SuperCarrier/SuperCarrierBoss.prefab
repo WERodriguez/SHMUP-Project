@@ -624,7 +624,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1935318824498662}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -1, y: 0, z: 2.25}
+  m_LocalPosition: {x: 1, y: 0, z: 2.25}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4726148331425282}
@@ -924,7 +924,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1783908095477678}
   m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
-  m_LocalPosition: {x: 0, y: 0, z: 77.8}
+  m_LocalPosition: {x: -24.9, y: 0, z: 69.5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4830465557889372}
@@ -2085,6 +2085,7 @@ MonoBehaviour:
   scrap: {fileID: 0}
   explosion: {fileID: 1902701955808478, guid: 07102b39342c8344fb07026c31065017, type: 2}
   scoreScreen: 0
+  invulnerable: 0
 --- !u!114 &114267010641174236
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2117,6 +2118,7 @@ MonoBehaviour:
   scrap: {fileID: 1737076073364992, guid: 8aeee3e73d1548b4ca2161cf6c897e86, type: 2}
   explosion: {fileID: 0}
   scoreScreen: 0
+  invulnerable: 0
 --- !u!114 &114338642100158576
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2210,6 +2212,7 @@ MonoBehaviour:
   scrap: {fileID: 0}
   explosion: {fileID: 1902701955808478, guid: 07102b39342c8344fb07026c31065017, type: 2}
   scoreScreen: 0
+  invulnerable: 0
 --- !u!114 &114376556146598392
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2242,6 +2245,7 @@ MonoBehaviour:
   scrap: {fileID: 0}
   explosion: {fileID: 1902701955808478, guid: 07102b39342c8344fb07026c31065017, type: 2}
   scoreScreen: 0
+  invulnerable: 0
 --- !u!114 &114379304118905144
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2304,6 +2308,7 @@ MonoBehaviour:
   scrap: {fileID: 0}
   explosion: {fileID: 1902701955808478, guid: 07102b39342c8344fb07026c31065017, type: 2}
   scoreScreen: 0
+  invulnerable: 0
 --- !u!114 &114432924213084456
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2336,6 +2341,7 @@ MonoBehaviour:
   scrap: {fileID: 0}
   explosion: {fileID: 1902701955808478, guid: 07102b39342c8344fb07026c31065017, type: 2}
   scoreScreen: 0
+  invulnerable: 0
 --- !u!114 &114503561660381090
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2368,6 +2374,7 @@ MonoBehaviour:
   scrap: {fileID: 1320757564216458, guid: 79ec2d2fee660974bba88747bd4662cb, type: 2}
   explosion: {fileID: 0}
   scoreScreen: 0
+  invulnerable: 0
 --- !u!114 &114503896116811926
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2541,6 +2548,7 @@ MonoBehaviour:
   scrap: {fileID: 0}
   explosion: {fileID: 1902701955808478, guid: 07102b39342c8344fb07026c31065017, type: 2}
   scoreScreen: 0
+  invulnerable: 0
 --- !u!114 &114794603156933386
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2603,6 +2611,7 @@ MonoBehaviour:
   scrap: {fileID: 1138192319124262, guid: 4bce727b8bcfd1e4ab08f333d1ad2e4f, type: 2}
   explosion: {fileID: 0}
   scoreScreen: 0
+  invulnerable: 0
 --- !u!114 &114833059254138728
 MonoBehaviour:
   m_ObjectHideFlags: 1

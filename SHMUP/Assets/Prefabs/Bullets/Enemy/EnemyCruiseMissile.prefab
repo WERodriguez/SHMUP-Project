@@ -430,7 +430,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentHealth: 0
-  maxHealth: 3
+  maxHealth: 2
   currentShields: 0
   maxShields: 0
   lootDropChance: 5
@@ -448,8 +448,9 @@ MonoBehaviour:
   yRange: 0
   zRange: 0
   scrap: {fileID: 0}
-  explosion: {fileID: 1645902461043704, guid: b1ba1b9b34e3ca549a877dfcdf712282, type: 2}
+  explosion: {fileID: 1902701955808478, guid: 07102b39342c8344fb07026c31065017, type: 2}
   scoreScreen: 0
+  invulnerable: 0
 --- !u!114 &114182203880465104
 MonoBehaviour:
   m_ObjectHideFlags: 1

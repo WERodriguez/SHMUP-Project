@@ -348,7 +348,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1e1d06b2a0b376744b2220b18aa86d42, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  points: 10
+  points: 15
   pickUpSoundPlayer: {fileID: 0}
 --- !u!114 &114203528168134468
 MonoBehaviour:
@@ -386,10 +386,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentHealth: 0
-  maxHealth: 3
+  maxHealth: 1
   currentShields: 0
   maxShields: 0
-  lootDropChance: 15
+  lootDropChance: 10
   isDead: 0
   isBoss: 0
   isMultiStageBoss: 0

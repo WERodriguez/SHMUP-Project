@@ -380,9 +380,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   loot:
   - {fileID: 1892471356948724, guid: 56db219919d6aef44a29f5db438ebbca, type: 2}
-  - {fileID: 1869739280697806, guid: 55610c021b1df9d458ac850441f49684, type: 2}
+  - {fileID: 1505891778851898, guid: 14a97c9a509736d449fa2a3291fe5629, type: 2}
   - {fileID: 1350948195152354, guid: 4126c3a71b7235f4e9a177488b99d74d, type: 2}
-  - {fileID: 1422309226636108, guid: 93857d61cdd968f479d05539d55a646c, type: 2}
+  - {fileID: 1869739280697806, guid: 55610c021b1df9d458ac850441f49684, type: 2}
   - {fileID: 1486780560429076, guid: 5a01e944cf343ff479272ded81048bb6, type: 2}
 --- !u!114 &114290770250675502
 MonoBehaviour:
@@ -458,7 +458,7 @@ MonoBehaviour:
   currentHealth: 0
   maxHealth: 1
   currentShields: 0
-  maxShields: 4
+  maxShields: 1
   lootDropChance: 25
   isDead: 0
   isBoss: 0
@@ -476,6 +476,7 @@ MonoBehaviour:
   scrap: {fileID: 0}
   explosion: {fileID: 1902701955808478, guid: 07102b39342c8344fb07026c31065017, type: 2}
   scoreScreen: 0
+  invulnerable: 0
 --- !u!136 &136622113910787082
 CapsuleCollider:
   m_ObjectHideFlags: 1

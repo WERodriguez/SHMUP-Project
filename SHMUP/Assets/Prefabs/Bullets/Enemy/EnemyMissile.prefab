@@ -430,7 +430,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentHealth: 0
-  maxHealth: 2
+  maxHealth: 1
   currentShields: 0
   maxShields: 0
   lootDropChance: 5
@@ -448,8 +448,9 @@ MonoBehaviour:
   yRange: 0
   zRange: 0
   scrap: {fileID: 0}
-  explosion: {fileID: 1022230640483370, guid: 6c17b449007f1e147aa129a85194ef5a, type: 2}
+  explosion: {fileID: 1902701955808478, guid: 07102b39342c8344fb07026c31065017, type: 2}
   scoreScreen: 0
+  invulnerable: 0
 --- !u!114 &114401446353070036
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -494,9 +495,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   loot:
   - {fileID: 1232319095237692, guid: 91122ca2154549b4683656f7ead5d96a, type: 2}
-  - {fileID: 1495949067345648, guid: c01bfe1f9707d064fb9ca01cf3ededeb, type: 2}
-  - {fileID: 1869739280697806, guid: 55610c021b1df9d458ac850441f49684, type: 2}
-  - {fileID: 1350948195152354, guid: 4126c3a71b7235f4e9a177488b99d74d, type: 2}
+  - {fileID: 1892471356948724, guid: 56db219919d6aef44a29f5db438ebbca, type: 2}
+  - {fileID: 1505891778851898, guid: 14a97c9a509736d449fa2a3291fe5629, type: 2}
+  - {fileID: 1313422228245866, guid: 0b2af73c956b7ad4d92e165a4795307e, type: 2}
   - {fileID: 1422309226636108, guid: 93857d61cdd968f479d05539d55a646c, type: 2}
 --- !u!114 &114874399552199576
 MonoBehaviour:

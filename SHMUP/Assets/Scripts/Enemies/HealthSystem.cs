@@ -70,9 +70,13 @@ public class HealthSystem : MonoBehaviour
     public static bool P1bossKill;
     public static bool P2bossKill;
 
+    //Checks if a ship is invulnerable. Mostly for bosses.
+    public bool invulnerable;
+
     void Start ()
     {
         currentHealth = maxHealth;
+        currentShields = maxShields;
 
         SetSpeechData();
 
@@ -89,6 +93,10 @@ public class HealthSystem : MonoBehaviour
     //Takes damage from another script and subtracts from the player health and shields.
     public void Damage(float damageAmmount, bool whatPlayer)
     {
+        if(invulnerable)
+        {
+            return;
+        }
         excessShieldDamage = currentShields - damageAmmount;
 
         //Checks if the player has shields
