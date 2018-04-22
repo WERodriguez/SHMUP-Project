@@ -1471,11 +1471,15 @@ public class PlayerWeaponController : MonoBehaviour
         P1currentWLevel = P1savedWeaponLevel;
         P1currentSecondaryLevel = P1savedSecondaryLevel;
         P1superAmmo = P1savedSuperAmmo;
+
+        P1superAmmoCounter.text = "" + P1superAmmo;
     }
     private void Player2WeaponData()
     {
         P2currentWLevel = P2savedWeaponLevel;
         P2currentSecondaryLevel = P2savedSecondaryLevel;
         P2superAmmo = P2savedSuperAmmo;
+
+        P2superAmmoCounter.text = "" + P2superAmmo;
     }
 }

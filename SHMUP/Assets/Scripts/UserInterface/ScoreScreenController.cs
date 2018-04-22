@@ -299,12 +299,20 @@ public class ScoreScreenController : MonoBehaviour
                 PlayerHealthSystem.P1savedHealth = PlayerHealthSystem.P1maxHealth;
                 PlayerHealthSystem.P1savedShields = PlayerHealthSystem.P1maxShields;
                 PlayerHealthSystem.P1savedLives = 0;
+
+                PlayerWeaponController.P1savedWeaponLevel = 1;
+                PlayerWeaponController.P1savedSecondaryLevel = 0;
+                PlayerWeaponController.P1savedSuperAmmo = PlayerWeaponController.P1currentSuperAmmo;
             }
             if (PlayerHealthSystem.P2currentLives < 0)
             {
                 PlayerHealthSystem.P2savedHealth = PlayerHealthSystem.P1maxHealth;
                 PlayerHealthSystem.P2savedShields = PlayerHealthSystem.P1maxShields;
                 PlayerHealthSystem.P2savedLives = 0;
+                
+                PlayerWeaponController.P2savedWeaponLevel = 1;
+                PlayerWeaponController.P2savedSecondaryLevel = 0;
+                PlayerWeaponController.P2savedSuperAmmo = PlayerWeaponController.P2currentSuperAmmo;
             }
         }
 
