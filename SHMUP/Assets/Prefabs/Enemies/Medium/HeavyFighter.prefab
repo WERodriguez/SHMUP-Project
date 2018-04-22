@@ -615,7 +615,7 @@ MonoBehaviour:
   currentHealth: 0
   maxHealth: 20
   currentShields: 0
-  maxShields: 40
+  maxShields: 10
   lootDropChance: 50
   isDead: 0
   isBoss: 0
@@ -633,6 +633,7 @@ MonoBehaviour:
   scrap: {fileID: 0}
   explosion: {fileID: 1660496361234082, guid: 017676dccc468c54c85104ea286b6e64, type: 2}
   scoreScreen: 0
+  invulnerable: 0
 --- !u!114 &114198999853988140
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -658,8 +659,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   burstSize: 3
-  fireRate: 6
-  nextFire: 0.25
+  fireRate: 10
+  nextFire: 0.5
   nextVolley: 0
   initialDelay: 3
   shotSpawns:
@@ -697,7 +698,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d3452d5ab293955449f192fffcd85071, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  burstSize: 15
+  burstSize: 10
   fireRate: 6
   nextFire: 0.1
   nextVolley: 0
@@ -733,8 +734,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   burstSize: 3
-  fireRate: 6
-  nextFire: 0.25
+  fireRate: 10
+  nextFire: 0.5
   nextVolley: 0
   initialDelay: 3
   shotSpawns:

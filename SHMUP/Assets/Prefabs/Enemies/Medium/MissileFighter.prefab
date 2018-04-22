@@ -466,7 +466,7 @@ MonoBehaviour:
   currentHealth: 0
   maxHealth: 25
   currentShields: 0
-  maxShields: 5
+  maxShields: 0
   lootDropChance: 35
   isDead: 0
   isBoss: 0
@@ -484,6 +484,7 @@ MonoBehaviour:
   scrap: {fileID: 0}
   explosion: {fileID: 1660496361234082, guid: 017676dccc468c54c85104ea286b6e64, type: 2}
   scoreScreen: 0
+  invulnerable: 0
 --- !u!114 &114548872036178628
 MonoBehaviour:
   m_ObjectHideFlags: 1

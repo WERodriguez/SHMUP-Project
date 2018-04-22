@@ -1851,7 +1851,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1523893516237116}
   m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
-  m_LocalPosition: {x: 8, y: 0, z: 15.37}
+  m_LocalPosition: {x: 20.9, y: 0, z: 67.3}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4311417597921412}
@@ -2239,7 +2239,7 @@ MonoBehaviour:
   dodgeDelay: 3
   burstSize: 3
   fireRate: 0
-  nextFire: 0.5
+  nextFire: 1
   nextVolley: 7
   torpedoes: {fileID: 1430175856480944, guid: 5e41c9d42c6fa0a4587c20e25e6e8492, type: 2}
   beamShot: {fileID: 1445266577318892, guid: f1c8c207d6fa2e94985504ee36a443ac, type: 2}

@@ -2209,7 +2209,7 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 67be14c49f9a5cc42bef47b9a88f1f8b, type: 2}
   m_IsPrefabParent: 0
---- !u!1001 &1230138008
+--- !u!1001 &1224071183
 Prefab:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -2358,14 +2358,6 @@ Prefab:
       propertyPath: m_RootOrder
       value: 66
       objectReference: {fileID: 0}
-    - target: {fileID: 1783908095477678, guid: f4a82d027c80f5e43a76a6db475d0de5, type: 2}
-      propertyPath: m_Name
-      value: SuperCarrierBoss
-      objectReference: {fileID: 0}
-    - target: {fileID: 1783908095477678, guid: f4a82d027c80f5e43a76a6db475d0de5, type: 2}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: f4a82d027c80f5e43a76a6db475d0de5, type: 2}
   m_IsPrefabParent: 0
@@ -2453,10 +2445,6 @@ Prefab:
     - target: {fileID: 4912946190188546, guid: d5aa4767bb6dae64e82b2cb8a3366ab5, type: 2}
       propertyPath: m_RootOrder
       value: 63
-      objectReference: {fileID: 0}
-    - target: {fileID: 1523893516237116, guid: d5aa4767bb6dae64e82b2cb8a3366ab5, type: 2}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: d5aa4767bb6dae64e82b2cb8a3366ab5, type: 2}

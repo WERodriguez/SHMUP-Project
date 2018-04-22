@@ -348,7 +348,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1e1d06b2a0b376744b2220b18aa86d42, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  points: 10
+  points: 15
   pickUpSoundPlayer: {fileID: 0}
 --- !u!114 &114203528168134468
 MonoBehaviour:
@@ -386,10 +386,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentHealth: 0
-  maxHealth: 3
+  maxHealth: 1
   currentShields: 0
   maxShields: 0
-  lootDropChance: 20
+  lootDropChance: 10
   isDead: 0
   isBoss: 0
   isMultiStageBoss: 0
@@ -421,8 +421,8 @@ MonoBehaviour:
   - {fileID: 1232319095237692, guid: 91122ca2154549b4683656f7ead5d96a, type: 2}
   - {fileID: 1892471356948724, guid: 56db219919d6aef44a29f5db438ebbca, type: 2}
   - {fileID: 1505891778851898, guid: 14a97c9a509736d449fa2a3291fe5629, type: 2}
-  - {fileID: 1495949067345648, guid: c01bfe1f9707d064fb9ca01cf3ededeb, type: 2}
   - {fileID: 1313422228245866, guid: 0b2af73c956b7ad4d92e165a4795307e, type: 2}
+  - {fileID: 1495949067345648, guid: c01bfe1f9707d064fb9ca01cf3ededeb, type: 2}
 --- !u!136 &136080585152887388
 CapsuleCollider:
   m_ObjectHideFlags: 1

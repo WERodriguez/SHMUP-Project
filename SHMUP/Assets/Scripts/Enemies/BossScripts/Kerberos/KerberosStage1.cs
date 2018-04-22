@@ -22,8 +22,14 @@ public class KerberosStage1 : MonoBehaviour
     public float xMin;
     public float xMax;
 
+    //Stores the health system
+    private HealthSystem healthSystem;
+
     void Start()
     {
+        healthSystem = GetComponent<HealthSystem>();
+        //Makes the boss invulnerable on spawn.
+        healthSystem.invulnerable = true;
         rb = GetComponent<Rigidbody>();
         rb.velocity = transform.forward * speed;
     }
@@ -36,6 +42,8 @@ public class KerberosStage1 : MonoBehaviour
         {
             rb.velocity = transform.forward * 0;
             bossDeployed = true;
+            //Makes the boss vulnerable when deployed
+            healthSystem.invulnerable = false;
             StartCoroutine(Evade());
         }
 

@@ -2145,8 +2145,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 35c44b05a84856c48924e56682091592, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  burstSize: 6
-  fireRate: 10
+  burstSize: 4
+  fireRate: 15
   nextFire: 0.15
   nextVolley: 3
   initialDelay: 7
@@ -2155,7 +2155,7 @@ MonoBehaviour:
   - {fileID: 4735319396468130}
   shot: {fileID: 1378027018846096, guid: 7f2df5d83d51f1448a6bfd541f9b06e2, type: 2}
   target: {fileID: 0}
-  range: 40
+  range: 150
   rotateSpeed: 2
   playerTag: Player
 --- !u!114 &114091920560500678
@@ -2193,9 +2193,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentHealth: 0
-  maxHealth: 300
+  maxHealth: 250
   currentShields: 0
-  maxShields: 100
+  maxShields: 50
   lootDropChance: 50
   isDead: 0
   isBoss: 0
@@ -2213,6 +2213,7 @@ MonoBehaviour:
   scrap: {fileID: 1158960839754700, guid: 2eac0b66f7a69ce4d900a207c01e9bf5, type: 2}
   explosion: {fileID: 1220363091690522, guid: bebda8aa8bb38db4598719bf8dfd9f87, type: 2}
   scoreScreen: 0
+  invulnerable: 0
 --- !u!114 &114268021197191114
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2224,8 +2225,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 35c44b05a84856c48924e56682091592, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  burstSize: 6
-  fireRate: 10
+  burstSize: 4
+  fireRate: 15
   nextFire: 0.15
   nextVolley: 3
   initialDelay: 7
@@ -2234,7 +2235,7 @@ MonoBehaviour:
   - {fileID: 4183805456400614}
   shot: {fileID: 1378027018846096, guid: 7f2df5d83d51f1448a6bfd541f9b06e2, type: 2}
   target: {fileID: 0}
-  range: 40
+  range: 150
   rotateSpeed: 2
   playerTag: Player
 --- !u!114 &114277659603337238
@@ -2248,8 +2249,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 35c44b05a84856c48924e56682091592, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  burstSize: 6
-  fireRate: 10
+  burstSize: 4
+  fireRate: 15
   nextFire: 0.15
   nextVolley: 3
   initialDelay: 5
@@ -2258,7 +2259,7 @@ MonoBehaviour:
   - {fileID: 4470459854706368}
   shot: {fileID: 1378027018846096, guid: 7f2df5d83d51f1448a6bfd541f9b06e2, type: 2}
   target: {fileID: 0}
-  range: 40
+  range: 150
   rotateSpeed: 2
   playerTag: Player
 --- !u!114 &114323289069878288
@@ -2289,8 +2290,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 35c44b05a84856c48924e56682091592, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  burstSize: 6
-  fireRate: 10
+  burstSize: 4
+  fireRate: 15
   nextFire: 0.15
   nextVolley: 3
   initialDelay: 5
@@ -2299,7 +2300,7 @@ MonoBehaviour:
   - {fileID: 4336044317142696}
   shot: {fileID: 1378027018846096, guid: 7f2df5d83d51f1448a6bfd541f9b06e2, type: 2}
   target: {fileID: 0}
-  range: 40
+  range: 150
   rotateSpeed: 2
   playerTag: Player
 --- !u!114 &114432973940098364
@@ -2325,8 +2326,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 35c44b05a84856c48924e56682091592, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  burstSize: 6
-  fireRate: 10
+  burstSize: 4
+  fireRate: 15
   nextFire: 0.15
   nextVolley: 3
   initialDelay: 7
@@ -2335,7 +2336,7 @@ MonoBehaviour:
   - {fileID: 4211525843885252}
   shot: {fileID: 1378027018846096, guid: 7f2df5d83d51f1448a6bfd541f9b06e2, type: 2}
   target: {fileID: 0}
-  range: 40
+  range: 150
   rotateSpeed: 2
   playerTag: Player
 --- !u!114 &114509772488898358
@@ -2349,8 +2350,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 35c44b05a84856c48924e56682091592, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  burstSize: 6
-  fireRate: 10
+  burstSize: 4
+  fireRate: 15
   nextFire: 0.15
   nextVolley: 3
   initialDelay: 7
@@ -2359,7 +2360,7 @@ MonoBehaviour:
   - {fileID: 4603091247787046}
   shot: {fileID: 1378027018846096, guid: 7f2df5d83d51f1448a6bfd541f9b06e2, type: 2}
   target: {fileID: 0}
-  range: 40
+  range: 150
   rotateSpeed: 2
   playerTag: Player
 --- !u!114 &114761962175127390
@@ -2373,8 +2374,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 35c44b05a84856c48924e56682091592, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  burstSize: 6
-  fireRate: 10
+  burstSize: 4
+  fireRate: 15
   nextFire: 0.15
   nextVolley: 3
   initialDelay: 5
@@ -2383,7 +2384,7 @@ MonoBehaviour:
   - {fileID: 4007832565284204}
   shot: {fileID: 1378027018846096, guid: 7f2df5d83d51f1448a6bfd541f9b06e2, type: 2}
   target: {fileID: 0}
-  range: 40
+  range: 150
   rotateSpeed: 2
   playerTag: Player
 --- !u!114 &114786359530455784
@@ -2409,8 +2410,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 35c44b05a84856c48924e56682091592, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  burstSize: 6
-  fireRate: 10
+  burstSize: 4
+  fireRate: 15
   nextFire: 0.15
   nextVolley: 3
   initialDelay: 5
@@ -2419,7 +2420,7 @@ MonoBehaviour:
   - {fileID: 4126326151907148}
   shot: {fileID: 1378027018846096, guid: 7f2df5d83d51f1448a6bfd541f9b06e2, type: 2}
   target: {fileID: 0}
-  range: 40
+  range: 150
   rotateSpeed: 2
   playerTag: Player
 --- !u!114 &114933261709173776
