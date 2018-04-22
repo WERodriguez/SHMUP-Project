@@ -1238,7 +1238,7 @@ public class HangarMenuController : MonoBehaviour
             P1WarningText.text = "You already have full health";
             ActivateP1WarningPanel();
 
-            yield return new WaitForSeconds(2.4f);
+            yield return new WaitForSeconds(1.5f);
 
             DeactivateP1WarningPanel();
 
@@ -1250,7 +1250,7 @@ public class HangarMenuController : MonoBehaviour
             P1WarningText.text = "You already restore your health";
             ActivateP1WarningPanel();
 
-            yield return new WaitForSeconds(2.4f);
+            yield return new WaitForSeconds(1.5f);
 
             DeactivateP1WarningPanel();
         }
@@ -1262,7 +1262,7 @@ public class HangarMenuController : MonoBehaviour
                 P1WarningText.text = "You don't have enough credit";
                 ActivateP1WarningPanel();
 
-                yield return new WaitForSeconds(2.4f);
+                yield return new WaitForSeconds(1.5f);
 
                 DeactivateP1WarningPanel();
                 ActivateP1Shader();
@@ -1270,6 +1270,13 @@ public class HangarMenuController : MonoBehaviour
             if (ScoreTracker.P1credit >= 100)
             {
                 ScoreTracker.P1credit -= 100;
+
+                P1WarningText.text = "Our ship builders are the best, aren't they!!!";
+                ActivateP1WarningPanel();
+
+                yield return new WaitForSeconds(1.5f);
+
+                DeactivateP1WarningPanel();
 
                 PlayerHealthSystem.P1currentHealth = PlayerHealthSystem.P1maxHealth;
 
@@ -1285,7 +1292,7 @@ public class HangarMenuController : MonoBehaviour
             P1WarningText.text = "Your shield was fully charged";
             ActivateP1WarningPanel();
 
-            yield return new WaitForSeconds(2.4f);
+            yield return new WaitForSeconds(1.5f);
 
             DeactivateP1WarningPanel();
 
@@ -1297,7 +1304,7 @@ public class HangarMenuController : MonoBehaviour
             P1WarningText.text = "You already recharge your shield";
             ActivateP1WarningPanel();
 
-            yield return new WaitForSeconds(2.4f);
+            yield return new WaitForSeconds(1.5f);
 
             DeactivateP1WarningPanel();
         }
@@ -1309,7 +1316,7 @@ public class HangarMenuController : MonoBehaviour
                 P1WarningText.text = "You don't have enough credit";
                 ActivateP1WarningPanel();
 
-                yield return new WaitForSeconds(2.4f);
+                yield return new WaitForSeconds (1.5f);
 
                 DeactivateP1WarningPanel();
                 ActivateP1Shader();
@@ -1317,6 +1324,13 @@ public class HangarMenuController : MonoBehaviour
             if (ScoreTracker.P1credit >= 100)
             {
                 ScoreTracker.P1credit -= 100;
+
+                P1WarningText.text = "It will take double that amount if you don't bring back scrap next time!!!";
+                ActivateP1WarningPanel();
+
+                yield return new WaitForSeconds(1.5f);
+
+                DeactivateP1WarningPanel();
 
                 PlayerHealthSystem.P1currentShields = PlayerHealthSystem.P1maxShields;
 
@@ -1334,7 +1348,7 @@ public class HangarMenuController : MonoBehaviour
             P1WarningText.text = "You can only have 5 Spares";
             ActivateP1WarningPanel();
 
-            yield return new WaitForSeconds(2.4f);
+            yield return new WaitForSeconds(1.5f);
 
             DeactivateP1WarningPanel();
 
@@ -1348,7 +1362,7 @@ public class HangarMenuController : MonoBehaviour
                 P1WarningText.text = "You don't have enough credit";
                 ActivateP1WarningPanel();
 
-                yield return new WaitForSeconds(2.4f);
+                yield return new WaitForSeconds(1.5f);
 
                 DeactivateP1WarningPanel();
                 ActivateP1Shader();
@@ -1356,6 +1370,13 @@ public class HangarMenuController : MonoBehaviour
             if (ScoreTracker.P1credit >= 100)
             {
                 ScoreTracker.P1credit -= 100;
+
+                P1WarningText.text = "Why need so many spares";
+                ActivateP1WarningPanel();
+
+                yield return new WaitForSeconds(1.5f);
+
+                DeactivateP1WarningPanel();
 
                 PlayerHealthSystem.P1currentLives++;
 
@@ -1372,7 +1393,7 @@ public class HangarMenuController : MonoBehaviour
             P1WarningText.text = "Your primary weapon is at max level";
             ActivateP1WarningPanel();
 
-            yield return new WaitForSeconds(2.4f);
+            yield return new WaitForSeconds(1.5f);
 
             DeactivateP1WarningPanel();
 
@@ -1384,7 +1405,7 @@ public class HangarMenuController : MonoBehaviour
             P1WarningText.text = "You can only upgrade your primary once";
             ActivateP1WarningPanel();
 
-            yield return new WaitForSeconds(2.4f);
+            yield return new WaitForSeconds(1.5f);
 
             DeactivateP1WarningPanel();
         }
@@ -1396,7 +1417,7 @@ public class HangarMenuController : MonoBehaviour
                 P1WarningText.text = "You don't have enough credit";
                 ActivateP1WarningPanel();
 
-                yield return new WaitForSeconds(2.4f);
+                yield return new WaitForSeconds(1.5f);
 
                 DeactivateP1WarningPanel();
                 ActivateP1Shader();
@@ -1404,6 +1425,13 @@ public class HangarMenuController : MonoBehaviour
             if (ScoreTracker.P1credit >= 100)
             {
                 ScoreTracker.P1credit -= 100;
+
+                P1WarningText.text = "Spend more for a better discount";
+                ActivateP1WarningPanel();
+
+                yield return new WaitForSeconds(1.5f);
+
+                DeactivateP1WarningPanel();
 
                 PlayerWeaponController.P1currentWLevel++;
 
@@ -1421,7 +1449,7 @@ public class HangarMenuController : MonoBehaviour
             P1WarningText.text = "Your secondary weapon is at max level";
             ActivateP1WarningPanel();
 
-            yield return new WaitForSeconds(2.4f);
+            yield return new WaitForSeconds(1.5f);
 
             DeactivateP1WarningPanel();
 
@@ -1433,7 +1461,7 @@ public class HangarMenuController : MonoBehaviour
             P1WarningText.text = "You can only upgrade your secondary once";
             ActivateP1WarningPanel();
 
-            yield return new WaitForSeconds(2.4f);
+            yield return new WaitForSeconds(1.5f);
 
             DeactivateP1WarningPanel();
         }
@@ -1445,7 +1473,7 @@ public class HangarMenuController : MonoBehaviour
                 P1WarningText.text = "You don't have enough credit";
                 ActivateP1WarningPanel();
 
-                yield return new WaitForSeconds(2.4f);
+                yield return new WaitForSeconds(1.5f);
 
                 DeactivateP1WarningPanel();
                 ActivateP1Shader();
@@ -1453,6 +1481,13 @@ public class HangarMenuController : MonoBehaviour
             if (ScoreTracker.P1credit >= 100)
             {
                 ScoreTracker.P1credit -= 100;
+
+                P1WarningText.text = "Lucky you these stocks just came in";
+                ActivateP1WarningPanel();
+
+                yield return new WaitForSeconds(1.5f);
+
+                DeactivateP1WarningPanel();
 
                 PlayerWeaponController.P1currentSecondaryLevel++;
 
@@ -1463,28 +1498,28 @@ public class HangarMenuController : MonoBehaviour
     }
     IEnumerator P1AmmoAdd()
     {
-        if (PlayerWeaponController.P1currentSuperAmmo >= 5)
+        if (PlayerWeaponController.P1superAmmo >= 5)
         {
-            PlayerWeaponController.P1currentSuperAmmo = 5;
+            PlayerWeaponController.P1superAmmo = 5;
 
             P1WarningText.text = "Your ship only have sapce for 5 super charge";
             ActivateP1WarningPanel();
 
-            yield return new WaitForSeconds(2.4f);
+            yield return new WaitForSeconds(1.5f);
 
             DeactivateP1WarningPanel();
 
             P1specialShader.SetActive(true);
         }
 
-        if (PlayerWeaponController.P1currentSuperAmmo < 5)
+        if (PlayerWeaponController.P1superAmmo < 5)
         {
             if (ScoreTracker.P1credit < 100)
             {
                 P1WarningText.text = "You don't have enough credit";
                 ActivateP1WarningPanel();
 
-                yield return new WaitForSeconds(2.4f);
+                yield return new WaitForSeconds(1.5f);
 
                 DeactivateP1WarningPanel();
                 ActivateP1Shader();
@@ -1493,7 +1528,14 @@ public class HangarMenuController : MonoBehaviour
             {
                 ScoreTracker.P1credit -= 100;
 
-                PlayerWeaponController.P1currentSuperAmmo++;
+                P1WarningText.text = "Your ship has enough space to store these";
+                ActivateP1WarningPanel();
+
+                yield return new WaitForSeconds(1.5f);
+
+                DeactivateP1WarningPanel();
+
+                PlayerWeaponController.P1superAmmo++;
             }
         }
     }
@@ -1544,7 +1586,7 @@ public class HangarMenuController : MonoBehaviour
             P2WarningText.text = "You already have full health";
             ActivateP2WarningPanel();
 
-            yield return new WaitForSeconds(2.4f);
+            yield return new WaitForSeconds(1.5f);
 
             DeactivateP2WarningPanel();
 
@@ -1556,7 +1598,7 @@ public class HangarMenuController : MonoBehaviour
             P2WarningText.text = "You already restore your health";
             ActivateP2WarningPanel();
 
-            yield return new WaitForSeconds(2.4f);
+            yield return new WaitForSeconds(1.5f);
 
             DeactivateP2WarningPanel();
         }
@@ -1568,7 +1610,7 @@ public class HangarMenuController : MonoBehaviour
                 P2WarningText.text = "You don't have enough credit";
                 ActivateP2WarningPanel();
 
-                yield return new WaitForSeconds(2.4f);
+                yield return new WaitForSeconds(1.5f);
 
                 DeactivateP2WarningPanel();
                 ActivateP2Shader();
@@ -1576,6 +1618,13 @@ public class HangarMenuController : MonoBehaviour
             if (ScoreTracker.P2credit >= 100)
             {
                 ScoreTracker.P2credit -= 100;
+
+                P2WarningText.text = "Our ship builders are the best, aren't they!!!";
+                ActivateP2WarningPanel();
+
+                yield return new WaitForSeconds(1.5f);
+
+                DeactivateP2WarningPanel();
 
                 PlayerHealthSystem.P2currentHealth = PlayerHealthSystem.P2maxHealth;
 
@@ -1591,7 +1640,7 @@ public class HangarMenuController : MonoBehaviour
             P2WarningText.text = "Your shield was fully charged";
             ActivateP2WarningPanel();
 
-            yield return new WaitForSeconds(2.4f);
+            yield return new WaitForSeconds(1.5f);
 
             DeactivateP2WarningPanel();
 
@@ -1603,7 +1652,7 @@ public class HangarMenuController : MonoBehaviour
             P2WarningText.text = "You already recharge your shield";
             ActivateP2WarningPanel();
 
-            yield return new WaitForSeconds(2.4f);
+            yield return new WaitForSeconds(1.5f);
 
             DeactivateP2WarningPanel();
         }
@@ -1615,7 +1664,7 @@ public class HangarMenuController : MonoBehaviour
                 P2WarningText.text = "You don't have enough credit";
                 ActivateP2WarningPanel();
 
-                yield return new WaitForSeconds(2.4f);
+                yield return new WaitForSeconds(1.5f);
 
                 DeactivateP2WarningPanel();
                 ActivateP2Shader();
@@ -1623,6 +1672,13 @@ public class HangarMenuController : MonoBehaviour
             if (ScoreTracker.P2credit >= 100)
             {
                 ScoreTracker.P2credit -= 100;
+
+                P2WarningText.text = "It will take double that amount if you don't bring back scrap next time!!!";
+                ActivateP2WarningPanel();
+
+                yield return new WaitForSeconds(1.5f);
+
+                DeactivateP2WarningPanel();
 
                 PlayerHealthSystem.P2currentShields = PlayerHealthSystem.P2maxShields;
 
@@ -1640,7 +1696,7 @@ public class HangarMenuController : MonoBehaviour
             P2WarningText.text = "You can only have 5 Spares";
             ActivateP2WarningPanel();
 
-            yield return new WaitForSeconds(2.4f);
+            yield return new WaitForSeconds(1.5f);
 
             DeactivateP2WarningPanel();
 
@@ -1654,7 +1710,7 @@ public class HangarMenuController : MonoBehaviour
                 P2WarningText.text = "You don't have enough credit";
                 ActivateP2WarningPanel();
 
-                yield return new WaitForSeconds(2.4f);
+                yield return new WaitForSeconds(1.5f);
 
                 DeactivateP2WarningPanel();
                 ActivateP2Shader();
@@ -1662,6 +1718,13 @@ public class HangarMenuController : MonoBehaviour
             if (ScoreTracker.P2credit >= 100)
             {
                 ScoreTracker.P2credit -= 100;
+
+                P2WarningText.text = "Why need so many spares";
+                ActivateP2WarningPanel();
+
+                yield return new WaitForSeconds(1.5f);
+
+                DeactivateP2WarningPanel();
 
                 PlayerHealthSystem.P2currentLives++;
                 P2buy = true;
@@ -1677,7 +1740,7 @@ public class HangarMenuController : MonoBehaviour
             P2WarningText.text = "Your primary weapon is at max level";
             ActivateP2WarningPanel();
 
-            yield return new WaitForSeconds(2.4f);
+            yield return new WaitForSeconds(1.5f);
 
             DeactivateP2WarningPanel();
 
@@ -1689,7 +1752,7 @@ public class HangarMenuController : MonoBehaviour
             P2WarningText.text = "You can only upgrade your primary once";
             ActivateP2WarningPanel();
 
-            yield return new WaitForSeconds(2.4f);
+            yield return new WaitForSeconds(1.5f);
 
             DeactivateP2WarningPanel();
         }
@@ -1701,7 +1764,7 @@ public class HangarMenuController : MonoBehaviour
                 P2WarningText.text = "You don't have enough credit";
                 ActivateP2WarningPanel();
 
-                yield return new WaitForSeconds(2.4f);
+                yield return new WaitForSeconds(1.5f);
 
                 DeactivateP2WarningPanel();
                 ActivateP2Shader();
@@ -1709,6 +1772,13 @@ public class HangarMenuController : MonoBehaviour
             if (ScoreTracker.P2credit >= 100)
             {
                 ScoreTracker.P2credit -= 100;
+
+                P2WarningText.text = "Spend more for a better discount";
+                ActivateP2WarningPanel();
+
+                yield return new WaitForSeconds(1.5f);
+
+                DeactivateP2WarningPanel();
 
                 PlayerWeaponController.P2currentWLevel++;
 
@@ -1726,7 +1796,7 @@ public class HangarMenuController : MonoBehaviour
             P2WarningText.text = "Your secondary weapon is at max level";
             ActivateP2WarningPanel();
 
-            yield return new WaitForSeconds(2.4f);
+            yield return new WaitForSeconds(1.5f);
 
             DeactivateP2WarningPanel();
 
@@ -1738,7 +1808,7 @@ public class HangarMenuController : MonoBehaviour
             P2WarningText.text = "You can only upgrade your secondary once";
             ActivateP2WarningPanel();
 
-            yield return new WaitForSeconds(2.4f);
+            yield return new WaitForSeconds(1.5f);
 
             DeactivateP2WarningPanel();
         }
@@ -1750,7 +1820,7 @@ public class HangarMenuController : MonoBehaviour
                 P2WarningText.text = "You don't have enough credit";
                 ActivateP2WarningPanel();
 
-                yield return new WaitForSeconds(2.4f);
+                yield return new WaitForSeconds(1.5f);
 
                 DeactivateP2WarningPanel();
                 ActivateP2Shader();
@@ -1758,6 +1828,13 @@ public class HangarMenuController : MonoBehaviour
             if (ScoreTracker.P2credit >= 100)
             {
                 ScoreTracker.P2credit -= 100;
+
+                P2WarningText.text = "Lucky you these stocks just came in";
+                ActivateP2WarningPanel();
+
+                yield return new WaitForSeconds(1.5f);
+
+                DeactivateP2WarningPanel();
 
                 PlayerWeaponController.P2currentSecondaryLevel++;
 
@@ -1768,28 +1845,28 @@ public class HangarMenuController : MonoBehaviour
     }
     IEnumerator P2AmmoAdd()
     {
-        if (PlayerWeaponController.P2currentSuperAmmo >= 5)
+        if (PlayerWeaponController.P2superAmmo >= 5)
         {
-            PlayerWeaponController.P2currentSuperAmmo = 5;
+            PlayerWeaponController.P2superAmmo = 5;
 
             P2WarningText.text = "Your ship only have sapce for 5 super charge";
             ActivateP2WarningPanel();
 
-            yield return new WaitForSeconds(2.4f);
+            yield return new WaitForSeconds(1.5f);
 
             DeactivateP2WarningPanel();
 
             P2specialShader.SetActive(true);
         }
 
-        if (PlayerWeaponController.P2currentSuperAmmo < 5)
+        if (PlayerWeaponController.P2superAmmo < 5)
         {
             if (ScoreTracker.P2credit < 100)
             {
                 P2WarningText.text = "You don't have enough credit";
                 ActivateP2WarningPanel();
 
-                yield return new WaitForSeconds(2.4f);
+                yield return new WaitForSeconds(1.5f);
 
                 DeactivateP2WarningPanel();
                 ActivateP2Shader();
@@ -1798,7 +1875,14 @@ public class HangarMenuController : MonoBehaviour
             {
                 ScoreTracker.P2credit -= 100;
 
-                PlayerWeaponController.P2currentSuperAmmo++;
+                P2WarningText.text = "Your ship has enough space to store these";
+                ActivateP2WarningPanel();
+
+                yield return new WaitForSeconds(1.5f);
+
+                DeactivateP2WarningPanel();
+
+                PlayerWeaponController.P2superAmmo++;
             }
         }
     }
@@ -2599,7 +2683,7 @@ public class HangarMenuController : MonoBehaviour
 
         PlayerWeaponController.P1savedWeaponLevel = PlayerWeaponController.P1currentWLevel;
         PlayerWeaponController.P1savedSecondaryLevel = PlayerWeaponController.P1currentSecondaryLevel;
-        PlayerWeaponController.P1savedSuperAmmo = PlayerWeaponController.P1currentSuperAmmo;
+        PlayerWeaponController.P1savedSuperAmmo = PlayerWeaponController.P1superAmmo;
     }
     private void SetPlayer2Value()
     {
@@ -2609,7 +2693,7 @@ public class HangarMenuController : MonoBehaviour
 
         PlayerWeaponController.P2savedWeaponLevel = PlayerWeaponController.P2currentWLevel;
         PlayerWeaponController.P2savedSecondaryLevel = PlayerWeaponController.P2currentSecondaryLevel;
-        PlayerWeaponController.P2savedSuperAmmo = PlayerWeaponController.P2currentSuperAmmo;
+        PlayerWeaponController.P2savedSuperAmmo = PlayerWeaponController.P2superAmmo;
     }
 
     private void CheckP1Primary()

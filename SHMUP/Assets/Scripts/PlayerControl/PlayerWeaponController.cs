@@ -69,11 +69,9 @@ public class PlayerWeaponController : MonoBehaviour
     private int shotCounter;
     //How many times you can fire your super weapon.
     public static int P1superAmmo;
-    public static int P1currentSuperAmmo;
     public static int P1savedSuperAmmo;
 
     public static int P2superAmmo;
-    public static int P2currentSuperAmmo;
     public static int P2savedSuperAmmo;
 
     public static int superAmmoDefault;

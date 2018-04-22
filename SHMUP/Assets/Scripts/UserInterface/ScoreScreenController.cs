@@ -268,7 +268,7 @@ public class ScoreScreenController : MonoBehaviour
 
         PlayerWeaponController.P1savedWeaponLevel = PlayerWeaponController.P1currentWLevel;
         PlayerWeaponController.P1savedSecondaryLevel = PlayerWeaponController.P1currentSecondaryLevel;
-        PlayerWeaponController.P1savedSuperAmmo = PlayerWeaponController.P1currentSuperAmmo;
+        PlayerWeaponController.P1savedSuperAmmo = PlayerWeaponController.P1superAmmo;
     }
     private void SetPlayer2Value()
     {
@@ -278,7 +278,7 @@ public class ScoreScreenController : MonoBehaviour
 
         PlayerWeaponController.P2savedWeaponLevel = PlayerWeaponController.P2currentWLevel;
         PlayerWeaponController.P2savedSecondaryLevel = PlayerWeaponController.P2currentSecondaryLevel;
-        PlayerWeaponController.P2savedSuperAmmo = PlayerWeaponController.P2currentSuperAmmo;
+        PlayerWeaponController.P2savedSuperAmmo = PlayerWeaponController.P2superAmmo;
     }
 
     public void NexButton()
@@ -302,7 +302,7 @@ public class ScoreScreenController : MonoBehaviour
 
                 PlayerWeaponController.P1savedWeaponLevel = 1;
                 PlayerWeaponController.P1savedSecondaryLevel = 0;
-                PlayerWeaponController.P1savedSuperAmmo = PlayerWeaponController.P1currentSuperAmmo;
+                PlayerWeaponController.P1savedSuperAmmo = PlayerWeaponController.P1superAmmo;
             }
             if (PlayerHealthSystem.P2currentLives < 0)
             {
@@ -312,7 +312,7 @@ public class ScoreScreenController : MonoBehaviour
                 
                 PlayerWeaponController.P2savedWeaponLevel = 1;
                 PlayerWeaponController.P2savedSecondaryLevel = 0;
-                PlayerWeaponController.P2savedSuperAmmo = PlayerWeaponController.P2currentSuperAmmo;
+                PlayerWeaponController.P2savedSuperAmmo = PlayerWeaponController.P2superAmmo;
             }
         }
 
