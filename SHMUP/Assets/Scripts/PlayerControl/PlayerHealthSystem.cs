@@ -377,6 +377,7 @@ public class PlayerHealthSystem : MonoBehaviour
 
         P1HealthBar.fillAmount = P1currentHealth / P1maxHealth;
         P1ShieldBar.fillAmount = P1currentShields / P1maxShields;
+        P1lives.text = "" + P1currentLives;
     }
     private void Player2Status()
     {
@@ -386,6 +387,7 @@ public class PlayerHealthSystem : MonoBehaviour
 
         P2HealthBar.fillAmount = P2currentHealth / P2maxHealth;
         P2ShieldBar.fillAmount = P2currentShields / P2maxShields;
+        P2lives.text = "" + P2currentLives;
     }
 
     private void SettingUpPlayer1()
