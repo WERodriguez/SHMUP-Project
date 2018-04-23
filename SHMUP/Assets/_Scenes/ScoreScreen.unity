@@ -1530,6 +1530,58 @@ CanvasRenderer:
     type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1116454649}
+--- !u!1001 &1128227580
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4456835089563054, guid: 6d3bea13529fe83488e517dceb1d37a7, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 62.55773
+      objectReference: {fileID: 0}
+    - target: {fileID: 4456835089563054, guid: 6d3bea13529fe83488e517dceb1d37a7, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 5.7206497
+      objectReference: {fileID: 0}
+    - target: {fileID: 4456835089563054, guid: 6d3bea13529fe83488e517dceb1d37a7, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: -88.142624
+      objectReference: {fileID: 0}
+    - target: {fileID: 4456835089563054, guid: 6d3bea13529fe83488e517dceb1d37a7, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4456835089563054, guid: 6d3bea13529fe83488e517dceb1d37a7, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4456835089563054, guid: 6d3bea13529fe83488e517dceb1d37a7, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4456835089563054, guid: 6d3bea13529fe83488e517dceb1d37a7, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4456835089563054, guid: 6d3bea13529fe83488e517dceb1d37a7, type: 2}
+      propertyPath: m_RootOrder
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 114044503472151740, guid: 6d3bea13529fe83488e517dceb1d37a7,
+        type: 2}
+      propertyPath: OnFlexEnter.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1621900830}
+    - target: {fileID: 114044503472151740, guid: 6d3bea13529fe83488e517dceb1d37a7,
+        type: 2}
+      propertyPath: OnFlexExit.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1621900830}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: 6d3bea13529fe83488e517dceb1d37a7, type: 2}
+  m_IsPrefabParent: 0
 --- !u!1 &1257661435
 GameObject:
   m_ObjectHideFlags: 0
@@ -2580,6 +2632,7 @@ MonoBehaviour:
   screen: {fileID: 1304128849}
   P1screen: {fileID: 1421222333}
   P2screen: {fileID: 26441805}
+  myFlexBool: 0
 --- !u!1 &1625555872
 GameObject:
   m_ObjectHideFlags: 0

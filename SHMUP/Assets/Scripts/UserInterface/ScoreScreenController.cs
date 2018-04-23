@@ -59,6 +59,8 @@ public class ScoreScreenController : MonoBehaviour
     public GameObject P1screen;
     public GameObject P2screen;
 
+    public bool myFlexBool;
+
     private void Awake()
     {
         hangarButton.SetActive(false);
@@ -120,7 +122,7 @@ public class ScoreScreenController : MonoBehaviour
                 glowTracker++;
             }
 
-            if (Input.GetButtonDown("Fire_P1") || Input.GetButtonDown("Fire_P2") || Input.GetKeyDown(KeyCode.Keypad0))
+            if (Input.GetButtonDown("Fire_P1") || Input.GetButtonDown("Fire_P2") || Input.GetKeyDown(KeyCode.Keypad0) || myFlexBool == true)
             {
                 if (glowTracker <= 1)
                 {
@@ -339,5 +341,17 @@ public class ScoreScreenController : MonoBehaviour
         ResetPlayerScore();
 
         SceneManager.LoadScene("Hangar");
+    }
+
+    //Registers flex as true.
+    public void SetFlexTrue()
+    {
+        myFlexBool = true;
+    }
+
+    //Registers flex as false.
+    public void SetFlexFalse()
+    {
+        myFlexBool = false;
     }
 }

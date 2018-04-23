@@ -15,6 +15,8 @@ public class TitleController : MonoBehaviour
     private bool canSkip;
     private bool skipPressed;
 
+    public bool myFlexBool;
+
     private void Awake()
     {
         logo.SetActive(false);
@@ -35,7 +37,7 @@ public class TitleController : MonoBehaviour
     {
         if (canSkip)
         {
-            if (Input.GetButtonDown("Fire_P1") || Input.GetButtonDown("Fire_P2") || Input.GetKeyDown(KeyCode.Keypad0))
+            if (Input.GetButtonDown("Fire_P1") || Input.GetButtonDown("Fire_P2") || Input.GetKeyDown(KeyCode.Keypad0) || myFlexBool == true)
             {
                 skipPressed = true;
 
@@ -63,5 +65,15 @@ public class TitleController : MonoBehaviour
         yield return new WaitForSeconds(9f);
 
         SceneManager.LoadScene("MainMenu");
+    }
+
+    public void SetFlexTrue()
+    {
+        myFlexBool = true;
+    }
+
+    public void SetFlexFalse()
+    {
+        myFlexBool = false;
     }
 }
