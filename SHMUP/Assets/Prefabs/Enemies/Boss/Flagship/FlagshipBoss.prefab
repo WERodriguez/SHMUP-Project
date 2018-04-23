@@ -706,7 +706,7 @@ GameObject:
   - component: {fileID: 114262308870169246}
   - component: {fileID: 114579149418585152}
   m_Layer: 0
-  m_Name: BattleshipBoss
+  m_Name: FlagshipBoss
   m_TagString: Boss
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1554,7 +1554,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1836927889457090}
   m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
-  m_LocalPosition: {x: 0, y: 0, z: 45.61}
+  m_LocalPosition: {x: -2.2140696, y: 14.629555, z: -9.38934}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4487414829945744}
@@ -3221,7 +3221,7 @@ MonoBehaviour:
   currentHealth: 0
   maxHealth: 250
   currentShields: 0
-  maxShields: 150
+  maxShields: 250
   lootDropChance: 100
   isDead: 0
   isBoss: 0
@@ -3267,7 +3267,7 @@ MonoBehaviour:
   currentHealth: 0
   maxHealth: 250
   currentShields: 0
-  maxShields: 150
+  maxShields: 250
   lootDropChance: 100
   isDead: 0
   isBoss: 0
