@@ -613,14 +613,13 @@ MonoBehaviour:
   P1ShieldBar: {fileID: 0}
   P2HealthBar: {fileID: 0}
   P2ShieldBar: {fileID: 0}
-  P1health: {fileID: 0}
-  P1shields: {fileID: 0}
   P1lives: {fileID: 0}
-  P2health: {fileID: 0}
-  P2shields: {fileID: 0}
   P2lives: {fileID: 0}
   playerExplosion: {fileID: 1730581265408892, guid: 610f3f65f4a24d3499f5278ba283ea24,
     type: 2}
+  respawnShield: {fileID: 0}
+  childShield: {fileID: 0}
+  invulnerable: 0
 --- !u!114 &114562860681557468
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -632,7 +631,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8fcdc9be63c734540af6cebbd4c08e52, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 15
+  speed: 17
   tilt: 1
   whichPlayer: 0
   P1isDead: 0

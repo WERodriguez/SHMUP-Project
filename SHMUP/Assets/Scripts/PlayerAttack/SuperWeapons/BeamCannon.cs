@@ -37,7 +37,7 @@ public class BeamCannon : MonoBehaviour
     public AudioSource beamAudioSource;
 
     // Use this for initialization
-    void Start ()
+    private void Start ()
     {
         beamAudioSource = GetComponent<AudioSource>();
 
@@ -59,7 +59,7 @@ public class BeamCannon : MonoBehaviour
 	}
 	
 	// Update is called once per frame
-	void Update ()
+	private void Update ()
     {
         //Checks if the beam can fade or if it's done fading.
         if(canIFadeYet)
@@ -77,6 +77,11 @@ public class BeamCannon : MonoBehaviour
                     childObjectColor.material.color.a - (fadePerSecond * Time.deltaTime));
             }
         }
+    }
+
+    private void FixedUpdate()
+    {
+        gameObject.transform.rotation = Quaternion.identity;
     }
 
 

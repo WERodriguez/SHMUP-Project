@@ -2355,15 +2355,15 @@ public class SelectionMenuController : MonoBehaviour
     //player 1 lambo shooter
     private void P1LamboShooterData()
     {
-        PlayerHealthSystem.P1maxHealth = 175;
-        PlayerHealthSystem.P1maxShields = 150;
+        PlayerHealthSystem.P1maxHealth = 50;
+        PlayerHealthSystem.P1maxShields = 125;
         PlayerHealthSystem.P1maxLives = 5;
     }
     //player 2 lambo shooter
     private void P2LamboShooterData()
     {
-        PlayerHealthSystem.P2maxHealth = 75;
-        PlayerHealthSystem.P2maxShields = 150;
+        PlayerHealthSystem.P2maxHealth = 50;
+        PlayerHealthSystem.P2maxShields = 125;
         PlayerHealthSystem.P2maxLives = 5;
     }
 
