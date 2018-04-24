@@ -62,23 +62,27 @@ public class GameController : MonoBehaviour
         levelOneMusic = new AudioClip[]
         {
             (AudioClip)Resources.Load("Music/LVL1Loop/Be Faster_demo"),
-            (AudioClip)Resources.Load("Music/LVL1Boss/Can't Stop Me_demo")
+            (AudioClip)Resources.Load("Music/LVL1Boss/Can't Stop Me_demo"),
+            (AudioClip)Resources.Load("Music/BossWarning/ShmupAlarm")
         };
         levelTwoMusic = new AudioClip[]
         {
             (AudioClip)Resources.Load("Music/LVL2Loop/Time For Action_demo"),
-            (AudioClip)Resources.Load("Music/LVL2Boss/Heart of Warrior (Looped)")
+            (AudioClip)Resources.Load("Music/LVL2Boss/Heart of Warrior (Looped)"),
+            (AudioClip)Resources.Load("Music/BossWarning/ShmupAlarm")
         };
         levelThreeMusic = new AudioClip[]
         {
             (AudioClip)Resources.Load("Music/LVL3Loop/Unbreakable (Looped)"),
-            (AudioClip)Resources.Load("Music/LVL3Boss/No Way Back (Looped)")
+            (AudioClip)Resources.Load("Music/LVL3Boss/No Way Back (Looped)"),
+            (AudioClip)Resources.Load("Music/BossWarning/ShmupAlarm")
         };
 
         if (level == 1)
         {
             musicPlayer[0].clip = levelOneMusic[0];
             musicPlayer[1].clip = levelOneMusic[1];
+            musicPlayer[2].clip = levelOneMusic[2];
             musicPlayer[0].Play();
             StartCoroutine(Level1());
         }
@@ -86,6 +90,7 @@ public class GameController : MonoBehaviour
         {
             musicPlayer[0].clip = levelTwoMusic[0];
             musicPlayer[1].clip = levelTwoMusic[1];
+            musicPlayer[2].clip = levelTwoMusic[2];
             musicPlayer[0].Play();
             StartCoroutine(Level2());
         }
@@ -94,6 +99,7 @@ public class GameController : MonoBehaviour
         {
             musicPlayer[0].clip = levelThreeMusic[0];
             musicPlayer[1].clip = levelThreeMusic[1];
+            musicPlayer[2].clip = levelThreeMusic[2];
             musicPlayer[0].Play();
             StartCoroutine(Level3());
         }
@@ -465,12 +471,14 @@ public class GameController : MonoBehaviour
         Instantiate(powerUps[1], mainSpawns[7].position, mainSpawns[0].rotation);
 
         yield return new WaitForSeconds(1);
-        musicPlayer[1].Play();
 
+        musicPlayer[1].Play();
+        musicPlayer[2].Play();
         bossWarning.SetActive(true);
 
         yield return new WaitForSeconds(4);
 
+        musicPlayer[2].Stop();
         bossWarning.SetActive(false);
 
         yield return new WaitForSeconds(1);
@@ -730,10 +738,12 @@ public class GameController : MonoBehaviour
         yield return new WaitForSeconds(3);
 
         musicPlayer[1].Play();
+        musicPlayer[2].Play();
         bossWarning.SetActive(true);
 
         yield return new WaitForSeconds(4);
 
+        musicPlayer[2].Stop();
         bossWarning.SetActive(false);
 
         yield return new WaitForSeconds(1f);
@@ -982,10 +992,12 @@ public class GameController : MonoBehaviour
         yield return new WaitForSeconds(1);
 
         musicPlayer[1].Play();
+        musicPlayer[2].Play();
         bossWarning.SetActive(true);
 
         yield return new WaitForSeconds(4);
 
+        musicPlayer[2].Stop();
         bossWarning.SetActive(false);
 
         //HeavyFighter Group
