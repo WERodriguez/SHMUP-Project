@@ -7,9 +7,6 @@ public class CreditController : MonoBehaviour
 {
     public GameObject mainMenuButton;
 
-    private AudioClip[] soundEffect;
-    private AudioSource[] buttonSoundEffect;
-
     private bool waiting;
 
     private void Start()
@@ -31,8 +28,6 @@ public class CreditController : MonoBehaviour
         {
             if(Input.GetButtonDown("Fire_P1") || Input.GetButtonDown("Fire_P2") || Input.GetKeyDown(KeyCode.Keypad0) || FlexToggle.myFlexBool == true)
             {
-                SelectingSound();
-
                 MainMenuButton();
             }
         }
@@ -75,12 +70,6 @@ public class CreditController : MonoBehaviour
 
     IEnumerator Timer()
     {
-        buttonSoundEffect = GetComponents<AudioSource>();
-        soundEffect = new AudioClip[]
-        {
-            (AudioClip)Resources.Load("Music/MenuSound/SelectingSound")
-        };
-
         waiting = true;
 
         mainMenuButton.SetActive(false);
@@ -104,12 +93,5 @@ public class CreditController : MonoBehaviour
         Destroy(GameObject.Find("HangarMusicController"));
 
         SceneManager.LoadScene("MainMenu");
-    }
-
-    private void SelectingSound()
-    {
-        buttonSoundEffect[0].Stop();
-        buttonSoundEffect[0].clip = soundEffect[0];
-        buttonSoundEffect[0].Play();
     }
 }

@@ -113,8 +113,6 @@ public class GameOverController : MonoBehaviour
 
             if (Input.GetButtonDown("Fire_P1") || Input.GetButtonDown("Fire_P2") || Input.GetKeyDown(KeyCode.Keypad0) || FlexToggle.myFlexBool == true)
             {
-                SelectingSound();
-
                 if (glowTracker <= 1)
 				{
 					RestartButton ();
@@ -132,8 +130,7 @@ public class GameOverController : MonoBehaviour
         buttonSoundEffect = GetComponents<AudioSource>();
         soundEffect = new AudioClip[]
         {
-            (AudioClip)Resources.Load("Music/MenuSound/ScrollingSound"),
-            (AudioClip)Resources.Load("Music/MenuSound/SelectingSound")
+            (AudioClip)Resources.Load("Music/MenuSound/ScrollingSound")
         };
 
         hangarButton.SetActive(true);
@@ -293,12 +290,6 @@ public class GameOverController : MonoBehaviour
     {
         buttonSoundEffect[0].Stop();
         buttonSoundEffect[0].clip = soundEffect[0];
-        buttonSoundEffect[0].Play();
-    }
-    private void SelectingSound()
-    {
-        buttonSoundEffect[0].Stop();
-        buttonSoundEffect[0].clip = soundEffect[1];
         buttonSoundEffect[0].Play();
     }
 }

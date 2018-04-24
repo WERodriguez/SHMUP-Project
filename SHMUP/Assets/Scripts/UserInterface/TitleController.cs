@@ -19,9 +19,6 @@ public class TitleController : MonoBehaviour
     private bool canSkip;
     private bool skipPressed;
 
-    private AudioClip[] soundEffect;
-    private AudioSource[] buttonSoundEffect;
-
     private void Awake()
     {
         logo.SetActive(false);
@@ -45,8 +42,6 @@ public class TitleController : MonoBehaviour
         {
             if (Input.GetButtonDown("Fire_P1") || Input.GetButtonDown("Fire_P2") || Input.GetKeyDown(KeyCode.Keypad0) || FlexToggle.myFlexBool == true)
             {
-                SelectingSound();
-
                 skipPressed = true;
 
                 SceneManager.LoadScene("MainMenu");
@@ -68,12 +63,6 @@ public class TitleController : MonoBehaviour
 
     IEnumerator Timer()
     {
-        buttonSoundEffect = GetComponents<AudioSource>();
-        soundEffect = new AudioClip[]
-        {
-            (AudioClip)Resources.Load("Music/MenuSound/SelectingSound")
-        };
-
         logo.SetActive(true);
 
         yield return new WaitForSeconds(4f);
@@ -91,12 +80,5 @@ public class TitleController : MonoBehaviour
         yield return new WaitForSeconds(9f);
 
         SceneManager.LoadScene("MainMenu");
-    }
-
-    private void SelectingSound()
-    {
-        buttonSoundEffect[0].Stop();
-        buttonSoundEffect[0].clip = soundEffect[0];
-        buttonSoundEffect[0].Play();
     }
 }
