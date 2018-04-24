@@ -32,7 +32,12 @@ public class TitleController : MonoBehaviour
     }
 
     private void Update()
-    {
+	{
+		if (Input.GetButtonDown ("ArcadeQuit"))
+		{
+			Application.Quit ();
+		}
+
         if (canSkip)
         {
             if (Input.GetButtonDown("Fire_P1") || Input.GetButtonDown("Fire_P2") || Input.GetKeyDown(KeyCode.Keypad0) || FlexToggle.myFlexBool == true)
