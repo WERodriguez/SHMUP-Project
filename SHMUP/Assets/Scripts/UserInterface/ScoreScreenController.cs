@@ -59,6 +59,9 @@ public class ScoreScreenController : MonoBehaviour
     public GameObject P1screen;
     public GameObject P2screen;
 
+    private AudioClip[] soundEffect;
+    private AudioSource[] buttonSoundEffect;
+
     public bool myFlexBool;
 
     private void Awake()
@@ -123,10 +126,14 @@ public class ScoreScreenController : MonoBehaviour
 
             if (Input.GetButtonDown("P1HorizontalChoiceLeft") || Input.GetButtonDown("P2HorizontalChoiceLeft") || Input.GetKeyDown(KeyCode.Keypad4))
             {
+                ScrollingSound();
+
                 glowTracker--;
             }
             if (Input.GetButtonDown("P1HorizontalChoiceRight") || Input.GetButtonDown("P2HorizontalChoiceRight") || Input.GetKeyDown(KeyCode.Keypad6))
             {
+                ScrollingSound();
+
                 glowTracker++;
             }
 
@@ -146,6 +153,12 @@ public class ScoreScreenController : MonoBehaviour
 
     IEnumerator Timer()
     {
+        buttonSoundEffect = GetComponents<AudioSource>();
+        soundEffect = new AudioClip[]
+        {
+            (AudioClip)Resources.Load("Music/MenuSound/ScrollingSound"),
+        };
+
         MainMenuController.currentStage++;
         HUDcontroller.winLevel = false;
 
@@ -361,5 +374,12 @@ public class ScoreScreenController : MonoBehaviour
     public void SetFlexFalse()
     {
         myFlexBool = false;
+    }
+
+    private void ScrollingSound()
+    {
+        buttonSoundEffect[0].Stop();
+        buttonSoundEffect[0].clip = soundEffect[0];
+        buttonSoundEffect[0].Play();
     }
 }

@@ -123,10 +123,19 @@ public class HUDcontroller : MonoBehaviour
 
     public Text P2characterText;
 
+    private AudioClip[] soundEffect;
+    private AudioSource[] buttonSoundEffect;
+
     public static bool winLevel;
 
     private void Start()
     {
+        buttonSoundEffect = GetComponents<AudioSource>();
+        soundEffect = new AudioClip[]
+        {
+            (AudioClip)Resources.Load("Music/MenuSound/ScrollingSound"),
+        };
+
         DeactivateHUD();
         DeactivatePauseMenu();
         DeactivateAddingVerticalCanvas();
@@ -197,10 +206,14 @@ public class HUDcontroller : MonoBehaviour
 
                 if (Input.GetButtonDown("P1HorizontalChoiceLeft") || Input.GetButtonDown("P2HorizontalChoiceLeft") || Input.GetKeyDown(KeyCode.Keypad8) || Input.GetKeyDown(KeyCode.Keypad4))
                 {
+                    ScrollingSound();
+
                     glowTracker--;
                 }
                 if (Input.GetButtonDown("P1HorizontalChoiceRight") || Input.GetButtonDown("P2HorizontalChoiceRight") || Input.GetKeyDown(KeyCode.Keypad5) || Input.GetKeyDown(KeyCode.Keypad6))
                 {
+                    ScrollingSound();
+
                     glowTracker++;
                 }
 
@@ -283,10 +296,14 @@ public class HUDcontroller : MonoBehaviour
 
                     if (Input.GetButtonDown("P2VerticalChoiceUp") || Input.GetKeyDown(KeyCode.Keypad8))
                     {
+                        ScrollingSound();
+
                         choosingPlayer2Vertical--;
                     }
                     if (Input.GetButtonDown("P2VerticalChoiceDown") || Input.GetKeyDown(KeyCode.Keypad5))
                     {
+                        ScrollingSound();
+
                         choosingPlayer2Vertical++;
                     }
 
@@ -441,6 +458,8 @@ public class HUDcontroller : MonoBehaviour
 
                     if (Input.GetButtonDown("P2HorizontalChoiceLeft") || Input.GetKeyDown(KeyCode.Keypad4))
                     {
+                        ScrollingSound();
+
                         DeactivateAddingHorizontalGlow();
                         P2toggleLeftGlow.fillAmount = 1;
 
@@ -448,6 +467,8 @@ public class HUDcontroller : MonoBehaviour
                     }
                     if (Input.GetButtonDown("P2HorizontalChoiceRight") || Input.GetKeyDown(KeyCode.Keypad6))
                     {
+                        ScrollingSound();
+
                         DeactivateAddingHorizontalGlow();
                         P2toggleRightGlow.fillAmount = 1;
 
@@ -1146,5 +1167,12 @@ public class HUDcontroller : MonoBehaviour
         ActivateAddingVerticalCanvas();
         ActivateAddingVerticalButton();
         ActivateAddingVerticalChoices();
+    }
+
+    private void ScrollingSound()
+    {
+        buttonSoundEffect[0].Stop();
+        buttonSoundEffect[0].clip = soundEffect[0];
+        buttonSoundEffect[0].Play();
     }
 }

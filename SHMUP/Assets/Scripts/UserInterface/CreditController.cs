@@ -7,6 +7,9 @@ public class CreditController : MonoBehaviour
 {
     public GameObject mainMenuButton;
 
+    private AudioClip[] soundEffect;
+    private AudioSource[] buttonSoundEffect;
+
     private bool waiting;
 
     private void Start()
@@ -70,6 +73,12 @@ public class CreditController : MonoBehaviour
 
     IEnumerator Timer()
     {
+        buttonSoundEffect = GetComponents<AudioSource>();
+        soundEffect = new AudioClip[]
+        {
+            (AudioClip)Resources.Load("Music/MenuSound/ScrollingSound"),
+        };
+
         waiting = true;
 
         mainMenuButton.SetActive(false);

@@ -170,6 +170,9 @@ public class HangarMenuController : MonoBehaviour
     public GameObject sweeperPods;
     public GameObject plasmaBullet;
 
+    private AudioClip[] soundEffect;
+    private AudioSource[] buttonSoundEffect;
+
     private void Awake()
     {
         DeactivateButton();
@@ -263,6 +266,8 @@ public class HangarMenuController : MonoBehaviour
                         {
                             if (Input.GetButtonDown("P1HorizontalChoiceLeft"))
                             {
+                                ScrollingSound();
+
                                 P1testing = false;
                                 P1toggleData--;
 
@@ -271,6 +276,8 @@ public class HangarMenuController : MonoBehaviour
                             }
                             if (Input.GetButtonDown("P1HorizontalChoiceRight"))
                             {
+                                ScrollingSound();
+
                                 P1testing = false;
                                 P1toggleData++;
 
@@ -370,22 +377,30 @@ public class HangarMenuController : MonoBehaviour
                     {
                         if (Input.GetButtonDown("P1VerticalChoiceUp"))
                         {
+                            ScrollingSound();
+
                             P1verticalSelect = true;
                             P1verticalGlowTracker--;
                         }
                         if (Input.GetButtonDown("P1VerticalChoiceDown"))
                         {
+                            ScrollingSound();
+
                             P1verticalSelect = true;
                             P1verticalGlowTracker++;
                         }
 
                         if (Input.GetButtonDown("P1HorizontalChoiceLeft"))
                         {
+                            ScrollingSound();
+
                             P1verticalSelect = false;
                             P1horizontalGlowTracker--;
                         }
                         if (Input.GetButtonDown("P1HorizontalChoiceRight"))
                         {
+                            ScrollingSound();
+
                             P1verticalSelect = false;
                             P1horizontalGlowTracker++;
                         }
@@ -544,6 +559,8 @@ public class HangarMenuController : MonoBehaviour
                         {
                             if (Input.GetButtonDown("P1HorizontalChoiceLeft"))
                             {
+                                ScrollingSound();
+
                                 P1testing = false;
                                 P1toggleData--;
 
@@ -552,6 +569,8 @@ public class HangarMenuController : MonoBehaviour
                             }
                             if (Input.GetButtonDown("P1HorizontalChoiceRight"))
                             {
+                                ScrollingSound();
+
                                 P1testing = false;
                                 P1toggleData++;
 
@@ -651,22 +670,30 @@ public class HangarMenuController : MonoBehaviour
                     {
                         if (Input.GetButtonDown("P1VerticalChoiceUp"))
                         {
+                            ScrollingSound();
+
                             P1verticalSelect = true;
                             P1verticalGlowTracker--;
                         }
                         if (Input.GetButtonDown("P1VerticalChoiceDown"))
                         {
+                            ScrollingSound();
+
                             P1verticalSelect = true;
                             P1verticalGlowTracker++;
                         }
 
                         if (Input.GetButtonDown("P1HorizontalChoiceLeft"))
                         {
+                            ScrollingSound();
+
                             P1verticalSelect = false;
                             P1horizontalGlowTracker--;
                         }
                         if (Input.GetButtonDown("P1HorizontalChoiceRight"))
                         {
+                            ScrollingSound();
+
                             P1verticalSelect = false;
                             P1horizontalGlowTracker++;
                         }
@@ -813,6 +840,8 @@ public class HangarMenuController : MonoBehaviour
                         {
                             if (Input.GetButtonDown("P2HorizontalChoiceLeft") || Input.GetKeyDown(KeyCode.Keypad4))
                             {
+                                ScrollingSound();
+
                                 P2testing = false;
                                 P2toggleData++;
 
@@ -821,6 +850,8 @@ public class HangarMenuController : MonoBehaviour
                             }
                             if (Input.GetButtonDown("P2HorizontalChoiceRight") || Input.GetKeyDown(KeyCode.Keypad6))
                             {
+                                ScrollingSound();
+
                                 P2testing = false;
                                 P2toggleData--;
 
@@ -920,22 +951,30 @@ public class HangarMenuController : MonoBehaviour
                     {
                         if (Input.GetButtonDown("P2VerticalChoiceUp") || Input.GetKeyDown(KeyCode.Keypad8))
                         {
+                            ScrollingSound();
+
                             P2verticalSelect = true;
                             P2verticalGlowTracker--;
                         }
                         if (Input.GetButtonDown("P2VerticalChoiceDown") || Input.GetKeyDown(KeyCode.Keypad5))
                         {
+                            ScrollingSound();
+
                             P2verticalSelect = true;
                             P2verticalGlowTracker++;
                         }
 
                         if (Input.GetButtonDown("P2HorizontalChoiceLeft") || Input.GetKeyDown(KeyCode.Keypad4))
                         {
+                            ScrollingSound();
+
                             P2verticalSelect = false;
                             P2horizontalGlowTracker++;
                         }
                         if (Input.GetButtonDown("P2HorizontalChoiceRight") || Input.GetKeyDown(KeyCode.Keypad6))
                         {
+                            ScrollingSound();
+
                             P2verticalSelect = false;
                             P2horizontalGlowTracker--;
                         }
@@ -1071,6 +1110,12 @@ public class HangarMenuController : MonoBehaviour
 
     IEnumerator Timer()
     {
+        buttonSoundEffect = GetComponents<AudioSource>();
+        soundEffect = new AudioClip[]
+        {
+            (AudioClip)Resources.Load("Music/MenuSound/ScrollingSound"),
+        };
+
         if (MainMenuController.onePlayer)
         {
             SetPlayer1Value();
@@ -3158,5 +3203,12 @@ public class HangarMenuController : MonoBehaviour
         {
             SceneManager.LoadScene("Credit");
         }
+    }
+
+    private void ScrollingSound()
+    {
+        buttonSoundEffect[0].Stop();
+        buttonSoundEffect[0].clip = soundEffect[0];
+        buttonSoundEffect[0].Play();
     }
 }

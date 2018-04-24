@@ -44,6 +44,9 @@ public class MainMenuController : MonoBehaviour
 
     public GameObject audioSource;
 
+    private AudioClip[] soundEffect;
+    private AudioSource[] buttonSoundEffect;
+
     private void Awake()
     {
         DeactivateMainMenu();
@@ -115,10 +118,14 @@ public class MainMenuController : MonoBehaviour
 
                 if (Input.GetButtonDown("P1VerticalChoiceUp") || Input.GetButtonDown("P2VerticalChoiceUp") || Input.GetKeyDown(KeyCode.Keypad8))
                 {
+                    ScrollingSound();
+
                     glowTracker--;
                 }
                 if (Input.GetButtonDown("P1VerticalChoiceDown") || Input.GetButtonDown("P2VerticalChoiceDown") || Input.GetKeyDown(KeyCode.Keypad5))
                 {
+                    ScrollingSound();
+
                     glowTracker++;
                 }
 
@@ -256,6 +263,11 @@ public class MainMenuController : MonoBehaviour
     IEnumerator Timer()
     {
 		ActivateMainMenu();
+        buttonSoundEffect = GetComponents<AudioSource>();
+        soundEffect = new AudioClip[]
+        {
+            (AudioClip)Resources.Load("Music/MenuSound/ScrollingSound"),
+        };
 
         yield return new WaitForSeconds(2.5f);
         
@@ -304,7 +316,6 @@ public class MainMenuController : MonoBehaviour
         {
             menuBuildType[counter].SetActive(false);
             inGameBuildType[counter].SetActive(false);
-            Debug.Log(counter);
         }
     }
 
@@ -372,5 +383,12 @@ public class MainMenuController : MonoBehaviour
         Destroy(GameObject.Find("HangarMusicController"));
 
         TitleController.fromTitle = false;
+    }
+
+    private void ScrollingSound()
+    {
+        buttonSoundEffect[0].Stop();
+        buttonSoundEffect[0].clip = soundEffect[0];
+        buttonSoundEffect[0].Play();
     }
 }

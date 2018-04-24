@@ -75,27 +75,27 @@ public class SpawnPlayer : MonoBehaviour
     {
         if (SelectionMenuController.P2shipType == 1)
 		{
-			P2ship1.transform.position = player1Spawn.transform.position;
+			P2ship1.transform.position = player2Spawn.transform.position;
             P2ship1.gameObject.SetActive(true);
         }
         if (SelectionMenuController.P2shipType == 2)
 		{
-			P2ship2.transform.position = player1Spawn.transform.position;
+			P2ship2.transform.position = player2Spawn.transform.position;
             P2ship2.gameObject.SetActive(true);
         }
         if (SelectionMenuController.P2shipType == 3)
 		{
-			P2ship3.transform.position = player1Spawn.transform.position;
+			P2ship3.transform.position = player2Spawn.transform.position;
             P2ship3.gameObject.SetActive(true);
         }
         if (SelectionMenuController.P2shipType == 4)
 		{
-			P2ship4.transform.position = player1Spawn.transform.position;
+			P2ship4.transform.position = player2Spawn.transform.position;
             P2ship4.gameObject.SetActive(true);
         }
         if (SelectionMenuController.P2shipType == 5)
 		{
-			P2ship5.transform.position = player1Spawn.transform.position;
+			P2ship5.transform.position = player2Spawn.transform.position;
             P2ship5.gameObject.SetActive(true);
         }
     }

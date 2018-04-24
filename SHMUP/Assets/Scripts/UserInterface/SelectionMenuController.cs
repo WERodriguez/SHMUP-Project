@@ -252,6 +252,9 @@ public class SelectionMenuController : MonoBehaviour
     public Animator doubleSecondary2;
     public Animator doubleSpecial2;
 
+    private AudioClip[] soundEffect;
+    private AudioSource[] buttonSoundEffect;
+
     private void Awake()
     {
         DeactivateSingleSelection();
@@ -630,15 +633,21 @@ public class SelectionMenuController : MonoBehaviour
 
                 if (Input.GetButtonDown("P1VerticalChoiceUp") && !choosing)
                 {
+                    ScrollingSound();
+
                     glowTracker--;
                 }
                 if (Input.GetButtonDown("P1VerticalChoiceDown") && !choosing)
                 {
+                    ScrollingSound();
+
                     glowTracker++;
                 }
 
                 if (Input.GetButtonDown("P1HorizontalChoiceLeft"))
                 {
+                    ScrollingSound();
+
                     ResetToggleGlow();
                     toggleLeftGlow.fillAmount = 1;
 
@@ -646,6 +655,8 @@ public class SelectionMenuController : MonoBehaviour
                 }
                 if (Input.GetButtonDown("P1HorizontalChoiceRight"))
                 {
+                    ScrollingSound();
+
                     ResetToggleGlow();
                     toggleRightGlow.fillAmount = 1;
 
@@ -1430,24 +1441,34 @@ public class SelectionMenuController : MonoBehaviour
 
                 if (Input.GetButtonDown("P1VerticalChoiceUp") && !P1choosing)
                 {
+                    ScrollingSound();
+
                     P1glowTracker--;
                 }
                 if (Input.GetButtonDown("P1VerticalChoiceDown") && !P1choosing)
                 {
+                    ScrollingSound();
+
                     P1glowTracker++;
                 }
 
                 if ((Input.GetButtonDown("P2VerticalChoiceUp") || Input.GetKeyDown(KeyCode.Keypad8)) && !P2choosing)
                 {
+                    ScrollingSound();
+
                     P2glowTracker--;
                 }
                 if ((Input.GetButtonDown("P2VerticalChoiceDown") || Input.GetKeyDown(KeyCode.Keypad5)) && !P2choosing)
                 {
+                    ScrollingSound();
+
                     P2glowTracker++;
                 }
 
                 if (Input.GetButtonDown("P1HorizontalChoiceLeft"))
                 {
+                    ScrollingSound();
+
                     ResetP1ToggleGlow();
                     P1toggleLeftGlow.fillAmount = 1;
 
@@ -1455,6 +1476,8 @@ public class SelectionMenuController : MonoBehaviour
                 }
                 if (Input.GetButtonDown("P1HorizontalChoiceRight"))
                 {
+                    ScrollingSound();
+
                     ResetP1ToggleGlow();
                     P1toggleRightGlow.fillAmount = 1;
 
@@ -1463,6 +1486,8 @@ public class SelectionMenuController : MonoBehaviour
 
                 if (Input.GetButtonDown("P2HorizontalChoiceLeft") || Input.GetKeyDown(KeyCode.Keypad4))
                 {
+                    ScrollingSound();
+
                     ResetP2ToggleGlow();
                     P2toggleLeftGlow.fillAmount = 1;
 
@@ -1470,6 +1495,8 @@ public class SelectionMenuController : MonoBehaviour
                 }
                 if (Input.GetButtonDown("P2HorizontalChoiceRight") || Input.GetKeyDown(KeyCode.Keypad6))
                 {
+                    ScrollingSound();
+
                     ResetP2ToggleGlow();
                     P2toggleRightGlow.fillAmount = 1;
 
@@ -1889,6 +1916,12 @@ public class SelectionMenuController : MonoBehaviour
     }
     IEnumerator Timer()
     {
+        buttonSoundEffect = GetComponents<AudioSource>();
+        soundEffect = new AudioClip[]
+        {
+            (AudioClip)Resources.Load("Music/MenuSound/ScrollingSound"),
+        };
+
         PlayerWeaponController.baseWLevel = 1;
         PlayerWeaponController.baseSecondaryLevel = 0;
         PlayerWeaponController.superAmmoDefault = 3;
@@ -2702,5 +2735,12 @@ public class SelectionMenuController : MonoBehaviour
 
         P2specialButton.SetActive(true);
         P2special = true;
+    }
+
+    private void ScrollingSound()
+    {
+        buttonSoundEffect[0].Stop();
+        buttonSoundEffect[0].clip = soundEffect[0];
+        buttonSoundEffect[0].Play();
     }
 }

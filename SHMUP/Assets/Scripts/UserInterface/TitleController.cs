@@ -19,6 +19,9 @@ public class TitleController : MonoBehaviour
     private bool canSkip;
     private bool skipPressed;
 
+    private AudioClip[] soundEffect;
+    private AudioSource[] buttonSoundEffect;
+
     private void Awake()
     {
         logo.SetActive(false);
@@ -63,6 +66,12 @@ public class TitleController : MonoBehaviour
 
     IEnumerator Timer()
     {
+        buttonSoundEffect = GetComponents<AudioSource>();
+        soundEffect = new AudioClip[]
+        {
+            (AudioClip)Resources.Load("Music/MenuSound/ScrollingSound"),
+        };
+
         logo.SetActive(true);
 
         yield return new WaitForSeconds(4f);

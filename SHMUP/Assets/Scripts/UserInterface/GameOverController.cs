@@ -35,6 +35,9 @@ public class GameOverController : MonoBehaviour
     public GameObject P1screen;
     public GameObject P2screen;
 
+    private AudioClip[] soundEffect;
+    private AudioSource[] buttonSoundEffect;
+
     public bool myFlexBool;
 
     private void Awake()
@@ -97,11 +100,15 @@ public class GameOverController : MonoBehaviour
 
             if (Input.GetButtonDown("P1HorizontalChoiceLeft") || Input.GetButtonDown("P2HorizontalChoiceLeft") || Input.GetKeyDown(KeyCode.Keypad4))
             {
-				glowTracker--;
+                ScrollingSound();
+
+                glowTracker--;
 			}
             if (Input.GetButtonDown("P1HorizontalChoiceRight") || Input.GetButtonDown("P2HorizontalChoiceRight") || Input.GetKeyDown(KeyCode.Keypad6))
             {
-				glowTracker++;
+                ScrollingSound();
+
+                glowTracker++;
 			}
 
             if (Input.GetButtonDown("Fire_P1") || Input.GetButtonDown("Fire_P2") || Input.GetKeyDown(KeyCode.Keypad0) || FlexToggle.myFlexBool == true)
@@ -119,8 +126,14 @@ public class GameOverController : MonoBehaviour
     }
 
 	IEnumerator Timer()
-	{
-		hangarButton.SetActive(true);
+    {
+        buttonSoundEffect = GetComponents<AudioSource>();
+        soundEffect = new AudioClip[]
+        {
+            (AudioClip)Resources.Load("Music/MenuSound/ScrollingSound"),
+        };
+
+        hangarButton.SetActive(true);
 		restartButton.SetActive(true);
 
 		if (MainMenuController.onePlayer)
@@ -271,5 +284,12 @@ public class GameOverController : MonoBehaviour
     public void SetFlexFalse()
     {
         myFlexBool = false;
+    }
+
+    private void ScrollingSound()
+    {
+        buttonSoundEffect[0].Stop();
+        buttonSoundEffect[0].clip = soundEffect[0];
+        buttonSoundEffect[0].Play();
     }
 }
