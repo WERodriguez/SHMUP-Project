@@ -239,6 +239,8 @@ public class MainMenuController : MonoBehaviour
 
                 if (Input.GetButtonDown("Fire_P1") || Input.GetButtonDown("Fire_P2") || Input.GetKeyDown(KeyCode.Keypad0) || FlexToggle.myFlexBool == true)
                 {
+                    SelectingSound();
+
                     FlexToggle.myFlexBool = false;
                     DeactivateMainMenuGlow();
                     DeactivateControlBackground();
@@ -267,6 +269,7 @@ public class MainMenuController : MonoBehaviour
         soundEffect = new AudioClip[]
         {
             (AudioClip)Resources.Load("Music/MenuSound/ScrollingSound"),
+            (AudioClip)Resources.Load("Music/MenuSound/SelectingSound")
         };
 
         yield return new WaitForSeconds(2.5f);
@@ -389,6 +392,12 @@ public class MainMenuController : MonoBehaviour
     {
         buttonSoundEffect[0].Stop();
         buttonSoundEffect[0].clip = soundEffect[0];
+        buttonSoundEffect[0].Play();
+    }
+    private void SelectingSound()
+    {
+        buttonSoundEffect[0].Stop();
+        buttonSoundEffect[0].clip = soundEffect[1];
         buttonSoundEffect[0].Play();
     }
 }

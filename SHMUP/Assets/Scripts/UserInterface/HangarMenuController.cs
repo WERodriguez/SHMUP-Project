@@ -353,6 +353,8 @@ public class HangarMenuController : MonoBehaviour
 
                             if (Input.GetButtonDown("Fire_P1") || FlexToggle.myFlexBool == true)
                             {
+                                SelectingSound();
+
                                 FlexToggle.myFlexBool = false;
                                 if (P1shipSwitch)
                                 {
@@ -467,6 +469,8 @@ public class HangarMenuController : MonoBehaviour
 
                             if (Input.GetButtonDown("Fire_P1") || FlexToggle.myFlexBool == true)
                             {
+                                SelectingSound();
+
                                 FlexToggle.myFlexBool = false;
                                 if (P1verticalGlowTracker == 1)
                                 {
@@ -531,6 +535,8 @@ public class HangarMenuController : MonoBehaviour
 
                             if (Input.GetButtonDown("Fire_P1") || FlexToggle.myFlexBool == true)
                             {
+                                SelectingSound();
+
                                 FlexToggle.myFlexBool = false;
                                 if (P1horizontalGlowTracker <= 1)
                                 {
@@ -646,6 +652,8 @@ public class HangarMenuController : MonoBehaviour
 
                             if (Input.GetButtonDown("Fire_P1") || FlexToggle.myFlexBool == true)
                             {
+                                SelectingSound();
+
                                 FlexToggle.myFlexBool = false;
                                 if (P1shipSwitch)
                                 {
@@ -753,6 +761,8 @@ public class HangarMenuController : MonoBehaviour
 
                             if (Input.GetButtonDown("Fire_P1") || FlexToggle.myFlexBool == true)
                             {
+                                SelectingSound();
+
                                 FlexToggle.myFlexBool = false;
                                 if (P1verticalGlowTracker == 1)
                                 {
@@ -814,6 +824,8 @@ public class HangarMenuController : MonoBehaviour
 
                             if (Input.GetButtonDown("Fire_P1") || FlexToggle.myFlexBool == true)
                             {
+                                SelectingSound();
+
                                 FlexToggle.myFlexBool = false;
                                 if (P1horizontalGlowTracker <= 1)
                                 {
@@ -927,6 +939,8 @@ public class HangarMenuController : MonoBehaviour
 
                             if (Input.GetButtonDown("Fire_P2"))
                             {
+                                SelectingSound();
+
                                 if (P2shipSwitch)
                                 {
                                     StartCoroutine(P2ShipChange());
@@ -1029,6 +1043,8 @@ public class HangarMenuController : MonoBehaviour
 
                             if (Input.GetButtonDown("Fire_P2") || Input.GetKeyDown(KeyCode.Keypad0))
                             {
+                                SelectingSound();
+
                                 if (P2verticalGlowTracker == 1)
                                 {
                                     NextButton();
@@ -1088,6 +1104,8 @@ public class HangarMenuController : MonoBehaviour
 
                             if (Input.GetButtonDown("Fire_P2") || Input.GetKeyDown(KeyCode.Keypad0))
                             {
+                                SelectingSound();
+
                                 if (P2horizontalGlowTracker <= 1)
                                 {
                                     StartCoroutine(P2ShipSwitch());
@@ -1114,6 +1132,7 @@ public class HangarMenuController : MonoBehaviour
         soundEffect = new AudioClip[]
         {
             (AudioClip)Resources.Load("Music/MenuSound/ScrollingSound"),
+            (AudioClip)Resources.Load("Music/MenuSound/SelectingSound")
         };
 
         if (MainMenuController.onePlayer)
@@ -3209,6 +3228,12 @@ public class HangarMenuController : MonoBehaviour
     {
         buttonSoundEffect[0].Stop();
         buttonSoundEffect[0].clip = soundEffect[0];
+        buttonSoundEffect[0].Play();
+    }
+    private void SelectingSound()
+    {
+        buttonSoundEffect[0].Stop();
+        buttonSoundEffect[0].clip = soundEffect[1];
         buttonSoundEffect[0].Play();
     }
 }

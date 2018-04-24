@@ -134,6 +134,7 @@ public class HUDcontroller : MonoBehaviour
         soundEffect = new AudioClip[]
         {
             (AudioClip)Resources.Load("Music/MenuSound/ScrollingSound"),
+            (AudioClip)Resources.Load("Music/MenuSound/SelectingSound")
         };
 
         DeactivateHUD();
@@ -219,6 +220,8 @@ public class HUDcontroller : MonoBehaviour
 
                 if (Input.GetButtonDown("Fire_P1") || Input.GetButtonDown("Fire_P2") || Input.GetKeyDown(KeyCode.Keypad0) || FlexToggle.myFlexBool == true)
                 {
+                    SelectingSound();
+
                     FlexToggle.myFlexBool = false;
                     if (glowTracker <= 1)
                     {
@@ -309,6 +312,8 @@ public class HUDcontroller : MonoBehaviour
 
                     if (Input.GetButtonDown("Fire_P2") || Input.GetKeyDown(KeyCode.Keypad0) || FlexToggle.myFlexBool == true)
                     {
+                        SelectingSound();
+
                         FlexToggle.myFlexBool = false;
                         if (choosingPlayer2Vertical == 1)
                         {
@@ -477,6 +482,8 @@ public class HUDcontroller : MonoBehaviour
 
                     if (Input.GetButtonDown("Fire_P2") || Input.GetKeyDown(KeyCode.Keypad0) || FlexToggle.myFlexBool == true)
                     {
+                        SelectingSound();
+
                         if (choosingPlayer2Horizontal == 1)
                         {
                             if(character)
@@ -1173,6 +1180,12 @@ public class HUDcontroller : MonoBehaviour
     {
         buttonSoundEffect[0].Stop();
         buttonSoundEffect[0].clip = soundEffect[0];
+        buttonSoundEffect[0].Play();
+    }
+    private void SelectingSound()
+    {
+        buttonSoundEffect[0].Stop();
+        buttonSoundEffect[0].clip = soundEffect[1];
         buttonSoundEffect[0].Play();
     }
 }

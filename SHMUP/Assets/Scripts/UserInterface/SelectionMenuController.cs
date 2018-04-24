@@ -665,6 +665,8 @@ public class SelectionMenuController : MonoBehaviour
 
                 if (Input.GetButtonDown("Fire_P1") || FlexToggle.myFlexBool == true)
                 {
+                    SelectingSound();
+
                     FlexToggle.myFlexBool = false;
 
                     if (!choosing)
@@ -1505,6 +1507,8 @@ public class SelectionMenuController : MonoBehaviour
 
                 if (Input.GetButtonDown("Fire_P1") || FlexToggle.myFlexBool == true)
                 {
+                    SelectingSound();
+
                     FlexToggle.myFlexBool = false;
 
                     if (!P1choosing)
@@ -1710,6 +1714,8 @@ public class SelectionMenuController : MonoBehaviour
                 }
                 if (Input.GetButtonDown("Fire_P2") || Input.GetKeyDown(KeyCode.Keypad0))
                 {
+                    SelectingSound();
+
                     if (!P2choosing)
                     {
                         if (P2glowTracker == 1)
@@ -1920,6 +1926,7 @@ public class SelectionMenuController : MonoBehaviour
         soundEffect = new AudioClip[]
         {
             (AudioClip)Resources.Load("Music/MenuSound/ScrollingSound"),
+            (AudioClip)Resources.Load("Music/MenuSound/SelectingSound")
         };
 
         PlayerWeaponController.baseWLevel = 1;
@@ -2741,6 +2748,12 @@ public class SelectionMenuController : MonoBehaviour
     {
         buttonSoundEffect[0].Stop();
         buttonSoundEffect[0].clip = soundEffect[0];
+        buttonSoundEffect[0].Play();
+    }
+    private void SelectingSound()
+    {
+        buttonSoundEffect[0].Stop();
+        buttonSoundEffect[0].clip = soundEffect[1];
         buttonSoundEffect[0].Play();
     }
 }
