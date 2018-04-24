@@ -210,8 +210,8 @@ public class GameOverController : MonoBehaviour
 
     private void ResetPlayer1Value()
     {
-        PlayerHealthSystem.P1currentHealth = PlayerHealthSystem.P1maxHealth;
-        PlayerHealthSystem.P1currentShields = PlayerHealthSystem.P1maxShields;
+        PlayerHealthSystem.P1savedHealth = PlayerHealthSystem.P1maxHealth;
+        PlayerHealthSystem.P1savedShields = PlayerHealthSystem.P1maxShields;
         PlayerHealthSystem.P1currentLives = 3;
 
         PlayerWeaponController.P1savedWeaponLevel = PlayerWeaponController.baseWLevel;
@@ -220,8 +220,8 @@ public class GameOverController : MonoBehaviour
     }
     private void ResetPlayer2Value()
     {
-        PlayerHealthSystem.P2currentHealth = PlayerHealthSystem.P2maxHealth;
-        PlayerHealthSystem.P2currentShields = PlayerHealthSystem.P2maxShields;
+        PlayerHealthSystem.P2savedHealth = PlayerHealthSystem.P2maxHealth;
+        PlayerHealthSystem.P2savedShields = PlayerHealthSystem.P2maxShields;
         PlayerHealthSystem.P2currentLives = 3;
 
         PlayerWeaponController.P2savedWeaponLevel = PlayerWeaponController.baseWLevel;
@@ -251,9 +251,13 @@ public class GameOverController : MonoBehaviour
         {
             SceneManager.LoadScene("Level2");
         }
-        if (MainMenuController.currentStage >= 3)
+        if (MainMenuController.currentStage == 3)
         {
             SceneManager.LoadScene("Level3");
+        }
+        if (MainMenuController.currentStage > 3)
+        {
+            SceneManager.LoadScene("Credit");
         }
     }
 
