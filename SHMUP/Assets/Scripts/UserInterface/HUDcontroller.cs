@@ -147,15 +147,7 @@ public class HUDcontroller : MonoBehaviour
     }
 
     private void Update()
-	{
-		if (MainMenuController.arcadeQuit)
-		{
-			if (Input.GetButtonDown ("ArcadeQuit"))
-			{
-				Application.Quit ();
-			}
-		}
-
+    {
         if (pauseMenuOn)
         {
             if (!addingPlayer2)
@@ -204,8 +196,9 @@ public class HUDcontroller : MonoBehaviour
                     glowTracker++;
                 }
 
-                if (Input.GetButtonDown("Fire_P1") || Input.GetButtonDown("Fire_P2") || Input.GetKeyDown(KeyCode.Keypad0))
+                if (Input.GetButtonDown("Fire_P1") || Input.GetButtonDown("Fire_P2") || Input.GetKeyDown(KeyCode.Keypad0) || FlexToggle.myFlexBool == true)
                 {
+                    FlexToggle.myFlexBool = false;
                     if (glowTracker <= 1)
                     {
                         ResumeButton();
@@ -289,8 +282,9 @@ public class HUDcontroller : MonoBehaviour
                         choosingPlayer2Vertical++;
                     }
 
-                    if (Input.GetButtonDown("Fire_P2") || Input.GetKeyDown(KeyCode.Keypad0))
+                    if (Input.GetButtonDown("Fire_P2") || Input.GetKeyDown(KeyCode.Keypad0) || FlexToggle.myFlexBool == true)
                     {
+                        FlexToggle.myFlexBool = false;
                         if (choosingPlayer2Vertical == 1)
                         {
                             MainMenuController.onePlayer = true;
@@ -452,7 +446,7 @@ public class HUDcontroller : MonoBehaviour
                         choosingPlayer2Horizontal--;
                     }
 
-                    if (Input.GetButtonDown("Fire_P2") || Input.GetKeyDown(KeyCode.Keypad0))
+                    if (Input.GetButtonDown("Fire_P2") || Input.GetKeyDown(KeyCode.Keypad0) || FlexToggle.myFlexBool == true)
                     {
                         if (choosingPlayer2Horizontal == 1)
                         {

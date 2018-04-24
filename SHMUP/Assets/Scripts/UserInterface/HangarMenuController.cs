@@ -344,8 +344,9 @@ public class HangarMenuController : MonoBehaviour
                                 }
                             }
 
-                            if (Input.GetButtonDown("Fire_P1"))
+                            if (Input.GetButtonDown("Fire_P1") || FlexToggle.myFlexBool == true)
                             {
+                                FlexToggle.myFlexBool = false;
                                 if (P1shipSwitch)
                                 {
                                     StartCoroutine(P1ShipChange());
@@ -449,8 +450,9 @@ public class HangarMenuController : MonoBehaviour
                                 nextButtonGlow.SetActive(true);
                             }
 
-                            if (Input.GetButtonDown("Fire_P1"))
+                            if (Input.GetButtonDown("Fire_P1") || FlexToggle.myFlexBool == true)
                             {
+                                FlexToggle.myFlexBool = false;
                                 if (P1verticalGlowTracker == 1)
                                 {
                                     RestartButton();
@@ -512,8 +514,9 @@ public class HangarMenuController : MonoBehaviour
                                 P1secondaryGlowHorizontal.SetActive(true);
                             }
 
-                            if (Input.GetButtonDown("Fire_P1"))
+                            if (Input.GetButtonDown("Fire_P1") || FlexToggle.myFlexBool == true)
                             {
+                                FlexToggle.myFlexBool = false;
                                 if (P1horizontalGlowTracker <= 1)
                                 {
                                     StartCoroutine(P1ShipSwitch());
@@ -622,8 +625,9 @@ public class HangarMenuController : MonoBehaviour
                                 }
                             }
 
-                            if (Input.GetButtonDown("Fire_P1"))
+                            if (Input.GetButtonDown("Fire_P1") || FlexToggle.myFlexBool == true)
                             {
+                                FlexToggle.myFlexBool = false;
                                 if (P1shipSwitch)
                                 {
                                     StartCoroutine(P1ShipChange());
@@ -720,8 +724,9 @@ public class HangarMenuController : MonoBehaviour
                                 P1specialGlow.SetActive(true);
                             }
 
-                            if (Input.GetButtonDown("Fire_P1"))
+                            if (Input.GetButtonDown("Fire_P1") || FlexToggle.myFlexBool == true)
                             {
+                                FlexToggle.myFlexBool = false;
                                 if (P1verticalGlowTracker == 1)
                                 {
                                     RestartButton();
@@ -780,8 +785,9 @@ public class HangarMenuController : MonoBehaviour
                                 P1secondaryGlowHorizontal.SetActive(true);
                             }
 
-                            if (Input.GetButtonDown("Fire_P1"))
+                            if (Input.GetButtonDown("Fire_P1") || FlexToggle.myFlexBool == true)
                             {
+                                FlexToggle.myFlexBool = false;
                                 if (P1horizontalGlowTracker <= 1)
                                 {
                                     StartCoroutine(P1ShipSwitch());

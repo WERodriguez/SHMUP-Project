@@ -45,9 +45,6 @@ public class MainMenuController : MonoBehaviour
 
     public GameObject audioSource;
 
-    //Keeps track of Limbitless flex
-    public bool myFlexBool;
-
     private void Awake()
     {
         DeactivateMainMenu();
@@ -119,9 +116,9 @@ public class MainMenuController : MonoBehaviour
                     glowTracker++;
                 }
 
-                if (Input.GetButtonDown("Fire_P1") || Input.GetButtonDown("Fire_P2") || Input.GetKeyDown(KeyCode.Keypad0) || myFlexBool == true)
+                if (Input.GetButtonDown("Fire_P1") || Input.GetButtonDown("Fire_P2") || Input.GetKeyDown(KeyCode.Keypad0) || FlexToggle.myFlexBool == true)
                 {
-                    myFlexBool = false;
+                    FlexToggle.myFlexBool = false;
 
                     if (glowTracker == 1)
                     {
@@ -229,9 +226,9 @@ public class MainMenuController : MonoBehaviour
                     leftGlow.fillAmount = 1;
                 }
 
-                if (Input.GetButtonDown("Fire_P1") || Input.GetButtonDown("Fire_P2") || Input.GetKeyDown(KeyCode.Keypad0) || myFlexBool == true)
+                if (Input.GetButtonDown("Fire_P1") || Input.GetButtonDown("Fire_P2") || Input.GetKeyDown(KeyCode.Keypad0) || FlexToggle.myFlexBool == true)
                 {
-                    myFlexBool = false;
+                    FlexToggle.myFlexBool = false;
                     DeactivateMainMenuGlow();
                     DeactivateControlBackground();
                     DeactivateControlList();
@@ -379,17 +376,5 @@ public class MainMenuController : MonoBehaviour
         Destroy(GameObject.Find("HangarMusicController"));
 
         TitleController.fromTitle = false;
-    }
-
-    //Registers flex as true.
-    public void SetFlexTrue()
-    {
-        myFlexBool = true;
-    }
-
-    //Registers flex as false.
-    public void SetFlexFalse()
-    {
-        myFlexBool = false;
     }
 }

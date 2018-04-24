@@ -331,7 +331,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1640338574637798}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.37, y: 0, z: -0.55}
+  m_LocalPosition: {x: 24.36, y: 0, z: -0.55}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4625525227818766}
@@ -830,14 +830,13 @@ MonoBehaviour:
   P1ShieldBar: {fileID: 0}
   P2HealthBar: {fileID: 0}
   P2ShieldBar: {fileID: 0}
-  P1health: {fileID: 0}
-  P1shields: {fileID: 0}
   P1lives: {fileID: 0}
-  P2health: {fileID: 0}
-  P2shields: {fileID: 0}
   P2lives: {fileID: 0}
   playerExplosion: {fileID: 1730581265408892, guid: 610f3f65f4a24d3499f5278ba283ea24,
     type: 2}
+  respawnShield: {fileID: 0}
+  childShield: {fileID: 0}
+  invulnerable: 0
 --- !u!114 &114382349696035670
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -858,6 +857,8 @@ MonoBehaviour:
   p2Total: 0
   p1Delay: 0
   p2Delay: 0
+  myFlexBool: 0
+  flexDoubleTap: 0
 --- !u!114 &114402576851970688
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -904,7 +905,6 @@ MonoBehaviour:
   primaryWeaponSound: {fileID: 0}
   secondaryWeaponSound: {fileID: 0}
   superWeaponSound: {fileID: 0}
-  muzzleFlash: {fileID: 0}
 --- !u!114 &114432292516717840
 MonoBehaviour:
   m_ObjectHideFlags: 1

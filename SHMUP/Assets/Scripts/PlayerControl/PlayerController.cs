@@ -56,7 +56,7 @@ public class PlayerController : MonoBehaviour
             //Player 1 Fire Control.
             if (!whichPlayer)
             {
-                if (Input.GetButton("Fire_P1"))
+                if (Input.GetButton("Fire_P1") || FlexToggle.myFlexBool == true)
                 {
                     //Calls the PlayerWeaponController script to use its fire function.
                     weaponController.Fire();
@@ -84,10 +84,9 @@ public class PlayerController : MonoBehaviour
                     p1Total = 0;
                 }
 
-                if ((p1Total == 2) && (p1Delay < .5))
+                if ((p1Total == 2) && (p1Delay < .5) || FlexToggle.doubleTapActive == true)
                 {
                     //CallSuper Here
-                    Debug.Log("I'MA FIRIN MUH LAZOOOOOOOR");
                     weaponController.SuperWeapon();
                     p1Delay = 0;
                     p1Total = 0;
@@ -100,7 +99,7 @@ public class PlayerController : MonoBehaviour
                 }
 
                 //Makes sure chain fire weapons revert to the main gun when they start firing again.
-                if (Input.GetButtonUp("Fire_P1"))
+                if (Input.GetButtonUp("Fire_P1") || FlexToggle.myFlexBool == false)
                 {
                     weaponController.nextGun = 0;
                 }

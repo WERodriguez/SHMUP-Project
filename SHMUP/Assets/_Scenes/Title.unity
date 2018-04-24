@@ -108,63 +108,6 @@ NavMeshSettings:
     tileSize: 256
     accuratePlacement: 0
   m_NavMeshData: {fileID: 0}
---- !u!1001 &67028490
-Prefab:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 958301881}
-    m_Modifications:
-    - target: {fileID: 114088613716720558, guid: 541698ff903bb1c4fb76859c2531c40a,
-        type: 2}
-      propertyPath: flexKeys.Array.size
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4493796732511564, guid: 541698ff903bb1c4fb76859c2531c40a, type: 2}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4493796732511564, guid: 541698ff903bb1c4fb76859c2531c40a, type: 2}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4493796732511564, guid: 541698ff903bb1c4fb76859c2531c40a, type: 2}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4493796732511564, guid: 541698ff903bb1c4fb76859c2531c40a, type: 2}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4493796732511564, guid: 541698ff903bb1c4fb76859c2531c40a, type: 2}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4493796732511564, guid: 541698ff903bb1c4fb76859c2531c40a, type: 2}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4493796732511564, guid: 541698ff903bb1c4fb76859c2531c40a, type: 2}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4493796732511564, guid: 541698ff903bb1c4fb76859c2531c40a, type: 2}
-      propertyPath: m_RootOrder
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 114088613716720558, guid: 541698ff903bb1c4fb76859c2531c40a,
-        type: 2}
-      propertyPath: destroyAfterScene
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 114088613716720558, guid: 541698ff903bb1c4fb76859c2531c40a,
-        type: 2}
-      propertyPath: flexKeys.Array.data[0]
-      value: 
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_ParentPrefab: {fileID: 100100000, guid: 541698ff903bb1c4fb76859c2531c40a, type: 2}
-  m_IsPrefabParent: 0
 --- !u!1 &246968438
 GameObject:
   m_ObjectHideFlags: 0
@@ -268,6 +211,7 @@ GameObject:
   m_Component:
   - component: {fileID: 519057409}
   - component: {fileID: 519057408}
+  - component: {fileID: 519057410}
   m_Layer: 0
   m_Name: Arcade Exit Container
   m_TagString: Untagged
@@ -297,8 +241,20 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &519057410
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 519057407}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7f590634b35fa28458981e13ae944a60, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  wantMouse: 0
 --- !u!1 &533551198
 GameObject:
   m_ObjectHideFlags: 0
@@ -678,7 +634,6 @@ MonoBehaviour:
   logo: {fileID: 246968438}
   warning: {fileID: 899142989}
   skipButton: {fileID: 1875983312}
-  myFlexBool: 0
 --- !u!4 &706988144
 Transform:
   m_ObjectHideFlags: 0
@@ -874,35 +829,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
---- !u!1 &958301880
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 958301881}
-  m_Layer: 0
-  m_Name: Limbitless Sensor Suite
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &958301881
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 958301880}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 62.55773, y: 5.7206497, z: -88.142624}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children:
-  - {fileID: 2096660777}
-  m_Father: {fileID: 0}
-  m_RootOrder: 7
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1139275152
 GameObject:
   m_ObjectHideFlags: 0
@@ -1131,6 +1057,161 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
+--- !u!1001 &1751871302
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 114088613716720558, guid: 541698ff903bb1c4fb76859c2531c40a,
+        type: 2}
+      propertyPath: flexKeys.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4493796732511564, guid: 541698ff903bb1c4fb76859c2531c40a, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 62.55773
+      objectReference: {fileID: 0}
+    - target: {fileID: 4493796732511564, guid: 541698ff903bb1c4fb76859c2531c40a, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 5.7206497
+      objectReference: {fileID: 0}
+    - target: {fileID: 4493796732511564, guid: 541698ff903bb1c4fb76859c2531c40a, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: -88.142624
+      objectReference: {fileID: 0}
+    - target: {fileID: 4493796732511564, guid: 541698ff903bb1c4fb76859c2531c40a, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4493796732511564, guid: 541698ff903bb1c4fb76859c2531c40a, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4493796732511564, guid: 541698ff903bb1c4fb76859c2531c40a, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4493796732511564, guid: 541698ff903bb1c4fb76859c2531c40a, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4493796732511564, guid: 541698ff903bb1c4fb76859c2531c40a, type: 2}
+      propertyPath: m_RootOrder
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 114088613716720558, guid: 541698ff903bb1c4fb76859c2531c40a,
+        type: 2}
+      propertyPath: flexKeys.Array.data[0]
+      value: return
+      objectReference: {fileID: 0}
+    - target: {fileID: 1512626714208732, guid: 541698ff903bb1c4fb76859c2531c40a, type: 2}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: 541698ff903bb1c4fb76859c2531c40a, type: 2}
+  m_IsPrefabParent: 0
+--- !u!1 &1751871303 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1512626714208732, guid: 541698ff903bb1c4fb76859c2531c40a,
+    type: 2}
+  m_PrefabInternal: {fileID: 1751871302}
+--- !u!114 &1751871304
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1751871303}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 221034bbb37df0247ba0aab037d8cfca, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  doubleTapTimer: 0
+  timeLimit: 1
+  coroutineTimeLimit: 0.5
+  tapCounter: 0
+--- !u!114 &1751871305
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1751871303}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f21769328753bc949b197f60854ba0ba, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  destroyAfterScene: 0
+  useRaw: 0
+  OnUpturn:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+  OnDownturn:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+  OnFlexEnter:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1751871304}
+        m_MethodName: SetFlexTrue
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1751871304}
+        m_MethodName: DoubleFlex
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+  OnFlexExit:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1751871304}
+        m_MethodName: SetFlexFalse
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+  OnRestEnter:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+  OnRestExit:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+  isReadingUpwards: 0
+  isFlexing: 0
+  isResting: 1
 --- !u!1 &1765393734
 GameObject:
   m_ObjectHideFlags: 0
@@ -1377,81 +1458,3 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1875983312}
---- !u!1 &2096660776 stripped
-GameObject:
-  m_PrefabParentObject: {fileID: 1512626714208732, guid: 541698ff903bb1c4fb76859c2531c40a,
-    type: 2}
-  m_PrefabInternal: {fileID: 67028490}
---- !u!4 &2096660777 stripped
-Transform:
-  m_PrefabParentObject: {fileID: 4493796732511564, guid: 541698ff903bb1c4fb76859c2531c40a,
-    type: 2}
-  m_PrefabInternal: {fileID: 67028490}
---- !u!114 &2096660778
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 2096660776}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f21769328753bc949b197f60854ba0ba, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  destroyAfterScene: 0
-  useRaw: 0
-  OnUpturn:
-    m_PersistentCalls:
-      m_Calls: []
-    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0, Culture=neutral,
-      PublicKeyToken=null
-  OnDownturn:
-    m_PersistentCalls:
-      m_Calls: []
-    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0, Culture=neutral,
-      PublicKeyToken=null
-  OnFlexEnter:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 706988143}
-        m_MethodName: SetFlexTrue
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0, Culture=neutral,
-      PublicKeyToken=null
-  OnFlexExit:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 706988143}
-        m_MethodName: SetFlexFalse
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0, Culture=neutral,
-      PublicKeyToken=null
-  OnRestEnter:
-    m_PersistentCalls:
-      m_Calls: []
-    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0, Culture=neutral,
-      PublicKeyToken=null
-  OnRestExit:
-    m_PersistentCalls:
-      m_Calls: []
-    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0, Culture=neutral,
-      PublicKeyToken=null
-  isReadingUpwards: 0
-  isFlexing: 0
-  isResting: 1

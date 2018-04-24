@@ -104,7 +104,7 @@ public class GameOverController : MonoBehaviour
 				glowTracker++;
 			}
 
-            if (Input.GetButtonDown("Fire_P1") || Input.GetButtonDown("Fire_P2") || Input.GetKeyDown(KeyCode.Keypad0) || myFlexBool == true)
+            if (Input.GetButtonDown("Fire_P1") || Input.GetButtonDown("Fire_P2") || Input.GetKeyDown(KeyCode.Keypad0) || FlexToggle.myFlexBool == true)
             {
 				if (glowTracker <= 1)
 				{

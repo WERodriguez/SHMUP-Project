@@ -252,8 +252,6 @@ public class SelectionMenuController : MonoBehaviour
     public Animator doubleSecondary2;
     public Animator doubleSpecial2;
 
-    public bool myFlexBool;
-
     private void Awake()
     {
         DeactivateSingleSelection();
@@ -654,9 +652,9 @@ public class SelectionMenuController : MonoBehaviour
                     P1toggleData++;
                 }
 
-                if (Input.GetButtonDown("Fire_P1") || myFlexBool == true)
+                if (Input.GetButtonDown("Fire_P1") || FlexToggle.myFlexBool == true)
                 {
-                    myFlexBool = false;
+                    FlexToggle.myFlexBool = false;
 
                     if (!choosing)
                     {
@@ -1478,9 +1476,9 @@ public class SelectionMenuController : MonoBehaviour
                     P2toggleData--;
                 }
 
-                if (Input.GetButtonDown("Fire_P1") || myFlexBool == true)
+                if (Input.GetButtonDown("Fire_P1") || FlexToggle.myFlexBool == true)
                 {
-                    myFlexBool = false;
+                    FlexToggle.myFlexBool = false;
 
                     if (!P1choosing)
                     {
@@ -2704,17 +2702,5 @@ public class SelectionMenuController : MonoBehaviour
 
         P2specialButton.SetActive(true);
         P2special = true;
-    }
-
-    //Registers flex as true.
-    public void SetFlexTrue()
-    {
-        myFlexBool = true;
-    }
-
-    //Registers flex as false.
-    public void SetFlexFalse()
-    {
-        myFlexBool = false;
     }
 }
