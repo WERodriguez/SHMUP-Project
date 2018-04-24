@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028387, g: 0.2257142, b: 0.3069231, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -1143,16 +1143,16 @@ MonoBehaviour:
   m_Text: 'Player 1 Control
 
 
-    BAKA - toggle up
+    I - toggle up
 
-    BAKA - toggle left
+    J - toggle left
 
-    BAKA - toggle down
+    K - toggle down
 
-    BAKA - toggle right
+    L - toggle right
 
 
-    BAKA - choose'
+    U - choose'
 --- !u!222 &508172445
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1233,16 +1233,16 @@ MonoBehaviour:
   m_Text: 'Player 1 Control
 
 
-    BAKA - toggle up
+    W - toggle up
 
-    BAKA - toggle left
+    A - toggle left
 
-    BAKA - toggle down
+    S - toggle down
 
-    BAKA - toggle right
+    D - toggle right
 
 
-    BAKA - choose'
+    Flex - choose'
 --- !u!222 &519595737
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -2030,18 +2030,18 @@ MonoBehaviour:
   m_Text: 'Player 2 Control
 
 
-    baka - move up
+    W - move up
 
-    baka - move left
+    A - move left
 
-    baka - move down
+    S - move down
 
-    baka - move right
+    D - move right
 
 
-    baka - shoot
+    R - shoot
 
-    baka - special'
+    Rx2 - special'
 --- !u!222 &801650368
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -2235,16 +2235,16 @@ MonoBehaviour:
   m_Text: 'Player 2 Control
 
 
-    BAKA - toggle up
+    T - toggle up
 
-    BAKA - toggle left
+    F - toggle left
 
-    BAKA - toggle down
+    G - toggle down
 
-    BAKA - toggle right
+    H - toggle right
 
 
-    BAKA - choose'
+    R - choose'
 --- !u!222 &819110838
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -3695,18 +3695,18 @@ MonoBehaviour:
   m_Text: 'Player 2 Control
 
 
-    baka - move up
+    num 8 - move up
 
-    baka - move left
+    num 4 - move left
 
-    baka - move down
+    num 5 - move down
 
-    baka - move right
+    num 6 - move right
 
 
-    baka - shoot
+    num 0 - shoot
 
-    baka - special'
+    num 0x2 - special'
 --- !u!222 &1712779182
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -3884,18 +3884,18 @@ MonoBehaviour:
   m_Text: 'Player 1 Control
 
 
-    baka - move up
+    W - move up
 
-    baka - move left
+    A - move left
 
-    baka - move down
+    S - move down
 
-    baka - move right
+    D - move right
 
 
-    baka - shoot
+    Flex - shoot
 
-    baka - special'
+    Flexx2 - special'
 --- !u!222 &1836588736
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -4167,16 +4167,16 @@ MonoBehaviour:
   m_Text: 'Player 2 Control
 
 
-    BAKA - toggle up
+    num 8 - toggle up
 
-    BAKA - toggle left
+    num 4 - toggle left
 
-    BAKA - toggle down
+    num 5 - toggle down
 
-    BAKA - toggle right
+    num 6 - toggle right
 
 
-    BAKA - choose'
+    num 0 - choose'
 --- !u!222 &1894505387
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -4753,18 +4753,18 @@ MonoBehaviour:
   m_Text: 'Player 1 Control
 
 
-    baka - move up
+    Up - move up
 
-    baka - move left
+    Down - move left
 
-    baka - move down
+    Left - move down
 
-    baka - move right
+    Right - move right
 
 
-    baka - shoot
+    U - shoot
 
-    baka - special'
+    Ux2 - special'
 --- !u!222 &2129850203
 CanvasRenderer:
   m_ObjectHideFlags: 0
