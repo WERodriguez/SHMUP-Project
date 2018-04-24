@@ -147,7 +147,15 @@ public class HUDcontroller : MonoBehaviour
     }
 
     private void Update()
-    {
+	{
+		if (MainMenuController.arcadeQuit)
+		{
+			if (Input.GetButtonDown ("ArcadeQuit"))
+			{
+				Application.Quit ();
+			}
+		}
+
         if (pauseMenuOn)
         {
             if (!addingPlayer2)
