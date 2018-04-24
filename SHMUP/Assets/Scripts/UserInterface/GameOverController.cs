@@ -212,7 +212,7 @@ public class GameOverController : MonoBehaviour
     {
         PlayerHealthSystem.P1savedHealth = PlayerHealthSystem.P1maxHealth;
         PlayerHealthSystem.P1savedShields = PlayerHealthSystem.P1maxShields;
-        PlayerHealthSystem.P1currentLives = 3;
+        PlayerHealthSystem.P1savedLives = 3;
 
         PlayerWeaponController.P1savedWeaponLevel = PlayerWeaponController.baseWLevel;
         PlayerWeaponController.P1savedSecondaryLevel = PlayerWeaponController.baseSecondaryLevel;
@@ -222,7 +222,7 @@ public class GameOverController : MonoBehaviour
     {
         PlayerHealthSystem.P2savedHealth = PlayerHealthSystem.P2maxHealth;
         PlayerHealthSystem.P2savedShields = PlayerHealthSystem.P2maxShields;
-        PlayerHealthSystem.P2currentLives = 3;
+        PlayerHealthSystem.P2savedLives = 3;
 
         PlayerWeaponController.P2savedWeaponLevel = PlayerWeaponController.baseWLevel;
         PlayerWeaponController.P2savedSecondaryLevel = PlayerWeaponController.baseSecondaryLevel;
