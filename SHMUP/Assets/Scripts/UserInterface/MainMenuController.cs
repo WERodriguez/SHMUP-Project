@@ -16,6 +16,7 @@ public class MainMenuController : MonoBehaviour
 
     public static int currentStage;
     public static bool onePlayer;
+	public static bool canEscape;
 
     public GameObject mainMenuCanvas;
     public GameObject mainMenuBackground;
