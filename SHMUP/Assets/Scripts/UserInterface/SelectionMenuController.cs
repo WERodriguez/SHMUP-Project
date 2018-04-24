@@ -319,7 +319,7 @@ public class SelectionMenuController : MonoBehaviour
 
     private void Update()
 	{
-		if (MainMenuController.arcadeQuit)
+		if (TitleController.arcadeQuit)
 		{
 			if (Input.GetButtonDown ("ArcadeQuit"))
 			{

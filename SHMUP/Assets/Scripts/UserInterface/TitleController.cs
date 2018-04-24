@@ -6,7 +6,11 @@ using UnityEngine.SceneManagement;
 
 public class TitleController : MonoBehaviour
 {
-    public static bool fromTitle;
+	public static bool fromTitle;
+	public static bool arcadeQuit;
+
+	public bool arcadeBuild;
+	public bool limbitlessBuild;
 
     public GameObject logo;
     public GameObject warning;
@@ -21,6 +25,7 @@ public class TitleController : MonoBehaviour
         warning.SetActive(false);
         skipButton.SetActive(false);
 
+		arcadeQuit = false;
         fromTitle = true;
         canSkip = false;
         skipPressed = false;
@@ -33,11 +38,6 @@ public class TitleController : MonoBehaviour
 
     private void Update()
 	{
-		if (Input.GetButtonDown ("ArcadeQuit"))
-		{
-			Application.Quit ();
-		}
-
         if (canSkip)
         {
             if (Input.GetButtonDown("Fire_P1") || Input.GetButtonDown("Fire_P2") || Input.GetKeyDown(KeyCode.Keypad0) || FlexToggle.myFlexBool == true)
@@ -46,7 +46,19 @@ public class TitleController : MonoBehaviour
 
                 SceneManager.LoadScene("MainMenu");
             }
-        }
+		}
+
+		if (arcadeBuild)
+		{
+			arcadeQuit = true;
+		}
+		if (arcadeQuit)
+		{
+			if (Input.GetButtonDown ("ArcadeQuit"))
+			{
+				Application.Quit ();
+			}
+		}
     }
 
     IEnumerator Timer()

@@ -6,17 +6,16 @@ using UnityEngine.SceneManagement;
 
 public class MainMenuController : MonoBehaviour
 {
-    private int glowTracker;
-    private int controlGlowTracker;
-	private bool waiting;
-    private bool controlList;
-
     public bool arcadeBuild;
     public bool limbitlessBuild;
 
     public static int currentStage;
     public static bool onePlayer;
-	public static bool arcadeQuit;
+
+    private int glowTracker;
+    private int controlGlowTracker;
+    private bool waiting;
+    private bool controlList;
 
     public GameObject mainMenuCanvas;
     public GameObject mainMenuBackground;
@@ -58,7 +57,6 @@ public class MainMenuController : MonoBehaviour
         currentStage = 1;
 		waiting = false;
         controlList = false;
-		arcadeQuit = false;
     }
 
     private void Start()
@@ -67,7 +65,15 @@ public class MainMenuController : MonoBehaviour
     }
 
     private void Update()
-    {
+	{
+		if (TitleController.arcadeQuit)
+		{
+			if (Input.GetButtonDown ("ArcadeQuit"))
+			{
+				Application.Quit ();
+			}
+		}
+
 		if (waiting)
 		{
             if (!controlList)
@@ -148,7 +154,7 @@ public class MainMenuController : MonoBehaviour
                 {
                     glowTracker = 1;
                     
-                    if (!arcadeBuild && !limbitlessBuild)
+					if (!arcadeBuild && !limbitlessBuild)
                     {
                         intro.text = "Menu Interaction\n- Keyboard -";
 
@@ -156,17 +162,15 @@ public class MainMenuController : MonoBehaviour
                         menuBuildType[0].SetActive(true);
                         inGameBuildType[0].SetActive(true);
                     }
-                    if (arcadeBuild)
+					if (arcadeBuild)
                     {
-						arcadeQuit = true;
-
                         intro.text = "Menu Interaction\n- Arcade -";
 
                         DeactivateControlType();
                         menuBuildType[1].SetActive(true);
                         inGameBuildType[1].SetActive(true);
                     }
-                    if (limbitlessBuild)
+					if (limbitlessBuild)
                     {
                         intro.text = "Menu Interaction\n- LimbitLess -";
 
@@ -237,14 +241,6 @@ public class MainMenuController : MonoBehaviour
                     controlList = false;
                 }
             }
-
-			if (arcadeQuit)
-			{
-				if (Input.GetButtonDown ("ArcadeQuit"))
-				{
-					Application.Quit ();
-				}
-			}
 		}
 
         if(!TitleController.fromTitle)

@@ -16,7 +16,7 @@ public class CreditController : MonoBehaviour
 
     private void Update()
 	{
-		if (MainMenuController.arcadeQuit)
+		if (TitleController.arcadeQuit)
 		{
 			if (Input.GetButtonDown ("ArcadeQuit"))
 			{
