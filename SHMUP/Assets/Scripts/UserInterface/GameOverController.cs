@@ -56,7 +56,15 @@ public class GameOverController : MonoBehaviour
     }
 
     private void Update()
-    {
+	{
+		if (MainMenuController.arcadeQuit)
+		{
+			if (Input.GetButtonDown ("ArcadeQuit"))
+			{
+				Application.Quit ();
+			}
+		}
+
 		if (waiting)
 		{
 			SetPlayerScore ();

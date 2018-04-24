@@ -320,7 +320,15 @@ public class SelectionMenuController : MonoBehaviour
     }
 
     private void Update()
-    {
+	{
+		if (MainMenuController.arcadeQuit)
+		{
+			if (Input.GetButtonDown ("ArcadeQuit"))
+			{
+				Application.Quit ();
+			}
+		}
+
         if (waiting)
         {
             if (MainMenuController.onePlayer)

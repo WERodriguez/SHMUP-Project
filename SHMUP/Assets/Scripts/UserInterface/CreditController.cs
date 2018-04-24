@@ -15,7 +15,15 @@ public class CreditController : MonoBehaviour
     }
 
     private void Update()
-    {
+	{
+		if (MainMenuController.arcadeQuit)
+		{
+			if (Input.GetButtonDown ("ArcadeQuit"))
+			{
+				Application.Quit ();
+			}
+		}
+
         if(!waiting)
         {
             if(Input.GetButtonDown("Fire_P1") || Input.GetButtonDown("Fire_P2") || Input.GetKeyDown(KeyCode.Keypad0))

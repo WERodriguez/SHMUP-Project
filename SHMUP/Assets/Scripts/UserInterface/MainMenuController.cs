@@ -16,7 +16,7 @@ public class MainMenuController : MonoBehaviour
 
     public static int currentStage;
     public static bool onePlayer;
-	public static bool canEscape;
+	public static bool arcadeQuit;
 
     public GameObject mainMenuCanvas;
     public GameObject mainMenuBackground;
@@ -61,6 +61,7 @@ public class MainMenuController : MonoBehaviour
         currentStage = 1;
 		waiting = false;
         controlList = false;
+		arcadeQuit = false;
     }
 
     private void Start()
@@ -160,6 +161,8 @@ public class MainMenuController : MonoBehaviour
                     }
                     if (arcadeBuild)
                     {
+						arcadeQuit = true;
+
                         intro.text = "Menu Interaction\n- Arcade -";
 
                         DeactivateControlType();
@@ -237,6 +240,14 @@ public class MainMenuController : MonoBehaviour
                     controlList = false;
                 }
             }
+
+			if (arcadeQuit)
+			{
+				if (Input.GetButtonDown ("ArcadeQuit"))
+				{
+					Application.Quit ();
+				}
+			}
 		}
 
         if(!TitleController.fromTitle)

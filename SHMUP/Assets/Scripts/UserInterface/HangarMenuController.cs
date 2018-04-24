@@ -232,7 +232,15 @@ public class HangarMenuController : MonoBehaviour
     }
 
     private void Update()
-    {
+	{
+		if (MainMenuController.arcadeQuit)
+		{
+			if (Input.GetButtonDown ("ArcadeQuit"))
+			{
+				Application.Quit ();
+			}
+		}
+
         if (MainMenuController.onePlayer)
         {
             P1Credit.text = "Player 1 has: " + ScoreTracker.P1credit;
