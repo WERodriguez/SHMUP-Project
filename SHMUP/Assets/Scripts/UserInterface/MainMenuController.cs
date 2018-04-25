@@ -224,6 +224,8 @@ public class MainMenuController : MonoBehaviour
 
                 if (Input.GetButtonDown("P1HorizontalChoiceRight") || Input.GetButtonDown("P2HorizontalChoiceRight") || Input.GetKeyDown(KeyCode.Keypad6))
                 {
+                    ScrollingSound();
+
                     glowTracker--;
 
                     DeactivateControlListGlow();
@@ -231,6 +233,8 @@ public class MainMenuController : MonoBehaviour
                 }
                 if (Input.GetButtonDown("P1HorizontalChoiceLeft") || Input.GetButtonDown("P2HorizontalChoiceLeft") || Input.GetKeyDown(KeyCode.Keypad4))
                 {
+                    ScrollingSound();
+
                     glowTracker++;
 
                     DeactivateControlListGlow();
