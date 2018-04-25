@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028387, g: 0.2257142, b: 0.3069231, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -677,35 +677,6 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
---- !u!1 &364993041
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 364993042}
-  m_Layer: 0
-  m_Name: Limbitless Sensor Suite
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &364993042
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 364993041}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 62.55773, y: 5.7206497, z: -88.142624}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children:
-  - {fileID: 507781412}
-  m_Father: {fileID: 0}
-  m_RootOrder: 6
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &366382982
 GameObject:
   m_ObjectHideFlags: 0
@@ -940,136 +911,6 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 388063688}
---- !u!1001 &507781411
-Prefab:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 364993042}
-    m_Modifications:
-    - target: {fileID: 114088613716720558, guid: 541698ff903bb1c4fb76859c2531c40a,
-        type: 2}
-      propertyPath: flexKeys.Array.size
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4493796732511564, guid: 541698ff903bb1c4fb76859c2531c40a, type: 2}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4493796732511564, guid: 541698ff903bb1c4fb76859c2531c40a, type: 2}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4493796732511564, guid: 541698ff903bb1c4fb76859c2531c40a, type: 2}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4493796732511564, guid: 541698ff903bb1c4fb76859c2531c40a, type: 2}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4493796732511564, guid: 541698ff903bb1c4fb76859c2531c40a, type: 2}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4493796732511564, guid: 541698ff903bb1c4fb76859c2531c40a, type: 2}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4493796732511564, guid: 541698ff903bb1c4fb76859c2531c40a, type: 2}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4493796732511564, guid: 541698ff903bb1c4fb76859c2531c40a, type: 2}
-      propertyPath: m_RootOrder
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 114088613716720558, guid: 541698ff903bb1c4fb76859c2531c40a,
-        type: 2}
-      propertyPath: flexKeys.Array.data[0]
-      value: return
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_ParentPrefab: {fileID: 100100000, guid: 541698ff903bb1c4fb76859c2531c40a, type: 2}
-  m_IsPrefabParent: 0
---- !u!4 &507781412 stripped
-Transform:
-  m_PrefabParentObject: {fileID: 4493796732511564, guid: 541698ff903bb1c4fb76859c2531c40a,
-    type: 2}
-  m_PrefabInternal: {fileID: 507781411}
---- !u!1 &507781413 stripped
-GameObject:
-  m_PrefabParentObject: {fileID: 1512626714208732, guid: 541698ff903bb1c4fb76859c2531c40a,
-    type: 2}
-  m_PrefabInternal: {fileID: 507781411}
---- !u!114 &507781414
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 507781413}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f21769328753bc949b197f60854ba0ba, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  destroyAfterScene: 0
-  useRaw: 0
-  OnUpturn:
-    m_PersistentCalls:
-      m_Calls: []
-    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0, Culture=neutral,
-      PublicKeyToken=null
-  OnDownturn:
-    m_PersistentCalls:
-      m_Calls: []
-    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0, Culture=neutral,
-      PublicKeyToken=null
-  OnFlexEnter:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 706988143}
-        m_MethodName: SetFlexTrue
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0, Culture=neutral,
-      PublicKeyToken=null
-  OnFlexExit:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 706988143}
-        m_MethodName: SetFlexFalse
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0, Culture=neutral,
-      PublicKeyToken=null
-  OnRestEnter:
-    m_PersistentCalls:
-      m_Calls: []
-    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0, Culture=neutral,
-      PublicKeyToken=null
-  OnRestExit:
-    m_PersistentCalls:
-      m_Calls: []
-    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0, Culture=neutral,
-      PublicKeyToken=null
-  isReadingUpwards: 0
-  isFlexing: 0
-  isResting: 1
 --- !u!1 &508172442
 GameObject:
   m_ObjectHideFlags: 0
@@ -1841,7 +1682,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e2993b90a25eab9428064d441a4b5180, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  arcadeBuild: 0
+  arcadeBuild: 1
   limbitlessBuild: 0
   mainMenuCanvas: {fileID: 537034792}
   mainMenuBackground: {fileID: 11782612}
@@ -1951,7 +1792,7 @@ AudioSource:
       tangentMode: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
-    m_RotationOrder: 4
+    m_RotationOrder: 0
   reverbZoneMixCustomCurve:
     serializedVersion: 2
     m_Curve:
