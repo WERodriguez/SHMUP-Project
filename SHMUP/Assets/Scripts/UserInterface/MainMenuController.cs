@@ -171,7 +171,7 @@ public class MainMenuController : MonoBehaviour
                     }
 					if (arcadeBuild)
                     {
-                        intro.text = "Menu Interaction\n- Arcade -";
+                        intro.text = "Menu Interaction";
 
                         DeactivateControlType();
                         menuBuildType[1].SetActive(true);
@@ -203,7 +203,7 @@ public class MainMenuController : MonoBehaviour
                     }
                     if (arcadeBuild)
                     {
-                        intro.text = "In-Game Interaction\n- Arcade -";
+                        intro.text = "In-Game Interaction";
 
                         DeactivateControlType();
                         menuBuildType[1].SetActive(true);
