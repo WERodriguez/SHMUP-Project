@@ -86,7 +86,7 @@ public class ScoreScreenController : MonoBehaviour
 
     private void Update()
 	{
-		if (TitleController.arcadeQuit)
+		if (TitleController.arcadeVersion)
 		{
 			if (Input.GetButtonDown ("ArcadeQuit"))
 			{

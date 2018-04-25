@@ -158,7 +158,7 @@ public class HUDcontroller : MonoBehaviour
 
     private void Update()
 	{
-		if (TitleController.arcadeQuit)
+		if (TitleController.arcadeVersion)
 		{
 			if (Input.GetButtonDown ("ArcadeQuit"))
 			{
@@ -602,9 +602,19 @@ public class HUDcontroller : MonoBehaviour
         }
         else
         {
-            if (Input.GetKeyDown(KeyCode.P))
+            if (!TitleController.arcadeVersion)
             {
-                ActivatePauseMenu();
+                if (Input.GetButtonDown("PauseKeyboard"))
+                {
+                    ActivatePauseMenu();
+                }
+            }
+            else
+            {
+                if(Input.GetButtonDown("PauseArcade"))
+                {
+                    ActivatePauseMenu();
+                }
             }
 
             if (MainMenuController.onePlayer)

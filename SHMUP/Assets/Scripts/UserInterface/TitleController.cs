@@ -7,7 +7,7 @@ using UnityEngine.SceneManagement;
 public class TitleController : MonoBehaviour
 {
 	public static bool fromTitle;
-	public static bool arcadeQuit;
+	public static bool arcadeVersion;
 
 	public bool arcadeBuild;
 	public bool limbitlessBuild;
@@ -25,7 +25,7 @@ public class TitleController : MonoBehaviour
         warning.SetActive(false);
         skipButton.SetActive(false);
 
-		arcadeQuit = false;
+		arcadeVersion = false;
         fromTitle = true;
         canSkip = false;
         skipPressed = false;
@@ -50,9 +50,9 @@ public class TitleController : MonoBehaviour
 
 		if (arcadeBuild)
 		{
-			arcadeQuit = true;
+			arcadeVersion = true;
 		}
-		if (arcadeQuit)
+		if (arcadeVersion)
 		{
 			if (Input.GetButtonDown ("ArcadeQuit"))
 			{
