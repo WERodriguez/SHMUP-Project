@@ -218,7 +218,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &519057408
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -632,7 +632,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8f65f991bdf528448b7b97967caa9b5d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  arcadeBuild: 0
+  arcadeBuild: 1
   limbitlessBuild: 0
   logo: {fileID: 246968438}
   warning: {fileID: 899142989}
@@ -717,7 +717,7 @@ AudioSource:
       tangentMode: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
-    m_RotationOrder: 4
+    m_RotationOrder: 0
   reverbZoneMixCustomCurve:
     serializedVersion: 2
     m_Curve:
